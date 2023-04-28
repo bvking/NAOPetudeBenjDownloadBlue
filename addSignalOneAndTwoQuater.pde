@@ -4,10 +4,6 @@ void propagationMode(){ // as addSignalOneAndTwoQuater() in NAOP
      text ( " oscillatorChanged " + oscillatorChanged +  " Change mode q, z, or stop progation with b ", -width-200, -height- 2600 );
      text ("signal2 " +nf(signal[2], 0, 2) + "signal3 " +nf(signal[3], 0, 2) + "signal5 " +nf(signal[5], 0, 2), -width-200, -height- 2500 );
   
- //    text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width-200, -height- 400 );
- //    text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width-200, -height- 300 );
-//   text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400 );
-//   text (" oldOscillatorChange " + (oldOscillatorChange+1)%6 + " oscillatorChange " + (oscillatorChange+1)%6 + " j " + nf (phaseKeptAtChange[(oscillatorChange+1)%6]/TWO_PI*360%360, 0, 2), -width-200, -height- 300 );
    text (" propagationSpeed " + propagationSpeed + " key " + key, -width-200, -height- 2200 );
      
    if (key=='q' || key=='b' || key=='z' ) { // q == addsignal
@@ -49,7 +45,7 @@ void propagationMode(){ // as addSignalOneAndTwoQuater() in NAOP
  formerKey=key;
  }
 
- void propagation2way() {   // le boule d'apres prends la position de la boue d'vant + PI/8
+ void propagation2wayO() {   // le boule d'apres prends la position de la boue d'vant + PI/8
         oscillatorChanged=oscillatorChangingPropagation;
  //  if ( oscillatorChanged==true){ // A essayer
      phaseKeptAtChange[oscillatorChange]= map (signal[3], 0, 1, 0, TWO_PI);
@@ -160,7 +156,7 @@ void propagationMode(){ // as addSignalOneAndTwoQuater() in NAOP
  
 ///////////////////// 
 
-void splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
+void splitTimeLfoScaleO() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
     lfoPhase[1] = (frameCount / 10.0 * cos (1000 / 500.0)*-1)%TWO_PI;  // continue 0 to TWO_PI;
     lfoPhase[3] = map ((((cos  (frameCount / 30.0))*-1) %2), -1, 1, -TWO_PI, TWO_PI);  // sinusoidale lente
@@ -240,7 +236,7 @@ void splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans 
              
 }
 
- void splitTimeScale(float propagationSpeed) { 
+ void splitTimeScaleO(float propagationSpeed) { 
    
 
          signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1)%1;

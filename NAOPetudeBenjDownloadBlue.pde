@@ -65,8 +65,14 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
   case 'v':
   moveKeys[12] = b;
   break;
-    case 't':
+  case 't':
   moveKeys[13] = b;
+  break;
+  case 'g':
+  moveKeys[14] = b;
+  break;
+  case 'b':
+  moveKeys[15] = b;
   break;
    
   }
@@ -135,6 +141,14 @@ void draw() {
   //  formerKeyMetro = '*';
     print (" keyMode ",  keyMode );
     }
+
+    if (moveKeys[8]==true && moveKeys[13]==true){ // ALT && t pressed
+    keyMode = " propagationBallRotation "  ;
+  //  formerKeyMetro = '*';
+    print (" keyMode ",  keyMode );
+    }
+
+
         
     if (moveKeys[8]==true && moveKeys[3]==true){ // CONTROL && q pressed
     keyMode = " followDirectLfo " ;
@@ -302,6 +316,15 @@ void draw() {
     }
    //  followDistribueAddLfoPatternControl();
   }
+
+
+      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotation ") { //drive ball with lfo
+        propagationBallRotation();
+     text ( keyMode, -width*2, -height*2);
+  }
+ 
+
+
   
   if (keyMode == " null " || keyModeRed == " null ") { //drive ball with lfo
     //  followDistribueAddLfoPattern();
