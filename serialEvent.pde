@@ -3,7 +3,7 @@
 void serialEvent(Serial encoderReceiveUSBport101) { 
 
    String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');
- /* 
+ 
   String[] m0 = match(myEncodeur, "encodeur0");
   String[] m1 = match(myEncodeur, "encodeur1");
  
@@ -15,7 +15,7 @@ void serialEvent(Serial encoderReceiveUSBport101) {
   
  
 if (m0 != null) {  // If not null, then a match was found
-  
+  encoderTouched[0]=1;
    if (frameCount>formerFrameCountFromSerialEvent[0]+15){ 
 formerFrameCountFromSerialEvent[0]=frameCount;
 println("Found encodeur0 a match in '" + m0 + "'");  
@@ -24,7 +24,7 @@ else  encoderTouched[0]=0;
 } 
 
 if (m1 != null) {  // If not null, then a match was found
-
+ encoderTouched[1]=1;
     if (frameCount>formerFrameCountFromSerialEvent[1]+15){ 
 formerFrameCountFromSerialEvent[1]=frameCount;
 println("Found encodeur1 a match in '");  
@@ -34,7 +34,7 @@ else  encoderTouched[1]=0;
 
 
 if (m2 != null) {  // If not null, then a match was found
-  
+  encoderTouched[2]=1; 
    if (frameCount>formerFrameCountFromSerialEvent[2]+15){ 
 formerFrameCountFromSerialEvent[2]=frameCount;
 println("Found encodeur2 a match in '" + m2 + "'");  
@@ -43,13 +43,17 @@ else  encoderTouched[2]=0;
 }
 
 if (m3 != null) {  // If not null, then a match was found
-
+encoderTouched[3]=1; 
     if (frameCount>formerFrameCountFromSerialEvent[3]+15){ 
 formerFrameCountFromSerialEvent[3]=frameCount;
 println("Found encodeur3 a match in '");  
 }
-else  encoderTouched[3]=0;  
 }
+else  encoderTouched[3]=0; 
+ if  (frameCount>formerFrameCountFromSerialEvent[3]){
+     // encoderTouched[3]=0;  
+}
+
 if (m4 != null) {  // If not null, then a match was found
 encoderTouched[4]=1;
   
@@ -69,7 +73,7 @@ println("Found encodeur5 a match in   " + encoderTouched[5]);
 }
 else  encoderTouched[5]=0;
 }
-*/
+
 
 //  String myString = encoderReceiveUSBport14101.readStringUntil('\n');
    // read the serial buffer:
@@ -91,6 +95,6 @@ else  encoderTouched[5]=0;
    encodeur[5] = (int) map (values[5], 0, 4000, 0, 800)%800;
  }
 
- printArray(encodeur); 
+// printArray(encodeur); 
 
 }

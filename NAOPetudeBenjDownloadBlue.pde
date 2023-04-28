@@ -89,9 +89,11 @@ void draw() {
  println ("  encodeur[0] " +  encodeur[0] + " encoderTouched[0] " + encoderTouched[0] + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
 
 
-  showArray (encodeur);
- // printArray(encodeur);
-  background(0);
+ print (" show "); showArray (encodeur);
+ print (" encodeur "); printArray (encodeur);
+ background(0);
+
+   if (frameCount ==5) noLoop();
 //  printDataOnScreen();
   
   
@@ -557,7 +559,7 @@ for (int i = 0; i < networkSize; i++) {
    //***** */     samplingMovementPro(); 
         
   //       print (" v1 ");   print (  v1);  print (" v1 ");   println (  v1); 
-         sendToTeensy();
+      //   sendToTeensy();
  }
  
      print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
@@ -639,7 +641,7 @@ for (int i = 0; i < networkSize; i++) {
       sphereDetail( 4*5); 
 //==================== 
 
-  text ( " new " + newPosF[0], 0, 500);
+  text ( " newPosF " + newPosF[0], 0, 500);
   
 
       float rayon=displacement;

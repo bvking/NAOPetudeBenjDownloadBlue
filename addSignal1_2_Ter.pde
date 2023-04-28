@@ -49,12 +49,12 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
 // splitTimeQuater(30.0); // fonctionne pas
 
 //  splitTimeLfoQuater(); //USELESS with propagation Mode
-  splitTimeWithAbletonNoteBis(); // oscillator Change with note from Ableton
+ //*+ splitTimeWithAbletonNoteBis(); // oscillator Change with note from Ableton
  // addSignalLfoPatternQuater(); // devenu fonction ci dessous
 
 
   //*_  propagationMode();
-//    splitTimeScale(50.0);
+    splitTimeScale(50.0);
      propagation2way();
 
 
