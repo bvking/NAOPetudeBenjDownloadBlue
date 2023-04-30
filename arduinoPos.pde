@@ -565,10 +565,14 @@ void arduinoPos() {
 
     }
   }
-    else  if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) "
-
-    ) { send24DatasToTeensy6motors(5, -3, -3, -1); }
    }
+   if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
+   {
+    if (measure<=3 )
+     {  send24DatasToTeensy6motors(5, -3, -3, -1);
+     }
+    }
+  
 
   //    print ("pendular      ");   println (pendular);  
   if (formerKeyMetro!='s') {

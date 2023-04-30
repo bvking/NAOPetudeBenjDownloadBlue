@@ -16,11 +16,24 @@ if (formerDecayTime>decayTime){
 
     samplingMovementPro();
     text ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated , 400, 900 );
-    if (oldMovementInterpolated>movementInterpolated){
+  //  if (oldMovementInterpolated>movementInterpolated){
    //   movementInterpolated= map (movementInterpolated, 0, TWO_PI, TWO_PI, 0);
-       }
+   //   }
+/*
+     if (movementInterpolated>PI) {
  
-     // bRecording=false;
+  //  DataToDueCircularVirtualPosition[0]= int (map (movementInterpolated, PI, TWO_PI, 0, - numberOfStep)%numberOfStep); 
+   DataToDueCircularVirtualPosition[0]= int (map (movementInterpolated, PI, TWO_PI,  numberOfStep, 0)); 
+    net.oldPhase[0]=net.phase[0];
+   //*** net.phase[0]= map (DataToDueCircularVirtualPosition[0], numberOfStep, 0, 0, -TWO_PI);
+   movementInterpolated = map (DataToDueCircularVirtualPosition[0], numberOfStep, 0, -PI, -TWO_PI);
+
+    print ("  movInter<0  "); print (2); print ( " ");   println (  movementInterpolated  ); 
+}
+*/
+
+ 
+    
        phases[0][frameCountBis % nbMaxDelais]=movementInterpolated;
   //     drawBall( 0, movementInterpolated);
     //MAP movementInterpolated
@@ -54,9 +67,9 @@ if (formerDecayTime>decayTime){
   //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
   //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
      followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
-
+      
       phaseMapped[i]=phases[i+0][frameCountBis % nbMaxDelais]; // use varaible phaseMapped (to play movement with time delay or phase delay) to well send it in Teensy
-
+   
     //   drawBallOppositeWay( i, phases[i-0][frameCountBis % nbMaxDelais] ); 
     //  println ( " phases[i][frameCountBis % nbMaxDelais " + i + " " + phases[i][frameCountBis % nbMaxDelais] ) ; 
  }
@@ -87,7 +100,7 @@ if (formerDecayTime>decayTime){
  
   if (formerFormerKey == '#' || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
     
-println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
+text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " + newPosFollowed[0], 500, 600);
 
       for (int i = 0; i < networkSize-0; i+=1) { 
         
@@ -157,7 +170,9 @@ println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
 
   for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
 
-  drawBall(i, newPosX[i] ); //  good. 
+  //drawBall(i, newPosX[i] ); //  good. 
+
+   print( " newPosX[i] " ); print ( newPosX[i]);
 
    
     print( " oldPositionToMotor[i]" ); print ( oldPositionToMotor[i]);
@@ -200,7 +215,7 @@ println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
       }
     }
 
- //send24DatasToTeensy6motors(8, 3, -3, -1);  // avant dernier >-1 alors compute data
+ send24DatasToTeensy6motors(8, 3, -4, -1);  // avant dernier >-1 alors compute data
  // mapDataToMotor(); // just to dislay on screen?
   
 }

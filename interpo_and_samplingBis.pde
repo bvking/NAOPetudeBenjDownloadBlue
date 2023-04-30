@@ -98,11 +98,12 @@ float dt = (now - t0) / (t1 - t0);
 float x =mlerp( s0.x, s1.x, dt, TWO_PI ); // interpolation avec modulo 
 float y =mlerp( s0.x, s1.x, dt, TWO_PI );
 
+oldMovementInterpolated=movementInterpolated;
  movementInterpolated=y;
 //float movementInterpolatedB = y ;
 text (" x " + x + " y " + y + " mov " + movementInterpolated , 100, 800);
 fill (255,255,255);
-circle ( 100* cos (movementInterpolated)+200, 100*sin (movementInterpolated)+200, 20);
+circle ( 200* cos (movementInterpolated)+200, 200*sin (movementInterpolated)+200, 20);
 
 }
 }
