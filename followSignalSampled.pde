@@ -159,7 +159,8 @@ void followSignalSampled(int ratioTimeFrame){
  }
  
  
-  sendToTeensyTurnOnDriver();
+ // sendToTeensyTurnOnDriver();
+  send24DatasToTeensy6motors(5, -3, -3, -1);
   }  
 
 } 

@@ -554,23 +554,47 @@ void oscSend(){
   myMessage19.add((float) map (mouseY, 0, 800, 0, 127));
 
  
-
-  OscMessage myMessage60= new OscMessage("/fromEncodeurToLive0"); // oscillator SEND position
+/*
+  OscMessage myMessage60= new OscMessage("/fromEncodeurToLive0"); // oscillator SEND 0 or 1
   OscMessage myMessage61= new OscMessage("/fromEncodeurToLive1"); // oscillator 
   OscMessage myMessage62= new OscMessage("/fromEncodeurToLive2"); // oscillator 
   OscMessage myMessage63= new OscMessage("/fromEncodeurToLive3"); // oscillator 
   OscMessage myMessage64= new OscMessage("/fromEncodeurToLive4"); // oscillator 
   OscMessage myMessage65= new OscMessage("/fromEncodeurToLive5"); // oscillato
-  
-  oldEncodeur[0]= encodeur[0];
-  encodeur[0]=mouseY*2;
-  myMessage60.add(abs (map (encodeur[0], 0, 800, 0, 127)));  // send encodeur
- // myMessage60.add(fromEncodeurToLive[0]);
+
+    myMessage60.add(fromEncodeurToLive[0]);  // 0 or 1;
   myMessage61.add(fromEncodeurToLive[1]);
   myMessage62.add(fromEncodeurToLive[2]);
   myMessage63.add(fromEncodeurToLive[3]);
   myMessage64.add(fromEncodeurToLive[4]);
   myMessage65.add(fromEncodeurToLive[5]);
+*/
+
+
+/*
+  oldEncodeur[0]= encodeur[0];
+  encodeur[0]=mouseY*2;
+  myMessage60.add(abs (map (encodeur[0], 0, 800, 0, 127)));  // send encodeur
+*/
+  oldEncodeur[0]= encodeur[0];
+// if ( oldEncodeur[0]<0 && = encodeur[0];)
+
+  OscMessage myMessage60= new OscMessage("/encodeur0"); // oscillator SEND 0 or 1
+  OscMessage myMessage61= new OscMessage("/encodeur1"); // oscillator 
+  OscMessage myMessage62= new OscMessage("/encodeur2"); // oscillator 
+  OscMessage myMessage63= new OscMessage("/encodeur3"); // oscillator 
+  OscMessage myMessage64= new OscMessage("/encodeur4"); // oscillator 
+  OscMessage myMessage65= new OscMessage("/encodeur5"); // oscillato
+
+  myMessage60.add(encodeur[0]);  // 0 to 400
+  myMessage61.add(encodeur[1]);
+  myMessage62.add(encodeur[2]);
+  myMessage63.add(encodeur[3]);
+  myMessage64.add(encodeur[4]);
+  myMessage65.add(encodeur[5]);
+
+
+
   
 
 

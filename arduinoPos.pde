@@ -551,10 +551,12 @@ void arduinoPos() {
 
 
    if (keyMode!= " phasePattern ") {
+    if (modeStartKeyToFollow!= " samplingModeInternal "){
+         if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
      if (positionMov != " troisieme ") {
       send24DatasToTeensy6motors(14, 3, -3, -1);
   }
-  else
+
       send24DatasToTeensy6motors(22, 3, -3, -1);
 
       if (measure>=17 && measure<=41){
@@ -562,6 +564,11 @@ void arduinoPos() {
          }
 
     }
+  }
+    else  if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) "
+
+    ) { send24DatasToTeensy6motors(5, -3, -3, -1); }
+   }
 
   //    print ("pendular      ");   println (pendular);  
   if (formerKeyMetro!='s') {

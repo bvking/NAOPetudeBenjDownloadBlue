@@ -63,7 +63,7 @@ void stopSamplingMeasure(int endMeasure) {
   }
 }
 void activeSamplingInternalClock(int beginMeasure) { 
-   if (measure<=beginMeasure && measure>=beginMeasure && actualSec!=lastSec && mouseRecorded == true) {
+   if (measure==beginMeasure  && actualSec!=lastSec && mouseRecorded == true) { // && measure>=beginMeasure
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
         //  newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
@@ -73,7 +73,7 @@ void activeSamplingInternalClock(int beginMeasure) {
   }
 }
 void stopSamplingInternalClock(int endMeasure) { 
-   if (measure<=endMeasure && measure>=endMeasure && actualSec!=lastSec) {
+   if (measure==endMeasure && actualSec!=lastSec) { // && measure>=endMeasure 
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
       //    newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);

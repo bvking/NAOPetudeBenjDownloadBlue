@@ -200,7 +200,7 @@ println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
       }
     }
 
- send24DatasToTeensy6motors(8, 3, -3, -1);  // avant dernier >-1 alors compute data
- // mapDataToMotor(); // do not work
+ //send24DatasToTeensy6motors(8, 3, -3, -1);  // avant dernier >-1 alors compute data
+ // mapDataToMotor(); // just to dislay on screen?
   
 }

@@ -189,7 +189,6 @@ void mapDataToMotor() {
     
     newPosF[i]=positionToMotor[i]%6400;
     
-    
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
     positionToMotor[i]= positionToMotor[i]%6400;
      TrigmodPos[i]=1;

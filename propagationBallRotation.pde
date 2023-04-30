@@ -154,12 +154,14 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
  
  
 ///////////////////// 
- //  mapDataToMotor();
+   mapDataToMotor();
+  // modePendulaireModeCirculaire();
+   send24DatasToTeensy6motors(5, -3, -3, -1);
 
  for (int k = 0; k < this.nbBalls; k++) 
     {    
-        drawBall(k, newPosXaddSignal[k] );  
-        print (" newPosXaddSignal[k] " + newPosXaddSignal[k]); 
+    //    drawBall(k, newPosXaddSignal[k] );  
+    //    print (" newPosXaddSignal[k] " + newPosXaddSignal[k]); 
     } 
   }
 

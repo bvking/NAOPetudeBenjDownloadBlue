@@ -87,7 +87,7 @@ else  encoderTouched[5]=0;
      
 
    if (values.length == 6) {//  encodeur de 0 a 4000
-   encodeur[0] = (int) map (values[0], 0, 4000, 0, 800)%800;
+   encodeur[0] = abs ( (int) map (values[0], 0, 4000, 0, 800))%800;
    encodeur[1] = (int) map (values[1], 0, 4000, 0, 800)%800;
    encodeur[2] = (int) map (values[2], 0, 4000, 0, 800)%800;
    encodeur[3] = (int) map (values[3], 0, 4000, 0, 800)%800;

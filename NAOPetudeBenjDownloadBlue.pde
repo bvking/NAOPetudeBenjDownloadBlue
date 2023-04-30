@@ -496,7 +496,7 @@ for (int i = 0; i < networkSize; i++) {
     break;
 
     case 'j': 
-     formerKeyMetro = '@';     
+  //   formerKeyMetro = '@';     
     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
    // formerKeyMetro = 'J';  
 
@@ -635,7 +635,7 @@ for (int i = 0; i < networkSize; i++) {
        newPosF[networkSize-1]=  map (mouseY, 400, 0, PI, TWO_PI);
        }
 
-          if (mouseY <400 ){ 
+          if (mouseY <400 ) {
        mouseY  =(int) map  (mouseY , 0, 400, 0, 400)*-1;
        newPosF[networkSize-1]=  map (mouseY, 0, 400, 0, PI);
        }
@@ -647,15 +647,27 @@ for (int i = 0; i < networkSize; i++) {
 //==================== sampling from encoder
    //   newPosF[0]=  map (v0, 0, 800, 0, TWO_PI);
      //  newPosF[1]=  map (v0, 0, 800, 0, TWO_PI);
- // newPosF[0]=  map (encodeur[0], 0, 780, 0, TWO_PI)%TWO_PI;
+
+     if (measure <=3){
+ // send24DatasToTeensy6motors(5, 3, -3, -1);
+      }
+
+  newPosF[0]=  map (encodeur[0], 0, 800, 0, TWO_PI)%TWO_PI;  // tourner CCW
+
+      text  ( " newPosF[0] " + newPosF[0] + " encodeur[0] " +  abs ((int)map (encodeur[0], 0, 800, 0, 800)%800), 300, -1200);
+
+
   //  newPosF[1]=  map (v0, 0, 780, 0, TWO_PI);
 //==================== 
 
 
-//==================== sampling from encoder
+//==================== sampling from mouseY
+/*
        float radianTorec;
        radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Ableton LFOdecay    
        newPosF[0]= radianTorec;
+*/
+
     //     float x = displacement*cos(newPosF[i]);  
     //    float  y = displacement*sin(newPosF[i]);  
      //   rotate (degrees(newPosF[0]));
@@ -695,7 +707,7 @@ for (int i = 0; i < networkSize; i++) {
  }
 
 //********************* trigEffectToAbletonLive
-trigEffectToAbletonLive();
+//trigEffectToAbletonLive();  // add Size to Text
 
  
  //**************   END MODE SETTING   *************************

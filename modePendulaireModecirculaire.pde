@@ -261,7 +261,7 @@ void  modePendulaireModeCirculaire() {
     line (250, 250, 250, 250);  // line showing how ball will behang by the motor's axe.
     fill (123);
     //line (0,0,0,0,0, 11*250+200+250); //axe helping the 3D representation. axe qui relie les pendules
-    noFill (); 
+   // noFill (); 
 
   //  sphere(side*3); // this sphere serves as a reference
    
@@ -427,6 +427,20 @@ void  modePendulaireModeCirculaire() {
       sphere(side*3);
       sphereDetail( 4*5);
       }
+
+   if ( keyMode  ==  " propagationBallRotation " ) { //drive ball with lfo
+  
+      println ( "****************************** DISPLAY ", keyMode ); 
+      text ( char (formerKeyMetro), 100,100);
+      fill (75, 255 , 100);    
+      x = displacement*cos(newPosF[i]);
+      y = displacement*sin(newPosF[i]);
+    //  x = displacement*cos(net.phase[i]);
+    //  y = displacement*sin(net.phase[i]);   
+      sphere(side*3);
+      sphereDetail( 4*5); 
+      
+     }
     
  if ( keyMode == " null " ) {      
     if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
@@ -468,7 +482,7 @@ void  modePendulaireModeCirculaire() {
       sphereDetail( 4*5); 
       }
       
-    if ( modeStartKeyToFollow == " followDistribueAddLfoPattern " ) { //drive ball with lfo
+    if ( modeStartKeyToFollow == " followDistribueAddLfoPattern "  ) { //drive ball with lfo
      if ( keyMode != " trigEventWithAbletonSignal " ) {
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
