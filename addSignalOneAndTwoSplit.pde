@@ -133,7 +133,7 @@ void addSignalOneAndTwo(){
       println (" phaseKeptAtChange[j] " , j, " ",  phaseKeptAtChange[j] );
       
    //**    LFO[j] = phaseKeptAtChange[j]+PI/(15-j);
-       LFO[j] = phaseKeptAtChange[j]+0 ; //*PI/24 
+       LFO[j] = phaseKeptAtChange[j]+TWO_PI ; //*PI/24 
        LFO[j] = LFO[j]%TWO_PI;
        dataMappedForMotor[j]= (int) map (LFO[j], 0, TWO_PI, 0, numberOfStep);
        println (" phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);

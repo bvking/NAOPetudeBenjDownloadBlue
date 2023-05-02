@@ -106,10 +106,10 @@ void addSignalOneAndTwoBis(){
    }
 
    //**    LFO[j] = phaseKeptAtChange[j]+PI/(15-j);
-       LFO[oscillatorChanging] = phaseKeptAtChange[oscillatorChanging]+QUARTER_PI ;  //les redressent de temps en temps
+       LFO[oscillatorChanging] = phaseKeptAtChange[oscillatorChanging]+TWO_PI+QUARTER_PI ;  //les redressent de temps en temps
        LFO[oscillatorChanging] = LFO[oscillatorChanging]%TWO_PI;
        dataMappedForMotor[oscillatorChanging]= (int) map (LFO[oscillatorChanging], 0, TWO_PI, 0, numberOfStep);
-       println (" phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
+       println ("1_2Bis phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
  
        newPosXaddSignal[oscillatorChanging]= map (dataMappedForMotor[oscillatorChanging], 0, numberOfStep, 0, TWO_PI);
        

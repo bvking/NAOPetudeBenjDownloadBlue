@@ -279,7 +279,7 @@ void draw() {
   if (keyMode == " addSignalOneAndTwo " || keyModeRed == " addSignalOneAndTwo " ) { //drive ball with lfo
     //   PatternFollowLfo();
      addSignalOneAndTwo();
-      text ( keyMode, -width, -height); 
+      text ( " ALT z " + keyMode, -width, -height); 
     }
   
   if (keyMode == " methodAbleton " || keyModeRed == " methodAbleton ") { //drive ball with lfo
