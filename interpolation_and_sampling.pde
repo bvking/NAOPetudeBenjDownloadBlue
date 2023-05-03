@@ -1,6 +1,14 @@
 
 float []  sampledModifiedChecking = new float [1000000000];
-/*
+
+float calcAngle() {
+ float a = atan2(mouseY-height/8, mouseX-width/8); // 2
+ if (a<0) {
+    a=map(a, -PI, 0, PI, TWO_PI);
+  }
+  return a;
+}
+
 class Sample {
   int t;
   float x, y;
@@ -227,9 +235,9 @@ class Sampler {
           text( "   you are  go down?  " , 400, 400 );
        }
       */  
-//  }
-//}
+  }
+}
 
-//Sampler sampler;
+Sampler sampler;
 
 //******************         END INTERPOLATION SamplingMovement

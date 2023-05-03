@@ -8,7 +8,8 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 */
 
 void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
-modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+// modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+ modeStartKeyToFollow = " null ";
 
 
      textSize (100);
@@ -156,7 +157,7 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
 ///////////////////// 
    mapDataToMotor();
   // modePendulaireModeCirculaire();
-   send24DatasToTeensy6motors(5, -3, -3, -1);
+ //  send24DatasToTeensy6motors(5, -3, -3, -1);
 
  for (int k = 0; k < this.nbBalls; k++) 
     {    

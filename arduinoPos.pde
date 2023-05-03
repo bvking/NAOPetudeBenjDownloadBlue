@@ -1,4 +1,33 @@
 void arduinoPos() { 
+ if (keyMode == " propagationBallRotation " ) { 
+    for (int i = 0; i < networkSize; i++) {
+
+    //rev[i]=rev[0];
+
+    //*******************************  ASSIGN MOTOR WITH POSITION
+    //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
+
+    if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
+      Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));
+    }
+
+    //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
+    if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
+
+      Pos[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));
+    }
+
+    if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
+      Pos[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+      //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
+    }         
+    if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
+      Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
+    }
+    DataToDueCircularVirtualPosition[i]=Pos[i];
+    println ( " DataToDueCircularVirtualPosition " + i + " " + DataToDueCircularVirtualPosition[i] );
+  }
+  }
   
   if (formerKeyMetro == '>') {  // formerKeyMetro == '<' || 
     for (int i = 0; i < networkSize; i++) {
@@ -24,7 +53,7 @@ void arduinoPos() {
     }
   }
 
-  //  else if (formerFormerKey=='Q') {
+  else if (keyMode != " propagationBallRotation ") {
   for (int i = 0; i < networkSize; i++) {
 
     //rev[i]=rev[0];
@@ -50,10 +79,7 @@ void arduinoPos() {
       Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
   }
-  
-  
-  
-  //  }  
+ }  
 
   //=======================================================================
 
@@ -509,26 +535,11 @@ void arduinoPos() {
    dataToLive[10]=0;
    }
    */
-  oscSend();
+ // oscSend();
  
 //  printDataOnScreen();
 
-  int TeensyJo=3; // trig Joe in Teensy
-  int erasePosition=-1; //no
-  String dataMarkedToTeensyJo  ="<" // BPM9   
-
-  //  +   DataToDueCircularVirtualPosition[11]+ ","+DataToDueCircularVirtualPosition[10]+","+(DataToDueCircularVirtualPosition[9])+","+DataToDueCircularVirtualPosition[8]+","+DataToDueCircularVirtualPosition[7]+","
-   // +   DataToDueCircularVirtualPosition[6]+","+
-    
-    + DataToDueCircularVirtualPosition[5]+","+DataToDueCircularVirtualPosition[4]+","+DataToDueCircularVirtualPosition[3]+","+DataToDueCircularVirtualPosition[2]+","
-    + DataToDueCircularVirtualPosition[1]+","+DataToDueCircularVirtualPosition[0]+","
-
-    +  (speedDelta) +","+ 3 +","+TeensyJo+","+ erasePosition+"," 
-    
-
-    +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+">"; //    cohesionCounterHigh // +orderCohesion+ ">";LevelCohesionToSend ","+ int (map ( LowLevelCohesionToSend, 0, 1, 0, 100))+ 
-
-
+ 
 
 
   if (keyMode == " phasePattern ") {
@@ -549,7 +560,7 @@ void arduinoPos() {
   }     
   //*******************
 
-
+  if (modeStartKeyToFollow!= " null "){
    if (keyMode!= " phasePattern ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
@@ -563,9 +574,10 @@ void arduinoPos() {
        send24DatasToTeensy6motors(7, 3, -3, -1);
          }
 
-    }
-  }
-   }
+       }
+      } 
+     }
+  } 
    if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
    {
     if (measure<=3 )

@@ -338,7 +338,7 @@ void  modePendulaireModeCirculaire() {
            
                        text (  " lllllll ", -width/4, -height/4 ) ;           
                        
-         println ( net.phase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+         println ( net.phase[i]  + " modePendulaire? formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
   
