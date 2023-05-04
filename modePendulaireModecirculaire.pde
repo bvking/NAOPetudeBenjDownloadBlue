@@ -433,8 +433,8 @@ void  modePendulaireModeCirculaire() {
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
       fill (75, 255 , 100);    
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);
+   //   x = displacement*cos(newPosF[i]);
+   //   y = displacement*sin(newPosF[i]);
     //  x = displacement*cos(net.phase[i]);
     //  y = displacement*sin(net.phase[i]);   
       sphere(side*3);

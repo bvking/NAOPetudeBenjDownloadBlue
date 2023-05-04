@@ -25,7 +25,7 @@ void teensyPos(){
     DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);
  
     }
-       send24DatasToTeensy6motors( 9, 3, -3, -1);
+       send24DatasToTeensy6motors( 4, 3, -3, -1);
    }
  if (modeStartKeyToFollow != " null ") { 
   for (int i = 0; i < networkSize; i++) {
@@ -53,7 +53,7 @@ void teensyPos(){
       DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
   }
-   send24DatasToTeensy6motors( 10, 3, -3, -1);
+   send24DatasToTeensy6motors( 3, 3, -3, -1);
   }
  
 
@@ -70,18 +70,21 @@ void mapDataToMotor() {
     positionToMotor[i]= ((int) map (net.phase[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
     
     newPosF[i]=positionToMotor[i]%6400;
-    
+   
     net.oldPhase[i]=net.phase[i];
     }
     countRevs();
+
+    /*
       for (int i = 0; i <  networkSize-0; i+=1) { 
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
     net.phase[i]%=TWO_PI;
     }
-    
+    */
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
     positionToMotor[i]= positionToMotor[i]%6400;
+  //   newPosF[i]=net.phase[i];
      TrigmodPos[i]=1;
     
     if ( oldPosF[i]>newPosF[i]){
@@ -89,25 +92,21 @@ void mapDataToMotor() {
          TrigmodPos[i]=0;
      
     }
-   
+   /*
      if ( (oldPosF[i]>(numberOfStep-numberOfStep*0.1))  && newPosF[i]<numberOfStep*0.1){
          revLfo[i]--;
          TrigmodPos[i]=0;
      
     }
-
+*/
      print (" TrigmodPos[i" , TrigmodPos[i]);
      print (" oldPosF " + oldPosF[i] + " newPosF " + newPosF[i]);
      oldPositionToMotor[i]=  positionToMotor[i];
      oldPosF[i]=newPosF[i];
-     oldPosX[i]=newPosF[X];
+     oldPosX[i]=newPosF[i];
 
-
-     
-
-     print (" revLFO "); print ( i); print ("  "); println (revLfo[i]); 
-     
-     
+   
+     print (" revLFO "); print ( i); print ("  "); println (revLfo[i]);   
      text ("count", -1600, height-500 - 75*i);
      text ( revLfo[i], -1400, height-500 - 75*i);
      }

@@ -95,8 +95,9 @@ void draw() {
  println ("  encodeur[0] " +  encodeur[0] + " encoderTouched[0] " + encoderTouched[0] + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
 
 
- print (" show "); showArray (encodeur);
- print (" encodeur "); printArray (encodeur);
+ print (" showEncs "); showArray (encodeur);
+// print (" encodeur "); printArray (encodeur);
+ print (" countRev "); showArray (rev); 
  background(0);
 
    if (frameCount ==5) noLoop();
@@ -220,16 +221,7 @@ void draw() {
     print (" keyMode ",  keyMode, " formerKeyMetro ", formerKeyMetro );
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
+  
    if (keyMode == " followDistribueAddLfoPatternControl " ){ //moveKeys[8]==true && // CONTROL 
    // if (formerFormerKey!='#'){
      /*
@@ -245,7 +237,7 @@ void draw() {
     
     
     
-       
+     
     setMovement(key, false); 
         println (" modeStartKeyToFollow ", modeStartKeyToFollow, " keyModeRed",  keyModeRed,"keyMode",  keyMode, "formerKeyMetro ", formerKeyMetro, " controlTrigLfoPattern ", controlTrigLfoPattern );
     keyModeRed = keyMode; // dont read keyMode in file.txt
@@ -318,7 +310,7 @@ void draw() {
   }
 
 
-      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotation ") { //drive ball with lfo
+      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotationRec ") { //drive ball with lfo
         propagationBallRotation();
      text (" Alt t " + keyMode, -width*2, -height*2);
   }
@@ -348,9 +340,7 @@ void draw() {
 
   }
 
-  
 
-  
     if (keyMode == " signal "){ // || formerKeyMetro == 'J'
          text ( keyMode, -width, -height); 
     for (int i = 2; i <  networkSize; i++) {
@@ -525,9 +515,7 @@ for (int i = 0; i < networkSize; i++) {
      //  formerKeyMetro = 'S';  // back to normal Mode with formerKeyMetro = '$';
    }
      
-     
-     
-  
+ 
    if (formerKeyMetro == 'B' ){
     lfoPattern();
     splitTimeLfo();
@@ -645,7 +633,6 @@ for (int i = 0; i < networkSize; i++) {
      //  newPosF[networkSize-1]=  map (v0, 0, 800, 0, TWO_PI);
      
 //==================== sampling from encoder
-   
 
      if (measure <=3){
   send24DatasToTeensy6motors(5, 3, -3, -1);
@@ -675,8 +662,7 @@ for (int i = 0; i < networkSize; i++) {
 //==================== 
 
   text ( " newPosF " + newPosF[0], 0, 500);
-  
-
+ 
       float rayon=displacement;
       float polarToCartesionX= displacement*cos(newPosF[0]);
       float polarToCartesionY= displacement*sin(newPosF[0]);
@@ -687,9 +673,6 @@ for (int i = 0; i < networkSize; i++) {
    println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
 
 
-
-      
-
      // followMovementAll();
     //   displayfollowMovementAll();
      
@@ -699,114 +682,19 @@ for (int i = 0; i < networkSize; i++) {
          samplingMovementPro(); 
 
        //  samplingMovement(2); 
-        
-  //       print (" v1 ");   print (  v1);  print (" v1 ");   println (  v1); 
-    //     sendToTeensy();
+
  }
 
-//********************* trigEffectToAbletonLive
 //trigEffectToAbletonLive();  // add Size to Text
-
- 
  //**************   END MODE SETTING   *************************
-
-
-  //  followSignal();
 
   formerAuto= frameCount-1;
   // see storeinput example to create sample
 
-
-  // midi note data
-
-  string1.display(ver_move1);
-  string2.display(ver_move2);
-  string3.display(ver_move3);
-  string4.display(ver_move4);
-  string5.display(ver_move5);
-  string6.display(ver_move6);
-  string7.display(ver_move7);
-  string8.display(ver_move8);
-
-  if (ver_move1>0) {
-    ver_move1 = ver_move1 -duration1;
-  }
-  if (ver_move2>0) {
-    ver_move2 = ver_move2 -duration2;
-  }
-  if (ver_move3>0) {
-    ver_move3 = ver_move3 -duration3;
-  }
-  if (ver_move4>0) {
-    ver_move4 = ver_move4 -duration4;
-  }
-  if (ver_move5>0) {
-    ver_move5 = ver_move5 -duration5;
-  }
-  if (ver_move6>0) {
-    ver_move6 = ver_move6 -duration6;
-  }
-  if (ver_move7>0) {
-    ver_move7 = ver_move7 -duration7;
-  }
-  if (ver_move8>0) {
-    ver_move8 = ver_move8 -duration8;
-  }
-
-  ver_move1 = - ver_move1;
-  ver_move2 = - ver_move2;
-  ver_move3 = - ver_move3;
-  ver_move4 = - ver_move4;
-  ver_move5 = - ver_move5;
-  ver_move6 = - ver_move6;
-  ver_move7 = - ver_move7;
-  ver_move8 = - ver_move8;
-
-  //potar data move the circle
-
-  // translate(width/2, height/2);
-  //OSC RECEIVE
-  print(" automation3 followMadTrack  "); 
-  print (automation3);
-  incrementSpeed+=10;
-  incrementSpeed=incrementSpeed%width;
-
-  float ver_move = (float) incrementSpeed;
-  float triangularLFO = map(automation2, 0, 1, -300, 300); //FollowLFO   .. used to autmationWithMeasureAndNote()
-  float hor_move = map(automation3, 0, 1, -300, 300);  // //followMad
-
-  float RColour = map(automation7, 0, 1, 0, 255);
-  // float GColour = map(automation4, 0, 1, 0, 255);
-  float LFO1= map(automation6, 0, 1, 0, 255);
-  float LFO2= map(automation7, 0, 1, 0, 255);
-
-  float BColour = map(automation3, 0, 1, 0, 255);
-  //  float XSize = map(automation6, 0, 1, 10, 80);
-  float XSize = map(automation1, 0, 1, 10, 80);
-  float YSize = map(automation3, 0, 1, 0, 320);
-  
-   float LFOphase1 = map(automation6, 0, 1, -300, 300);
-   float LFOphase2 = map(automation7, 0, 1, -300, 300);
-  //  fill(RColour, GColour, BColour);
-  ellipse(ver_move, hor_move, 50, 50);
-  ellipse(ver_move, triangularLFO, XSize, YSize);
-//  ellipse(ver_move, LFOphase1, XSize, YSize); // seeAutomationAreverbershaper
-//  ellipse(ver_move, LFOphase2, XSize, YSize); // seeAutomationAreverbershaper
-  
-  stroke (255,255,0);
-  
-    ellipse(ver_move, LFO1, XSize, YSize); // seeAutomationAreverbershaper
-    
-    ellipse(ver_move, LFO2, XSize, YSize); // seeAutomationAreverbershaper
-  
-  noStroke();
-  //  ellipse(400, 400, GColour, GColour);
-
-
-
-  // END midi note data 
-
-  //  print (char(key)); println (char(formerKey));
+  //Display with strings midi note (pitch and duration).  Display with  ellipse cyclicals and continues datas (potar, fader, lfo). from Ableton Live 
+  displayNoteandPotarFromAbleton();
+   
+  // COMPUTE ANGULAR TIME SPEED
   if (running == false) return;
 
   int m = millis();
@@ -936,7 +824,6 @@ for (int i = 0; i < networkSize; i++) {
     //    followSignal();
   //****  delayTimeFollowPhase11=60;  // to control time phase offseet with a lot of delay time. You can wait one seconde before the next ball follow the previous ball
     
-    
   //  followSignalSampled(frameRatio);
     samplingMovementPro();
   //  noStroke();
@@ -953,23 +840,22 @@ for (int i = 0; i < networkSize; i++) {
     
 
     rect( (currTime % 2) / 2 * width, 10, 2, 8 );
-  
-//  println (currTime % 2);
     rect( (currTime % 4) / 4 * width, 20, 2, 8 );
     rect( (currTime % 8) / 8 * width, 30, 2, 8 );
     
     rotate(-PI/2);
-    countRevs();
+   // countRevs();
    }
    
    modePendulaireModeCirculaire();
+    countRevs();
+    arduinoPos();
    
-
   
-  // ================================= 
+  // ==================================================================================================================================== 
 
 
-  // countRevs();   
+  // ;   
   println(frameCount + ": " + Arrays.toString(rev));
   // ================== fonction not used
   // devant_derriere();
@@ -999,21 +885,7 @@ for (int i = 0; i < networkSize; i++) {
     startStop= 1;  
     print ("MOVEMENT AND TIMER is already started, now START LIVE: "); 
     println (startStop );
-/*
-    String dataMarkedToDue  ="<" 
-    
-      + mapAcceleration[11]+","+  int  (1000/avgTimer.average()*60*1000)  +","+cohesionCounterHigh+","
-      //+ onOFF+"," +nextScene+","
-      //     + mapAcceleration[11]+","+ mapAcceleration[11]+","+mapAcceleration[11]+","+ mapAcceleration[11]+","+mapAcceleration[11]+"," 
 
-   
-      +TrigmodPos[11]+","+TrigmodPos[10]+","+TrigmodPos[9]+","+TrigmodPos[8]+","+TrigmodPos[7]+","+TrigmodPos[6]+","+TrigmodPos[5]+","+TrigmodPos[4]+","+TrigmodPos[3]+","+TrigmodPos[2]+","+TrigmodPos[1]+","+TrigmodPos[0]+ "," // to manage 12 note
-
-      +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+ ","+ startStop + ">"; // (2= neither start, neither stop)   cohesionCounterHigh // +orderCohesion+ ">";LevelCohesionToSend ","+ int (map ( LowLevelCohesionToSend, 0, 1, 0, 100))+ 
-
-    print ("dataStart: "); 
-    println(frameCount + ": " +  " " + ( dataMarkedToDue ));
-*/
     formerKey = '#'; //reset formerkey to not trigging LIVE
     formerSartKey = formerKey;
   }
@@ -1035,7 +907,7 @@ for (int i = 0; i < networkSize; i++) {
   println (cohesionTrig);
 
   // ***** automatise Oscillator Moving with a former Key
-   arduinoPos(); // // carefull with arduinoPos and function after arduinopos
+ //  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
 /*
    if (DataToDueCircularVirtualPosition[0]>0){
        for (int i = 0; i < networkSize; i=+1 ){

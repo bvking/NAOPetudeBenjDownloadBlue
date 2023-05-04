@@ -25,7 +25,8 @@ void arduinoPos() {
       Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
     DataToDueCircularVirtualPosition[i]=Pos[i];
-    println ( " DataToDueCircularVirtualPosition " + i + " " + DataToDueCircularVirtualPosition[i] );
+   // print ( " Pos " + i + " " + Pos[i] );
+   // print ( " DataToDueCircularVirtualPosition " +  (int) Pos[i]+ (rev[i]*numberOfStep));
   }
   }
   
@@ -472,7 +473,7 @@ void arduinoPos() {
      //*********** END COMPUTE ACCELERATION 
   
 
-  countRevs();  
+ // countRevs();  
   bpmAsPulsationFunction();
   printMidiNoteVelocity();
   //SUBZERO

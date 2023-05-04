@@ -12,7 +12,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
  modeStartKeyToFollow = " null ";
 
 
-     textSize (100);
+     textSize (75);
      text ("Change mode q, z, or stop progation with b ", -width-200, -height- 600 );
      text ("signal2 " +nf(signal[2], 0, 2) + " doQ " + doQ + " doZ " + doZ + " doB " + doB , -width-200, -height- 500 );
  //    text ("signal3 " + signal[3], -width-200, -height- 400 );
@@ -48,65 +48,61 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     }
     
   //  key = '#';
- 
-  splitTimeScale(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
- // splitTimeLfoScale();  // change de sens de PROPAGATION
+
   
   
    if (formerFormerKey == '#' || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
     
     println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
 
-      for (int i = 0; i < networkSize-0; i+=1) { 
-        
-       newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
+      for (int i = 0; i < networkSize-0; i+=1) {       
+       newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow  // +i*QUARTER_PI
    //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
-
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
-
-      
+       phaseMapped[oscillatorChange]=   phaseMapped[oscillatorChange]+   LFO[oscillatorChange];     //      newPosXaddSignal[oscillatorChange];
    
-    if (phaseMapped[i]<0){
-   
-     DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-     phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);
-   
+       if (phaseMapped[i]<0){   
+       DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+       phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);
        }
        
-   else {
-    
-    DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-    phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
-    }
+       else {  
+       DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+       phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
+       }
 
   //   newPosXaddSignal[i]=newPosFollowed[i];
 
-   newPosXaddSignal[i]=phaseMapped[i];
-
-  }
-  
- }
+       newPosXaddSignal[i]=phaseMapped[i];
+       }  
+      }
 
     if (key != '#' ) {
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
-     phasePattern();
+    if (modeStartKeyToFollow == " null ") {
+     phasePatternBase();
      
     for (int i = 0; i < networkSize-0; i+=1) { 
    // phaseMappedFollow[i]= net.phase[i];// add offset given by pendularPattern   
-    phaseMappedFollow[i] = netPhaseBase[i];
+      phaseMappedFollow[i] = netPhaseBase[i];
    // phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
     }
    }
-
   }
 
-   //******** Lock last oscillator to the lastPhase
-  
-// lockOscillatorToPositionFromPreviousProagedBall();
+    //******** Lock last oscillator to the lastPhase
+    
+    // lockOscillatorToPositionFromPreviousProagedBall();
 
- 
+     propagationSpeed=40;
+     splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
+  // splitTimeLfoScale();  // change de sens de PROPAGATION
 
-   propagation2way(); 
+    propagation2way(); 
+    mapDataToMotor();
+   for (int i = 0; i <  networkSize-0; i+=1) { 
+    net.phase[i]=newPosXaddSignal[i]; // to display to screen
+    net.phase[i]%=TWO_PI;
+    }
  
  formerFormerKey= formerKey;   
  formerKey=key;
@@ -120,12 +116,14 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
    
    if (doB!=true){ 
 
-       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
-    //    LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
+    //     LFO[oscillatorChange] =LFO[oscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
+       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*8+QUARTER_PI*1/2 ;  // on ajoute 
+       LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
  
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+     //  newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+      LFO[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
    /*  
     if (1==1){ 
@@ -153,9 +151,12 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        // newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
  
- 
+        for (int i = 0; i <  networkSize-0; i+=1) { 
+    net.phase[i]=newPosXaddSignal[i]; // to display to screen
+    net.phase[i]%=TWO_PI;
+    }
 ///////////////////// 
-   mapDataToMotor();
+  // mapDataToMotor();
   // modePendulaireModeCirculaire();
  //  send24DatasToTeensy6motors(5, -3, -3, -1);
 
