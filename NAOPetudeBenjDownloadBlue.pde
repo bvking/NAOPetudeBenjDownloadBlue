@@ -74,6 +74,9 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
   case 'b':
   moveKeys[15] = b;
   break;
+  case 'y':
+  moveKeys[16] = b;
+  break;
    
   }
 }
@@ -96,6 +99,12 @@ void draw() {
 
 
  print (" showEncs "); showArray (encodeur);
+  for (int i = 0; i < networkSize; i++) {
+ text ( " enc " + i + " " + encodeur[i], -100, 0-50*i );
+
+  }
+
+
 // print (" encodeur "); printArray (encodeur);
  print (" countRev "); showArray (rev); 
  background(0);
@@ -147,6 +156,13 @@ void draw() {
     keyMode = " propagationBallRotation "  ;
   //  formerKeyMetro = '*';
     print ("Alt t + keyMode ",  keyMode );
+    }
+
+
+    if (moveKeys[8]==true && moveKeys[16]==true){ // ALT && t pressed
+    keyMode = " propagationBallRotationBis "  ;
+  //  formerKeyMetro = '*';
+    print ("Alt y + keyMode ",  keyMode );
     }
 
 
@@ -310,11 +326,16 @@ void draw() {
   }
 
 
-      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotationRec ") { //drive ball with lfo
+      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotationRec ") { 
         propagationBallRotation();
      text (" Alt t " + keyMode, -width*2, -height*2);
   }
- 
+
+     if (keyMode == " propagationBallRotationBis " || keyModeRed == " propagationBallRotationBis ") { 
+         propagationBallRotationBis();
+     text (" Alt y " + keyMode, -width*2, -height*2);
+  
+  }
 
 
   

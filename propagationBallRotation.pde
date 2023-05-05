@@ -103,6 +103,9 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
     net.phase[i]%=TWO_PI;
     }
+
+   // lockOscillatorToPositionFromPreviousProagedBall();
+
  
  formerFormerKey= formerKey;   
  formerKey=key;
