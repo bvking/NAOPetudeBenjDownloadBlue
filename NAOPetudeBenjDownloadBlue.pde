@@ -94,19 +94,15 @@ boolean trigEffectBis;
 
 void draw() {
 
- println ("  oldEncodeur[0] " +   oldEncodeur[0] + " v1 " + v1 + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
- println ("  encodeur[0] " +  encodeur[0] + " encoderTouched[0] " + encoderTouched[0] + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
-
-
- print (" showEncs "); showArray (encodeur);
-  for (int i = 0; i < networkSize; i++) {
- text ( " enc " + i + " " + encodeur[i], -100, 0-50*i );
-  }
-
-
-// print (" encodeur "); printArray (encodeur);
+ 
+ print (" encodeur "); showArray (encodeur);
  print (" countRev "); showArray (rev); 
  background(0);
+
+textSize(50);
+ for (int i = 0; i < networkSize; i++) {
+ text ( " rev " + i + rev[i] + " enc " + i + " " + encodeur[i], -width*2, 0-50*i );
+}
 
    if (frameCount ==5) noLoop();
 //  printDataOnScreen();

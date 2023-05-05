@@ -171,6 +171,7 @@ float [] newPosY = new float[networkSize]; //;
 float [] LFO = new float[networkSize]; //;
 
 float [] phaseFollowLFO= new float[networkSize]; // 
+float [] oldOldPosF= new float[networkSize]; // 
 float [] oldPosF= new float[networkSize]; // 
 float [] newPosF= new float[networkSize]; //
 float [] oldLfoPhase=  new float[networkSize]; //

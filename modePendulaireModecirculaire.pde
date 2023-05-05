@@ -334,6 +334,7 @@ void  modePendulaireModeCirculaire() {
                                     if ( keyMode != " trigEventWithAbletonSignal " ) {  // keyMode == " trigEventWithAbletonSignal " &&   metroPhase[i]=
                                          if ( modeStartKeyToFollow  != " followSignalSampledOppositeWay(frameRatio) "  ) {
                                             if ( modeStartKeyToFollow  != " samplingModeInternal "   ) {
+                                              if ( modeStartKeyToFollow  != " null "   ) {
 
            
                        text (  " lllllll ", -width/4, -height/4 ) ;           
@@ -344,6 +345,7 @@ void  modePendulaireModeCirculaire() {
   
     sphere(side*3);
     sphereDetail( 4*5);
+      }
      }
     }
      }
@@ -438,10 +440,10 @@ void  modePendulaireModeCirculaire() {
     //  x = displacement*cos(net.phase[i]);
     //  y = displacement*sin(net.phase[i]);   
       sphere(side*3);
-      sphereDetail( 4*5); 
-      
+      sphereDetail( 4*5);     
      }
-  
+     
+  /*
     if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
       println ( "****************************** DISPLAY ", keyMode ); 
@@ -455,6 +457,7 @@ void  modePendulaireModeCirculaire() {
       sphereDetail( 4*5); 
       
      }
+   */  
     
  if ( keyMode == " null " ) {      
     if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
