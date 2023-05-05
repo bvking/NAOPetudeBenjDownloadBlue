@@ -428,7 +428,7 @@ void  modePendulaireModeCirculaire() {
       sphereDetail( 4*5);
       }
 
-   if ( keyMode  ==  " propagationBallRotation " ) { //drive ball with lfo
+   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
@@ -437,6 +437,20 @@ void  modePendulaireModeCirculaire() {
    //   y = displacement*sin(newPosF[i]);
     //  x = displacement*cos(net.phase[i]);
     //  y = displacement*sin(net.phase[i]);   
+      sphere(side*3);
+      sphereDetail( 4*5); 
+      
+     }
+  
+    if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+  
+      println ( "****************************** DISPLAY ", keyMode ); 
+      text ( char (formerKeyMetro), 100,100);
+      fill (175, 75 , 75);    
+   //   x = displacement*cos(newPosF[i]);
+   //   y = displacement*sin(newPosF[i]);
+      x = displacement*cos(net.phase[i]);
+      y = displacement*sin(net.phase[i]);   
       sphere(side*3);
       sphereDetail( 4*5); 
       

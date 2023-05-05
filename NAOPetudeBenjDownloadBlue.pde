@@ -101,7 +101,6 @@ void draw() {
  print (" showEncs "); showArray (encodeur);
   for (int i = 0; i < networkSize; i++) {
  text ( " enc " + i + " " + encodeur[i], -100, 0-50*i );
-
   }
 
 
@@ -328,12 +327,12 @@ void draw() {
 
       if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotationRec ") { 
         propagationBallRotation();
-     text (" Alt t " + keyMode, -width*2, -height*2);
+     text (" Alt t " + keyMode, -width*2, -height*3);
   }
 
      if (keyMode == " propagationBallRotationBis " || keyModeRed == " propagationBallRotationBis ") { 
-         propagationBallRotationBis();
-     text (" Alt y " + keyMode, -width*2, -height*2);
+        propagationBallRotationBis();
+     text (" Alt y " + keyMode, -width*2, -height*3);
   
   }
 

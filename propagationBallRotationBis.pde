@@ -12,7 +12,7 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 
 void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP 
-modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+modeStartKeyToFollow = " null ";
 
 
      textSize (75);
@@ -30,7 +30,7 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
 //     }
      
   switch(letter) {
-     case 'o': // way of rotation
+    case 'o': // way of rotation
    doo=true;
 
     break;
@@ -77,14 +77,14 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
    
     
  
-  splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
+ // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
  // splitTimeLfoScale();  // change de sens de PROPAGATION
  //  if (key == 'l' ) {
      
 
   
   
-   if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { // formerFormerKey == '#' || 
+   if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
     
     println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
         if (key == 'o' ) {
@@ -94,28 +94,22 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
            }
            }
   
-      for (int i = 0; i < networkSize-0; i+=1) { 
-          
-        
+
+      for (int i = 0; i < networkSize-0; i+=1) {             
        newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
    //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
-
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
 
-      
-   
-    if (phaseMapped[i]<0){
-   
-     DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-     phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);
-   
+      if (phaseMapped[i]<0){
+      DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);  
        }
        
-   else {
+      else {
     
-    DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-    phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
-    }
+      DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
+       }
 
   //   newPosXaddSignal[i]=newPosFollowed[i];
 
@@ -148,16 +142,11 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
     phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI; 
     }
    }
-
   }
-  
- 
-  
-   
-
-
-
+   propagationSpeed=50;
+   splitTimeScaleRotation(propagationSpeed);
    propagation2wayRotationBis(); 
+   mapDataToMotor();
  //   lockOscillatorToPositionFromPreviousProagedBall();
     
   //  
@@ -174,7 +163,7 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
     //   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oldOscillatorChange];
    
    
-   if (doB!=true && propagationTrigged==true){ // 
+   if (doB!=true ){ // && propagationTrigged==true
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
    phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oscillatorChange]%TWO_PI;
@@ -246,6 +235,10 @@ modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
        // newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
  
+      for (int i = 0; i <  networkSize-0; i+=1) { 
+    net.phase[i]=newPosXaddSignal[i]; // to display to screen
+    net.phase[i]%=TWO_PI;
+    }
  
 ///////////////////// 
  //  mapDataToMotor();
