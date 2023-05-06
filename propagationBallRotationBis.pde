@@ -125,7 +125,7 @@ modeStartKeyToFollow = " null ";
       lockOscillatorToPositionFromPreviousProagedBall();
          for (int i = 0; i < networkSize-0; i+=1) { 
       phaseMappedFollow[i] = netPhaseBase[i];
-      phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI; 
+      phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
       }
      }
  
@@ -138,7 +138,7 @@ modeStartKeyToFollow = " null ";
       for (int i = 0; i < networkSize-0; i+=1) {
   //  newPosFollowed[i]=netPhaseBase[i]; 
       phaseMappedFollow[i] = netPhaseBase[i];
-      phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI; 
+      phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
        }
       }
      }
@@ -169,7 +169,7 @@ modeStartKeyToFollow = " null ";
    if (doB!=true ){ // && propagationTrigged==true
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
-   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oscillatorChange]%TWO_PI;
+   phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
    phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
   //*+  LFO[oscillatorChange] = (LFO[oscillatorChange]+ TWO_PI+QUARTER_PI)%
 
@@ -179,44 +179,29 @@ modeStartKeyToFollow = " null ";
   // rotationAdded=true;
  /*   
      LFO[oscillatorChange] = (LFO[oldOscillatorChange]+TWO_PI);
-         LFO[oscillatorChange] = (LFO[oscillatorChange]+TWO_PI);
-     
-     
+     LFO[oscillatorChange] = (LFO[oscillatorChange]+TWO_PI);  
      LFO[oscillatorChange] = LFO[oscillatorChange]%(LFO[oldOscillatorChange])+ LFO[oscillatorChange]+QUARTER_PI;
  */   
     
    //    LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
     //*%*   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
-        dataMappedForMotor[oscillatorChange]= (int) map (phaseKeptAtChange[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
-       
-       
+      dataMappedForMotor[oscillatorChange]= (int) map (phaseKeptAtChange[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+              
        println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
        println (" MAIN true phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
 
- 
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
     
      }
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
   
-     
     if (doB==true){ 
       
          phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
          phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oldOscillatorChange]+(PI/((2*networkSize)-1)); // on ajoute 
    //****    LFO[oscillatorChange] =LFO[oldOscillatorChange]+(PI/(2*networkSize-1)) ;  
   
-
     //   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
         dataMappedForMotor[oscillatorChange]= (int) map (phaseKeptAtChange[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
@@ -225,7 +210,14 @@ modeStartKeyToFollow = " null ";
        newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
        // newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
- 
+
+   if (newPosXaddSignal[oscillatorChange]<0){ 
+      for (int i = 0; i <  networkSize-0; i+=1) { 
+
+      //    newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], numberOfStep, 0, -TWO_PI, 0);
+
+    }
+      }
 
 
 

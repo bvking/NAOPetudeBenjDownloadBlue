@@ -60,21 +60,8 @@ void teensyPos(){
    }
 
 void mapDataToMotor() {
+
   println (" CONVERSION pour AFFICHAGE net.phase[i]=newPosXaddSignal[i ]");
-     for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
-     if ( newPosXaddSignal[i]>0 )  {
-     positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
-     newPosF[i]=positionToMotor[i]%6400;
-   
-     if ( newPosXaddSignal[i]<0 )  {
-
-     positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI, numberOfStep, 0)%numberOfStep); //
-     newPosF[i]=positionToMotor[i]%6400;
-   }
-
-   //  newPosF[i]=positionToMotor[i]%6400;
-   }
-    }
 
 
     for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -86,10 +73,30 @@ void mapDataToMotor() {
 
   countRevs();
      for (int i = 0; i <  networkSize-0; i+=1) {
- 
      net.oldPhase[i]=net.phase[i];
 
     }
+
+
+    // map depending way of rotation
+
+   
+
+      for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
+   //  if ( newPosXaddSignal[i]>0 )  {
+     positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
+     newPosF[i]=positionToMotor[i]%6400;
+   
+    // if ( newPosXaddSignal[i]<0 )  {
+       if (net.oldPhase[i] > net.phase[i] ) {
+
+     positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0)%numberOfStep); //
+     newPosF[i]=positionToMotor[i]%6400;
+   }
+
+   //  newPosF[i]=positionToMotor[i]%6400;
+   }
+   // }
     
 
     
@@ -99,26 +106,37 @@ void mapDataToMotor() {
      for (int i = 0; i <  networkSize-0; i+=1) { 
 
      TrigmodPos[i]=1;
-    
+      
+      if (net.oldPhase[i] > 0 ) {
+
     if ( oldPosF[i]>newPosF[i]) { //
          revLfo[i]++;
          TrigmodPos[i]=0;
      
     }
+     }
     
    //  if ( oldPosF[i]>newPosF[i] ){  // && newPosXaddSignal[i]>-HALF_PI &&  newPosXaddSignal[i]< HALF_PI 
+    text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
+    print (  newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i]);
 
-    if ( newPosF[i]>(numberOfStep-numberOfStep*0.5)  && oldPosF[i]<(numberOfStep-numberOfStep*0.5) && oldOldPosF[i]>oldPosF[i] && newPosF[i]>oldPosF[i] ){ // && newPosF[i] 
+
+    if (net.oldPhase[i] < 0 ) {
+
+
+
+    if ( (newPosF[i]>oldPosF[i]) && (oldPosF[i]<oldOldPosF[i])){ 
          revLfo[i]--;
-         TrigmodPos[i]=0;
+         TrigmodPos[i]=2;
      
       }
+   }
      
 
     textSize(50);
 
      print (" TrigmodPos[i" , TrigmodPos[i]);
-     text (newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
+
      oldPositionToMotor[i]=  positionToMotor[i];
      oldOldPosF[i]=oldPosF[i];
      oldPosF[i]=newPosF[i];
