@@ -1,28 +1,10 @@
 void teensyPos(){
 
     if (modeStartKeyToFollow == " null ") {  
-        /*
-    for (int i = 0; i < networkSize; i++) {   //*******************************  ASSIGN MOTOR WITH POSITION
-  
-      if (revLfo[i]!=0  && (newPosF[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-        DataToDueCircularVirtualPosition[i]= int (map (newPosF[i], 0, TWO_PI, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
-      }
-
-      if (revLfo[i]!=0  && (newPosF[i] <  0)) { // number of revolution is even and rotation is Counter clock wise          // pos[i]= int (map (newPosF[i], 0, -TWO_PI, 0,  numberOfStep))+ (rev[i]*numberOfStep);
-
-        DataToDueCircularVirtualPosition[i]= int (map (newPosF[i], 0, -TWO_PI, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
-      }
-
-      if (revLfo[i]==0 && (newPosF[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
-        DataToDueCircularVirtualPosition[i]= int (map (newPosF[i], 0, -TWO_PI, numberOfStep, 0));        
-      }         
-      if  (revLfo[i]==0 && (newPosF[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
-        DataToDueCircularVirtualPosition[i]= int (map (newPosF[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW rev=0 ");println (pos[i]);
-      }
-    }
-    */
+    
   for (int i = 0; i < networkSize; i++) {  
-    DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);
+ //   DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs
+ DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);
  
     }
        send24DatasToTeensy6motors( 4, 3, -3, -1);

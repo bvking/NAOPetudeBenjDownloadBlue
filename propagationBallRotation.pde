@@ -10,6 +10,7 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
 // modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
  modeStartKeyToFollow = " null ";
+ keyMode = " propagationBallRotation ";
 
 
      textSize (75);
@@ -51,9 +52,8 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
   
   
-   if (formerFormerKey == '#' || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
+   if (formerFormerKey == '#' || keyMode == " propagationBallRotation ") {
     
-    println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
 
       for (int i = 0; i < networkSize-0; i+=1) {       
        newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow  // +i*QUARTER_PI
@@ -71,14 +71,14 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
        }
 
-  //   newPosXaddSignal[i]=newPosFollowed[i];
-
        newPosXaddSignal[i]=phaseMapped[i];
        }  
       }
 
+
+
     if (key != '#' ) {
-    if (modeStartKeyToFollow == " null ") {
+    if (keyMode == " propagationBallRotation ") {
      phasePatternBase();
      
     for (int i = 0; i < networkSize-0; i+=1) { 
