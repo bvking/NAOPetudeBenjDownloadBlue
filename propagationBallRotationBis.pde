@@ -278,7 +278,7 @@ modeStartKeyToFollow = " null ";
     if (doB==true && doC!=true){ 
       
          phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
-         phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oldOscillatorChange]-(PI/((2*networkSize)-1)); // on ajoute 
+         phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oldOscillatorChange]+(PI/((2*networkSize)-1)); // on ajoute 
    //****    LFO[oscillatorChange] =LFO[oldOscillatorChange]+(PI/(2*networkSize-1)) ;  
   
     //   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
@@ -287,7 +287,7 @@ modeStartKeyToFollow = " null ";
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
       
        
-        newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+     //   newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI); // GOOD
 
          newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
@@ -482,7 +482,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
    if ( newPosXaddSignal[i]%TWO_PI<0){ 
       
 
-    phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
+    phaseKeptAtChange[i]=newPosXaddSignal[h]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
     dataMappedForMotor[i]= int (map ( phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0)); 
     
               println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
@@ -495,7 +495,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
        
    else
  
-       phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;
+       phaseKeptAtChange[i]=newPosXaddSignal[h]%TWO_PI;
               println (" > phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
 
      //  LFO[j] = LFO[j]%TWO_PI;
