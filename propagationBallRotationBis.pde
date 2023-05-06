@@ -17,13 +17,13 @@ modeStartKeyToFollow = " null ";
 
 
      textSize (50);
-     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900 );
-     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800 );
-     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700 );
-     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600 );
-     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500 );
-     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400 );
-     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height- 300 );
+     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900+300 );
+     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800+300  );
+     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700+300 );
+     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600+300 );
+     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500+300   );
+     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400+300  );
+     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
      
   
  //  if (key=='q' || key=='b' || key=='z' || key=='#' || key=='o' || key=='l'  ) { // q == addsignal
@@ -32,16 +32,18 @@ modeStartKeyToFollow = " null ";
      
   switch(letter) {
     case 'o': // way of rotation
-   doo=true;
+    doo=!doo;
+    key = '#';
 
     break;
-    case 'O': // way of rotation
-   doo=false;
 
+    case 'c': 
+    doC=!doC;
+    key = '#';
     break;
+ 
     
-    case 'l': // enable propagation
-   //dol=true;
+    case 'l': // enable propagation or lock
       dol=!dol;
     key = '#';
 
@@ -61,10 +63,7 @@ modeStartKeyToFollow = " null ";
     key = '#';
     break;
 
-    case 'c': 
-    doC=!doC;
-    key = '#';
-    break;
+    
 
     case 'B': 
     doQ=false;
@@ -181,7 +180,7 @@ modeStartKeyToFollow = " null ";
 
     //   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oldOscillatorChange];
    
-   if (doC==true ){ // && propagationTrigged==true
+   if (doC==true && doo==false ){ // // fonctionne avec o = false
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
 
@@ -190,24 +189,57 @@ modeStartKeyToFollow = " null ";
 
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(3*networkSize)-1);
+   //   LFO[oscillatorChange] = LFO[oldOscillatorChange] - (PI/(6*networkSize)-1);
+    LFO[oscillatorChange] = LFO[oldOscillatorChange] ;
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
 
-       LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
+   //    LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
     }
+      }
+
+       dataMappedForMotor[oldOscillatorChange]= (int) map (LFO[oldOscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+       
+              
+       println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  LFO[oscillatorChange]);
+       println (" MAIN true phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  LFO[oldOscillatorChange]);
+
+      newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+    
+     }
+
+      if (doC==true && doo==true && doB!=true ){ // // fonctionne avec o = false/ ajoute  ou retire )1 au compteur selon propa
+  //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
+//++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
+
+ //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
+//***   phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
+
+
+      LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] = LFO[oldOscillatorChange] + (PI/(3*networkSize)-1);
+      text ( "  LFO[oscillatorChange] " + LFO[oscillatorChange], 900, 900 );
+        if (LFO[oscillatorChange]<0){ 
+    //  for (int i = 0; i <  networkSize-0; i+=1) { 
+
+    //  LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
+  //  }
       }
 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
-              
-       println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-       println (" MAIN true phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
-
+      newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
     
      }
+
+
+
+
+
 
    if (doB!=true && doC!=true){ // && propagationTrigged==true
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
