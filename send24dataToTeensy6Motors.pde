@@ -81,10 +81,10 @@ println(portsUSB);
    teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
  
   //*************** WITHOUT ENODEER connected
- //****   encoderReceiveUSBport101 = new Serial(this, Serial.list()[3], 1000000);
-    encoderReceiveUSBport101 =  new Serial(this,ports[2], 1000000); // si port connecté Monterey
+ 
+  //  encoderReceiveUSBport101 =  new Serial(this,ports[2], 1000000); // si port connecté Monterey
 
   // Read bytes into a buffer until you get a linefeed (ASCII 10):
-    encoderReceiveUSBport101.bufferUntil('\n');
+ //   encoderReceiveUSBport101.bufferUntil('\n');
 
  }

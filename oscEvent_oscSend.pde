@@ -627,16 +627,7 @@ void oscSend(){
   OscMessage myMessage38= new OscMessage("/decompte3"); // oscillator 
   OscMessage myMessage39= new OscMessage("/decompte2"); // oscillator behind
   */
-  OscMessage myMessage30= new OscMessage("/trigModPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
-  OscMessage myMessage31= new OscMessage("/trigModPos1"); // oscillator 
-  OscMessage myMessage32= new OscMessage("/trigModPos2"); // oscillator 
-  OscMessage myMessage33= new OscMessage("/trigModPos3"); // oscillator 
-  OscMessage myMessage34= new OscMessage("/trigModPos4"); // oscillator 
-  OscMessage myMessage35= new OscMessage("/trigModPos5"); // oscillato
-  OscMessage myMessage36= new OscMessage("/trigModPos6"); // oscillator 
-  OscMessage myMessage37= new OscMessage("/trigModPos7"); // oscillator 
-  OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
-  OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind
+
 
   OscMessage myMessage40= new OscMessage("/dataToLive0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage41= new OscMessage("/dataToLive1"); // oscillator 
@@ -699,22 +690,23 @@ void oscSend(){
   myMessage38.add(Pos[1]);
   myMessage39.add(Pos[0]);
  */
- 
+
+ /*
  if (formerKeyMetro == 'à'  ) { // à la base *
-  /*
+  
   myMessage30.add(revolution[11]);  //  Trig on the left bug when playing sample in negative way. problem with net_oldphase? or and countrevs
   myMessage31.add(revolution[10]);
   myMessage32.add(revolution[9]);
   myMessage33.add(revolution[8]);
   myMessage34.add(revolution[7]);
   myMessage35.add(revolution[6]);
-  */
+ 
   myMessage36.add(revolution[5]);
   myMessage37.add(revolution[4]);
   myMessage38.add(revolution[3]);
   myMessage39.add(revolution[2]);
  } 
-
+   */
  if (formerKeyMetro == '$'  ) {
   
   
@@ -747,13 +739,13 @@ void oscSend(){
 //  osctrignote   formerKeyMetro == '$'  ||
 
   if (formerKeyMetro == '£' || formerKeyMetro == '*' || formerKeyMetro == '$'  || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@' || formerKeyMetro == 'c' ) { // trig note if TrigmodPos[i]=0
-    showArray(TrigmodPos);
+  print ( " showTrig ") ; showArray(TrigmodPos);
   // These tests used a copy of the original array so that we can perform multiple
   // test using the same working array
 //  println("Convert multiple 0s to 1s (good)");
   result = multiMatchData(0, 1, TrigmodPos.clone());
   TrigmodPos=result;
-  showArray(result);
+  print ( " showResul ") ;showArray(result);
 
     } 
   
@@ -772,30 +764,46 @@ void oscSend(){
   myMessage34.add(TrigmodPos[4]);
   myMessage35.add(TrigmodPos[5]);
   */
-  int trigMute;
-  trigMute=1;
+  int trigMuteAll;
+  trigMuteAll=1;
 
 if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0){
-trigMute= 0;
-   } 
+trigMuteAll= 0;
+   }
 
-  text ( " trigMute " + trigMute,  100, 1700);
+
+  OscMessage myMessage30= new OscMessage("/trigModPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage31= new OscMessage("/trigModPos1"); // oscillator 
+  OscMessage myMessage32= new OscMessage("/trigModPos2"); // oscillator 
+  OscMessage myMessage33= new OscMessage("/trigModPos3"); // oscillator 
+  OscMessage myMessage34= new OscMessage("/trigModPos4"); // oscillator 
+  OscMessage myMessage35= new OscMessage("/trigModPos5"); // oscillato
+  OscMessage myMessage36= new OscMessage("/trigMuteAll"); // oscillator 
+  OscMessage myMessage37= new OscMessage("/trigModPos7"); // oscillator 
+  OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
+  OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind 
+
+
+     text ( " trigMuteAll " + trigMuteAll,  100, 1700);
   myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
   myMessage31.add(TrigmodPos[1]);
   myMessage32.add(TrigmodPos[2]);
   myMessage33.add(TrigmodPos[3]);
   myMessage34.add(TrigmodPos[4]);
   myMessage35.add(TrigmodPos[5]);
-  myMessage36.add(trigMute);
+  myMessage36.add(trigMuteAll);
   /*
   myMessage37.add(TrigmodPos[6]);
   myMessage38.add(TrigmodPos[7]);
   myMessage39.add(TrigmodPos[8]);
   */
+
+
+
  // text ( " TrigmodPos[2] " + TrigmodPos[2],  100, 100);
  // println (" NOTE TRIGGED FROM OSCSEND ");
- 
   /*
+
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
   myMessage41.add(dataToLive[10]);
   myMessage42.add(dataToLive[9]);
@@ -870,7 +878,9 @@ trigMute= 0;
 
 
    //  END TO USE, NOT BELOW, END OF UNCOMMENT
-  
+
+
+    // myRemoteLocation port 8000  data to live
   //*** /*
   oscP5.send(myMessage30, myRemoteLocation);
   oscP5.send(myMessage31, myRemoteLocation);
@@ -884,7 +894,7 @@ trigMute= 0;
   oscP5.send(myMessage39, myRemoteLocation);
   //*** */
   
-  // myRemoteLocation port 8000  data to live
+
   oscP5.send(myMessage40, myRemoteLocation);
   oscP5.send(myMessage41, myRemoteLocation);
   oscP5.send(myMessage42, myRemoteLocation);
