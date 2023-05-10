@@ -38,10 +38,7 @@ void trigBeatWithMeasure()
   }
   
   else  beatPrecisedTrigged=false; 
-
   
-  
-   
 } 
 
 void autmationWithMeasureAndNote() {

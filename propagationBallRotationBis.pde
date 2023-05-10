@@ -1,4 +1,4 @@
-//boolean doQ, doZ, doB, 
+//boolean doQ, doZ, doB; 
 boolean propagationTrigged;
 boolean doo=false;
 boolean dol=false;
