@@ -163,6 +163,9 @@ modeStartKeyToFollow = " null ";
    splitTimeScaleRotation(propagationSpeed);
    propagation2wayRotationBis(); 
    mapDataToMotor();
+     for (int i = 0; i < networkSize-0; i+=1) {
+   positionMotorisedFromContinuesMod[i]=DataToDueCircularVirtualPosition[i];
+     }
 
      
      
