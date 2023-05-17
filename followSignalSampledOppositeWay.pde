@@ -107,7 +107,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
        newPosFollowed[i]=phases[i-0][frameCountBis % nbMaxDelais]; // signals to follow
        newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
 
-       phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]+ phasePatternFollow[i]; // new signal is a composition 
+       phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
    
     if (phaseMapped[i]<0){
    
@@ -138,8 +138,8 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
  */ 
   // option to add rotationSpeed dans le MAIN old BRANCH
     for (int i = 0; i < networkSize-0; i+=1) {  
- // phaseMappedFollow[i]+=0.01;
- // phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
+  phaseMappedFollow[i]+=0.01;
+  phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
    }
 
         if (key != '#' ) {
@@ -148,8 +148,8 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
     phasePatternBase();
 
     for (int i = 0; i < networkSize-0; i+=1) {  
-    phasePatternFollow[i] = netPhaseBase[i]; //
-    phasePatternFollow[i] =  phasePatternFollow[i]%TWO_PI;  
+    phaseMappedFollow[i]= netPhaseBase[i];
+    phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
     }
   
    }
