@@ -836,7 +836,7 @@ void phasePatternBase() { // trigged with $ or *
 
    //   netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
       key='#';
-      printSummary(i);
+      print ( " netPhaseBase[i] " + netPhaseBase[i]);
     }
   } else if (key == 'F') { 
     println(" F: Increase the gap between phases by f9 ");    

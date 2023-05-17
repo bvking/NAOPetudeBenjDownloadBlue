@@ -348,6 +348,7 @@ void keyReleased() {
   if (formerKeyMetro == '$') {  
     println ("Frequencies adatped to PENDULAR way trigged with $");
     phasePattern();
+     phasePatternBase();
   } 
 
   //*********************************************CIRCULAR
@@ -364,8 +365,9 @@ void keyReleased() {
     //  circularOTHERWay();
     //  circularPENDULARWay();
    // phasePattern(); //same as $
+       phasePatternBase();
     // MAKE A SORT OF FOLLOW MODE
   }
- key= '#'; 
+ //key= '#'; 
 
 }

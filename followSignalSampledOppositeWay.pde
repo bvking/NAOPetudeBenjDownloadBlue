@@ -99,8 +99,23 @@ if (formerDecayTime>decayTime){
    
     }
   }
+
+
+       if (key != '#' ) {
+    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
+  
+    phasePatternBase(); // dans SIMPLIFICATION
+
+   for (int i = 0; i < networkSize; i+=1) { 
+
+    phasePatternFollow[i] = netPhaseBase[i]; //
+    phasePatternFollow[i] = phasePatternFollow[i]%TWO_PI;  
+    }
+  
+   }
+  }
  
-  if (formerFormerKey == '#' || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
+  if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
     
 text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " + newPosFollowed[0], 500, 600);
 
@@ -145,19 +160,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
   phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
    }
 */
-        if (key != '#' ) {
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
-  
-    phasePatternBase();
-
-   for (int i = 0; i < networkSize; i+=1) { 
-
-    phasePatternFollow[i] = netPhaseBase[i]; //
-    phasePatternFollow[i] = phasePatternFollow[i]%TWO_PI;  
-    }
-  
-   }
-  }
+   
 
 
    if (keyCode == BACKSPACE ) {
