@@ -10,6 +10,7 @@ int networkSize = 6;
 int nbBalls=networkSize;
 
 int [] encoderTouched = new int [networkSize];
+int [] RevsContinue = new int [networkSize];
 
 float log10 (float x) {
   return (log(x) / log(10));

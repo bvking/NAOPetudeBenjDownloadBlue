@@ -94,6 +94,14 @@ boolean trigEffectBis;
 
 void draw() {
 
+   if ( key=='*' ) {
+    circularMov = true;
+  }
+
+  if ( key=='$') {//
+    circularMov = false;
+  }
+
  
  print (" encodeur "); showArray (encodeur);
  print (" countRev "); showArray (rev); 
@@ -111,275 +119,17 @@ textSize(50);
  print (" BEGIN OF MAIN KEYCODE  ");   
  
  printModeAndKey();
-  
-    if (moveKeys[0]==true){ // CONTROL && a pressed
- //   mappingMode = " circular " ;
-    print (" ***************** ", mappingMode);
-    }
-    
-    if (moveKeys[1]== true){ // CONTROL a && z pressed
- //   mappingMode = " pendular " ;
-    print (" ***************** ", mappingMode);   
-    }  
 
-    if (moveKeys[8]==true && moveKeys[0]==true){ // CONTROL && a pressed
-  //  keyMode = " signal " ;
-    keyMode = " addSignalOneAndTwoTer " ;
-  // formerKeyMetro = '@';
-    print (" keyMode ", keyMode );
-    }
-  
-    if (moveKeys[8]==true && moveKeys[1]==true){ // CONTROL && z pressed
-    keyMode = " addSignalOneAndTwo " ;
-   // formerKeyMetro = '@';
-    print (" keyMode ",  keyMode );
-    }
-    
-    if (moveKeys[8]==true && moveKeys[2]==true){ // CONTROL && e pressed
-    keyMode = " addSignalOneAndTwoBis "  ;
-  //  formerKeyMetro = '*';
-    print (" keyMode ",  keyMode );
-    }
+ setKeyModeByTappingKeyPadOnce();
 
-    if (moveKeys[8]==true && moveKeys[10]==true){ // CONTROL && r pressed
-    keyMode = " addSignalOneAndTwoQuater "  ;
-  //  formerKeyMetro = '*';
-    print (" keyMode ",  keyMode );
-    }
+ setMovement(key, false);
 
-    if (moveKeys[8]==true && moveKeys[13]==true){ // ALT && t pressed
-    keyMode = " propagationBallRotation "  ;
-  //  formerKeyMetro = '*';
-    print ("Alt t + keyMode ",  keyMode );
-    }
-
-
-    if (moveKeys[8]==true && moveKeys[16]==true){ // ALT && t pressed
-    keyMode = " propagationBallRotationBis "  ;
-  //  formerKeyMetro = '*';
-    print ("Alt y + keyMode ",  keyMode );
-    }
-
-
-        
-    if (moveKeys[8]==true && moveKeys[3]==true){ // CONTROL && q pressed
-    keyMode = " followDirectLfo " ;
-    formerKeyMetro = '@';
-    print (" keyMode ",  keyMode );
-    }
-    
-    if (moveKeys[8]==true && moveKeys[4]==true){ // CONTROL && s pressed
-    keyMode = " followDistribueAddphasePattern " ;
-    
-    formerKeyMetro = '*';
-    print (" keyMode ",  keyMode );
-    }
-    
-    if (moveKeys[8]==true && moveKeys[5]==true){ // ALT && d pressed
-    keyMode = " followDistribueAddLfoPattern " ;
-    
-    formerKeyMetro = '*';
-    print (" keyMode ",  keyMode );
-    }
-    
-    if (moveKeys[8]==true && moveKeys[6]==true){ //ALT && w pressed
-    keyMode = " samplingMode " ;
-    
-   // formerKeyMetro = '*';
-    print (" keyMode ",  keyMode );
-    }
-    
-    if (moveKeys[8]==true && moveKeys[7]==true){ // ALT && x pressed
-    keyMode = " null " ;
-    
-   //formerKeyMetro = '*';
-    print (" keyMode ",  keyMode, " formerKeyMetro ", formerKeyMetro );
-    }
-    
-   if (moveKeys[8]==true && moveKeys[9]==true){ // ALT && c pressed  moveKeys[9]==true  //  r pressed  moveKeys[10]==true
-    keyMode = " followDistribueAddLfoPatternControl " ;
-   // formerKeyMetro = '*';
-     
- //  formerKeyMetro = '#';  // can't add phasee
-    print (" keyMode ",  keyMode, " formerKeyMetro ", formerKeyMetro );
-    }
-
-   if (moveKeys[8]==true && moveKeys[11]==true){ // ALT & f
-   // keyMode = " methodAbleton " ;
-    keyMode = " trigEventWithAbletonSignal " ;
-    formerKeyMetro = '*';
-  }
-
-   if (moveKeys[8]==true && moveKeys[12]==true){ // ALT & v
-    keyMode = " trigEventWithAbletonSignal " ;
-  //  formerKeyMetro = '*';
-  }
-    
-   if (key == '%' ){ 
-    keyMode = " phasePattern " ;
-   
-    
-  // formerKeyMetro = '*';
-    print (" keyMode ",  keyMode, " formerKeyMetro ", formerKeyMetro );
-    }
-    
-        if (key == 'ù' ){
-    keyMode = " abletonPattern " ;
-    abletonPattern();
-   
-    
-   formerKeyMetro = '*';
-    print (" keyMode ",  keyMode, " formerKeyMetro ", formerKeyMetro );
-    }
-    
-  
-   if (keyMode == " followDistribueAddLfoPatternControl " ){ //moveKeys[8]==true && // CONTROL 
-   // if (formerFormerKey!='#'){
-     /*
-     if (Key!='#'){
-    controlTrigLfoPattern = millis();
-  
-     }
-       */
- //  keyMode = " followDistribueAddLfoPatternControl " ;
-    
-  // formerKeyMetro = '';
-    }
-    
-    
-    
-     
-    setMovement(key, false); 
         println (" modeStartKeyToFollow ", modeStartKeyToFollow, " keyModeRed",  keyModeRed,"keyMode",  keyMode, "formerKeyMetro ", formerKeyMetro, " controlTrigLfoPattern ", controlTrigLfoPattern );
-    keyModeRed = keyMode; // dont read keyMode in file.txt
+  keyModeRed = keyMode; // dont read keyMode in file.txt
 
-     if (  keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal " ) {
-    //  formerKeyMetro = '@';       
-          //  modeStartKeyToFollow = " trigEventWithAbletonSignal ";
-            trigEventWithAbletonSignal();
-      text ( keyMode, -width, -height); 
-       }
-     
-      if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater " ) { //drive ball with lfo
-    //   PatternFollowLfo();
-     propagationMode();
-      text ( keyMode, -width, -height); 
-    }
-   
-    if (keyMode == " addSignalOneAndTwoTer " || keyModeRed == " addSignalOneAndTwoTer " ) { //drive ball with lfo
-    //   PatternFollowLfo();
-     addSignalOneAndTwoTer();
-      text (" ALT a " + keyMode, -width, -height); 
-    }
+  switchFonctionDependingKeyMode();
+
     
-    
-    if (keyMode == " addSignalOneAndTwoBis " || keyModeRed == " addSignalOneAndTwoBis " ) { //drive ball with lfo
-    //   PatternFollowLfo();
-     addSignalOneAndTwoBis();
-      text ( keyMode, -width, -height); 
-    }  
-
-  if (keyMode == " addSignalOneAndTwo " || keyModeRed == " addSignalOneAndTwo " ) { //drive ball with lfo
-    //   PatternFollowLfo();
-     addSignalOneAndTwo();
-      text ( " ALT z " + keyMode, -width, -height); 
-    }
-  
-  if (keyMode == " methodAbleton " || keyModeRed == " methodAbleton ") { //drive ball with lfo
-     methodAbleton();
-     text ( keyMode, -width, -height); 
-     
-  }
-  
-  if (keyMode == " followDirectLfo " || keyModeRed == " followDirectLfo ") { //drive ball with lfo
-     followDirectLfo();
-      text ( keyMode, -width, -height); 
-  }
-  
-  if (keyMode == " followDistribueAddphasePattern " || keyModeRed == " followDistribueAddphasePattern ") { //drive ball with lfo
-     followDistribueAddphasePattern();
-      text ( keyMode, -width, -height); 
-  }
-  
-  if (keyMode == " followDistribueAddLfoPatternBis " || keyModeRed == " followDistribueAddLfoPatternBis ") { //drive ball with lfo
-     followDistribueAddLfoPattern();
-      text ( keyMode, -width, -height); 
-  }
-  
-    if (keyMode == " samplingMode " || keyModeRed == " samplingMode ") { //drive ball with lfo
-  //   followDistribueAddLfoPattern();
-     text ( keyMode, -width, -height);
-  }
-  
-  
-  
-  if (keyMode ==  " followDistribueAddLfoPatternControl " || keyModeRed == " followDistribueAddLfoPatternControl ") { // drive with CONTROL & r
-       if (key!='#'){
-    controlTrigLfoPattern = millis();
-    }
-   //  followDistribueAddLfoPatternControl();
-  }
-
-
-      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotationRec ") { 
-        propagationBallRotation();
-     text (" Alt t " + keyMode, -width*2, -height*3);
-  }
-
-     if (keyMode == " propagationBallRotationBis " || keyModeRed == " propagationBallRotationBis ") { 
-        propagationBallRotationBis();
-     text (" Alt y " + keyMode, -width*2, -height*3);
-  
-  }
-
-
-  
-  if (keyMode == " null " || keyModeRed == " null ") { //drive ball with lfo
-    //  followDistribueAddLfoPattern();
-      text (keyMode, (width/2), height/2);  
-
-  }
-  
-   if (keyMode == " phasePattern " ) { //drive ball with lfo
-    //  followDistribueAddLfoPattern();
-   // followDistribueAddLfoPattern();
-    // phasePattern();
-      text (keyMode + " " + signal[5] , (width/2), height/2); 
-    
-
-  }
-  
-     if (keyMode == " abletonPattern " ) { //drive ball with lfo
-    //  followDistribueAddLfoPattern();
-      abletonPattern();
-      text (keyMode, (width/2), height/2);  
-
-  }
-
-
-    if (keyMode == " signal "){ // || formerKeyMetro == 'J'
-         text ( keyMode, -width, -height); 
-    for (int i = 2; i <  networkSize; i++) {
-    net.oldPhase[i] =  net.phase[i]; 
-    net.phase[i] =  map (signal[i], 0, 1, 0, TWO_PI);   //  
-    println ( " signalTo_net.phase ", (i), net.phase[i] );
-    
-    if (net.oldPhase[i]>net.phase[i]){
-   
-     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], TWO_PI, 0, numberOfStep, 0)); 
-     net.oldPhase[i]=net.phase[i];
-   
-     }
-       
-     else
-    
-    DataToDueCircularVirtualPosition[i]= (int) map (net.phase[i], 0, TWO_PI, 0, numberOfStep); 
-    net.oldPhase[i]=net.phase[i];
-  
-
-     }
-     sendToTeensy();
-     }
      
       
   
@@ -439,7 +189,7 @@ for (int i = 0; i < networkSize; i++) {
   {   
     if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) // 
    {
-     if ( formerKeyCode == BACKSPACE){
+     if ( formerKeyCode == ALT){
     modeStartKey = key;   // press l to change formerKeyMetro Mode
      }
     }
@@ -458,8 +208,8 @@ for (int i = 0; i < networkSize; i++) {
     text ( " followDistribueAddLfoPatternLPF ", width/4, -height/4);  
     followDistribueAddLfoPatternLPF();
     break;
-   case 'c':  
-   formerKeyMetro = '@';       
+    case 'c':  
+    formerKeyMetro = '@';       
     modeStartKeyToFollow = " followDistribueAddLfoPatternControl ";
         
    // text ( modeStartKeyToFollow, width/2, -height/4);  
@@ -481,8 +231,8 @@ for (int i = 0; i < networkSize; i++) {
     followSignalLfo(frameRatio, signal[networkSize-1]);
     break;
 
-     case 'd': 
-     formerKeyMetro = '@';    
+    case 'd': 
+    //formerKeyMetro = '@';    
     modeStartKeyToFollow = " followDistribueAddLfoPattern ";
       //  print ( " followDistribueAddLfoPattern in KeyMode null " );
 
@@ -498,21 +248,32 @@ for (int i = 0; i < networkSize; i++) {
      //   print ( " modeStartKeyToFollow " );
 
     // keyMode = " samplingModeInternal " ;
-     text ( modeStartKeyToFollow, width/4, -height/4); 
+    text ( modeStartKeyToFollow, width/4, -height/4); 
     break;
 
     case 'j': 
-  //   formerKeyMetro = '@';     
+    
     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-   // formerKeyMetro = 'J';  
+    
 
     text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4); 
-    // keyMode = " modeStartKeyToFollow " ;
-     text ( keyMode, width/4, -height/4); 
-     followSignalSampledOppositeWay(frameRatio);
+    text ( keyMode, width/4, -height/4); 
+   // samplingMovementPro();
+   // followSignalSampledOppositeWay(frameRatio);
 
     break;
+/*
+     case 'j': 
+    
+    modeStartKeyToFollow = " followSignalSampled ";
+    
 
+    text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4); 
+    text ( keyMode, width/4, -height/4); 
+    followSignalSampled(frameRatio);
+
+    break;
+*/
     case 'z':     
  //   modeStartKeyToFollow = " samplingMode ";
  //   text ( modeStartKeyToFollow, width/4, -height/4); 
@@ -609,12 +370,9 @@ for (int i = 0; i < networkSize; i++) {
      beginSample=millis();
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + modeStartKeyToFollow + " mouseY " +  mouseY  + " mouseX " +  mouseX  +  measure , -width/4, - height + 100);  
    //      text ( measure + " mouseY ", width/4, -height-400);  
-
      
     //  mouseY=(int) map (automationLFO[1], 0, 1, 0, 400);  // position from Ableton LFOdecay
-
      //****  newPosF[networkSize-1]=  map (mouseY, 0, height/2, 0, TWO_PI);
-
       // mouseX=mouseX+27;
       incrementeX=incrementeX+9;
       incrementeX=incrementeX%800;
@@ -647,37 +405,25 @@ for (int i = 0; i < networkSize; i++) {
 
     
      //  newPosF[networkSize-1]=  map (v0, 0, 800, 0, TWO_PI);
-     
-//==================== sampling from encoder
-
+     //==================== sampling from encoder
      if (measure <=3){
-  send24DatasToTeensy6motors(5, 3, -3, -1);
+     send24DatasToTeensy6motors(5, -3, -3, -1);
       }
 
-  // newPosF[0]=  map (encodeur[0], 0, 800, 0, TWO_PI)%TWO_PI;  // tourner CCW
-
-      text  ( " newPosF[0] " + newPosF[0] + " encodeur[0] " +  abs ((int)map (encodeur[0], 0, 800, 0, 800)%800), 300, -1200);
-
-
-//==================== 
-
-
-//==================== sampling from mouseY
+    //    newPosF[0]=  map (encodeur[0], 0, 800, 0, TWO_PI)%TWO_PI;  // tourner CCW
+        text  ( " newPosF[0] " + newPosF[0] + " encodeur[0] " +  abs ((int)map (encodeur[0], 0, 800, 0, 800)%800), 300, -1200);
+     //==================== sampling from mouseY
 
        float radianTorec;
        radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Ableton LFOdecay    
        newPosF[0]= radianTorec;
 
 
-    //     float x = displacement*cos(newPosF[i]);  
-    //    float  y = displacement*sin(newPosF[i]);  
-     //   rotate (degrees(newPosF[0]));
-
       sphere(side*3);
       sphereDetail( 4*5); 
-//==================== 
+      //==================== 
 
-  text ( " newPosF " + newPosF[0], 0, 500);
+      text ( " newPosF " + newPosF[0], 0, 600);
  
       float rayon=displacement;
       float polarToCartesionX= displacement*cos(newPosF[0]);
@@ -686,11 +432,11 @@ for (int i = 0; i < networkSize; i++) {
     //  mouseX= (int) polarToCartesionX;
     //  mouseY= (int) polarToCartesionY;
 
-   println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
+      println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
 
 
-     // followMovementAll();
-    //   displayfollowMovementAll();
+    // followMovementAll();
+    // displayfollowMovementAll();
      
     
          activeSamplingInternalClock(1); //do not work
@@ -831,25 +577,24 @@ for (int i = 0; i < networkSize; i++) {
 //   if (formerKeyMetro == 's' ||  formerKeyMetro ==  '@' || formerKeyMetro ==  'B' ) { //you can't distribuate data to others balls  //formerKeyMetro == '*' || formerKeyMetro == '$' ||
   trigFollowSampling=false;
   }
-      
-      
-  if (trigFollowSampling == true ) {
+
+
+
+  if (trigFollowSampling == true || trigFollowSampling==false  && modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {  // CHECK from old
       print (" trigFollowSampling ");   println (trigFollowSampling); 
   
     //  followMadTrack1bis(); ..  folloLFO with my technique
     //    followSignal();
   //****  delayTimeFollowPhase11=60;  // to control time phase offseet with a lot of delay time. You can wait one seconde before the next ball follow the previous ball
     
+    
   //  followSignalSampled(frameRatio);
-
-  //***  samplingMovementPro();
-
-
+   //++++ samplingMovementPro();
   //  noStroke();
   //  fill( 255, 40, 40 );
   // circle ( 100* cos (movement)+400, 100*sin (movement)+400, 20);
   //   followSignalSampled(frameRatio); //no WORK with frame
-  // followSignalSampledOppositeWay(frameRatio);// with millis()
+    followSignalSampledOppositeWay(frameRatio);// with millis()
   //  phasePattern();
    // pendularPatternNoJoe(); // without transformation of position's datas in the Arduino.
     
@@ -859,22 +604,25 @@ for (int i = 0; i < networkSize; i++) {
     
 
     rect( (currTime % 2) / 2 * width, 10, 2, 8 );
+  
+//  println (currTime % 2);
     rect( (currTime % 4) / 4 * width, 20, 2, 8 );
     rect( (currTime % 8) / 8 * width, 30, 2, 8 );
     
     rotate(-PI/2);
-   // countRevs();
+ //  print (" in trig___(frameRatio) before and before arduinoPos "); countRevs();
    }
+
+     modePendulaireModeCirculaire();
+    countRevs();   
+   arduinoPos();
    
-   modePendulaireModeCirculaire();
-    countRevs();
-    arduinoPos();
-   
+
   
-  // ==================================================================================================================================== 
+  // ================================= 
 
 
-  // ;   
+  //print (" before arduinoPos "); countRevs();   
   println(frameCount + ": " + Arrays.toString(rev));
   // ================== fonction not used
   // devant_derriere();
@@ -904,7 +652,21 @@ for (int i = 0; i < networkSize; i++) {
     startStop= 1;  
     print ("MOVEMENT AND TIMER is already started, now START LIVE: "); 
     println (startStop );
+/*
+    String dataMarkedToDue  ="<" 
+    
+      + mapAcceleration[11]+","+  int  (1000/avgTimer.average()*60*1000)  +","+cohesionCounterHigh+","
+      //+ onOFF+"," +nextScene+","
+      //     + mapAcceleration[11]+","+ mapAcceleration[11]+","+mapAcceleration[11]+","+ mapAcceleration[11]+","+mapAcceleration[11]+"," 
 
+   
+      +TrigmodPos[11]+","+TrigmodPos[10]+","+TrigmodPos[9]+","+TrigmodPos[8]+","+TrigmodPos[7]+","+TrigmodPos[6]+","+TrigmodPos[5]+","+TrigmodPos[4]+","+TrigmodPos[3]+","+TrigmodPos[2]+","+TrigmodPos[1]+","+TrigmodPos[0]+ "," // to manage 12 note
+
+      +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+ ","+ startStop + ">"; // (2= neither start, neither stop)   cohesionCounterHigh // +orderCohesion+ ">";LevelCohesionToSend ","+ int (map ( LowLevelCohesionToSend, 0, 1, 0, 100))+ 
+
+    print ("dataStart: "); 
+    println(frameCount + ": " +  " " + ( dataMarkedToDue ));
+*/
     formerKey = '#'; //reset formerkey to not trigging LIVE
     formerSartKey = formerKey;
   }
@@ -914,19 +676,13 @@ for (int i = 0; i < networkSize; i++) {
   textSize (100);
 
 
-  if ( key=='*' ) {// || key==',' || key==';' || key==':'
-    circularMov = true;
-  }
-
-  if ( key=='$') {//
-    circularMov = false;
-  }
+ 
 
   cohesionTrig = int (map (LevelCohesionToSend, 0, 1, 0, 100));
   println (cohesionTrig);
 
   // ***** automatise Oscillator Moving with a former Key
- //  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
+ //*+*+*+*+*+*  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
 /*
    if (DataToDueCircularVirtualPosition[0]>0){
        for (int i = 0; i < networkSize; i=+1 ){
@@ -941,17 +697,16 @@ for (int i = 0; i < networkSize; i++) {
  
 
    if (formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
-  // countRevs();
-  countRevsContinue();
+ //  countRevs();
+   countRevsContinue();
   }
        
    //**********************************************************************    
    // STARTERCASE with formerKey
    //  starterCaseUsedorNot();
    // ENDSTARTERCASE
-
-
-
+   // end check   
+   
 
   //************ arduinoPos(); // to control Pos of motor and Trigging note and computing pulsation
   // countPendularTrig ();
@@ -973,7 +728,7 @@ for (int i = 0; i < networkSize; i++) {
   }
 
   
-  for (int i = 2; i < networkSize; i++) {
+  for (int i = 0; i < networkSize; i++) {
     phaseReturned[i]=net.phase[i];
   }
   oscSend();
@@ -1119,7 +874,7 @@ void countRevs() { // ============================================= Ter NE PAS T
     decompte[memoryi] = -1; // // RESET COUNTER AT 0 (i know it's strange, otherwise with 0 it begin at 1, not 0)
   }
  */
-} 
+}  
 
 void printSummary(int i) {
   /*
@@ -1329,6 +1084,8 @@ private class MovingAverage {
     return average;
   }
 }
+
+
 void frameratio() { 
   //**************************FRAME RATE    ***********CONTROL FRAME RATIO SPEED
 
@@ -1533,9 +1290,13 @@ void bpmAsPulsationFunction () {
       int curr_time = millis();
       pulsation = avgTimer.nextValue(curr_time - prev_time);
       prev_time = curr_time;
-      println("Average time between two pulsation = " + pulsation + "ms");
+      textSize (100);
     }
   }
+     rotate (-PI/2);
+     text("Average time between two pulsation = " + pulsation + "ms", -1000, -500 );
+     rotate (PI/2);
+
 }
 
 void bpmAsfrequencyfunction () { 
@@ -2284,316 +2045,6 @@ void formerKeyL() {
   }
 }
 
-void followMovementAll() {
-  shiftFollowMov();
-    for (int i =1; i < 2; i+=1) {
-          LFO[0]=  map (automation1 , 0, 1, 0, TWO_PI);//net.phase[11];// map (automation1 , 0, 1, 0, TWO_PI);
-          LFO[i]= LFO[0];
-  if (millis()>formerEvent[200+i]+0*i) {
-   
-    
-      newPosX[i] = displacement* cos(LFO[i]);
-      newPosY[i] = displacement* sin(LFO[i]);
-      formerEvent[200+i]= millis();
-    }
-  }
-
-  if (millis()>formerEvent[200+2]+d*2) {
-    // delay();
-    LFO[2]= LFO[1];
-    //***   LFO[2]= map (automationLFO[0],0, 1, -PI, 0); // gauche droite vers le haut
-    newPosX[2] = displacement*cos (LFO[2]);
-    newPosY[2] = displacement*sin (LFO[2]);
-    formerEvent[200+2]= millis();
-  }
-
-  if (millis()>formerEvent[200+3]+d*3) {
-    LFO[3]= LFO[2];
-     newPosX[3] = displacement*cos (LFO[3]);
-     newPosY[3] = displacement*sin (LFO[3]);
-    formerEvent[200+3]= millis();
-  }
-
-}
-
-void displayfollowMovementAll(){
- // keyPressedLFO();
-  
-  for (int i =0; i < 1; i++) {
-    if (millis()>formerEvent[200+i]+0) {
-      //   formerPositionLFO[0]=LFO[0];
-
-   //   LFO[0]= map (automation1, 0, 1, 0, 1); // gauche droite vers le haut
-     
-   //      LFO[0]=  map (automation1 , 0, 1, 0, TWO_PI);//net.phase[11];// map (automation1 , 0, 1, 0, TWO_PI);
-
-  //     LFO[0]= net.phase[11];// map (automation1 , 0, 1, 0, TWO_PI);
- 
-   //   LFO[0]=net.phase[0];
-   //   newPosX[i] = displacement*cos (LFO[0]);
-   //   newPosY[i] = displacement*sin (LFO[0]);
-      formerEvent[200+0]= millis(); 
-
-      print (" cos LFO  " ); print (cos (LFO[0]) ); print (" automation1 " );  print (automation1); print (" formEvent  " ); print (i); print (formerEvent[200+i]);
-      print (" net.phase[11]  " );  println (net.phase[11] );
-    }
-  } 
-// translate( 0, 0, 1000);
-  for (int i =0; i < networkSize-2; i++) {
-
-    pushMatrix();  
-    
-
-    sphere(side*3); // this sphere serves as a reference
-    sphereDetail( 4*5);
-    colorMode(HSB, TWO_PI, 100, 100);
-    noStroke();
-
-    // Color sphere and Draw them, depending of acceleration or later with "chimera state"
-    mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
-    mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
-    //********************************************************* BEGIN GRAPHIC CHIMERA STATE
-    //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (newPosF[i], newPosY[i], 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
-    colorMode(RGB, 255, 255, 255);
-    fill (255,255,0);
-    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
-    sphere(side*3);
-
-    popMatrix();
-  }
-  //   rotate (-HALF_PI);
-}
-
-void followLFO() {
-  shiftFollowMov();
-  if (millis()>formerEvent[200+3]+d) {
-    // delay();
-    LFO[9]= LFO[8];
-    LFO[8]= LFO[7];
-    LFO[7]= LFO[6];
-    LFO[6]= LFO[5];
-    LFO[5]= LFO[4];
-    LFO[4]= LFO[3];
-    LFO[3]= LFO[2];
-    //***   LFO[2]= map (automationLFO[0],0, 1, -PI, 0); // gauche droite vers le haut
-    for (int i =3; i < networkSize; i++) {
-      newPosX[i] = displacement*cos (LFO[i]);
-      newPosY[i] = displacement*sin (LFO[i]);
-      formerEvent[200+3]= millis();
-    }
-  }
-
-  if (millis()>formerEvent[200+2]+d) {
-    // delay();
-    LFO[2]= LFO[1];
-    //***   LFO[2]= map (automationLFO[0],0, 1, -PI, 0); // gauche droite vers le haut
-    newPosX[2] = displacement*cos (LFO[2]);
-    newPosY[2] = displacement*sin (LFO[2]);
-    formerEvent[200+2]= millis();
-  }
-
-  if (millis()>formerEvent[200+1]+d*1) {
-    LFO[1]= LFO[0];
-    newPosX[1] = displacement*cos (LFO[1]);
-    newPosY[1] = displacement*sin (LFO[1]);
-    formerEvent[200+1]= millis();
-  }
-
-
-  for (int i =0; i < 1; i++) {
-    if (millis()>formerEvent[200+i]+0) {
-      //   formerPositionLFO[0]=LFO[0];
-
-      LFO[0]=  map (automation1 , 0, 1, 0, TWO_PI);//net.phase[11];// map (automation1 , 0, 1, 0, TWO_PI);
-
-      newPosX[0] = displacement*cos (LFO[0]);
-      newPosY[0] = displacement*sin (LFO[0]);
-      formerEvent[200+0]= millis(); 
-
-      print ("LFO  " ); 
-      print (i);  
-      print (LFO[0] ); 
-      print ("automationLFO " ); 
-      print (i); 
-      print (automationLFO[i]); 
-      print ("formEvent " ); 
-      print (i); 
-      print (formerEvent[200+i]);
-    }
-  } 
-// translate( 0, 0, 1000);
-  for (int i =0; i < networkSize-2; i++) {
-
-    pushMatrix();  
-    
-
-    sphere(side*3); // this sphere serves as a reference
-    sphereDetail( 4*5);
-    colorMode(HSB, TWO_PI, 100, 100);
-    noStroke();
-
-    // Color sphere and Draw them, depending of acceleration or later with "chimera state"
-    mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
-    mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
-    //********************************************************* BEGIN GRAPHIC CHIMERA STATE
-    //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (newPosX[i], newPosY[i], 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
-    colorMode(RGB, 255, 255, 255);
-    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
-    sphere(side*3);
-
-    popMatrix();
-  }
-  //   rotate (-HALF_PI);
-}
-
-
-
-void followLFObis() {
-shiftFollowMov();
-
-
-
-  // delay();
-
-  //***   LFO[2]= map (automationLFO[0],0, 1, -PI, 0); // gauche droite vers le haut
-  for (int i =3; i < networkSize-2; i++) {
-    if (millis()>formerEvent[200+i]+0) {
-      LFO[i]= LFO[i-1];
-
-      newPosX[i] = displacement*cos (LFO[i]);
-      newPosY[i] = displacement*sin (LFO[i]);
-      formerEvent[200+i]= millis();
-    }
-  }
-
-
-  if (millis()>formerEvent[200+2]+d) {
-    // delay();
-    LFO[2]= LFO[1];
-    //***   LFO[2]= map (automationLFO[0],0, 1, -PI, 0); // gauche droite vers le haut
-    newPosX[2] = displacement*cos (LFO[2]);
-    newPosY[2] = displacement*sin (LFO[2]);
-    formerEvent[200+2]= millis();
-  }
-
-  if (millis()>formerEvent[200+0+1]+0*(0+1)) {
-    //   formerPositionLFO[0]=LFO[0];
-
-    LFO[1]=LFO[0]; // gauche droite vers le haut
-    newPosX[1] = displacement*cos (LFO[1]);
-    newPosY[1] = displacement*sin (LFO[1]);
-    //  formerEvent[200+0]= millis();
-    formerEvent[200+0+1]= millis(); 
-
-
-    println (" ");
-  }
-
-
-  for (int i =0; i < 1; i++) {
-    if (millis()>formerEvent[200+i]+0) {
-      //   formerPositionLFO[0]=LFO[0];
-
-      LFO[0]=  map (automation1 , 0, 1, 0, TWO_PI);//net.phase[11];// map (automation1 , 0, 1, 0, TWO_PI);
-
-      newPosX[0] = displacement*cos (LFO[0]);
-      newPosY[0] = displacement*sin (LFO[0]);
-      formerEvent[200+0]= millis(); 
-
-      print ("LFO  " ); 
-      print (i);  
-      print (LFO[0] ); 
-      print ("automationLFO " ); 
-      print (i); 
-      print (automationLFO[i]); 
-      print ("formEvent " ); 
-      print (i); 
-      print (formerEvent[200+i]);
-    }
-  } 
-
-
-  for (int i =0; i < networkSize-2; i++) {
-
-    pushMatrix();  
-
-    sphere(side*3); // this sphere serves as a reference
-    sphereDetail( 4*5);
-    colorMode(HSB, TWO_PI, 100, 100);
-    noStroke();
-
-    // Color sphere and Draw them, depending of acceleration or later with "chimera state"
-    mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
-    mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
-    //********************************************************* BEGIN GRAPHIC CHIMERA STATE
-
-
-    //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (newPosX[i], newPosY[i], 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
-    colorMode(RGB, 255, 255, 255);
-    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
-    sphere(side*3);
-
-    popMatrix();
-  }
-  //   rotate (-HALF_PI);
-}
-
-void shiftFollowMov() {
-  
- 
-  if (keyCode == LEFT) {  
-    println( " LEFT INCREASE decay offseft shiftFollowMov ")  ; 
- //   decayshiftFollowMov=decayshiftFollowMov+50;
-    decayshiftFollowMov++;
-  
-    println ("d= timeOffsetRatio: "); 
-    println ( decayshiftFollowMov);
-    textSize (100);
-    text (" decayshiftFollowMov  ", decayshiftFollowMov, 200,200);
-
-    keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-
-
-  if (keyCode == RIGHT) { 
-
-    println( " right INCREASE decay offseft shiftFollowMov")  ; 
-     decayshiftFollowMov=decayshiftFollowMov-50;  
-    println ("d= timeOffsetRatio: "); 
-    println (d);
-    keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-
-  if (keyCode == UP) { 
-
-    oscillatorBlocked++;
-  
-    if (oscillatorBlocked > (networkSize-1)) { 
-      oscillatorBlocked=1;
-    }
-   println ( decayshiftFollowMov);
-   textSize (100);
-   text (" decayshiftFollowMov  ", decayshiftFollowMov, 300,300);
-    
-    keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-
-  if (keyCode == DOWN) { 
-/*
-    oscillatorBlocked--;
-    // keyCode = LEFT; 
-    print ("  oscillatorBlocked ");     
-    println (oscillatorBlocked); 
-    if (oscillatorBlocked < 2) { 
-      oscillatorBlocked=11;
-    }
-*/
-    keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-} 
 
 void keyPressedLFO() {
 
@@ -3298,7 +2749,7 @@ void followDirectLfo(){
       ) {
     
       //    TrigmodPos[i]=0;
-      rev[i]--;
+      RevsContinue[i]--;
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       //   revolution[i]=i+1;
      revolution[i]=0; // trig 0 to sent 0 in Max4Live
@@ -3321,7 +2772,7 @@ void followDirectLfo(){
       ) {
       onOFF = 1;
       //   TrigmodPos[i]=0;
-      rev[i]++;
+      RevsContinue[i]++;
       //   revolution[i]=i+1;
       revolution[i]=0;   // trig 0 to sent 0 in Max4Live
       memoryi=i;
@@ -3346,7 +2797,7 @@ void followDirectLfo(){
     onOFF = 1;
     //   background (27,59,78);
     //    TrigmodPos[i]=0;
-    rev[memoryi]--;
+   // RevsContinue[memoryi]--;
     //      print (" revultion negative  "); println (revolution[i]=i+1);
     //   revolution[i]=i+1;
 //**** revolution[memoryi]=0; // trig 0 to sent 0 in Max4Live   brecause it count twice in negative way!!!
@@ -3662,3 +3113,4 @@ void countRevsLfoPattern22() { // =========================================== Te
  
 }
 */
+
