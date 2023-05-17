@@ -3,8 +3,10 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
 if (formerDecayTime>decayTime){
   frameCountBis=frameCountBis+1;
   } 
+  /*
   formerDecayTime = decayTime;
   decayTime = millis()%25;// incremente frameCountBis+1 each 100 millisecondes
+  */
   int delayRatio=ratioTimeFrame;
 
  //**   samplingMovement(2);
@@ -68,7 +70,7 @@ if (formerDecayTime>decayTime){
   //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
      followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
       
-      phaseMapped[i]=phases[i+0][frameCountBis % nbMaxDelais]; // use varaible phaseMapped (to play movement with time delay or phase delay) to well send it in Teensy
+      phaseMapped[i]=phases[i+0][frameCount % nbMaxDelais]; // use varaible phaseMapped (to play movement with time delay or phase delay) to well send it in Teensy
    
     //   drawBallOppositeWay( i, phases[i-0][frameCountBis % nbMaxDelais] ); 
     //  println ( " phases[i][frameCountBis % nbMaxDelais " + i + " " + phases[i][frameCountBis % nbMaxDelais] ) ; 
@@ -137,11 +139,12 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
   }
  */ 
   // option to add rotationSpeed
+  /*
     for (int i = 0; i < networkSize-0; i+=1) {  
   phaseMappedFollow[i]+=0.01;
   phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
    }
-
+*/
         if (key != '#' ) {
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
   
@@ -177,6 +180,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
    phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
 
   }
+  keyCode = TAB;
  }
 
  for (int i = 0; i < networkSize-0; i+=1) { 

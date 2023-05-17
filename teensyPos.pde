@@ -35,7 +35,7 @@ void teensyPos(){
       DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
   }
-   send24DatasToTeensy6motors( 3, 3, -3, -1);
+   send24DatasToTeensy6motors( 3, 3, -12, -1);
   }
  
 
