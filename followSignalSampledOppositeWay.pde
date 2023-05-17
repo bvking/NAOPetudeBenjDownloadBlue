@@ -109,11 +109,11 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
        newPosFollowed[i]=phases[i-0][frameCountBis % nbMaxDelais]; // signals to follow
        newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
 
-       phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
+       phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]+phasePatternFollow[i]; // new signal is a composition 
    
     if (phaseMapped[i]<0){
    
-     DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+     DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
      phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);
    
        }
@@ -150,9 +150,10 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
   
     phasePatternBase();
 
-    for (int i = 0; i < networkSize-0; i+=1) {  
-    phaseMappedFollow[i]= netPhaseBase[i];
-    phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
+   for (int i = 0; i < networkSize; i+=1) { 
+
+    phasePatternFollow[i] = netPhaseBase[i]; //
+    phasePatternFollow[i] = phasePatternFollow[i]%TWO_PI;  
     }
   
    }
@@ -185,7 +186,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
 
  for (int i = 0; i < networkSize-0; i+=1) { 
   newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
- // net.phase[i]=phaseMapped[i];
+  net.phase[i]=phaseMapped[i]; // get trouble something
   newPosX[i]=phaseMapped[i]; // better to count revolution
   //print ( " newPosF[i] " + newPosF[i]);
   }
