@@ -430,7 +430,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
     
       textSize (75);
-     text ( " signal3 " + signal[3] , 300, 800);
+     text ( " netphase[3]" + net.phase[3] + " old[3]" + net.oldPhase[3] + " "  + "signal3 " + signal[3] , 300, 800);
      text ( " signal4 " + signal[4] , 300, 900);
      text ( " signal5 " + signal[5] , 300, 1000);
      text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);

@@ -1,4 +1,7 @@
 void arduinoPos() { 
+
+  print ( "compteur dans arduino  "); 
+  showArray(rev);
  if (keyMode == " propagationBallRotation " ) { 
     for (int i = 0; i < networkSize; i++) {
 
@@ -54,8 +57,10 @@ void arduinoPos() {
     }
   }
 
-  else if (keyMode != " propagationBallRotation ") {
+  if (keyMode != " propagationBallRotation ") {
+
   for (int i = 0; i < networkSize; i++) {
+    print ( " net.pase " + i + " " + net.phase[i] );
 
     //rev[i]=rev[0];
 
@@ -63,21 +68,21 @@ void arduinoPos() {
     //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
 
     if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-      Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));
+      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+rev[i]*numberOfStep ;
     }
 
     //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
     if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
 
-      Pos[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));
+      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+rev[i]*numberOfStep;
     }
 
     if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
-      Pos[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
       //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
     }         
     if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
-      Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
+      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
   }
  }  
@@ -246,7 +251,7 @@ void arduinoPos() {
         } else  TrigmodPos[i]=1;
       } 
 
-       DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
+    //   DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
        ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
 
@@ -566,10 +571,10 @@ void arduinoPos() {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
      if (positionMov != " troisieme ") {
-      send24DatasToTeensy6motors(14, 3, -3, -1);
+      send24DatasToTeensy6motors(2, 3, -3, -1);
   }
 
-      send24DatasToTeensy6motors(22, 3, -3, -1);
+   //   send24DatasToTeensy6motors(22, 3, -3, -1);
 
       if (measure>=17 && measure<=41){
        send24DatasToTeensy6motors(7, 3, -3, -1);
