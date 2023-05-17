@@ -1,4 +1,7 @@
 void phasePattern() { // need standard mode to be trigged
+textSize (75);
+text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
+text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //************************************ DONT TOUCH
     for (int i = 0; i < (networkSize); i++) { 
    if  (   key == 'J')  {
@@ -19,7 +22,7 @@ void phasePattern() { // need standard mode to be trigged
 
 //  if  (   formerKeyMetro != 'c') {  // VERY IMPORTANT with CASE c
  if  (   keyMode != " truc "  ) {
-      if  (   keyMode != " truc " ) {
+      if  (   keyMode == " trigEventWithAbletonSignal " ) {
 
     //     splitIncomingSignal();
          /*
@@ -321,16 +324,18 @@ void phasePattern() { // need standard mode to be trigged
 
     for (int i = 1; i < (networkSize-1); i++) {
       net.phase[i+1]= net.oldPhase[i];// net.oldPhase[i] keep phase at 0
-      netPhaseBase[i+1]= net.oldPhase[i];// net.oldPhase[i] keep phase at 0
+   //   netPhaseBase[i+1]= net.oldPhase[i];// net.oldPhase[i] keep phase at 0
       net.naturalFrequency[i+1]= OldFrequency[i];
-      netPhaseBase[i]= net.oldPhase[i-1];// // useless
+   //   netPhaseBase[i]= net.oldPhase[i-1];// // useless
       net.naturalFrequency[i]= OldFrequency[i-1]; // useless
 
       printSummary(i);
     }
     netPhaseBase[0]=  netOldPhaseBase[networkSize-1];
+     net.phase[0+1]= net.oldPhase[0];
     net.naturalFrequency[0]= OldFrequency[networkSize-1];
     netPhaseBase[networkSize-1]=  netOldPhaseBase[networkSize-1-1]; // useless
+     net.phase[networkSize-1]= net.oldPhase[networkSize-1-1];
     net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
   } 
 
@@ -527,23 +532,24 @@ void phasePattern() { // need standard mode to be trigged
     
   }
     if (key == 'A') { //A$  Shift frequencies one by one. 
-    float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -4.34, 4.34); 
+    float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -4.68, 4.68); 
     for (int i = 0; i < networkSize; i++) {
       net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
     }
-    memoryi=0;
+   // memoryi=0;
     net.naturalFrequency[memoryi]= speeed;//4.68/2; // 124 bpm
   }
 
   if (key == 'a') { //A$  Shift frequencies one by one. 
-    float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -4.34, 4.34); 
     for (int i = 0; i < networkSize; i++) {    
       net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
     }
-    memoryi=0;
-    net.naturalFrequency[0]= speeed;//4.68/2; // 124 bpm  4=108 bpm
+   // memoryi=0;
+    net.naturalFrequency[memoryi]= 4.68/2/2/2/2/2;//4.68/2; // 124 bpm  4=108 bpm
+
+    net.naturalFrequency[memoryi]=pow(4, -2);
 
   }
 
@@ -992,13 +998,13 @@ void phasePattern() { // need standard mode to be trigged
   else if (key == 'y') { 
     println("y= Increase last frequencies + 0.05*i ");
     for (int i = 0; i < networkSize; i++) {   
-      net.naturalFrequency[i] = net.naturalFrequency[i]*(1.05);
+      net.naturalFrequency[i] = net.naturalFrequency[i]*sqrt(sqrt(sqrt((sqrt(2)))));      // 4,42% more at each y pressed
       printSummary(i);
     }
   } else if (key == 'h') { 
     println(" Decrease last frequencies - 0.05*i"); 
     for (int i = 0; i < networkSize; i++) { 
-      net.naturalFrequency[i] = net.naturalFrequency[i]*(.95);            
+      net.naturalFrequency[i] = net.naturalFrequency[i]/sqrt(sqrt(sqrt((sqrt(2)))));          
       printSummary(i);
     }
   } else if (key == 'Y') { 
@@ -1041,7 +1047,7 @@ void phasePattern() { // need standard mode to be trigged
   } else if (key == '0') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize-0; i++) {   
       //  net.naturalFrequency[i]=2.0; 
-      net.naturalFrequency[i]=1;
+      net.naturalFrequency[i]=net.naturalFrequency[memoryi];
     }
     //  printSummary(i);
   } else if (key == '°') {//Set all frequencies at 2.0");

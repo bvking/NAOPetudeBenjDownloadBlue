@@ -614,8 +614,10 @@ for (int i = 0; i < networkSize; i++) {
    }
 
      modePendulaireModeCirculaire();
-    countRevs();   
-   arduinoPos();
+    if (circularMov==true) {
+    countRevs(); 
+     }  
+    arduinoPos();
    
 
   

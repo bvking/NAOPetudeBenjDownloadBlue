@@ -12,6 +12,14 @@ int nbBalls=networkSize;
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
 
+float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the root square of returned value
+// as many number of occurence 
+  for (int i=1; i <= numberOfoccurrence; i++) {
+  dVal = sqrt( dVal);
+  }
+  return dVal;  // 
+}
+
 float log10 (float x) {
   return (log(x) / log(10));
 }

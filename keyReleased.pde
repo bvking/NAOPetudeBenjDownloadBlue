@@ -311,7 +311,6 @@ void keyReleased() {
 */
   if (key == '£' || key == '*') {//|| key == '£') {
     for (int i = 0; i < networkSize; i++) {
-      rev[i]=0;// set revolution of all oscillator to 0  at the beginning if circular way
 
       formerKeyMetro = key;
       print ("KEY  CICULAR "); 

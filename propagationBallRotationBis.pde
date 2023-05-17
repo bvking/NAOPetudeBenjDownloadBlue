@@ -1,4 +1,5 @@
 //boolean doQ, doZ, doB; 
+
 boolean propagationTrigged;
 boolean doo=false;
 boolean dol=false;
@@ -34,7 +35,8 @@ modeStartKeyToFollow = " null ";
     case 'o': // way of rotation
     doo=!doo;
     key = '#';
-
+  //  return letter;
+  
     break;
 
     case 'c': 
@@ -49,7 +51,7 @@ modeStartKeyToFollow = " null ";
 
     break;
     case 'L': // disable propagation
-   dol=false;
+    dol=false;
 
     break;
     case 'q': // way of propagation
@@ -68,7 +70,7 @@ modeStartKeyToFollow = " null ";
     case 'B': 
     doQ=false;
     doZ=false;
-    doB=false;
+  //  doB=false;
 
     break;
     case 'z': // change way of propagation
@@ -80,7 +82,12 @@ modeStartKeyToFollow = " null ";
     break;
   //  doB=!doB;
     }
+
+    switch(key) {
+   case '#': // change way of propagation
     
+    break;
+      }
 //   key = '#';
    
     
@@ -152,7 +159,7 @@ modeStartKeyToFollow = " null ";
      }
 
 
-   propagationSpeed=50;
+   propagationSpeed=70;
    splitTimeScaleRotation(propagationSpeed);
    propagation2wayRotationBis(); 
    mapDataToMotor();
@@ -190,7 +197,7 @@ modeStartKeyToFollow = " null ";
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
    //   LFO[oscillatorChange] = LFO[oldOscillatorChange] - (PI/(6*networkSize)-1);
-    LFO[oscillatorChange] = LFO[oldOscillatorChange] ;
+      LFO[oscillatorChange] = LFO[oldOscillatorChange] ;
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -199,13 +206,14 @@ modeStartKeyToFollow = " null ";
     }
       }
 
+    
+
        dataMappedForMotor[oldOscillatorChange]= (int) map (LFO[oldOscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
               
        println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  LFO[oscillatorChange]);
-       println (" MAIN true phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  LFO[oldOscillatorChange]);
-
+       println (" MAIN doC==true && doo==false ");
       newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
     
@@ -222,6 +230,8 @@ modeStartKeyToFollow = " null ";
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oldOscillatorChange] + (PI/(3*networkSize)-1);
       text ( "  LFO[oscillatorChange] " + LFO[oscillatorChange], 900, 900 );
+      println (" doC==true && doo==true && doB!=true ");
+
         if (LFO[oscillatorChange]<0){ 
     //  for (int i = 0; i <  networkSize-0; i+=1) { 
 
@@ -248,24 +258,59 @@ modeStartKeyToFollow = " null ";
  //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
 //***   phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
 
+ if (doo==true){  // negative way : ccw
+      print ( " newPosXaddSignal " + newPosXaddSignal[oscillatorChange]%TWO_PI );
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(3*networkSize)-1);
+      LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(1*networkSize-1));
 
+            println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
+
+   }       
+
+  if (doo==false){
+
+
+      LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(3*networkSize-1));
+
+            println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
+
+
+}
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
 
-       LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
+   //    LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
     }
       }
 
-       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+       if (LFO[oscillatorChange] <0){
+      DataToDueCircularVirtualPosition[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[oscillatorChange]= map (DataToDueCircularVirtualPosition[oscillatorChange], numberOfStep, 0, 0, -TWO_PI); 
+      newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
+       }
        
-              
-       println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-       println (" MAIN true phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
+      else {
+    
+      DataToDueCircularVirtualPosition[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[oscillatorChange]= map (DataToDueCircularVirtualPosition[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
 
-      newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+       }
+
+    //   dataMappedForMotor[oscillatorChange]=               phaseMapped[oscillatorChange];
+
+     //  dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+       
+       println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
+      
+       println (" LFO[oscillatorChange] ", LFO[oscillatorChange], " " ,  phaseKeptAtChange[oscillatorChange]);
+       println (" doB!=true && doC!=true] ", oldOscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
+
+  //    newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+       println (" newPosXaddSignal[oscillatorChange] ", newPosXaddSignal[oscillatorChange], " " );
+
     
      }
 
