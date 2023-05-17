@@ -136,7 +136,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
    }
   }
  */ 
-  // option to add rotationSpeed
+  // option to add rotationSpeed dans le MAIN old BRANCH
     for (int i = 0; i < networkSize-0; i+=1) {  
  // phaseMappedFollow[i]+=0.01;
  // phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
