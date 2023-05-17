@@ -124,7 +124,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
   }
   
  }
-
+/*
     if (key != '#' ) {
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
      phasePattern();
@@ -135,6 +135,27 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
     }
    }
   }
+ */ 
+  // option to add rotationSpeed
+    for (int i = 0; i < networkSize-0; i+=1) {  
+  phaseMappedFollow[i]+=0.01;
+  phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
+   }
+
+        if (key != '#' ) {
+    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
+  
+    phasePatternBase();
+
+    for (int i = 0; i < networkSize-0; i+=1) {  
+    phaseMappedFollow[i]= netPhaseBase[i];
+    phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
+    }
+  
+   }
+  }
+
+
    if (keyCode == BACKSPACE ) {
     
       for (int i = 0; i < networkSize-0; i+=1) { 

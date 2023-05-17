@@ -841,12 +841,15 @@ for (int i = 0; i < networkSize; i++) {
   //****  delayTimeFollowPhase11=60;  // to control time phase offseet with a lot of delay time. You can wait one seconde before the next ball follow the previous ball
     
   //  followSignalSampled(frameRatio);
-    samplingMovementPro();
+
+  //***  samplingMovementPro();
+
+
   //  noStroke();
   //  fill( 255, 40, 40 );
   // circle ( 100* cos (movement)+400, 100*sin (movement)+400, 20);
   //   followSignalSampled(frameRatio); //no WORK with frame
-     followSignalSampledOppositeWay(frameRatio);// with millis()
+  // followSignalSampledOppositeWay(frameRatio);// with millis()
   //  phasePattern();
    // pendularPatternNoJoe(); // without transformation of position's datas in the Arduino.
     
@@ -938,7 +941,8 @@ for (int i = 0; i < networkSize; i++) {
  
 
    if (formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
-   countRevs();
+  // countRevs();
+  countRevsContinue();
   }
        
    //**********************************************************************    
