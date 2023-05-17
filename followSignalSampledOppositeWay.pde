@@ -108,6 +108,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
        newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
 
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
+       phaseMapped[i]= phaseMapped[i]% TWO_PI;
    
     if (phaseMapped[i]<0){
    
@@ -136,7 +137,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
    }
   }
  */ 
-  // option to add rotationSpeed dans le MAIN old BRANCH revert
+  // option to add rotationSpeed dans le MAIN old BRANCH revert net.phase
     for (int i = 0; i < networkSize-0; i+=1) {  
   //phaseMappedFollow[i]+=0.01;
   //phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
@@ -145,10 +146,12 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
         if (key != '#' ) {
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
   
-    phasePatternBase();
+  //  phasePatternBase();
+    phasePattern();
 
     for (int i = 0; i < networkSize-0; i+=1) {  
-    phaseMappedFollow[i]= netPhaseBase[i];
+    //phaseMappedFollow[i]= netPhaseBase[i];
+    phaseMappedFollow[i]= net.phase[i];
     phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;  
     }
   
@@ -181,7 +184,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
 
  for (int i = 0; i < networkSize-0; i+=1) { 
   newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
- // net.phase[i]=phaseMapped[i];
+  net.phase[i]=phaseMapped[i];
   newPosX[i]=phaseMapped[i]; // better to count revolution
   //print ( " newPosF[i] " + newPosF[i]);
   }

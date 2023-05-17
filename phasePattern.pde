@@ -1056,7 +1056,7 @@ void phasePattern() { // need standard mode to be trigged
     text ( coupling, - 400, height - 1000); // coupling appears on screen and is recorded on the file data.txt
     net.setCoupling(coupling);
   } 
-  key ='#';
+ // key ='#';
   //************************************ ENDPENDULARPATTERN  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
