@@ -315,6 +315,9 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
   if (key == 'u'  ) { 
     println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && circularMov == false
+    net.shiftPhases(1); 
+
+ /*     
     oldMemoryi=memoryi;
     memoryi=(memoryi+1)%networkSize;
 
@@ -338,6 +341,10 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
      net.phase[networkSize-1]= net.oldPhase[networkSize-1-1];
     net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
   } 
+*/
+ } 
+
+
 
   if (key == 'U' && formerKeyMetro == '<') { 
 
