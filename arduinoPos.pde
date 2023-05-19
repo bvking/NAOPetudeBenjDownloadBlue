@@ -594,41 +594,14 @@ void arduinoPos() {
 
   //    print ("pendular      ");   println (pendular);  
   if (formerKeyMetro!='s') {
-    if (formerKeyMetro!='J') {
-      if (formerKeyMetro!='<') {
-           if (formerKeyMetro!='B') {
-              if (formerKeyMetro!='>') {
-                 if (formerKeyMetro!='@') {
-                     if (formerKeyMetro!='c') {
-                       if (keyMode!= " addSignalOneAndTwo ") {
-                         if (keyMode!= " methodAbleton ") {
-                           if (keyMode!= " addSignalOneAndTwoBis ") {
-                             if (keyMode!= " addSignalOneAndTwoTer ") {
-                            
-                                 if (keyMode!= " followDistribueAddLfoPattern ") {
-                                   if (keyMode!= " samplingModeInternal ") {
-                                    if (keyMode!= " addSignalOneAndTwoQuater ") {
-                                       if (keyMode!= " phasePattern ") {
+
 
 
      //   println(frameCount + ": " + keyMode + " dataMarkedToTeensyJo_____InMainLoop" + ( dataMarkedToTeensyJo ));
         //   encoderReceiveUSBport101.write(dataMarkedToDue36data);// Send data to Arduino.
        // teensyport.write(dataMarkedToTeensyJo); // Send data to Teensy. only the movement
          
-                         }
-                        }
-                      }
-                     }
-                    }
-                    }
-                    }
-                   }
-                  }
-                  }
-               }
-                      }
-               }
-               }
+          
            }
  
 }
