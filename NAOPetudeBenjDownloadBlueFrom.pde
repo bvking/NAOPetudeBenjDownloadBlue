@@ -676,6 +676,9 @@ for (int i = 0; i < networkSize; i++) {
   // bpmAsfrequencyfunction ();
 
   textSize (100);
+ rotate (HALF_PI);
+  bpmAsPulsationFunction();
+   rotate (-HALF_PI);
 
 
  
@@ -945,7 +948,7 @@ if (frameCount>=0) {
   }
 }
 
-void bpmAsPulsationFunctionOscillator11 () {
+void bpmAsPulsationFunctionOscillator_networkSize() {
 
   if (formerKeyMetro == '$' || formerKeyMetro == 'à') { 
 
@@ -1278,13 +1281,14 @@ void recordFrame() {
 }
 
 
-void bpmAsPulsationFunction () {
+void bpmAsPulsationFunction() {
   // MIDDLE if ((PendularOldLeftVirtualPosition[i]+800 <= 800 && PendularLeftVirtualPosition[i]+800 >=800) ||
   //     (PendularOldLeftVirtualPosition[i]+800 >= 800 && PendularLeftVirtualPosition[i]+800 <=800)) {
 
-     if ( revolution[networkSize-1]>=0 && revolution[networkSize-1]<1){    println ("TEST OK");   //revolution[11]>=0 && revolution[11]<1 &&// in pendular way, revolution trig 0 on the right and rev trig 0 on left side
- // if (TrigmodPos[0]>=0 && TrigmodPos[0]<1 ||  revolution[0]>=0 && revolution[0]<1) {    
-    println ("TEST OK");   // if oscillator 11 is at his position 0. 0 mean on the right
+  // in pendular way, revolution trig 0 on the right and rev trig 0 on left side
+
+  //   if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
+   if ( TrigmodPos[networkSize-1]==0){ 
     if (!ready) {
       ready = true;
       prev_time = millis();
@@ -1296,7 +1300,7 @@ void bpmAsPulsationFunction () {
     }
   }
      rotate (-PI/2);
-     text("Average time between two pulsation = " + pulsation + "ms", -1000, -500 );
+     text("Average time between two pulsation = " + pulsation + "ms", -2200, -500 );
      rotate (PI/2);
 
 }

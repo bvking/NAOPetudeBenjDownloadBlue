@@ -251,7 +251,7 @@ void arduinoPos() {
         } else  TrigmodPos[i]=1;
       } 
 
-    //   DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
+   //    DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
        ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];//+positionMotorisedFromContinuesMod[i];
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
 
@@ -263,6 +263,7 @@ void arduinoPos() {
   // SWITCH MODE  *************************************TRIG and  MAP PENDULAR PHASE  for TEENSY and !ç (to manage sound)
 
   if (formerKeyMetro == '$') {
+    actualisePositionDataFromCircular=true;
         // ActualVirtualPosition[i]=ActualVirtualPositionFromOtherMode[i];
 
     for (int i = 0; i < networkSize; i++) {
@@ -479,7 +480,7 @@ void arduinoPos() {
   
 
  // countRevs();  
-  bpmAsPulsationFunction();
+ // bpmAsPulsationFunction();
   printMidiNoteVelocity();
   //SUBZERO
 
@@ -520,11 +521,16 @@ void arduinoPos() {
     }
   }
 
-  if (formerKeyMetro == '*') {
+  if ( keyMode == " propagationBallRotationBis " ) 
+   {
+   actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
+   }
+
+
+  if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
 
     for (int i = 0; i < networkSize-0; i++) {
-  
-      DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i];  //+ ActualVirtualPosition[i]
+     recordLastDataOfMotorPosition[i]=DataToDueCircularVirtualPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
     } 
   }
 

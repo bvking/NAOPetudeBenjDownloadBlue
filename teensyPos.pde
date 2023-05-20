@@ -3,8 +3,9 @@ void teensyPos(){
     if (modeStartKeyToFollow == " null ") {  
     
   for (int i = 0; i < networkSize; i++) {  
- //   DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs
- DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);
+ //   DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
+     rev=revLfo;
+      DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep)+ (int) recordLastDataOfMotorPosition[i];
  
     }
        send24DatasToTeensy6motors( 4, 3, -3, -1);
@@ -24,7 +25,7 @@ void teensyPos(){
     //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
     if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
 
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
+     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
     }
 
     if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
@@ -42,18 +43,16 @@ void teensyPos(){
    }
 
 void mapDataToMotor() {
-
   println (" CONVERSION pour AFFICHAGE net.phase[i]=newPosXaddSignal[i ]");
 
 
     for (int i = 0; i <  networkSize-0; i+=1) { 
     newPosXaddSignal[i]%=TWO_PI;
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
-    
     }
 
 
-  countRevs();
+ // countRevs(); // doesn't work whit propagation function
      for (int i = 0; i <  networkSize-0; i+=1) {
      net.oldPhase[i]=net.phase[i];
 
@@ -134,7 +133,7 @@ void mapDataToMotor() {
      text ( signal[2], -400, height-300);
 
   
-    teensyPos();
+     teensyPos();
      oscSend(); // depend de arduinopos
    //  assignMotorWithPosition();
      
