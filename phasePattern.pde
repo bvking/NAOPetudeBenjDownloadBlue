@@ -50,33 +50,32 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //********** ********** ********** ********** ********** ********** ********** INCREASE FREQUENCIES in $ mode PENDULAR PATTERN
  //********** ********** ********** ********** ********** ********** ********** TRIG PATTERN SHIFTING IN KEYREASED
 
-
-  if (keyCode == RIGHT) {  
-    println( " pendularPattern right DECREASE phase shifting   witch formerStartKey ")  ; // Incremente together without changing phases   
-    if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro  == 'J')) {
+  if (keyCode == LEFT) {  
+ //   if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro  == 'J')) {
       k--;
-
-      if (k<-8) { 
+         if (k<-8) { 
         k=8;
       }    
-      println ("k= shiftingPhaseRatio ");
-      println (k);
+      memoryi--;
+       if (memoryi<0) { 
+        memoryi=networkSize-1;
+      }   
+      text ("k= shiftingPhaseRatio " + k + " memoryi " + memoryi, 500, 600);  
       keyCode = SHIFT; // to trig only once
-    }
   }
-  if (keyCode == LEFT) { 
-    println("pendularPattern left INCREASE phase shifting"); // Incremente together without changing phases  
-    if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro == 'J')) {
+
+  if (keyCode == RIGHT) { 
+//    if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro == 'J')) {
       k++;
       k=k%8;
-    } else 
-    k++;
-    k=k%10;
     if (k>8) { 
       k=-8;
-    }    
-    println ("k= shiftingPhaseRatio ");
-    println (k);
+    }
+     memoryi++;
+     memoryi%=networkSize; 
+
+    text ("k= shiftingPhaseRatio " + k + " memoryi " + memoryi, 500, 600);  
+
     keyCode = SHIFT; // to trig only once
   } 
 
