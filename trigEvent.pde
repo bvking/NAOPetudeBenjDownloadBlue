@@ -262,9 +262,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        //  key = '0'; keyReleased();
         }
          
-
-         
-         
+         int formerFrameTrigging;
+         formerFrameTrigging=frameCount;
          
     
        } // end second partie

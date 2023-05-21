@@ -1290,13 +1290,11 @@ void bpmAsPulsationFunction() {
   // in pendular way, revolution trig 0 on the right and rev trig 0 on left side
 
   //   if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
-  
-   if ( TrigmodPos[networkSize-1]==0 && frameCount>formerFrameTriggingForPulstation+7 ){  
-     formerFrameTriggingForPulstation=frameCount;
+   if ( TrigmodPos[networkSize-1]==0){ 
     if (!ready) {
       ready = true;
       prev_time = millis();
-    } else  { // if (TrigmodPos[networkSize-1]==1 )
+    } else if (TrigmodPos[0]>0 ||  revolution[0]>0 ) {
       int curr_time = millis();
       pulsation = avgTimer.nextValue(curr_time - prev_time);
       prev_time = curr_time;
@@ -1304,7 +1302,7 @@ void bpmAsPulsationFunction() {
     }
   }
      rotate (-PI/2);
-     text( formerFrameTriggingForPulstation + " Average time between two pulsation = " + pulsation + "ms", -2200, -500 );
+     text("Average time between two pulsation = " + pulsation + "ms", -2200, -500 );
      rotate (PI/2);
 
 }

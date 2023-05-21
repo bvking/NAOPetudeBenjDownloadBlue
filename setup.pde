@@ -15,7 +15,6 @@ int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
 int [] positionMotorisedFromContinuesMod = new int [networkSize];
 boolean actualisePositionDataFromCircular;
-int formerFrameTriggingForPulstation;
 
 float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the root square of returned value
 // as many number of occurence 
