@@ -856,11 +856,15 @@ void setup() {
   
   
 //keyMode = " addSignalOneAndTwoBis ";  
+formerKeyMetro = '$';
+/*
 keyMode = " phasePattern ";  
 keyMode = " trigEventWithAbletonSignal ";                                                                                                                                                                                                               
-formerKeyMetro = '$';
+
 oscillatorBlocked = 0;
- positionMov = " premierePartie ";   
+positionMov = " premierePartie ";   
+*/
+
 translate(0, -800,1000);
  
 }

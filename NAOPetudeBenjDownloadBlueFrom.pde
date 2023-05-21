@@ -124,6 +124,8 @@ textSize(50);
 
  setMovement(key, false);
 
+ autmationWithMeasureAndNote();
+
         println (" modeStartKeyToFollow ", modeStartKeyToFollow, " keyModeRed",  keyModeRed,"keyMode",  keyMode, "formerKeyMetro ", formerKeyMetro, " controlTrigLfoPattern ", controlTrigLfoPattern );
   keyModeRed = keyMode; // dont read keyMode in file.txt
 
