@@ -261,18 +261,18 @@ void keyReleased() {
       speedDelta=1;
     }
     print(speedDelta);  
-    println ("slow down acceleration in Teensy Duino == PCTer0");
+    text (" slow down acceleration in Teensy Duino == PCTer0 " + speedDelta, 500, 500);
     millisRatio=millis();
   }
 
   if (key == '.' && millis()>=millisRatio+1000 ) { //&& frameCount%10==0 && frameCount <=3999
 
     speedDelta+= 1;  // decompte is always positive, here it is the signal to control acceleration in Teensy Duino
-    if ( speedDelta>=20) {
-      speedDelta=16;
+    if ( speedDelta>=8) {
+      speedDelta=8;
     }
     print(speedDelta);  
-    println ("up acceleration in Teensy Duino == PCTer0");
+    text  ("up acceleration in Teensy Duino == PCTer0 " + speedDelta,  500, 500);
     millisRatio=millis();
   }
   
@@ -312,22 +312,14 @@ void keyReleased() {
   
   // ***********************************************************************************************  
   // ***********************************************************************************************  
-  //********************* TRY PENDULAR PATTERN
-  if (key == 'à' ) {//|| key == '£') {
-    //   formerKeyMetro = key;
-    print ("KEY PENDULAR OTHER PATTERN "); 
-    print ("FormerkeyMetro"); 
-    print (char(formerKeyMetro));
-    print ("key"); 
-    println (char(key));
-    //      pendularOtherPattern ();
-  }
-  if (key == '$' ) {//|| key == '£') {
+  //********************* SWICTH PROJECTION MODE
+  
+  if (key == '$' ||key == '*' ) {//|| key == '£') {
     formerKeyMetro = key;
     print ("KEY PENDULAR "); 
-    print ("FormerkeyMetro"); 
+    print (" FormerkeyMetro"); 
     print (char(formerKeyMetro));
-    print ("key"); 
+    print (" key"); 
     println (char(key));
   }
 

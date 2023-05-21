@@ -869,6 +869,7 @@ keyMode = " trigEventWithAbletonSignal ";
 music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
 
 oscillatorBlocked = 0;
+memoryi = networkSize-1;
 positionMov = " premierePartie ";   
 
 

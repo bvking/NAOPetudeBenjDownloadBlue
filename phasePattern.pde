@@ -238,32 +238,18 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       }
     }
   }
-  /*
-        if (key == 'T') {  print ("EXPERIMENTAL T$"); 
-   float delaPhase    = map ((float (mouseY)/width*1), 0, 1, 0, QUARTER_PI ); 
-   //*********
-   for(int i = 0; i < (networkSize); i++) { 
-   if ( abs (net.naturalFrequency[2]) > abs (net.naturalFrequency[networkSize-1])){
-   net.naturalFrequency[i]= net.naturalFrequency[2];
+  
+  
    
-   }
-   else net.naturalFrequency[i]= net.naturalFrequency[networkSize-1];
-   printSummary(i);  
-   }
-   }
-   */
    
   if (key == 'T') {  
     print ("EXPERIMENTAL T$"); 
     memoryi++;
     memoryi%=networkSize-0;
     if ( net.naturalFrequency[memoryi]<0.25 ) 
-    key = 'a'; keyReleased();
+   // key = 'a'; keyReleased();
     { net.naturalFrequency[memoryi]=0.25; 
     }
-   // net.naturalFrequency[memoryi]=net.naturalFrequency[0];
-
-
   } 
 
 
@@ -527,18 +513,12 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //**************************************************PLAY WITH PHASES
 
   if (key == 'k') { //  Shift frequencies one by one.  //  2 to 11,  3 to 10, 4 to 9.....11 to 2 
-
     println (" MIROR ? k$ Shift phase one by one 9 <-- 0. ");
-
     for (int i = (networkSize-1); i >= 0; i--) {
       ActualVirtualPositionFromOtherMode[i]= ActualVirtualPositionFromOtherMode[i]+800;
-
-
-
      // netPhaseBase[i]=netOldPhaseBase[(networkSize+1)-i];
      // net.naturalFrequency[i]=OldFrequency[(networkSize+1)-i];
     }   
-
    // netPhaseBase[0]=netOldPhaseBase[(networkSize-1)];
    //  net.naturalFrequency[0]=OldFrequency[(networkSize-1)];
     
@@ -554,12 +534,10 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   }
 
   if (key == 'a') { //A$  Shift frequencies one by one. 
-    for (int i = 0; i < networkSize; i++) {    
-      net.naturalFrequency[i]=OldFrequency[i]; 
-      printSummary(i);
-    }
-   // memoryi=0;
-    net.naturalFrequency[memoryi]= 4.68/2/2/2/2/2;//4.68/2; // 124 bpm  4=108 bpm
+ 
+    memoryi++;
+    memoryi%=networkSize;
+    net.naturalFrequency[memoryi]= 4.68/2/2/2/2;      //4.68/2; // 124 bpm  4=108 bpm
 
    // net.naturalFrequency[memoryi]=pow(4, -2);
 
@@ -1056,12 +1034,32 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       // interFrequency[memoryi] = -1* net.naturalFrequency[i];
       printSummary(i);
     }
-  } else if (key == '0') {//Set all frequencies at 2.0");
+  }
+/*
+    else if (key == 'a'   && keyCode == LEFT) {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize-0; i++) {   
-      //  net.naturalFrequency[i]=2.0; 
+      text (" memoryi " + memoryi, 500, 500);
+      net.naturalFrequency[i]=net.naturalFrequency[memoryi];
+    } 
+  }
+*/
+
+        if (key == 'à') {  print (" from EXPERIMENTAL T$");   
+   for(int i = 0; i < (networkSize); i++) { 
+   if ( abs (net.naturalFrequency[0]) >= abs (net.naturalFrequency[networkSize-1])){
+   net.naturalFrequency[i]= net.naturalFrequency[0];
+   }
+   else net.naturalFrequency[i]= net.naturalFrequency[networkSize-1];
+   }
+   } 
+
+
+   else if (key == '0') {//Set all frequencies at 2.0");
+    for (int i = 0; i < networkSize-0; i++) {   
+      text (" memoryi " + memoryi, 500, 500);
       net.naturalFrequency[i]=net.naturalFrequency[memoryi];
     }
-    //  printSummary(i);
+    
   } else if (key == '°') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize; i++) {   
       //  net.naturalFrequency[i]=2.0; 
