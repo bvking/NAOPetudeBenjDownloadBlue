@@ -61,9 +61,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       memoryi--;
        if (memoryi<0) { 
         memoryi=networkSize-1;
-      }
- 
-       
+      } 
       oscillatorBlocked--;
        if (oscillatorBlocked<0) { 
         oscillatorBlocked=networkSize-1;
@@ -71,8 +69,6 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
   // k= shiftingPhaseRatio USELESS?
       text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
-  
-   //   keyCode = SHIFT; // to trig only once
     }
   
 
@@ -89,13 +85,10 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
      memoryi++;
      memoryi%=networkSize; 
 
-     
      oscillatorBlocked++;
      oscillatorBlocked%=networkSize; 
 
     text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
-
-   // keyCode = SHIFT; // to trig only once
   } 
 
 
