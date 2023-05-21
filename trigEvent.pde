@@ -28,27 +28,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
    timeLfo= map (signalToSplit, -TWO_PI, TWO_PI, 0, 1000);  // manage only upSignal
  //**   timeLfo= map (signalToSplit, 0, TWO_PI, 0, 1000);  // if we have a continuois from 0 to TWO_PI 
  //   timeLfo= map (signalToSplit, 0, 1, 0, 1000); //  if we have a continuois from 0 to TWO_PI from an other software
- 
    }
 
      splitTimeLfo= int  (timeLfo%1000); 
-    //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
+         //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
+
      textSize (75);
-     text ( 
-       " Data[5] " + DataToDueCircularVirtualPosition[5] + " Data[0] " + DataToDueCircularVirtualPosition[0] + " propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300);
-
- 
-     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400 );
-     text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 300 );
-
- 
-     text ( " beatPrecisedTrigged==true " + beatPrecisedTrigged + " "  + " measure " + measure + " positionMov " + positionMov + " " + " blocked "  + oscillatorBlocked, width-width/4, -height/4);
+     text ( " Data[5] " + DataToDueCircularVirtualPosition[5] + " Data[0] " + DataToDueCircularVirtualPosition[0] + " propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300-1000);
+     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
+     text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 500-1000);
 
      signalToSplit = map ( signal[5], 0, 1, 0, 1);
      signalToSplit4 = map ( signal[4], 0, 1, 0, 1);
 
      delayTimeToTrig=120; //ms
      delayTimeToTrig4=120;
+
+     if  (music_from_ableton_live == " madRush " ) { 
+          autmationWithMeasureAndNote();
+          }
+
+     if (music_from_ableton_live == " pleasureKraft ") {
          
           if (measure==1 && beatTrigged==true){
            delayTimeToTrig4=120;    
@@ -409,20 +409,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
   
           key = 'H';  
                    phasePattern();
- 
-       } 
+        } 
+       }
+     } // end of  pleasureKraft Arrangement
 
-       } 
-
-     
-
-       textSize (50);
+    textSize (50);
  
   
-    text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key , width-width, -400);
-    text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 100);
-    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 200);
-    text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 300);
+  //  text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key , width-width, -400);
+    text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 1100);
+    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 1200);
+    text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1300);
 
       for (int i = 0; i < networkSize; i++) {
       //  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + DataToDueCircularVirtualPosition[i], 800, 1600- 100*i );
@@ -430,15 +427,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
     
       textSize (75);
+
+      /*
      text ( " netphase[3]" + net.phase[3] + " old[3]" + net.oldPhase[3] + " "  + "signal3 " + signal[3] , 300, 800);
      text ( " signal4 " + signal[4] , 300, 900);
      text ( " signal5 " + signal[5] , 300, 1000);
      text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);
      text ( " beatPrecisedTrigged " + beatPrecisedTrigged + " freq  " + net.naturalFrequency[3] , 300, 1200);
-
- 
-     phasePattern();
-  
+     */
+    // phasePattern();  
      oldSplitTimeLfo = splitTimeLfo; 
 } 
 

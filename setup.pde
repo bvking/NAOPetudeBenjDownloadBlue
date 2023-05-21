@@ -9,6 +9,8 @@ import java.util.Arrays;
 int networkSize = 6;
 int nbBalls=networkSize;
 
+String music_from_ableton_live;
+
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
 int [] positionMotorisedFromContinuesMod = new int [networkSize];
@@ -857,13 +859,18 @@ void setup() {
   
 //keyMode = " addSignalOneAndTwoBis ";  
 formerKeyMetro = '$';
-/*
-keyMode = " phasePattern ";  
-keyMode = " trigEventWithAbletonSignal ";                                                                                                                                                                                                               
+//--keyMode = " phasePattern ";
+//--phasePattern();
+
+ 
+
+keyMode = " trigEventWithAbletonSignal ";   
+//music_from_ableton_live = " pleasureKraft ";
+music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
 
 oscillatorBlocked = 0;
 positionMov = " premierePartie ";   
-*/
+
 
 translate(0, -800,1000);
  

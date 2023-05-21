@@ -62,7 +62,7 @@ void autmationWithMeasureAndNote() {
   }
   if ( measure<=5 ) {
     // d=0;
-    oscillatorBlocked=6;
+    oscillatorBlocked=networkSize/2;
 //    d=100;
   }
   if ( measure>=6 && measure<=7 ) {
@@ -81,54 +81,35 @@ void autmationWithMeasureAndNote() {
     //     key='Y';keyReleased();
   }
 
-  if  (measure>=61 && measure<=61 && beatTrigged==true  ) {
+  if  (measure==61 && beatTrigged==true  ) {
 
     key='o';
     keyReleased();
   }
-  if  (measure>=66 && measure<67 ) {
 
-    //   key='e';keyReleased();// shift phase mod   PI/3
-  }
   if  (measure>=71 && measure<78 ) {
-
     autoNote2();
   }
 
-  if  (measure>=40 && measure<41 && beatTrigged==true ) {//77  //&& beatTrigged==true
+  if  (measure==40 && beatTrigged==true ) {//77  //&& beatTrigged==true
     //    key='o';
     //    keyReleased();
-    key=9;
+    key='9';
     keyReleased();
     key=CONTROL;
     keyReleased();
-    oscillatorBlocked=10;
+    oscillatorBlocked=networkSize-1;
     speedDelta=4;
   }
-  if  (measure>=43 && measure<44 && beatPrecised>=4 && beatPrecisedTrigged==true ) {//77  //&& beatTrigged==true
-    //    key='9';
-    //    keyReleased();
-    key='o';
-    keyReleased();
-  } 
-  if  (measure>=45 && measure<46 && beatPrecised>=4 && beatPrecisedTrigged==true ) {//77  //&& beatTrigged==true
-    //    key='9';
-    //    keyReleased();
-    key='o';
-    keyReleased();
-  }   
 
-  if  (measure>=47 && measure<48 && beatPrecised>=4 && beatPrecisedTrigged==true ) {//77  //&& beatTrigged==true
+
+  if  (measure==43 || measure==45 || measure==47 || measure==50 && beatPrecised>=16 && beatPrecisedTrigged==true ) {//77  //&& beatTrigged==true
 
     key='o';
     keyReleased();
   }
 
-  if  (measure>=50 && measure<51 && beatPrecised>=4 && beatPrecisedTrigged==true ) {//77  //&& beatTrigged==true
-
-    key='o';
-    keyReleased();
-  }
+  
 
   if ((( measure>40 && measure<58) && (millis()>formerEvent[74]+1000+d)) &&
     ((note1>73 && note1<75 && velocity1>=1 && velocity1<=64)|| (note2>73 && note2<75 && velocity2>=1 && velocity2<=64)|| (note3>73 && note3<75 && velocity3>=1 && velocity3<=64) ||
@@ -152,14 +133,7 @@ void autmationWithMeasureAndNote() {
     //  formerSartKey='l'; //automatise movement with note
   }
 
-  if (measure>=76 && measure<77 && beatTrigged==true) {//77  //&& beatTrigged==true
-  }
-
-
-  if  (measure>=77 && measure<78 && beatTrigged==true  ) {//77  //&& beatTrigged==true
-  }
-
-  if  (measure>=77 && measure<78 && beatTrigged==true ) { //
+  if (measure==76 && beatTrigged==true) {//77  //&& beatTrigged==true
   }
 
   if  (measure>=78 && measure<=78 && beatTrigged==true) {
@@ -407,8 +381,10 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
         //   keyReleased();
       }
     }
-    if  (measure>=36 && measure<=36  && beatTrigged==true  ) {// measure>=41 && measure<=42
+    if  (measure==36 && beatTrigged==true  ) {// measure>=41 && measure<=42
       for (int i = 0; i < networkSize; i++) {
+        key='a';
+         keyReleased();
         key='0';
         keyReleased();
         key='q';
@@ -824,7 +800,7 @@ void  autoNote2() {//1 61 63 64 66 85
       ((note1>71 && note1<73  && velocity1>=96 && velocity1<=96 )|| (note2>71 && note2<73 && velocity2>=96 && velocity2<=96) || (note3>71 && note3<73 && velocity3>=96 && velocity3<=96))) {
 
       //   key='i';//i= 105 
-      oscillatorBlocked=6;
+      oscillatorBlocked=networkSize%2;
       //     key='d';
       //   key='f'; //f=102;
       //  keyReleased();

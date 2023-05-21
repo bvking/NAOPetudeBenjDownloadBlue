@@ -124,9 +124,9 @@ textSize(50);
 
  setMovement(key, false);
 
- autmationWithMeasureAndNote();
+ 
 
-        println (" modeStartKeyToFollow ", modeStartKeyToFollow, " keyModeRed",  keyModeRed,"keyMode",  keyMode, "formerKeyMetro ", formerKeyMetro, " controlTrigLfoPattern ", controlTrigLfoPattern );
+  println ( " music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed + "keyMode" +  keyMode + "formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern );
   keyModeRed = keyMode; // dont read keyMode in file.txt
 
   switchFonctionDependingKeyMode();
@@ -1691,19 +1691,6 @@ void circularWay () {
 
   // key ='#';  
 } 
-
-void circularOTHERWay() { 
-  print ("circularOTHERWay based ");
-  //  pendularPattern ();
- 
-} 
-
-void circularPENDULARWay() { 
-  print ("circularPENDULARWay based ");
-  phasePattern();
-  //    pendularOtherPattern ();
-}  
-
 
 
 void formerx () {

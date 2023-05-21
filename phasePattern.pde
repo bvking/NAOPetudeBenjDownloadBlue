@@ -24,6 +24,8 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
  if  (   keyMode != " truc "  ) {
       if  (   keyMode == " trigEventWithAbletonSignal " ) {
 
+        text ( " YOU RELEASE IN PHASE PATTERN or PRESSED ", -200, -200);
+
     //     splitIncomingSignal();
          /*
          if (oscillatorChangingPropagation==true)  {key = 'f';}
@@ -250,17 +252,20 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
    }
    }
    */
+   
   if (key == 'T') {  
     print ("EXPERIMENTAL T$"); 
-    for (int i = 0; i < (networkSize-1); i++) { 
-      if ( (abs (net.naturalFrequency[i]) < abs (net.naturalFrequency[i+1])) // || 
-        )
-        net.naturalFrequency[i]=net.naturalFrequency[i+1];
+    memoryi++;
+    memoryi%=networkSize-0;
+    if ( net.naturalFrequency[memoryi]<0.25 ) 
+    key = 'a'; keyReleased();
+    { net.naturalFrequency[memoryi]=0.25; 
     }
-    if ( (abs (net.naturalFrequency[networkSize-1]) < abs (net.naturalFrequency[networkSize-1]))
-      )
-      net.naturalFrequency[networkSize-1]=net.naturalFrequency[0];
-  }   
+   // net.naturalFrequency[memoryi]=net.naturalFrequency[0];
+
+
+  } 
+
 
   if (key=='t') {  
     print ("EXPERIMENTAL t$");
@@ -556,7 +561,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
    // memoryi=0;
     net.naturalFrequency[memoryi]= 4.68/2/2/2/2/2;//4.68/2; // 124 bpm  4=108 bpm
 
-    net.naturalFrequency[memoryi]=pow(4, -2);
+   // net.naturalFrequency[memoryi]=pow(4, -2);
 
   }
 

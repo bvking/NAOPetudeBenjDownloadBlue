@@ -309,17 +309,7 @@ void keyReleased() {
     println (char(key));
   }
 */
-  if (key == '£' || key == '*') {//|| key == '£') {
-    for (int i = 0; i < networkSize; i++) {
-
-      formerKeyMetro = key;
-      print ("KEY  CICULAR "); 
-      print ("FormerkeyMetro: "); 
-      print (char(formerKeyMetro));
-      print ("Actualkey"); 
-      println (char(key));
-    }
-  }  
+  
   // ***********************************************************************************************  
   // ***********************************************************************************************  
   //********************* TRY PENDULAR PATTERN
@@ -345,29 +335,32 @@ void keyReleased() {
     println ("Frequencie adatped to PENDULAR way WITH OTHER PATTERN trigged with à");
     //  pendularOtherPattern ();
   }
-  if (formerKeyMetro == '$') {  
-    println ("Frequencies adatped to PENDULAR way trigged with $");
-    phasePattern();
-     phasePatternBase();
-  } 
+
+
+
 
   //*********************************************CIRCULAR
 
-  if (formerKeyMetro == '£' ) {    
-    println ("Frequencies adatped to circular way");
 
-    circularWay();
-    // MAKE A SORT OF FOLLOW MODE
+  if ( keyMode != " trigEventWithAbletonSignal " )  {  
+
+   if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
+    println ("Frequencies adatped to PENDULAR way trigged with $");
+        text (" NO trigEventWithAbletonSignal ", 0, 200 );
+
+   // phasePattern();
+     phasePatternBase();
   } 
-  if ( formerKeyMetro == '*' || formerKeyMetro == '<') {   // formerKeyMetro == 'J'  
-    println ("Frequencies adatped to ÒTHER circular way");
+   } 
 
-    //  circularOTHERWay();
-    //  circularPENDULARWay();
-   // phasePattern(); //same as $
-       phasePatternBase();
-    // MAKE A SORT OF FOLLOW MODE
+  else if ( keyMode == " trigEventWithAbletonSignal " )  {  
+  if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
+          text (" trigEventWithAbletonSignal ", 0, 200 );
+
+     phasePattern(); //same as $
+   } 
   }
+
  //key= '#'; 
 
 }

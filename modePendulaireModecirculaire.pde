@@ -334,7 +334,7 @@ void  modePendulaireModeCirculaire() {
                                     if ( keyMode != " trigEventWithAbletonSignal " ) {  // keyMode == " trigEventWithAbletonSignal " &&   metroPhase[i]=
                                          if ( modeStartKeyToFollow  != " followSignalSampledOppositeWay(frameRatio) "  ) {
                                             if ( modeStartKeyToFollow  != " samplingModeInternal "   ) {
-                                              if ( modeStartKeyToFollow  != " null "   ) {
+                                              if ( modeStartKeyToFollow  == " null "   ) {
 
            
                        text (  " lllllll ", -width/4, -height/4 ) ;           
