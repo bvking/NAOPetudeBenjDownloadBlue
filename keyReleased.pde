@@ -64,12 +64,15 @@ void keyReleased() {
      if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
        || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
       ){
+        /*
       oscillatorBlocked++;
       oscillatorBlocked%=networkSize;
 
-      }
+     
       key='#'; // to trig only once
-
+       
+   */
+   }
       }
    }
      if (keyCode == RIGHT) {  
@@ -78,15 +81,18 @@ void keyReleased() {
       if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
        || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
       ){
+/*
       oscillatorBlocked--;
       if (oscillatorBlocked < 0) { 
       oscillatorBlocked=networkSize-1;    
-      }
-      key='#'; // to trig only once
+     
 
+      key='#'; // to trig only once
+    */
+     }
          }
       }
-   }
+   
 
 
     if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {  

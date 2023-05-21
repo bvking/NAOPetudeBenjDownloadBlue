@@ -865,9 +865,11 @@ formerKeyMetro = '$';
  
 
 keyMode = " trigEventWithAbletonSignal ";   
+keyMode = " ableton ";  
+
 //music_from_ableton_live = " pleasureKraft ";
 //positionMov = " premierePartie "; 
-music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
+//music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
 k=0; // phaseShifting
 oscillatorBlocked = networkSize-1;
 memoryi = networkSize-1;

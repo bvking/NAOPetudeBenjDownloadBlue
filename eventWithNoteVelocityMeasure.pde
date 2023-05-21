@@ -943,7 +943,7 @@ void  autoNote2() {//1 61 63 64 66 85
 } 
 
 void autoNote1Original() {//1 61 63 64 66 85 
-  keyPressedLFO();
+ // keyPressedLFO();
 
 
 //  if (((formerSartKey!='a')) 
@@ -1166,7 +1166,7 @@ void autoNote1Original() {//1 61 63 64 66 85
 } 
 
 void autoNote1() {//1 61 63 64 66 85 
-  keyPressedLFO();
+ // keyPressedLFO();
 
 
   if (((formerSartKey!='a')) 
