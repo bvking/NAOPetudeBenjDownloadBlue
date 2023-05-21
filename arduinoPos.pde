@@ -290,7 +290,7 @@ void arduinoPos() {
     
 
 
-      DataToDueCircularVirtualPosition[i]=PendularVirtualPosition[i]+  ActualVirtualPositionFromOtherMode[i];
+    //  DataToDueCircularVirtualPosition[i]=PendularVirtualPosition[i]+  ActualVirtualPositionFromOtherMode[i];
       ActualVirtualPosition[i]=DataToDueCircularVirtualPosition[i];
       ActualVirtualPosition[i]%= numberOfStep;
 
@@ -302,8 +302,9 @@ void arduinoPos() {
       // PendularLeftVirtualPosition[i]=int(1*(VirtualPosition[i])+800+1)/2%80;
       //**PendularLeftVirtualPosition[i]=VirtualPosition[i];
      //** VirtualPosition[i]= (int) map (PendularLeftVirtualPosition[i], 0, numberOfStep/2, -800, 800);
-       PendularVirtualPosition[i]= (int) map ( PendularVirtualPosition[i], -4800, -1600, -800, 800); // mapped at the scale in Max 4 live // GOOD to trig 0 when balls are in the middle
-     //         PendularVirtualPosition[i]= (int) map ( PendularVirtualPosition[i], -4800, -1600, -4800, -1600); // mapped at the scale in Max 4 live // GOOD ? NO
+      PendularVirtualPosition[i] = (int) map ( PendularVirtualPosition[i], -4800, -1600, -800, 800); // mapped at the scale in Max 4 live // GOOD to trig 0 when balls are in the middle
+     //PendularPositionoMapForMotor[i
+   //    PendularVirtualPosition[i] = (int) map ( PendularVirtualPosition[i], -800, 800, 800, 1600); // mapped at the scale in Max 4 live // GOOD ? NO
 
      //  VirtualPosition[i]= PendularVirtualPosition[i]+ActualVirtualPosition[i]; 
       VirtualPosition[i]=PendularVirtualPosition[i];
@@ -365,8 +366,8 @@ void arduinoPos() {
         TrigmodPos[i]=1;
       }
    //    text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
+     }
     }
-  }
 
 
 
@@ -481,7 +482,7 @@ void arduinoPos() {
 
  // countRevs();  
  // bpmAsPulsationFunction();
-  printMidiNoteVelocity();
+    printMidiNoteVelocity();
   //SUBZERO
 
 
@@ -517,13 +518,13 @@ void arduinoPos() {
 
     for (int i = 0; i < networkSize; i++) {
 
-    //  DataToDueCircularVirtualPosition[i]= (int) map ( DataToDueCircularVirtualPosition[i], -800, 800, 1600, 4800);  // mapped for 6400 step/round +800 + ActualVirtualPosition[i]
+   // DataToDueCircularVirtualPosition[i]= (int) map ( DataToDueCircularVirtualPosition[i], -800, 800, 1600, 4800);  // mapped for 6400 step/round +800 + ActualVirtualPosition[i]
     }
   }
 
   if ( keyMode == " propagationBallRotationBis " ) 
    {
-   actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
+    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    }
 
 

@@ -178,6 +178,11 @@ keyMode = " propagationBallRotationBis ";
  formerKey=key;
  
  }
+
+
+
+
+ 
  
  void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
   //    if (newPosXaddSignal[oscillatorChange]<0){ 
@@ -185,20 +190,16 @@ keyMode = " propagationBallRotationBis ";
   //   newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], numberOfStep, 0, -TWO_PI, 0);
   //  }
   //    }
-   
-  //  B true O true OK
-  // B true O false OK
-  //        B false O false NO
+  
 
     //   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oldOscillatorChange];
-   
+ /*  
    if (doC==true && doo==false ){ // // fonctionne avec o = false
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
 
  //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
 //***   phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
-
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
    //   LFO[oscillatorChange] = LFO[oldOscillatorChange] - (PI/(6*networkSize)-1);
@@ -211,26 +212,23 @@ keyMode = " propagationBallRotationBis ";
     }
       }
 
-    
-
        dataMappedForMotor[oldOscillatorChange]= (int) map (LFO[oldOscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
-       
-              
+            
        println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  LFO[oscillatorChange]);
        println (" MAIN doC==true && doo==false ");
       newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
-      newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-    
+      newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);   
      }
+*/
 
+/*
       if (doC==true && doo==true && doB!=true ){ // // fonctionne avec o = false/ ajoute  ou retire )1 au compteur selon propa
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
 
  //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
 //***   phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
-
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oldOscillatorChange] + (PI/(3*networkSize)-1);
@@ -239,7 +237,6 @@ keyMode = " propagationBallRotationBis ";
 
         if (LFO[oscillatorChange]<0){ 
     //  for (int i = 0; i <  networkSize-0; i+=1) { 
-
     //  LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
   //  }
       }
@@ -250,13 +247,10 @@ keyMode = " propagationBallRotationBis ";
       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
     
      }
+*/
 
 
-
-
-
-
-   if (doB!=true && doC!=true){ // && propagationTrigged==true
+   if (doo==false || doo==true){ // && propagationTrigged==true
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
 
@@ -273,7 +267,7 @@ keyMode = " propagationBallRotationBis ";
 
    }       
 
-  if (doo==false){
+if (doo==false){
 
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
@@ -319,12 +313,7 @@ keyMode = " propagationBallRotationBis ";
     
      }
 
-
-
-
-
-     
-  
+/*
     if (doB==true && doC!=true){ 
       
          phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
@@ -336,25 +325,15 @@ keyMode = " propagationBallRotationBis ";
        
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
       
-       
      //   newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI); // GOOD
-
          newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
-
+*/
  
 
-
-
-      for (int i = 0; i <  networkSize-0; i+=1) { 
-   // net.phase[i]=newPosXaddSignal[i]; // to display to screen
-   // net.phase[i]%=TWO_PI;
-    }
  
 ///////////////////// 
  //  mapDataToMotor();
-
-
   }
 
 

@@ -43,7 +43,7 @@ void teensyPos(){
    }
 
 void mapDataToMotor() {
-  println (" CONVERSION pour AFFICHAGE net.phase[i]=newPosXaddSignal[i ]");
+  text (  keyMode, 800, 800);
 
 
     for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -88,7 +88,7 @@ void mapDataToMotor() {
 
      TrigmodPos[i]=1;
       
-      if (net.oldPhase[i] > 0 ) {
+      if (net.oldPhase[i] > 0 && doo==false) {
 
     if ( oldPosF[i]>newPosF[i]) { //
          revLfo[i]++;
@@ -99,7 +99,6 @@ void mapDataToMotor() {
     
    //  if ( oldPosF[i]>newPosF[i] ){  // && newPosXaddSignal[i]>-HALF_PI &&  newPosXaddSignal[i]< HALF_PI 
     text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
-    print (  newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i]);
 
     if ((doC==true && doo==true && doB!=true )!=true){  // A AMELIORER DANS PROPABIS
  textSize (100);
