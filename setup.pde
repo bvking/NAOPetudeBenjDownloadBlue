@@ -602,7 +602,7 @@ void setup() {
   formerEvent= new int[300];
   formerSartKey='#';
   autmationWithMeasureAndNote=1;
-  oscillatorBlocked = 2;
+  
 
  
   automationLFO = new float [networkSize];
@@ -867,12 +867,11 @@ formerKeyMetro = '$';
 
 keyMode = " trigEventWithAbletonSignal ";   
 //music_from_ableton_live = " pleasureKraft ";
+//positionMov = " premierePartie "; 
 music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
-
-oscillatorBlocked = 0;
+k=0; // phaseShifting
+oscillatorBlocked = networkSize-1;
 memoryi = networkSize-1;
-positionMov = " premierePartie ";   
-
 
 translate(0, -800,1000);
  

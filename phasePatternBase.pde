@@ -4,7 +4,7 @@ void phasePatternBase() { // trigged with $ or *
 
 //  if  (   formerKeyMetro != 'c') {  // VERY IMPORTANT with CASE c
  if  (   keyMode != " truc "  ) {
-      if  (   keyMode != " null "  ) {
+      if  (   keyMode == " propagationBallRotation "  ) {
 
 
   for (int i = 0; i < (networkSize); i++) { 

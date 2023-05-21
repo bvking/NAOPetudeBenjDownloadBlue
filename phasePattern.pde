@@ -1,5 +1,5 @@
 void phasePattern() { // need standard mode to be trigged
-textSize (75);
+textSize (100);
 text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
 text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //************************************ DONT TOUCH
@@ -24,7 +24,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
  if  (   keyMode != " truc "  ) {
       if  (   keyMode == " trigEventWithAbletonSignal " ) {
 
-        text ( " YOU RELEASE IN PHASE PATTERN or PRESSED ", -200, -200);
+   //     text ( " YOU RELEASE IN PHASE PATTERN or PRESSED ", -200, -200);
 
     //     splitIncomingSignal();
          /*
@@ -52,15 +52,26 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
   if (keyCode == LEFT) {  
  //   if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro  == 'J')) {
-      k--;
+       k--;
          if (k<-8) { 
         k=8;
-      }    
+      } 
+
+      oldMemoryi=memoryi;   
       memoryi--;
        if (memoryi<0) { 
         memoryi=networkSize-1;
-      }   
-      text ("k= shiftingPhaseRatio " + k + " memoryi " + memoryi, 500, 600);  
+      }
+ 
+       
+      oscillatorBlocked--;
+       if (oscillatorBlocked<0) { 
+        oscillatorBlocked=networkSize-1;
+      }
+
+  // k= shiftingPhaseRatio USELESS?
+      text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
+  
       keyCode = SHIFT; // to trig only once
   }
 
@@ -71,10 +82,15 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     if (k>8) { 
       k=-8;
     }
+     oldMemoryi=memoryi;
      memoryi++;
      memoryi%=networkSize; 
 
-    text ("k= shiftingPhaseRatio " + k + " memoryi " + memoryi, 500, 600);  
+     
+     oscillatorBlocked++;
+     oscillatorBlocked%=networkSize; 
+
+    text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
 
     keyCode = SHIFT; // to trig only once
   } 
@@ -111,9 +127,9 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
     println (" Shift frequencies one by one 0 <-- 11. ");
 
-    net.naturalFrequency[2]= OldFrequency[(networkSize-1)]; 
+    net.naturalFrequency[0]= OldFrequency[(networkSize-1)]; 
 
-    for (int i = 2; i < (networkSize-1); i++) {
+    for (int i = 0; i < (networkSize-1); i++) {
       print (i+1); 
 
       println ((networkSize+1)-(i+1));
@@ -242,13 +258,20 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
    
    
   if (key == 'T') {  
-    print ("EXPERIMENTAL T$"); 
-    memoryi++;
-    memoryi%=networkSize-0;
     if ( net.naturalFrequency[memoryi]<0.25 ) 
    // key = 'a'; keyReleased();
     { net.naturalFrequency[memoryi]=0.25; 
     }
+     oldMemoryi=memoryi;
+     memoryi=(memoryi+1)%networkSize;
+
+    if ( memoryi<=0) {
+   //   memoryi=0;
+    }
+   // memoryi++;
+   // memoryi%=networkSize-0;
+  //  net.naturalFrequency[memoryi]=0.25;
+    
   } 
 
 
@@ -276,9 +299,8 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       
   if ( memoryi<=-1) {
       memoryi=networkSize-1;
-      oldMemoryi=0;
-    println (" your herreeeeeee iiiiiiiiiiiii ");
-    text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
+    oldMemoryi=0;
+    
 
 
    }
@@ -304,7 +326,6 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
 
   if (key == 'u'  ) { 
-    println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && circularMov == false
     net.shiftPhases(1); 
 
  /*     
@@ -742,12 +763,14 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     // }
   }
 
-   else if (key == 's') {
+   else if (key == 's') {  // g0 reciproque s1
     println(" s$s: Reduce the gap between phases by f0 "); //S$
     for (int i = 0; i < networkSize-0; i++) {
 
       //  net.phase[i] -=(9-i)*0.05;
       //   net.phase[i] -=(networkSize-1-i)*0.05; // oscillator 11 do not move
+
+      // g0 reciproque s1 avec networkSize-1
       net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*0.05; // if oscillatorBlocked=0; net.phase[5] doesn't move
     //  net.phase[i]=  net.phase[i]%TWO_PI;
 

@@ -46,21 +46,21 @@ void autmationWithMeasureAndNote() {
   autoNote1VelInf64();
  //  }
 
-  if (measure<5 ) {
+  if (measure<5 && beatTrigged==true ) {
     //  speedDelta=15;
     speedDelta=4; 
     autoNote2();
   } 
-  if (measure>=5 && measure<=5 && beatTrigged==true) {
+  if (measure==5 && beatTrigged==true) {
     speedDelta=4 ;
     //   autoNote2();
   } 
-  if ( measure<=2 ) {
+  if ( measure<=2 && beatTrigged==true ) {
 
     key='$';
     keyReleased();
   }
-  if ( measure<=5 ) {
+  if ( measure==5 && beatTrigged==true) {
     // d=0;
     oscillatorBlocked=networkSize/2;
 //    d=100;
