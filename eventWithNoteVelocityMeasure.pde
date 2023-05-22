@@ -190,14 +190,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   //    key='Y';keyReleased();
     //   key='Y';keyReleased();
   }
-  if  (measure>=79 && measure<=79 && beatTrigged==true) {
-    speedDelta= 11;
-//    key='Y';
-  //  keyReleased();
-  //  key='y';
-//    keyReleased();
-  }
-
+  
   if  (measure>=79+1 && measure<=79+1 && beatTrigged==true) {
     speedDelta= 8;
   }  
