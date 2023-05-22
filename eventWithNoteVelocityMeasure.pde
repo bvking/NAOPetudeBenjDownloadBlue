@@ -55,7 +55,7 @@ void autmationWithMeasureAndNote() {
     speedDelta=4 ;
     //   autoNote2();
   } 
-  if ( measure<=2 && beatTrigged==true ) {
+  if ( measure==1 && beatTrigged==true ) {
 
     key='$';
     keyReleased();
@@ -68,12 +68,6 @@ void autmationWithMeasureAndNote() {
   if ( measure>=6 && measure<=7 ) {
     d=200;
   }
-
-  if ( measure<8 && beatTrigged==true) {
-    //   key='?'; // slow acceleration
-    //     keyReleased();
-  } 
-
 
   if  (measure>=24 && measure<=38 ) {// measure>=41 && measure<=42
     //    autoNote2(); mis dans la vers FIVE
@@ -631,7 +625,7 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
       (note4>73 && note4<75 && velocity4>=1 && velocity4<=64)|| (note5>73 && note5<75 && velocity5>=1 && velocity5<=64)|| (note6>73 && note6<75 && velocity6>=1 && velocity6<=64)
       )) {
 
-      oscillatorBlocked=6; 
+      oscillatorBlocked=networkSize; 
       key='f'; 
       keyReleased();//i= 105
       ///   key='f'; 
@@ -736,10 +730,8 @@ void  autoNote2() {//1 61 63 64 66 85
       //  keyReleased(); //u=117
 
 
-      print ("formerEvent[167] INSIDE ");  
-      print ("formerEvent[167] INSIDE ");  
-      print ("formerEvent[167] INSIDE ");   
-      print ("formerEvent[167] INSIDE "); 
+      text  ("formerEvent[167] INSIDE " + formerEvent[167], 500, 700);  
+ 
       println (formerEvent[167]);
     }
 
@@ -1173,7 +1165,7 @@ void autoNote1() {//1 61 63 64 66 85
     ) 
   {
 
-    if  (measure>13 && measure<=14  && beatTrigged==true ) {// beatPrecised2=true
+    if  (measure==14  && beatTrigged==true ) {// beatPrecised2=true
       for (int i = 0; i < networkSize; i++) {
         key=CONTROL;
         keyReleased();
@@ -1182,16 +1174,11 @@ void autoNote1() {//1 61 63 64 66 85
         //   keyReleased();
       }
     }
-    if  (measure>23 && measure<=24  && beatTrigged==true ) {// beatPrecised2=true
-      for (int i = 0; i < networkSize; i++) {
-        key=CONTROL;
+    if  (measure==24  && beatTrigged==true ) {// beatPrecised2=true
+      key=CONTROL;
         keyReleased();
-
-        //   key='W'; 
-        //   keyReleased();
-      }
     }
-    if  (measure>40 && measure<=41  && beatTrigged==true  ) {// measure>=41 && measure<=42
+    if  (measure==41  && beatTrigged==true  ) {// measure>=41 && measure<=42
       for (int i = 0; i < networkSize; i++) {
         key='0';
         keyReleased();
@@ -1235,11 +1222,12 @@ void autoNote1() {//1 61 63 64 66 85
       (note1>63 && note1<65  && velocity1!=0)|| (note2>63 && note2<65 && velocity2!=0) || (note3>63 && note3<65 && velocity3!=0) || 
       (note4>63 && note4<65  && velocity4!=0)|| (note5>63 && note5<65 && velocity5!=0) || (note6>63 && note6<65 && velocity6!=0)
       )) {
+          formerEvent[64]=millis();
       key='f'; 
-      //     keyReleased(); //u=117
-      formerEvent[64]=millis();
-      print ("formerEvent[64] INSIDE"); 
-      println (formerEvent[64]);
+           keyReleased(); //u=117
+    
+      text("formerEvent[64] INSIDE" + formerEvent[64], 500, 700); 
+    
     }
 
     if (( measure<=40  && millis()>formerEvent[69]+900+d )&& // from Track1 and Track 0
@@ -1247,11 +1235,12 @@ void autoNote1() {//1 61 63 64 66 85
       (note1>68 && note1<70  && velocity1!=0)|| (note2>68 && note2<70 && velocity2!=0) || (note3>68 && note3<70 && velocity3!=0) || 
       (note4>68 && note4<70  && velocity4!=0)|| (note5>68 && note5<70 && velocity5!=0) || (note6>68 && note6<70 && velocity6!=0)
       )) {
+        formerEvent[69]=millis();
       //      key='r'; 
       keyReleased(); //u=117
-      formerEvent[69]=millis();
-      print ("formerEvent[69] INSIDE"); 
-      println (formerEvent[69]);
+    text("formerEvent[69] INSIDE" + formerEvent[69], 500, 700); 
+
+  
     }
     if (( measure>=123 && millis()>formerEvent[69]+100+d )&&
       (
