@@ -34,12 +34,14 @@ void autoNote1VelInf64() {
       ((note1 == 69 && velocity1 >= 1 && velocity1 <= 64) || (note2 == 69 && velocity2 >= 1 && velocity2 <= 64) ||
        (note3 == 69 && velocity3 >= 1 && velocity3 <= 64) || (note4 == 69 && velocity4 >= 1 && velocity4 <= 64) ||
        (note5 == 69 && velocity5 >= 1 && velocity5 <= 64) || (note6 == 69 && velocity6 >= 1 && velocity6 <= 64))) {
+   key = 'f';
+   keyReleased();
     formerEvent[69] = millis();
     print("formerEvent[69] INSIDE");
     println(formerEvent[69]);
   }
 
-if (measure <= 11 && millis() > formerEvent[72] + 350 + d && 
+  if (measure <= 11 && millis() > formerEvent[72] + 350 + d && 
    ((note1 == 72 && velocity1 >= 1 && velocity1 <= 64) || 
     (note2 == 72 && velocity2 >= 1 && velocity2 <= 64) || 
     (note3 == 72 && velocity3 >= 1 && velocity3 <= 64) || 
@@ -47,18 +49,19 @@ if (measure <= 11 && millis() > formerEvent[72] + 350 + d &&
     (note5 == 72 && velocity5 >= 1 && velocity5 <= 64) || 
     (note6 == 72 && velocity6 >= 1 && velocity6 <= 64))) {
 
-  key = 'U';
+  //key = 'U';
+  key = 'u';
   keyReleased();
   formerEvent[72] = millis();
   print("formerEvent[72] INSIDE");
   println(formerEvent[72]);
 }
 
-if (measure >= 12 && measure <= 12 && beatPrecised >= 4 && beatPrecisedTrigged == true) {
+  if (measure >= 12 && measure <= 12 && beatPrecised >= 4 && beatPrecisedTrigged == true) {
   // key='K';keyReleased();
-}
-
-if (measure >= 12 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
+   } 
+ 
+  if (measure >= 12 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
     ((note1 == 76 && velocity1 >= 1 && velocity1 <= 127) || 
     (note2 == 76 && velocity2 >= 1 && velocity2 <= 127) || 
     (note3 == 76 && velocity3 >= 1 && velocity3 <= 127) || 
@@ -74,9 +77,9 @@ if (measure >= 12 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
   keyReleased();
 
   formerEvent[76] = millis();
-}
+  }
 
-if (measure >= 24 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
+  if (measure >= 24 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
     ((note1 == 76 && velocity1 >= 1 && velocity1 <= 127) || 
     (note2 == 76 && velocity2 >= 1 && velocity2 <= 127) || 
     (note3 == 76 && velocity3 >= 1 && velocity3 <= 127) || 
@@ -94,10 +97,10 @@ if (measure >= 24 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
   keyReleased();
 
   formerEvent[76] = millis();
-}
+  }
 
   if  (measure==36 && beatTrigged==true  ) {// measure>=41 && measure<=42
-      for (int i = 0; i < networkSize; i++) {
+     // for (int i = 0; i < networkSize; i++) {
         key='a';
          keyReleased();
         key='0';
@@ -112,8 +115,8 @@ if (measure >= 24 && measure <= 34 && millis() > formerEvent[76] + 1000 &&
         keyReleased();
         key='o';
         keyReleased();
-      }
-    }
+    //  }
+  }
 
 
 if (measure > 11 && measure < 41 && millis() > formerEvent[72] + 350 + d - 300 &&

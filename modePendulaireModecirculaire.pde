@@ -553,9 +553,12 @@ void  modePendulaireModeCirculaire() {
     popMatrix();
    
   } 
+  rotate (HALF_PI);
          for (int i = 0; i < 3; i++)  {  
        String valueText[] =  displayEventFromKeyReleased (keyEvent);     
-    }  
+    } 
+  
+  rotate (-HALF_PI); 
   net.step(); 
   netG.step(); //Does it make any meaning?
   
