@@ -1,3 +1,17 @@
+String[] displayEventFromKeyReleased(String[] keyEvent) { 
+  for (int i = 0; i < keyEvent.length; i++) { 
+    text ( " keyEvent " + i + keyEvent[i], 500, 700+100*i); 
+  } 
+  return keyEvent;  // Returns an array of 3 ints: 20, 40, 60 
+}
+
+/*
+void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
+ {
+       text  (" eventToTrig " + eventToTrig[0], 500, 700);  
+        text  (" eventToTrig " + eventToTrig[1], 500, 700);  
+   }
+*/
 
 void trigBeatWithMeasure()
  {
@@ -319,8 +333,69 @@ void autmationWithMeasureAndNote() {
 }
 
 void autoNote1VelInf64() {//1 61 63 64 66 85 
-
  // keyPressedLFO();
+
+      if (( measure<=40 && millis()>formerEvent[67]+50+d )&&
+      (
+      (note1>66 && note1<68  && velocity1>=1 && velocity1<=64)|| (note2>66 && note2<68 && velocity2>=1 && velocity2<=64) || (note3>66 && note3<68 && velocity3>=1 && velocity3<=64) || 
+      (note4>66 && note4<68  && velocity4>=1 && velocity4<=64)|| (note5>66 && note5<68 && velocity5>=1 && velocity5<=64) || (note6>66 && note6<68 && velocity6>=1 && velocity6<=64)
+      )) {
+      //   key='E'; 
+          key='r'; 
+          keyReleased(); //u=117
+      formerEvent[67]=millis();
+      print ("formerEvent[67] INSIDE"); 
+      println (formerEvent[67]);
+     }
+
+      if ((( measure<41 ) && (millis()>formerEvent[74]+100)) &&
+      ((note1>73 && note1<75 && velocity1>=1 && velocity1<=64)|| (note2>73 && note2<75 && velocity2>=1 && velocity2<=64)|| (note3>73 && note3<75 && velocity3>=1 && velocity3<=64) ||
+      (note4>73 && note4<75 && velocity4>=1 && velocity4<=64)|| (note5>73 && note5<75 && velocity5>=1 && velocity5<=64)|| (note6>73 && note6<75 && velocity6>=1 && velocity6<=64)
+      )) {
+      key='r';
+      keyReleased();
+      key='r';
+      keyReleased();
+      formerEvent[74]=millis();
+    }
+
+
+     if (( measure<=15 && millis()>formerEvent[64]+950+d )&&
+      (
+      (note1>63 && note1<65  && velocity1>=1 && velocity1<=64)|| (note2>63 && note2<65 && velocity2>=1 && velocity2<=64) || (note3>63 && note3<65 && velocity3>=1 && velocity3<=64) || 
+      (note4>63 && note4<65  && velocity4>=1 && velocity4<=64)|| (note5>63 && note5<65 && velocity5>=1 && velocity5<=64) || (note6>63 && note6<65 && velocity6>=1 && velocity6<=64)
+      )) {
+      //    key='f'; 
+      //     keyReleased(); //u=117
+      formerEvent[64]=millis();
+      print ("formerEvent[64] INSIDE"); 
+      println (formerEvent[64]);
+    }
+
+     if (( measure<=40  && millis()>formerEvent[69]+900+d )&& // from Track1 and Track 0
+      (
+      (note1>68 && note1<70  && velocity1>=1 && velocity1<=64)|| (note2>68 && note2<70 && velocity2>=1 && velocity2<=64) || (note3>68 && note3<70 && velocity3>=1 && velocity3<=64) || 
+      (note4>68 && note4<70  && velocity4>=1 && velocity4<=64)|| (note5>68 && note5<70 && velocity5>=1 && velocity5<=64) || (note6>68 && note6<70 && velocity6>=1 && velocity6<=64)
+      )) {
+      //      key='r'; 
+      //   keyReleased(); //u=117
+      formerEvent[69]=millis();
+      print ("formerEvent[69] INSIDE"); 
+      println (formerEvent[69]);
+    }
+
+
+     if (( measure<=11 && millis()>formerEvent[72]+350+d )&& //250 to adjust with 172 (the other hand of mad rush)
+      ((note1>71 && note1<73  && velocity1>=1 && velocity1<=64)|| (note2>71 && note2<73 && velocity2>=1 && velocity2<=64) || (note3>71 && note3<73 && velocity3>=1 && velocity3<=64) ||
+      (note4>71 && note4<73  && velocity4>=1 && velocity4<=64)|| (note5>71 && note5<73 && velocity5>=1 && velocity5<=64) || (note6>71 && note6<73 && velocity6>=1 && velocity6<=64)
+      )) {
+
+      key='U';//i= 105 
+      keyReleased(); 
+      formerEvent[72]=millis();
+      print ("formerEvent[72] INSIDE"); 
+      println (formerEvent[72]);
+    }
 
 
  // if (((formerSartKey!='a')) 
@@ -403,42 +478,7 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
       }
     }
     //%ADMAD
-    if (( measure<=40 && millis()>formerEvent[67]+50+d )&&
-      (
-      (note1>66 && note1<68  && velocity1>=1 && velocity1<=64)|| (note2>66 && note2<68 && velocity2>=1 && velocity2<=64) || (note3>66 && note3<68 && velocity3>=1 && velocity3<=64) || 
-      (note4>66 && note4<68  && velocity4>=1 && velocity4<=64)|| (note5>66 && note5<68 && velocity5>=1 && velocity5<=64) || (note6>66 && note6<68 && velocity6>=1 && velocity6<=64)
-      )) {
-      //   key='E'; 
-          key='r'; 
-          keyReleased(); //u=117
-      formerEvent[67]=millis();
-      print ("formerEvent[67] INSIDE"); 
-      println (formerEvent[67]);
-    }
-
-    if (( measure<=15 && millis()>formerEvent[64]+950+d )&&
-      (
-      (note1>63 && note1<65  && velocity1>=1 && velocity1<=64)|| (note2>63 && note2<65 && velocity2>=1 && velocity2<=64) || (note3>63 && note3<65 && velocity3>=1 && velocity3<=64) || 
-      (note4>63 && note4<65  && velocity4>=1 && velocity4<=64)|| (note5>63 && note5<65 && velocity5>=1 && velocity5<=64) || (note6>63 && note6<65 && velocity6>=1 && velocity6<=64)
-      )) {
-      //    key='f'; 
-      //     keyReleased(); //u=117
-      formerEvent[64]=millis();
-      print ("formerEvent[64] INSIDE"); 
-      println (formerEvent[64]);
-    }
-
-    if (( measure<=40  && millis()>formerEvent[69]+900+d )&& // from Track1 and Track 0
-      (
-      (note1>68 && note1<70  && velocity1>=1 && velocity1<=64)|| (note2>68 && note2<70 && velocity2>=1 && velocity2<=64) || (note3>68 && note3<70 && velocity3>=1 && velocity3<=64) || 
-      (note4>68 && note4<70  && velocity4>=1 && velocity4<=64)|| (note5>68 && note5<70 && velocity5>=1 && velocity5<=64) || (note6>68 && note6<70 && velocity6>=1 && velocity6<=64)
-      )) {
-      //      key='r'; 
-      //   keyReleased(); //u=117
-      formerEvent[69]=millis();
-      print ("formerEvent[69] INSIDE"); 
-      println (formerEvent[69]);
-    }
+   
     if (( measure>=123 && millis()>formerEvent[69]+100+d )&&
       (
       (note1>68 && note1<70  && velocity1>=1 && velocity1<=64)|| (note2>68 && note2<70 && velocity2>=1 && velocity2<=64) || (note3>68 && note3<70 && velocity3>=1 && velocity3<=64) || 
@@ -480,17 +520,7 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
     }
 
 
-    if (( measure<=11 && millis()>formerEvent[72]+350+d )&& //250 to adjust with 172 (the other hand of mad rush)
-      ((note1>71 && note1<73  && velocity1>=1 && velocity1<=64)|| (note2>71 && note2<73 && velocity2>=1 && velocity2<=64) || (note3>71 && note3<73 && velocity3>=1 && velocity3<=64) ||
-      (note4>71 && note4<73  && velocity4>=1 && velocity4<=64)|| (note5>71 && note5<73 && velocity5>=1 && velocity5<=64) || (note6>71 && note6<73 && velocity6>=1 && velocity6<=64)
-      )) {
-
-      key='U';//i= 105 
-      keyReleased(); 
-      formerEvent[72]=millis();
-      print ("formerEvent[72] INSIDE"); 
-      println (formerEvent[72]);
-    }
+   
 
     if (( measure>11 && measure<41 && millis()>formerEvent[72]+350+d-300 )&& //250 to adjust with 172 (the other hand of mad rush)
       ((note1>71 && note1<73  && velocity1>=1 && velocity1<=64)|| (note2>71 && note2<73 && velocity2>=1 && velocity2<=64) || (note3>71 && note3<73 && velocity3>=1 && velocity3<=64) ||
@@ -516,6 +546,7 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
      formerEvent[72]=millis();
      }
      */
+     
     if (( measure>25 && measure<35 && millis()>formerEvent[70]+300 )&& // from Track1 and Track 0
       (
       (note1>69 && note1<71  && velocity1>=1 && velocity1<=64)|| (note2>69 && note2<71 && velocity2>=1 && velocity2<=64) || (note3>69 && note3<71 && velocity3>=1 && velocity3<=64) || 
@@ -610,16 +641,7 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
 
 
 
-    if ((( measure<41 && measure<41) && (millis()>formerEvent[74]+100)) &&
-      ((note1>73 && note1<75 && velocity1>=1 && velocity1<=64)|| (note2>73 && note2<75 && velocity2>=1 && velocity2<=64)|| (note3>73 && note3<75 && velocity3>=1 && velocity3<=64) ||
-      (note4>73 && note4<75 && velocity4>=1 && velocity4<=64)|| (note5>73 && note5<75 && velocity5>=1 && velocity5<=64)|| (note6>73 && note6<75 && velocity6>=1 && velocity6<=64)
-      )) {
-      key='r';
-      keyReleased();
-      key='r';
-      keyReleased();
-      formerEvent[74]=millis();
-    }
+  
     if (( measure>61 && measure<78 && millis()>formerEvent[74]+200) &&  // wiat 200 ms before consideration of the next event 74. Here is note 74
       ((note1>73 && note1<75 && velocity1>=1 && velocity1<=64)|| (note2>73 && note2<75 && velocity2>=1 && velocity2<=64)|| (note3>73 && note3<75 && velocity3>=1 && velocity3<=64) ||
       (note4>73 && note4<75 && velocity4>=1 && velocity4<=64)|| (note5>73 && note5<75 && velocity5>=1 && velocity5<=64)|| (note6>73 && note6<75 && velocity6>=1 && velocity6<=64)
@@ -633,73 +655,33 @@ void autoNote1VelInf64() {//1 61 63 64 66 85
       formerEvent[74]=millis();
     }
 
-    if  ( measure<78 && millis()>formerEvent[75]+0+d &&
 
-      ((note1>73+1 && note1<75+1 && velocity1>=1 && velocity1<=64)|| (note2>73+1 && note2<75+1 && velocity2>=1 && velocity2<=64) || (note3>73+1 && note3<75+1 && velocity3>=1 && velocity3<=64) ||
-      (note4>73+1 && note4<75+1 && velocity4>=1 && velocity4<=64)|| (note5>73+1 && note5<75+1 && velocity5>=1 && velocity5<=64) || (note6>73+1 && note6<75+1 && velocity6>=1 && velocity6<=64)
-      )) {
-
-      //  key='k'; 
-      //  keyReleased();//i= 105
-
-      formerEvent[75]=millis();
-    }
-
-
-
-    if  (note1>65 && note1<67 && velocity1 >79  && velocity1 <81) {
-
-      //     key='J'; keyReleased();
-    }
-    if  (note1>73 && note1<75 && velocity1 >79  && velocity1 <81) {//
-      //   key='f'; keyReleased();
-      //      key='K'; keyReleased();
-
-
-
-      if  (   (note1>59 && note1<61 && velocity1 >95 && velocity1 <97) || (note2>59 && note2<61 && velocity2 >95 && velocity2 <97)) {
-        //       if  (note1<1){
-        //  key='p'; keyReleased();
-        //    formerFrame=millis();
-
-        //   key='p'; 
-        //   keyReleased();//p=112;
-        //   formerEvent[60]=millis();
-
-        //    key='d'; keyReleased();
-        //     formerKey=key;
-
-        // doNothing();
-      }   
-
-      if  (   (note1>75 && note1<77) || (note2>75 && note2<77)  ) {
-
-        //   key='d'; 
-        //   keyReleased();//d=100;
-        formerEvent[76]=millis();
-      }
-      if  (note2>82 && note2<84 || note1>82 && note1<84) {
-
-        //   key='f'; 
-        //   keyReleased();//f=102
-        formerEvent[83]=millis();
-        //    key='g'; keyReleased();
-        //     key='g'; keyReleased();
-        //    doNothing();
-      }
-    }
   }
 }
 
 
 void  autoNote2() {//1 61 63 64 66 85 
  // keyPressedLFO();
+  keyEvent[0]= " 0 ";
+  //keyEvent[1]= " 0 ";
+          keyEvent[1]= " i No Pressed " + formerEvent[172] ;
 
-  print (millis()); 
-  print (" auto2  formerEvent[167]  "); 
-  print (formerEvent[167]);
-  print (" auto2  formerEvent[172]  "); 
-  println (formerEvent[172]);
+  keyEvent[2]= " 0 ";
+  keyEvent[3]= " 0 ";
+  d=0;
+  
+    if (( measure<=5 && millis()>formerEvent[172]+150+d)&&
+      ((note1==72  && velocity1==96 )|| (note2==72  && velocity2==96 )||
+       (note3==72  && velocity3==96 ))) {
+        formerEvent[172]=millis();
+        key='i';//i= 105 
+        keyReleased();
+        keyEvent[1]= " i Pressed " + formerEvent[172] ;
+      oscillatorBlocked=networkSize%2;
+   
+   eventToTrig[1]= " formerEvent[172] INSIDE i ";
+println (eventToTrig[1]);
+    }
 
   if ((formerSartKey!='L') 
     ) 
@@ -734,16 +716,18 @@ void  autoNote2() {//1 61 63 64 66 85
  
       println (formerEvent[167]);
     }
-
-    if (( measure<=40 && millis()>formerEvent[169]+1000+d)&&
-      ((note1>68 && note1<70  && velocity1>=96 && velocity1<=96)|| (note2>68 && note2<70 && velocity2>=96 && velocity2<=96) || (note3>68 && note3<70 && velocity3>=96 && velocity3<=96))) {
-
-      key='E'; //E=69
+     
+    if (( measure<=40 && millis()>formerEvent[169]+10+d) &&
+      ((note1==69  && velocity1==96)|| (note2>68 && note2<70 && velocity2>=96 && velocity2<=96) || (note3>68 && note3<70 && velocity3>=96 && velocity3<=96))) {
+      formerEvent[169]=millis();
+      key='p'; //E=69
       keyReleased(); //u=117
-      formerEvent[169]=millis(); 
-
-      print ("formerEvent[169] INSIDE ");  
-      println (formerEvent[169]);
+    //  eventToTrig[0]= " formerEvent[169] INSIDE p ";
+       keyEvent[0]= " formerEvent[169] INSIDE p ";
+   //   displayDebugWhenKeyReleased ( " formerEvent[169] INSIDE p ");
+      text  ("formerEvent[169] INSIDE " + formerEvent[167], 500, 700);  
+      println (" formerEvent[160] INSIDE " + formerEvent[167]);
+;
     } 
 
     if (( measure>40 && measure<75 && millis()>formerEvent[169]+450+d)&&
@@ -788,21 +772,6 @@ void  autoNote2() {//1 61 63 64 66 85
 
 
 
-    if (( measure<=5 && millis()>formerEvent[172]+300+d)&&
-      ((note1>71 && note1<73  && velocity1>=96 && velocity1<=96 )|| (note2>71 && note2<73 && velocity2>=96 && velocity2<=96) || (note3>71 && note3<73 && velocity3>=96 && velocity3<=96))) {
-
-      //   key='i';//i= 105 
-      oscillatorBlocked=networkSize%2;
-      //     key='d';
-      //   key='f'; //f=102;
-      //  keyReleased();
-      formerEvent[172]=millis();
-      print ("formerEvent[172] INSIDE ");  
-      print ("formerEvent[172] INSIDE ");  
-      print ("formerEvent[172] INSIDE ");  
-      print ("formerEvent[172] INSIDE "); 
-      println (formerEvent[172]);
-    }
     if ((( measure>40 && measure<61) && (millis()>formerEvent[172]+100+d) && //200
       ((note1>71 && note1<73  && velocity1>=96 && velocity1<=96 )|| (note2>71 && note2<73 && velocity2>=96 && velocity2<=96) || (note3>71 && note3<73 && velocity3>=96 && velocity3<=96)))) {
       //   key='t'; keyReleased();//i= 105   

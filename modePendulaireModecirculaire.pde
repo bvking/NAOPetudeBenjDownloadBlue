@@ -1,4 +1,6 @@
 void  modePendulaireModeCirculaire() {
+
+
   for (int i = 0; i <networkSize-0; i++) {
    
     pushMatrix();
@@ -549,8 +551,14 @@ void  modePendulaireModeCirculaire() {
 
    }                                                                                                                                                                                                                                                                                                                                                                                                                                    
     popMatrix();
-  
-  }  
+   
+
+ 
+
+  } 
+         for (int i = 0; i < 3; i++)  {  
+       String valueText[] =  displayEventFromKeyReleased (keyEvent);     
+    }  
   net.step(); 
   netG.step(); //Does it make any meaning?
   

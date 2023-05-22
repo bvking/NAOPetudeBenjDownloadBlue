@@ -1,5 +1,5 @@
 void displayNoteandPotarFromAbleton(){ 
-string1.display(ver_move1);
+  string1.display(ver_move1);
   string2.display(ver_move2);
   string3.display(ver_move3);
   string4.display(ver_move4);

@@ -351,10 +351,16 @@ void keyReleased() {
   } 
    } 
 
+
   else if ( keyMode == " trigEventWithAbletonSignal " )  {  
   if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
           text (" trigEventWithAbletonSignal ", 0, 200 );
+        //  displayDebugWhenKeyReleased (eventToTrig[]);
 
+        for (int i = 0; i < 3; i++)  {  
+       String valueText[] =  displayEventFromKeyReleased (keyEvent);
+         
+    } 
      phasePattern(); //same as $
    } 
   }

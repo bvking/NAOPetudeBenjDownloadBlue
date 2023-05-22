@@ -10,6 +10,9 @@ int networkSize = 6;
 int nbBalls=networkSize;
 
 String music_from_ableton_live;
+String [] eventToTrig = {"0","0","0","0"};
+String [] keyEvent = {" bla "," bli ","0","0"};
+
 
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];

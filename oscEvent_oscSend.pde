@@ -407,8 +407,8 @@ void printMidiNoteVelocity() {
     println (velocity7);
   }
 
-  //  print ("measure "); println (measure);
-
+  textSize (120);
+   translate (400, 0);
   //  if  (1!=0) {
   if  (velocity1>0) {
     rotate (PI/2);
