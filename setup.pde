@@ -12,7 +12,7 @@ int nbBalls=networkSize;
 String music_from_ableton_live;
 String [] eventToTrig = {"0","0","0","0"};
 String [] keyEvent = {" bla "," bli ","0","0"};
-
+float [] triggedSignFromAbleton = new float [networkSize];
 
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
@@ -868,9 +868,9 @@ formerKeyMetro = '$';
 keyMode = " trigEventWithAbletonSignal ";   
 
 
-//music_from_ableton_live = " pleasureKraft ";
-//positionMov = " premierePartie "; 
-music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
+music_from_ableton_live = " pleasureKraft ";
+positionMov = " premierePartie "; 
+//music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
 k=0; // phaseShifting
 oscillatorBlocked = networkSize-1;
 memoryi = networkSize-1;

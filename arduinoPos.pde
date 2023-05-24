@@ -251,6 +251,8 @@ void arduinoPos() {
         } else  TrigmodPos[i]=1;
       } 
 
+    //   DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
+       ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];
    //    DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
        ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];//+positionMotorisedFromContinuesMod[i];
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);

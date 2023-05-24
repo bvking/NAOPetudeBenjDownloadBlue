@@ -165,17 +165,14 @@ keyMode = " propagationBallRotationBis ";
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapDataToMotor();
-     for (int i = 0; i < networkSize-0; i+=1) {
-   positionMotorisedFromContinuesMod[i]=DataToDueCircularVirtualPosition[i];
-     }
 
      
      
   //  
 
  
- formerFormerKey= formerKey;   
- formerKey=key;
+// formerFormerKey= formerKey;   
+// formerKey=key;
  
  }
 

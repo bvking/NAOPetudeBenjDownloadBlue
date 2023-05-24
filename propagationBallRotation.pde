@@ -9,8 +9,8 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
 // modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
- modeStartKeyToFollow = " null ";
- keyMode = " propagationBallRotation ";
+ //modeStartKeyToFollow = " null ";
+// keyMode = " propagationBallRotation ";
 
 
      textSize (75);

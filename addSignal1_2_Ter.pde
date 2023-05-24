@@ -3,9 +3,7 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
      
    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
         
-           keyCode = ALT; key = 'v'; // key 
-       //    key ='0'; keyReleased();
-        //   formerKeyMetro = '*';
+           keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
 
          //  moveKeys[8]=true;
          //  moveKeys[12]=true;
@@ -44,6 +42,11 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
     doZ=true;
     doQ=true;
     break;
+    
+    case '#': // change way of propagation
+    
+    break;
+
     }
 //*** splitTimeOriginal(10.0); //USELESS with propagation Mode
 // splitTimeQuater(30.0); // fonctionne pas
@@ -54,8 +57,19 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
 
 
   //*_  propagationMode();
-    splitTimeScale(50.0);
-     propagation2way();
+  //+++++ splitTimeScale(50.0);
+  //+++++ propagation2way();
+
+   propagationBallRotation();
+
+        
+   if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+        
+           keyCode = ALT; ; key = 'v'; ; // key 
+        keyMode = " trigEventWithAbletonSignal ";
+        trigEventWithAbletonSignal();
+        positionMov = " troisieme " ;
+          } 
 
 
   
@@ -67,8 +81,8 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
 
 
  
-// formerFormerKey= formerKey;   
-// formerKey=key;
+ formerFormerKey= formerKey;   
+ formerKey=key;
  }
 
 
