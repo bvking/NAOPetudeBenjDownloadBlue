@@ -57,7 +57,7 @@ void arduinoPos() {
     }
   }
 
-  if (keyMode != " propagationBallRotation ") {
+  if (keyMode == " truc ") {
 
   for (int i = 0; i < networkSize; i++) {
     print ( " net.pase " + i + " " + net.phase[i] );
@@ -578,12 +578,14 @@ void arduinoPos() {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
      if (positionMov != " troisieme ") {
+ //     teensyPos();
       send24DatasToTeensy6motors(2, 3, -3, -1);
   }
 
    //   send24DatasToTeensy6motors(22, 3, -3, -1);
 
       if (measure>=17 && measure<=41){
+      //  teensyPos();
        send24DatasToTeensy6motors(7, 3, -3, -1);
          }
 
@@ -594,7 +596,9 @@ void arduinoPos() {
    if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
    {
     if (measure<=3 )
-     {  send24DatasToTeensy6motors(5, -3, -3, -1);
+     { 
+   //   teensyPos(); 
+      send24DatasToTeensy6motors(5, -3, -3, -1);
      }
     }
   

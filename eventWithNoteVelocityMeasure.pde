@@ -59,7 +59,10 @@ void autmationWithMeasureAndNote() {
 
   //autoNote1VelInf64();
   //autoNote1();
- 
+  if (measure ==1 && beatPrecised == 1 && beatTrigged==true  ) { // && beatTrigged==true 
+ keyCode = CONTROL;
+ keyReleased();
+  } 
 
   if (measure<5 ) { // && beatTrigged==true 
     speedDelta=4; 

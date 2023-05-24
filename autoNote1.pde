@@ -1,4 +1,31 @@
 void autoNote1() { //NOT USE 64 67 69 72 73 74 75
+
+    if ((measure <= 40 && millis() > formerEvent[67] + 50 + d) &&
+       ((note1 == 67 && velocity1 != 0) || (note2 == 67 && velocity2 != 0) || (note3 == 67 && velocity3 != 0) ||
+        (note4 == 67 && velocity4 != 0) || (note5 == 67 && velocity5 != 0) || (note6 == 67 && velocity6 != 0))) {
+      formerEvent[67] = millis();
+       keyReleased();
+      
+    text("formerEvent[67] INSIDE" + formerEvent[67], 500, 700);
+
+    }
+
+    if ((measure <= 15 && millis() > formerEvent[64] + 350 + d) &&
+       ((note1 == 64 && velocity1 != 0) || (note2 == 64 && velocity2 != 0) || (note3 == 64 && velocity3 != 0) ||
+        (note4 == 64 && velocity4 != 0) || (note5 == 64 && velocity5 != 0) || (note6 == 64 && velocity6 != 0))) {
+      formerEvent[64] = millis();
+      key = 'f';
+      keyReleased();
+      text("formerEvent[64] INSIDE" + formerEvent[64], 500, 700);
+    }
+
+    if ((measure <= 40 && millis() > formerEvent[69] + 900 + d) &&
+        ((note1 == 69 && velocity1 != 0) || (note2 == 69 && velocity2 != 0) || (note3 == 69 && velocity3 != 0) ||
+         (note4 == 69 && velocity4 != 0) || (note5 == 69 && velocity5 != 0) || (note6 == 69 && velocity6 != 0))) {
+      formerEvent[69] = millis();
+      keyReleased();
+      text("formerEvent[69] INSIDE" + formerEvent[69], 500, 700);
+    }
   
     if (measure == 14 && beatTrigged == true) {
           key = CONTROL;
@@ -29,32 +56,7 @@ void autoNote1() { //NOT USE 64 67 69 72 73 74 75
         // ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
       }
     }
-    if ((measure <= 40 && millis() > formerEvent[67] + 50 + d) &&
-       ((note1 == 67 && velocity1 != 0) || (note2 == 67 && velocity2 != 0) || (note3 == 67 && velocity3 != 0) ||
-        (note4 == 67 && velocity4 != 0) || (note5 == 67 && velocity5 != 0) || (note6 == 67 && velocity6 != 0))) {
-      formerEvent[67] = millis();
-       keyReleased();
-      
-    text("formerEvent[67] INSIDE" + formerEvent[67], 500, 700);
-
-    }
-
-    if ((measure <= 15 && millis() > formerEvent[64] + 350 + d) &&
-       ((note1 == 64 && velocity1 != 0) || (note2 == 64 && velocity2 != 0) || (note3 == 64 && velocity3 != 0) ||
-        (note4 == 64 && velocity4 != 0) || (note5 == 64 && velocity5 != 0) || (note6 == 64 && velocity6 != 0))) {
-      formerEvent[64] = millis();
-      key = 'f';
-      keyReleased();
-      text("formerEvent[64] INSIDE" + formerEvent[64], 500, 700);
-    }
-
-    if ((measure <= 40 && millis() > formerEvent[69] + 900 + d) &&
-        ((note1 == 69 && velocity1 != 0) || (note2 == 69 && velocity2 != 0) || (note3 == 69 && velocity3 != 0) ||
-         (note4 == 69 && velocity4 != 0) || (note5 == 69 && velocity5 != 0) || (note6 == 69 && velocity6 != 0))) {
-      formerEvent[69] = millis();
-      keyReleased();
-      text("formerEvent[69] INSIDE" + formerEvent[69], 500, 700);
-    }
+    
 
     if (measure >= 123 && millis() > formerEvent[69] + 100 + d &&
    ((note1 == 69 && velocity1 != 0) || (note2 == 69 && velocity2 != 0) || (note3 == 69 && velocity3 != 0) ||

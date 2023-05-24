@@ -620,7 +620,8 @@ for (int i = 0; i < networkSize; i++) {
      modePendulaireModeCirculaire();
     if (circularMov==true) {
     countRevs(); 
-     }  
+     } 
+    teensyPos(); 
     arduinoPos();
    
 
