@@ -57,10 +57,10 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
 
 
   //*_  propagationMode();
-  //+++++ splitTimeScale(50.0);
-  //+++++ propagation2way();
+  //splitTimeScale(50.0); // NOOOOO TAP key b ?
+  //propagation2way();
 
-   propagationBallRotation();
+   propagationBallRotation();  // OK
 
         
    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {

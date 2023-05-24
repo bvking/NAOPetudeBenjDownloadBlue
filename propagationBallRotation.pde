@@ -8,10 +8,6 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 */
 
 void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
-// modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
- //modeStartKeyToFollow = " null ";
-// keyMode = " propagationBallRotation ";
-
 
      textSize (75);
      text ("Change mode q, z, or stop progation with b ", -width-200, -height- 600 );
@@ -39,7 +35,8 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     key = '#';
     break;
     case 'z': // change way of propagation
-    doZ=true;
+   // doZ=true;
+    doZ=!doZ;
     doQ=true;
     break;
     case '#': // change way of propagation
@@ -239,7 +236,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
  void  splitTimeScale(float propagationSpeed) { 
    
 
-         signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1
+     //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1
          
       //   (if signal is sinusoidale we will see good propagation)
       
@@ -281,9 +278,9 @@ if (doZ==true   ){
   
        println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " signal[2] " + signal[2] + " oldSplitTime " + oldSplitTime + " splitTime " + splitTime );
 
-   timeLfo = ((int ) map (signal[2], 0, 1, 0, 1000)); // linear  pattern if signal [2] is linear
+   timeLfo = ((int ) map (signal[2], 0, 1, 0, 1000)); // linear  pattern of propagation if signal [2] is linear
  
-       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo );
+       text( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo , -400, 400);
         text (" oldSignalToSplit " + oldSplitTimeLfo + " splitTime " +   splitTimeLfo + " timeLFO " + timeLfo,  -width-200, +height );
 
    oldSplitTimeLfo=splitTimeLfo;
