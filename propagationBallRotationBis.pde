@@ -19,12 +19,12 @@ keyMode = " propagationBallRotationBis ";
 
 
      textSize (50);
-     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900+300 );
-     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800+300  );
-     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700+300 );
-     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600+300 );
-     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500+300   );
-     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400+300  );
+     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
+     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800-300  );
+     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700-300 );
+     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600-300 );
+     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500-300   );
+     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400-300  );
      text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
      
   
@@ -131,7 +131,7 @@ keyMode = " propagationBallRotationBis ";
        }
 
 
-      newPosXaddSignal[i]=phaseMapped[i];
+    //  newPosXaddSignal[i]=phaseMapped[i];  // realign Balls
  
   }
   
@@ -374,7 +374,7 @@ void lockOscillatorToPositionFromPreviousProagedBall() {
     int m = (l - 1 <= -1) ? networkSize - 1 : l - 1;
     
     if (propagationTrigged || !propagationTrigged) {
-      if (newPosXaddSignal[i] % TWO_PI < 0) {
+      if (newPosXaddSignal[i] < 0) {
         phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
         dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0));
         netPhaseBase[i] = map(dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
@@ -391,7 +391,7 @@ void lockOscillatorToPositionFromPreviousProagedBall() {
       // phaseMappedFollow[i] = netPhaseBase[i];
       // phaseMappedFollow[p]= phaseMappedFollow[p]%TWO_PI;
     }
-    
+
    /* //------- to add2 more locked ball
     LFO[l] = LFO[l] % TWO_PI;
     dataMappedForMotor[l] = int(map(LFO[l], 0, TWO_PI, 0, numberOfStep));

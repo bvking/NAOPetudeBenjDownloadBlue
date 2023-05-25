@@ -1,6 +1,6 @@
 void teensyPos(){
 
-    if (modeStartKeyToFollow == " null ") {  
+    if (modeStartKeyToFollow == " null ") {    // when propagationBall
     
   for (int i = 0; i < networkSize; i++) {  
  //   DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
@@ -47,7 +47,6 @@ void teensyPos(){
 void mapNewPosX() {
   text ( " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 800);
 
-
     for (int i = 0; i <  networkSize-0; i+=1) { 
     newPosXaddSignal[i]%=TWO_PI;
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
@@ -62,8 +61,6 @@ void mapNewPosX() {
 
 
     // map depending way of rotation
-
-   
 
       for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
    //  if ( newPosXaddSignal[i]>0 )  {
@@ -80,11 +77,6 @@ void mapNewPosX() {
    //  newPosF[i]=positionToMotor[i]%6400;
    }
    // }
-    
-
-    
-    
-    
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
 
@@ -111,9 +103,8 @@ void mapNewPosX() {
     if ( (newPosF[i]>oldPosF[i]) && (oldPosF[i]<oldOldPosF[i])){ 
          revLfo[i]--;
          TrigmodPos[i]=2;
-     
+
       }
-   //  }
     }
      
 
@@ -126,24 +117,18 @@ void mapNewPosX() {
      oldPosF[i]=newPosF[i];
      oldPosX[i]=newPosF[i];
 
-   
-   //  print (" revLFO "); print ( i); print ("  "); println (revLfo[i]);   
+  
      text ("revLFO ", -1600, height-500 - 75*i);
      text ( revLfo[i], -1400, height-500 - 75*i);
      }
      
      text (" mode " + keyMode + " signal2 " + signal[2] , -1600, height-300 );  
-     //text ( signal[2], -400, height-300);
 
-  
-     teensyPos();
-   //  oscSend(); // depend de arduinopos
-   //  assignMotorWithPosition();
+
      
     for (int i = 0; i < networkSize; i++) {
    //  DataToDueCircularVirtualPosition[i] = DataToDueCircularVirtualPosition[i]+ recordLastDataOfMotorPosition[i];
    }
 
- //  send24DatasToTeensy6motors( 10, 3, -3, -1);
   
 }

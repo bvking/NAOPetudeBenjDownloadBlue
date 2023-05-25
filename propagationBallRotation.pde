@@ -8,14 +8,15 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
 
-     textSize (75);
-     text ("Change mode q, z, or stop progation with b ", -width-200, -height- 600 );
-     text ("signal2 " +nf(signal[2], 0, 2) + " doQ " + doQ + " doZ " + doZ + " doB " + doB +  " dol " + dol , -width-200, -height- 500 );
- //    text ("signal3 " + signal[3], -width-200, -height- 400 );
-     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width-200, -height- 400 );
-     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width-200, -height- 300 );
-     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width-200, -height- 200 );
-     text (" propagationSpeed " + propagationSpeed + " key " + key, -width-200, -height- 100 );
+     textSize (50);
+       text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
+     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800-300  );
+     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700-300 );
+     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600-300 );
+     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500-300   );
+     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400-300  );
+     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
+     
      
      letter = key;   
 
@@ -72,7 +73,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
        }
 
-       newPosXaddSignal[i]=phaseMapped[i];
+          newPosXaddSignal[i]=phaseMapped[i];  // realign Balls ?
        }  
       }
 
