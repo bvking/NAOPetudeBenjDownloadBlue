@@ -368,27 +368,32 @@ void lockOscillatorToPositionFromPreviousProagedBall() {
   if (propagationTrigged) {
     int i = oscillatorChange;
     int h = (oscillatorChange + 1) % networkSize;
-    int j = (oscillatorChange - 1 <= -1) ? networkSize - 1 : oscillatorChange - 1;
+    int j;  
+    j= (oscillatorChange-1);
+    if (j<= -1){
+    j= networkSize-1;
+    }
+   // int j = (oscillatorChange - 1 <= -1) ? networkSize - 1 : oscillatorChange - 1;
     int k = (j - 1 <= -1) ? networkSize - 1 : j - 1;
     int l = (k - 1 <= -1) ? networkSize - 1 : k - 1;
     int m = (l - 1 <= -1) ? networkSize - 1 : l - 1;
     
     if (propagationTrigged || !propagationTrigged) {
       if (newPosXaddSignal[i] < 0) {
-        phaseKeptAtChange[j] = newPosXaddSignal[i] % TWO_PI;
+        phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
         dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0));
         netPhaseBase[i] = map(dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
       }
       else {
-        phaseKeptAtChange[j] = newPosXaddSignal[i] % TWO_PI;
-        dataMappedForMotor[i] = int(map(phaseKeptAtChange[j], 0, TWO_PI, 0, numberOfStep));
+        phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
+        dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, TWO_PI, 0, numberOfStep));
         netPhaseBase[i] = map(dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
       }
     }
     
     for (int p = 0; p < networkSize - 0; p += 1) {
       // phaseMappedFollow[i]= net.phase[i];// add offset given by pendularPattern
-      // phaseMappedFollow[i] = netPhaseBase[i]; NO
+     //  phaseMappedFollow[i] = netPhaseBase[i]; // NO
       // phaseMappedFollow[p]= phaseMappedFollow[p]%TWO_PI;
     }
 
