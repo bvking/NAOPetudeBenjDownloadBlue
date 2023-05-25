@@ -10,8 +10,10 @@ void teensyPos(){
     }
        send24DatasToTeensy6motors( 4, 3, -3, -1);
    }
- if (modeStartKeyToFollow != " null ") { 
-  for (int i = 0; i < networkSize; i++) {
+
+   if (modeStartKeyToFollow != " null ") { 
+
+ for (int i = 0; i < networkSize; i++) {
 
     //rev[i]=rev[0];
 

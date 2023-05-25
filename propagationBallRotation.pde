@@ -11,7 +11,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
      textSize (75);
      text ("Change mode q, z, or stop progation with b ", -width-200, -height- 600 );
-     text ("signal2 " +nf(signal[2], 0, 2) + " doQ " + doQ + " doZ " + doZ + " doB " + doB , -width-200, -height- 500 );
+     text ("signal2 " +nf(signal[2], 0, 2) + " doQ " + doQ + " doZ " + doZ + " doB " + doB +  " dol " + dol , -width-200, -height- 500 );
  //    text ("signal3 " + signal[3], -width-200, -height- 400 );
      text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width-200, -height- 400 );
      text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width-200, -height- 300 );
@@ -19,11 +19,19 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
      text (" propagationSpeed " + propagationSpeed + " key " + key, -width-200, -height- 100 );
      
   
-   if (key=='q' || key=='b' || key=='z' || key=='#' ) { // q == addsignal
+ // if (key=='q' || key=='b' || key=='z' || key=='#' ) { // q == addsignal
      letter = key;   
-     }
+  //   }
      
   switch(letter) {
+    case 'l': // way of propagation
+    dol=true;
+    break;
+    case 'L': // way of propagation
+    dol=false;
+    break;
+
+
     case 'q': // way of propagation
     doQ=true;
     doZ=false;
@@ -53,7 +61,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     
 
       for (int i = 0; i < networkSize-0; i+=1) {       
-       newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow  // +i*QUARTER_PI
+     //  newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // balls don't turn but propaged only
    //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
        phaseMapped[oscillatorChange]=   phaseMapped[oscillatorChange]+   LFO[oscillatorChange];     //      newPosXaddSignal[oscillatorChange];
@@ -71,6 +79,17 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        newPosXaddSignal[i]=phaseMapped[i];
        }  
       }
+
+   //lockOscillatorToPositionFromPreviousProagedBall();
+      //******** Lock last oscillator to the lastPhase
+
+      if (  propagationTrigged==true && dol==true) {
+      lockOscillatorToPositionFromPreviousProagedBall();
+      for (int i = 0; i < networkSize-0; i+=1) { 
+      phaseMappedFollow[i] = netPhaseBase[i];
+      phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
+      }
+     }
 
 
 
@@ -90,12 +109,16 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     
     // lockOscillatorToPositionFromPreviousProagedBall();
 
-     propagationSpeed=40;
+     propagationSpeed=30;
      splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
     propagation2way(); 
-    mapNewPosX();
+    mapNewPosX();   // transform data to count revolution
+  //  teensyPos(); // carefull with arduinoPos in the main
+
+
+
    for (int i = 0; i <  networkSize-0; i+=1) { 
  //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
   //  net.phase[i]%=TWO_PI;
@@ -103,9 +126,6 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
    // lockOscillatorToPositionFromPreviousProagedBall();
 
- 
- //formerFormerKey= formerKey;   
- //formerKey=key;
  }
  
  void propagation2way() { 
@@ -125,19 +145,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
      //  newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
       LFO[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
-   /*  
-    if (1==1){ 
-
-       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
-       LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
-
-       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
-       println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
-      
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-       // newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
-     }
-  */   
+   
      
     if (doB==true){ 
 
@@ -156,9 +164,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
  //   net.phase[i]%=TWO_PI;
     }
 ///////////////////// 
-  // mapNewPosX();
-  // modePendulaireModeCirculaire();
- //  send24DatasToTeensy6motors(5, -3, -3, -1);
+ 
 
  for (int k = 0; k < this.nbBalls; k++) 
     {    
@@ -234,53 +240,43 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
 }
 
  void  splitTimeScale(float propagationSpeed) { 
-   
+   propagationTrigged=false;
 
-     //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1
+ //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          
-      //   (if signal is sinusoidale we will see good propagation)
-      
-  //   signal[2]=   map (((cos  (frameCount / 100.0)*-1) %2), -1, 1, -TWO_PI, TWO_PI);  // sinusoida
- // signal[2]=   map (((cos  (frameCount / 100.0)*-1) %2), -1, 1, -1, 1);  // sinusoida
-   
+ 
          
     if (doZ==false  ){  // case q && timeLfo>=0
   if (oldSplitTimeLfo>splitTimeLfo){
- 
+      propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange+1;
    } 
 
-      oscillatorChange=oscillatorChange%networkSize;
-     if (oscillatorChange<=0) {
-    
-         oscillatorChange=0;
-         oldOscillatorChange=networkSize-1;
+       oscillatorChange=oscillatorChange%networkSize;
+  if (oscillatorChange<=0) {
+      oscillatorChange=0;
+      oldOscillatorChange=networkSize-1;
    } 
   }
   
-//    if (doZ==false && timeLfo<=0  ){ // doZ==true  // doZ==false with signal sinusoidale
-//   if (oldSplitTimeLfo<splitTimeLfo){ //  if (  oldSplitTimeLfo>splitTimeLfo){  //  if (oldSplitTimeLfo<splitTimeLfo)  signal sinusoidale
-if (doZ==true   ){ 
+    if (doZ==true   ){ 
   if (  oldSplitTimeLfo>splitTimeLfo){ 
-
-       oldOscillatorChange=oscillatorChange;
-
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange-1;
    } 
       if (oscillatorChange<=-1) {
-
         oldOscillatorChange=0;
-
         oscillatorChange=networkSize-1;
    }
   }       
   
-       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " signal[2] " + signal[2] + " oldSplitTime " + oldSplitTime + " splitTime " + splitTime );
+ //      println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " signal[2] " + signal[2] + " oldSplitTime " + oldSplitTime + " splitTime " + splitTime );
 
    timeLfo = ((int ) map (signal[2], 0, 1, 0, 1000)); // linear  pattern of propagation if signal [2] is linear
  
-       text( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo , -400, 400);
+  //     text( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo , -400, 400);
         text (" oldSignalToSplit " + oldSplitTimeLfo + " splitTime " +   splitTimeLfo + " timeLFO " + timeLfo,  -width-200, +height );
 
    oldSplitTimeLfo=splitTimeLfo;

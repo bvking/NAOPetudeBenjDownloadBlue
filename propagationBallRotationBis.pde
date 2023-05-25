@@ -30,12 +30,19 @@ keyMode = " propagationBallRotationBis ";
   
  //  if (key=='q' || key=='b' || key=='z' || key=='#' || key=='o' || key=='l'  ) { // q == addsignal
      letter = key;   
-//     }
+///    }
+
+    switch(key) {
+   case '#': // change way of propagation
+     letter = '#';
+    break;
+      }
      
   switch(letter) {
     case 'o': // way of rotation
     doo=!doo;
     key = '#';
+    
   //  return letter;
   
     break;
@@ -84,12 +91,8 @@ keyMode = " propagationBallRotationBis ";
   //  doB=!doB;
     }
 
-    switch(key) {
-   case '#': // change way of propagation
-    
-    break;
-      }
-//   key = '#';
+  
+  // key = '#';
    
     
  
@@ -103,7 +106,7 @@ keyMode = " propagationBallRotationBis ";
    if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
     
     println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
-        if (key == 'o' ) {
+        if (doo == true ) {
      //   signal[2]=- signal[2] ;
      for (int i = 0; i < networkSize-0; i+=1) { 
         newPosFollowed[i]=-newPosFollowed[i];
@@ -164,7 +167,7 @@ keyMode = " propagationBallRotationBis ";
    splitTimeScaleRotation(propagationSpeed);
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-  // mapNewPosX();
+   mapNewPosX(); // counter actived
 
  
  }
