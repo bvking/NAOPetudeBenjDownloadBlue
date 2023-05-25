@@ -428,7 +428,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
    if ( newPosXaddSignal[i]%TWO_PI<0){ 
       
 
-    phaseKeptAtChange[i]=newPosXaddSignal[h]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
+    phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
     dataMappedForMotor[i]= int (map ( phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0)); 
     
               println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
@@ -441,7 +441,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
        
    else
  
-       phaseKeptAtChange[i]=newPosXaddSignal[h]%TWO_PI;
+       phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;
               println (" > phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
 
      //  LFO[j] = LFO[j]%TWO_PI;
