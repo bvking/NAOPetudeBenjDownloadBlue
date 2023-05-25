@@ -180,7 +180,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          if (beatPrecised==3 && beatPrecisedTrigged==true  ){
       //  key = 'ç'; keyReleased();
         key = '°'; keyReleased();
-        keyCode = CONTROL;
+        keyCode = CONTROL; keyReleased();
        //    key = 'f'; keyReleased();
         }
        }
@@ -208,7 +208,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 // TYRANSITION
          if (measure>40  && measure<=42 ){
            if (beatPrecised==0 && measure==40  ){
-          key= '0';
+          key= '0'; keyReleased();
            if (beatPrecised!=0 && beatPrecisedTrigged==true  ){
                key = 'r'; keyReleased();
           }
@@ -223,8 +223,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        if (positionMov == " seconde " ){    // 58 to 68
 
     //   keyCode =ALT; keyPressed(); key = 'a'; keyPressed();
-        keyMode = " addSignalOneAndTwoTer ";
-        formerKeyMetro = '*';
+        keyMode = " propagationBallRotation ";
+     //   dol=true;
+     //   formerKeyMetro = '*';
       
       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
      
@@ -435,7 +436,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);
      text ( " beatPrecisedTrigged " + beatPrecisedTrigged + " freq  " + net.naturalFrequency[3] , 300, 1200);
      */
-    // phasePattern();  
+     phasePattern();  
      oldSplitTimeLfo = splitTimeLfo; 
 } 
 

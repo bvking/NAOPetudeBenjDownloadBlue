@@ -31,13 +31,13 @@ keyMode = " propagationBallRotationBis ";
  //  if (key=='q' || key=='b' || key=='z' || key=='#' || key=='o' || key=='l'  ) { // q == addsignal
      letter = key;   
 ///    }
-
+/*
     switch(key) {
    case '#': // change way of propagation
      letter = '#';
     break;
       }
-     
+*/  
   switch(letter) {
     case 'o': // way of rotation
     doo=!doo;
@@ -54,8 +54,8 @@ keyMode = " propagationBallRotationBis ";
  
     
     case 'l': // enable propagation or lock
-      dol=!dol;
-    key = '#';
+     dol=true;
+   // key = '#';
 
     break;
     case 'L': // disable propagation
@@ -376,19 +376,19 @@ void lockOscillatorToPositionFromPreviousProagedBall() {
     if (propagationTrigged || !propagationTrigged) {
       if (newPosXaddSignal[i] < 0) {
         phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
-        dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0));
+        dataMappedForMotor[i] = int(map(phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0));
         netPhaseBase[i] = map(dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
       }
       else {
         phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
-        dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, TWO_PI, 0, numberOfStep));
+        dataMappedForMotor[i] = int(map(phaseKeptAtChange[j], 0, TWO_PI, 0, numberOfStep));
         netPhaseBase[i] = map(dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
       }
     }
     
     for (int p = 0; p < networkSize - 0; p += 1) {
       // phaseMappedFollow[i]= net.phase[i];// add offset given by pendularPattern
-      // phaseMappedFollow[i] = netPhaseBase[i];
+       phaseMappedFollow[i] = netPhaseBase[i];  // position that propagtionRotation will follow
       // phaseMappedFollow[p]= phaseMappedFollow[p]%TWO_PI;
     }
 

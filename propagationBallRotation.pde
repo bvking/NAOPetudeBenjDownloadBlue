@@ -121,7 +121,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
   //  net.phase[i]%=TWO_PI;
     }
 
-   // lockOscillatorToPositionFromPreviousProagedBall();
+  
 
  }
  
