@@ -1,7 +1,6 @@
 boolean doB; // 
-/*
+/* usefull with gitHub
 String modeStartKeyToFollow, keyMode;
-     
 float phaseMapped [] =  new float  [networkSize]; 
 float newPosFollowed  [] =  new float  [networkSize]; 
 float phaseMappedFollow  [] =  new float  [networkSize]; 
@@ -18,12 +17,10 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
      text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width-200, -height- 200 );
      text (" propagationSpeed " + propagationSpeed + " key " + key, -width-200, -height- 100 );
      
-  
- // if (key=='q' || key=='b' || key=='z' || key=='#' ) { // q == addsignal
      letter = key;   
-  //   }
+
      
-  switch(letter) {
+    switch(letter) {
     case 'l': // way of propagation
     dol=true;
     break;
@@ -62,7 +59,6 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
       for (int i = 0; i < networkSize-0; i+=1) {       
      //  newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // balls don't turn but propaged only
-   //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
        phaseMapped[oscillatorChange]=   phaseMapped[oscillatorChange]+   LFO[oscillatorChange];     //      newPosXaddSignal[oscillatorChange];
    
@@ -80,7 +76,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        }  
       }
 
-   //lockOscillatorToPositionFromPreviousProagedBall();
+   
       //******** Lock last oscillator to the lastPhase
 
       if (  propagationTrigged==true && dol==true) {
@@ -109,7 +105,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     
     // lockOscillatorToPositionFromPreviousProagedBall();
 
-     propagationSpeed=30;
+     propagationSpeed=30; // useless if propagationSpeed comes from ableton Live
      splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 

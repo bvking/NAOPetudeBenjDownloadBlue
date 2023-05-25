@@ -163,7 +163,7 @@ keyMode = " propagationBallRotationBis ";
      }
 
 
-   propagationSpeed=70;
+   propagationSpeed=70; // useless if propagation comes from ableton Live
    splitTimeScaleRotation(propagationSpeed);
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
@@ -319,178 +319,90 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
              
 }
 
- void  splitTimeScaleRotation(float propagationSpeed) { 
-   
-
-    //     signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 TWO_PI
-     if (doo==true  ){      
-          signal[2] = -  signal[2]; //%1
-       }    
-      //   (if signal is sinusoidale we will see good propagation)
-      
-  //   signal[2]=   map (((cos  (frameCount / 100.0)*-1) %2), -1, 1, -TWO_PI, TWO_PI);  // sinusoida
- // signal[2]=   map (((cos  (frameCount / 100.0)*-1) %2), -1, 1, -1, 1);  // sinusoida
-   
-         
-    if (doZ==false  ){  // case q && timeLfo>=0
-      propagationTrigged=false;
-  if (oldSplitTimeLfo>splitTimeLfo){
-    
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-      propagationTrigged=true;
-   } 
-
-      oscillatorChange=oscillatorChange%networkSize;
-     if (oscillatorChange<=0) {
-    
-         oscillatorChange=0;
-         oldOscillatorChange=networkSize-1;
-   } 
+ void splitTimeScaleRotation(float propagationSpeed) {
+  if (doo) {
+    signal[2] = -signal[2];
   }
   
+  if (!doZ) {
+    propagationTrigged = false;
+    if (oldSplitTimeLfo > splitTimeLfo) {
+      oldOscillatorChange = oscillatorChange;
+      oscillatorChange++;
+      propagationTrigged = true;
+    }
+    
+    oscillatorChange %= networkSize;
+    if (oscillatorChange <= 0) {
+      oscillatorChange = 0;
+      oldOscillatorChange = networkSize - 1;
+    }
+  }
   
-//    if (doZ==false && timeLfo<=0  ){ // doZ==true  // doZ==false with signal sinusoidale
-//   if (oldSplitTimeLfo<splitTimeLfo){ //  if (  oldSplitTimeLfo>splitTimeLfo){  //  if (oldSplitTimeLfo<splitTimeLfo)  signal sinusoidale
-
-
-    if (doZ==true   ){ 
-   propagationTrigged=false;
-  if (  oldSplitTimeLfo>splitTimeLfo){ 
-
-       oldOscillatorChange=oscillatorChange;
-
-      oscillatorChange=oscillatorChange-1;
-       propagationTrigged=true;
-   } 
-      if (oscillatorChange<=-1) {
-
-        oldOscillatorChange=0;
-
-        oscillatorChange=networkSize-1;
-   }
-  }       
+  if (doZ) {
+    propagationTrigged = false;
+    if (oldSplitTimeLfo > splitTimeLfo) {
+      oldOscillatorChange = oscillatorChange;
+      oscillatorChange--;
+      propagationTrigged = true;
+    }
+    
+    if (oscillatorChange <= -1) {
+      oldOscillatorChange = 0;
+      oscillatorChange = networkSize - 1;
+    }
+  }
   
-
-   timeLfo = ((int ) map (signal[2], 0, 1, 0, networkSize*100)); // linear  pattern if signal [2] is linear
-      if (doo==true  ){      
-          timeLfo = -  timeLfo; //%1
-       } 
- 
-       text ( "   SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo, -width-200, +height-100  );
-        text (" oldSplitTimeLfo " + oldSplitTimeLfo + " splitTime " +   splitTimeLfo + " timeLFO " + timeLfo,  -width-200, +height );
-
-   oldSplitTimeLfo=splitTimeLfo;
-   splitTimeLfo= int  ((timeLfo)%100)+0;    // the time is splitted at each %100. That mean ten time from the beginning to the end of signal[2]. from 0 to 1.
-   
+  timeLfo = int(map(signal[2], 0, 1, 0, networkSize * 100));
+  if (doo) {
+    timeLfo = -timeLfo;
+  }
+  
+  text("SPLIT TIME timeLfoooooooooo " + splitTimeLfo + " timeLFO " + timeLfo, -width - 200, +height);
+  
+  oldSplitTimeLfo = splitTimeLfo;
+  splitTimeLfo = int((timeLfo) % 100) + 0;
 }
 
-  void lockOscillatorToPositionFromPreviousProagedBall() { 
-
-  if (propagationTrigged==true && propagationTrigged==true) { //  works always ?  formerFormerKey  == '#'
-//   oscillatorChanged=true;
+void lockOscillatorToPositionFromPreviousProagedBall() {
+  if (propagationTrigged) {
+    int i = oscillatorChange;
+    int h = (oscillatorChange + 1) % networkSize;
+    int j = (oscillatorChange - 1 <= -1) ? networkSize - 1 : oscillatorChange - 1;
+    int k = (j - 1 <= -1) ? networkSize - 1 : j - 1;
+    int l = (k - 1 <= -1) ? networkSize - 1 : k - 1;
+    int m = (l - 1 <= -1) ? networkSize - 1 : l - 1;
     
-  int i;
-  i= oscillatorChange;
-
-  int h;
-  h= oscillatorChange+1;
-  h%=networkSize;
-  
-  int j;  
-  j= (oscillatorChange-1);
-  if (j<= -1){
-  j= networkSize-1;
-  }
-  
-  int k;  
-  k= (j-1);
-  if (k<= -1){
-  k= networkSize-1;
-  }
-  
-  int l;  
-  l= (k-1);
-  if (l<= -1){
-  l= networkSize-1;
-  }
-  
-  int m;  
-  m= (l-1);
-  if (m<= -1){
-  m= networkSize-1;
-  }
-      
- // if (oscillatorChanged==true )  {  // just one frame to change
-    if (propagationTrigged==true || propagationTrigged==false )  { 
-    
-  //  if (  LFO[i]<0){  
-   if ( newPosXaddSignal[i]%TWO_PI<0){ 
-      
-
-    phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
-    dataMappedForMotor[i]= int (map ( phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0)); 
-    
-              println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-
-
-       netPhaseBase[i]= map (dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
-
-   
-  }
-       
-   else
- 
-       phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;
-              println (" > phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-
-     //  LFO[j] = LFO[j]%TWO_PI;
-       dataMappedForMotor[i]= (int) map (phaseKeptAtChange[i], 0, TWO_PI, 0, numberOfStep);
-
-       netPhaseBase[i]= map (dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
- 
-  
-   }
-    
- //   phaseMappedFollow[i]=netPhaseBase[i];    //  RECORD on oscillatorChange-1 the postion of oscillatorChange where it has just changed   //  phaseMappedFollow[oscillatorChange]= phaseKeptAtChange[oscillatorChange]; 
-
-
-
-/*
-         for (int p = 0; i < networkSize-0; i+=1) { 
-   // phaseMappedFollow[i]= net.phase[i];// add offset given by pendularPattern   
-  //  phaseMappedFollow[i] = netPhaseBase[i];
-    phaseMappedFollow[p]= phaseMappedFollow[p]%TWO_PI;  
+    if (propagationTrigged || !propagationTrigged) {
+      if (newPosXaddSignal[i] % TWO_PI < 0) {
+        phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
+        dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0));
+        netPhaseBase[i] = map(dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
+      }
+      else {
+        phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
+        dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, TWO_PI, 0, numberOfStep));
+        netPhaseBase[i] = map(dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
+      }
     }
-
-       LFO[l] = LFO[l]%TWO_PI;
-       dataMappedForMotor[l]= (int) map (LFO[l], 0, TWO_PI, 0, numberOfStep);
-            
-       netPhaseBase[l]= map (dataMappedForMotor[l], 0, numberOfStep, 0, TWO_PI);
- 
-
-
-       LFO[k] = LFO[k]%TWO_PI;
-       dataMappedForMotor[k]= (int) map (LFO[k], 0, TWO_PI, 0, numberOfStep);
- 
-      
-       netPhaseBase[k]= map (dataMappedForMotor[k], 0, numberOfStep, 0, TWO_PI);
-  */
-  //netPhaseBase[k] = netPhaseBase[k]-QUARTER_PI*0; // %TWO_PI;
-  //     netPhaseBase[k] %=TWO_PI;
-
-  //     netPhaseBase[j] = netPhaseBase[j]-QUARTER_PI*0; // %TWO_PI;
-  //     netPhaseBase[j] %=TWO_PI;
-       
-   //    dataMappedForMotor[j]= (int) map (netPhaseBase[j], 0, TWO_PI, 0, numberOfStep);
-  //     println (" phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-  //     netPhaseBase[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
-
-  //   oscillatorChanged=false;
- 
-   
-       println ("  phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-       println ("  phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
-     }
-   
-}  
+    
+    for (int p = 0; p < networkSize - 0; p += 1) {
+      // phaseMappedFollow[i]= net.phase[i];// add offset given by pendularPattern
+      // phaseMappedFollow[i] = netPhaseBase[i];
+      // phaseMappedFollow[p]= phaseMappedFollow[p]%TWO_PI;
+    }
+    
+   /* //------- to add2 more locked ball
+    LFO[l] = LFO[l] % TWO_PI;
+    dataMappedForMotor[l] = int(map(LFO[l], 0, TWO_PI, 0, numberOfStep));
+    netPhaseBase[l] = map(dataMappedForMotor[l], 0, numberOfStep, 0, TWO_PI);
+    
+    LFO[k] = LFO[k] % TWO_PI;
+    dataMappedForMotor[k] = int(map(LFO[k], 0, TWO_PI, 0, numberOfStep));
+    netPhaseBase[k] = map(dataMappedForMotor[k], 0, numberOfStep, 0, TWO_PI);
+     //------- to add2 more locked ball
+   // println("phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " ", phaseKeptAtChange[oscillatorChange]);
+   // println("phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " ", phaseKeptAtChange[oldOscillatorChange]);
+   */
+  }
+}
