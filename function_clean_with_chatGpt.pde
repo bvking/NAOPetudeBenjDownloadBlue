@@ -423,9 +423,10 @@ void trigFollowSignalSampled() {
   trigFollowSampling=false;
   }
 
- if (trigFollowSampling == true || trigFollowSampling==false  && modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {  // CHECK from old
-      print (" trigFollowSampling ");   println (trigFollowSampling); 
-
+ if (trigFollowSampling == true || trigFollowSampling==false  ) {  // CHECK from old
+ 
+  print (" trigFollowSampling ");   println (trigFollowSampling); 
+ if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) { 
   //   followSignalSampled(frameRatio); //no WORK with frame
     followSignalSampledOppositeWay(frameRatio);// with millis()
   
@@ -440,5 +441,6 @@ void trigFollowSignalSampled() {
     
     rotate(-PI/2);
  //  print (" in trig___(frameRatio) before and before arduinoPos "); countRevs();
-   }
-   }
+      }
+     }
+}

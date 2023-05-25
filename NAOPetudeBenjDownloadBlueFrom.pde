@@ -24,22 +24,14 @@ void draw() {
  displayArrays(); // Affichage des tableaux
  background(0);
 
-  textSize(50);
- for (int i = 0; i < networkSize; i++) {
- text ( " rev " + i + rev[i] + " enc " + i + " " + encodeur[i], -width*2, 0-50*i );
-   }
-
    if (frameCount ==5) noLoop();
 //  printDataOnScreen();
-  
-  
-  print (" BEGIN OF MAIN KEYCODE  ");   
+   print (" BEGIN OF MAIN KEYCODE  ");   
  
   printModeAndKey();
+  setKeyModeByTappingKeyPadOnce();
 
- setKeyModeByTappingKeyPadOnce();
-
- setMovement(key, false);
+  setMovement(key, false);
 
   println ( " music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed + "keyMode" +  keyMode + "formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern );
   keyModeRed = keyMode; // dont read keyMode in file.txt
@@ -85,7 +77,7 @@ void draw() {
    }
      
  
-   if (formerKeyMetro == 'B' ){
+    if (formerKeyMetro == 'B' ){
     lfoPattern();
     splitTimeLfo();
   //   splitWithTime();
@@ -100,13 +92,11 @@ void draw() {
   updateInternalClock();
 
    if (modeStartKeyToFollow == " samplingModeInternal "     ){ // || formerKeyMetro == 'J'
-
    handleInternalSamplingMode(); 
-
    }
 
-  //trigEffectToAbletonLive();  // add Size to Text
- //**************   END MODE SETTING   *************************
+   //trigEffectToAbletonLive();  // add Size to Text
+  //**************   END MODE SETTING   *************************
 
   formerAuto= frameCount-1;
   // see storeinput example to create sample
@@ -115,19 +105,14 @@ void draw() {
   displayNoteandPotarFromAbleton();
    
   computeAngularTimeSpeed(); 
-  
- 
-  
-
 //**  printDataOnScreen();
   differentFunction();
   displayOscillatorSpheres();
   //****************************
 
-
   trigFollowSignalSampled();
+  modePendulaireModeCirculaire();
 
-     modePendulaireModeCirculaire();
     if (circularMov==true) {
     countRevs(); 
      } 
@@ -162,7 +147,7 @@ void draw() {
   } 
 
   // option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left  
-  if (formerSartKey == '!' &&  TrigmodPos[networkSize-1]>=0 && TrigmodPos[networkSize-1]<1) { 
+  if (formerSartKey == '!' &&  TrigmodPos[networkSize-1]==0) { 
     println ("TRIG LIVE WITH oscillator 11 on LEFT" ); //
     startStop= 1;  
     print ("MOVEMENT AND TIMER is already started, now START LIVE: "); 
@@ -205,8 +190,6 @@ void draw() {
 
   oscSend();
   // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP   
-  // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP   
-  // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP
-  // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP
+ 
 }
 
