@@ -97,15 +97,15 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     propagation2way(); 
     mapNewPosX();
    for (int i = 0; i <  networkSize-0; i+=1) { 
-    net.phase[i]=newPosXaddSignal[i]; // to display to screen
-    net.phase[i]%=TWO_PI;
+ //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
+  //  net.phase[i]%=TWO_PI;
     }
 
    // lockOscillatorToPositionFromPreviousProagedBall();
 
  
- formerFormerKey= formerKey;   
- formerKey=key;
+ //formerFormerKey= formerKey;   
+ //formerKey=key;
  }
  
  void propagation2way() { 

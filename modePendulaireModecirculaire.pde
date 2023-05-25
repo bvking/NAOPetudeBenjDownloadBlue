@@ -38,8 +38,12 @@ void  modePendulaireModeCirculaire() {
       }
  //  metroPhase[i]=  metroPhase[i]-PI/2;
   //   metroPhase[i]%=TWO_PI;
+  if (keyMode != " propagationBallRotation ")  {  
+     if (keyMode != " propagationBallRotationBis ")  {  
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
+      } 
+     } 
     } 
 
 
@@ -122,10 +126,15 @@ void  modePendulaireModeCirculaire() {
         */
       }  
 
+     if (keyMode != " propagationBallRotation ")  {  
+     if (keyMode != " propagationBallRotationBis ")  {  
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
+      } 
+     } 
+    } 
     }
-   }
+   
 
     if ((formerKeyMetro == '$' || formerKeyMetro == '*' || formerKeyMetro == '@'  ) && (formerSartKey == 'w' || formerSartKey == 'W' ) ) {  // circular to pendular) //|| formerSartKey == 'w' || formerSartKey == 'W'
     if (keyMode != " truc " ) {   
@@ -215,31 +224,43 @@ void  modePendulaireModeCirculaire() {
  */       
       }  
 
+       if (keyMode != " propagationBallRotation ")  {  
+     if (keyMode != " propagationBallRotationBis ")  {  
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
+      } 
+     } 
+    } 
     }
-  }
+  
 
 
     if (formerKeyMetro == '£' || formerKeyMetro == '*' ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
       text ( " mapped to GENERAL CIRCULAR way 2$ ", 400, 900);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
-    }
+     if (keyMode != " propagationBallRotation ")  {  
+     if (keyMode != " propagationBallRotationBis ")  {  
+      x = displacement*cos(metroPhase[i]);
+      y = displacement*sin(metroPhase[i]);
+      } 
+     } 
+    } 
+    
 
     if (formerKeyMetro == 'J') { //USELLL play sample recorded with s
      text ( " mapped to J CIRCULAR or PENDULAR way 2$ ", 400, 1000);
 
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
+    if (keyMode != " propagationBallRotation ")  {  
+     if (keyMode != " propagationBallRotationBis ")  {  
+      x = displacement*cos(metroPhase[i]);
+      y = displacement*sin(metroPhase[i]);
+      } 
+     } 
+    } 
   
-    }
-    if (formerKeyMetro == 's') { //drive ball with lfo
+    
+    if (formerKeyMetro == 's' ) { //drive ball with lfo
          text ( " mapped to s CIRCULAR or PENDULAR way 2$ ", 400, 1100);
 
-
-      //    net.phase[i]=net.phase[i]+LFO[i];
-      //     net.phase[i]=LFO[i];
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
     }
@@ -436,7 +457,9 @@ void  modePendulaireModeCirculaire() {
   
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
-      fill (175, 100 , 175);    
+      fill (175, 100 , 175);  
+      x = displacement*cos(newPosXaddSignal[i]);  
+      y = displacement*sin(newPosXaddSignal[i]);
     //  x = displacement*cos(newPosF[i]);
     //  y = displacement*sin(newPosF[i]);
     //  x = displacement*cos(net.phase[i]);
@@ -563,4 +586,4 @@ void  modePendulaireModeCirculaire() {
   netG.step(); //Does it make any meaning?
   
     } 
-   //}  
+   
