@@ -31,6 +31,20 @@ float log10 (float x) {
   return (log(x) / log(10));
 }
 
+
+int timeToTrigSomething;
+int timeToTrigSomethingBis;
+boolean trigEffect;
+boolean trigEffectBis;
+
+int numFrame = 900;
+float LFOmemory[] = new float[numFrame];
+float Automation1[] = new float[numFrame];
+int formerAuto;
+
+String keyMode;
+boolean[] moveKeys = new boolean[99];
+
 int numberOfPointInterpolated= 2; 
 float []  interpolatedAngle = new float [numberOfPointInterpolated];
 float []  netPhaseBase  = new float [networkSize];
