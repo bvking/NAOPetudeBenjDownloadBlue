@@ -33,7 +33,7 @@ void propagationMode(){ // as addSignalOneAndTwoQuater() in NAOP
 
   propagation2wayXP();
 
-  mapDataToMotor(); // conversion en netphasei affichage
+  mapNewPosX(); // conversion en netphasei affichage
 
  for (int k = 0; k < this.nbBalls; k++) 
     {    

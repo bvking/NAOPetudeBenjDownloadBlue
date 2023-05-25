@@ -114,7 +114,7 @@ void addSignalOneAndTwoBis(){
        newPosXaddSignal[oscillatorChanging]= map (dataMappedForMotor[oscillatorChanging], 0, numberOfStep, 0, TWO_PI);
        
 ///////////////////// 
-mapDataToMotor();
+mapNewPosX();
 
 }
   

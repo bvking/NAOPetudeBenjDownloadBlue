@@ -75,7 +75,7 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
   
  //*+ propagation2way();
 
-   mapDataToMotor(); // conversion en netphasei affichage
+   mapNewPosX(); // conversion en netphasei affichage
 
  
 

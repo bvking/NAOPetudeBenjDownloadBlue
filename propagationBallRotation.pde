@@ -95,7 +95,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
     propagation2way(); 
-    mapDataToMotor();
+    mapNewPosX();
    for (int i = 0; i <  networkSize-0; i+=1) { 
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
     net.phase[i]%=TWO_PI;
@@ -117,7 +117,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
    if (doB!=true){ 
 
     //     LFO[oscillatorChange] =LFO[oscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
-       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*8+QUARTER_PI*1/2 ;  // on ajoute 
+       LFO[oscillatorChange] =  LFO[oldOscillatorChange]+QUARTER_PI*8+QUARTER_PI*1/2 ;  // on ajoute 
        LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
@@ -152,11 +152,11 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
      }
  
         for (int i = 0; i <  networkSize-0; i+=1) { 
-    net.phase[i]=newPosXaddSignal[i]; // to display to screen
-    net.phase[i]%=TWO_PI;
+ //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
+ //   net.phase[i]%=TWO_PI;
     }
 ///////////////////// 
-  // mapDataToMotor();
+  // mapNewPosX();
   // modePendulaireModeCirculaire();
  //  send24DatasToTeensy6motors(5, -3, -3, -1);
 

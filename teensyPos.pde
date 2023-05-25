@@ -42,8 +42,8 @@ void teensyPos(){
 
    }
 
-void mapDataToMotor() {
-  text (  keyMode, 800, 800);
+void mapNewPosX() {
+  text ( " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 800);
 
 
     for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -88,28 +88,30 @@ void mapDataToMotor() {
 
      TrigmodPos[i]=1;
       
-      if (net.oldPhase[i] > 0 && doo==false) {
+      if ( doo==false) { //
 
     if ( oldPosF[i]>newPosF[i]) { //
          revLfo[i]++;
          TrigmodPos[i]=0;
      
     }
-     }
-    
+     }  
    //  if ( oldPosF[i]>newPosF[i] ){  // && newPosXaddSignal[i]>-HALF_PI &&  newPosXaddSignal[i]< HALF_PI 
+    
     text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
+//   if ((doC==true && doo==true && doB!=true )!=true){  // A AMELIORER DANS PROPABIS
 
-    if ((doC==true && doo==true && doB!=true )!=true){  // A AMELIORER DANS PROPABIS
- textSize (100);
-    if (net.oldPhase[i] < 0 ) {
+     textSize (100);
+     
+   if ( doo==true){  // A AMELIORER DANS PROPABIS
+   // if (net.oldPhase[i] < 0 ) {
 
     if ( (newPosF[i]>oldPosF[i]) && (oldPosF[i]<oldOldPosF[i])){ 
          revLfo[i]--;
          TrigmodPos[i]=2;
      
       }
-     }
+   //  }
     }
      
 
@@ -123,17 +125,17 @@ void mapDataToMotor() {
      oldPosX[i]=newPosF[i];
 
    
-     print (" revLFO "); print ( i); print ("  "); println (revLfo[i]);   
-     text ("count", -1600, height-500 - 75*i);
+   //  print (" revLFO "); print ( i); print ("  "); println (revLfo[i]);   
+     text ("revLFO ", -1600, height-500 - 75*i);
      text ( revLfo[i], -1400, height-500 - 75*i);
      }
      
-     text (" mode " + keyMode , -1600, height-300 );  
-     text ( signal[2], -400, height-300);
+     text (" mode " + keyMode + " signal2 " + signal[2] , -1600, height-300 );  
+     //text ( signal[2], -400, height-300);
 
   
      teensyPos();
-     oscSend(); // depend de arduinopos
+   //  oscSend(); // depend de arduinopos
    //  assignMotorWithPosition();
      
     for (int i = 0; i < networkSize; i++) {
