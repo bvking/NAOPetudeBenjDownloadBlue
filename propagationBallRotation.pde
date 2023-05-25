@@ -8,8 +8,22 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
 
+  if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+        
+           keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
+
+         //  moveKeys[8]=true;
+         //  moveKeys[12]=true;
+        keyMode = " trigEventWithAbletonSignal ";
+        trigEventWithAbletonSignal();
+        positionMov = " troisieme " ;
+          } 
+
+
+
      textSize (50);
-       text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
+
+     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
      text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800-300  );
      text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700-300 );
      text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600-300 );
@@ -73,7 +87,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
        }
 
-          newPosXaddSignal[i]=phaseMapped[i];  // realign Balls ?
+         newPosXaddSignal[i]=phaseMapped[i];  // 
        }  
       }
 
