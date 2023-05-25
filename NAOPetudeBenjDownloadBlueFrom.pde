@@ -134,53 +134,23 @@ textSize(50);
 
   switchFonctionDependingKeyMode();
 
-    
-     
-      
-  
-//  addPhaseAllMode =net.phase[2] + net.phase[3] + net.phase[4] +net.phase[5]+net.phase[6]+net.phase[7]+net.phase[8]+net.phase[9]+net.phase[10]+net.phase[11];
-for (int i = 0; i < networkSize; i++) {
- 
-// addPhaseAllMode = addPhaseAllMode + net.phase[i];
-  }
-
-  print (" all automatik  "); println ( addPhaseAllMode);
-
-  addPhaseAllMode =net.phase[0] + net.phase[1] + net.phase[2] +net.phase[3]+net.phase[4]+net.phase[5];//+net.phase[8]+net.phase[9]+net.phase[10]+net.phase[11];
-  print (" all one by one "); println ( addPhaseAllMode);
-  addPhaseAllMode= map (addPhaseAllMode,-(networkSize-1)*TWO_PI,(networkSize-1)*TWO_PI,0,1); 
-  // addPhaseAllMode = 
-  print (" all "); println ( addPhaseAllMode);
-
+  computePhaseSum();
 
   formerBeatPrecised=beatPrecised;
   formerMeasure=measure;
   formerBeatOnMeasure=beatOnMeasure;
 
-
   if (modeStartKeyToFollow != " samplingModeInternal " )
    { 
-    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " )
-  { 
-  measure=(int) map (automation4*10, 0, 7.874016, 1, 1000); // mapping from Ableton measure
-  // measure=(int) map (automation4*10, 1,1000 , 1, 1000);
-  print ( " measure ");print ( measure);
-  print (" AUTOMATION 5= beatPrecised  "); 
-  beatPrecised=(int) map (automation5*10, 0, 7.874016, 1, 1000); //  mapping from Ableton step in measure
- //  beatPrecised=(int) map (automation5*10, 1,1000 , 1, 1000);
-  println (beatPrecised);
-  }
+  setMeasureAndBeatPrecised();
    }  
 
  
   println( " begin main loop " ) ;
-
         trigBeatWithMeasure();
- //     autmationWithMeasureAndNote();
- //**   printDataOnScreen();
+ //     printDataOnScreen();
  //     printMidiNoteVelocity();
     
-
     
   if (keyMode != " phasePattern ")
   {   
@@ -335,24 +305,18 @@ for (int i = 0; i < networkSize; i++) {
      
     
  
-    //****  mouseY=(int) map (automation1, 0, 1, 0, 400);  //POSITION MOTOR
-    
-      //  mouseY = (int) map (signal[3], 0, 1, 0, 400);   // POSITION from ABLETON
-    
+    //****  mouseY=(int) map (automation1, 0, 1, 0, 400);  //POSITION MOTOR  
+        //  mouseY = (int) map (signal[3], 0, 1, 0, 400);   // POSITION from ABLETON 
         //  mouseY=(int) map (Movement/1000.0, 0, 1, 0, 400);  // to do WHAT?
 
-     // followMovementAll();
-     //  displayfollowMovementAll();
-      //***** */   activeSamplingMeasure(3);
+    //***** */   activeSamplingMeasure(3);
      //***** */    stopSamplingMeasure(4);
     
    //      activeSamplingInternalClock(7); //do not work
    //      stopSamplingInternalClock(8);  //do not work
       //   samplingMovement(2);
    //***** */     samplingMovementPro(); 
-        
-  //       print (" v1 ");   print (  v1);  print (" v1 ");   println (  v1); 
-      //   sendToTeensy();
+
  }
  
      print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
@@ -368,47 +332,15 @@ for (int i = 0; i < networkSize; i++) {
          
    //*************    ENDINTERNALCLOCK  
   
-  
    if (modeStartKeyToFollow == " samplingModeInternal "     ){ // || formerKeyMetro == 'J'
      println ( " samplingModeInternal  ");
     
      beginSample=millis();
-     text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + modeStartKeyToFollow + " mouseY " +  mouseY  + " mouseX " +  mouseX  +  measure , -width/4, - height + 100);  
-   //      text ( measure + " mouseY ", width/4, -height-400);  
+     text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + modeStartKeyToFollow + " mouseY " +  mouseY  + " mouseX " +  mouseX  +  measure , -width/4, - height + 100);   
      
     //  mouseY=(int) map (automationLFO[1], 0, 1, 0, 400);  // position from Ableton LFOdecay
-     //****  newPosF[networkSize-1]=  map (mouseY, 0, height/2, 0, TWO_PI);
-      // mouseX=mouseX+27;
-      incrementeX=incrementeX+9;
-      incrementeX=incrementeX%800;
-      
+    //****  newPosF[networkSize-1]=  map (mouseY, 0, height/2, 0, TWO_PI);
 
-       /*
-      if (incrementeX>=400 && incrementeX<=800){ 
-       mouseX =(int) map  (incrementeX, 400, 800, 400, 0);
-     //  newPosF[networkSize-1]=  map (mouseX, 400, 0, PI, TWO_PI);
-       }
-      if (incrementeX<400 ){ 
-       mouseX =(int) map  (incrementeX, 0, 400, 0, 400);
-     //  newPosF[networkSize-1]=  map (mouseX, 0, 400, 0, PI);
-       }
-*/
-       
-/*
-        mouseY=(int) map (v0, 0, 800, 0, 800)%800;
-
-      if (mouseY>=400 && mouseY<=800){ 
-       mouseY =(int) map  (mouseY, 400, 800, 400, 0)*-1;
-       newPosF[networkSize-1]=  map (mouseY, 400, 0, PI, TWO_PI);
-       }
-
-          if (mouseY <400 ) {
-       mouseY  =(int) map  (mouseY , 0, 400, 0, 400)*-1;
-       newPosF[networkSize-1]=  map (mouseY, 0, 400, 0, PI);
-       }
-*/
-
-    
      //  newPosF[networkSize-1]=  map (v0, 0, 800, 0, TWO_PI);
      //==================== sampling from encoder
      if (measure <=3){
@@ -422,7 +354,6 @@ for (int i = 0; i < networkSize; i++) {
        float radianTorec;
        radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Ableton LFOdecay    
        newPosF[0]= radianTorec;
-
 
       sphere(side*3);
       sphereDetail( 4*5); 
@@ -439,11 +370,6 @@ for (int i = 0; i < networkSize; i++) {
 
       println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
 
-
-    // followMovementAll();
-    // displayfollowMovementAll();
-     
-    
          activeSamplingInternalClock(1); //do not work
          stopSamplingInternalClock(3);  //do not work
          samplingMovementPro(); 
@@ -516,7 +442,7 @@ for (int i = 0; i < networkSize; i++) {
   //****************************
   print ("FRAMERATIO "); 
   print ((1*frameRatio)); // utilise map (de 1 à 60);
-    print ("  ******   FRAMERATIO "); 
+  print ("  ******   FRAMERATIO "); 
 
   // Calculate the overall order (cohesion) in the network
   PVector order = net.getOrderVector();
@@ -555,17 +481,13 @@ for (int i = 0; i < networkSize; i++) {
 
   // Draw  spheres corresponding to the phase of each oscillator
   colorMode(RGB, 255, 255, 255);
-  //  stroke(75, 190, 70); // do not show the "perspective sphere"
-//  print ("formerKeyMetro "); 
 
-  
   if (actualSec==lastSec) {  // trigged on internal clock
       trigRatio = true;
     //  background(127, 40, 60);
    }
    
    else trigRatio = false;
-   
    
     if (beatTrigged== true) {  // trigged with measure
       trigRatio = true;
@@ -583,21 +505,9 @@ for (int i = 0; i < networkSize; i++) {
   trigFollowSampling=false;
   }
 
-
-
   if (trigFollowSampling == true || trigFollowSampling==false  && modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {  // CHECK from old
       print (" trigFollowSampling ");   println (trigFollowSampling); 
-  
-    //  followMadTrack1bis(); ..  folloLFO with my technique
-    //    followSignal();
-  //****  delayTimeFollowPhase11=60;  // to control time phase offseet with a lot of delay time. You can wait one seconde before the next ball follow the previous ball
-    
-    
-  //  followSignalSampled(frameRatio);
-   //++++ samplingMovementPro();
-  //  noStroke();
-  //  fill( 255, 40, 40 );
-  // circle ( 100* cos (movement)+400, 100*sin (movement)+400, 20);
+
   //   followSignalSampled(frameRatio); //no WORK with frame
     followSignalSampledOppositeWay(frameRatio);// with millis()
   //  phasePattern();
@@ -607,9 +517,7 @@ for (int i = 0; i < networkSize; i++) {
     printDataOnScreen();
     stroke(255);
     
-
     rect( (currTime % 2) / 2 * width, 10, 2, 8 );
-
     rect( (currTime % 4) / 4 * width, 20, 2, 8 );
     rect( (currTime % 8) / 8 * width, 30, 2, 8 );
     
@@ -623,9 +531,7 @@ for (int i = 0; i < networkSize; i++) {
      } 
     teensyPos(); 
     arduinoPos();
-   
-
-  
+     
   // ================================= 
 
 
@@ -659,56 +565,27 @@ for (int i = 0; i < networkSize; i++) {
     startStop= 1;  
     print ("MOVEMENT AND TIMER is already started, now START LIVE: "); 
     println (startStop );
-/*
-    String dataMarkedToDue  ="<" 
-    
-      + mapAcceleration[11]+","+  int  (1000/avgTimer.average()*60*1000)  +","+cohesionCounterHigh+","
-      //+ onOFF+"," +nextScene+","
-      //     + mapAcceleration[11]+","+ mapAcceleration[11]+","+mapAcceleration[11]+","+ mapAcceleration[11]+","+mapAcceleration[11]+"," 
 
-   
-      +TrigmodPos[11]+","+TrigmodPos[10]+","+TrigmodPos[9]+","+TrigmodPos[8]+","+TrigmodPos[7]+","+TrigmodPos[6]+","+TrigmodPos[5]+","+TrigmodPos[4]+","+TrigmodPos[3]+","+TrigmodPos[2]+","+TrigmodPos[1]+","+TrigmodPos[0]+ "," // to manage 12 note
-
-      +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+ ","+ startStop + ">"; // (2= neither start, neither stop)   cohesionCounterHigh // +orderCohesion+ ">";LevelCohesionToSend ","+ int (map ( LowLevelCohesionToSend, 0, 1, 0, 100))+ 
-
-    print ("dataStart: "); 
-    println(frameCount + ": " +  " " + ( dataMarkedToDue ));
-*/
     formerKey = '#'; //reset formerkey to not trigging LIVE
     formerSartKey = formerKey;
   }
- 
-  // bpmAsfrequencyfunction ();
 
   textSize (100);
- rotate (HALF_PI);
+  rotate (HALF_PI);
   bpmAsPulsationFunction();
-   rotate (-HALF_PI);
+  rotate (-HALF_PI);
 
-
- 
 
   cohesionTrig = int (map (LevelCohesionToSend, 0, 1, 0, 100));
   println (cohesionTrig);
 
   // ***** automatise Oscillator Moving with a former Key
  //*+*+*+*+*+*  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
-/*
-   if (DataToDueCircularVirtualPosition[0]>0){
-       for (int i = 0; i < networkSize; i=+1 ){
-       // result_modulo[i]= (int)  (DataToDueCircularVirtualPosition[i]/6400)+1;
-       // AlternativeVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i]; // - ActualVirtualPositionFromOtherMode[i]
-         text ( " result_modulo " + i + " " +   " AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  ActualVirtualPositionFromOtherMode[i] , -800, 800-100*i );
-        // AlternativeVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i]%result_modulo[i];
-         text ( "   AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  ActualVirtualPositionFromOtherMode[i] , -800, -1600-100*i );
-       } 
-    } 
-*/
- 
+
 
    if (formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
  //  countRevs();
-   countRevsContinue();
+ //    countRevsContinue();
   }
        
    //**********************************************************************    
@@ -724,29 +601,19 @@ for (int i = 0; i < networkSize; i++) {
   formerFormerKey= formerKey; 
   printModeAndKey();
 
-  if ( key==',') {
-    //    formerKey= formerKey;
-    //    formerFormerKey= formerFormerKey;
-    //    formerKeyCodeAzerty =formerKeyCodeAzerty;
-  }
-  
-  if ( formerKeyMetro == 'J') {
-      
-    //    formerKey= formerKey;
-    //    formerFormerKey= formerFormerKey;
-     //   formerKeyCodeAzerty =formerKeyMetro;
-  }
-
-  
-  for (int i = 0; i < networkSize; i++) {
-    phaseReturned[i]=net.phase[i];
-  }
   oscSend();
   // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP   
   // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP   
   // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP
   // =============== =============== =============== =============== =============== =============== =============== END OF MAIN LOOP
 }
+
+
+
+
+
+
+
 
 //trigRightTemp[i] = int [] TrigModPos { 
 //if former
