@@ -101,12 +101,13 @@ void addSignalOneAndTwo(){
   }
 
     //******** Lock last oscillator to the lastPhase
-    oscSend();
+  //  oscSend();
    splitTimeWithTrigSignalFromAbleton(); // change de change de sens de PROPAGATION avec Z ou z
 
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
-    propagation2way(); 
+    propagation2wayDelay(); 
+  //  addSignalLfoPatternTer();
     mapNewPosX();   // transform data to count revolution
   //  teensyPos(); // carefull with arduinoPos in the main
 
@@ -120,6 +121,47 @@ void addSignalOneAndTwo(){
   
 
  }
+ void propagation2wayDelay() { 
+  
+   if (doB!=true){ 
+
+    //     LFO[oscillatorChange] =LFO[oscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
+       LFO[oscillatorChange] =  LFO[oldOscillatorChange]+QUARTER_PI ;  // on ajoute 
+     //  LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
+       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+       println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
+ 
+     //  newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+          LFO[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+          LFO[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+     }
+   
+     
+    if (doB==true){ 
+
+       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
+     //  LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
+
+       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+       println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
+
+       newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+     }
+ 
+        for (int i = 0; i <  networkSize-0; i+=1) { 
+ //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
+ //   net.phase[i]%=TWO_PI;
+    }
+///////////////////// 
+ 
+
+ for (int k = 0; k < this.nbBalls; k++) 
+    {    
+    //    drawBall(k, newPosXaddSignal[k] );  
+    //    print (" newPosXaddSignal[k] " + newPosXaddSignal[k]); 
+    } 
+  }
  
  void addSignalLfoPattern()  {
    

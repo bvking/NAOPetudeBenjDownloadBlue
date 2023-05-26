@@ -154,7 +154,8 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
  
      //  newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-      LFO[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+  //         LFO[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+           LFO[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
    
      
@@ -165,9 +166,9 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
-      
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-       // newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+
+  //     newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
+       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
  
         for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -296,13 +297,13 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
 }
 
  void  splitTimeWithTrigSignalFromAbleton() { 
-  text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[2], 500, 900);
+  text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[0], 500, 900);
 
  //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          
     propagationTrigged=false;;
          
-    if (doZ==false && trigedSignFromAbleton[2]==1){  // case q && timeLfo>=0
+    if (doZ==false && trigedSignFromAbleton[0]==1){  // case q && timeLfo>=0
   
       propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
@@ -316,7 +317,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
    } 
   }
   
-    if (doZ==true  && trigedSignFromAbleton[2]==1 ){ 
+    if (doZ==true  && trigedSignFromAbleton[0]==1 ){ 
  
       propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;

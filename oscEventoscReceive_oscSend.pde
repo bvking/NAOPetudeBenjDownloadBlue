@@ -1,15 +1,15 @@
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
 void oscEvent(OscMessage theMsg) {
- if (theMsg.checkAddrPattern("/trigedSignFromAbleton0")==true) {
+
+
+
+  if (theMsg.checkAddrPattern("/trigedSignFromAbleton0")==true) {
     trigedSignFromAbleton[0] = theMsg.get(0).floatValue();
-text ( " trigedSignFromAbleton[0] " + trigedSignFromAbleton[0]);
-
+  //    text( " automationLFO " + automationLFO[0], 0, 500);
+//  text( " trigedSignFromAbleton[0] " + trigedSignFromAbleton[0], 0, 500);
   }
-
-  if (theMsg.checkAddrPattern("/LFO1")==true) {
-    automationLFO[0] = theMsg.get(0).floatValue();
-  }
+  
 
   if (theMsg.checkAddrPattern("/LFOdecay")==true) {
     automationLFO[1] = theMsg.get(0).floatValue();
@@ -201,7 +201,11 @@ text ( " trigedSignFromAbleton[0] " + trigedSignFromAbleton[0]);
 
   if (theMsg.checkAddrPattern("/signal4")==true) {
     signal[4] = theMsg.get(0).floatValue();
-  } 
+  }
+
+
+
+
 
   if (theMsg.checkAddrPattern("/signal5")==true) {
     signal[5] = theMsg.get(0).floatValue();
