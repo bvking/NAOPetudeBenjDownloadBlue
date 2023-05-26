@@ -925,7 +925,7 @@ trigMuteAll= 0;
 
 
   OscMessage myMessage80= new OscMessage("/triggedSignFromAbleton0"); // oscillator behind
-  myMessage80.add(triggedSignFromAbleton[0]);  // Trig on the right but there are bugs in pendular way
+  myMessage80.add(trigedSignFromAbleton[0]);  // Trig on the right but there are bugs in pendular way
   oscP5.send(myMessage80, myRemoteLocation);
 
 

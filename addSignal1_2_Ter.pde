@@ -1,4 +1,4 @@
-void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconfigurer
+void addSignalOneAndTwoTer() { // from Propa
 
      
    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
