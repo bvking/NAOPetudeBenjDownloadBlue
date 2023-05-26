@@ -295,6 +295,41 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
    
 }
 
+ void  splitTimeWithTrigSignalFromAbleton() { 
+  text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[2], 500, 900);
+
+ //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
+         
+    propagationTrigged=false;;
+         
+    if (doZ==false && trigedSignFromAbleton[2]==1){  // case q && timeLfo>=0
+  
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+   
+
+       oscillatorChange=oscillatorChange%networkSize;
+  if (oscillatorChange<=0) {
+      oscillatorChange=0;
+      oldOscillatorChange=networkSize-1;
+   } 
+  }
+  
+    if (doZ==true  && trigedSignFromAbleton[2]==1 ){ 
+ 
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange-1;
+   
+      if (oscillatorChange<=-1) {
+        oldOscillatorChange=0;
+        oscillatorChange=networkSize-1;
+   }
+  }       
+
+}
+
 
 void displayValue(int value){
    textSize (100);

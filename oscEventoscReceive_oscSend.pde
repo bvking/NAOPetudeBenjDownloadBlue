@@ -1,6 +1,12 @@
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
 void oscEvent(OscMessage theMsg) {
+ if (theMsg.checkAddrPattern("/trigedSignFromAbleton0")==true) {
+    trigedSignFromAbleton[0] = theMsg.get(0).floatValue();
+text ( " trigedSignFromAbleton[0] " + trigedSignFromAbleton[0]);
+
+  }
+
   if (theMsg.checkAddrPattern("/LFO1")==true) {
     automationLFO[0] = theMsg.get(0).floatValue();
   }
@@ -923,11 +929,11 @@ trigMuteAll= 0;
   oscP5.send(myMessage74, myRemoteLocation);
   oscP5.send(myMessage75, myRemoteLocation);
 
-
+/*
   OscMessage myMessage80= new OscMessage("/triggedSignFromAbleton0"); // oscillator behind
   myMessage80.add(trigedSignFromAbleton[0]);  // Trig on the right but there are bugs in pendular way
   oscP5.send(myMessage80, myRemoteLocation);
-
+  */
 
    // myRemoteLocationII port 8002
   

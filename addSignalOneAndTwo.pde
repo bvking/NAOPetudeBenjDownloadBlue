@@ -101,11 +101,9 @@ void addSignalOneAndTwo(){
   }
 
     //******** Lock last oscillator to the lastPhase
-    
-    // lockOscillatorToPositionFromPreviousProagedBall();
+    oscSend();
+   splitTimeWithTrigSignalFromAbleton(); // change de change de sens de PROPAGATION avec Z ou z
 
-     propagationSpeed=30; // useless if propagationSpeed comes from ableton Live
-     splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
     propagation2way(); 
