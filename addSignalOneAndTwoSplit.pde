@@ -1,6 +1,6 @@
 void addSignalOneAndTwo(){
     print (formerKeyMetro);
-    text ( " One And Two Original oscillatorChange " + oscillatorChange , -1600, height+800);
+    text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, height-800);
     lfoPattern();
 
    if (key=='q' || key=='b' || key=='z' ) { // q == addsignal
@@ -22,10 +22,11 @@ void addSignalOneAndTwo(){
     }
     
     
- splitTime(); 
+ 
 //  splitTimeLfo(); 
  // splitTimeLfoWithAbleton(); 
-    
+ 
+  splitTime(); 
   addSignalLfoPattern(); 
  
  println(" formerFormerKey " + char (formerFormerKey) + " formerKey " + char (formerKey) + " key " + key)  ;
