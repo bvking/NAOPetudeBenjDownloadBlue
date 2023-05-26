@@ -151,7 +151,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
        LFO[oscillatorChange] =  LFO[oldOscillatorChange]+QUARTER_PI*8+QUARTER_PI*1/2 ;  // on ajoute 
        LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
-       println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
+       text (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange], 100, 500);
  
      //  newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
   //         LFO[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI);
