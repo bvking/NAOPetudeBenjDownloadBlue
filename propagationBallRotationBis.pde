@@ -3,6 +3,7 @@ boolean propagationTrigged;
 boolean doo=false;
 boolean dol=false;
 boolean doC=false;
+
 /*
 String modeStartKeyToFollow, keyMode;
      
@@ -34,36 +35,33 @@ modeStartKeyToFollow = " null ";
     case 'o': // way of rotation
     doo=!doo;
     key = '#';
-
     break;
 
     case 'c': 
     doC=!doC;
     key = '#';
     break;
- 
-    
+
     case 'l': // enable propagation or lock
-      dol=!dol;
+    dol=!dol;
     key = '#';
 
     break;
     case 'L': // disable propagation
-   dol=false;
+    dol=false;
 
     break;
     case 'q': // way of propagation
     doQ=true;
     doZ=false;
     break;
+
     case 'b': 
     doQ=false;
     doZ=false;
     doB=!doB;
-    key = '#';
+    key = '#'; 
     break;
-
-    
 
     case 'B': 
     doQ=false;
@@ -78,19 +76,11 @@ modeStartKeyToFollow = " null ";
     case '#': // change way of propagation
     
     break;
-  //  doB=!doB;
     }
-    
-//   key = '#';
-   
-    
- 
+
  // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
  // splitTimeLfoScale();  // change de sens de PROPAGATION
  //  if (key == 'l' ) {
-     
-
-  
   
    if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
     
@@ -104,7 +94,7 @@ modeStartKeyToFollow = " null ";
   
 
       for (int i = 0; i < networkSize-0; i+=1) {             
-       newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
+      newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
    //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
 
@@ -157,36 +147,14 @@ modeStartKeyToFollow = " null ";
    propagation2wayRotationBis(); 
    mapDataToMotor();
 
-     
-     
-  //  
-
- 
  formerFormerKey= formerKey;   
  formerKey=key;
  
  }
  
- void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
-  //    if (newPosXaddSignal[oscillatorChange]<0){ 
-  //    for (int i = 0; i <  networkSize-0; i+=1) { 
-  //   newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], numberOfStep, 0, -TWO_PI, 0);
-  //  }
-  //    }
-   
-  //  B true O true OK
-  // B true O false OK
-  //        B false O false NO
+ void propagation2wayRotationBis() {   //CONDITION QUAND SIGNAL NEGATIF fu style
 
-    //   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oldOscillatorChange];
-   
    if (doC==true && doo==false ){ // // fonctionne avec o = false
-  //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
-//++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
-
- //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
-//***   phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
-
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
    //   LFO[oscillatorChange] = LFO[oldOscillatorChange] - (PI/(6*networkSize)-1);
@@ -270,11 +238,6 @@ modeStartKeyToFollow = " null ";
      }
 
 
-
-
-
-     
-  
     if (doB==true && doC!=true){ 
       
          phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
@@ -291,10 +254,6 @@ modeStartKeyToFollow = " null ";
 
          newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
-
- 
-
-
 
       for (int i = 0; i <  networkSize-0; i+=1) { 
    // net.phase[i]=newPosXaddSignal[i]; // to display to screen
@@ -482,13 +441,13 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
    if ( newPosXaddSignal[i]%TWO_PI<0){ 
       
 
-    phaseKeptAtChange[i]=newPosXaddSignal[h]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
-    dataMappedForMotor[i]= int (map ( phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0)); 
+    phaseKeptAtChange[j]=newPosXaddSignal[k]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
+    dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
     
               println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
 
 
-       netPhaseBase[i]= map (dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
+       netPhaseBase[j]= map (dataMappedForMotor[j], numberOfStep, 0, 0, -TWO_PI);
 
    
   }
