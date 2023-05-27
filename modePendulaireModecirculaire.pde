@@ -274,12 +274,6 @@ void  modePendulaireModeCirculaire() {
 
     }
  
-    //end of experimental pattern of phases 
-    if (frameCount%15==0) {
-      //   print (" abstractPhase[i]: "); print ( networkSize+1-i);  print ("  ") ; print ( net.phase[networkSize+1-i]);
-      //   print (" modPos[i]: "); print ( networkSize+1-i);  print ("  ") ; println ( modPos[networkSize+1-i]);
-    }
-
     translate(-w2, -h2, -1000); // Set the perspective 3D with two fingers on the trackpad
     line (250, 250, 250, 250);  // line showing how ball will behang by the motor's axe.
     fill (123);
@@ -580,6 +574,9 @@ void  modePendulaireModeCirculaire() {
          for (int i = 0; i < 3; i++)  {  
        String valueText[] =  displayEventFromKeyReleased (keyEvent);     
     } 
+       if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+     //  displayPropagationControl();
+  } 
   
   rotate (-HALF_PI); 
   net.step(); 

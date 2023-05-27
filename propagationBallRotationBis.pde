@@ -17,34 +17,18 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
 modeStartKeyToFollow = " null ";
 keyMode = " propagationBallRotationBis ";
 
-
      textSize (50);
-     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
-     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800-300  );
-     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700-300 );
-     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600-300 );
-     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500-300   );
-     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400-300  );
-     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
-     
+    displayPropagationControl();
   
  //  if (key=='q' || key=='b' || key=='z' || key=='#' || key=='o' || key=='l'  ) { // q == addsignal
      letter = key;   
 ///    }
 
-    switch(key) {
-   case '#': // change way of propagation
-     letter = '#';
-    break;
-      }
-     
-  switch(letter) {
+    switch(letter) {
     case 'o': // way of rotation
     doo=!doo;
     key = '#';
-    
-  //  return letter;
-  
+
     break;
 
     case 'c': 
@@ -54,12 +38,12 @@ keyMode = " propagationBallRotationBis ";
  
     
     case 'l': // enable propagation or lock
-      dol=true;
-    //key = '#';
+      dol=!dol;
+    key = '#';
 
     break;
     case 'L': // disable propagation
-    dol=false;
+   dol=false;
 
     break;
     case 'q': // way of propagation
@@ -73,10 +57,12 @@ keyMode = " propagationBallRotationBis ";
     key = '#';
     break;
 
+    
+
     case 'B': 
     doQ=false;
     doZ=false;
-  //  doB=false;
+    doB=false;
 
     break;
     case 'z': // change way of propagation
@@ -366,3 +352,13 @@ void lockOscillatorToPositionFromPreviousProagedBall() { // revoir lock
    */
   }
 }
+
+   void  displayPropagationControl(){
+     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
+     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800-300  );
+     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700-300 );
+     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600-300 );
+     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500-300   );
+     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400-300  );
+     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
+    } 
