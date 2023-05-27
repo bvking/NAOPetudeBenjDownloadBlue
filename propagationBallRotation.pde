@@ -10,10 +10,8 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
   if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
         
-           keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
+        keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
 
-         //  moveKeys[8]=true;
-         //  moveKeys[12]=true;
         keyMode = " trigEventWithAbletonSignal ";
         trigEventWithAbletonSignal();
         positionMov = " troisieme " ;
@@ -43,32 +41,30 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     dol=false;
     break;
 
-
     case 'q': // way of propagation
     doQ=true;
     doZ=false;
     break;
+
+    case 'z': // change way of propagation
+    doZ=!doZ;
+    doQ=true
+    key = '#';
+    break;
+
     case 'b': 
     doQ=false;
     doZ=false;
     doB=!doB;
     key = '#';
     break;
-    case 'z': // change way of propagation
-   // doZ=true;
-    doZ=!doZ;
-    doQ=true;
-    break;
+
+
     case '#': // change way of propagation
     
     break;
-  //  doB=!doB;
     }
-    
-  //  key = '#';
-
-  
-  
+ 
    if (formerFormerKey == '#' || keyMode == " propagationBallRotation ") {
     
 
@@ -117,9 +113,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
   }
 
     //******** Lock last oscillator to the lastPhase
-    
-    // lockOscillatorToPositionFromPreviousProagedBall();
-
+  
      propagationSpeed=30; // useless if propagationSpeed comes from ableton Live
      splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
   // splitTimeLfoScale();  // change de sens de PROPAGATION
@@ -134,7 +128,8 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
  //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
   //  net.phase[i]%=TWO_PI;
     }
-
+ formerFormerKey= formerKey;   
+ formerKey=key;
   
 
  }
