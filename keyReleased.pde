@@ -1,12 +1,21 @@
 void keyReleased() {
-    
+  textSize (100);
+   if (key == 'n') {
+    oldFaz=faz;
+    faz+=1;
+
+    getOldPositionOfActiveOscillator(faz);
+
+  
+      }
+
      recordFrame();
 
     if (keyCode == ALT){
     moveKeys[8]=false;
    }
    
-   textSize (100);
+   
 
     if (key == '=' && formerKeyMetro == '*') {
     

@@ -17,6 +17,7 @@ float [] trigedSignFromAbleton = new float [networkSize];
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
 int [] positionMotorisedFromContinuesMod = new int [networkSize];
+float [] oscillatorFollowing = new float [networkSize];
 boolean actualisePositionDataFromCircular;
 
 float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the root square of returned value
@@ -25,6 +26,40 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
   dVal = sqrt( dVal);
   }
   return dVal;  // 
+}
+float oldFaz;
+float faz = 3;
+int oscillatorMaster=0;
+
+float getOldPositionOfActiveOscillator(float phaseOfOscillator0) { // return former value of actual oscillator
+// as many number of oscillator
+oscillatorMaster+=1;
+oscillatorMaster%=networkSize;
+//textSize (250);
+
+  if (oscillatorMaster>0) { 
+
+    for ( int i=oscillatorMaster-1; i <=oscillatorMaster; i++) { 
+  println ( " oscillatorFollowi " + (oscillatorMaster-i) + " " + oscillatorFollowing[oscillatorMaster-i] + " " + oscillatorMaster + " " +  oscillatorFollowing[oscillatorMaster] , -300, 250*i);
+
+
+  oscillatorFollowing[oscillatorMaster-i] = oscillatorFollowing[oscillatorMaster];
+  oscillatorFollowing[oscillatorMaster]=   phaseOfOscillator0;
+ 
+//  phaseOfOscillator0=oscillatorFollowing[oscillatorMaster];
+
+  }
+  }
+
+  else if (oscillatorMaster==0) {   
+
+  oscillatorFollowing[networkSize-1]=oscillatorFollowing[oscillatorMaster];
+ // phaseOfOscillator0=oscillatorFollowing[oscillatorMaster];
+   text ( " oscillatorFollowi[networkSize-1] " + oscillatorFollowing[networkSize-1], -300, 100*networkSize-1);
+
+}
+
+  return phaseOfOscillator0;  // 
 }
 
 float log10 (float x) {
@@ -888,6 +923,7 @@ positionMov = " premierePartie ";
 k=0; // phaseShifting
 oscillatorBlocked = networkSize-1;
 memoryi = networkSize-1;
+oscillatorFollowing[0]=3.14;
 
 translate(0, -800,1000);
  
