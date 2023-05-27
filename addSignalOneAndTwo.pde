@@ -163,7 +163,7 @@ void addSignalOneAndTwo(){
     } 
   }
  
- void addSignalLfoPattern()  {
+ void addSignalLfoPatternOld()  {
    
     if (doQ==true ){
   //   pendularPattern(); // offset with lfo oscillator by osillator
@@ -372,7 +372,7 @@ void addSignalOneAndTwo(){
   
   }
  
- void  splitTime() { 
+ void  splitTimeOld() { 
   //   key='b';
   if (formerDecayTimeLfo>decayTimeLfo){
       oldOscillatorChange=oscillatorChange;
