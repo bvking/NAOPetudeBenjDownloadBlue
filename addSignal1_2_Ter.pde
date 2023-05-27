@@ -112,7 +112,7 @@ void addSignalOneAndTwoTerOriginal(){
     if (doQ==true ){
   //   pendularPattern(); // offset with lfo oscillator by osillator
      print ("  case q phaseFollowLFO " + oscillatorChange + " "  + phaseFollowLFO[oscillatorChange] + " ");
-     print ("  LFOoscillatorChange  "); print (oscillatorChange); print ("   ") ;  print (LFO[oscillatorChange]  ); 
+  //   print ("  LFOoscillatorChange  "); print (oscillatorChange); print ("   ") ;  print (LFO[oscillatorChange]  ); 
      print (" newPosXaddSignal[oscillatorChange] " + newPosXaddSignal[oscillatorChange]);
      
  //    phaseFollowLFO[oscillatorChange]= lfoPhase[2];    

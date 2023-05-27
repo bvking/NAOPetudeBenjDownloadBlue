@@ -20,8 +20,6 @@ void addSignalOneAndTwo(){
     doQ=true;
     break;
     }
-    
-    
  
 //  splitTimeLfo(); 
  // splitTimeLfoWithAbleton(); 
@@ -56,18 +54,16 @@ void addSignalOneAndTwo(){
     int i;
     i= oscillatorChange;
     
-  int j;  
-  j= (oscillatorChange-1);
-  if (j<= 1){
-  j= networkSize-1;
-  }
+
  
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
-  //  signal[2] = (0*PI + (frameCount / 20.0) * cos (1000 / 500.0)*-1)%1; //NO vitesse roat
-    signal[2] = 0.08;
-   
+ 
+      signal[2] = 0.08;
+   if (oscillatorChanged==true){ 
+      signal[2] = (0*PI + (frameCount / 20.0) * cos (1000 / 500.0)*-1)%1; //NO vitesse roat
+      }
       LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);  
-      
+     
       
    //    LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
 
@@ -79,7 +75,7 @@ void addSignalOneAndTwo(){
        newPosXaddSignal[i]= map (dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
   }
        
-   else
+   else {
        LFO[i] = LFO[i]+ phaseKeptAtChange[j];
 
        LFO[i] = LFO[i]%TWO_PI;
@@ -87,6 +83,7 @@ void addSignalOneAndTwo(){
 
        newPosXaddSignal[i]= map (dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
    
+   }
  // ABOVE LFO on oscillatorChange
  
     
@@ -107,15 +104,16 @@ void addSignalOneAndTwo(){
     }
     
     
-  }
+   }
 
-    println (" newPosXaddSignal[oscillatorChange] ",  oscillatorChange, " ",  newPosXaddSignal[oscillatorChange] );
+  //  println (" newPosXaddSignal[oscillatorChange] ",  oscillatorChange, " ",  newPosXaddSignal[oscillatorChange] );
   
      int j;  
   j= (oscillatorChange-1);
   if (j<= 1){
   j= networkSize-1;
-  }
+    }
+  
        
   if (oscillatorChanged==true )  { 
 //  phaseKeptAtChange[k]=newPosXaddSignal[j];
