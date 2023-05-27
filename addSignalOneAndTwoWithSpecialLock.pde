@@ -1,4 +1,4 @@
-void addSignalOneAndTwoWithSpecialLock(){ 
+void addSignalOneAndTwo(){ 
     print (formerKeyMetro);
     text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, height-800);
     text ( " doQ=true " + doQ , 0, height-700);
@@ -29,6 +29,8 @@ void addSignalOneAndTwoWithSpecialLock(){
  
   splitTime(); 
   addSignalLfoPattern(); 
+
+  formerKey  = '#';
  }
  
  void addSignalLfoPattern()  {
@@ -53,7 +55,7 @@ void addSignalOneAndTwoWithSpecialLock(){
 
  
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
-    signal[2] = (0*PI + (frameCount / 41.0) * cos (1000 / 500.0)*-1);//%1; //NO vitesse roat
+  //  signal[2] = (0*PI + (frameCount / 41.0) * cos (1000 / 500.0)*-1);//%1; //NO vitesse roat
   //  signal[2] = 0.08;
    
       LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);        
@@ -147,8 +149,7 @@ void  splitTime() {
 
 //   int splitTimeLfo = millis()%150; // linear time  to change " oscillator " each 200 ms
 
-       signal[2] = (0*PI + (frameCount / 42.0) * cos (1000 / 500.0)*-1)%1;  // speed of split
-    
+       signal[2] = (0*PI + (frameCount / 42.0) * cos (1000 / 500.0)*-1)%1;  // speed of split 
 
  int  timeLfo = (int ) map (signal[2], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
  

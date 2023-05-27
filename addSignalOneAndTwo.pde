@@ -1,4 +1,4 @@
-void addSignalOneAndTwo(){
+void addSignalOneAndTwoOriginal(){
    textSize (50);
 
      text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
