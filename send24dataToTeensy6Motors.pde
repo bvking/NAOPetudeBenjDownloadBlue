@@ -49,7 +49,7 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
   // String[] m1 = match(portUSB, " teensy ");
 
    // if (m1 == null) {
-   // teensyport.write(dataFromMode);
+   /// teensyport.write(dataFromMode);
    //println ( " noPortPlugged " + portsUSB[0]); 
    //}
 

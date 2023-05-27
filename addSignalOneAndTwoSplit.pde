@@ -29,9 +29,7 @@ void addSignalOneAndTwo(){
   splitTime(); 
   addSignalLfoPattern(); 
  
- println(" formerFormerKey " + char (formerFormerKey) + " formerKey " + char (formerKey) + " key " + key)  ;
- formerFormerKey= formerKey;
- formerKey=key;
+
  }
  
  void addSignalLfoPattern()  {
@@ -173,7 +171,7 @@ void addSignalOneAndTwo(){
      print (" TrigmodPos[i" , TrigmodPos[i] , " newPosF " + newPosF[i]);
      oldPositionToMotor[i]=  positionToMotor[i];
      oldPosF[i]=newPosF[i];
-     oldPosX[i]=newPosF[X];
+     oldPosX[i]=newPosF[i];
 
      print (" revoLFO "); print ( i); print ("  "); println (revLfo[i]); 
      
@@ -185,10 +183,47 @@ void addSignalOneAndTwo(){
      }
      text (" restart ALT Z , cf signal[2] )" + signal[2], -1600, height+800 );  
    
-     oscSend();
-     assignMotorWithPosition();
-     send24DatasToTeensy6motors(10, 3, -3, -1);
+  
+ //    assignMotorWithPosition(); not here in arduinoPos
+//     send24DatasToTeensy6motors(10, 3, -3, -1); // not here in arduinoPos
 
+}
+
+void  splitTime() { 
+  //   key='b';
+  if (formerDecayTimeLfo>decayTimeLfo){
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+   //  key='q';
+  } 
+  if ( oldOscillatorChange!=oscillatorChange )
+  {
+       oscillatorChanged=true;
+  } 
+       formerDecayTimeLfo = decayTimeLfo; 
+
+//   int splitTimeLfo = millis()%150; // linear time  to change " oscillator " each 200 ms
+
+       signal[2] = (0*PI + (frameCount / 18.0) * cos (1000 / 500.0)*-1)%1;  // speed of split
+    
+       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " signal[2] " + signal[2] );
+
+ int  timeLfo = (int ) map (signal[2], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
+ 
+       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo );
+
+
+ int   splitTime= int  (timeLfo%100);   
+       println ( " ***************************************************    SPLIT TIME  decayTimeLfo     " + decayTimeLfo + " signalToSplit " + splitTime );
+       println ( " ***************************************************    SPLIT TIME  oldSignalToSplit " + oldSignalToSplit + " signalToSplit " + signalToSplit );
+  
+         oscillatorChange=oscillatorChange%networkSize;
+     if (oscillatorChange<=0) {
+         oscillatorChange=0;
+         }
+         decayTimeLfo = splitTime;
+    //     print (" oscillatorChange "); println ( oscillatorChange ); 
+      
 }
  
  
@@ -249,42 +284,7 @@ void addSignalOneAndTwo(){
   
   }
  
- void  splitTime() { 
-  //   key='b';
-  if (formerDecayTimeLfo>decayTimeLfo){
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-   //  key='q';
-  } 
-  if ( oldOscillatorChange!=oscillatorChange )
-  {
-       oscillatorChanged=true;
-  } 
-       formerDecayTimeLfo = decayTimeLfo; 
-
-//   int splitTimeLfo = millis()%150; // linear time  to change " oscillator " each 200 ms
-
-       signal[2] = (0*PI + (frameCount / 18.0) * cos (1000 / 500.0)*-1)%1;  // speed of split
-    
-       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " signal[2] " + signal[2] );
-
- int  timeLfo = (int ) map (signal[2], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
  
-       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo );
-
-
- int   splitTime= int  (timeLfo%100);   
-       println ( " ***************************************************    SPLIT TIME  decayTimeLfo     " + decayTimeLfo + " signalToSplit " + splitTime );
-       println ( " ***************************************************    SPLIT TIME  oldSignalToSplit " + oldSignalToSplit + " signalToSplit " + signalToSplit );
-  
-         oscillatorChange=oscillatorChange%networkSize;
-     if (oscillatorChange<=0) {
-         oscillatorChange=0;
-         }
-         decayTimeLfo = splitTime;
-    //     print (" oscillatorChange "); println ( oscillatorChange ); 
-      
-}
  
  
 void  splitTimeLfo() {  // signalToSplit = lfoPhase3
