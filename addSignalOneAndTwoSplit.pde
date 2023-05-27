@@ -1,15 +1,20 @@
 void addSignalOneAndTwo(){
     print (formerKeyMetro);
     text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, height-800);
-    lfoPattern();
+    text ( " doQ=true " + doQ , 0, height-700);
+   // lfoPattern();
 
-   if (key=='q' || key=='b' || key=='z' ) { // q == addsignal
+
      letter = key;   
-     }
+     
      
   switch(letter) {
     case 'q': 
     doQ=true;
+    doZ=false;
+    break;
+    case 'Q': 
+    doQ=false;
     doZ=false;
     break;
     case 'b': 
@@ -20,7 +25,8 @@ void addSignalOneAndTwo(){
     doQ=true;
     break;
     }
- 
+    
+
 //  splitTimeLfo(); 
  // splitTimeLfoWithAbleton(); 
  
@@ -32,110 +38,67 @@ void addSignalOneAndTwo(){
  
  void addSignalLfoPattern()  {
    
-    if (doQ==true ){
+    if (doQ==true ){ // to change speed of propagtion in split time
   //   pendularPattern(); // offset with lfo oscillator by osillator
      print ("  case q phaseFollowLFO " + oscillatorChange + " "  + phaseFollowLFO[oscillatorChange] + " "); print ("  LFOoscillatorChange  "); print (oscillatorChange); print ("   ") ;  print (LFO[oscillatorChange]  ); 
      print (" newPosXaddSignal[oscillatorChange] " + newPosXaddSignal[oscillatorChange]);
      
    //   phaseFollowLFO[oscillatorChange]= lfoPhase[2];  
      signal[4] = (0*PI + (frameCount / 20.0) * cos (1000 / 500.0)*-1)%1;
-    phaseFollowLFO[oscillatorChange]= map (signal[4], 0, 1, 0, TWO_PI);    // speed of rotation
+   // phaseFollowLFO[oscillatorChange]= map (signal[4], 0, 1, 0, TWO_PI);    // speed of rotation
   // phaseFollowLFO[oscillatorChange]= map (0.01, 0, 1, 0, TWO_PI); //   ..DON4T WORK
 
    }
 
-  
-    print ("  LFO+LFOoscillatorChange  "); print (oscillatorChange); print ("   ") ;  println (LFO[oscillatorChange]  ); 
 
    if (formerFormerKey  == '#' ) { //  != '#'
-     print ("  normal " + frameCount + " lfoPhase[1] " + lfoPhase[1] + " lfoPhase[2] " + lfoPhase[2]);    println (   ); 
-       
-  //    for (int i = 2; i <  networkSize-0; i+=1) { 
+ 
     int i;
     i= oscillatorChange;
-    
 
  
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
- 
-      signal[2] = 0.08;
-   if (oscillatorChanged==true){ 
-      signal[2] = (0*PI + (frameCount / 20.0) * cos (1000 / 500.0)*-1)%1; //NO vitesse roat
-      }
-      LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);  
-     
-      
+    signal[2] = (0*PI + (frameCount / 41.0) * cos (1000 / 500.0)*-1);//%1; //NO vitesse roat
+  //  signal[2] = 0.08;
+   
+      LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);        
    //    LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
 
-  
-    if ( phaseKeptAtChange[j]<0){   
-       LFO[i] =    LFO[i]- phaseKeptAtChange[j];
-       dataMappedForMotor[i]= int (map (LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
-
-       newPosXaddSignal[i]= map (dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
   }
-       
-   else {
-       LFO[i] = LFO[i]+ phaseKeptAtChange[j];
-
-       LFO[i] = LFO[i]%TWO_PI;
-       dataMappedForMotor[i]= (int) map (LFO[i], 0, TWO_PI, 0, numberOfStep);
-
-       newPosXaddSignal[i]= map (dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
+    
+  if (oscillatorChanged==true )  { 
+     phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange];    //  RECORD on oscillatorChange the postion of oscillatorChange where it 's changing
+   }
    
-   }
- // ABOVE LFO on oscillatorChange
  
-    
-   if (LFO[oscillatorChange]<0 && phaseFollowLFO[oscillatorChange]<0 ) {        
-       LFO[oscillatorChange] =   phaseFollowLFO[oscillatorChange]-LFO[oscillatorChange]; 
-       dataMappedForMotor[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
-
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], numberOfStep, 0, 0, -TWO_PI);
-  }
-       
-   else if (LFO[oscillatorChange]>0 && phaseFollowLFO[oscillatorChange]>0 ) {      
-       LFO[oscillatorChange] = phaseFollowLFO[oscillatorChange]; // +LFO[oscillatorChange];
-       LFO[oscillatorChange] = LFO[oscillatorChange]%TWO_PI;
-       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep);
-
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-    
-    }
-    
-    
-   }
-
-  //  println (" newPosXaddSignal[oscillatorChange] ",  oscillatorChange, " ",  newPosXaddSignal[oscillatorChange] );
-  
-     int j;  
+   int j;  
   j= (oscillatorChange-1);
   if (j<= 1){
   j= networkSize-1;
     }
-  
-       
-  if (oscillatorChanged==true )  { 
-//  phaseKeptAtChange[k]=newPosXaddSignal[j];
-  //  phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[j];
-     phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oscillatorChange];    //  RECORD on oscillatorChange-1 the postion of oscillatorChange where it has just changed
-//  phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[j];    //  RECORD on oscillatorChange-1 the postion of oscillatorChange where it has just changed
-  
-  
-   }
-   
- //  else key='&';
-   
-      print (" phaseKeptAtChange[o] ",  oscillatorChange, " ",  phaseKeptAtChange[oscillatorChange] );
-      println (" phaseKeptAtChange[j] " , j, " ",  phaseKeptAtChange[j] );
-      
-   //**    LFO[j] = phaseKeptAtChange[j]+PI/(15-j);
-       LFO[j] = phaseKeptAtChange[j]+TWO_PI*3 ; //*PI/24 
-       LFO[j] = LFO[j]%TWO_PI;
+   int k;  
+  k= (j-1);
+  if (k<= 1){
+  k= networkSize-1;
+  }
+
+        LFO[k]= LFO[j];
+        LFO[oscillatorChange] = phaseKeptAtChange[oscillatorChange];
+     //   LFO[j] = phaseKeptAtChange[k]; //pas mal
+       if (oscillatorChanged==true )  { 
+       LFO[j] = LFO[oscillatorChange];
+      }
+      //  LFO[j] = LFO[j]%TWO_PI;
+    
+       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep);
        dataMappedForMotor[j]= (int) map (LFO[j], 0, TWO_PI, 0, numberOfStep);
+       dataMappedForMotor[k]= (int) map (LFO[k], 0, TWO_PI, 0, numberOfStep);
        println (" phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
  
+       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
        newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
+     //  newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
+
        
 
 ///////////////////// 
@@ -143,7 +106,7 @@ void addSignalOneAndTwo(){
 
      for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
  //   drawBall(i, newPosXaddSignal[i] );
-  print (" newPosXaddSignalAFTERDB " + newPosXaddSignal[i]);
+     print (" newPosXaddSignalAFTERDB " + newPosXaddSignal[i]);
    
     positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
     
@@ -171,49 +134,32 @@ void addSignalOneAndTwo(){
      oldPosF[i]=newPosF[i];
      oldPosX[i]=newPosF[i];
 
-     print (" revoLFO "); print ( i); print ("  "); println (revLfo[i]); 
-     
-     
-     text ("count " + revLfo[i], -1600, height-500 - 75*i);
-   
-   
-    
+     text (" revoLFO " + revLfo[i], -1600, height-500 - 75*i);
+ 
      }
      text (" restart ALT Z , cf signal[2] )" + signal[2], -1600, height+800 );  
-   
-  
- //    assignMotorWithPosition(); not here in arduinoPos
-//     send24DatasToTeensy6motors(10, 3, -3, -1); // not here in arduinoPos
-
 }
 
 void  splitTime() { 
-  //   key='b';
+   oscillatorChanged=false;
   if (formerDecayTimeLfo>decayTimeLfo){
+     oscillatorChanged=true;
       oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-   //  key='q';
+      oscillatorChange=oscillatorChange+1; 
   } 
-  if ( oldOscillatorChange!=oscillatorChange )
-  {
-       oscillatorChanged=true;
-  } 
+
        formerDecayTimeLfo = decayTimeLfo; 
 
 //   int splitTimeLfo = millis()%150; // linear time  to change " oscillator " each 200 ms
 
-       signal[2] = (0*PI + (frameCount / 18.0) * cos (1000 / 500.0)*-1)%1;  // speed of split
+       signal[2] = (0*PI + (frameCount / 42.0) * cos (1000 / 500.0)*-1)%1;  // speed of split
     
-       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " signal[2] " + signal[2] );
 
  int  timeLfo = (int ) map (signal[2], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
  
-       println ( " ***************************************************    SPLIT TIME  timeLfoooooooooo " + " timeLfo   " + timeLfo );
 
 
  int   splitTime= int  (timeLfo%100);   
-       println ( " ***************************************************    SPLIT TIME  decayTimeLfo     " + decayTimeLfo + " signalToSplit " + splitTime );
-       println ( " ***************************************************    SPLIT TIME  oldSignalToSplit " + oldSignalToSplit + " signalToSplit " + signalToSplit );
   
          oscillatorChange=oscillatorChange%networkSize;
      if (oscillatorChange<=0) {
