@@ -60,8 +60,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     break;
 
 
-    case '#': // change way of propagation
-    
+    case '#': // change way of propagation    
     break;
     }
  
