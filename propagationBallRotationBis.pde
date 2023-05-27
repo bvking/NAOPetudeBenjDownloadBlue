@@ -319,8 +319,8 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
   splitTimeLfo = int((timeLfo) % 100) + 0;
 }
 
-void lockOscillatorToPositionFromPreviousProagedBall() {
-  if (propagationTrigged) {
+void lockOscillatorToPositionFromPreviousProagedBall() { // revoir lock
+  if (propagationTrigged || !propagationTrigged) {
     int i = oscillatorChange;
     int h = (oscillatorChange + 1) % networkSize;
     int j;  
@@ -335,12 +335,12 @@ void lockOscillatorToPositionFromPreviousProagedBall() {
     
     if (propagationTrigged || !propagationTrigged) {
       if (newPosXaddSignal[i] < 0) {
-        phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
+        phaseKeptAtChange[j] = newPosXaddSignal[i] % TWO_PI;
         dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, -TWO_PI, numberOfStep, 0));
         netPhaseBase[i] = map(dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
       }
       else {
-        phaseKeptAtChange[i] = newPosXaddSignal[j] % TWO_PI;
+        phaseKeptAtChange[j] = newPosXaddSignal[i] % TWO_PI;
         dataMappedForMotor[i] = int(map(phaseKeptAtChange[i], 0, TWO_PI, 0, numberOfStep));
         netPhaseBase[i] = map(dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
       }
