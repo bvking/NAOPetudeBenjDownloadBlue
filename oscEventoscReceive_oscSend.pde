@@ -6,8 +6,11 @@ void oscEvent(OscMessage theMsg) {
 
   if (theMsg.checkAddrPattern("/trigedSignFromAbleton0")==true) {
     trigedSignFromAbleton[0] = theMsg.get(0).floatValue();
-  //    text( " automationLFO " + automationLFO[0], 0, 500);
-//  text( " trigedSignFromAbleton[0] " + trigedSignFromAbleton[0], 0, 500);
+ 
+  }
+   if (theMsg.checkAddrPattern("/trigedSignFromAbleton1")==true) {
+    trigedSignFromAbleton[1] = theMsg.get(0).floatValue();
+
   }
   
 
@@ -933,11 +936,11 @@ trigMuteAll= 0;
   oscP5.send(myMessage74, myRemoteLocation);
   oscP5.send(myMessage75, myRemoteLocation);
 
-/*
-  OscMessage myMessage80= new OscMessage("/triggedSignFromAbleton0"); // oscillator behind
-  myMessage80.add(trigedSignFromAbleton[0]);  // Trig on the right but there are bugs in pendular way
-  oscP5.send(myMessage80, myRemoteLocation);
-  */
+
+  OscMessage myMessage81= new OscMessage("/trigedSignFromAbleton[1]"); // oscillator behind
+  myMessage81.add(trigedSignFromAbleton[1]);  // Trig on the right but there are bugs in pendular way
+  oscP5.send(myMessage81, myRemoteLocation);
+  
 
    // myRemoteLocationII port 8002
   

@@ -146,6 +146,8 @@ keyMode = " propagationBallRotationBis ";
    propagationSpeed=70.0; // useless if propagation comes from ableton Live
   // splitTimeScaleRotation(signal[2]);
    splitTimeWithTrigSignalFromAbleton();
+    
+
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
@@ -160,12 +162,17 @@ keyMode = " propagationBallRotationBis ";
  void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
 
  if (doo==true){  // negative way : ccw
+      float phaseAmount=trigedSignFromAbleton[1];
       print ( " newPosXaddSignal " + newPosXaddSignal[oscillatorChange]%TWO_PI );
 
       LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(1*networkSize-1));
+      phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI);
+      text ( "phaseAmount " + phaseAmount, 500, 1000);
+//      LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(1*networkSize-1));
+      LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
+      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
 
-            println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
+      println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
 
    }       
 
