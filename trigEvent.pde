@@ -223,8 +223,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        if (positionMov == " seconde " ){    // 58 to 68
 
     //   keyCode =ALT; keyPressed(); key = 'a'; keyPressed();
-      //  keyMode = " propagationBallRotationBis ";
-       keyMode = " addSignalOneAndTwo ";
+        keyMode = " propagationBallRotationBis ";
+      // keyMode = " addSignalOneAndTwo ";
      //   dol=true;
      //   formerKeyMetro = '*';
       
@@ -238,37 +238,16 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        }   
 
 
-       if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4+80 ){  // 
+       if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4+80 ){  // faire .pde avec les differentes manieres d'utiliser le signal audio comme trigger
           oscillatorBlocked=0;
-
        timeToTrig=millis();
        oscillatorChangingPropagation=true;
      //  key = 'd'; keyReleased();
-           
         oscillatorBlocked=oscillatorBlocked%networkSize; 
        }
-        
-       if (measure > 57)  {
-       //   key = 'F'; keyReleased();
-       }
-       
-      
-      if (measure == 58 && beatPrecised == 6 && beatPrecisedTrigged==true ){
-      //  formerKeyMetro = '*';
-      
-       //   key= '='; keyReleased();
-        }
-
-      if (measure == 58 && beatPrecised == 7 && beatPrecisedTrigged==true ){
-         //   positionMov = " seconde ";
-       //  key = '0'; keyReleased();
-        }
-         
-         int formerFrameTrigging;
-         formerFrameTrigging=frameCount;
-         
-    
-       } // end second partie
+  
+        // end second partie
+      }
 
       if ( positionMov == " troisieme "  ){ // à partir de 66.4
    

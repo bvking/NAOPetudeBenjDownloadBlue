@@ -143,8 +143,9 @@ keyMode = " propagationBallRotationBis ";
      }
 
 
-   propagationSpeed=70; // useless if propagation comes from ableton Live
-   splitTimeScaleRotation(propagationSpeed);
+   propagationSpeed=70.0; // useless if propagation comes from ableton Live
+  // splitTimeScaleRotation(signal[2]);
+   splitTimeWithTrigSignalFromAbleton();
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived

@@ -325,7 +325,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
       oscillatorChange=oscillatorChange+1;
    
 
-       oscillatorChange=oscillatorChange%networkSize;
+      oscillatorChange=oscillatorChange%networkSize;
   if (oscillatorChange<=0) {
       oscillatorChange=0;
       oldOscillatorChange=networkSize-1;
