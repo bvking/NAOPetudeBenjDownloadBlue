@@ -1,5 +1,12 @@
 void addSignalOneAndTwo(){ 
-    print (formerKeyMetro);
+ //---------- come back to trigEventWithAbletonSignal ------- work only with $
+     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {      
+        keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
+        keyMode = " trigEventWithAbletonSignal ";
+        trigEventWithAbletonSignal();
+        positionMov = " troisieme " ;
+          } 
+
     text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, height-800);
     text ( " doQ=true " + doQ , 0, height-700);
    // lfoPattern()
@@ -93,7 +100,7 @@ void addSignalOneAndTwo(){
        println (" phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
  
        newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-       newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
+  //     newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
      //  newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
 
        
