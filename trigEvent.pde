@@ -92,11 +92,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            positionMov = " premierePartie ";
           }
 
-         else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) { 
+         else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) {  // IMPORTANT beatPrecised < 4
            positionMov = " seconde " ; }
 
       //     /*  in addSignal1andTwoTerr
          else if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+           textSize (200);
+          text ( " YOUR HERE ", 500, 300);
            positionMov = " troisieme " ;
           keyCode = ALT; key = 'v'; // key 
             }
@@ -257,7 +259,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
 
         //  keyMode = " addSignalOneAndTwoTer "; 
-    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
+   if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
           keyMode = " trigEventWithAbletonSignal ";
             for (int i = 0; i < networkSize-0; i++) { 
       
@@ -271,7 +273,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      {
 
       if (measure == 76 && beatPrecised == 8 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
-         keyCode = CONTROL;keyReleased();
+         keyCode = CONTROL; keyReleased();
       } 
 
         if (measure == 66  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
@@ -416,7 +418,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);
      text ( " beatPrecisedTrigged " + beatPrecisedTrigged + " freq  " + net.naturalFrequency[3] , 300, 1200);
      */
-     phasePattern();  
+  //   phasePattern();    do function Twice?
      oldSplitTimeLfo = splitTimeLfo; 
 } 
 

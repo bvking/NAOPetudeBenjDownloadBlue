@@ -122,83 +122,7 @@ void keyReleased() {
     key= '#'; // to trig once keyPressedLFO
   }
    
-    if (formerKeyMetro == 'B')  {
-
-      if (keyCode == CONTROL) {
-         oscillatorChange++;
-         oscillatorChange=oscillatorChange%12;
-      if (oscillatorChange<=0) {
-         oscillatorChange=2;
-     }
-         keyCode =SHIFT; // to trig once keyPressedLFO
-  }
-
-     if (keyCode == LEFT) {  
-    println( " LEFT INCREASE decay offseft shiftFollowMov ")  ; 
- //   decayshiftFollowMov=decayshiftFollowMov+50;
-    decayshiftFollowMov+=1;
-    decayshiftFollowMov=decayshiftFollowMov%200;
-  
-    println ("d= timeOffsetRatio: "); 
-    println ( decayshiftFollowMov);
-    textSize (100);
-
-
-    keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-
-     if (keyCode == RIGHT) { 
-
-    println( " right INCREASE decay offseft shiftFollowMov")  ; 
-     decayshiftFollowMov=decayshiftFollowMov-1;  
-      println ("d= timeOffsetRatio: "); 
-    println ( decayshiftFollowMov);
-    textSize (100);
-    text (" decayshiftFollowMov  ",  200,200);
-    text ( decayshiftFollowMov,  200,300);
-   keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-  
-   if (keyCode == UP) {
-     println(" lfoPhase phase shifting"); 
-        println(" lfoPhase INCREASE phase shifting"); 
-           println(" lfoPhase INCREASE phase shifting"); //
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
-    phaseShiftingFollowPhase11=phaseShiftingFollowPhase11%PI;
-    phaseShiftingFollowLFO= phaseShiftingFollowLFO+QUARTER_PI/8;  
-    phaseShiftingFollowLFO= phaseShiftingFollowLFO%PI;
-    
- /*       
-  if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    } 
-    */
    
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowLFO));
-    key= '#';
-  }
-  
-    if (keyCode == DOWN) {
-     println(" lfoPhase DECREASE phase shifting"); //
-      println(" lfoPhase DECREASE phase shifting"); //
-       println(" lfoPhase DECREASE phase shifting"); //
-     phaseShiftingFollowLFO= 0;   
-     phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
- //   phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-   /*     
-  if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowPhase11));
-    */
-    keyCode = SHIFT;
-  }
-  
-   
-  
- } 
  
  
 
@@ -349,14 +273,14 @@ void keyReleased() {
   //*********************************************CIRCULAR
 
 
-  if ( keyMode != " trigEventWithAbletonSignal " )  {  
+  if ( keyMode != " trigEventWithAbletonSignal " )  {     
 
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
     println ("Frequencies adatped to PENDULAR way trigged with $");
         text (" NO trigEventWithAbletonSignal ", 0, 200 );
 
    // phasePattern();
-     phasePatternBase();
+   //  phasePatternBase();
   } 
    } 
 

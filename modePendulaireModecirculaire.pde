@@ -12,6 +12,7 @@ void  modePendulaireModeCirculaire() {
     } else {
    //   freqi[i]=  constrain( map( net.naturalFrequency[i], 0, 5, 200, 16000 ), freqMin, 12000 );
     }
+    
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      text ( " mapped GENERAL pendular way $ ", 400, 600);
@@ -235,15 +236,7 @@ void  modePendulaireModeCirculaire() {
   
 
 
-    if (formerKeyMetro == '£' || formerKeyMetro == '*' ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
-      text ( " mapped to GENERAL CIRCULAR way 2$ ", 400, 900);
-     if (keyMode != " propagationBallRotation ")  {  
-     if (keyMode != " propagationBallRotationBis ")  {  
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
-      } 
-     } 
-    } 
+    
     
 
     if (formerKeyMetro == 'J') { //USELLL play sample recorded with s
@@ -258,12 +251,6 @@ void  modePendulaireModeCirculaire() {
     } 
   
     
-    if (formerKeyMetro == 's' ) { //drive ball with lfo
-         text ( " mapped to s CIRCULAR or PENDULAR way 2$ ", 400, 1100);
-
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
-    }
 
 
     if (formerKeyMetro == '<') { //experimental pattern of phases

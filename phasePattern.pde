@@ -39,7 +39,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
     }
   }
-  if  (   formerSartKey!= 'J')  
+  if  (formerSartKey!= 'J')  
   if (key == 'W') { // follow mode. What is w?  (formerKey=='w')
     formerW();
     key ='#';
@@ -1091,6 +1091,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     net.setCoupling(coupling);
   } 
   key ='#';
+  //keyCode = SHIFT;
   //************************************ ENDPENDULARPATTERN  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $

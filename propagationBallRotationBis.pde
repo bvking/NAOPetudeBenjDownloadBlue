@@ -14,8 +14,20 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 
 void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP 
+
 modeStartKeyToFollow = " null ";
 keyMode = " propagationBallRotationBis ";
+
+  if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+     textSize (200);
+        text ( " YOUR HERE ", 500, 200);
+        
+   //     keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
+
+        keyMode = " trigEventWithAbletonSignal ";
+        trigEventWithAbletonSignal();
+        positionMov = " troisieme " ;
+          }
 
     textSize (50);
     displayPropagationControl();
@@ -26,17 +38,20 @@ keyMode = " propagationBallRotationBis ";
     case 'o': // way of rotation
     doo=true;
     key = '#';
-
     break;
 
     case 'O': // way of rotation
     doo=false;
     key = '#';
-
     break;
 
     case 'c': 
-    doC=!doC;
+    doC=true;
+    key = '#';
+    break;
+
+    case 'C': 
+    doC=false;
     key = '#';
     break;
  
@@ -172,17 +187,20 @@ keyMode = " propagationBallRotationBis ";
       LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
       text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
 
-      println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
 
    }       
 
 if (doo==false){
+  float phaseAmount=trigedSignFromAbleton[1];
 
 
       LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(3*networkSize-1));
 
-            println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
+       LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
+      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+
+   
 
 
      }
