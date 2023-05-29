@@ -17,14 +17,20 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
 modeStartKeyToFollow = " null ";
 keyMode = " propagationBallRotationBis ";
 
-     textSize (50);
+    textSize (50);
     displayPropagationControl();
   
      letter = key;   
 
     switch(letter) {
     case 'o': // way of rotation
-    doo=!doo;
+    doo=true;
+    key = '#';
+
+    break;
+
+    case 'O': // way of rotation
+    doo=false;
     key = '#';
 
     break;
@@ -150,17 +156,12 @@ keyMode = " propagationBallRotationBis ";
  }
 
 
-
-
- 
- 
  void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
-
 
  if (doo==true){  // negative way : ccw
       print ( " newPosXaddSignal " + newPosXaddSignal[oscillatorChange]%TWO_PI );
 
-      LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(1*networkSize-1));
 
             println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
@@ -170,7 +171,7 @@ keyMode = " propagationBallRotationBis ";
 if (doo==false){
 
 
-      LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(3*networkSize-1));
 
             println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );

@@ -17,28 +17,46 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
         positionMov = " troisieme " ;
           } 
 
+ textSize (50);
+ displayPropagationControl();
+  
+    letter = key;   
 
-
-     textSize (50);
-
-     text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
-     text (" propagationTrigged " + propagationTrigged + " propagationSpeed " + propagationSpeed + " key " + key, -width, -height- 800-300  );
-     text (" signal2  " +nf(signal[2], 0, 2) + " QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 700-300 );
-     text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 600-300 );
-     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height- 500-300   );
-     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400-300  );
-     text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
-     
-     
-     letter = key;   
-
-     
     switch(letter) {
-    case 'l': // way of propagation
-    dol=true;
+    case 'o': // way of rotation
+    doo=true;
+    key = '#';
+
     break;
-    case 'L': // way of propagation
+
+    case 'O': // way of rotation
+    doo=false;
+    key = '#';
+
+    break;
+
+    case 'c': 
+    doC=true;
+    key = '#';
+    break;
+
+    case 'C': 
+    doC=false;
+    key = '#';
+    break;
+ 
+    case 'l': //  lock position of former ball
+    dol=true;
+    key = '#';
+    break;
+
+    case 'L': // disable lock
     dol=false;
+    break;
+
+    case 'z': // change way of propagation
+    doZ=true;
+    doQ=true;
     break;
 
     case 'q': // way of propagation
@@ -46,22 +64,23 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     doZ=false;
     break;
 
-    case 'z': // change way of propagation
-    doZ=!doZ;
-    doQ=true
-    key = '#';
-    break;
-
     case 'b': 
     doQ=false;
     doZ=false;
-    doB=!doB;
+    doB=true;
     key = '#';
     break;
 
-
-    case '#': // change way of propagation    
+    case 'B': 
+    doQ=false;
+    doZ=false;
+    doB=false;
     break;
+  
+    case '#': // change way of propagation
+    
+    break;
+  //  doB=!doB;
     }
  
    if (formerFormerKey == '#' || keyMode == " propagationBallRotation ") {
@@ -70,6 +89,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
       for (int i = 0; i < networkSize-0; i+=1) {       
      //  newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // balls don't turn but propaged only
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
+     //  phaseMapped[i] = - phaseMapped[i];  // faire condition pour sens opposé dans propagation2way
        phaseMapped[oscillatorChange]=   phaseMapped[oscillatorChange]+   LFO[oscillatorChange];     //      newPosXaddSignal[oscillatorChange];
    
        if (phaseMapped[i]<0){   
@@ -117,7 +137,8 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
      splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
-    propagation2way(); 
+   // propagation2way();
+    propagation2wayRotationBis(); 
     mapNewPosX();   // transform data to count revolution
   //  teensyPos(); // carefull with arduinoPos in the main
 

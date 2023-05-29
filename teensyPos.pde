@@ -90,21 +90,26 @@ void mapNewPosX() {
      
     }
      }  
-   //  if ( oldPosF[i]>newPosF[i] ){  // && newPosXaddSignal[i]>-HALF_PI &&  newPosXaddSignal[i]< HALF_PI 
+  
     
     text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
-//   if ((doC==true && doo==true && doB!=true )!=true){  // A AMELIORER DANS PROPABIS
 
      textSize (100);
      
-   if ( doo==true){  // A AMELIORER DANS PROPABIS
-   // if (net.oldPhase[i] < 0 ) {
-
+   if ( doo==true && ( keyMode == " propagationBallRotation " || keyMode == " propagationBallRotationBis " ) ){  // A AMELIORER DANS PROPABIS
+      if (  oldPosF[i]>newPosF[i]  && (oldPosF[i]>=oldOldPosF[i]) ){ 
+     revLfo[i]--;
+     TrigmodPos[i]=1;
+       }
+   }
+      
+   if ( doo==true && keyMode == " propagationBallRotationBis "){  // A AMELIORER DANS PROPABIS
+   /* 
     if ( (newPosF[i]>oldPosF[i]) && (oldPosF[i]<oldOldPosF[i])){ 
          revLfo[i]--;
          TrigmodPos[i]=2;
-
       }
+   */   
     }
      
 
@@ -115,7 +120,7 @@ void mapNewPosX() {
      oldPositionToMotor[i]=  positionToMotor[i];
      oldOldPosF[i]=oldPosF[i];
      oldPosF[i]=newPosF[i];
-     oldPosX[i]=newPosF[i];
+    // oldPosX[i]=newPosF[i];
 
   
      text ("revLFO ", -1600, height-500 - 75*i);
