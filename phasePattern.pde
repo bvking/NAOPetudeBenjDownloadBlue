@@ -274,7 +274,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   if (key=='t') {  
     print ("EXPERIMENTAL t$");
 
-    float delaPhase    = map ((float (mouseY)/width*1), 0, 1, 0, QUARTER_PI );                
+  //  float delaPhase    = map ((float (mouseY)/width*1), 0, 1, 0, QUARTER_PI );                
     for (int i = 0; i < (networkSize-0); i++) {          
       {
         net.phase[i]= averagePhase;  

@@ -269,7 +269,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
  void  splitTimeScale(float propagationSpeed) { 
    propagationTrigged=false;
 
- //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
+ //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE UNCOMMENT
          
  
          
@@ -279,8 +279,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange+1;
    } 
-
-       oscillatorChange=oscillatorChange%networkSize;
+      oscillatorChange=oscillatorChange%networkSize;
   if (oscillatorChange<=0) {
       oscillatorChange=0;
       oldOscillatorChange=networkSize-1;
@@ -312,7 +311,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
 }
 
  void  splitTimeWithTrigSignalFromAbleton() { 
-  text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[0], 500, 900);
+        text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[0], 500, 900);
 
  //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          

@@ -363,7 +363,7 @@ void differentFunction(){
   // DATA of cohesion and acceleration of the first and last oscillator
   orderParameter = net.getOrderParameter();
 
-  // averagePhase = order.heading();
+   averagePhase = order.heading();
  // averagePhase= (net.phase[11]+net.phase[10]+net.phase[9]+net.phase[8]+net.phase[7]+net.phase[6]+net.phase[5]+
  //   net.phase[4]+net.phase[3]+net.phase[2])/(networkSize-2);
   print ("AVERGE PHASE "); 

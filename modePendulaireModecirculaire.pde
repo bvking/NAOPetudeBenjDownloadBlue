@@ -12,7 +12,7 @@ void  modePendulaireModeCirculaire() {
     } else {
    //   freqi[i]=  constrain( map( net.naturalFrequency[i], 0, 5, 200, 16000 ), freqMin, 12000 );
     }
-    
+
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      text ( " mapped GENERAL pendular way $ ", 400, 600);
@@ -70,7 +70,7 @@ void  modePendulaireModeCirculaire() {
       }
 
       for (int n = 0; n < (1); n++) {// pendular from -800 to 800
-/*
+ /*
         print (" interPhas "); 
         print (memoryi); 
         print (" "); 
@@ -168,7 +168,7 @@ void  modePendulaireModeCirculaire() {
       }
 
       for (int n = 0; n < (1); n++) {// pendular from -800 to 800
-/*
+ /*
         print (" interPhas "); 
         print (memoryi); 
         print (" "); 
@@ -222,7 +222,7 @@ void  modePendulaireModeCirculaire() {
         print (oldMemoryi); 
         print (" "); 
         println (net.oldPhase[oldMemoryi]);
- */       
+  */       
       }  
 
        if (keyMode != " propagationBallRotation ")  {  
@@ -293,15 +293,15 @@ void  modePendulaireModeCirculaire() {
     //********************************************************* END GRAPHIC CHIMERA STATE
     translate (x*1, y*1, 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
     colorMode(RGB, 255, 255, 255);
-//    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
+  //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
       fill( 175, 175, 255 );
     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {
 
-               text (  " lIlIlIlI ", -width/4, -height/4 ) ;  
+               text (  " IIIIII ", -width/4, -height/4 ) ;  
 
    // metroPhase[i]= metroPhase[i];     
                        
-    println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+    println ( " metro " + metroPhase[i]  + " net " + net.phase[i] + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
     //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
@@ -313,11 +313,11 @@ void  modePendulaireModeCirculaire() {
 
      if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' ) {
 
-               text (  " lIlIlIlI ", -width/4, -height/4 ) ;  
+               text (  " iiiiii ", -width/4, -height/4 ) ;  
 
    // metroPhase[i]= metroPhase[i];     
                        
-    println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+    println ( " metro " + metroPhase[i] + " net " + net.phase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
 
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
@@ -326,248 +326,27 @@ void  modePendulaireModeCirculaire() {
     sphereDetail( 4*5);
     }
 
+   // displayKeyModeNull(); 
 
-     if (formerKeyMetro !='B' ) { //drive ball with lfo
-          if (formerKeyMetro != '<' ) {
-             if (formerKeyMetro != '@' ) {
-                     if (keyMode != " addSignalOneAndTwo " ) {
-                         if (keyMode != " addSignalOneAndTwoBis " ) {
-                             if (keyMode != " addSignalOneAndTwoTer " ) {
-                               if (keyMode != " followDistribueAddLfoPattern " ) {
-                                 if (keyMode != " followDistribueAddLfoPatternControl " ) {
-                                    if ( keyMode != " trigEventWithAbletonSignal " ) {  // keyMode == " trigEventWithAbletonSignal " &&   metroPhase[i]=
-                                         if ( modeStartKeyToFollow  != " followSignalSampledOppositeWay(frameRatio) "  ) {
-                                            if ( modeStartKeyToFollow  != " samplingModeInternal "   ) {
-                                              if ( modeStartKeyToFollow  != " null "   ) {
-
-           
-                       text (  " lllllll ", -width/4, -height/4 ) ;           
-                       
-         println ( net.phase[i]  + " modePendulaire? formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
-  
-    sphere(side*3);
-    sphereDetail( 4*5);
-      }
-     }
-    }
-     }
-     }
-     }
-     }
-     }
-    }
-       }
-      }
-    } 
-    
-       if (formerKeyMetro == 'B' ) { //drive ball with lfo
-     fill( 255, 255, 0 ); // Spheres are all modulated with the same color. depending of acceleration
-   //   followLFO();  // better to repare
-   //  followLFObis(); // same as below
-         println (" formerKeyMetro  ", i, " ",  formerKeyMetro );    
-
-      x = displacement*cos(newPosX[i]);
-      y = displacement*sin(newPosX[i]);   
-      sphere(side*3);
-      sphereDetail( 4*5);
-  //    followMovementAll();
-  //    displayfollowMovementAll();
-      }
-
-         if (keyMode == " addSignalOneAndTwoQuater "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (100, 155, 100);
-    //  x = displacement*cos(net.phase[i]);
-    //  y = displacement*sin(net.phase[i]); 
-     x = displacement*cos(newPosXaddSignal[i]);   
-     y = displacement*sin(newPosXaddSignal[i]);   
-      
-//      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-          
-       if (keyMode == " addSignalOneAndTwoTer "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (100, 155, 255);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);    
-//      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-
-         if (keyMode == " addSignalOneAndTwoBis "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (255, 0 , 255);
-    //  x = displacement*cos(newPosXaddSignal[i]);
-    //  y = displacement*sin(newPosXaddSignal[i]); 
-       x = displacement*cos(net.phase[i]);
-       y = displacement*sin(net.phase[i]);    
-//      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-       
-       if (keyMode == " addSignalOneAndTwo "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-    // fill (100, 255, 255);
-    //   net.phase[i]=newPosF[i];
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]); 
-
- //     print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-      
-       if (keyMode == " samplingModeBis "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (100, 110, 120);
-     samplingMovementPro();
-      x = displacement*cos(net.phase[i]); //);
-      y = displacement*sin(net.phase[i]);      // display ball in blue lagub
-      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-
-   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
-  
-      println ( "****************************** DISPLAY ", keyMode ); 
-      text ( char (formerKeyMetro), 100,100);
-      fill (175, 100 , 175);  
-      x = displacement*cos(newPosXaddSignal[i]);  
-      y = displacement*sin(newPosXaddSignal[i]);
-    //  x = displacement*cos(newPosF[i]);
-    //  y = displacement*sin(newPosF[i]);
-    //  x = displacement*cos(net.phase[i]);
-    //  y = displacement*sin(net.phase[i]);   
-      sphere(side*3);
-      sphereDetail( 4*5);     
-     }
-     
-  /*
-    if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
-  
-      println ( "****************************** DISPLAY ", keyMode ); 
-      text ( char (formerKeyMetro), 100,100);
-      fill (175, 75 , 75);    
-   //   x = displacement*cos(newPosF[i]);
-   //   y = displacement*sin(newPosF[i]);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);   
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      
-     }
-   */  
-    
- if ( keyMode == " null " ) {      
-    if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
-  
-    println ( "****************************** DISPLAY ", keyMode );   
-    fill (255, 0, 255);
-      x = displacement*cos(phaseAbleton[i]); //);
-      y = displacement*sin(phaseAbleton[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-      
-    if ( keyMode == " signal " ) { //drive ball with lfo
-    println ( "****************************** DISPLAY ", keyMode );    
-    fill (100, 100 , 255);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      }
-    if ( keyMode == " followDirectLfo " ) { //drive ball with lfo    
-      println ( "****************************** DISPLAY ", keyMode );    
-      fill (255, 100 , 255);    
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);
-      net.phase[i]=newPosF[i];   
-      sphere(side*3);
-      sphereDetail( 4*5);
-      } 
-      
-    if ( modeStartKeyToFollow == " trigEventWithAbletonSignalBis " ) { //drive ball with lfo    
-      println ( "****************************** DISPLAY ", keyMode );   
-       text ( formerKeyMetro, 100,100); 
-         println ( " formerKeyMetro "  + formerKeyMetro); 
-      fill (100, 255 , 255);    
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      }
-      
-    if ( modeStartKeyToFollow == " followDistribueAddLfoPattern "  ) { //drive ball with lfo
-     if ( keyMode != " trigEventWithAbletonSignal " ) {
-      println ( "****************************** DISPLAY ", keyMode ); 
-      text ( char (formerKeyMetro), 100,100);
-      fill (100, 255 , 150);    
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);
-    //  x = displacement*cos(net.phase[i]);
-    //  y = displacement*sin(net.phase[i]);   
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      }
-     }
-
-    if ( modeStartKeyToFollow == " followDistribueAddLfoPatternControl " ) { //drive ball with lfo
-    
-   
-      println ( "****************************** DISPLAY ", keyMode, controlTrigLfoPattern ); 
-    //  text ( " CRL ", 100,100);
-      text ( char (formerKeyMetro) , 100,100);
-      fill (127, 127 , 255);    
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      }  
-
-
-    if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " 
-      || modeStartKeyToFollow  == " followSignalSampled " ) {
-        println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
-
-      text ( char (formerKeyMetro) , 100,100);
-
-    
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);
-
-     fill (255 /(networkSize-i+1), 255, 255 /(25*(i+1)));    
-      circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
-
-
-   //    circle ( 100* cos ( interpolatedAngle[0])+400, 100*sin ( interpolatedAngle[0])+400, 200);
-   //    circle ( 100* cos ( interpolatedAngle[1])+400, 100*sin ( interpolatedAngle[1])+400, 200);
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      } 
-
-   }                                                                                                                                                                                                                                                                                                                                                                                                                                    
     popMatrix();
    
-  } 
+  }
+
+
+    displayKeyModeNull(); 
+
+  
   rotate (HALF_PI);
          for (int i = 0; i < 3; i++)  {  
        String valueText[] =  displayEventFromKeyReleased (keyEvent);     
     } 
        if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
      //  displayPropagationControl();
-  } 
-  
+  }  
   rotate (-HALF_PI); 
+  
   net.step(); 
   netG.step(); //Does it make any meaning?
   
-    } 
+} 
    
