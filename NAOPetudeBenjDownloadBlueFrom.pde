@@ -111,14 +111,17 @@ void draw() {
   //****************************
 
   trigFollowSignalSampled();
+
+   teensyPos(); 
+    arduinoPos();
+
   modePendulaireModeCirculaire();
 
    // if (circularMov==true) { // why it doesn' t work?
     if (formerKeyMetro=='*') {
-    countRevs(); 
+    countRevs(); // belowmodePendular to compute revolution
      } 
-    teensyPos(); 
-    arduinoPos();
+   
      
   // ================================= 
 

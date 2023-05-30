@@ -299,7 +299,7 @@ if (keyMode == " trigEventWithAbletonSignal ") {
   // SWITCH MODE  *************************************TRIG and  MAP PENDULAR PHASE  for TEENSY and !ç (to manage sound)
 
   if (formerKeyMetro == '$') {
-    actualisePositionDataFromCircular=true;
+  //  actualisePositionDataFromCircular=true;
         // ActualVirtualPosition[i]=ActualVirtualPositionFromOtherMode[i];
 
     for (int i = 0; i < networkSize; i++) {

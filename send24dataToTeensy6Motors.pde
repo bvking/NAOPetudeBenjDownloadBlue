@@ -42,10 +42,10 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
 
   }
   
-     else dataTransformed = " dataComputeInTeensy from mode ";
+     else  if (computeData>-1){dataTransformed = " dataComputeInTeensy from mode ";
      println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
   
- 
+  }
   // String[] m1 = match(portUSB, " teensy ");
 
    // if (m1 == null) {

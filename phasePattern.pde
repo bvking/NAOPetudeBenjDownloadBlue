@@ -539,6 +539,8 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
    //  net.naturalFrequency[0]=OldFrequency[(networkSize-1)];
     
   }
+
+  
     if (key == 'A') { //A$  Shift frequencies one by one. 
     float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -4.68, 4.68); 
     for (int i = 0; i < networkSize; i++) {
