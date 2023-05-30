@@ -93,11 +93,14 @@ void mapNewPosX() {
   
     
     text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
+    println (  " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i]);
+
 
      textSize (100);
      
    if ( doo==true && ( keyMode == " propagationBallRotation " || keyMode == " propagationBallRotationBis " ) ){  // A AMELIORER DANS PROPABIS
-      if (  oldPosF[i]>newPosF[i]  && (oldPosF[i]>=oldOldPosF[i]) ){ 
+  
+     if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){ 
      revLfo[i]--;
      TrigmodPos[i]=1;
        }

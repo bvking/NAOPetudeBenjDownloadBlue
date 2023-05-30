@@ -2,8 +2,6 @@ void displayKeyModeNull() {
 
    for (int i = 0; i <networkSize-0; i++) {
 
-  //  translate (x*1, y*1, 200+(50*5*(i)));  //*-1 go in clockwise, *1 go in CCW
-  //  colorMode(RGB, 255, 255, 255); 
 
     pushMatrix();
 
