@@ -289,7 +289,7 @@ void  modePendulaireModeCirculaire() {
      } 
      */
     //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (x*1, y*1, 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
+    translate (x*1, y*1, 200+(50*5*(i+1)));  //*-1 go in clockwise, *1 go in CCW
     colorMode(RGB, 255, 255, 255);
   //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
       fill( 175, 175, 255 );
@@ -324,14 +324,14 @@ void  modePendulaireModeCirculaire() {
     sphereDetail( 4*5);
     }
 
-   // displayKeyModeNull(); 
+  
 
     popMatrix();
    
   }
 
 
-   // displayKeyModeNull(); 
+  // displayKeyModeNull(); 
 
   
   rotate (HALF_PI);
@@ -342,9 +342,12 @@ void  modePendulaireModeCirculaire() {
      //  displayPropagationControl();
   }  
   rotate (-HALF_PI); 
-  
-  net.step(); 
-  netG.step(); //Does it make any meaning?
+        if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+//   net.step(); 
+//  netG.step(); //Does it make any meaning?
+  } 
+ // net.step(); 
+ // netG.step(); //Does it make any meaning?
   
 } 
    

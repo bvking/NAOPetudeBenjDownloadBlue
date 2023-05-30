@@ -65,7 +65,7 @@ void draw() {
   if (keyMode == " null ")
   { 
     checkKeyModeToFollow();  
-      }
+  }
    
    
     if (beatTrigged==true && formerKeyMetro == 's'){ // formerBeatOnMeasure>=4 && beatOnMeasure<=1 && 
@@ -108,19 +108,27 @@ void draw() {
 //**  printDataOnScreen();
   differentFunction();
   displayOscillatorSpheres();
+
   //****************************
 
   trigFollowSignalSampled();
 
-   teensyPos(); 
-    arduinoPos();
 
   modePendulaireModeCirculaire();
+  displayKeyModeNull(); 
+
+  
+  net.step(); // actualise step insync library ==> actualise net.phase[i]
+  netG.step(); //Does it make any meaning?
+  
 
    // if (circularMov==true) { // why it doesn' t work?
     if (formerKeyMetro=='*') {
     countRevs(); // belowmodePendular to compute revolution
      } 
+
+   teensyPos(); 
+   arduinoPos();
    
      
   // ================================= 

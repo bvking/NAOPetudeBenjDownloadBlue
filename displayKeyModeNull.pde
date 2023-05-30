@@ -2,7 +2,13 @@ void displayKeyModeNull() {
 
    for (int i = 0; i <networkSize-0; i++) {
 
+  //  translate (x*1, y*1, 200+(50*5*(i)));  //*-1 go in clockwise, *1 go in CCW
+  //  colorMode(RGB, 255, 255, 255); 
+
     pushMatrix();
+
+      translate (x*1, y*1, 200+(50*5*(i)));  //*-1 go in clockwise, *1 go in CCW
+      colorMode(RGB, 255, 255, 255); 
 
      if (formerKeyMetro !='B' ) { //drive ball with lfo
           if (formerKeyMetro != '<' ) {
@@ -37,7 +43,36 @@ void displayKeyModeNull() {
     }
        }
       }
-    } 
+    }
+
+        if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
+  
+    println ( "****************************** DISPLAY ", keyMode );   
+    fill (255, 0, 255);
+      x = displacement*cos(phaseAbleton[i]); //);
+      y = displacement*sin(phaseAbleton[i]);    
+      sphere(side*3);
+      sphereDetail( 4*5);
+      }
+      
+    if ( keyMode == " signal " ) { //drive ball with lfo
+    println ( "****************************** DISPLAY ", keyMode );    
+    fill (100, 100 , 255);
+      x = displacement*cos(net.phase[i]);
+      y = displacement*sin(net.phase[i]);    
+      sphere(side*3);
+      sphereDetail( 4*5); 
+      }
+      
+    if ( keyMode == " followDirectLfo " ) { //drive ball with lfo    
+      println ( "****************************** DISPLAY ", keyMode );    
+      fill (255, 100 , 255);    
+      x = displacement*cos(newPosF[i]);
+      y = displacement*sin(newPosF[i]);
+      net.phase[i]=newPosF[i];   
+      sphere(side*3);
+      sphereDetail( 4*5);
+      } 
     
        if (formerKeyMetro == 'B' ) { //drive ball with lfo
      fill( 255, 255, 0 ); // Spheres are all modulated with the same color. depending of acceleration
@@ -142,35 +177,8 @@ void displayKeyModeNull() {
      }
    */  
     
- if ( keyMode == " null " ) {      
-    if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
-  
-    println ( "****************************** DISPLAY ", keyMode );   
-    fill (255, 0, 255);
-      x = displacement*cos(phaseAbleton[i]); //);
-      y = displacement*sin(phaseAbleton[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
-      
-    if ( keyMode == " signal " ) { //drive ball with lfo
-    println ( "****************************** DISPLAY ", keyMode );    
-    fill (100, 100 , 255);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5); 
-      }
-      
-    if ( keyMode == " followDirectLfo " ) { //drive ball with lfo    
-      println ( "****************************** DISPLAY ", keyMode );    
-      fill (255, 100 , 255);    
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);
-      net.phase[i]=newPosF[i];   
-      sphere(side*3);
-      sphereDetail( 4*5);
-      } 
+ if ( keyMode != " null " ) {      
+ 
       
     if ( modeStartKeyToFollow == " trigEventWithAbletonSignalBis " ) { //drive ball with lfo    
       println ( "****************************** DISPLAY ", keyMode );   
