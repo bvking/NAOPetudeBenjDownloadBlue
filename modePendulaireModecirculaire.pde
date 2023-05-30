@@ -237,7 +237,6 @@ void  modePendulaireModeCirculaire() {
 
 
     
-    
 
     if (formerKeyMetro == 'J') { //USELLL play sample recorded with s
      text ( " mapped to J CIRCULAR or PENDULAR way 2$ ", 400, 1000);
@@ -250,8 +249,7 @@ void  modePendulaireModeCirculaire() {
      } 
     } 
   
-    
-
+  
 
     if (formerKeyMetro == '<') { //experimental pattern of phases
 
@@ -333,7 +331,7 @@ void  modePendulaireModeCirculaire() {
   }
 
 
-    displayKeyModeNull(); 
+   // displayKeyModeNull(); 
 
   
   rotate (HALF_PI);

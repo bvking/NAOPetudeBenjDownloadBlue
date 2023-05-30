@@ -2,6 +2,39 @@ void arduinoPos() {
 
   print ( "compteur dans arduino  "); 
   showArray(rev);
+if (keyMode == " trigEventWithAbletonSignal ") { 
+
+ for (int i = 0; i < networkSize; i++) {
+
+    //rev[i]=rev[0];
+
+    //*******************************  ASSIGN MOTOR WITH POSITION
+    //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
+
+    if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
+     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
+    }
+
+    //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
+    if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
+
+     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
+    }
+
+    if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
+      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+      //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
+    }         
+    if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
+      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
+    }
+  }
+  
+  }
+
+
+
+
  if (keyMode == " propagationBallRotation " ) { 
     for (int i = 0; i < networkSize; i++) {
 
@@ -222,7 +255,7 @@ void arduinoPos() {
 
    //****** CIRCULAR MODE
 
-      if (  keyMode != " phasePattern " ) {
+      if (  keyMode == " trigEventWithAbletonSignal " ) { // trigEventWithAbletonSignal  // phasePattern
         for (int i = 0; i < networkSize; i++) {
 
             
@@ -250,6 +283,7 @@ void arduinoPos() {
      // background ((i+1)*10, 127/5*(i+1), 50);
         } else  TrigmodPos[i]=1;
       } 
+       
 
     //   DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
        ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];
@@ -575,7 +609,7 @@ void arduinoPos() {
   }     
   //*******************
 
-  if (modeStartKeyToFollow!= " null "){
+ 
    if (keyMode!= " phasePattern ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
@@ -594,7 +628,7 @@ void arduinoPos() {
        }
       } 
      }
-  } 
+  
    if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
    {
     if (measure<=3 )
@@ -617,4 +651,4 @@ void arduinoPos() {
           
            }
  
-}
+} 

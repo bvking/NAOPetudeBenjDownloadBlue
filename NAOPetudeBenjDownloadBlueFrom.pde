@@ -20,7 +20,7 @@ void mousePressed() {
 
 void draw() {
 
- handleKeyPress(); // Gestion des touches * et $ pour definir mode circulaire ou non
+// handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
  displayArrays(); // Affichage des tableaux
  background(0);
 
@@ -113,7 +113,8 @@ void draw() {
   trigFollowSignalSampled();
   modePendulaireModeCirculaire();
 
-    if (circularMov==true) {
+   // if (circularMov==true) { // why it doesn' t work?
+    if (formerKeyMetro=='*') {
     countRevs(); 
      } 
     teensyPos(); 
@@ -131,7 +132,7 @@ void draw() {
   // SoundmouseMoved(); // to automatise sound with speed. In the setup uncomment the out1, out2 ...
 
   if (formerKey== '!') {
-    formerSartKey = formerKey;
+   // formerSartKey = formerKey;
   }
 
   if (key=='j') {// send a trig to start record in Ableton live 
@@ -186,6 +187,7 @@ void draw() {
   // countPendularTrig ();
   //frameStop();
   formerFormerKey= formerKey; 
+ // handleKeyPressToChooseCircularMovementOrNot();
   printModeAndKey();
 
   oscSend();

@@ -918,7 +918,8 @@ keyMode = " trigEventWithAbletonSignal ";
 
 
 music_from_ableton_live = " pleasureKraft ";
-positionMov = " premierePartie ";
+positionMov = " premierePartie "; 
+
 doo=true; // oposite way is true 
 //music_from_ableton_live = " madRush ";                                                                                                                                                                                                            
 k=0; // phaseShifting

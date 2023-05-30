@@ -53,12 +53,12 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
   }
 }
 
-void handleKeyPress() {
-  if (key == '*') {
+void handleKeyPressToChooseCircularMovementOrNot() {
+  if (formerKeyMetro == '*') {
     circularMov = true;
   }
   
-  if (key == '$') {
+  if (formerKeyMetro == '$') {
     circularMov = false;
   }
   
@@ -68,6 +68,7 @@ void handleKeyPress() {
 void displayArrays() {
   print("encodeur "); showArray(encodeur);
   print("countRev "); showArray(rev);
+ // print("keyEvent "); showArray(keyEvent); showArray work with int only
   
   textSize(50);
   for (int i = 0; i < networkSize; i++) {
@@ -87,7 +88,7 @@ void computePhaseSum() {
   }
     }
   addPhaseAllMode/=networkSize;
-  print("average phase ");
+  print("average phase is with order");
   print (addPhaseAllMode);
   addPhaseAllMode = map(addPhaseAllMode, -(networkSize - 1) * TWO_PI, (networkSize - 1) * TWO_PI, 0, 1);
   print("averagemapped ");
