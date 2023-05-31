@@ -193,11 +193,11 @@ void starterCaseUsedorNot (){
     if (circularMov==true || circularMov==false ) {//|| circularMov==false
 
       println ("STARTERXBIS DataToDueCircular ");
-      //     print (" DataToDueCircularVirtualPosition[oldMemoryi-1] " ) ;  println (DataToDueCircularVirtualPosition[oldMemoryi-1]); BUG x is ased on u$
-      print (" DataToDueCircularVirtualPosition[oldMemoryi] " ) ;  
-      println (DataToDueCircularVirtualPosition[oldMemoryi]);
-      print (" 6400-DataToDueCircularVirtualPosition[oldMemoryi] " ) ;  
-      println (6400 - DataToDueCircularVirtualPosition[oldMemoryi]);
+      //     print (" dataToControlStepMotorisedPosition[oldMemoryi-1] " ) ;  println (dataToControlStepMotorisedPosition[oldMemoryi-1]); BUG x is ased on u$
+      print (" dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
+      println (dataToControlStepMotorisedPosition[oldMemoryi]);
+      print (" 6400-dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
+      println (6400 - dataToControlStepMotorisedPosition[oldMemoryi]);
 
       if  ( 1>=1  ) { 
         if  (millis()>TimeUpstair+d) {

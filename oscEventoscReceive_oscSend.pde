@@ -543,7 +543,7 @@ void oscSend(){
     float j= LevelCohesionToSend*1.0;
   myMessage.add((map ((j), 0, 1, 1, 127))); /* add an int to the osc message */
   myMessage1.add( trigLfo);
-  float data10= DataToDueCircularVirtualPosition[networkSize-1]*1.0;   
+  float data10= dataToControlStepMotorisedPosition[networkSize-1]*1.0;   
   myMessage2.add(Velocity);
   myMessage3.add(LevelCohesionToSend);
   /*
@@ -612,9 +612,9 @@ void oscSend(){
 
 
   JoDebug  ="<" // BPM9   
-   // + (DataToDueCircularVirtualPosition[11])+","+DataToDueCircularVirtualPosition[10]+","+(DataToDueCircularVirtualPosition[9])+","+DataToDueCircularVirtualPosition[8]+","+DataToDueCircularVirtualPosition[7]+","
-   // + DataToDueCircularVirtualPosition[6]+","
-    +( DataToDueCircularVirtualPosition[5])+","+DataToDueCircularVirtualPosition[4]+","+DataToDueCircularVirtualPosition[3]+","+DataToDueCircularVirtualPosition[2]+","
+   // + (dataToControlStepMotorisedPosition[11])+","+dataToControlStepMotorisedPosition[10]+","+(dataToControlStepMotorisedPosition[9])+","+dataToControlStepMotorisedPosition[8]+","+dataToControlStepMotorisedPosition[7]+","
+   // + dataToControlStepMotorisedPosition[6]+","
+    +( dataToControlStepMotorisedPosition[5])+","+dataToControlStepMotorisedPosition[4]+","+dataToControlStepMotorisedPosition[3]+","+dataToControlStepMotorisedPosition[2]+","
     + ">";
     
  

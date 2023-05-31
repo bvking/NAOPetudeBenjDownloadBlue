@@ -535,7 +535,7 @@ float[] divideFrequency;
 
 int[] PendularVirtualPosition = new int[networkSize];
 int[] CircularVirtualPosition  = new int[networkSize];
-int[] DataToDueCircularVirtualPosition  = new int[networkSize];
+int[] dataToControlStepMotorisedPosition  = new int[networkSize];
 int[] ActualVirtualPosition  = new int[networkSize];
 int[] ActualVirtualPositionFromOtherMode  = new int[networkSize];
 int[] oldActualVirtualPosition  = new int[networkSize];
@@ -778,7 +778,7 @@ void setup() {
   OldFrequency = new float[networkSize]; 
   PendularVirtualPosition = new int[networkSize]; 
   CircularVirtualPosition = new int[networkSize]; 
-  DataToDueCircularVirtualPosition =new int[networkSize]; 
+  dataToControlStepMotorisedPosition =new int[networkSize]; 
   ActualVirtualPosition = new int[networkSize];
   ActualVirtualPositionFromOtherMode = new int[networkSize];
   oldActualVirtualPosition = new int[networkSize];
@@ -881,9 +881,9 @@ void setup() {
 
   for (int i = 0; i < networkSize; i++) {
     //   ActualVirtualPosition[i]=80*i;
-    // DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i]+800;
-    DataToDueCircularVirtualPosition[i]= (int) map ( DataToDueCircularVirtualPosition[i], -800, 800, 1600, 4800)+ ActualVirtualPosition[i];  // mapped for 6400 step/round +800
- //  dataToLive[i]=(float)  map(DataToDueCircularVirtualPosition[i], 1600, 4800, 0f, 1f);
+    // dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i]+800;
+    dataToControlStepMotorisedPosition[i]= (int) map ( dataToControlStepMotorisedPosition[i], -800, 800, 1600, 4800)+ ActualVirtualPosition[i];  // mapped for 6400 step/round +800
+ //  dataToLive[i]=(float)  map(dataToControlStepMotorisedPosition[i], 1600, 4800, 0f, 1f);
   }
   for (int i = 0; i < 300; i++) {
     // which+1 is the smallest (the oldest in the array)

@@ -888,7 +888,7 @@ void phasePatternBase() { // trigged with $ or *
     //  for (int i = 0; i < networkSize; i++) {
       
       if (netPhaseBase[i] >=  0) { // number of revLfoolution is even and rotation is clock wise   
-        DataToDueCircularVirtualPosition[i]= int (map (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep)); //
+        dataToControlStepMotorisedPosition[i]= int (map (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep)); //
         }
       
      }
@@ -902,8 +902,8 @@ void phasePatternBase() { // trigged with $ or *
     String dataMarkedToTeensyPhasePattern  ="<" //   
 
      
-     + DataToDueCircularVirtualPosition[5]+","+DataToDueCircularVirtualPosition[4]+","+DataToDueCircularVirtualPosition[3]+","+DataToDueCircularVirtualPosition[2]+","
-     + DataToDueCircularVirtualPosition[1]+","+DataToDueCircularVirtualPosition[0]    //+          ","+ 0 + ","+ 0","+ 0","+ 0 +","
+     + dataToControlStepMotorisedPosition[5]+","+dataToControlStepMotorisedPosition[4]+","+dataToControlStepMotorisedPosition[3]+","+dataToControlStepMotorisedPosition[2]+","
+     + dataToControlStepMotorisedPosition[1]+","+dataToControlStepMotorisedPosition[0]    //+          ","+ 0 + ","+ 0","+ 0","+ 0 +","
     
      +  speedLocalDelta + ","
       // + driverOnOff +","+dataToTeensyNoJo+","+decompte[8]+","+decompte[7]+","+decompte[6]+","

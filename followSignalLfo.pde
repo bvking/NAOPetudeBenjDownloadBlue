@@ -62,16 +62,16 @@ if (formerDecayTime>decayTime){
     if (phaseMapped[i]<0){
       
     phaseMapped[i] = phaseMappedFollow[i]+phaseMapped[i];
-    DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+    dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
     net.oldPhase[i]=net.phase[i];
-    net.phase[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);
+    net.phase[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
   }
        
    else
     phaseMapped[i] = phaseMappedFollow[i]-phaseMapped[i];
-    DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
     net.oldPhase[i]=net.phase[i];
-    net.phase[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
+    net.phase[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
   }
  }
    
@@ -97,14 +97,14 @@ if (formerDecayTime>decayTime){
      for (int i = 0; i < networkSize; i+=1) { 
     if (phaseMapped[i]<0){
    
-     DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+     dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
      net.oldPhase[i]=phaseMapped[i];
      net.phase[i]= phaseMapped[i];
        }
        
    else
     
-     DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+     dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
      net.oldPhase[i]=phaseMapped[i];
      net.phase[i]= phaseMapped[i];
  }
@@ -211,14 +211,14 @@ if (formerDecayTime>decayTime){
    
     if (phaseMapped[i]<0){
    
-    DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+    dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
     net.oldPhase[i]=phaseMapped[i];
     net.phase[i]= phaseMapped[i];
        }
         
    else
     
-    DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
     net.oldPhase[i]=phaseMapped[i];
     net.phase[i]= phaseMapped[i];
   }
@@ -272,7 +272,7 @@ if (formerDecayTime>decayTime){
 
      for (int i = 0; i <networkSize-0; i+=1) {
         
-  //   println ( " " + i +   " net.phase " + net.phase[i] + " dataMappedForMoto " + dataMappedForMotor[i] + " DataToDuePosition[i] " + DataToDueCircularVirtualPosition[i]);
+  //   println ( " " + i +   " net.phase " + net.phase[i] + " dataMappedForMoto " + dataMappedForMotor[i] + " DataToDuePosition[i] " + dataToControlStepMotorisedPosition[i]);
      
     }    
     for (int i = 0; i < networkSize; i++) {
@@ -293,7 +293,7 @@ if (formerDecayTime>decayTime){
      assignMotorWithDataMapped();
      
     for (int i = 0; i < networkSize; i++) {
-     DataToDueCircularVirtualPosition[i] = DataToDueCircularVirtualPosition[i]+ recordLastDataOfMotorPosition[i];
+     dataToControlStepMotorisedPosition[i] = dataToControlStepMotorisedPosition[i]+ recordLastDataOfMotorPosition[i];
      }
       
     int speedDelta=10;
@@ -305,10 +305,10 @@ if (formerDecayTime>decayTime){
     
     String dataMarkedToTeensyNoJo  ="<" // BPM9   
 
-    //  +   DataToDueCircularVirtualPosition[11]+ ","+DataToDueCircularVirtualPosition[10]+","+DataToDueCircularVirtualPosition[9]+","+DataToDueCircularVirtualPosition[8]+","+DataToDueCircularVirtualPosition[7]+","
-    //  +   DataToDueCircularVirtualPosition[6]
-    +  ","+DataToDueCircularVirtualPosition[5]+","+DataToDueCircularVirtualPosition[4]+","+DataToDueCircularVirtualPosition[3]+","+DataToDueCircularVirtualPosition[2]+","
-    +  ","+DataToDueCircularVirtualPosition[2]+","+DataToDueCircularVirtualPosition[1]+","+DataToDueCircularVirtualPosition[0]+","
+    //  +   dataToControlStepMotorisedPosition[11]+ ","+dataToControlStepMotorisedPosition[10]+","+dataToControlStepMotorisedPosition[9]+","+dataToControlStepMotorisedPosition[8]+","+dataToControlStepMotorisedPosition[7]+","
+    //  +   dataToControlStepMotorisedPosition[6]
+    +  ","+dataToControlStepMotorisedPosition[5]+","+dataToControlStepMotorisedPosition[4]+","+dataToControlStepMotorisedPosition[3]+","+dataToControlStepMotorisedPosition[2]+","
+    +  ","+dataToControlStepMotorisedPosition[2]+","+dataToControlStepMotorisedPosition[1]+","+dataToControlStepMotorisedPosition[0]+","
     + 0+","+0+","+0+","+0+","
 
       +  (speedDelta) +","+ driverOnOff +","+dataToTeensyNoJo+","

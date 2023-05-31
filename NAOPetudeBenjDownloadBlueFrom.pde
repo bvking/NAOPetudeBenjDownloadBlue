@@ -127,7 +127,7 @@ void draw() {
     countRevs(); // belowmodePendular to compute revolution
      } 
 
-  // teensyPos(); 
+   teensyPos(); 
    arduinoPos();
    
      

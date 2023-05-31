@@ -24,14 +24,14 @@ void keyReleased() {
   
      // ActualVirtualPosition[i]
       
-       ActualVirtualPosition[i]=(DataToDueCircularVirtualPosition[0]+DataToDueCircularVirtualPosition[1]+DataToDueCircularVirtualPosition[2]+DataToDueCircularVirtualPosition[3]+
-      DataToDueCircularVirtualPosition[4]+DataToDueCircularVirtualPosition[5])/(networkSize-1);
+       ActualVirtualPosition[i]=(dataToControlStepMotorisedPosition[0]+dataToControlStepMotorisedPosition[1]+dataToControlStepMotorisedPosition[2]+dataToControlStepMotorisedPosition[3]+
+      dataToControlStepMotorisedPosition[4]+dataToControlStepMotorisedPosition[5])/(networkSize-1);
    //   ActualVirtualPositionFromOtherMode[i]=
     //  CircularVirtualPosition[i]=0;
       text ( ActualVirtualPosition[i], 100, 100*i);
-    //  DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i];
-      //   dataToLive[i]=(float) map(DataToDueCircularVirtualPosition[i], 0, 6400, 0f, 1f);
-   //   DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i]+ ActualVirtualPosition[i];
+    //  dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i];
+      //   dataToLive[i]=(float) map(dataToControlStepMotorisedPosition[i], 0, 6400, 0f, 1f);
+   //   dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i]+ ActualVirtualPosition[i];
     }
 
      for (int i = 0; i < networkSize; i++) {
@@ -49,14 +49,14 @@ void keyReleased() {
   
      // ActualVirtualPosition[i]
       
-      ActualVirtualPositionFromOtherMode[i]=(DataToDueCircularVirtualPosition[0]+DataToDueCircularVirtualPosition[1]+DataToDueCircularVirtualPosition[2]+DataToDueCircularVirtualPosition[3]+
-      DataToDueCircularVirtualPosition[4]+DataToDueCircularVirtualPosition[5])/(networkSize-1);
+      ActualVirtualPositionFromOtherMode[i]=(dataToControlStepMotorisedPosition[0]+dataToControlStepMotorisedPosition[1]+dataToControlStepMotorisedPosition[2]+dataToControlStepMotorisedPosition[3]+
+      dataToControlStepMotorisedPosition[4]+dataToControlStepMotorisedPosition[5])/(networkSize-1);
    //   ActualVirtualPositionFromOtherMode[i]=
     //  CircularVirtualPosition[i]=0;
       text ( ActualVirtualPositionFromOtherMode[i], 100, 100*i);
-    //  DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i];
-      //   dataToLive[i]=(float) map(DataToDueCircularVirtualPosition[i], 0, 6400, 0f, 1f);
-   //   DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i]+ ActualVirtualPosition[i];
+    //  dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i];
+      //   dataToLive[i]=(float) map(dataToControlStepMotorisedPosition[i], 0, 6400, 0f, 1f);
+   //   dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i]+ ActualVirtualPosition[i];
     }
 
      for (int i = 0; i < networkSize; i++) {

@@ -5,11 +5,11 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
  // computeData=-2;
        dataFromMode ="<"
 
-      + DataToDueCircularVirtualPosition[5]+ ","+ DataToDueCircularVirtualPosition[4]+ ","+ DataToDueCircularVirtualPosition[3]+","+ DataToDueCircularVirtualPosition[2]+ ","
-      + DataToDueCircularVirtualPosition[1]+ ","+ DataToDueCircularVirtualPosition[0] + ","      // 
+      + dataToControlStepMotorisedPosition[5]+ ","+ dataToControlStepMotorisedPosition[4]+ ","+ dataToControlStepMotorisedPosition[3]+","+ dataToControlStepMotorisedPosition[2]+ ","
+      + dataToControlStepMotorisedPosition[1]+ ","+ dataToControlStepMotorisedPosition[0] + ","      // 
 
-    //    + DataToDueCircularVirtualPosition[5]%6400+ ","+ DataToDueCircularVirtualPosition[4]%6400+ ","+ DataToDueCircularVirtualPosition[3]%6400+","+ DataToDueCircularVirtualPosition[2]%6400+ ","
-    //  + DataToDueCircularVirtualPosition[1]%6400+ ","+  DataToDueCircularVirtualPosition[0]%6400 + ","      // 
+    //    + dataToControlStepMotorisedPosition[5]%6400+ ","+ dataToControlStepMotorisedPosition[4]%6400+ ","+ dataToControlStepMotorisedPosition[3]%6400+","+ dataToControlStepMotorisedPosition[2]%6400+ ","
+    //  + dataToControlStepMotorisedPosition[1]%6400+ ","+  dataToControlStepMotorisedPosition[0]%6400 + ","      // 
        +0+","+0+","+0+","+0+","
 
       +  accelerationRatio +","+ driver0_On_Off +","+ computeData +","+ eraseProcessingData + ","
@@ -22,8 +22,8 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
        +0+","+0+","+0+","+0+">";  
 
      /*
-      + DataToDueCircularVirtualPosition[5]+ ","+ DataToDueCircularVirtualPosition[4]+ ","+ DataToDueCircularVirtualPosition[3]+","+ DataToDueCircularVirtualPosition[2]+ ","
-      + DataToDueCircularVirtualPosition[1]+ ","+  DataToDueCircularVirtualPosition[0] + ","      // 
+      + dataToControlStepMotorisedPosition[5]+ ","+ dataToControlStepMotorisedPosition[4]+ ","+ dataToControlStepMotorisedPosition[3]+","+ dataToControlStepMotorisedPosition[2]+ ","
+      + dataToControlStepMotorisedPosition[1]+ ","+  dataToControlStepMotorisedPosition[0] + ","      // 
        +0+","+0+","+0+","+0+","
 
       +  accelerationRatio +","+ driver0_On_Off +","+ computeData +","+ eraseProcessingData + ","

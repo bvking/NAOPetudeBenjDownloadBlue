@@ -2,37 +2,6 @@ void arduinoPos() {
 
   print ( "compteur dans arduino  "); 
   showArray(rev);
-if (keyMode == " trigEventWithAbletonSignal ") { 
-
- for (int i = 0; i < networkSize; i++) {
-
-    //rev[i]=rev[0];
-
-    //*******************************  ASSIGN MOTOR WITH POSITION
-    //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
-
-    if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
-    }
-
-    //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
-    if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
-
-     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
-    }
-
-    if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
-      //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
-    }         
-    if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
-    }
-  }
-  
-  }
-
-
 
 
  if (keyMode == " propagationBallRotation " ) { 
@@ -60,9 +29,9 @@ if (keyMode == " trigEventWithAbletonSignal ") {
     if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
-    DataToDueCircularVirtualPosition[i]=Pos[i];
+    dataToControlStepMotorisedPosition[i]=Pos[i];
    // print ( " Pos " + i + " " + Pos[i] );
-   // print ( " DataToDueCircularVirtualPosition " +  (int) Pos[i]+ (rev[i]*numberOfStep));
+   // print ( " dataToControlStepMotorisedPosition " +  (int) Pos[i]+ (rev[i]*numberOfStep));
   }
   }
   
@@ -101,21 +70,21 @@ if (keyMode == " trigEventWithAbletonSignal ") {
     //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
 
     if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+rev[i]*numberOfStep ;
+      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+rev[i]*numberOfStep ;
     }
 
     //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
     if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
 
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+rev[i]*numberOfStep;
+      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+rev[i]*numberOfStep;
     }
 
     if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
       //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
     }         
     if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
-      DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
+      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
   }
  }  
@@ -223,7 +192,7 @@ if (keyMode == " trigEventWithAbletonSignal ") {
 
       if (  keyMode == " phasePatternPlusTard " ) {
            for (int i = 0; i < networkSize; i++) {
-     //   VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  DataToDueCircularVirtualPosition[i] +
+     //   VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  dataToControlStepMotorisedPosition[i] +
       // =============== MAP PHASE To ADAPT IT TO the stepper motor    // =============== TRIG 0 when oscillator pass THROUG 0:  No effect on positions datas given to teensyport
 
       if (netPhaseBase[i] >  0 ) {  
@@ -247,7 +216,7 @@ if (keyMode == " trigEventWithAbletonSignal ") {
 
         } else  TrigmodPos[i]=1;
       } 
-      DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i]+ActualVirtualPosition[i];
+      dataToControlStepMotorisedPosition[i]=CircularVirtualPosition[i]+ActualVirtualPosition[i];
     //  VirtualPosition[i]= CircularVirtualPosition[i]+ActualVirtualPosition[i]; 
     //  ActualVirtualPositionFromOtherMode[i]=VirtualPosition[i];
       }
@@ -259,7 +228,7 @@ if (keyMode == " trigEventWithAbletonSignal ") {
         for (int i = 0; i < networkSize; i++) {
 
             
-    //    VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  DataToDueCircularVirtualPosition[i] +
+    //    VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  dataToControlStepMotorisedPosition[i] +
       // =============== MAP PHASE To ADAPT IT TO the stepper motor    // =============== TRIG 0 when oscillator pass THROUG 0:  No effect on positions datas given to teensyport
 
       if (net.phase[i] >  0 ) {  
@@ -285,10 +254,10 @@ if (keyMode == " trigEventWithAbletonSignal ") {
       } 
        
 
-    //   DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
-       ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];
-   //    DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
-       ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];//+positionMotorisedFromContinuesMod[i];
+    //   dataToControlStepMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
+       ActualVirtualPositionFromOtherMode[i]=dataToControlStepMotorisedPosition[i];
+   //    dataToControlStepMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
+       ActualVirtualPositionFromOtherMode[i]=dataToControlStepMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
 
       }
@@ -326,11 +295,11 @@ if (keyMode == " trigEventWithAbletonSignal ") {
     
 
 
-    //  DataToDueCircularVirtualPosition[i]=PendularVirtualPosition[i]+  ActualVirtualPositionFromOtherMode[i];
-      ActualVirtualPosition[i]=DataToDueCircularVirtualPosition[i];
+    //  dataToControlStepMotorisedPosition[i]=PendularVirtualPosition[i]+  ActualVirtualPositionFromOtherMode[i];
+      ActualVirtualPosition[i]=dataToControlStepMotorisedPosition[i];
       ActualVirtualPosition[i]%= numberOfStep;
 
-      float rate = map(DataToDueCircularVirtualPosition[i], -800, 800, 0.80f, 1.20f);
+      float rate = map(dataToControlStepMotorisedPosition[i], -800, 800, 0.80f, 1.20f);
       //  rate = 1; //rateSong
       rateControl.value.setLastValue(rate);
 
@@ -435,11 +404,11 @@ if (keyMode == " trigEventWithAbletonSignal ") {
       Pos[i]= int (map (PendularVirtualPosition[i], -800, 800, 0, 127)); // to Oscsend 
 
       VirtualPosition[i]= PendularVirtualPosition[i]+ActualVirtualPosition[i]; 
-      //  DataToDueCircularVirtualPosition[i]=VirtualPosition[i];
-      DataToDueCircularVirtualPosition[i]=PendularVirtualPosition[i];
-      //  dataToLive[i]=  map(DataToDueCircularVirtualPosition[i], 0, 6400, 0, 1);
+      //  dataToControlStepMotorisedPosition[i]=VirtualPosition[i];
+      dataToControlStepMotorisedPosition[i]=PendularVirtualPosition[i];
+      //  dataToLive[i]=  map(dataToControlStepMotorisedPosition[i], 0, 6400, 0, 1);
 
-      float rate = map(DataToDueCircularVirtualPosition[i], -800, 800, 0.80f, 1.20f);
+      float rate = map(dataToControlStepMotorisedPosition[i], -800, 800, 0.80f, 1.20f);
       //  rate = 1; //rateSong
       rateControl.value.setLastValue(rate);
 
@@ -554,7 +523,7 @@ if (keyMode == " trigEventWithAbletonSignal ") {
 
     for (int i = 0; i < networkSize; i++) {
 
-   // DataToDueCircularVirtualPosition[i]= (int) map ( DataToDueCircularVirtualPosition[i], -800, 800, 1600, 4800);  // mapped for 6400 step/round +800 + ActualVirtualPosition[i]
+   // dataToControlStepMotorisedPosition[i]= (int) map ( dataToControlStepMotorisedPosition[i], -800, 800, 1600, 4800);  // mapped for 6400 step/round +800 + ActualVirtualPosition[i]
     }
   }
 
@@ -567,7 +536,7 @@ if (keyMode == " trigEventWithAbletonSignal ") {
   if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
 
     for (int i = 0; i < networkSize-0; i++) {
-     recordLastDataOfMotorPosition[i]=DataToDueCircularVirtualPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
+     recordLastDataOfMotorPosition[i]=dataToControlStepMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
     } 
   }
 
@@ -593,8 +562,8 @@ if (keyMode == " trigEventWithAbletonSignal ") {
 
   if (keyMode == " phasePattern ") {
      for (int i = 0; i < networkSize-0; i++) {
-  //    DataToDueCircularVirtualPosition[i]= (int) map  (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep);
-   //   DataToDueCircularVirtualPosition[i]= DataToDueCircularVirtualPosition[i]+ ActualVirtualPosition[i];
+  //    dataToControlStepMotorisedPosition[i]= (int) map  (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep);
+   //   dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i]+ ActualVirtualPosition[i];
     } 
   // send24DatasToTeensy6motors(8, -3, 3,-1);
    }

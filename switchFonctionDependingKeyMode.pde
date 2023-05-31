@@ -113,14 +113,14 @@ void switchFonctionDependingKeyMode() {
     
     if (net.oldPhase[i]>net.phase[i]){
    
-     DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], TWO_PI, 0, numberOfStep, 0)); 
+     dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], TWO_PI, 0, numberOfStep, 0)); 
      net.oldPhase[i]=net.phase[i];
    
      }
        
      else
     
-    DataToDueCircularVirtualPosition[i]= (int) map (net.phase[i], 0, TWO_PI, 0, numberOfStep); 
+    dataToControlStepMotorisedPosition[i]= (int) map (net.phase[i], 0, TWO_PI, 0, numberOfStep); 
     net.oldPhase[i]=net.phase[i];
   
 
