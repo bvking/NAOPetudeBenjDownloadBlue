@@ -48,69 +48,53 @@ void teensyPos(){
      //*******************  SWITCH MODE oTHER SoLUTION
 
   if (formerKeyMetro == '$') {
-
     for (int i = 0; i < networkSize; i++) {
-
-    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];
+    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
     }
   }
 
    if (formerKeyMetro == '*' ) {
-
-    for (int i = 0; i < networkSize-0; i++) {
-     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
+    for (int i = 0; i < networkSize-0; i++) { // 
+     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  
     } 
   }
 
 
-  if ( keyMode == " propagationBallRotationBis " ) 
-   {
-    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
+  if ( keyMode == " propagationBallRotationBis " ) {
+    for (int i = 0; i < networkSize-0; i++) { // 
+    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];
+  //  actualisePositionDataFromCircular = false; //
+    }  
    }
 
 
   if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-
     for (int i = 0; i < networkSize-0; i++) {
   //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
     } 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//---------------------------------------------------------------
 //************************ SetAcceleration with measure and position from the song
 
-  if (keyMode!= " phasePattern ") {
+  if (keyMode == " trigEventWithAbletonSignal ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
      if (positionMov != " troisieme " && measure<17) {
-      send24DatasToTeensy6motors(8, 3, -3, -1);
+      send24DatasToTeensy6motors(6, 3, -3, -1);
   }
 
-
-      if (measure>=17 && measure<=41){
- 
+     if (measure>=17 && measure<=41){
        send24DatasToTeensy6motors(7, 3, -3, -1);
+         }
+        if (measure>41 && measure<=100){
+       send24DatasToTeensy6motors(8, 3, -3, -1);
          }
        }
       } 
      }
   
    if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
-   {
-    if (measure<=3 )
+   {  if (measure<=3 )
      { 
       send24DatasToTeensy6motors(5, -3, -3, -1);
      }

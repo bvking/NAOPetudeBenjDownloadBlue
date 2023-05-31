@@ -200,6 +200,66 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     } 
   }
 
+void  splitTimeSinusoidaleScale(float propagation) {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
+
+   
+    oldSignalToSplit=signalToSplit;
+    signalToSplit= propagation; // from 0 to 1
+    signalToSplit= map (propagation, 0, 1, TWO_PI, 0);
+ 
+  if (oldSignalToSplit> signalToSplit ) {
+    key = 'q' ; // when signal goes down --> propagation FRONT SIDE
+   timeLfo= map (signalToSplit, TWO_PI, 0, 0, 1000);  //  if we have an oscillation as  lfoPhase[3]
+    }
+  else if (oldSignalToSplit< signalToSplit ) { // on est dans cette configuration avec  signalToSplit= lfoPhase[1]
+   key = 'z';  //  when signal goes down --> propagation BEHIND SIDE 
+//   key = 'q' ;  // propagation in on the same way
+   timeLfo= map (signalToSplit, 0, 1, 0, 1000);  // if we have an oscillation  lfoPhase[3]
+ //**   timeLfo= map (signalToSplit, 0, TWO_PI, 0, 1000);  // if we have a continuois from 0 to TWO_PI 
+ //   timeLfo= map (signalToSplit, 0, 1, 0, 1000); //  if we have a continuois from 0 to TWO_PI from an other software
+ 
+   }
+
+  int splitTimeLfo= int  (timeLfo%100);   // 100 is the size of the gate trigging the change of the ball  
+   
+      print ( " oldSignalToSplit " + oldSignalToSplit + " signalToSplit " + signalToSplit );
+      print (" timeLfo "); print ( timeLfo );   print (" splittimeLfo "); println ( splitTimeLfo );
+
+
+ if (doZ==false){  // case q
+  if (oldSplitTimeLfo>splitTimeLfo){
+
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+   } 
+      oscillatorChange=oscillatorChange%networkSize;
+      
+  if (oscillatorChange<=0) {
+  //    oscillatorChange=0;
+      oldOscillatorChange=networkSize-1;
+   } 
+  }
+  
+ if (doZ==true){ // case z
+  if (  oldSplitTimeLfo>splitTimeLfo){
+
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange-1;
+   } 
+      if (oscillatorChange<=-1) {
+
+      oldOscillatorChange=0;
+      oscillatorChange=networkSize-1;
+   }
+  }  
+
+  if ( oldOscillatorChange!=oscillatorChange )
+  {
+   oscillatorChanged=true;
+  } 
+   oldSplitTimeLfo = splitTimeLfo;
+             
+}
 
 void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
@@ -310,40 +370,7 @@ void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans
    
 }
 
- void  splitTimeWithTrigSignalFromAbleton() { 
-        text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[0], 500, 900);
-
- //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
-         
-    propagationTrigged=false;;
-         
-    if (doZ==false && trigedSignFromAbleton[0]==1){  // case q && timeLfo>=0
-  
-      propagationTrigged=true;
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-   
-
-      oscillatorChange=oscillatorChange%networkSize;
-  if (oscillatorChange<=0) {
-      oscillatorChange=0;
-      oldOscillatorChange=networkSize-1;
-   } 
-  }
-  
-    if (doZ==true  && trigedSignFromAbleton[0]==1 ){ 
  
-      propagationTrigged=true;
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange-1;
-   
-      if (oscillatorChange<=-1) {
-        oldOscillatorChange=0;
-        oscillatorChange=networkSize-1;
-   }
-  }       
-
-}
 
 
 void displayValue(int value){

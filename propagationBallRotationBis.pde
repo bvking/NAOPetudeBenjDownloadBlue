@@ -78,8 +78,13 @@ keyMode = " propagationBallRotationBis ";
     doZ=true;
     doQ=true;
     break;
+   
+    case 'Z': // change way of propagation
+    doZ=false;
+    doQ=true;
+    break;
+
     case '#': // change way of propagation
-    
     break;
   //  doB=!doB;
     }
@@ -136,38 +141,109 @@ keyMode = " propagationBallRotationBis ";
  
       if (key != '#' ) {
       if (modeStartKeyToFollow == " null ") {
-   //  phasePatternOriginal();
       phasePatternBase();
 
       for (int i = 0; i < networkSize-0; i+=1) {
-  //  newPosFollowed[i]=netPhaseBase[i]; 
       phaseMappedFollow[i] = netPhaseBase[i];
-    //  phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
        }
       }
      }
 
 
-   propagationSpeed=70.0; // useless if propagation comes from ableton Live
-  // splitTimeScaleRotation(signal[2]);
-   splitTimeWithTrigSignalFromAbleton();
+    propagationSpeed=70.0; // useless if propagation comes from ableton Live
+ //  splitTimeScaleRotation(signal[2]);
+
+    splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
+
+ //  splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[2]);
+  // splitTimeWithTrigSignalFromAbleton();
     
 
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
 
- formerFormerKey= formerKey;   
- formerKey=key;
+// formerFormerKey= formerKey;   in the main?
+ // formerKey=key;
 
- 
  }
+void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareSignal) { 
+        text ( " Z to change Propagation Way trigedSignFromAbleton2 " + trigedSignFromAbleton[2], 500, 900);
+
+ //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
+         
+    propagationTrigged=false;;
+         
+    if (doZ==false && trigedSignFromAbleton[2]==1){  // case q && timeLfo>=0
+  
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+   
+
+      oscillatorChange=oscillatorChange%networkSize;
+  if (oscillatorChange<=0) {
+      oscillatorChange=0;
+      oldOscillatorChange=networkSize-1;
+   } 
+  }
+  
+    if (doZ==true  && trigedSignFromAbleton[2]==1 ){ 
+ 
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange-1;
+   
+      if (oscillatorChange<=-1) {
+        oldOscillatorChange=0;
+        oscillatorChange=networkSize-1;
+   }
+  }       
+
+}
+
+
+ void  splitTimeWithTrigSignalFromAbleton() { 
+        text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[0], 500, 900);
+
+ //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
+         
+    propagationTrigged=false;;
+         
+    if (doZ==false && trigedSignFromAbleton[0]==1){  // case q && timeLfo>=0
+  
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+   
+
+      oscillatorChange=oscillatorChange%networkSize;
+  if (oscillatorChange<=0) {
+      oscillatorChange=0;
+      oldOscillatorChange=networkSize-1;
+   } 
+  }
+  
+    if (doZ==true  && trigedSignFromAbleton[0]==1 ){ 
+ 
+      propagationTrigged=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange-1;
+   
+      if (oscillatorChange<=-1) {
+        oldOscillatorChange=0;
+        oscillatorChange=networkSize-1;
+   }
+  }       
+
+}
 
 
  void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
 
  if (doo==true){  // negative way : ccw
       float phaseAmount=trigedSignFromAbleton[1];
+      phaseAmount= map (phaseAmount, 0, 1, 1, 0);
       print ( " newPosXaddSignal " + newPosXaddSignal[oscillatorChange]%TWO_PI );
 
       LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     newPosXaddSignal[oscillatorChange]%TWO_PI;
