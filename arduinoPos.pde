@@ -613,9 +613,9 @@ if (keyMode == " trigEventWithAbletonSignal ") {
    if (keyMode!= " phasePattern ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
-     if (positionMov != " troisieme ") {
+     if (positionMov != " troisieme " && measure<17) {
  //     teensyPos();
-      send24DatasToTeensy6motors(2, 3, -3, -1);
+      send24DatasToTeensy6motors(8, 3, -3, -1);
   }
 
    //   send24DatasToTeensy6motors(22, 3, -3, -1);

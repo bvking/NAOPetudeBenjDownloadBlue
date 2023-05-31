@@ -17,24 +17,24 @@ void  modePendulaireModeCirculaire() {
     if (formerKeyMetro == '$'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      text ( " mapped GENERAL pendular way $ ", 400, 600);
       //  println (" you are in $ et non x ");
-         net.phase[i]=net.phase[i]%TWO_PI;//
+      //   net.phase[i]=net.phase[i]%TWO_PI;//
       if (net.phase[i] >= PI ) { 
-        metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-  //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+   //     metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
+         metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
       if (net.phase[i] >= 0 && net.phase[i] < PI ) {
-        metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
-     //metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
+     //   metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
+     metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
       }
       if (net.phase[i] <= -PI) { 
-        metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
-     //  metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
+     //   metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
+       metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
 
       }  
       if (net.phase[i] < 0  && net.phase[i] > -PI) {   
-        metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
-     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
+     //   metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
+      metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
 
       }
  //  metroPhase[i]=  metroPhase[i]-PI/2;
@@ -323,13 +323,8 @@ void  modePendulaireModeCirculaire() {
     sphere(side*3);
     sphereDetail( 4*5);
     }
-
-  
-
     popMatrix();
-   
   }
-
 
   // displayKeyModeNull(); 
 

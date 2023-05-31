@@ -117,7 +117,7 @@ void draw() {
   modePendulaireModeCirculaire();
   displayKeyModeNull(); 
 
-  
+
   net.step(); // actualise step insync library ==> actualise net.phase[i]
   netG.step(); //Does it make any meaning?
   
@@ -127,7 +127,7 @@ void draw() {
     countRevs(); // belowmodePendular to compute revolution
      } 
 
-   teensyPos(); 
+  // teensyPos(); 
    arduinoPos();
    
      
