@@ -9,7 +9,7 @@ void teensyPos(){
     }
   }
 
-    if (modeStartKeyToFollow == " null ") {    // when propagationBall  
+    if (modeStartKeyToFollow == " null " || keyMode == " propagationBallRotationBis ") {    // when propagationBall  
      rev=revLfo; // actualise counter of normal mode  
    for(int i = 0; i < networkSize; i++) {  
  //   dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
@@ -116,7 +116,12 @@ void teensyPos(){
      }
     }
 
+   if (keyMode == " propagationBallRotationBis ") {
+
+     send24DatasToTeensy6motors(10, -10, -3, -1);
+   
    }
+     }
 
 void mapNewPosX() {
   text ( " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 800);
