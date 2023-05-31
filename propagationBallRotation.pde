@@ -201,20 +201,19 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
   }
 
 void  splitTimeSinusoidaleScale(float propagation) {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
-
-   
+ 
     oldSignalToSplit=signalToSplit;
     signalToSplit= propagation; // from 0 to 1
-    signalToSplit= map (propagation, 0, 1, TWO_PI, 0);
+    signalToSplit= map (propagation, 0, 1, 0, TWO_PI);
  
   if (oldSignalToSplit> signalToSplit ) {
-    key = 'q' ; // when signal goes down --> propagation FRONT SIDE
+  //  key = 'q' ; // when signal goes down --> propagation FRONT SIDE
    timeLfo= map (signalToSplit, TWO_PI, 0, 0, 1000);  //  if we have an oscillation as  lfoPhase[3]
     }
   else if (oldSignalToSplit< signalToSplit ) { // on est dans cette configuration avec  signalToSplit= lfoPhase[1]
-   key = 'z';  //  when signal goes down --> propagation BEHIND SIDE 
-//   key = 'q' ;  // propagation in on the same way
-   timeLfo= map (signalToSplit, 0, 1, 0, 1000);  // if we have an oscillation  lfoPhase[3]
+  // key = 'z';  //  when signal goes down --> propagation BEHIND SIDE 
+
+   timeLfo= map (signalToSplit, TWO_PI, 0, 0, 1000);  // if we have an oscillation  lfoPhase[3]
  //**   timeLfo= map (signalToSplit, 0, TWO_PI, 0, 1000);  // if we have a continuois from 0 to TWO_PI 
  //   timeLfo= map (signalToSplit, 0, 1, 0, 1000); //  if we have a continuois from 0 to TWO_PI from an other software
  
@@ -227,7 +226,11 @@ void  splitTimeSinusoidaleScale(float propagation) {  // change de sens de propa
 
 
  if (doZ==false){  // case q
+ oscillatorChanged=false;
+ propagationTrigged=false;
   if (oldSplitTimeLfo>splitTimeLfo){
+    oscillatorChanged=true;
+    propagationTrigged=true;
 
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange+1;
@@ -241,8 +244,11 @@ void  splitTimeSinusoidaleScale(float propagation) {  // change de sens de propa
   }
   
  if (doZ==true){ // case z
+ oscillatorChanged=false;
+ propagationTrigged=false;
   if (  oldSplitTimeLfo>splitTimeLfo){
-
+    oscillatorChanged=true;
+    propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange-1;
    } 
@@ -253,10 +259,6 @@ void  splitTimeSinusoidaleScale(float propagation) {  // change de sens de propa
    }
   }  
 
-  if ( oldOscillatorChange!=oscillatorChange )
-  {
-   oscillatorChanged=true;
-  } 
    oldSplitTimeLfo = splitTimeLfo;
              
 }

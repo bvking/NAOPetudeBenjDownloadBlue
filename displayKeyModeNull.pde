@@ -148,7 +148,10 @@ void displayKeyModeNull() {
   
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
-      fill (175, 100 , 175);  
+      fill (175, 100 , 175); 
+      if (dol==true) { 
+      fill (175, 100 , 255);
+      } 
       x = displacement*cos(newPosXaddSignal[i]);  
       y = displacement*sin(newPosXaddSignal[i]);
     //  x = displacement*cos(newPosF[i]);
