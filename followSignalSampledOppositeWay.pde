@@ -24,11 +24,11 @@ if (formerDecayTime>decayTime){
 /*
      if (movementInterpolated>PI) {
  
-  //  dataToControlStepMotorisedPosition[0]= int (map (movementInterpolated, PI, TWO_PI, 0, - numberOfStep)%numberOfStep); 
-   dataToControlStepMotorisedPosition[0]= int (map (movementInterpolated, PI, TWO_PI,  numberOfStep, 0)); 
+  //  dataMappedForMotorisedPosition[0]= int (map (movementInterpolated, PI, TWO_PI, 0, - numberOfStep)%numberOfStep); 
+   dataMappedForMotorisedPosition[0]= int (map (movementInterpolated, PI, TWO_PI,  numberOfStep, 0)); 
     net.oldPhase[0]=net.phase[0];
-   //*** net.phase[0]= map (dataToControlStepMotorisedPosition[0], numberOfStep, 0, 0, -TWO_PI);
-   movementInterpolated = map (dataToControlStepMotorisedPosition[0], numberOfStep, 0, -PI, -TWO_PI);
+   //*** net.phase[0]= map (dataMappedForMotorisedPosition[0], numberOfStep, 0, 0, -TWO_PI);
+   movementInterpolated = map (dataMappedForMotorisedPosition[0], numberOfStep, 0, -PI, -TWO_PI);
 
     print ("  movInter<0  "); print (2); print ( " ");   println (  movementInterpolated  ); 
 }
@@ -43,16 +43,16 @@ if (formerDecayTime>decayTime){
     /*
     if (phases[0][frameCountBis % nbMaxDelais]<=0){
    
-     dataToControlStepMotorisedPosition[0]= int (map (phases[0][frameCountBis % nbMaxDelais], 0, -TWO_PI, numberOfStep, 0)); 
+     dataMappedForMotorisedPosition[0]= int (map (phases[0][frameCountBis % nbMaxDelais], 0, -TWO_PI, numberOfStep, 0)); 
  
-     phases[0][frameCountBis % nbMaxDelais]= map (dataToControlStepMotorisedPosition[0], numberOfStep, 0, 0, -TWO_PI);
+     phases[0][frameCountBis % nbMaxDelais]= map (dataMappedForMotorisedPosition[0], numberOfStep, 0, 0, -TWO_PI);
 
        }  
    else {
     
-    dataToControlStepMotorisedPosition[0]= (int) map (phases[0][frameCountBis % nbMaxDelais], 0, TWO_PI, 0, numberOfStep); 
+    dataMappedForMotorisedPosition[0]= (int) map (phases[0][frameCountBis % nbMaxDelais], 0, TWO_PI, 0, numberOfStep); 
 
-      phases[0][frameCountBis % nbMaxDelais]= map (dataToControlStepMotorisedPosition[0], 0, numberOfStep, 0, TWO_PI);
+      phases[0][frameCountBis % nbMaxDelais]= map (dataMappedForMotorisedPosition[0], 0, numberOfStep, 0, TWO_PI);
    
      }
     */ 
@@ -86,16 +86,16 @@ if (formerDecayTime>decayTime){
 
      if (newPosFollowed[i]<=0){
    
- //    dataToControlStepMotorisedPosition[0]= int (map (newPosFollowed[i], 0, -TWO_PI, numberOfStep, 0)); 
+ //    dataMappedForMotorisedPosition[0]= int (map (newPosFollowed[i], 0, -TWO_PI, numberOfStep, 0)); 
  
-  //   newPosFollowed[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+  //   newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
 
        }  
    else {
     
- //   dataToControlStepMotorisedPosition[0]= (int) map (newPosFollowed[i], 0, TWO_PI, 0, numberOfStep); 
+ //   dataMappedForMotorisedPosition[0]= (int) map (newPosFollowed[i], 0, TWO_PI, 0, numberOfStep); 
 
-  //   newPosFollowed[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+  //   newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
    
     }
   }
@@ -128,15 +128,15 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
    
     if (phaseMapped[i]<0){
    
-     dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
-     phaseMapped[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+     dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
+     phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
    
        }
        
    else {
     
-    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-    phaseMapped[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+    dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+    phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
     }
   }
   
@@ -172,16 +172,16 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
    
     if (phaseMapped[i]<0){
    
-    dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+    dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
    //   net.oldPhase[i]=phaseMapped[i];
    //  net.phase[i]= phaseMapped[i];
-   phaseMapped[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+   phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
        }
         
    else
   
-   dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
-   phaseMapped[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+   dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+   phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
 
   }
   keyCode = TAB;
@@ -228,19 +228,19 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
       //*******************************  ASSIGN MOTOR WITH POSITION à simplifier
 
       if (revLfo[i]!=0  && (newPosF[i] >  0) ) { // number of revLfoolution is even and rotation is clock wise   
-        dataToControlStepMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
+        dataMappedForMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
       }
 
       if (revLfo[i]!=0  && (newPosF[i] <  0)) { // number of revLfoolution is even and rotation is Counter clock wise          // pos[i]= int (map (newPosF[i], 0, -numberOfStep, 0,  numberOfStep))+ (revLfo[i]*numberOfStep);
 
-        dataToControlStepMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
+        dataMappedForMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
       }
 
       if (revLfo[i]==0 && (newPosF[i] < 0) ) { //  number of revLfoolution is 0 and rotation is counter clock wise 
-        dataToControlStepMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, numberOfStep, 0));        
+        dataMappedForMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, numberOfStep, 0));        
       }         
       if  (revLfo[i]==0 && (newPosF[i] > 0) ) {  //  number of revLfoolution is 0 and rotation is clock wise     
-        dataToControlStepMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
+        dataMappedForMotorisedPosition[i]= int (map (newPosF[i], 0, numberOfStep, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
       }
     }
 

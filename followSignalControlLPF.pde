@@ -8,16 +8,16 @@ void followDistribueAddLfoPatternControlLPF(){
   phaseMapped[i]= map (automation9, 0, 1, 0, TWO_PI);
     if (phaseMapped[i]<0){
    
-    dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+    dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
     net.oldPhase[i]=net.phase[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
        }
        
    else
     
-    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+    dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
     net.oldPhase[i]=net.phase[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
   }
   for (int i = 2; i < (net.size()-0); i+=1){
     print (" degrees "); print (i);  print (" "); println (degrees (net.phase[i]));
@@ -33,16 +33,16 @@ void followDistribueAddLfoPatternControlLPF(){
     if (phaseMapped[i]<0 ){ //&& phaseMappedFollow[i]<0
       
     phaseMapped[i] = phaseMappedFollow[i]-phaseMapped[i];
-    dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+    dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
     net.oldPhase[i]=net.phase[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
   }
        
     if (phaseMapped[i]>0 ){ // && phaseMappedFollow[i]>0
     phaseMapped[i] = phaseMappedFollow[i]+phaseMapped[i];
-    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+    dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
     net.oldPhase[i]=net.phase[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
   }
  }
  
@@ -67,19 +67,19 @@ void followDistribueAddLfoPatternControlLPF(){
    
     if (phaseMapped[i]<0){
    
-     dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+     dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
    //  net.oldPhase[i]=phaseMapped[i];
     net.oldPhase[i]= net.phase[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
  //**    net.phase[i]= phaseMapped[i];
        }
        
    else
     
-    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+    dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
     net.oldPhase[i]=net.phase[i];
  //**   net.phase[i]= phaseMapped[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
 
   }
 
@@ -107,19 +107,19 @@ void followDistribueAddLfoPatternControlLPF(){
    
     if (phaseMapped[i]<0){
    
-     dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+     dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
    //  net.oldPhase[i]=phaseMapped[i];
     net.oldPhase[i]= net.phase[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
  //**    net.phase[i]= phaseMapped[i];
        }
        
    else
     
-    dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+    dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
     net.oldPhase[i]=net.phase[i];
  //**   net.phase[i]= phaseMapped[i];
-    net.phase[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+    net.phase[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
   }
 }  
  */

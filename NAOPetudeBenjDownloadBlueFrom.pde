@@ -20,7 +20,7 @@ void mousePressed() {
 
 void draw() {
 
-// handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
+ handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
  displayArrays(); // Affichage des tableaux
  background(0);
 
@@ -124,11 +124,11 @@ void draw() {
 
    // if (circularMov==true) { // why it doesn' t work?
     if (formerKeyMetro=='*') {
-    countRevs(); // belowmodePendular to compute revolution
+    countRevs(); // below modePendular to compute revolution
      } 
 
    teensyPos(); 
-   arduinoPos();
+//   arduinoPos(); // just to trig data to live when particular position of phase or pattern are created by the hole balls (oscillator)
    
      
   // ================================= 
@@ -197,8 +197,9 @@ void draw() {
   //************ arduinoPos(); // to control Pos of motor and Trigging note and computing pulsation
   // countPendularTrig ();
   //frameStop();
-  formerFormerKey= formerKey; 
- // handleKeyPressToChooseCircularMovementOrNot();
+  formerFormerKey=formerKey; 
+  handleKeyPressToChooseCircularMovementOrNot(); // in keyReleased?
+  
   printModeAndKey();
 
   oscSend();

@@ -543,7 +543,7 @@ void oscSend(){
     float j= LevelCohesionToSend*1.0;
   myMessage.add((map ((j), 0, 1, 1, 127))); /* add an int to the osc message */
   myMessage1.add( trigLfo);
-  float data10= dataToControlStepMotorisedPosition[networkSize-1]*1.0;   
+  float data10= dataMappedForMotorisedPosition[networkSize-1]*1.0;   
   myMessage2.add(Velocity);
   myMessage3.add(LevelCohesionToSend);
   /*
@@ -612,9 +612,9 @@ void oscSend(){
 
 
   JoDebug  ="<" // BPM9   
-   // + (dataToControlStepMotorisedPosition[11])+","+dataToControlStepMotorisedPosition[10]+","+(dataToControlStepMotorisedPosition[9])+","+dataToControlStepMotorisedPosition[8]+","+dataToControlStepMotorisedPosition[7]+","
-   // + dataToControlStepMotorisedPosition[6]+","
-    +( dataToControlStepMotorisedPosition[5])+","+dataToControlStepMotorisedPosition[4]+","+dataToControlStepMotorisedPosition[3]+","+dataToControlStepMotorisedPosition[2]+","
+   // + (dataMappedForMotorisedPosition[11])+","+dataMappedForMotorisedPosition[10]+","+(dataMappedForMotorisedPosition[9])+","+dataMappedForMotorisedPosition[8]+","+dataMappedForMotorisedPosition[7]+","
+   // + dataMappedForMotorisedPosition[6]+","
+    +( dataMappedForMotorisedPosition[5])+","+dataMappedForMotorisedPosition[4]+","+dataMappedForMotorisedPosition[3]+","+dataMappedForMotorisedPosition[2]+","
     + ">";
     
  

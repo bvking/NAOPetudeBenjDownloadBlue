@@ -34,7 +34,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
 
      textSize (75);
-     text ( " Data[5] " + dataToControlStepMotorisedPosition[5] + " Data[0] " + dataToControlStepMotorisedPosition[0] + " propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300-1000);
+     text ( " Data[5] " + dataMappedForMotorisedPosition[5] + " Data[0] " + dataMappedForMotorisedPosition[0] + " propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300-1000);
      text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
      text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 500-1000);
 
@@ -397,13 +397,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
     textSize (50);
  
   
-  //  text ( " positionMov " + positionMov +  " Data[3] " + dataToControlStepMotorisedPosition[3] + " key " + key , width-width, -400);
+  //  text ( " positionMov " + positionMov +  " Data[3] " + dataMappedForMotorisedPosition[3] + " key " + key , width-width, -400);
     text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 1100);
     text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 1200);
     text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1300);
 
       for (int i = 0; i < networkSize; i++) {
-      //  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + dataToControlStepMotorisedPosition[i], 800, 1600- 100*i );
+      //  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + lastPositionFromCircularMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + dataMappedForMotorisedPosition[i], 800, 1600- 100*i );
        }
 
     
@@ -427,8 +427,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
     /*
         if (formerKeyMetro == '$' && key == '='){
        for (int i = 0; i < networkSize; i=+1 ){
-         AlternativeVirtualPositionFromOtherMode[i]=dataToControlStepMotorisedPosition[i]- ActualVirtualPositionFromOtherMode[i];
-         text ( "   AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  ActualVirtualPositionFromOtherMode[i] , -800, 800-10*i );
+         AlternativeVirtualPositionFromOtherMode[i]=dataMappedForMotorisedPosition[i]- lastPositionFromCircularMode[i];
+         text ( "   AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  lastPositionFromCircularMode[i] , -800, 800-10*i );
        } 
     } 
     */

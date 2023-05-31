@@ -5,11 +5,11 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
  // computeData=-2;
        dataFromMode ="<"
 
-      + dataToControlStepMotorisedPosition[5]+ ","+ dataToControlStepMotorisedPosition[4]+ ","+ dataToControlStepMotorisedPosition[3]+","+ dataToControlStepMotorisedPosition[2]+ ","
-      + dataToControlStepMotorisedPosition[1]+ ","+ dataToControlStepMotorisedPosition[0] + ","      // 
+      + dataMappedForMotorisedPosition[5]+ ","+ dataMappedForMotorisedPosition[4]+ ","+ dataMappedForMotorisedPosition[3]+","+ dataMappedForMotorisedPosition[2]+ ","
+      + dataMappedForMotorisedPosition[1]+ ","+ dataMappedForMotorisedPosition[0] + ","      // 
 
-    //    + dataToControlStepMotorisedPosition[5]%6400+ ","+ dataToControlStepMotorisedPosition[4]%6400+ ","+ dataToControlStepMotorisedPosition[3]%6400+","+ dataToControlStepMotorisedPosition[2]%6400+ ","
-    //  + dataToControlStepMotorisedPosition[1]%6400+ ","+  dataToControlStepMotorisedPosition[0]%6400 + ","      // 
+    //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
+    //  + dataMappedForMotorisedPosition[1]%6400+ ","+  dataMappedForMotorisedPosition[0]%6400 + ","      // 
        +0+","+0+","+0+","+0+","
 
       +  accelerationRatio +","+ driver0_On_Off +","+ computeData +","+ eraseProcessingData + ","
@@ -22,8 +22,8 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
        +0+","+0+","+0+","+0+">";  
 
      /*
-      + dataToControlStepMotorisedPosition[5]+ ","+ dataToControlStepMotorisedPosition[4]+ ","+ dataToControlStepMotorisedPosition[3]+","+ dataToControlStepMotorisedPosition[2]+ ","
-      + dataToControlStepMotorisedPosition[1]+ ","+  dataToControlStepMotorisedPosition[0] + ","      // 
+      + dataMappedForMotorisedPosition[5]+ ","+ dataMappedForMotorisedPosition[4]+ ","+ dataMappedForMotorisedPosition[3]+","+ dataMappedForMotorisedPosition[2]+ ","
+      + dataMappedForMotorisedPosition[1]+ ","+  dataMappedForMotorisedPosition[0] + ","      // 
        +0+","+0+","+0+","+0+","
 
       +  accelerationRatio +","+ driver0_On_Off +","+ computeData +","+ eraseProcessingData + ","

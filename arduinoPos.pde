@@ -4,7 +4,7 @@ void arduinoPos() {
   showArray(rev);
 
 
- if (keyMode == " propagationBallRotation " ) { 
+ if (keyMode == " propagationBallRotationPASPOSSI " ) { 
     for (int i = 0; i < networkSize; i++) {
 
     //rev[i]=rev[0];
@@ -29,9 +29,9 @@ void arduinoPos() {
     if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
-    dataToControlStepMotorisedPosition[i]=Pos[i];
+    dataMappedForMotorisedPosition[i]=Pos[i];
    // print ( " Pos " + i + " " + Pos[i] );
-   // print ( " dataToControlStepMotorisedPosition " +  (int) Pos[i]+ (rev[i]*numberOfStep));
+   // print ( " dataMappedForMotorisedPosition " +  (int) Pos[i]+ (rev[i]*numberOfStep));
   }
   }
   
@@ -70,21 +70,21 @@ void arduinoPos() {
     //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
 
     if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+rev[i]*numberOfStep ;
+      dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+rev[i]*numberOfStep ;
     }
 
     //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
     if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
 
-      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+rev[i]*numberOfStep;
+      dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+rev[i]*numberOfStep;
     }
 
     if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
-      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+      dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
       //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
     }         
     if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
-      dataToControlStepMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
+      dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
     }
   }
  }  
@@ -192,7 +192,7 @@ void arduinoPos() {
 
       if (  keyMode == " phasePatternPlusTard " ) {
            for (int i = 0; i < networkSize; i++) {
-     //   VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  dataToControlStepMotorisedPosition[i] +
+     //   VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  dataMappedForMotorisedPosition[i] +
       // =============== MAP PHASE To ADAPT IT TO the stepper motor    // =============== TRIG 0 when oscillator pass THROUG 0:  No effect on positions datas given to teensyport
 
       if (netPhaseBase[i] >  0 ) {  
@@ -216,9 +216,9 @@ void arduinoPos() {
 
         } else  TrigmodPos[i]=1;
       } 
-      dataToControlStepMotorisedPosition[i]=CircularVirtualPosition[i]+ActualVirtualPosition[i];
+      dataMappedForMotorisedPosition[i]=CircularVirtualPosition[i]+ActualVirtualPosition[i];
     //  VirtualPosition[i]= CircularVirtualPosition[i]+ActualVirtualPosition[i]; 
-    //  ActualVirtualPositionFromOtherMode[i]=VirtualPosition[i];
+    //  lastPositionFromCircularMode[i]=VirtualPosition[i];
       }
      }
 
@@ -228,7 +228,7 @@ void arduinoPos() {
         for (int i = 0; i < networkSize; i++) {
 
             
-    //    VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  dataToControlStepMotorisedPosition[i] +
+    //    VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  dataMappedForMotorisedPosition[i] +
       // =============== MAP PHASE To ADAPT IT TO the stepper motor    // =============== TRIG 0 when oscillator pass THROUG 0:  No effect on positions datas given to teensyport
 
       if (net.phase[i] >  0 ) {  
@@ -254,10 +254,10 @@ void arduinoPos() {
       } 
        
 
-    //   dataToControlStepMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
-       ActualVirtualPositionFromOtherMode[i]=dataToControlStepMotorisedPosition[i];
-   //    dataToControlStepMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
-       ActualVirtualPositionFromOtherMode[i]=dataToControlStepMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
+
+
+   //    dataMappedForMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
+       lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
 
       }
@@ -269,10 +269,10 @@ void arduinoPos() {
 
   if (formerKeyMetro == '$') {
   //  actualisePositionDataFromCircular=true;
-        // ActualVirtualPosition[i]=ActualVirtualPositionFromOtherMode[i];
+        // ActualVirtualPosition[i]=lastPositionFromCircularMode[i];
 
     for (int i = 0; i < networkSize; i++) {
-        // ActualVirtualPosition[i]=ActualVirtualPositionFromOtherMode[i];
+        // ActualVirtualPosition[i]=lastPositionFromCircularMode[i];
   
       // VirtualPosition[i]= (int) map ( VirtualPosition[i], 1600, 4800, -800, 800); // mapped at the scale in Max 4 live
       PendularOldOldOldLeftVirtualPosition[i]=PendularOldOldLeftVirtualPosition[i];  
@@ -295,11 +295,11 @@ void arduinoPos() {
     
 
 
-    //  dataToControlStepMotorisedPosition[i]=PendularVirtualPosition[i]+  ActualVirtualPositionFromOtherMode[i];
-      ActualVirtualPosition[i]=dataToControlStepMotorisedPosition[i];
+    //  dataMappedForMotorisedPosition[i]=PendularVirtualPosition[i]+  lastPositionFromCircularMode[i];
+      ActualVirtualPosition[i]=dataMappedForMotorisedPosition[i];
       ActualVirtualPosition[i]%= numberOfStep;
 
-      float rate = map(dataToControlStepMotorisedPosition[i], -800, 800, 0.80f, 1.20f);
+      float rate = map(dataMappedForMotorisedPosition[i], -800, 800, 0.80f, 1.20f);
       //  rate = 1; //rateSong
       rateControl.value.setLastValue(rate);
 
@@ -404,11 +404,11 @@ void arduinoPos() {
       Pos[i]= int (map (PendularVirtualPosition[i], -800, 800, 0, 127)); // to Oscsend 
 
       VirtualPosition[i]= PendularVirtualPosition[i]+ActualVirtualPosition[i]; 
-      //  dataToControlStepMotorisedPosition[i]=VirtualPosition[i];
-      dataToControlStepMotorisedPosition[i]=PendularVirtualPosition[i];
-      //  dataToLive[i]=  map(dataToControlStepMotorisedPosition[i], 0, 6400, 0, 1);
+      //  dataMappedForMotorisedPosition[i]=VirtualPosition[i];
+      dataMappedForMotorisedPosition[i]=PendularVirtualPosition[i];
+      //  dataToLive[i]=  map(dataMappedForMotorisedPosition[i], 0, 6400, 0, 1);
 
-      float rate = map(dataToControlStepMotorisedPosition[i], -800, 800, 0.80f, 1.20f);
+      float rate = map(dataMappedForMotorisedPosition[i], -800, 800, 0.80f, 1.20f);
       //  rate = 1; //rateSong
       rateControl.value.setLastValue(rate);
 
@@ -517,28 +517,7 @@ void arduinoPos() {
   } else {
     nextScene= 0;
   }     
-  //*******************  SWITCH MODE oTHER SoLUTION
-
-  if (formerKeyMetro == '$') {
-
-    for (int i = 0; i < networkSize; i++) {
-
-   // dataToControlStepMotorisedPosition[i]= (int) map ( dataToControlStepMotorisedPosition[i], -800, 800, 1600, 4800);  // mapped for 6400 step/round +800 + ActualVirtualPosition[i]
-    }
-  }
-
-  if ( keyMode == " propagationBallRotationBis " ) 
-   {
-    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-   }
-
-
-  if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-
-    for (int i = 0; i < networkSize-0; i++) {
-     recordLastDataOfMotorPosition[i]=dataToControlStepMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
-    } 
-  }
+ 
 
   
   //24 data Jo solution
@@ -562,8 +541,8 @@ void arduinoPos() {
 
   if (keyMode == " phasePattern ") {
      for (int i = 0; i < networkSize-0; i++) {
-  //    dataToControlStepMotorisedPosition[i]= (int) map  (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep);
-   //   dataToControlStepMotorisedPosition[i]= dataToControlStepMotorisedPosition[i]+ ActualVirtualPosition[i];
+  //    dataMappedForMotorisedPosition[i]= (int) map  (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep);
+   //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
     } 
   // send24DatasToTeensy6motors(8, -3, 3,-1);
    }
@@ -579,45 +558,6 @@ void arduinoPos() {
   //*******************
 
  
-   if (keyMode!= " phasePattern ") {
-    if (modeStartKeyToFollow!= " samplingModeInternal "){
-         if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
-     if (positionMov != " troisieme " && measure<17) {
- //     teensyPos();
-      send24DatasToTeensy6motors(8, 3, -3, -1);
-  }
-
-   //   send24DatasToTeensy6motors(22, 3, -3, -1);
-
-      if (measure>=17 && measure<=41){
-      //  teensyPos();
-       send24DatasToTeensy6motors(7, 3, -3, -1);
-         }
-
-       }
-      } 
-     }
-  
-   if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
-   {
-    if (measure<=3 )
-     { 
-   //   teensyPos(); 
-      send24DatasToTeensy6motors(5, -3, -3, -1);
-     }
-    }
-  
-
-  //    print ("pendular      ");   println (pendular);  
-  if (formerKeyMetro!='s') {
-
-
-
-     //   println(frameCount + ": " + keyMode + " dataMarkedToTeensyJo_____InMainLoop" + ( dataMarkedToTeensyJo ));
-        //   encoderReceiveUSBport101.write(dataMarkedToDue36data);// Send data to Arduino.
-       // teensyport.write(dataMarkedToTeensyJo); // Send data to Teensy. only the movement
-         
-          
-           }
+   
  
 } 

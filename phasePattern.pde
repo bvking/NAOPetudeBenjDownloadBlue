@@ -250,8 +250,8 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     }
   }
   
-  
-   
+   //    memoryi++;
+   //   memoryi=(memoryi+1)%networkSize;
    
   if (key == 'T') {  
     if ( net.naturalFrequency[memoryi]<0.25 ) 
@@ -259,16 +259,12 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     { net.naturalFrequency[memoryi]=0.25; 
     }
      oldMemoryi=memoryi;
-     memoryi=(memoryi+1)%networkSize;
-
-    if ( memoryi<=0) {
-   //   memoryi=0;
-    }
-   // memoryi++;
-   // memoryi%=networkSize-0;
-  //  net.naturalFrequency[memoryi]=0.25;
-    
-  } 
+     memoryi-=1;
+  
+    if ( memoryi<0) {
+      memoryi=networkSize-1;
+    }  
+   } 
 
 
   if (key=='t') {  
@@ -531,7 +527,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   if (key == 'k') { //  Shift frequencies one by one.  //  2 to 11,  3 to 10, 4 to 9.....11 to 2 
     println (" MIROR ? k$ Shift phase one by one 9 <-- 0. ");
     for (int i = (networkSize-1); i >= 0; i--) {
-      ActualVirtualPositionFromOtherMode[i]= ActualVirtualPositionFromOtherMode[i]+800;
+      lastPositionFromCircularMode[i]= lastPositionFromCircularMode[i]+800;
      // netPhaseBase[i]=netOldPhaseBase[(networkSize+1)-i];
      // net.naturalFrequency[i]=OldFrequency[(networkSize+1)-i];
     }   

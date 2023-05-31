@@ -103,14 +103,14 @@ keyMode = " propagationBallRotationBis ";
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
 
       if (phaseMapped[i]<0){
-      dataToControlStepMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-      phaseMapped[i]= map (dataToControlStepMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);  
+      dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);  
        }
        
       else {
     
-      dataToControlStepMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-      phaseMapped[i]= map (dataToControlStepMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+      dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
        }
 
 
@@ -268,15 +268,15 @@ if (doo==false){
       }
 
        if (LFO[oscillatorChange] <0){
-      dataToControlStepMotorisedPosition[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
-      phaseMapped[oscillatorChange]= map (dataToControlStepMotorisedPosition[oscillatorChange], numberOfStep, 0, 0, -TWO_PI); 
+      dataMappedForMotorisedPosition[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], numberOfStep, 0, 0, -TWO_PI); 
       newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
        }
        
       else {
     
-      dataToControlStepMotorisedPosition[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep); 
-      phaseMapped[oscillatorChange]= map (dataToControlStepMotorisedPosition[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+      dataMappedForMotorisedPosition[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
       newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
 
        }

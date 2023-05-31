@@ -762,7 +762,7 @@ void deblockCircularu() {  // 11; 10; 9
   PhaseDecay=d*QUARTER_PI/2;
   if // debug if oscillator are blocked to the left or the right in pendular mode
     (circularMov==true &&  (  (revolution[memoryi]>=0 && revolution[memoryi]<=0 ) // (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  ) 
-    // || ((6400-dataToControlStepMotorisedPosition[oldMemoryi]+dataToControlStepMotorisedPosition[memoryi])>= dataToControlStepMotorisedPosition[oldMemoryi]-dataToControlStepMotorisedPosition[oldMemoryi-1] )
+    // || ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])>= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] )
     ||  1<0 //   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
     )) { 
 
@@ -772,15 +772,15 @@ void deblockCircularu() {  // 11; 10; 9
     print (" DEBLO deblockCircularu AFT  CHRO ");            
     println (upstairTime); 
 
-    //    print (" dataToControlStepMotorisedPosition[oldMemoryi-1] " ) ;  println (dataToControlStepMotorisedPosition[oldMemoryi-1]); // bug based on us
-    print (" dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
-    println (dataToControlStepMotorisedPosition[oldMemoryi]);
-    print (" 6400-dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
-    println (6400 - dataToControlStepMotorisedPosition[oldMemoryi]);
+    //    print (" dataMappedForMotorisedPosition[oldMemoryi-1] " ) ;  println (dataMappedForMotorisedPosition[oldMemoryi-1]); // bug based on us
+    print (" dataMappedForMotorisedPosition[oldMemoryi] " ) ;  
+    println (dataMappedForMotorisedPosition[oldMemoryi]);
+    print (" 6400-dataMappedForMotorisedPosition[oldMemoryi] " ) ;  
+    println (6400 - dataMappedForMotorisedPosition[oldMemoryi]);
 
 
-    //     if ((6400-dataToControlStepMotorisedPosition[oldMemoryi]+dataToControlStepMotorisedPosition[memoryi])
-    //            >= dataToControlStepMotorisedPosition[oldMemoryi]-dataToControlStepMotorisedPosition[oldMemoryi-1] ){ 
+    //     if ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])
+    //            >= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] ){ 
     if ( millis()>= upstairTime-10 && //net.phase[memoryi]>= interPhase[memoryi]+PhaseDecay[5]) {
       ((TWO_PI-interPhase[memoryi]+net.phase[memoryi]
       >= interPhase[memoryi]-interPhase[oldMemoryi]))) { 
@@ -842,7 +842,7 @@ void deblockCirculari() {  // 11; 10; 9
   PhaseDecay=d*QUARTER_PI/2;
   if // debug if oscillator are blocked to the left or the right in pendular mode
     (circularMov==true &&(           (revolution[memoryi]>=0 && revolution[memoryi]<=0 ) //
-    // || ((6400-dataToControlStepMotorisedPosition[oldMemoryi]+dataToControlStepMotorisedPosition[memoryi])>= dataToControlStepMotorisedPosition[oldMemoryi]-dataToControlStepMotorisedPosition[oldMemoryi-1] )
+    // || ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])>= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] )
     ||  1<0 //   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
     )) { 
     //   background (127, 50, 50 );
@@ -852,16 +852,16 @@ void deblockCirculari() {  // 11; 10; 9
     print (" DEBLO deblockCirculari AFT  CHRO ");            
     println (upstairTime); 
 
-    print (" dataToControlStepMotorisedPosition[oldMemoryi-1] " ) ;  
-    println (dataToControlStepMotorisedPosition[oldMemoryi-1]);
-    print (" dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
-    println (dataToControlStepMotorisedPosition[oldMemoryi]);
-    print (" 6400-dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
-    println (6400 - dataToControlStepMotorisedPosition[oldMemoryi]);
+    print (" dataMappedForMotorisedPosition[oldMemoryi-1] " ) ;  
+    println (dataMappedForMotorisedPosition[oldMemoryi-1]);
+    print (" dataMappedForMotorisedPosition[oldMemoryi] " ) ;  
+    println (dataMappedForMotorisedPosition[oldMemoryi]);
+    print (" 6400-dataMappedForMotorisedPosition[oldMemoryi] " ) ;  
+    println (6400 - dataMappedForMotorisedPosition[oldMemoryi]);
 
 
-    //     if ((6400-dataToControlStepMotorisedPosition[oldMemoryi]+dataToControlStepMotorisedPosition[memoryi])
-    //            >= dataToControlStepMotorisedPosition[oldMemoryi]-dataToControlStepMotorisedPosition[oldMemoryi-1] ){ 
+    //     if ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])
+    //            >= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] ){ 
     if ( millis()>= upstairTime-10 && //net.phase[memoryi]>= interPhase[memoryi]+PhaseDecay[5]) {
       ((TWO_PI-interPhase[memoryi]+net.phase[memoryi]
       >= interPhase[memoryi]-interPhase[oldMemoryi]))) { 
@@ -930,7 +930,7 @@ void deblockCircularwi() {  // 11; 10; 9
   println (PhaseDecay); 
   if // debug if oscillator are blocked to the left or the right in pendular mode
     (circularMov==true &&(   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )  // (pseudoRevolutionTodeblock[memoryi]>=0 && pseudoRevolutionTodeblock[memoryi]<=0 )
-    // || ((6400-dataToControlStepMotorisedPosition[oldMemoryi]+dataToControlStepMotorisedPosition[memoryi])>= dataToControlStepMotorisedPosition[oldMemoryi]-dataToControlStepMotorisedPosition[oldMemoryi-1] )
+    // || ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])>= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] )
     ||  1<0 //   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
 
     )) { 
@@ -943,12 +943,12 @@ void deblockCircularwi() {  // 11; 10; 9
     println (upstairTime); 
     if  (net.phase[memoryi]<=0 && TWO_PI+net.phase[memoryi]<=interPhase[oldMemoryi]+PhaseDecay) { 
 
-      print (" dataToControlStepMotorisedPosition[oldMemoryi-1] " ) ;  
-      println (dataToControlStepMotorisedPosition[oldMemoryi-1]);
-      print (" dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
-      println (dataToControlStepMotorisedPosition[oldMemoryi]);
-      print (" 6400-dataToControlStepMotorisedPosition[oldMemoryi] " ) ;  
-      println (6400 - dataToControlStepMotorisedPosition[oldMemoryi]);
+      print (" dataMappedForMotorisedPosition[oldMemoryi-1] " ) ;  
+      println (dataMappedForMotorisedPosition[oldMemoryi-1]);
+      print (" dataMappedForMotorisedPosition[oldMemoryi] " ) ;  
+      println (dataMappedForMotorisedPosition[oldMemoryi]);
+      print (" 6400-dataMappedForMotorisedPosition[oldMemoryi] " ) ;  
+      println (6400 - dataMappedForMotorisedPosition[oldMemoryi]);
       key='O'; 
       keyReleased();
     } 

@@ -15,7 +15,7 @@ void methodAbleton()  {
 // oldPhaseAbleton[i] = phaseAbleton[i];
  
 //  ableton[i]= map (ableton[i], 0, TWO_PI, 0, numberOfStep);  
-//  dataToControlStepMotorisedPosition[i] = (int) ableton[13-i];
+//  dataMappedForMotorisedPosition[i] = (int) ableton[13-i];
    }
    
      countRevsContinue();
@@ -43,7 +43,7 @@ void methodAbleton()  {
       if (rev[i]==0 && (newPosF[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
         pos[i]= int (map (newPosF[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW rev=0 ");println (pos[i]);
       }
-      dataToControlStepMotorisedPosition[i]= (int) pos[i];
+      dataMappedForMotorisedPosition[i]= (int) pos[i];
             
     }
   

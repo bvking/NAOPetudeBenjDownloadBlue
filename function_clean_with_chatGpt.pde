@@ -54,11 +54,11 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
 }
 
 void handleKeyPressToChooseCircularMovementOrNot() {
-  if (formerKeyMetro == '*') {
+  if (key == '*') {
     circularMov = true;
   }
   
-  if (formerKeyMetro == '$') {
+  if (key == '$') {
     circularMov = false;
   }
   
