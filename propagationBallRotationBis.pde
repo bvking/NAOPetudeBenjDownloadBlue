@@ -210,8 +210,8 @@ modeStartKeyToFollow = " null ";
  //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
 
 
-      LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize)-1);
+    //  LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(3*networkSize-0));
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 

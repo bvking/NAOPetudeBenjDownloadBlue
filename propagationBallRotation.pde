@@ -120,7 +120,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
    if (doB!=true){ 
 
     //     LFO[oscillatorChange] =LFO[oscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
-       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*8+QUARTER_PI*1/2 ;  // on ajoute 
+       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
        LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
@@ -144,7 +144,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
      
     if (doB==true){ 
 
-       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/2+PI ;  // on ajoute 
+       LFO[oscillatorChange] =LFO[oscillatorChange]+QUARTER_PI*1/2; ;  // on ajoute 
      //  LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 

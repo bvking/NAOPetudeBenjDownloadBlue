@@ -7,7 +7,7 @@ void teensyPos(){
  DataToDueCircularVirtualPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);
  
     }
-       send24DatasToTeensy6motors( 4, 3, -3, -1);
+       send24DatasToTeensy6motors( 8, 3, -3, -1);
    }
  if (modeStartKeyToFollow != " null ") { 
   for (int i = 0; i < networkSize; i++) {

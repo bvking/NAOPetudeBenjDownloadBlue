@@ -39,12 +39,12 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
       if (computeData<-1){
       dataTransformed = " dataNotComputeInTeensy from mode ";
       println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
-
   }
+ 
   
      else dataTransformed = " dataComputeInTeensy from mode ";
      println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
-  
+   
  
   // String[] m1 = match(portUSB, " teensy ");
 
@@ -53,7 +53,7 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
    //println ( " noPortPlugged " + portsUSB[0]); 
    //}
 
-    // teensyport.write(dataFromMode);
+     teensyport.write(dataFromMode);
       if (frameCount ==5) noLoop();
   }
 

@@ -54,7 +54,7 @@ void lockOscillatorToPositionFromPreviousProagedBall() {
        
    else
  
-       phaseKeptAtChange[i]=newPosXaddSignal[j]%TWO_PI;
+       phaseKeptAtChange[j]=newPosXaddSignal[i]%TWO_PI;
               println (" > phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
 
      //  LFO[j] = LFO[j]%TWO_PI;
