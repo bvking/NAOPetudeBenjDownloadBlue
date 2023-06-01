@@ -7,10 +7,10 @@ float newPosFollowed  [] =  new float  [networkSize];
 float phaseMappedFollow  [] =  new float  [networkSize]; 
 */
 
-void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
+void propagationBallRotationTest(){ // as addSignalOneAndTwoQuater() in NAOP 
 // modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
  modeStartKeyToFollow = " null ";
- keyMode = " propagationBallRotation ";
+ keyMode = " propagationBallRotationTest ";
 
 
      textSize (75);
@@ -52,7 +52,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
   
   
-   if (formerFormerKey == '#' || keyMode == " propagationBallRotation ") {
+   if (formerFormerKey == '#' || keyMode == " propagationBallRotationTest ") {
     
 
       for (int i = 0; i < networkSize-0; i+=1) {       
@@ -94,10 +94,10 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
     // lockOscillatorToPositionFromPreviousProagedBall();
 
      propagationSpeed=40;
-     splitTimeScale(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
+     splitTimeScaleTest(propagationSpeed); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
-    propagation2way(); 
+    propagation2wayTest(); 
     mapDataToMotor();
    for (int i = 0; i <  networkSize-0; i+=1) { 
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
@@ -111,7 +111,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
  formerKey=key;
  }
  
- void propagation2way() { 
+ void propagation2wayTest() { 
 
 
     //   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oldOscillatorChange];
@@ -156,7 +156,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
  
         for (int i = 0; i <  networkSize-0; i+=1) { 
 //    net.phase[i]=newPosXaddSignal[i]; // to display to screen
-   net.phase[i]= LFO[i]; // to display to screen
+  // net.phase[i]= LFO[i]; // to display to screen
     net.phase[i]%=TWO_PI;
     }
 ///////////////////// 
@@ -172,75 +172,11 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
   }
 
 
-void  splitTimeLfoScale() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
-    lfoPhase[1] = (frameCount / 10.0 * cos (1000 / 500.0)*-1)%TWO_PI;  // continue 0 to TWO_PI;
-    lfoPhase[3] = map ((((cos  (frameCount / 30.0))*-1) %2), -1, 1, -TWO_PI, TWO_PI);  // sinusoidale lente
-    lfoPhase[2] = map ((((cos  (frameCount / 50.0))*-1) %2), -1, 1, -TWO_PI, TWO_PI); // sinusoidale rapide
-    
-    println (" forme d'onde lfoPhase[1] ", lfoPhase[1], "lfoPhase[2] ", lfoPhase[2], "lfoPhase[3]= signalTosplit ", lfoPhase[3]); 
-
-    oldSignalToSplit=signalToSplit;
-    signalToSplit= lfoPhase[3];
- 
-  if (oldSignalToSplit> signalToSplit ) {
-    key = 'q' ; // when signal goes down --> propagation FRONT SIDE
-   timeLfo= map (signalToSplit, TWO_PI, -TWO_PI, 0, 1000);  //  if we have an oscillation as  lfoPhase[3]
-    }
-  else if (oldSignalToSplit< signalToSplit ) { // on est dans cette configuration avec  signalToSplit= lfoPhase[1]
-   key = 'z';  //  when signal goes down --> propagation BEHIND SIDE 
-//   key = 'q' ;  // propagation in on the same way
-   timeLfo= map (signalToSplit, -TWO_PI, TWO_PI, 0, 1000);  // if we have an oscillation  lfoPhase[3]
- //**   timeLfo= map (signalToSplit, 0, TWO_PI, 0, 1000);  // if we have a continuois from 0 to TWO_PI 
- //   timeLfo= map (signalToSplit, 0, 1, 0, 1000); //  if we have a continuois from 0 to TWO_PI from an other software
- 
-   }
-
-  int splitTimeLfo= int  (timeLfo%100);   // 100 is the size of the gate trigging the change of the ball  
-   
-      println ( " oldSignalToSplit " + oldSignalToSplit + " signalToSplit " + signalToSplit );
-      print (" timeLfo "); print ( timeLfo );   print (" splittimeLfo "); println ( splitTimeLfo );
-
-
- if (doZ==false){  // case q
-  if (oldSplitTimeLfo>splitTimeLfo){
-
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-   } 
-      oscillatorChange=oscillatorChange%networkSize;
-      
-  if (oscillatorChange<=0) {
-  //    oscillatorChange=0;
-      oldOscillatorChange=networkSize-1;
-   } 
-  }
-  
- if (doZ==true){ // case z
-  if (  oldSplitTimeLfo>splitTimeLfo){
-
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange-1;
-   } 
-      if (oscillatorChange<=-1) {
-
-      oldOscillatorChange=0;
-      oscillatorChange=networkSize-1;
-   }
-  }  
-
-  if ( oldOscillatorChange!=oscillatorChange )
-  {
-   oscillatorChanged=true;
-  } 
-   oldSplitTimeLfo = splitTimeLfo;
-             
-}
-
- void  splitTimeScale(float propagationSpeed) { 
+ void  splitTimeScaleTest(float propagationSpeed) { 
    
 
-         signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1
+    //     signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1
          
       //   (if signal is sinusoidale we will see good propagation)
       
@@ -292,19 +228,3 @@ if (doZ==true   ){
    
 }
 
-
-void displayValue(int value){
-   textSize (100);
-   text (value, width - 100, 100);
-}
-
-void displayText(String text)
-{
-  if(null == text){
-     return;
-  }
-  
-   fill(255);
-   textSize (20);
-   text (text, width - 150, 600);
-}

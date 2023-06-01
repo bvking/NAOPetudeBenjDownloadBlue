@@ -1,4 +1,4 @@
-void lockOscillatorToPositionFromPreviousProagedBall() { 
+void lockOscillatorToPositionFromPreviousProagedBallTest() { 
 
   if (propagationTrigged==true && propagationTrigged==true) { //  works always ?  formerFormerKey  == '#'
 //   oscillatorChanged=true;
