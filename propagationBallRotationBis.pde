@@ -184,7 +184,7 @@ modeStartKeyToFollow = " null ";
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oldOscillatorChange] + (PI/(3*networkSize)-1);
-      text ( "  LFO[oscillatorChange] " + LFO[oscillatorChange], 900, 900 );
+      text ( "  doC==true && doo==true && doB!=true LFO " + LFO[oscillatorChange], 0, 500);
         if (LFO[oscillatorChange]<0){ 
     //  for (int i = 0; i <  networkSize-0; i+=1) { 
 
@@ -211,7 +211,7 @@ modeStartKeyToFollow = " null ";
 
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize)-1);
+      LFO[oscillatorChange] = LFO[oldOscillatorChange] + (PI/(1*networkSize)-1);
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -242,7 +242,7 @@ modeStartKeyToFollow = " null ";
     //   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
         dataMappedForMotor[oscillatorChange]= (int) map (phaseKeptAtChange[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
-       println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
+       text (" phaseKeptAtChange[oscillatorChange] " + oscillatorChange + " " +  phaseKeptAtChange[oldOscillatorChange], 0, 300);
       
        
      //   newPosXaddSignal[oldOscillatorChange]= map (dataMappedForMotor[oldOscillatorChange], 0, numberOfStep, 0, TWO_PI); // GOOD
