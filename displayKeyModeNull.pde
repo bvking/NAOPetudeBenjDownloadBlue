@@ -144,8 +144,8 @@ void displayKeyModeNull() {
       sphereDetail( 4*5);
       }
 
-   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
-  
+   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis " ||  
+        keyMode  ==  " propagationBallRotationTest " || keyMode  ==  " propagationBallRotationBisTest " ) { 
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
       fill (175, 100 , 175); 

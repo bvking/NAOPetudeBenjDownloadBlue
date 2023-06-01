@@ -68,7 +68,7 @@ void switchFonctionDependingKeyMode() {
   }
 
 
-      if (keyMode == " propagationBallRotationTest " || keyModeRed == " propagationBallRotationRec ") { 
+      if (keyMode == " propagationBallRotationTest " || keyMode == " propagationBallRotationBisTest ") { 
         propagationBallRotationTest();
      text (" Alt t " + keyMode, -width*2, -height*3);
   }
@@ -76,6 +76,12 @@ void switchFonctionDependingKeyMode() {
      if (keyMode == " propagationBallRotationBis " || keyModeRed == " propagationBallRotationBis ") { 
         propagationBallRotationBis();
      text (" Alt y " + keyMode, -width*2, -height*3);
+  
+  }
+
+        if (keyMode == " propagationBallRotationBisTest " || keyModeRed == " propagationBallRotationBis ") { 
+        propagationBallRotationBisTest();
+     text (" Alt u " + keyMode, -width*2, -height*3);
   
   }
 
