@@ -38,7 +38,7 @@
     }
 
     if (moveKeys[8]==true && moveKeys[13]==true){ // ALT && t pressed
-    keyMode = " propagationBallRotation "  ;
+    keyMode = " propagationBallRotationTest"  ;
   //  formerKeyMetro = '*';
     print ("Alt t + keyMode ",  keyMode );
     }

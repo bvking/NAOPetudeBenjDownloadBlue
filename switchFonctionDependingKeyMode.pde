@@ -68,8 +68,8 @@ void switchFonctionDependingKeyMode() {
   }
 
 
-      if (keyMode == " propagationBallRotation " || keyModeRed == " propagationBallRotationRec ") { 
-        propagationBallRotation();
+      if (keyMode == " propagationBallRotationTest " || keyModeRed == " propagationBallRotationRec ") { 
+        propagationBallRotationTest();
      text (" Alt t " + keyMode, -width*2, -height*3);
   }
 
