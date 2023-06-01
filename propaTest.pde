@@ -62,13 +62,13 @@ void propagationBallRotationTest(){ // as addSignalOneAndTwoQuater() in NAOP
        phaseMapped[oscillatorChange]=   phaseMapped[oscillatorChange]+   LFO[oscillatorChange];     //      newPosXaddSignal[oscillatorChange];
    
        if (phaseMapped[i]<0){   
-       DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-       phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);
+       dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+       phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
        }
        
        else {  
-       DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-       phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
+       dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+       phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
        }
 
        newPosXaddSignal[i]=phaseMapped[i];
@@ -98,7 +98,7 @@ void propagationBallRotationTest(){ // as addSignalOneAndTwoQuater() in NAOP
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 
     propagation2wayTest(); 
-    mapDataToMotor();
+    mapNewPosX();
    for (int i = 0; i <  networkSize-0; i+=1) { 
     net.phase[i]=newPosXaddSignal[i]; // to display to screen
     net.phase[i]%=TWO_PI;
