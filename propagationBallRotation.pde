@@ -213,7 +213,7 @@ void  splitTimeSinusoidaleScale(float propagation) {  // change de sens de propa
   else if (oldSignalToSplit< signalToSplit ) { // on est dans cette configuration avec  signalToSplit= lfoPhase[1]
   // key = 'z';  //  when signal goes down --> propagation BEHIND SIDE 
 
-   timeLfo= map (signalToSplit, TWO_PI, 0, 0, 1000);  // if we have an oscillation  lfoPhase[3]
+   timeLfo= map (signalToSplit, 0, TWO_PI, 0, 1000);  // if we have an oscillation  lfoPhase[3]
  //**   timeLfo= map (signalToSplit, 0, TWO_PI, 0, 1000);  // if we have a continuois from 0 to TWO_PI 
  //   timeLfo= map (signalToSplit, 0, 1, 0, 1000); //  if we have a continuois from 0 to TWO_PI from an other software
  

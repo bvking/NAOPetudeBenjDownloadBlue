@@ -87,10 +87,10 @@ void addSignalOneAndTwo(){
   }
 
         LFO[k]= LFO[j];
-        LFO[oscillatorChange] = phaseKeptAtChange[oscillatorChange];
+   //     LFO[oscillatorChange] = phaseKeptAtChange[oscillatorChange];
      //   LFO[j] = phaseKeptAtChange[k]; //pas mal
        if (oscillatorChanged==true )  { 
-       LFO[j] = LFO[oscillatorChange];
+       LFO[j] = phaseKeptAtChange[oscillatorChange];
       }
       //  LFO[j] = LFO[j]%TWO_PI;
     

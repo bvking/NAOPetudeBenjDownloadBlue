@@ -40,18 +40,17 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
    //println ( " noPortPlugged " + portsUSB[0]); 
    //}
 
-   //  teensyport.write(dataFromMode);
+     teensyport.write(dataFromMode);
       if (frameCount ==5) noLoop();
   }
 
   void setPort(){
 
    String[] ports = Serial.list();
-   
- 
    String[] portsUSB = { "GA", "FL", "NC", "po", "po", "po" ,"po", "po", "po" };
-arrayCopy(ports, portsUSB);
-println(portsUSB);
+
+   arrayCopy(ports, portsUSB);
+   println(portsUSB);
 // Prints updated array contents to the console:
 // [0] "OH"
 // [1] "IN"
@@ -59,11 +58,8 @@ println(portsUSB);
   printArray(Serial.list());
   printArray (portsUSB);
 
-
-
-
     //*************** WITH TEENSY connected
- //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
+  //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
   //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
    teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
  

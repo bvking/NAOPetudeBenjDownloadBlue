@@ -44,7 +44,7 @@
     }
 
 
-    if (moveKeys[8]==true && moveKeys[16]==true){ // ALT && t pressed
+    if (moveKeys[8]==true && moveKeys[16]==true){ // ALT && y pressed
     keyMode = " propagationBallRotationBis "  ;
   //  formerKeyMetro = '*';
     print ("Alt y + keyMode ",  keyMode );

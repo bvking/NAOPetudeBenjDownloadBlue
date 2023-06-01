@@ -1,6 +1,7 @@
 
 void propagationBallRotationBisTest(){ // as addSignalOneAndTwoQuater() in NAOP 
 modeStartKeyToFollow = " null ";
+keyMode = " propagationBallRotationBisTest ";
 
 
      textSize (50);
@@ -72,13 +73,13 @@ modeStartKeyToFollow = " null ";
  // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
  // splitTimeLfoScale();  // change de sens de PROPAGATION
   
-   if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
+   if ( formerFormerKey == '#' || keyMode == " propagationBallRotationBisTest ") { // formerFormerKey == '#' || 
     
     println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
         if (key == 'o' ) {
      //   signal[2]=- signal[2] ;
      for (int i = 0; i < networkSize-0; i+=1) { 
-        newPosFollowed[i]=-newPosFollowed[i];
+        newPosFollowed[i]=newPosFollowed[i];
            }
        }
   
@@ -116,10 +117,8 @@ modeStartKeyToFollow = " null ";
       }
      }
     
- 
- 
       if (key != '#' ) {
-      if (modeStartKeyToFollow == " null ") {
+      if (keyMode == " propagationBallRotationBisTest ") {
    //  phasePatternOriginal();
       phasePatternBase();
 
@@ -262,7 +261,7 @@ modeStartKeyToFollow = " null ";
 
       //   signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 TWO_PI
      if (doo==true  ){      
-          signal[2] = -  signal[2]; //%1
+     //     signal[2] = -  signal[2]; //%1
        }    
       //   (if signal is sinusoidale we will see good propagation)
       
@@ -286,11 +285,6 @@ modeStartKeyToFollow = " null ";
          oldOscillatorChange=networkSize-1;
    } 
   }
-  
-  
-//    if (doZ==false && timeLfo<=0  ){ // doZ==true  // doZ==false with signal sinusoidale
-//   if (oldSplitTimeLfo<splitTimeLfo){ //  if (  oldSplitTimeLfo>splitTimeLfo){  //  if (oldSplitTimeLfo<splitTimeLfo)  signal sinusoidale
-
 
     if (doZ==true   ){ 
    propagationTrigged=false;

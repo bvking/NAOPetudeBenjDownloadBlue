@@ -8,40 +8,6 @@ void displayKeyModeNull() {
       translate (x*1, y*1, 200+(50*5*(i)));  //*-1 go in clockwise, *1 go in CCW
       colorMode(RGB, 255, 255, 255); 
 
-     if (formerKeyMetro !='B' ) { //drive ball with lfo
-          if (formerKeyMetro != '<' ) {
-             if (formerKeyMetro != '@' ) {
-                     if (keyMode != " addSignalOneAndTwo " ) {
-                         if (keyMode != " addSignalOneAndTwoBis " ) {
-                             if (keyMode != " addSignalOneAndTwoTer " ) {
-                               if (keyMode != " followDistribueAddLfoPattern " ) {
-                                 if (keyMode != " followDistribueAddLfoPatternControl " ) {
-                                    if ( keyMode != " trigEventWithAbletonSignal " ) {  // keyMode == " trigEventWithAbletonSignal " &&   metroPhase[i]=
-                                         if ( modeStartKeyToFollow  != " followSignalSampledOppositeWay(frameRatio) "  ) {
-                                            if ( modeStartKeyToFollow  != " samplingModeInternal "   ) {
-                                              if ( modeStartKeyToFollow  != " null "   ) {
-
-           
-                       text (  " ENDENDEND ", -width/4, -height/4 ) ;           
-                       
-         println ( net.phase[i]  + " modePendulaire? formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
-  
-    sphere(side*3);
-    sphereDetail( 4*5);
-      }
-     }
-    }
-     }
-     }
-     }
-     }
-     }
-    }
-       }
-      }
-    }
 
         if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
   

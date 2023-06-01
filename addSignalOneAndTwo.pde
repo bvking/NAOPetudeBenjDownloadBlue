@@ -102,7 +102,7 @@ void addSignalOneAndTwoOriginal(){
 
     //******** Lock last oscillator to the lastPhase
   //  oscSend();
-   splitTimeWithTrigSignalFromAbleton(); // change de change de sens de PROPAGATION avec Z ou z
+   splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // change de change de sens de PROPAGATION avec Z ou z
 
   // splitTimeLfoScale();  // change de sens de PROPAGATION
 

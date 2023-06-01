@@ -105,7 +105,16 @@ void teensyPos(){
      send24DatasToTeensy6motors(10, -10, -3, -1);
    
    }
+
+    if (keyMode == " addSignalOneAndTwo ") {
+
+     send24DatasToTeensy6motors(6, -10, -3, -1);
+   
+   }
      }
+
+
+
 
 void mapNewPosX() {
   text ( " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 800);

@@ -1,20 +1,27 @@
 void lockOscillatorToPositionFromPreviousProagedBallTest() { 
-
-  if (propagationTrigged==true && propagationTrigged==true) { //  works always ?  formerFormerKey  == '#'
-//   oscillatorChanged=true;
-    
   int i;
   i= oscillatorChange;
 
-  int h;
-  h= oscillatorChange+1;
-  h%=networkSize;
-  
   int j;  
   j= (oscillatorChange-1);
   if (j<= -1){
   j= networkSize-1;
   }
+
+
+  text ( " > phaseKeptAtChange[j] " + j + " " +  phaseKeptAtChange[j], -200, 200);
+  text ( " > phaseKeptAtChange[i] " + i + " " +  phaseKeptAtChange[i], -200, 300);
+
+  if (propagationTrigged==true ) { //  works always ?  formerFormerKey  == '#'
+//   oscillatorChanged=true;
+    
+
+
+  int h;
+  h= oscillatorChange+1;
+  h%=networkSize;
+  
+
   
   int k;  
   k= (j-1);
@@ -39,9 +46,12 @@ void lockOscillatorToPositionFromPreviousProagedBallTest() {
     
   //  if (  LFO[i]<0){  
    if ( newPosXaddSignal[i]%TWO_PI<0){ 
+
+       phaseKeptAtChange[j]=phaseKeptAtChange[i];
+       phaseKeptAtChange[i]=newPosXaddSignal[i]%TWO_PI;
       
 
-    phaseKeptAtChange[j]=newPosXaddSignal[k]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
+    phaseKeptAtChange[j]=newPosXaddSignal[j]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
     dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
     
               println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
@@ -53,9 +63,12 @@ void lockOscillatorToPositionFromPreviousProagedBallTest() {
   }
        
    else
- 
-       phaseKeptAtChange[j]=newPosXaddSignal[i]%TWO_PI;
-              println (" > phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
+       phaseKeptAtChange[j]=phaseKeptAtChange[i];
+       phaseKeptAtChange[i]=newPosXaddSignal[i]%TWO_PI;
+                       
+
+       //       text (" > phaseKeptAtChange[j] " + j + " " +  phaseKeptAtChange[j], 200, 200);
+       //       text (" > phaseKeptAtChange[i] " + i + " " +  oscillatorChange + " " +  phaseKeptAtChange[i], 200, 300);
 
      //  LFO[j] = LFO[j]%TWO_PI;
        dataMappedForMotor[j]= (int) map (phaseKeptAtChange[j], 0, TWO_PI, 0, numberOfStep);
