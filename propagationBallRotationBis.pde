@@ -211,7 +211,7 @@ modeStartKeyToFollow = " null ";
 
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oldOscillatorChange] + (PI/(1*networkSize)-1);
+      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize)-1);
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
