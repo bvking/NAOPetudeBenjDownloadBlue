@@ -39,11 +39,7 @@ modeStartKeyToFollow = " null ";
     doC=!doC;
     key = '#';
     break;
-<<<<<<< Updated upstream
-
-=======
- 
->>>>>>> Stashed changes
+    
     case 'l': // enable propagation or lock
     dol=!dol;
     key = '#';
@@ -78,16 +74,9 @@ modeStartKeyToFollow = " null ";
     case '#': // break to not loop
     break;
     }
-<<<<<<< Updated upstream
-
- // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
- // splitTimeLfoScale();  // change de sens de PROPAGATION
- //  if (key == 'l' ) {
-=======
  
  // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
  // splitTimeLfoScale();  // change de sens de PROPAGATION
->>>>>>> Stashed changes
   
    if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
     
@@ -154,12 +143,7 @@ modeStartKeyToFollow = " null ";
    propagation2wayRotationBis(); 
    mapDataToMotor();
 
-<<<<<<< Updated upstream
- formerFormerKey= formerKey;   
- formerKey=key;
-=======
-
->>>>>>> Stashed changes
+ 
  
  }
  
@@ -266,7 +250,6 @@ modeStartKeyToFollow = " null ";
          newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
 
-<<<<<<< Updated upstream
       for (int i = 0; i <  networkSize-0; i+=1) { 
    // net.phase[i]=newPosXaddSignal[i]; // to display to screen
    // net.phase[i]%=TWO_PI;
@@ -276,8 +259,6 @@ modeStartKeyToFollow = " null ";
  //  mapDataToMotor();
 
 
-=======
->>>>>>> Stashed changes
   }
 
 
