@@ -1,4 +1,4 @@
-boolean doB; // 
+// boolean doB; // 
 /*
 String modeStartKeyToFollow, keyMode;
      
