@@ -31,7 +31,7 @@ modeStartKeyToFollow = " null ";
     key = '#';
     break;
 
-    case 'c': 
+    case 'C': 
     doC=false;
     key = '#';
     break;
@@ -51,15 +51,13 @@ modeStartKeyToFollow = " null ";
     break;
 
     case 'b': 
-    doQ=false;
-    doZ=false;
-    doB=!doB;
+  
+    doB=true;
     key = '#'; 
     break;
 
     case 'B': 
-    doQ=false;
-    doZ=false;
+ 
     doB=false;
 
     break;
@@ -91,14 +89,14 @@ modeStartKeyToFollow = " null ";
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
 
       if (phaseMapped[i]<0){
-      DataToDueCircularVirtualPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-      phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], numberOfStep, 0, 0, -TWO_PI);  
+      dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);  
        }
        
       else {
     
-      DataToDueCircularVirtualPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-      phaseMapped[i]= map (DataToDueCircularVirtualPosition[i], 0, numberOfStep, 0, TWO_PI);
+      dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
        }
 
 
@@ -137,7 +135,7 @@ modeStartKeyToFollow = " null ";
    propagationSpeed=100;
    splitTimeScaleRotationTest(propagationSpeed);
    propagation2wayRotationBisTest(); 
-   mapDataToMotor();
+   mapNewPosX();
 
  
  
