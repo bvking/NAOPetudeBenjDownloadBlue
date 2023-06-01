@@ -50,6 +50,12 @@
     print ("Alt y + keyMode ",  keyMode );
     }
 
+      if (moveKeys[8]==true && moveKeys[19]==true){ // ALT && u pressed
+    keyMode = " propagationBallRotationBisTest "  ;
+  //  formerKeyMetro = '*';
+    print ("Alt u + keyMode ",  keyMode );
+    }
+
 
         
     if (moveKeys[8]==true && moveKeys[3]==true){ // CONTROL && q pressed

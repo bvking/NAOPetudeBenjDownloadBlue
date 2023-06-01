@@ -1,19 +1,5 @@
-//boolean doQ, doZ, doB; 
-boolean propagationTrigged;
-boolean doo=false;
-boolean dol=false;
-boolean doC=false;
 
-/*
-String modeStartKeyToFollow, keyMode;
-     
-float phaseMapped [] =  new float  [networkSize]; 
-float newPosFollowed  [] =  new float  [networkSize]; 
-float phaseMappedFollow  [] =  new float  [networkSize]; 
-*/
-
-
-void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP 
+void propagationBallRotationBisTest(){ // as addSignalOneAndTwoQuater() in NAOP 
 modeStartKeyToFollow = " null ";
 
 
@@ -31,17 +17,27 @@ modeStartKeyToFollow = " null ";
      
   switch(letter) {
     case 'o': // way of rotation
-    doo=!doo;
+    doo=true;
+    key = '#';
+    break;
+
+    case 'O': // way of rotation
+    doo=false;
     key = '#';
     break;
 
     case 'c': 
-    doC=!doC;
+    doC=true;
+    key = '#';
+    break;
+
+    case 'c': 
+    doC=false;
     key = '#';
     break;
     
     case 'l': // enable propagation or lock
-    dol=!dol;
+    dol=true;
     key = '#';
 
     break;
