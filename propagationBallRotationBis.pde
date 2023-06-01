@@ -26,10 +26,8 @@ modeStartKeyToFollow = " null ";
      text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width, -height- 400+300  );
      text (" oldSignalToSplit " + nf (oldSignalToSplit, 0, 2) + " signalToSplit " +     nf (signalToSplit, 0, 2) + " timeLFO " + timeLfo,  -width, -height );
      
-  
- //  if (key=='q' || key=='b' || key=='z' || key=='#' || key=='o' || key=='l'  ) { // q == addsignal
      letter = key;   
-//     }
+
      
   switch(letter) {
     case 'o': // way of rotation
@@ -41,7 +39,11 @@ modeStartKeyToFollow = " null ";
     doC=!doC;
     key = '#';
     break;
+<<<<<<< Updated upstream
 
+=======
+ 
+>>>>>>> Stashed changes
     case 'l': // enable propagation or lock
     dol=!dol;
     key = '#';
@@ -73,14 +75,19 @@ modeStartKeyToFollow = " null ";
     doZ=true;
     doQ=true;
     break;
-    case '#': // change way of propagation
-    
+    case '#': // break to not loop
     break;
     }
+<<<<<<< Updated upstream
 
  // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
  // splitTimeLfoScale();  // change de sens de PROPAGATION
  //  if (key == 'l' ) {
+=======
+ 
+ // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
+ // splitTimeLfoScale();  // change de sens de PROPAGATION
+>>>>>>> Stashed changes
   
    if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
     
@@ -90,7 +97,7 @@ modeStartKeyToFollow = " null ";
      for (int i = 0; i < networkSize-0; i+=1) { 
         newPosFollowed[i]=-newPosFollowed[i];
            }
-           }
+       }
   
 
       for (int i = 0; i < networkSize-0; i+=1) {             
@@ -147,8 +154,12 @@ modeStartKeyToFollow = " null ";
    propagation2wayRotationBis(); 
    mapDataToMotor();
 
+<<<<<<< Updated upstream
  formerFormerKey= formerKey;   
  formerKey=key;
+=======
+
+>>>>>>> Stashed changes
  
  }
  
@@ -158,7 +169,7 @@ modeStartKeyToFollow = " null ";
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
    //   LFO[oscillatorChange] = LFO[oldOscillatorChange] - (PI/(6*networkSize)-1);
-    LFO[oscillatorChange] = LFO[oldOscillatorChange] ;
+      LFO[oscillatorChange] = LFO[oldOscillatorChange] ;
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -255,6 +266,7 @@ modeStartKeyToFollow = " null ";
          newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
      }
 
+<<<<<<< Updated upstream
       for (int i = 0; i <  networkSize-0; i+=1) { 
    // net.phase[i]=newPosXaddSignal[i]; // to display to screen
    // net.phase[i]%=TWO_PI;
@@ -264,6 +276,8 @@ modeStartKeyToFollow = " null ";
  //  mapDataToMotor();
 
 
+=======
+>>>>>>> Stashed changes
   }
 
 
