@@ -94,7 +94,7 @@ modeStartKeyToFollow = " null ";
   
 
       for (int i = 0; i < networkSize-0; i+=1) {             
-      newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
+  //    newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
    //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
        phaseMapped[i] = newPosFollowed[i]+phaseMappedFollow[i]; // new signal is a composition 
 
@@ -167,7 +167,7 @@ modeStartKeyToFollow = " null ";
     }
       }
 
-       dataMappedForMotor[oldOscillatorChange]= (int) map (LFO[oldOscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
+  //     dataMappedForMotor[oldOscillatorChange]= (int) map (LFO[oldOscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
               
@@ -212,25 +212,25 @@ modeStartKeyToFollow = " null ";
    if (doB!=true && doC!=true){ // && propagationTrigged==true
   //     LFO[oscillatorChange] = LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
 //++  phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]%TWO_PI;
-
  //***  phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
-//***   phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oscillatorChange]+(PI/(2*networkSize)-1);
 
 
       LFO[oscillatorChange] = newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(3*networkSize)-1);
+      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize)-1);
 
         if (LFO[oscillatorChange]<0){ 
       for (int i = 0; i <  networkSize-0; i+=1) { 
 
-       LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
+   //    LFO[oscillatorChange]= map (LFO[oscillatorChange], - TWO_PI, 0, 0, TWO_PI);
     }
+
+
       }
 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        
               
-       println (" MAIN true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
+       text (" MAIN true phaseKeptAtChange[oscillatorChange] " + oscillatorChange + " " + phaseKeptAtChange[oscillatorChange], 0, 400);
        println (" MAIN true phaseKeptAtChange[oldOscillatorChange] ", oldOscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
 
       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
@@ -241,7 +241,7 @@ modeStartKeyToFollow = " null ";
     if (doB==true && doC!=true){ 
       
          phaseKeptAtChange[oscillatorChange]= newPosXaddSignal[oscillatorChange]%TWO_PI;
-         phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oldOscillatorChange]+(PI/((2*networkSize)-1)); // on ajoute 
+         phaseKeptAtChange[oscillatorChange]= phaseKeptAtChange[oldOscillatorChange];//+(PI/((2*networkSize)-1)); // on ajoute 
    //****    LFO[oscillatorChange] =LFO[oldOscillatorChange]+(PI/(2*networkSize-1)) ;  
   
     //   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
@@ -435,7 +435,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
   }
       
  // if (oscillatorChanged==true )  {  // just one frame to change
-    if (propagationTrigged==true || propagationTrigged==false )  { 
+    if (propagationTrigged==true )  { 
     
   //  if (  LFO[i]<0){  
    if ( newPosXaddSignal[i]%TWO_PI<0){ 
@@ -454,13 +454,13 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
        
    else
  
-       phaseKeptAtChange[i]=newPosXaddSignal[h]%TWO_PI;
+       phaseKeptAtChange[j]=newPosXaddSignal[i]%TWO_PI;
               println (" > phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
 
      //  LFO[j] = LFO[j]%TWO_PI;
-       dataMappedForMotor[i]= (int) map (phaseKeptAtChange[i], 0, TWO_PI, 0, numberOfStep);
+       dataMappedForMotor[j]= (int) map (phaseKeptAtChange[j], 0, TWO_PI, 0, numberOfStep);
 
-       netPhaseBase[i]= map (dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
+       netPhaseBase[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
  
   
    }
