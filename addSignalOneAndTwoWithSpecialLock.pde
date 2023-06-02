@@ -104,38 +104,7 @@ void addSignalOneAndTwo(){
        
 
 ///////////////////// 
-    for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
- //   drawBall(i, newPosXaddSignal[i] );
-     print (" newPosXaddSignalAFTERDB " + newPosXaddSignal[i]);
-   
-    positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
-    
-    newPosF[i]=positionToMotor[i]%6400;
-    //net.phase[i]=newPosF[i];
-    net.phase[i]=newPosXaddSignal[i]; // to display to screen
-    positionToMotor[i]= positionToMotor[i]%6400;
-    
-     TrigmodPos[i]=1;
-    
-    if ( oldPosF[i]>newPosF[i]){
-         revLfo[i]++;
-         TrigmodPos[i]=0;
-     
-    }
-  /*  
-     if ( oldPosF[i]<newPosF[i]){
-         revLfo[i]--;
-         TrigmodPos[i]=0;
-     
-    }
-*/
-     print (" TrigmodPos[i" , TrigmodPos[i] , " newPosF " + newPosF[i]);
-     oldPositionToMotor[i]=  positionToMotor[i];
-     oldPosF[i]=newPosF[i];
-     oldPosX[i]=newPosF[i];
 
-     text (" revoLFO " + revLfo[i], -1600, height-500 - 75*i);
-     }
 }
 
 void  splitTime() { 
