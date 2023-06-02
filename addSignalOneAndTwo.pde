@@ -1,4 +1,4 @@
-void addSignalOneAndTwoOriginal(){
+void addSignalOneAndTwo(){
    textSize (50);
 
      text (" olldOriginal " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
@@ -129,9 +129,8 @@ void addSignalOneAndTwoOriginal(){
   
    if (doo=true && propagationTrigged==true){ 
 
-        LFO[oscillatorChange] =LFO[oscillatorChange]-QUARTER_PI*1/2 ;  // CCW
-    //   LFO[oscillatorChange] =  LFO[oldOscillatorChange]+QUARTER_PI*1/8  ;  // on ajoute 
-     //  LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
+        LFO[oscillatorChange] =LFO[oldOscillatorChange]-QUARTER_PI*1/2 ;  // CCW
+ 
     //   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
  
@@ -170,6 +169,9 @@ void addSignalOneAndTwoOriginal(){
       newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
 
        }
+
+  
+  // END MAP depends of the way of rotation
  
         for (int i = 0; i <  networkSize-0; i+=1) { 
  //   net.phase[i]=newPosXaddSignal[i]; // to display to screen

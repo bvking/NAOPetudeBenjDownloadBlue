@@ -222,33 +222,42 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
 
  //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          
-    propagationTrigged=false;;
+    propagationTrigged=false;
+    oscillatorChanged=false;
+
+    
+  
          
-    if (doZ==false && trigedSignFromAbleton[0]==1 && frameCount>formerFrameFromAudio+5){  // case q && timeLfo>=0
-     formerFrameFromAudio=frameCount;
-      propagationTrigged=true;
+    if (doZ==false &&
+    ((trigedSignFromAbleton[0]>0.5 && oldTrigedSignFromAbleton[0]<0.5) || (trigedSignFromAbleton[0]<0.5 && oldTrigedSignFromAbleton[0]>0.5))
+    ){  
+       
+      oscillatorChanged=propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange+1;
    
 
       oscillatorChange=oscillatorChange%networkSize;
-  if (oscillatorChange<=0) {
+      if (oscillatorChange<=0) {
       oscillatorChange=0;
       oldOscillatorChange=networkSize-1;
    } 
   }
   
-    if (doZ==true  && trigedSignFromAbleton[0]==1 && frameCount>formerFrameFromAudio+5 ){ 
-     formerFrameFromAudio=frameCount;
-      propagationTrigged=true;
+   if (doZ==true  && trigedSignFromAbleton[0]==1  ){ 
+
+     
+      oscillatorChanged= propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange-1;
    
-      if (oscillatorChange<=-1) {
-        oldOscillatorChange=0;
-        oscillatorChange=networkSize-1;
+     if (oscillatorChange<=-1) {
+     oldOscillatorChange=0;
+     oscillatorChange=networkSize-1;
    }
-  }       
+  }
+
+     oldTrigedSignFromAbleton[0]=trigedSignFromAbleton[0];       
 
 }
 
@@ -257,21 +266,13 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
 
  if (doo==true  && propagationTrigged==true){  //AMPLITUDE  negative way : ccw
       float phaseAmount=trigedSignFromAbleton[1];
-      phaseAmount= map (phaseAmount, 0, 1, 1, 0);
-
-      print ( " newPosXaddSignal " + newPosXaddSignal[oscillatorChange]%TWO_PI );
-
-     LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
-
+      phaseAmount= map (phaseAmount, 0, 1, 1, 0);     
       phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI);
       text ( "phaseAmount " + phaseAmount, 500, 1000);
-//      LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(1*networkSize-1));
 
+      LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
       LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
       text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
-
-      println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
-
    }       
 
 if (doo==false && propagationTrigged==true){

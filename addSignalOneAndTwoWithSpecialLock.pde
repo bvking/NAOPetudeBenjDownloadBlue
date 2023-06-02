@@ -1,4 +1,4 @@
-void addSignalOneAndTwoLock(){ 
+void addSignalOneAndTwoOriginal(){ 
  //---------- come back to trigEventWithAbletonSignal ------- work only with $
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {      
         keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
@@ -7,11 +7,11 @@ void addSignalOneAndTwoLock(){
         positionMov = " troisieme " ;
           } 
 
-    text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, height-800);
-    text ( " special Lock doQ=true " + doQ , 0, height-700);
-      text ( " trigedSignFrom" + trigedSignFromAbleton[3] , 0, height-600);
-      text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 500 );
-     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height -400 );
+    text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, -height-800);
+   text ( " special Lock doQ=true " + doQ , 0, -height-900);
+    text ( " trigedSignFrom" + trigedSignFromAbleton[3] , 0, -height-1000);
+      text (" lock " + dol + " oWay " + doo + " doC " + doC , 0, -height- 1100 );
+     text (" doZ " + doZ + " BlargerPhase " + doB , 0, -height -1200 );
    // lfoPattern()
      letter = key;   
   
@@ -36,7 +36,13 @@ void addSignalOneAndTwoLock(){
 
     case 'q': // way of propagation
     doQ=true;
-    doZ=false;
+   
+    break;
+
+
+    case 'Q': // way of propagation
+    doQ=false;
+   
     break;
     case 'b': 
    
@@ -51,20 +57,20 @@ void addSignalOneAndTwoLock(){
 
     case 'Z': // change way of propagation
     doZ=true;
-   // doZ=!doZ;
-    doQ=true;
+   
     break;
      case 'z': // change way of propagation
     doZ=false;
-   // doZ=!doZ;
-    doQ=true;
+ 
     break;
     case '#': // change way of propagation
     
     break;
     }
 
-  splitTime(); 
+ // splitTime();
+  
+  splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]);
   addSignalLfoPattern(); 
   mapNewPosX(); // counter actived
 
@@ -72,19 +78,6 @@ void addSignalOneAndTwoLock(){
  }
  
  void addSignalLfoPattern()  {
-   
-    if (doQ==true ){ // to change speed of propagtion in split time
-  //   pendularPattern(); // offset with lfo oscillator by osillator
-     print ("  case q phaseFollowLFO " + oscillatorChange + " "  + phaseFollowLFO[oscillatorChange] + " "); print ("  LFOoscillatorChange  "); print (oscillatorChange); print ("   ") ;  print (LFO[oscillatorChange]  ); 
-     print (" newPosXaddSignal[oscillatorChange] " + newPosXaddSignal[oscillatorChange]);
-     
-   //   phaseFollowLFO[oscillatorChange]= lfoPhase[2];  
-     signal[4] = (0*PI + (frameCount / 20.0) * cos (1000 / 500.0)*-1)%1;
-   // phaseFollowLFO[oscillatorChange]= map (signal[4], 0, 1, 0, TWO_PI);    // speed of rotation
-  // phaseFollowLFO[oscillatorChange]= map (0.01, 0, 1, 0, TWO_PI); //   ..DON4T WORK
-
-   }
-
 
    if (formerFormerKey  == '#' ) { //  != '#'
  
@@ -94,16 +87,39 @@ void addSignalOneAndTwoLock(){
  
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
   //  signal[2] = (0*PI + (frameCount / 41.0) * cos (1000 / 500.0)*-1);//%1; //NO vitesse roat
-   // signal[2] = 0.08; 
-   //   LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);        
-      LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
+  // signal[2] = 0.08; 
+ //   LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);        
+  //    LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
 
   }
+
+  
     
-  if (oscillatorChanged==true )  { 
-     LFO[oscillatorChange]-=QUARTER_PI/2;   //  RECORD on oscillatorChange the postion of oscillatorChange where it 's changing
-     phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]; 
-   
+  if (oscillatorChanged==true && doo)  { 
+
+      float phaseAmount=trigedSignFromAbleton[1];
+      phaseAmount= map (phaseAmount, 0, 1, 0, 1);     
+      phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI/networkSize);
+      text ( "phaseAmount " + phaseAmount, 500, 1000);
+
+      LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
+      LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
+      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+
+     phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange];  
+   }
+
+     if (!oscillatorChanged && !doo)  { 
+     float phaseAmount=trigedSignFromAbleton[1];
+      phaseAmount= map (phaseAmount, 0, 1, 0, 1);     
+      phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI/networkSize);
+      text ( "phaseAmount " + phaseAmount, 500, 1000);
+
+      LFO[oscillatorChange] = LFO[oldOscillatorChange]; //  //  RECORD on oscillatorChange the postion of oscillatorChange where it 's changing    
+      LFO[oscillatorChange] +=  (phaseAmount/(1*networkSize-1));
+      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+ 
+     phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange];  
    }
    
  
@@ -126,15 +142,33 @@ void addSignalOneAndTwoLock(){
        LFO[j] = LFO[oscillatorChange];
       }
       //  LFO[j] = LFO[j]%TWO_PI;
+
+     
+
+      // MAP depends of the way of rotation
+
+
+      if (LFO[oscillatorChange] <0){
+      dataMappedForMotorisedPosition[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], numberOfStep, 0, 0, -TWO_PI); 
+      newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
+       }
+       
+      else {
     
-       dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep);
-       dataMappedForMotor[j]= (int) map (LFO[j], 0, TWO_PI, 0, numberOfStep);
-       dataMappedForMotor[k]= (int) map (LFO[k], 0, TWO_PI, 0, numberOfStep);
-       println (" phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
- 
-       newPosXaddSignal[oscillatorChange]= map (dataMappedForMotor[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-  //     newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
-     //  newPosXaddSignal[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
+      dataMappedForMotorisedPosition[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
+
+       }
+
+         // newPosXaddSignal[j]= map (dataMappedForMotorisedPosition[j], 0, numberOfStep, 0, TWO_PI);
+  // newPosXaddSignal[k]= map (dataMappedForMotorisedPosition[k], 0, numberOfStep, 0, TWO_PI);
+
+  
+  // END MAP depends of the way of rotation
+
+
 
        
 
@@ -161,7 +195,9 @@ void  splitTime() {
  
 
 
- int   splitTime= int  (timeLfo%100);   
+ //int   splitTime= int  (timeLfo%100); 
+
+   int   splitTime=  timeLfo;   
   
          oscillatorChange=oscillatorChange%networkSize;
      if (oscillatorChange<=0) {

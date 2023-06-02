@@ -13,7 +13,8 @@ String music_from_ableton_live;
 String [] eventToTrig = {"0","0","0","0"};
 String [] keyEvent = {" bla "," bli ","0","0"};
 float [] trigedSignFromAbleton = new float [networkSize];
-int formerFrameFromAudio;
+float [] oldTrigedSignFromAbleton = new float [networkSize];
+
 
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
