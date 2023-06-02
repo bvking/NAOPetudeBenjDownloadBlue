@@ -9,7 +9,8 @@ void teensyPos(){
     }
   }
 
-    if (modeStartKeyToFollow == " null " || keyMode == " propagationBallRotationBis ") {    // when propagationBall  
+    if (modeStartKeyToFollow == " null " || keyMode == " propagationBallRotationBis "  
+    || keyMode == " addSignalOneAndTwo " ) {    // modeStartKeyToFollow=propa
      rev=revLfo; // actualise counter of normal mode  
    for(int i = 0; i < networkSize; i++) {  
  //   dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
@@ -121,7 +122,7 @@ void mapNewPosX() {
 
     for (int i = 0; i <  networkSize-0; i+=1) { 
     newPosXaddSignal[i]%=TWO_PI;
-    net.phase[i]=newPosXaddSignal[i]; // to display to screen
+    net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
     }
 
 
@@ -170,23 +171,13 @@ void mapNewPosX() {
 
      textSize (100);
      
-   if ( doo==true && ( keyMode == " propagationBallRotation " || keyMode == " propagationBallRotationBis " ) ){  // A AMELIORER DANS PROPABIS
+   if ( doo==true  ){  // A AMELIORER DANS PROPABIS
   
      if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){ 
      revLfo[i]--;
      TrigmodPos[i]=1;
        }
    }
-      
-   if ( doo==true && keyMode == " propagationBallRotationBis "){  // A AMELIORER DANS PROPABIS
-   /* 
-    if ( (newPosF[i]>oldPosF[i]) && (oldPosF[i]<oldOldPosF[i])){ 
-         revLfo[i]--;
-         TrigmodPos[i]=2;
-      }
-   */   
-    }
-     
 
     textSize(50);
 
@@ -195,20 +186,11 @@ void mapNewPosX() {
      oldPositionToMotor[i]=  positionToMotor[i];
      oldOldPosF[i]=oldPosF[i];
      oldPosF[i]=newPosF[i];
-    // oldPosX[i]=newPosF[i];
-
-  
+ 
      text ("revLFO ", -1600, height-500 - 75*i);
      text ( revLfo[i], -1400, height-500 - 75*i);
      }
      
      text (" mode " + keyMode + " signal2 " + signal[2] , -1600, height-300 );  
 
-
-     
-    for (int i = 0; i < networkSize; i++) {
-   //  dataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i]+ recordLastDataOfMotorPosition[i];
-   }
-
-  
 }

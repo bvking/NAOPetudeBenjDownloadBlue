@@ -32,9 +32,9 @@ void addSignalOneAndTwo(){
 
   splitTime(); 
   addSignalLfoPattern(); 
+  mapNewPosX(); // counter actived
 
-  formerKey='#';
-  key=char (formerKey);
+  
  }
  
  void addSignalLfoPattern()  {
@@ -84,10 +84,11 @@ void addSignalOneAndTwo(){
   }
 
         LFO[k]= LFO[j];
-   //     LFO[oscillatorChange] = phaseKeptAtChange[oscillatorChange];
+        LFO[oscillatorChange] = phaseKeptAtChange[oscillatorChange];//*1
      //   LFO[j] = phaseKeptAtChange[k]; //pas mal
        if (oscillatorChanged==true )  { 
-       LFO[j] = phaseKeptAtChange[oscillatorChange];
+    //*****   LFO[j] = phaseKeptAtChange[oscillatorChange];
+       LFO[j] = LFO[oscillatorChange];
       }
       //  LFO[j] = LFO[j]%TWO_PI;
     
@@ -103,9 +104,7 @@ void addSignalOneAndTwo(){
        
 
 ///////////////////// 
-
-
-     for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
+    for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
  //   drawBall(i, newPosXaddSignal[i] );
      print (" newPosXaddSignalAFTERDB " + newPosXaddSignal[i]);
    
@@ -136,13 +135,12 @@ void addSignalOneAndTwo(){
      oldPosX[i]=newPosF[i];
 
      text (" revoLFO " + revLfo[i], -1600, height-500 - 75*i);
- 
      }
-     text (" restart ALT Z , cf signal[2] )" + signal[2], -1600, height+800 );  
 }
 
 void  splitTime() { 
-   oscillatorChanged=false;
+
+      oscillatorChanged=false;
   if (formerDecayTimeLfo>decayTimeLfo){
      oscillatorChanged=true;
       oldOscillatorChange=oscillatorChange;
@@ -153,9 +151,9 @@ void  splitTime() {
 
 //   int splitTimeLfo = millis()%150; // linear time  to change " oscillator " each 200 ms
 
-       signal[2] = (0*PI + (frameCount / 42.0) * cos (1000 / 500.0)*-1)%1;  // speed of split 
+       signal[0] = (0*PI + (frameCount / 20) * cos (1000 / 500.0)*-1)%1;  // speed of split 
 
- int  timeLfo = (int ) map (signal[2], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
+ int  timeLfo = (int ) map (signal[0], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
  
 
 
