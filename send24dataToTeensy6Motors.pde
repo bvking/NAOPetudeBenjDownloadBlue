@@ -2,7 +2,7 @@
 
 void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData){  // dataMarkedToTeensyArevoir
 
- // computeData=-2;
+ 
        dataFromMode ="<"
 
       + dataMappedForMotorisedPosition[5]+ ","+ dataMappedForMotorisedPosition[4]+ ","+ dataMappedForMotorisedPosition[3]+","+ dataMappedForMotorisedPosition[2]+ ","
@@ -18,10 +18,7 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
 
      +TrigmodPos[5]+","+TrigmodPos[4]+","+TrigmodPos[3]+","+TrigmodPos[2]+","+TrigmodPos[1]+","+TrigmodPos[0]+ "," // to manage 6 note or effect
 
-      
        +0+","+0+","+0+","+0+">";  
-
- 
 
       if (computeData<-1){
       dataTransformed = " dataNotComputeInTeensy from mode ";
@@ -39,9 +36,8 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
   //  teensyport.write(dataFromMode);
    //println ( " noPortPlugged " + portsUSB[0]); 
    //}
-
-     teensyport.write(dataFromMode);
-      if (frameCount ==5) noLoop();
+      if (frameCount ==1) noLoop();
+    //  teensyport.write(dataFromMode);
   }
 
   void setPort(){

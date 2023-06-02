@@ -224,8 +224,8 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
          
     propagationTrigged=false;;
          
-    if (doZ==false && trigedSignFromAbleton[0]==1){  // case q && timeLfo>=0
-  
+    if (doZ==false && trigedSignFromAbleton[0]==1 && frameCount>formerFrameFromAudio+5){  // case q && timeLfo>=0
+     formerFrameFromAudio=frameCount;
       propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange+1;
@@ -238,8 +238,8 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
    } 
   }
   
-    if (doZ==true  && trigedSignFromAbleton[0]==1 ){ 
- 
+    if (doZ==true  && trigedSignFromAbleton[0]==1 && frameCount>formerFrameFromAudio+5 ){ 
+     formerFrameFromAudio=frameCount;
       propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange-1;

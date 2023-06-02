@@ -29,15 +29,12 @@ void addSignalOneAndTwo(){
     doQ=true;
     break;
     }
-    
 
-//  splitTimeLfo(); 
- // splitTimeLfoWithAbleton(); 
- 
   splitTime(); 
   addSignalLfoPattern(); 
 
-  formerKey  = '#';
+  formerKey='#';
+  key=char (formerKey);
  }
  
  void addSignalLfoPattern()  {

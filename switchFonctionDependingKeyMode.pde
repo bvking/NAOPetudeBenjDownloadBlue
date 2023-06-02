@@ -28,7 +28,8 @@ void switchFonctionDependingKeyMode() {
 
   if (keyMode == " addSignalOneAndTwo " || keyModeRed == " addSignalOneAndTwo " ) { //drive ball with lfo
     //   PatternFollowLfo();
-     addSignalOneAndTwo();
+   //  addSignalOneAndTwo();
+     addSignalOneAndTwoOriginal();
       text ( " ALT z " + keyMode, -width, -height); 
     }
   
