@@ -28,11 +28,16 @@ void addSignalOneAndTwoOriginal(){
     doZ=false;
     break;
     case 'b': 
-    doQ=false;
-    doZ=false;
-    doB=!doB;
+   
+    doB=true;
     key = '#';
     break;
+   
+    case 'B': 
+    doB=false;
+    key = '#';
+    break;
+
     case 'Z': // change way of propagation
     doZ=true;
    // doZ=!doZ;
@@ -126,7 +131,7 @@ void addSignalOneAndTwoOriginal(){
    if (doB!=true){ 
 
     //     LFO[oscillatorChange] =LFO[oscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
-       LFO[oscillatorChange] =  LFO[oldOscillatorChange]+QUARTER_PI ;  // on ajoute 
+       LFO[oscillatorChange] =  LFO[oldOscillatorChange]+QUARTER_PI*1/8  ;  // on ajoute 
      //  LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
@@ -139,7 +144,7 @@ void addSignalOneAndTwoOriginal(){
      
     if (doB==true){ 
 
-       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/2 ;  // on ajoute 
+       LFO[oscillatorChange] =LFO[oldOscillatorChange]+QUARTER_PI*1/4 ;  // on ajoute 
      //  LFO[oscillatorChange] =  LFO[oscillatorChange] %TWO_PI;
 
        dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
