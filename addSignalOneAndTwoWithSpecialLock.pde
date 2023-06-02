@@ -1,4 +1,4 @@
-void addSignalOneAndTwoOriginal(){ 
+void addSignalOneAndTwoLock(){ 
  //---------- come back to trigEventWithAbletonSignal ------- work only with $
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {      
         keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
@@ -69,7 +69,7 @@ void addSignalOneAndTwoOriginal(){
     }
 
  // splitTime();
-  
+
   splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]);
   addSignalLfoPattern(); 
   mapNewPosX(); // counter actived

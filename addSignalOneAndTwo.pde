@@ -1,4 +1,4 @@
-void addSignalOneAndTwo(){
+void addSignalOneAndTwoOriginal(){
    textSize (50);
 
      text (" olldOriginal " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange], 0, 2), -width, -height- 900-300 );
@@ -129,7 +129,16 @@ void addSignalOneAndTwo(){
   
    if (doo=true && propagationTrigged==true){ 
 
-        LFO[oscillatorChange] =LFO[oldOscillatorChange]-QUARTER_PI*1/2 ;  // CCW
+    float phaseAmount=trigedSignFromAbleton[1];
+      phaseAmount= map (phaseAmount, 0, 1, 1, 0);     
+      phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI);
+      text ( "phaseAmount " + phaseAmount, 500, 1000);
+
+      LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
+      LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
+      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+
+    //    LFO[oscillatorChange] =LFO[oldOscillatorChange]-QUARTER_PI*1/2 ;  // CCW
  
     //   dataMappedForMotor[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI , 0, numberOfStep);  // 
        println (" true phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oldOscillatorChange]);
