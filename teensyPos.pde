@@ -155,7 +155,7 @@ void mapNewPosX() {
 
      TrigmodPos[i]=1;
       
-      if ( doo==false) { //
+      if ( doo==false) { //  work with propaBis
 
     if ( oldPosF[i]>newPosF[i]) { //
          revLfo[i]++;

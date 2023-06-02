@@ -1,4 +1,4 @@
-void addSignalOneAndTwo(){ 
+void addSignalOneAndTwoLock(){ 
  //---------- come back to trigEventWithAbletonSignal ------- work only with $
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {      
         keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
@@ -8,25 +8,59 @@ void addSignalOneAndTwo(){
           } 
 
     text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, height-800);
-    text ( " doQ=true " + doQ , 0, height-700);
+    text ( " special Lock doQ=true " + doQ , 0, height-700);
+      text ( " trigedSignFrom" + trigedSignFromAbleton[3] , 0, height-600);
+      text (" lock " + dol + " oWay " + doo + " doC " + doC , -width, -height- 500 );
+     text (" QpropWay " + doQ + " doZ " + doZ + " BlargerPhase " + doB , -width, -height -400 );
    // lfoPattern()
      letter = key;   
   
   switch(letter) {
-    case 'q': 
-    doQ=true;
-    doZ=false;
+
+       case 'o': // way of propagation
+    doo=true;
     break;
-    case 'Q': 
-    doQ=false;
+    case 'O': // way of propagation
+    doo=false;
+    break;
+
+
+    case 'l': // way of propagation
+    dol=true;
+    break;
+    case 'L': // way of propagation
+    dol=false;
+    break;
+
+
+
+    case 'q': // way of propagation
+    doQ=true;
     doZ=false;
     break;
     case 'b': 
-    doQ=false;
+   
+    doB=true;
+    key = '#';
     break;
-    case 'z': // change way of propagation
+   
+    case 'B': 
+    doB=false;
+    key = '#';
+    break;
+
+    case 'Z': // change way of propagation
     doZ=true;
+   // doZ=!doZ;
     doQ=true;
+    break;
+     case 'z': // change way of propagation
+    doZ=false;
+   // doZ=!doZ;
+    doQ=true;
+    break;
+    case '#': // change way of propagation
+    
     break;
     }
 
@@ -60,15 +94,16 @@ void addSignalOneAndTwo(){
  
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
   //  signal[2] = (0*PI + (frameCount / 41.0) * cos (1000 / 500.0)*-1);//%1; //NO vitesse roat
-  //  signal[2] = 0.08;
-   
-      LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);        
-   //    LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
+   // signal[2] = 0.08; 
+   //   LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);        
+      LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
 
   }
     
   if (oscillatorChanged==true )  { 
-     phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange];    //  RECORD on oscillatorChange the postion of oscillatorChange where it 's changing
+     LFO[oscillatorChange]-=QUARTER_PI/2;   //  RECORD on oscillatorChange the postion of oscillatorChange where it 's changing
+     phaseKeptAtChange[oscillatorChange]=LFO[oscillatorChange]; 
+   
    }
    
  
@@ -120,9 +155,9 @@ void  splitTime() {
 
 //   int splitTimeLfo = millis()%150; // linear time  to change " oscillator " each 200 ms
 
-       signal[0] = (0*PI + (frameCount / 20) * cos (1000 / 500.0)*-1)%1;  // speed of split 
+     //  signal[0] = (0*PI + (frameCount / 20) * cos (1000 / 500.0)*-1)%1;  // speed of split 
 
- int  timeLfo = (int ) map (signal[0], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
+ int  timeLfo = (int ) map (trigedSignFromAbleton[3], 0, 1, 0, 1000); // linear time  to change " oscillator " each 200 ms
  
 
 
