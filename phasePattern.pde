@@ -319,7 +319,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
   if (key == 'u'  ) { 
     net.shiftPhases(1); 
-    shiftFrequencies(1); 
+    net.shiftFrequencies(1); 
 
  /*     
     oldMemoryi=memoryi;
@@ -408,7 +408,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     for (int i = 0; i < (networkSize-0); i++) {    
 
       //     net.phase[i]-= QUARTER_PI/(10);
-          net.phase[i]=net.phase[i]-QUARTER_PI/4;
+          net.phase[i]-=QUARTER_PI/4;
        // net.phase[i]=net.phase[i]-QUARTERK_PI;
      // ActualVirtualPosition[i]+=0;  
 
@@ -666,7 +666,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     for (int i = 0; i < networkSize; i++) {    
       //    net.phase[i] -= (QUARTER_PI/(networkSize-0))*(i+1); // TRES BIEN
 
-      net.phase[i] = net.phase[i] + ((TWO_PI/(networkSize/1))*(i+1)); // TRES BIEN  ==     net.phase[i] += (i+1)*TWO_PI/4; //4hit  ==   net.phase[i] +=  (i+1)*3.5*PI; 
+      net.phase[i] += ((TWO_PI/(networkSize/1))*(i+1)); // TRES BIEN  ==     net.phase[i] += (i+1)*TWO_PI/4; //4hit  ==   net.phase[i] +=  (i+1)*3.5*PI; 
     //  net.phase[i] = net.phase[i] % TWO_PI; // TRES BIEN
 
       printSummary(i);
@@ -688,10 +688,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       
      // net.phase[i] += (i+1)*TWO_PI/3; //3hit  <=>   net.phase[i] += (i+1)*TWO_PI/1.5; 
      
-        net.phase[i] = net.phase[i] + (i+1)*TWO_PI/3; //3hit  <=>   net.phase[i] += (i+1)*TWO_PI/1.5; 
-     
-
-    //  net.phase[i]=  net.phase[i]%TWO_PI;
+        net.phase[i] -= (i+1)*TWO_PI/(networkSize+networkSize/2); //3hit  <=>   net.phase[i] += (i+1)*TWO_PI/1.5; 
         key ='#';// keyReleased();
     }
   }
