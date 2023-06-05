@@ -1,5 +1,3 @@
-
-
 void serialEvent(Serial encoderReceiveUSBport101) { 
 
    String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');

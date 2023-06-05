@@ -94,7 +94,7 @@ void teensyPos(){
       } 
      }
   
-   if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
+   if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) " || keyMode == " trigEventWithAbletonSignal "   )
    {  if (measure<=3 )
      { 
       send24DatasToTeensy6motors(5, -3, -3, -1);

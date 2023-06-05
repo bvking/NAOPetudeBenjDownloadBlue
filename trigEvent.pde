@@ -69,11 +69,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           
        
           if (measure==42 && beatPrecised == 1 && beatPrecisedTrigged==true){
-            key = 'ç';
-            key= 'P';
-            key= 'P';
-            key= 'P';
-            key = '0';
+            key = 't';
+            keyCode = CONTROL;
             formerKeyMetro = '$';
             delayTimeToTrig4=140;     
           }

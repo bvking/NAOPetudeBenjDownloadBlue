@@ -7,11 +7,11 @@ void addSignalOneAndTwoLock(){
         positionMov = " troisieme " ;
           } 
 
-    text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, -height-800);
+   text ( " One And Two Original oscillatorChange " + oscillatorChange , 0, -height-800);
    text ( " special Lock doQ=true " + doQ , 0, -height-900);
-    text ( " trigedSignFrom" + trigedSignFromAbleton[3] , 0, -height-1000);
-      text (" lock " + dol + " oWay " + doo + " doC " + doC , 0, -height- 1100 );
-     text (" doZ " + doZ + " BlargerPhase " + doB , 0, -height -1200 );
+   text ( " trigedSignFrom" + trigedSignFromAbleton[3] , 0, -height-1000);
+   text (" lock " + dol + " oWay " + doo + " doC " + doC , 0, -height- 1100 );
+   text (" doZ " + doZ + " BlargerPhase " + doB , 0, -height -1200 );
    // lfoPattern()
      letter = key;   
   

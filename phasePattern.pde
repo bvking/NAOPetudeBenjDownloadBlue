@@ -319,6 +319,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
   if (key == 'u'  ) { 
     net.shiftPhases(1); 
+    shiftFrequencies(1); 
 
  /*     
     oldMemoryi=memoryi;
