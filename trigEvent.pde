@@ -89,10 +89,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            positionMov = " premierePartie ";
           }
 
-         else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) { 
+         else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) {  // go to in addSignal1andTwoOriginal
            positionMov = " seconde " ; }
 
-      //     /*  in addSignal1andTwoTerr
+      //     /*  in addSignal1andTwoTer
          else if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
            positionMov = " troisieme " ;
           keyCode = ALT; key = 'v'; // key 
@@ -218,10 +218,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      
 
        if (positionMov == " seconde " ){    // 58 to 68
-
-    //   keyCode =ALT; keyPressed(); key = 'a'; keyPressed();
-        keyMode = " propagationBallRotationBis ";
-      // keyMode = " addSignalOneAndTwo ";
+        if (measure == 58 && beatTrigged) { 
+   
+      //  keyMode = " propagationBallRotationBis ";
+       keyMode = " addSignalOneAndTwo ";
+         }
      //   dol=true;
      //   formerKeyMetro = '*';
       

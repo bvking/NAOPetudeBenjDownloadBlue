@@ -66,8 +66,6 @@ keyMode = " propagationBallRotationBis ";
     key = '#';
     break;
 
-    
-
     case 'B': 
     doQ=false;
     doZ=false;
@@ -95,9 +93,6 @@ keyMode = " propagationBallRotationBis ";
 
    if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
 
-
-  
-    
     println ( " modeStartKeyToFollow " + modeStartKeyToFollow);
         if (doo == true ) {
      //   signal[2]=- signal[2] ;
@@ -174,9 +169,6 @@ keyMode = " propagationBallRotationBis ";
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
 
-// formerFormerKey= formerKey;   in the main?
- // formerKey=key;
-
  }
 void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareSignal) { 
         text ( " Z to change Propagation Way trigedSignFromAbleton2 " + trigedSignFromAbleton[2] + " 3 " + trigedSignFromAbleton[3],  500, 900);
@@ -185,8 +177,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
          
     propagationTrigged=false;;
          
-  //  if (doZ==false && propagationSpeedWithSquareSignal==1){  // case q && timeLfo>=0
-        if (doZ==false && trigedSignFromAbleton[3]==1){  // case q && timeLfo>=0
+       if (doZ==false && trigedSignFromAbleton[3]==1){  // propagationSpeedWithSquareSignal==1
 
   
       propagationTrigged=true;
@@ -195,22 +186,22 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
    
 
       oscillatorChange=oscillatorChange%networkSize;
-  if (oscillatorChange<=0) {
+      if (oscillatorChange<=0) {
       oscillatorChange=0;
       oldOscillatorChange=networkSize-1;
    } 
   }
   
-//    if (doZ==true  && propagationSpeedWithSquareSignal==1 ){ 
-       if (doZ==true  &&  trigedSignFromAbleton[3]==1 ){ 
+
+       if (doZ==true  &&  trigedSignFromAbleton[3]==1 ){  //     if (doZ==true  && propagationSpeedWithSquareSignal==1 ){ 
  
       propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange-1;
    
       if (oscillatorChange<=-1) {
-        oldOscillatorChange=0;
-        oscillatorChange=networkSize-1;
+      oldOscillatorChange=0;
+      oscillatorChange=networkSize-1;
    }
   }       
 
@@ -276,13 +267,9 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
    }       
 
 if (doo==false && propagationTrigged==true){
-
-
       LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize-1));
-
-            println ( " LFO[oscillatorChange] " + LFO[oscillatorChange] );
-
+     text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
 
      }
  

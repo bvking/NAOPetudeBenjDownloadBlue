@@ -9,8 +9,8 @@ void teensyPos(){
     }
   }
 
-    if (modeStartKeyToFollow == " null " || keyMode == " propagationBallRotationBis "  
-    || keyMode == " addSignalOneAndTwo " ) {    // modeStartKeyToFollow=propa
+  if ( keyMode == " propagationBallRotationBis "  
+    )  {   // || keyMode == " addSignalOneAndTwo "
      rev=revLfo; // actualise counter of normal mode  
    for(int i = 0; i < networkSize; i++) {  
  //   dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
@@ -19,9 +19,49 @@ void teensyPos(){
     }
    }
 
-   if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='*') { 
+     if ( keyMode == " propagationBallRotationBisTest "  && formerKeyMetro=='*')
+    {    // actualise counter of normal mode from revLfo from method  not here
 
+      for (int i = 0; i < networkSize; i++) {
+    
+      //*******************************  ASSIGN MOTOR WITH POSITION
+
+      if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
+        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
+      }
+
+      if (revLfo[i]!=0  && (net.phase[i] <  0)) { // number of revLfoolution is even and rotation is Counter clock wise          // pos[i]= int (map (positionToMotor[i], 0, -numberOfStep, 0,  numberOfStep))+ (revLfo[i]*numberOfStep);
+        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
+      }
+
+      if (revLfo[i]==0 && (net.phase[i] < 0) ) { //  number of revLfoolution is 0 and rotation is counter clock wise 
+        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+      }         
+      if  (revLfo[i]==0 && (net.phase[i] > 0) ) {  //  number of revLfoolution is 0 and rotation is clock wise     
+        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
+      }
+      
+      recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
+    }
+   }
+
+         if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false
+   for (int i = 0; i < networkSize; i++) {
+     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i];
+    }
+  }
+
+     
+
+/*
+   if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " && formerKeyMetro =='*') { 
+if ( keyMode == " propagationBallRotationBisTest " ) { 
+  rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
+  text ( " keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
+
+    }
  for (int i = 0; i < networkSize; i++) {
+  
 
     //*******************************  ASSIGN MOTOR WITH POSITION
     //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
@@ -45,7 +85,7 @@ void teensyPos(){
     }
    }
   }
-
+*/
      //*******************  SWITCH MODE oTHER SoLUTION
 
   if (formerKeyMetro == '$') {
@@ -81,7 +121,7 @@ void teensyPos(){
     if (modeStartKeyToFollow!= " samplingModeInternal "){
          if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
      if (positionMov != " troisieme " && measure<17) {
-      send24DatasToTeensy6motors(6, 3, -3, -1);
+      send24DatasToTeensy6motors(8, 3, -3, -1);
   }
 
      if (measure>=17 && measure<=41){
@@ -101,15 +141,15 @@ void teensyPos(){
      }
     }
 
-   if (keyMode == " propagationBallRotationBis ") {
+   if (keyMode == " propagationBallRotationBis " || keyMode == " propagationBallRotationBisTest " ) {
 
-     send24DatasToTeensy6motors(10, -10, -3, -1);
+     send24DatasToTeensy6motors(6, -11, -3, -1);
    
    }
 
     if (keyMode == " addSignalOneAndTwo ") {
 
-     send24DatasToTeensy6motors(6, -10, -3, -1);
+     send24DatasToTeensy6motors(8, -10, -3, -1);
    
    }
      }
@@ -151,6 +191,7 @@ void mapNewPosX() {
    }
    // }
 
+
      for (int i = 0; i <  networkSize-0; i+=1) { 
 
      TrigmodPos[i]=1;
@@ -191,6 +232,6 @@ void mapNewPosX() {
      text ( revLfo[i], -1400, height-500 - 75*i);
      }
      
-     text (" mode " + keyMode + " signal2 " + signal[2] , -1600, height-300 );  
+     text (" mode " + keyMode + " signal2 " + signal[2] +  " net " + net.phase[2] + " metro " +   metroPhase[2] , -1600, height-300 );  
 
 }

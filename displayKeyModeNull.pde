@@ -110,8 +110,8 @@ void displayKeyModeNull() {
       sphereDetail( 4*5);
       }
 
-   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis " ||  
-        keyMode  ==  " propagationBallRotationTest " || keyMode  ==  " propagationBallRotationBisTest " ) { 
+   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  
+         ) { 
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
       fill (175, 100 , 175); 
@@ -120,13 +120,26 @@ void displayKeyModeNull() {
       } 
       x = displacement*cos(newPosXaddSignal[i]);  
       y = displacement*sin(newPosXaddSignal[i]);
-    //  x = displacement*cos(newPosF[i]);
-    //  y = displacement*sin(newPosF[i]);
-    //  x = displacement*cos(net.phase[i]);
-    //  y = displacement*sin(net.phase[i]);   
+   
       sphere(side*3);
       sphereDetail( 4*5);     
      }
+
+     if (  
+        keyMode  ==  " propagationBallRotationTest " || keyMode  ==  " propagationBallRotationBisTest " ) { 
+      println ( "****************************** DISPLAY ", keyMode ); 
+      text ( char (formerKeyMetro), 100,100);
+      fill (175, 100 , 175); 
+      if (dol==true) { 
+      fill (175, 100 , 255);
+      } 
+   
+      x = displacement*cos(net.phase[i]);
+      y = displacement*sin(net.phase[i]);   
+      sphere(side*3);
+      sphereDetail( 4*5);     
+     }
+
      
   /*
     if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo

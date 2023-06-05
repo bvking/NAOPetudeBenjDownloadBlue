@@ -1,6 +1,5 @@
 void  modePendulaireModeCirculaire() {
 
-
   for (int i = 0; i <networkSize-0; i++) {
    
     pushMatrix();
