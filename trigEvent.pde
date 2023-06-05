@@ -48,7 +48,32 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           autmationWithMeasureAndNote();
           }
 
+
+
+
      if (music_from_ableton_live == " pleasureKraft ") {
+          
+            if (measure < 58 ){
+           positionMov = " premierePartie ";
+          }
+
+         else if (measure >= 58 && beatTrigged ) {
+          if ( measure <=66 && beatPrecised < 4 ) {  // go to propaBis
+           positionMov = " seconde " ; }
+          }
+
+         else if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { // comeBack from alt y
+           positionMov = " troisieme " ;
+          keyCode = ALT; key = 'v'; // key 
+            }
+      
+         else if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
+            positionMov = " quatrieme " ;
+            textSize(500);
+
+           }
+
+
          
           if (measure==1 && beatTrigged==true){
            delayTimeToTrig4=120;    
@@ -84,27 +109,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           }
 
 
-
-         if (measure < 58 ){
-           positionMov = " premierePartie ";
-          }
-
-         else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) {  // go to in addSignal1andTwoOriginal
-           positionMov = " seconde " ; }
-
-      //     /*  in addSignal1andTwoTer
-         else if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-           positionMov = " troisieme " ;
-          keyCode = ALT; key = 'v'; // key 
-            }
-       //    */
-
-         else if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
-
-   //          positionMov = " quatrieme " ;
-             textSize(500);
-
-           }
+//----------------------
+       
               
         if (  positionMov == " premierePartie "){
          if (measure<58){
@@ -121,8 +127,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        }
           if (measure > 1 && measure<17){ 
              if (beatTrigged==true){ 
-        key = 'K'; keyReleased();
-        key = 'K'; keyReleased();
+    //    key = 'K'; keyReleased();
+    //    key = 'K'; keyReleased();
          }
         }
        
@@ -220,8 +226,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        if (positionMov == " seconde " ){    // 58 to 68
         if (measure == 58 && beatTrigged) { 
    
-      //  keyMode = " propagationBallRotationBis ";
-       keyMode = " addSignalOneAndTwo ";
+        keyMode = " propagationBallRotationBis ";
+      // keyMode = " addSignalOneAndTwo ";
          }
      //   dol=true;
      //   formerKeyMetro = '*';

@@ -14,8 +14,18 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 
 void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP 
+ //---------- come back to trigEventWithAbletonSignal ------- work only with $
+     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {      
+        keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
+        keyMode = " trigEventWithAbletonSignal ";
+        positionMov = " troisieme " ;
+        formerKeyMetro = '*';
+        trigEventWithAbletonSignal();
+          } 
+
 modeStartKeyToFollow = " null ";
 keyMode = " propagationBallRotationBis ";
+formerKeyMetro = '*';
 
     textSize (50);
     displayPropagationControl();
@@ -165,7 +175,9 @@ keyMode = " propagationBallRotationBis ";
   // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]);
     
 
-   propagation2wayRotationBis(); 
+   propagation2wayRotationBis();
+
+
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
 
@@ -179,7 +191,6 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
          
        if (doZ==false && trigedSignFromAbleton[3]==1){  // propagationSpeedWithSquareSignal==1
 
-  
       propagationTrigged=true;
       oldOscillatorChange=oscillatorChange;
       oscillatorChange=oscillatorChange+1;
@@ -254,12 +265,23 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
 
 
  void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
-
- if (doo==true  && propagationTrigged==true){  //AMPLITUDE  negative way : ccw
       float phaseAmount=trigedSignFromAbleton[1];
       phaseAmount= map (phaseAmount, 0, 1, 1, 0);     
       phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI);
       text ( "phaseAmount " + phaseAmount, 500, 1000);
+
+
+ if (doo==true  && propagationTrigged==true){  //AMPLITUDE  negative way : ccw
+  int j;  
+  j= (oscillatorChange-1);
+  if (j<= 0){
+  j= networkSize-1;
+  }
+      LFO[j] = LFO[oscillatorChange]-(phaseAmount/(1*networkSize-1));;//;+TWO_PI*3 ; //*PI/24 
+    //  LFO[j] = LFO[j]%TWO_PI;
+
+
+    
 
       LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
       LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
@@ -270,25 +292,31 @@ if (doo==false && propagationTrigged==true){
       LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
       LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize-1));
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+ }
 
-     }
+
+//---------- map all propaged Lfo  (angular incrementation from phase Amount)
+     for ( int i=0; i<networkSize; i++){
  
-
-       if (LFO[oscillatorChange] <0){
-      dataMappedForMotorisedPosition[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
-      phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], numberOfStep, 0, 0, -TWO_PI); 
-      newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
+  if (LFO[i] <0){
+      dataMappedForMotorisedPosition[i]= int (map (LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+      newPosXaddSignal[i]=phaseMapped[i]; 
        }
        
       else {
     
-      dataMappedForMotorisedPosition[oscillatorChange]= (int) map (LFO[oscillatorChange], 0, TWO_PI, 0, numberOfStep); 
-      phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], 0, numberOfStep, 0, TWO_PI);
-      newPosXaddSignal[oscillatorChange]=phaseMapped[oscillatorChange]; 
+      dataMappedForMotorisedPosition[i]= (int) map (LFO[i], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[i]=phaseMapped[i]; 
 
        }
 
-  }
+       
+
+      }
+
+   }
 
 
 void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
