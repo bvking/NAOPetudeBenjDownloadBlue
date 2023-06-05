@@ -126,16 +126,32 @@ void displayKeyModeNull() {
      }
 
      if (  
-        keyMode  ==  " propagationBallRotationTest " || keyMode  ==  " propagationBallRotationBisTest " ) { 
+        keyMode  ==  " propagationBallRotationTest " || keyMode  ==  " propagationBallRotationBisTest " && formerKeyMetro == '*') { 
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
-      fill (175, 100 , 175); 
+      fill (175, 125 , 175); 
       if (dol==true) { 
       fill (175, 100 , 255);
       } 
    
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);   
+      sphere(side*3);
+      sphereDetail( 4*5);     
+     }
+
+
+     if (  
+        keyMode  ==  " propagationBallRotationTest " || keyMode  ==  " propagationBallRotationBisTest " && formerKeyMetro == '$') { 
+      println ( "****************************** DISPLAY ", keyMode ); 
+      text ( char (formerKeyMetro), 100,100);
+      fill (175, 140 , 175); 
+      if (dol==true) { 
+      fill (175, 100 , 255);
+      } 
+   
+      x = displacement*cos(metroPhase[i]);
+      y = displacement*sin(metroPhase[i]);   
       sphere(side*3);
       sphereDetail( 4*5);     
      }

@@ -90,13 +90,13 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
 
   if (formerKeyMetro == '$') {
     for (int i = 0; i < networkSize; i++) {
-    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+  //  dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
     }
   }
 
    if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  
+   //  lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  
     } 
   }
 
@@ -190,13 +190,12 @@ void mapNewPosX() {
    //  newPosF[i]=positionToMotor[i]%6400;
    }
    // }
-
+     textSize (50);
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
-
      TrigmodPos[i]=1;
       
-      if ( doo==false) { //  work with propaBis
+      if ( doo==false && formerKeyMetro == '*') { //  work with propaBis in circularMode only
 
     if ( oldPosF[i]>newPosF[i]) { //
          revLfo[i]++;
@@ -208,28 +207,22 @@ void mapNewPosX() {
     
     text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
     println (  " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i]);
-
-
-     textSize (100);
      
-   if ( doo==true  ){  // A AMELIORER DANS PROPABIS
+   if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
   
      if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){ 
      revLfo[i]--;
      TrigmodPos[i]=1;
        }
    }
-
-    textSize(50);
-
      print (" TrigmodPos[i" , TrigmodPos[i]);
 
      oldPositionToMotor[i]=  positionToMotor[i];
      oldOldPosF[i]=oldPosF[i];
      oldPosF[i]=newPosF[i];
  
-     text ("revLFO ", -1600, height-500 - 75*i);
-     text ( revLfo[i], -1400, height-500 - 75*i);
+     text ("revLFO " + revLfo[i] + "metro " + metroPhase[i], -1600, height-500 - 75*i);
+
      }
      
      text (" mode " + keyMode + " signal2 " + signal[2] +  " net " + net.phase[2] + " metro " +   metroPhase[2] , -1600, height-300 );  
