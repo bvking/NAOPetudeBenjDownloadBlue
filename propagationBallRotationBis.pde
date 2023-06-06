@@ -270,8 +270,39 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
       phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI);
       text ( "phaseAmount " + phaseAmount, 500, 1000);
 
+      
+if (doo==false && propagationTrigged==true){
+      LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize-1));
+     text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+ }
 
- if (doo==true  && propagationTrigged==true){  //AMPLITUDE  negative way : ccw
+if (doo==true && propagationTrigged==true){
+      LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
+      LFO[oscillatorChange] -=  phaseAmount;
+     text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+ }
+
+
+//---------- map all propaged Lfo  (angular incrementation from phase Amount)
+     for ( int i=0; i<networkSize; i++){
+ 
+  if (LFO[i] <0){
+      dataMappedForMotorisedPosition[i]= int (map (LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+      newPosXaddSignal[i]=phaseMapped[i]; 
+       }
+       
+      else {
+    
+      dataMappedForMotorisedPosition[i]= (int) map (LFO[i], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[i]=phaseMapped[i]; 
+
+       }
+    }
+// end ---------- map all propaged Lfo  (angular incrementation from phase Amount)
+     if (doo==true  && propagationTrigged==true){  //AMPLITUDE  negative way : ccw
   int i;  
   i= (oscillatorChange);
   
@@ -300,10 +331,9 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
   }
      if (dol==true )  { 
     
-  //  if (  LFO[i]<0){  
    if ( newPosXaddSignal[j]<0){ 
 
-       phaseKeptAtChange[j]=newPosXaddSignal[j]- (phaseAmount/(1*networkSize/4));
+       phaseKeptAtChange[j]=newPosXaddSignal[j]- (2*phaseAmount/(1)); //*networkSize/4
        dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
        LFO[j]= map (dataMappedForMotor[j], numberOfStep, 0, 0, -TWO_PI);
        text ( "  LFO[j]< " +   LFO[j], 500, 1200);  
@@ -316,40 +346,28 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
        LFO[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
        text ( "  LFO[j]> " +   LFO[j], 500, 1200); 
     }
-   }
-      LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
-      LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
-      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
-   }       
-
-if (doo==false && propagationTrigged==true){
-      LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
-      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize-1));
-     text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
- }
-
-
-//---------- map all propaged Lfo  (angular incrementation from phase Amount)
-     for ( int i=0; i<networkSize; i++){
+   
+     
+//---------- map all propaged Lfo  (angular incrementation from phase Amount) 
+     for ( int z=0; z<networkSize; z++){
  
-  if (LFO[i] <0){
-      dataMappedForMotorisedPosition[i]= int (map (LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
-      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
-      newPosXaddSignal[i]=phaseMapped[i]; 
+  if (LFO[z] <0){
+      dataMappedForMotorisedPosition[z]= int (map (LFO[z], 0, -TWO_PI, numberOfStep, 0)); 
+      phaseMapped[z]= map (dataMappedForMotorisedPosition[z], numberOfStep, 0, 0, -TWO_PI); 
+      newPosXaddSignal[z]=phaseMapped[z]; 
        }
        
       else {
     
-      dataMappedForMotorisedPosition[i]= (int) map (LFO[i], 0, TWO_PI, 0, numberOfStep); 
-      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-      newPosXaddSignal[i]=phaseMapped[i]; 
+      dataMappedForMotorisedPosition[z]= (int) map (LFO[z], 0, TWO_PI, 0, numberOfStep); 
+      phaseMapped[z]= map (dataMappedForMotorisedPosition[z], 0, numberOfStep, 0, TWO_PI);
+      newPosXaddSignal[z]=phaseMapped[z]; 
 
        }
-
-       
-
-      }
-
+    }
+// end ---------- map all propaged Lfo  (angular incrementation from phase Amount) 
+   } // end dol
+   }
    }
 
 
