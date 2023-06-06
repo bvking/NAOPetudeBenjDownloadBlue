@@ -49,6 +49,7 @@ void printModeAndKey()  {
   print (keyMode);
   print (" beatTrigged ");  
   print (beatTrigged);
-  print ( " mouseRec ");  println (  mouseRecorded );
-
+  print ( " mouseRec ");  print (  mouseRecorded );
+  print ( "positionMov ");  println (  positionMov );
+  
    }

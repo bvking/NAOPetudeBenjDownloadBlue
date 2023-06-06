@@ -94,12 +94,9 @@ formerKeyMetro = '*';
 
     case '#': // change way of propagation
     break;
-  //  doB=!doB;
+
     }
 
-
- // splitTimeScaleRotation(30.0); //  10.0= vitesse de propagation. On change de sens de ROTATION avec q et z.
- // splitTimeLfoScale();  // change de sens de PROPAGATION
 
    if ( formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
 

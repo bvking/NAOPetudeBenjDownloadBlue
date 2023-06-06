@@ -5,7 +5,7 @@ void teensyPos(){
 
   if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
    for (int i = 0; i < networkSize; i++) {
-     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2);
+     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2)+lastPositionFromCircularMode[i];
     }
   }
   if ( keyMode == " propagationBallRotationBis "  
@@ -89,13 +89,13 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
 
   if (formerKeyMetro == '$') {
     for (int i = 0; i < networkSize; i++) {
-  //  dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
     }
   }
 
    if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-   //  lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  
+     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  
     } 
   }
 
@@ -127,7 +127,7 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
        send24DatasToTeensy6motors(7, 3, -3, -1);
          }
         if (measure>41 && measure<=100){
-       send24DatasToTeensy6motors(8, 3, -3, -1);
+       send24DatasToTeensy6motors(8, 3, -4, -1);
          }
        }
       } 
