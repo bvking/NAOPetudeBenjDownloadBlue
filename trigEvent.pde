@@ -229,9 +229,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         keyMode = " propagationBallRotationBis ";
       // keyMode = " addSignalOneAndTwo ";
          }
-     //   dol=true;
-     //   formerKeyMetro = '*';
-      
+  
       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
      
       oscillatorBlocked=0;
