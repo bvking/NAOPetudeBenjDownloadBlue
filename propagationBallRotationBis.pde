@@ -166,21 +166,18 @@ formerKeyMetro = '*';
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
  //  splitTimeScaleRotation(signal[2]);
 
-    splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
+  // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
 
-  // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// 2
-  // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]);
-    
-
+  // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+   splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
    propagation2wayRotationBis();
-
 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
 
  }
 void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareSignal) { 
-        text ( " Z to change Propagation Way trigedSignFromAbleton2 " + trigedSignFromAbleton[2] + " 3 " + trigedSignFromAbleton[3],  500, 900);
+        text ( " Z to change Propagation Way trigedSignFromAbleton3 ou 2 " + trigedSignFromAbleton[2] + " 3 " + trigedSignFromAbleton[3],  500, 900);
 
  //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          
@@ -216,10 +213,12 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
 }
 
 
- void  splitTimeWithTrigSignalFromAudioAbleton(float trigedSignFromAbleton0) { 
-        text ( "trigedSignFromAbleton0 " + trigedSignFromAbleton[0], 500, 900);
+ void  splitTimeWithTrigSignalFromAudioAbleton(float trigedSignFromAbleton) { 
+        text ( "trigedSignFromAbleton " + trigedSignFromAbleton, 500, 900);
 
- //    signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
+        trigedWithAnySign=trigedSignFromAbleton;
+
+ //    trigedWithAnySign = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          
     propagationTrigged=false;
     oscillatorChanged=false;
@@ -228,7 +227,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
   
          
     if (doZ==false &&
-    ((trigedSignFromAbleton[0]>0.5 && oldTrigedSignFromAbleton[0]<0.5) || (trigedSignFromAbleton[0]<0.5 && oldTrigedSignFromAbleton[0]>0.5))
+    ((trigedWithAnySign>0.5 && oldTrigedWithAnySign<0.5) || (trigedWithAnySign<0.5 && oldTrigedWithAnySign>0.5))
     ){  
        
       oscillatorChanged=propagationTrigged=true;
@@ -243,7 +242,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
    } 
   }
   
-   if (doZ==true  && trigedSignFromAbleton[0]==1  ){ 
+   if (doZ==true  && trigedWithAnySign==1  ){ 
 
      
       oscillatorChanged= propagationTrigged=true;
@@ -256,7 +255,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
    }
   }
 
-     oldTrigedSignFromAbleton[0]=trigedSignFromAbleton[0];       
+     oldTrigedWithAnySign=trigedWithAnySign;       
 
 }
 

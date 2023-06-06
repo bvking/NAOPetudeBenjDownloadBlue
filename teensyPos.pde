@@ -44,9 +44,9 @@ void teensyPos(){
     }
    }
 
-         if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
-   for (int i = 0; i < networkSize; i++) {
-     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i];
+     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
+     for (int i = 0; i < networkSize; i++) {
+         dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i];
     }
   }
 

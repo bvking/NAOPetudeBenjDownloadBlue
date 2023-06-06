@@ -12,6 +12,7 @@ int nbBalls=networkSize;
 String music_from_ableton_live;
 String [] eventToTrig = {"0","0","0","0"};
 String [] keyEvent = {" bla "," bli ","0","0"};
+float trigedWithAnySign, oldTrigedWithAnySign;
 float [] trigedSignFromAbleton = new float [networkSize];
 float [] oldTrigedSignFromAbleton = new float [networkSize];
 
