@@ -138,10 +138,10 @@ formerKeyMetro = '*';
       //******** Lock last oscillator to the lastPhase
 
           if (   dol==true) {
-      lockOscillatorToPositionFromPreviousProagedBallTest();
+  //    lockOscillatorToPositionFromPreviousProagedBallTest();
       for (int i = 0; i < networkSize-0; i+=1) { 
-      phaseMappedFollow[i] = netPhaseBase[i];
-      phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
+  //    phaseMappedFollow[i] = netPhaseBase[i];
+  //    phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
       }
      }
 /*
@@ -272,12 +272,71 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
 
 
  if (doo==true  && propagationTrigged==true){  //AMPLITUDE  negative way : ccw
+  int i;  
+  i= (oscillatorChange);
+  
   int j;  
   j= (oscillatorChange-1);
-  if (j<= 0){
+  if (j<= -1){
   j= networkSize-1;
   }
-      LFO[j] = LFO[oscillatorChange]-(phaseAmount/(1*networkSize-1));;//;+TWO_PI*3 ; //*PI/24 
+    
+  int k;  
+  k= (j-1);
+  if (k<= -1){
+  k= networkSize-1;
+  }
+  
+  int l;  
+  l= (k-1);
+  if (l<= -1){
+  l= networkSize-1;
+  }
+  
+  int m;  
+  m= (l-1);
+  if (m<= -1){
+  m= networkSize-1;
+  }
+     if (dol==true )  { 
+    
+  //  if (  LFO[i]<0){  
+   if ( newPosXaddSignal[j]<0){ 
+
+   //    phaseKeptAtChange[j]=phaseKeptAtChange[i];
+       phaseKeptAtChange[j]=newPosXaddSignal[j]- (phaseAmount/(1*networkSize-1));
+      
+
+  //  phaseKeptAtChange[j]=newPosXaddSignal[j]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
+    dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
+    
+              println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
+
+
+       LFO[j]= map (dataMappedForMotor[j], numberOfStep, 0, 0, -TWO_PI);
+
+       text ( "  LFO[j] " +   LFO[j], 500, 1200);
+
+
+   
+  }
+       
+   else  if ( newPosXaddSignal[j]>0){ 
+      //   phaseKeptAtChange[j]=phaseKeptAtChange[i];
+       phaseKeptAtChange[j]=newPosXaddSignal[j]+ (phaseAmount/(1*networkSize-1));
+                       
+     //  LFO[j] = LFO[j]%TWO_PI;
+       dataMappedForMotor[j]= (int) map (phaseKeptAtChange[j], 0, TWO_PI, 0, numberOfStep);
+
+       LFO[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
+      text ( "  LFO[j] " +   LFO[j], 500, 1200);
+ 
+  
+    }
+   }
+
+  //phaseAmount=PI/8;
+    //  LFO[j] = LFO[oldOscillatorChange];//]-(phaseAmount/(1*networkSize-1));;//;+TWO_PI*3 ; //*PI/24 
     //  LFO[j] = LFO[j]%TWO_PI;
 
 
