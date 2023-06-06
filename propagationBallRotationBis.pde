@@ -267,18 +267,18 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
  void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
       float phaseAmount=trigedSignFromAbleton[1];
       phaseAmount= map (phaseAmount, 0, 1, 1, 0);     
-      phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI);
+      phaseAmount = map (phaseAmount, 0, 1, 0, TWO_PI/networkSize);
       text ( "phaseAmount " + phaseAmount, 500, 1000);
 
       
-if (doo==false && propagationTrigged==true){
-      LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
+if (doo==false && propagationTrigged==true){ // propaga fixe
+      LFO[oscillatorChange] = LFO[oldOscillatorChange];//
       LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize-1));
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
  }
 
-if (doo==true && propagationTrigged==true){
-      LFO[oscillatorChange] = LFO[oldOscillatorChange];// newPosXaddSignal[oscillatorChange]%TWO_PI;
+if (doo==true && propagationTrigged==true){  // propaga selon phaseAmount
+      LFO[oscillatorChange] = LFO[oldOscillatorChange];//
       LFO[oscillatorChange] -=  phaseAmount;
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
  }
@@ -333,7 +333,9 @@ if (doo==true && propagationTrigged==true){
     
    if ( newPosXaddSignal[j]<0){ 
 
-       phaseKeptAtChange[j]=newPosXaddSignal[j]- (2*phaseAmount/(1)); //*networkSize/4
+    //   phaseKeptAtChange[j]=newPosXaddSignal[j]- (2*phaseAmount/(1)); //recule la precedente de deux fois 
+  //    phaseKeptAtChange[j]=newPosXaddSignal[j]+ (phaseAmount/(2)); //avance la precedente de la moitie
+       phaseKeptAtChange[j]=newPosXaddSignal[j]+ (2*phaseAmount/(1)); //avance la precedente du double
        dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
        LFO[j]= map (dataMappedForMotor[j], numberOfStep, 0, 0, -TWO_PI);
        text ( "  LFO[j]< " +   LFO[j], 500, 1200);  
