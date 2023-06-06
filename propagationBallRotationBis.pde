@@ -283,7 +283,6 @@ if (doo==true && propagationTrigged==true){  // propaga selon phaseAmount
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
  }
 
-
 //---------- map all propaged Lfo  (angular incrementation from phase Amount)
      for ( int i=0; i<networkSize; i++){
  
@@ -333,9 +332,9 @@ if (doo==true && propagationTrigged==true){  // propaga selon phaseAmount
     
    if ( newPosXaddSignal[j]<0){ 
 
-    //   phaseKeptAtChange[j]=newPosXaddSignal[j]- (2*phaseAmount/(1)); //recule la precedente de deux fois 
+       phaseKeptAtChange[j]=newPosXaddSignal[j]- (2*phaseAmount/(1)); //recule la precedente de deux fois 
   //    phaseKeptAtChange[j]=newPosXaddSignal[j]+ (phaseAmount/(2)); //avance la precedente de la moitie
-       phaseKeptAtChange[j]=newPosXaddSignal[j]+ (2*phaseAmount/(1)); //avance la precedente du double
+  //     phaseKeptAtChange[j]=newPosXaddSignal[j]+ (2*phaseAmount/(1)); //avance la precedente du double
        dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
        LFO[j]= map (dataMappedForMotor[j], numberOfStep, 0, 0, -TWO_PI);
        text ( "  LFO[j]< " +   LFO[j], 500, 1200);  

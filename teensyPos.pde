@@ -191,6 +191,8 @@ void mapNewPosX() {
          TrigmodPos[i]=1; 
       }
 
+       
+
     
               
      for (int i = 0; i <  networkSize-0; i+=1) { 
@@ -201,8 +203,9 @@ void mapNewPosX() {
             TrigmodPos[i]=0;   
           }
         }
+      }
 
-     if (dol && doo  && TrigmodPos[i]!=0) {
+        if (dol && !doo ) { // && TrigmodPos[oscillatorChange]!=0
 
             if ( propagationTrigged)  {    // set j as 2  
         int j; 
@@ -213,19 +216,21 @@ void mapNewPosX() {
         }
     
             text ( " cancel counting bug by minusing ", 400, 400);
-             revLfo[oscillatorChange]--;  // cancel counter
-       //  revLfo[j]--;  // cancel counter
+            revLfo[oscillatorChange]--;  // cancel counter
+        // revLfo[j]--;  // cancel counter
          TrigmodPos[j]=3;   
       
        }
      }
+
     
-  
-    text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
+    
+     for (int i = 0; i <  networkSize-0; i+=1) { 
+      text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
  
       if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
   
-        if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){ 
+        if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){  // voir dans quel sens la retropropagation oriente  i et j
      revLfo[i]--;
      TrigmodPos[i]=0;
       }
@@ -242,8 +247,8 @@ void mapNewPosX() {
         }
 
              text ( " cancel counting bug by adding ", 400, 400);
-          revLfo[oscillatorChange]--;
-      //   revLfo[j]++;  // cancel counter
+       //   revLfo[oscillatorChange]++;
+       //  revLfo[j]++;  // cancel counter
          TrigmodPos[j]=4;   
       
        }
