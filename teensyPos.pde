@@ -3,7 +3,7 @@ void teensyPos(){
   text ( " circularMov " + !circularMov , 200, 100) ; //
 
 
-  if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false
+  if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
    for (int i = 0; i < networkSize; i++) {
      dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2);
     }
@@ -45,7 +45,7 @@ void teensyPos(){
     }
    }
 
-         if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false
+         if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
    for (int i = 0; i < networkSize; i++) {
      dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i];
     }
@@ -104,7 +104,7 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
   if ( keyMode == " propagationBallRotationBis " ) {
     for (int i = 0; i < networkSize-0; i++) { // 
     dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];
-  //  actualisePositionDataFromCircular = false; //
+  //  actualisePositionDataFromCircular = false|| dol==true; //
     }  
    }
 
@@ -194,27 +194,64 @@ void mapNewPosX() {
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
      TrigmodPos[i]=1;
-      
+
+
+
+        if ( propagationTrigged==true)  { 
+   
+    int j;  
+  j= (oscillatorChange-1);
+  if (j<= -1){
+  j= networkSize-1;
+  }
+
       if ( doo==false && formerKeyMetro == '*') { //  work with propaBis in circularMode only
 
     if ( oldPosF[i]>newPosF[i]) { //
          revLfo[i]++;
          TrigmodPos[i]=0;
-     
+         TrigmodPos[j]=0;
+
+      }
+
+      if ( dol) {
+       
+
+    if ( TrigmodPos[j]==0  ) { 
+         revLfo[j]--;  // cancel counter
+         TrigmodPos[j]=3;   
+      }
     }
-     }  
+    }
+   
+
   
     
     text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
     println (  " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i]);
      
-   if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
+      if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
   
-     if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){ 
+    if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){ 
      revLfo[i]--;
-     TrigmodPos[i]=1;
+     TrigmodPos[i]=0;
+     TrigmodPos[j]=0;
+    }
+
+       if ( dol) {
+
+          if ( TrigmodPos[j]==0  ) { 
+         revLfo[j]++;  // cancel counter
+         TrigmodPos[j]=4;   
+      
        }
+     }
+    }
+    
    }
+
+
+
      print (" TrigmodPos[i" , TrigmodPos[i]);
 
      oldPositionToMotor[i]=  positionToMotor[i];
