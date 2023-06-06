@@ -303,45 +303,20 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
   //  if (  LFO[i]<0){  
    if ( newPosXaddSignal[j]<0){ 
 
-   //    phaseKeptAtChange[j]=phaseKeptAtChange[i];
-       phaseKeptAtChange[j]=newPosXaddSignal[j]- (phaseAmount/(1*networkSize-1));
-      
-
-  //  phaseKeptAtChange[j]=newPosXaddSignal[j]%TWO_PI;  // the position of the actual changing ball is at the position of the prevous propaged ball
-    dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
-    
-              println (" < phaseKeptAtChange[oscillatorChange]  i ", i , " " , oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
-
-
+       phaseKeptAtChange[j]=newPosXaddSignal[j]- (phaseAmount/(1*networkSize/4));
+       dataMappedForMotor[j]= int (map ( phaseKeptAtChange[j], 0, -TWO_PI, numberOfStep, 0)); 
        LFO[j]= map (dataMappedForMotor[j], numberOfStep, 0, 0, -TWO_PI);
-
-       text ( "  LFO[j] " +   LFO[j], 500, 1200);
-
-
-   
+       text ( "  LFO[j]< " +   LFO[j], 500, 1200);  
   }
        
    else  if ( newPosXaddSignal[j]>0){ 
-      //   phaseKeptAtChange[j]=phaseKeptAtChange[i];
-       phaseKeptAtChange[j]=newPosXaddSignal[j]+ (phaseAmount/(1*networkSize-1));
-                       
-     //  LFO[j] = LFO[j]%TWO_PI;
+   
+       phaseKeptAtChange[j]=newPosXaddSignal[j]+ (phaseAmount/(1*networkSize-networkSize/2));
        dataMappedForMotor[j]= (int) map (phaseKeptAtChange[j], 0, TWO_PI, 0, numberOfStep);
-
        LFO[j]= map (dataMappedForMotor[j], 0, numberOfStep, 0, TWO_PI);
-      text ( "  LFO[j] " +   LFO[j], 500, 1200);
- 
-  
+       text ( "  LFO[j]> " +   LFO[j], 500, 1200); 
     }
    }
-
-  //phaseAmount=PI/8;
-    //  LFO[j] = LFO[oldOscillatorChange];//]-(phaseAmount/(1*networkSize-1));;//;+TWO_PI*3 ; //*PI/24 
-    //  LFO[j] = LFO[j]%TWO_PI;
-
-
-    
-
       LFO[oscillatorChange] = LFO[oldOscillatorChange]; //     
       LFO[oscillatorChange] -=  (phaseAmount/(1*networkSize-1));
       text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
