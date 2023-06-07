@@ -33,7 +33,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      splitTimeLfo= int  (timeLfo%1000); 
          //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
 
-     textSize (75);
+     textSize (25);
      text ( " Data[5] " + dataMappedForMotorisedPosition[5] + " Data[0] " + dataMappedForMotorisedPosition[0] + " propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300-1000);
      text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
      text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 500-1000);
@@ -70,7 +70,6 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          else if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
             positionMov = " quatrieme " ;
             textSize(500);
-
            }
 
 
@@ -252,22 +251,21 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         // end second partie
       }
 
-      if ( positionMov == " troisieme "  ){ // à partir de 66.4
+      if ( positionMov == " troisieme "  ){ // à partir de 66.4   from   keyMode = " addSignalOneAndTwoTer "; 
    
          float valToRoot = 2.0;
          float rootedFloat = squaredRootOccurrence(valToRoot,4);
          text (  " rootFloat " + rootedFloat, -200, 200); 
 
 
-        //  keyMode = " addSignalOneAndTwoTer "; 
-    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
+      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // useless?
+          formerKeyMetro = '*';
           keyMode = " trigEventWithAbletonSignal ";
             for (int i = 0; i < networkSize-0; i++) { 
-      
-          net.naturalFrequency[i]= rootedFloat-0.8; // pow(2, -10);
+     
+            net.naturalFrequency[i]= rootedFloat-0.8; // pow(2, -10);
       }
-          formerKeyMetro = '*';
-          net.naturalFrequency[5]=0;
+             net.naturalFrequency[5]=0;
              
       }
        if (measure >=66 && measure < 82)

@@ -3,22 +3,17 @@ void teensyPos(){
   text ( " circularMov " + !circularMov , 200, 100) ; //
 
 
-  if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
-   for (int i = 0; i < networkSize; i++) {
-     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2)+lastPositionFromCircularMode[i];
-    }
-  }
   if ( keyMode == " propagationBallRotationBis "  
     )  {   // || keyMode == " addSignalOneAndTwo "
      rev=revLfo; // actualise counter of normal mode  
    for(int i = 0; i < networkSize; i++) {  
- //   dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
+   //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
     
      dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep)+ (int) recordLastDataOfMotorPosition[i];
     }
-   }
+  }
 
-   if ( keyMode == " propagationBallRotationBisTest "  && formerKeyMetro=='*')
+  if ( keyMode == " propagationBallRotationBis "  && formerKeyMetro=='*')
     {    // actualise counter of normal mode from revLfo from method  not here
 
       for (int i = 0; i < networkSize; i++) {
@@ -42,49 +37,40 @@ void teensyPos(){
       
       recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
     }
-   }
+  }
 
-     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // circularMov==false|| dol==true
+  if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // record is from  '*' last position is from k
      for (int i = 0; i < networkSize; i++) {
-         dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i];
+         dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
     }
   }
 
-     
+  if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " && formerKeyMetro =='*') { 
+   if ( keyMode == " propagationBallRotationBisTest " ) { 
+        rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
+        text ( " keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
 
-/*
-   if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " && formerKeyMetro =='*') { 
-if ( keyMode == " propagationBallRotationBisTest " ) { 
-  rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
-  text ( " keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
-
-    }
- for (int i = 0; i < networkSize; i++) {
+     for (int i = 0; i < networkSize; i++) {
   
+     //*******************************  ASSIGN MOTOR WITH POSITION
 
-    //*******************************  ASSIGN MOTOR WITH POSITION
-    //   pos[i]= pos[i]-numberOfStep/4; // The positions 0 of my motors in real are shifted of - half_PI  
-
-    if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-     dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
-    }
-
-    //   if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
-    if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
-
-     dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
-    }
-
-    if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
+      if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
+      dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
+      }
+      if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
+      dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
+      }
+      if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
       //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
-    }         
-    if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
+      }         
+      if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
+      }
+     }
     }
    }
-  }
-*/
+
      //*******************  SWITCH MODE oTHER SoLUTION
 
   if (formerKeyMetro == '$') {
@@ -95,15 +81,17 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
 
    if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];  
+     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+   //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
     } 
   }
 
 
   if ( keyMode == " propagationBallRotationBis " ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];
+    recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
   //  actualisePositionDataFromCircular = false|| dol==true; //
+  //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
     }  
    }
 
@@ -118,23 +106,24 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
 
   if (keyMode == " trigEventWithAbletonSignal ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
-         if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
-     if (positionMov != " troisieme " && measure<17) {
-      send24DatasToTeensy6motors(8, 3, -3, -1);
-  }
+      if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
+        if (positionMov != " troisieme " && measure<17) {
+            send24DatasToTeensy6motors(8, 3, -3, -1);
+         }
 
-     if (measure>=17 && measure<=41){
-       send24DatasToTeensy6motors(7, 3, -3, -1);
-         }
+        if (measure>=17 && measure<=41){
+            send24DatasToTeensy6motors(7, 3, -3, -1);
+        }
         if (measure>41 && measure<=100){
-       send24DatasToTeensy6motors(8, 3, -4, -1);
-         }
-       }
-      } 
-     }
+            send24DatasToTeensy6motors(8, 3, -4, -1);
+        }
+      }
+    } 
+  }
   
-   if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) " || keyMode == " trigEventWithAbletonSignal "   )
-   {  if (measure<=3 )
+  if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) "
+                 || keyMode == " trigEventWithAbletonSignal "  ) {
+    if (measure<=3 )
      { 
       send24DatasToTeensy6motors(5, -3, -3, -1);
      }
@@ -151,7 +140,7 @@ if ( keyMode == " propagationBallRotationBisTest " ) {
      send24DatasToTeensy6motors(8, -10, -3, -1);
    
    }
-     }
+  }
 
 
 
@@ -192,9 +181,7 @@ void mapNewPosX() {
       }
 
        
-
-    
-              
+            
      for (int i = 0; i <  networkSize-0; i+=1) { 
        if ( doo==false && formerKeyMetro == '*') { //  work with propaBis in circularMode only
 
@@ -254,9 +241,6 @@ void mapNewPosX() {
        }
      }
    
-    
-   
-
 
 
      print (" TrigmodPos[i" , TrigmodPos[i]);

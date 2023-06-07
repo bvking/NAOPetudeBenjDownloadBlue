@@ -125,7 +125,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 
     net.naturalFrequency[0]= OldFrequency[(networkSize-1)]; 
 
-    for (int i = 0; i < (networkSize-1); i++) {
+    for (int i = 0; i < (networkSize-2); i++) {
       print (i+1); 
 
       println ((networkSize+1)-(i+1));
