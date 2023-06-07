@@ -247,11 +247,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      //  key = 'd'; keyReleased();
         oscillatorBlocked=oscillatorBlocked%networkSize; 
        }
-  
         // end second partie
       }
 
-      if ( positionMov == " troisieme "  ){ // à partir de 66.4   from   keyMode = " addSignalOneAndTwoTer "; 
+
+
+      if ( positionMov == " troisieme "  ){ // à partir de 66.4   from   keyMode = " propaBis "; 
    
          float valToRoot = 2.0;
          float rootedFloat = squaredRootOccurrence(valToRoot,4);
@@ -261,11 +262,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // useless?
           formerKeyMetro = '*';
           keyMode = " trigEventWithAbletonSignal ";
-            for (int i = 0; i < networkSize-0; i++) { 
-     
+            for (int i = 0; i < networkSize-0; i++) {  
             net.naturalFrequency[i]= rootedFloat-0.8; // pow(2, -10);
       }
              net.naturalFrequency[5]=0;
+       //      phasePattern();
              
       }
        if (measure >=66 && measure < 82)

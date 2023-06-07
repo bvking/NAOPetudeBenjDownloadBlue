@@ -46,9 +46,12 @@ void teensyPos(){
   }
 
   if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " && formerKeyMetro =='*') { 
+
    if ( keyMode == " propagationBallRotationBisTest " ) { 
         rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
         text ( " keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
+    }
+
 
      for (int i = 0; i < networkSize; i++) {
   
@@ -68,7 +71,7 @@ void teensyPos(){
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
      }
-    }
+   
    }
 
      //*******************  SWITCH MODE oTHER SoLUTION
@@ -81,7 +84,7 @@ void teensyPos(){
 
    if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-     lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+   //  lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
    //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
     } 
   }
