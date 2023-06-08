@@ -1,9 +1,5 @@
 void addSignalOneAndTwoBis(){
- //   print (formerKeyMetro);
- //   signal2 continue
- //   signal to split sinus
-  // lfoPattern(); // if ive is not open  //lfoPattern(); // if Live is not open
-    // if you dob't use this, uncomment signal2 in addSignalLfoPattern()
+
   signal[2] = (0*PI + (frameCount / 300.0) * cos (1000 / 500.0)*-1)%1;
 
      text ("Change mode q, z, or b ", -width-200, -height- 600 );
@@ -12,8 +8,6 @@ void addSignalOneAndTwoBis(){
      text ( " propagationSpeed " + propagationSpeed + " oscillatorChange " + oscillatorChange, -width-200, -height- 300 );
      text (" oscillatorChange " + oscillatorChange + " oscillatorChanging " + phaseKeptAtChange[oscillatorChanging], -width-200, -height- 200 );
 
-
-    
    if (key=='q' || key=='b' || key=='z' ) { // q == addsignal
      letter = key;   
      }
@@ -45,10 +39,7 @@ void addSignalOneAndTwoBis(){
  }
  
  void addSignalLfoPatternBis()  {
-    if (doQ==true ){ // useless in this mode, instead modulate space between phase kept and new phase
-  //   pendularPattern(); // offset with lfo oscillator by osillator
-  //  phaseFollowLFO[oscillatorChange]= map (signal[2], 0, 1, 0, TWO_PI);    
-   }
+ 
 
    if (formerFormerKey  != '#' ) { //  != '#'
      print ("  normal " + frameCount + " lfoPhase[1] " + lfoPhase[1] + " lfoPhase[2] " + lfoPhase[2]);    println (   ); 
@@ -64,15 +55,15 @@ void addSignalOneAndTwoBis(){
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
     signal[2] = (0*PI + (frameCount / 300.0) * cos (1000 / 500.0)*-1)%1;
      
-  //   signal[2] = 0.02;
+  //  signal[2] = 0.1;
     
    
       LFO[i] =  map (signal[2], 0, 1, 0, TWO_PI);  
       
       
    //    LFO[i] =  map (0.01, 0, 1, 0, TWO_PI);  // CONSTANT
-
-  
+  if (oscillatorChanged==true )  { 
+ 
     if ( phaseKeptAtChange[oscillatorChanging]<0){   
        LFO[i] =    LFO[i]- phaseKeptAtChange[oscillatorChanging];
        dataMappedForMotor[i]= int (map (LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
@@ -89,31 +80,43 @@ void addSignalOneAndTwoBis(){
        newPosXaddSignal[i]= map (dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
    
     }
+    
   }
 
-    println (" newPosXaddSignal[oscillatorChange] ",  oscillatorChange, " ",  newPosXaddSignal[oscillatorChange] );
-  
-//     int j;  
-//  j= (networkSize-1);
-///  if (j<= 0){
-//  j= networkSize;
-//  }
-       
-  if (oscillatorChanged==true )  { 
+      
 
-     phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oscillatorChange];    //  RECORD on oscillatorChange-1 the postion of oscillatorChange where it has just changed
-  
-   }
+      int j;  
+       j= (oscillatorChange-1);
+       if (j<= 0){
+         j= networkSize-1;
+       }
 
+
+      int h;  
+       h= (oscillatorChange+1);
+       h%=networkSize;
+
+    //   phaseKeptAtChange[oscillatorChange]=newPosXaddSignal[oscillatorChange]+newPosXaddSignal[h]; 
+       phaseKeptAtChange[j]=newPosXaddSignal[j];     //  RECORD on oscillatorChange-1 the postion of oscillatorChange where it has just changed
+    
+       phaseKeptAtChange[oscillatorChange]=phaseKeptAtChange[oscillatorChange]%TWO_PI;
+   
+  
+ text (" newPosXaddSignal[oscillatorChange] " +   oscillatorChange + " " +  newPosXaddSignal[oscillatorChange] + " phaseKeptAtChange " + phaseKeptAtChange[oscillatorChange], 0, width/2  );
    //**    LFO[j] = phaseKeptAtChange[j]+PI/(15-j);
-       LFO[oscillatorChanging] = phaseKeptAtChange[oscillatorChanging]+TWO_PI+QUARTER_PI ;  //les redressent de temps en temps
+       LFO[oscillatorChanging] = phaseKeptAtChange[oscillatorChanging];//+QUARTER_PI ;  //les redressent de temps en temps
        LFO[oscillatorChanging] = LFO[oscillatorChanging]%TWO_PI;
        dataMappedForMotor[oscillatorChanging]= (int) map (LFO[oscillatorChanging], 0, TWO_PI, 0, numberOfStep);
-       println ("1_2Bis phaseKeptAtChange[oscillatorChange] ", oscillatorChange, " " ,  phaseKeptAtChange[oscillatorChange]);
+
+       if (  LFO[oscillatorChanging]<0){   
+       dataMappedForMotor[oscillatorChanging]= int (map (LFO[oscillatorChanging], 0, -TWO_PI, numberOfStep, 0)); 
+       }
+     //  newPosXaddSignal[i]= map (dataMappedForMotor[i], numberOfStep, 0, 0, -TWO_PI);
  
        newPosXaddSignal[oscillatorChanging]= map (dataMappedForMotor[oscillatorChanging], 0, numberOfStep, 0, TWO_PI);
-       
+     }  
 ///////////////////// 
+formerKeyMetro = '*' ; // to trig counter;
 mapNewPosX();
 
 }

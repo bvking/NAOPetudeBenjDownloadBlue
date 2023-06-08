@@ -119,21 +119,23 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   } 
   if (key == 'é') { // e$  éà dans pendularpattern e$  Shift frequencies one by one.  //  0 to 9,  1 to 8, 2 to 7.....9 to 0 
 
-    //    if ( net.naturalFrequency[11]>net.naturalFrequency[0]){
-
     println (" Shift frequencies one by one 0 <-- 11. ");
 
-    net.naturalFrequency[0]= OldFrequency[(networkSize-1)]; 
-
-    for (int i = 0; i < (networkSize-2); i++) {
-      print (i+1); 
-
-      println ((networkSize+1)-(i+1));
-      net.naturalFrequency[i+1]= OldFrequency[(networkSize+1)-(i+1)];
+    for (int i = 0; i < (networkSize+1); i++) { //networkSize
+      print ("  number of shifting osc frequency " + i); 
+  //    net.shiftFrequencies (4);
     }
+   for (int i = 0; i < (networkSize); i++) { //networkSize
+      // netPhaseBase[i]=netOldPhaseBase[(networkSize+1)-i];
+    net.phase[i]=net.oldPhase[networkSize-1-i];
+  //net.phase[i]=net.phase[networkSize-1-i];
+     net.naturalFrequency[i]=OldFrequency[networkSize-1-i];
+    }   
 
-    //}
-  } else if (key == '3') {  
+  } 
+  
+  
+  else if (key == '3') {  
     println(" Set Frequencies to 3 + harmonic distance ");// boost l'effet 1  
     for (int i = 0; i < networkSize; i++) {  
       net.naturalFrequency[i]  +=  OldFrequency[i]/2;
@@ -281,40 +283,43 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     }
   }
 
-  if (key == 'i') { 
+  if (key == 'i') {  // memory == 0 is the ball "behind"  the screen
 
   
     if (memoryi>=0) {
-    oldMemoryi=memoryi;
-    memoryi=(memoryi-1);
+       oldMemoryi=memoryi;
+       memoryi=(memoryi-1);
     }
       
     if ( memoryi<=-1) {
-      memoryi=networkSize-1;
-      oldMemoryi=0;
+        memoryi=networkSize-1;
+        oldMemoryi=0;
     }
 
-    for (int i = 1; i < (networkSize-0); i++) {  
+     for (int i = 1; i < (networkSize-0); i++) {  
 
-      net.phase[i-1]= net.oldPhase[i];
-      netPhaseBase[i-1]= net.oldPhase[i];
-      net.naturalFrequency[i-1]= net.naturalFrequency[i];
+       net.phase[i-1]= net.oldPhase[i];
+       netPhaseBase[i-1]= net.oldPhase[i];
+       net.naturalFrequency[i-1]= net.naturalFrequency[i];
        //    net.phase[i]= net.phase[i+1];// net.oldPhase[i] keep phase at    
        //    netPhaseBase[i]= netPhaseBase[i+1];// net.oldPhase[i] keep phase at    
        //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
-    }
+     }
 
-     net.phase[networkSize-1]=  net.oldPhase[0];
-     netPhaseBase[networkSize-1]=  net.oldPhase[0];
-     net.naturalFrequency[networkSize-1]= OldFrequency[0];
+       net.phase[networkSize-1]=  net.oldPhase[0];
+       netPhaseBase[networkSize-1]=  net.oldPhase[0];
+       net.naturalFrequency[networkSize-1]= OldFrequency[0];
    
   }
 
-    text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
+  //  text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
 
 
 
   if (key == 'u'  ) { 
+      oldMemoryi=memoryi;
+      memoryi=(memoryi+1)%networkSize;
+
     net.shiftPhases(1); 
     net.shiftFrequencies(1); 
 
@@ -745,7 +750,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       //   net.phase[i]  +=  net.phase[i] +(PI/((networkSize-i/12))*(i+1))%PI/12; // OK
 
 
-      netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
+     // netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
       //   netOldPhaseBase[i]=  netPhaseBase[i];
       printSummary(i);
     }
