@@ -17,8 +17,8 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
  //---------- come back to trigEventWithAbletonSignal ------- 
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
       
-     //   trigEventWithAbletonSignal(); 
-        addSignalOneAndTwoTer();
+        trigEventWithAbletonSignal(); 
+     //   addSignalOneAndTwoTer();
           positionMov = " troisieme " ;  
         textSize (500);         
       } 
@@ -171,7 +171,7 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
   // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
 
   // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-   splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
+   splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // with  z false need triangular if not need signal == 1
    propagation2wayRotationBis();
 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
@@ -179,8 +179,8 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
       
-     //   trigEventWithAbletonSignal(); 
-        addSignalOneAndTwoTer();
+       trigEventWithAbletonSignal(); 
+     //   addSignalOneAndTwoTer();
           positionMov = " troisieme " ;  
         textSize (500);         
       } 

@@ -145,15 +145,23 @@ keyMode = " propagationBallRotationBisTest ";
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
  //  splitTimeScaleRotation(signal[2]);
 
-    splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
+   //++ splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
 
   // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// 2
-  // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]);
+  splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]);
     
 
    propagation2wayRotationBis(); 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
+
+        if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
+      
+       trigEventWithAbletonSignal(); 
+     //   addSignalOneAndTwoTer();
+          positionMov = " troisieme " ;  
+        textSize (500);         
+      } 
 
  }
 
@@ -179,7 +187,8 @@ if (doo==true && propagationTrigged==true){
       LFO[oscillatorChange] += (PI/(1*networkSize-1));
       text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
    }       
-
+ 
+ //---------- map ONLY  propaged Lfo  (angular incrementation from phase Amount)
        if (LFO[oscillatorChange] <0){
       dataMappedForMotorisedPosition[oscillatorChange]= int (map (LFO[oscillatorChange], 0, -TWO_PI, numberOfStep, 0)); 
       phaseMapped[oscillatorChange]= map (dataMappedForMotorisedPosition[oscillatorChange], numberOfStep, 0, 0, -TWO_PI); 

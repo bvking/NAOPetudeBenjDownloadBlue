@@ -209,7 +209,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
       if (positionMov == " seconde " ){    // 58 to 68
         
-            keyMode = " propagationBallRotationBis ";
+          //  keyMode = " propagationBallRotationBis ";
+            keyMode = " propagationBallRotationBisTest ";
    
           // keyMode = " addSignalOneAndTwo ";
          
