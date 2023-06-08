@@ -122,6 +122,7 @@ float interpolatedX, interpolatedY;
 import processing.serial.*;
 Serial encoderReceiveUSBport101; // The native serial port of the DUE fibish with 101
 Serial teensyport;
+Serial teensy4port;
 
  int [] formerFrameCountFromSerialEvent = new int [networkSize];
 

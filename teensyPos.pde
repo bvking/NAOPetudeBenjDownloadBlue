@@ -81,13 +81,13 @@ void teensyPos(){
 
   if (formerKeyMetro == '$') {
     for (int i = 0; i < networkSize; i++) {
- //   dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
     }
   }
 
    if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-   //  lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+    lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
    //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
     } 
   }
@@ -114,14 +114,14 @@ void teensyPos(){
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
         if (positionMov != " troisieme " && measure<17) {
-            send24DatasToTeensy6motors(8, 3, -3, -1);
+            send24DatasToTeensy6motors(5, 3, -3, -1);
          }
 
         if (measure>=17 && measure<=41){
-            send24DatasToTeensy6motors(7, 3, -3, -1);
+            send24DatasToTeensy6motors(6, 3, -3, -1);
         }
         if (measure>41 && measure<=100){
-            send24DatasToTeensy6motors(8, 3, -4, -1);
+            send24DatasToTeensy6motors(4, 3, -4, -1);
         }
       }
     } 
@@ -136,24 +136,18 @@ void teensyPos(){
     }
 
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationBallRotationBisTest " ) {
-
-     send24DatasToTeensy6motors(5, -11, -3, -1);
-   
-   }
+       send24DatasToTeensy6motors(5, -11, -3, -1);  
+     }
 
     if (keyMode == " addSignalOneAndTwo ") {
+       send24DatasToTeensy6motors(5, -10, -3, -1); 
+    }
 
-     send24DatasToTeensy6motors(6, -10, -3, -1);
-   
-   }
-
-      if (keyMode == " trigEventWithAbletonSignal ") {
-  
-        if (measure>100 && measure<=124){
-            send24DatasToTeensy6motors(4, 3, -12, -1);
-         }
-      }
-    
+    if (keyMode == " trigEventWithAbletonSignal ") {
+      if (measure>100 && measure<=124){
+       send24DatasToTeensy6motors(5, 3, -12, -1);
+     }
+    }    
   
 }
 
