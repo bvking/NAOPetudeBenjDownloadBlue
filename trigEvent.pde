@@ -37,11 +37,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             //   }
             }
 
-          //  if (measure == 66 && beatPrecised >= 4  && beatPrecisedTrigged==true) { // comeBack from alt y
+         if (measure == 66 && beatPrecised == 4  && beatPrecisedTrigged==true) { // comeBack from alt y
         //      keyMode = " trigEventWithAbletonSignal ";
-          //    positionMov = " troisieme " ;
+              positionMov = " troisieme " ;
            //   keyCode = ALT; key = 'v'; // key 
-          //  }
+          }
       
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
             positionMov = " quatrieme " ;

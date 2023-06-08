@@ -16,10 +16,14 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP 
  //---------- come back to trigEventWithAbletonSignal ------- 
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
-        positionMov = " troisieme " ;
-        trigEventWithAbletonSignal();   
+      
+     //   trigEventWithAbletonSignal(); 
+        addSignalOneAndTwoTer();
+          positionMov = " troisieme " ;  
         textSize (500);         
       } 
+    
+     
 
         modeStartKeyToFollow = " null ";
         keyMode = " propagationBallRotationBis ";
@@ -172,6 +176,14 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
+   
+      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
+      
+     //   trigEventWithAbletonSignal(); 
+        addSignalOneAndTwoTer();
+          positionMov = " troisieme " ;  
+        textSize (500);         
+      } 
 
  }
 void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareSignal) { 
