@@ -1,6 +1,6 @@
 void addSignalOneAndTwoBis(){
 
-  signal[2] = (0*PI + (frameCount / 300.0) * cos (1000 / 500.0)*-1)%1;
+  signal[2] = (0*PI + (frameCount / 900.0) * cos (1000 / 500.0)*-1)%1;
 
      text ("Change mode q, z, or b ", -width-200, -height- 600 );
      text ("signal2 " + signal[2] +  "signal3 " + signal[3], -width-200, -height- 500 );
@@ -26,7 +26,6 @@ void addSignalOneAndTwoBis(){
     break;
     }
  
-
   splitTimeLfoBis(); 
  
 // splitTimeLfoWithAbletonBis(); 
@@ -53,7 +52,7 @@ void addSignalOneAndTwoBis(){
   }
  
  //********POURQUOI DIFFERENT AU DEMARRAGE DE lA FONCTION
-    signal[2] = (0*PI + (frameCount / 300.0) * cos (1000 / 500.0)*-1)%1;
+    signal[2] = (0*PI + (frameCount / 900.0) * cos (1000 / 500.0)*-1)%1;
      
   //  signal[2] = 0.1;
     
@@ -79,18 +78,14 @@ void addSignalOneAndTwoBis(){
 
        newPosXaddSignal[i]= map (dataMappedForMotor[i], 0, numberOfStep, 0, TWO_PI);
    
-    }
-    
+    }    
   }
 
-      
-
-      int j;  
+       int j;  
        j= (oscillatorChange-1);
        if (j<= 0){
          j= networkSize-1;
        }
-
 
       int h;  
        h= (oscillatorChange+1);

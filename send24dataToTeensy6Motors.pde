@@ -1,4 +1,4 @@
-//String [] portsUSB = new string [10];
+String  portsUSBfrom2;
 
 void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData){  // dataMarkedToTeensyArevoir
 
@@ -29,40 +29,44 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
      println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
   
   }
-  // String[] m1 = match(portUSB, " teensy ");
+    if (portsUSBfrom2 != "NC")  {   // // If not null, then a match was found
+      teensyport.write(dataFromMode);
+     // println("port USB connected " + portsUSBfrom2 + " ");  
+   }
 
-   // if (m1 == null) {
-   // teensyport.write(dataFromMode);
-   //println ( " noPortPlugged " + portsUSB[0]); 
-   //}
-      if (frameCount ==1) noLoop();
+    if (frameCount ==1) noLoop();
 
   }
 
   void setPort(){
 
    String[] ports = Serial.list();
-   String[] portsUSB = { "GA", "FL", "NC", "po", "po", "po" ,"po", "po", "po" };
-
+   String[] portsUSB = { "GA", "FL", "NC", "BLI", "BLA", "BLE" ,"BLI", "BLO", "BLU" };
    arrayCopy(ports, portsUSB);
-   println(portsUSB);
-// Prints updated array contents to the console:
-// [0] "OH"
-// [1] "IN"
-// [2] "MI"
-  printArray(Serial.list());
+
+
+   if (portsUSB[2] == "NC")  {   // // If not null, then a match was found
+      println("port USB not connected " + portsUSB[2] + " ");  
+      }
+
+   if (portsUSB[2] != "NC")  {   // // If not null, then a match was found
+       portsUSBfrom2 = portsUSB[2];
+      println("port USB connected " + portsUSBfrom2 + " ");  
+      }
+
   printArray (portsUSB);
+  printArray (ports);
 
     //*************** WITH TEENSY connected
   //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
   //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
-   teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+      teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
  
   //*************** WITHOUT ENODEER connected
  
- //   encoderReceiveUSBport101 =  new Serial(this,ports[2], 1000000); // si port connecté Monterey
+    encoderReceiveUSBport101 =  new Serial(this,ports[2], 1000000); // si port connecté Monterey
 
   // Read bytes into a buffer until you get a linefeed (ASCII 10):
- //  encoderReceiveUSBport101.bufferUntil('\n');
+    encoderReceiveUSBport101.bufferUntil('\n');
 
  }

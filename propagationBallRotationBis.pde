@@ -14,21 +14,19 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 
 void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP 
- //---------- come back to trigEventWithAbletonSignal ------- work only with $
-     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {      
-        keyCode = ALT; keyPressed(); key = 'v'; keyPressed(); // key 
-        keyMode = " trigEventWithAbletonSignal ";
+ //---------- come back to trigEventWithAbletonSignal ------- 
+     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
         positionMov = " troisieme " ;
+        trigEventWithAbletonSignal();   
+        textSize (500);         
+      } 
+
+        modeStartKeyToFollow = " null ";
+        keyMode = " propagationBallRotationBis ";
         formerKeyMetro = '*';
-        trigEventWithAbletonSignal();
-          } 
 
-modeStartKeyToFollow = " null ";
-keyMode = " propagationBallRotationBis ";
-formerKeyMetro = '*';
-
-    textSize (50);
-    displayPropagationControl();
+          textSize (50);
+          displayPropagationControl();
   
      letter = key;   
 

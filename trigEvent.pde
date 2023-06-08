@@ -31,16 +31,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 positionMov = " premierePartie ";
              }
 
-            if (measure >= 58 && beatTrigged ) {
-               if ( measure <=66 && beatPrecised < 4 ) {  // go to propaBis
-                  positionMov = " seconde " ; 
-               }
+            if (measure == 58 && beatPrecised == 1 && beatPrecisedTrigged==true ) {
+            //   if ( measure < 66   )  {  //&& beatPrecised <= 4 )// go to propaBis
+               positionMov = " seconde " ; 
+            //   }
             }
 
-            if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { // comeBack from alt y
-              positionMov = " troisieme " ;
-              keyCode = ALT; key = 'v'; // key 
-            }
+          //  if (measure == 66 && beatPrecised >= 4  && beatPrecisedTrigged==true) { // comeBack from alt y
+        //      keyMode = " trigEventWithAbletonSignal ";
+          //    positionMov = " troisieme " ;
+           //   keyCode = ALT; key = 'v'; // key 
+          //  }
       
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
             positionMov = " quatrieme " ;
@@ -66,22 +67,22 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                }
           
        
-                if (measure==42 && beatPrecised == 1 && beatPrecisedTrigged==true){
-                    key = 't';
-                     keyCode = CONTROL;
-                     formerKeyMetro = '$';
-                    delayTimeToTrig4=140;     
-                 }
+              if (measure==42 && beatPrecised == 1 && beatPrecisedTrigged==true){
+                  key = 't';
+                  keyCode = CONTROL;
+                  formerKeyMetro = '$';
+                 delayTimeToTrig4=140;     
+               }
 
                  // disply specifics values: instrument, phase, frequency of  effect and ball
  
-                if (measure>=52 && beatPrecised == 2 ||beatPrecised == 6 && beatPrecisedTrigged==true  ){
-                     text ( " SNARE ", -800, -800)   ;  
-                      if ( positionMov == " premierePartie ") {
+              if (measure>=52 && beatPrecised == 2 ||beatPrecised == 6 && beatPrecisedTrigged==true  ){
+                  text ( " SNARE ", -800, -800)   ;  
+                  if ( positionMov == " premierePartie ") {
                           // key = 'F';
                          // key= 'k';  // motor only
-                    }
-                }
+                 }
+               }
 
 
         //---------------------- 
@@ -207,10 +208,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
    } // end premiere partie
 
       if (positionMov == " seconde " ){    // 58 to 68
-        if (measure == 58 && beatTrigged) { 
+        
             keyMode = " propagationBallRotationBis ";
+   
           // keyMode = " addSignalOneAndTwo ";
-         }
+         
   
                       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
      
@@ -243,7 +245,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // useless?
           formerKeyMetro = '*';
-          keyMode = " trigEventWithAbletonSignal ";
+         
             for (int i = 0; i < networkSize-0; i++) {  
             net.naturalFrequency[i]= rootedFloat-0.8; // pow(2, -10);
       } 
@@ -273,7 +275,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         }
 
         if ( measure%1==0 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
-            textSize(200);
+            textSize(400);
            
          } 
       } // end measure<82

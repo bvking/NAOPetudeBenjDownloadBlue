@@ -39,14 +39,16 @@ void teensyPos(){
     }
   }
 
-  if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // record is from  '*' last position is from k
+  if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
      for (int i = 0; i < networkSize; i++) {
          dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
          println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
     }
   }
 
-  if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " && formerKeyMetro =='*') { 
+
+
+  if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='*') { 
 
    if ( keyMode == " propagationBallRotationBisTest " ) { 
         rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
@@ -135,13 +137,13 @@ void teensyPos(){
 
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationBallRotationBisTest " ) {
 
-     send24DatasToTeensy6motors(6, -11, -3, -1);
+     send24DatasToTeensy6motors(5, -11, -3, -1);
    
    }
 
     if (keyMode == " addSignalOneAndTwo ") {
 
-     send24DatasToTeensy6motors(8, -10, -3, -1);
+     send24DatasToTeensy6motors(6, -10, -3, -1);
    
    }
 
