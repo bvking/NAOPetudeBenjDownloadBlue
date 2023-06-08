@@ -45,45 +45,45 @@ void draw() {
   formerBeatOnMeasure=beatOnMeasure;
 
   if (modeStartKeyToFollow != " samplingModeInternal " )
-   { 
-  setMeasureAndBeatPrecised();
-   }  
+     { 
+     setMeasureAndBeatPrecised();
+      }  
 
         trigBeatWithMeasure();
- //     printDataOnScreen();
- //     printMidiNoteVelocity();
+        //     printDataOnScreen();
+        //     printMidiNoteVelocity();
     
 
   if (keyMode != " phasePattern ")
-  {   
-   if ( key =='B'||  key =='c' ||  key =='>' ||  key =='<' || key =='d' || key =='e'  ) // 
-  {
-  //  formerKeyMetro = key;   // press l to change formerKeyMetro Mode
-   }
-  }
+     {   
+        if ( key =='B'||  key =='c' ||  key =='>' ||  key =='<' || key =='d' || key =='e'  ) // 
+             {
+               //  formerKeyMetro = key;   // press l to change formerKeyMetro Mode
+         }
+    }
   
   if (keyMode == " null ")
-  { 
-    checkKeyModeToFollow();  
-  }
+     { 
+       checkKeyModeToFollow();  
+    }
    
    
     if (beatTrigged==true && formerKeyMetro == 's'){ // formerBeatOnMeasure>=4 && beatOnMeasure<=1 && 
         measureRecordStart=measure;
-    //    beginSample=millis();
+       //    beginSample=millis();
         print ("*****************************************************************************++++++++++++++++++++++ START SAMPLING  "); 
   
-     //  formerKeyMetro = 'S';  // back to normal Mode with formerKeyMetro = '$';
-   }
+      //  formerKeyMetro = 'S';  // back to normal Mode with formerKeyMetro = '$';
+     }
      
  
     if (formerKeyMetro == 'B' ){
     lfoPattern();
     splitTimeLfo();
-  //   splitWithTime();
+      //   splitWithTime();
     addSignal(); 
 
-  } 
+    } 
 
    if (modeStartKeyToFollow == "samplingMode") {
     SamplingModeMayBeUsefull();

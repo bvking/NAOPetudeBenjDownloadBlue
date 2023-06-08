@@ -289,31 +289,28 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     memoryi=(memoryi-1);
     }
       
-  if ( memoryi<=-1) {
+    if ( memoryi<=-1) {
       memoryi=networkSize-1;
-    oldMemoryi=0;
-    
+      oldMemoryi=0;
+    }
 
-
-   }
-
-        for (int i = 1; i < (networkSize-0); i++) {  
+    for (int i = 1; i < (networkSize-0); i++) {  
 
       net.phase[i-1]= net.oldPhase[i];
       netPhaseBase[i-1]= net.oldPhase[i];
       net.naturalFrequency[i-1]= net.naturalFrequency[i];
-  //    net.phase[i]= net.phase[i+1];// net.oldPhase[i] keep phase at    
-  //    netPhaseBase[i]= netPhaseBase[i+1];// net.oldPhase[i] keep phase at    
-  //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
+       //    net.phase[i]= net.phase[i+1];// net.oldPhase[i] keep phase at    
+       //    netPhaseBase[i]= netPhaseBase[i+1];// net.oldPhase[i] keep phase at    
+       //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
     }
 
-    net.phase[networkSize-1]=  net.oldPhase[0];
-    netPhaseBase[networkSize-1]=  net.oldPhase[0];
-    net.naturalFrequency[networkSize-1]= OldFrequency[0];
+     net.phase[networkSize-1]=  net.oldPhase[0];
+     netPhaseBase[networkSize-1]=  net.oldPhase[0];
+     net.naturalFrequency[networkSize-1]= OldFrequency[0];
    
   }
 
-  text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
+    text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
 
 
 

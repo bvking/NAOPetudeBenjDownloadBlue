@@ -25,23 +25,23 @@ void keyReleased() {
   
      // ActualVirtualPosition[i]
       
-       ActualVirtualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
-      dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
+        ActualVirtualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+        dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
    //   lastPositionFromCircularMode[i]=
     //  CircularVirtualPosition[i]=0;
-      text ( ActualVirtualPosition[i], 100, 100*i);
+        text ( ActualVirtualPosition[i], 100, 100*i);
     //  dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
       //   dataToLive[i]=(float) map(dataMappedForMotorisedPosition[i], 0, 6400, 0f, 1f);
    //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
-    }
+      }
 
      for (int i = 0; i < networkSize; i++) {
- CircularVirtualPosition[i]=0;
- ActualVirtualPosition[i]=ActualVirtualPosition[0];
-// lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
+       CircularVirtualPosition[i]=0;
+       ActualVirtualPosition[i]=ActualVirtualPosition[0];
+      // lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
        } 
     
-  }
+      }
 
    if (key == '='  && formerKeyMetro == '$') {
     
@@ -61,9 +61,9 @@ void keyReleased() {
     }
 
      for (int i = 0; i < networkSize; i++) {
- CircularVirtualPosition[i]=0;
-// ActualVirtualPosition[i]=ActualVirtualPosition[0];
- lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
+       CircularVirtualPosition[i]=0;
+        // ActualVirtualPosition[i]=ActualVirtualPosition[0];
+        lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
        } 
     
   }
@@ -358,8 +358,8 @@ void keyReleased() {
     println ("Frequencies adatped to PENDULAR way trigged with $");
         text (" NO trigEventWithAbletonSignal ", 0, 200 );
 
-   // phasePattern();
-     phasePatternBase();
+      phasePattern(); // enable to change configuration in propagatin mode
+    // phasePatternBase();
   } 
    } 
 

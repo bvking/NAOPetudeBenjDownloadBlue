@@ -42,6 +42,7 @@ void teensyPos(){
   if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro =='$') {  // record is from  '*' last position is from k
      for (int i = 0; i < networkSize; i++) {
          dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
+         println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
     }
   }
 
@@ -78,7 +79,7 @@ void teensyPos(){
 
   if (formerKeyMetro == '$') {
     for (int i = 0; i < networkSize; i++) {
-    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+ //   dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
     }
   }
 
@@ -93,19 +94,19 @@ void teensyPos(){
   if ( keyMode == " propagationBallRotationBis " ) {
     for (int i = 0; i < networkSize-0; i++) { // 
     recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
-  //  actualisePositionDataFromCircular = false|| dol==true; //
-  //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
+   //  actualisePositionDataFromCircular = false|| dol==true; //
+   //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
     }  
    }
 
 
-  if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-    for (int i = 0; i < networkSize-0; i++) {
-  //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
-    } 
-  }
-//---------------------------------------------------------------
-//************************ SetAcceleration with measure and position from the song
+   if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
+      for (int i = 0; i < networkSize-0; i++) {
+       //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
+       } 
+     }
+      //---------------------------------------------------------------
+        //************************ SetAcceleration with measure and position from the song
 
   if (keyMode == " trigEventWithAbletonSignal ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
@@ -143,7 +144,16 @@ void teensyPos(){
      send24DatasToTeensy6motors(8, -10, -3, -1);
    
    }
-  }
+
+      if (keyMode == " trigEventWithAbletonSignal ") {
+  
+        if (measure>100 && measure<=124){
+            send24DatasToTeensy6motors(4, 3, -12, -1);
+         }
+      }
+    
+  
+}
 
 
 
@@ -198,17 +208,17 @@ void mapNewPosX() {
         if (dol && !doo ) { // && TrigmodPos[oscillatorChange]!=0
 
             if ( propagationTrigged)  {    // set j as 2  
-        int j; 
-        j= (oscillatorChange-1);
-         if (j<= -1){
-         j= networkSize-1;
-         TrigmodPos[j]=2;
+             int j; 
+             j= (oscillatorChange-1);
+              if (j<= -1){
+            j= networkSize-1;
+            TrigmodPos[j]=2;
         }
     
-            text ( " cancel counting bug by minusing ", 400, 400);
-            revLfo[oscillatorChange]--;  // cancel counter
-        // revLfo[j]--;  // cancel counter
-         TrigmodPos[j]=3;   
+              text ( " cancel counting bug by minusing ", 400, 400);
+             revLfo[oscillatorChange]--;  // cancel counter
+            // revLfo[j]--;  // cancel counter
+              TrigmodPos[j]=3;   
       
        }
      }
