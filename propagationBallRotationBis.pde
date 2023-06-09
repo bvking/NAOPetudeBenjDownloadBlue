@@ -17,7 +17,7 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
  //---------- come back to trigEventWithAbletonSignal ------- 
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
       
-       trigEventWithAbletonSignal(); 
+       trigEventWithAbletonSignalGood(); 
       //  addSignalOneAndTwoTer();
       //    positionMov = " troisieme " ;  
           textSize (500);         
