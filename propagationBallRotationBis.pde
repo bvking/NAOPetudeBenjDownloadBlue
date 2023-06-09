@@ -17,10 +17,10 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
  //---------- come back to trigEventWithAbletonSignal ------- 
      if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
       
-     //   trigEventWithAbletonSignal(); 
-        addSignalOneAndTwoTer();
-          positionMov = " troisieme " ;  
-        textSize (500);         
+       trigEventWithAbletonSignal(); 
+      //  addSignalOneAndTwoTer();
+      //    positionMov = " troisieme " ;  
+          textSize (500);         
       } 
     
      
@@ -178,11 +178,12 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
    mapNewPosX(); // counter actived
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
-      
-     //   trigEventWithAbletonSignal(); 
-        addSignalOneAndTwoTer();
-          positionMov = " troisieme " ;  
-        textSize (500);         
+     //   keyMode = " trigEventWithAbletonSignal ";
+     //   switchFonctionDependingKeyMode();
+      //  trigEventWithAbletonSignal(); 
+      //  addSignalOneAndTwoTer();
+      //    positionMov = " troisieme " ;  
+     //   textSize (500);         
       } 
 
  }

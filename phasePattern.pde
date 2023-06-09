@@ -758,20 +758,20 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   }
 
    else if (key == 's') {  // g0 reciproque s1
-    println(" s$s: Reduce the gap between phases by f0 "); //S$
+  //  println(" s$s: Reduce the gap between phases by f0 "); //S$
     for (int i = 0; i < networkSize-0; i++) {
 
       //  net.phase[i] -=(9-i)*0.05;
       //   net.phase[i] -=(networkSize-1-i)*0.05; // oscillator 11 do not move
 
-      // g0 reciproque s1 avec networkSize-1
+      // g0 reciproque s0 avec networkSize-1
       net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*0.05; // if oscillatorBlocked=0; net.phase[5] doesn't move
     //  net.phase[i]=  net.phase[i]%TWO_PI;
 
       printSummary(i);
     }
   } else if (key == 'S') { 
-    println(" S$: Reduce the gap between phases by f0  ");    
+  //  println(" S$: Reduce the gap between phases by f0  ");    
     for (int i = 0; i < networkSize; i++) {      
       //   net.phase[i] -=(networkSize-1-i)*0.1;
       //   net.phase[i]=  net.phase[i]%TWO_PI;
@@ -782,19 +782,18 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   }
 
    else if (key == 'g') { 
-    println(" Decrease the gap between phases of 5% from the oscillator " + oscillatorBlocked + " called with the same number as memoryi " + memoryi   );  
+   // println(" Decrease the gap between phases of 5% from the oscillator " + oscillatorBlocked + " called with the same number as memoryi " + memoryi   );  
     for (int i = 0; i < networkSize; i++) {
       //       net.phase[i] -=i*0.01;
       //         net.phase[i] -=i*0.05;
 
       net.phase[i] -=      (oscillatorBlocked+i)*0.05;       //if oscillatorBlocked=0; net.phase[0] doesn't move
-      net.phase[i]=  net.phase[i]%TWO_PI;
-      key='#';
-      printSummary(i);
+    //  net.phase[i]=  net.phase[i]%TWO_PI;
+      
     }
   }
    else if (key == 'G') { 
-    println(" G: Decrease the gap between phases by f9 ");  
+   // println(" G: Decrease the gap between phases by f9 ");  
     for (int i = 0; i < networkSize; i++) {
       //       net.phase[i] -=i*0.01;
     //  net.phase[i] -=i*0.1;
@@ -993,7 +992,7 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
       for (int i = 0; i < networkSize; i++) {
        realign[i] = net.phase[i]%TWO_PI+PI/2;
        net.phase[i]=  net.phase[i] - realign[i];
-       
+
       //  net.phase[i]= 0+PI/2  ; // position 0+PI/2  
         printSummary(i);
       }

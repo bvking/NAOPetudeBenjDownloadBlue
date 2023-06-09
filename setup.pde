@@ -9,6 +9,8 @@ import java.util.Arrays;
 int networkSize = 6;
 int nbBalls=networkSize;
 
+String  portsUSBfrom2;
+
 String music_from_ableton_live;
 String [] eventToTrig = {"0","0","0","0"};
 String [] keyEvent = {" bla "," bli ","0","0"};
@@ -932,5 +934,6 @@ memoryi = networkSize-1;
 oscillatorFollowing[0]=3.14;
 
 translate(0, -800,1000);
+
  
 }

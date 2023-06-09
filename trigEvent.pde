@@ -33,15 +33,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
             if (measure == 58 && beatPrecised == 1 && beatPrecisedTrigged==true ) {
             //   if ( measure < 66   )  {  //&& beatPrecised <= 4 )// go to propaBis
-               positionMov = " seconde " ; 
+                positionMov =  " seconde " ; 
             //   }
             }
 
-         if (measure == 66 && beatPrecised == 4  && beatPrecisedTrigged==true) { // comeBack from alt y
+            if (measure == 66 && beatPrecised == 4  ) { // comeBack from alt y
         //      keyMode = " trigEventWithAbletonSignal ";
-              positionMov = " troisieme " ;
+             positionMov = " troisieme " ;
            //   keyCode = ALT; key = 'v'; // key 
-          }
+            }
       
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
             positionMov = " quatrieme " ;
@@ -66,17 +66,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   //   key= 'F';
                }
           
-       
-              if (measure==42 && beatPrecised == 1 && beatPrecisedTrigged==true){
-                  key = 't';
-                  keyCode = CONTROL;
-                  formerKeyMetro = '$';
-                 delayTimeToTrig4=140;     
-               }
+                 //------------end intro
+
+                  
+               
 
                  // disply specifics values: instrument, phase, frequency of  effect and ball
  
-              if (measure>=52 && beatPrecised == 2 ||beatPrecised == 6 && beatPrecisedTrigged==true  ){
+              if (measure>=52 && beatPrecised == 2 || beatPrecised == 6 && beatPrecisedTrigged==true  ){
                   text ( " SNARE ", -800, -800)   ;  
                   if ( positionMov == " premierePartie ") {
                           // key = 'F';
@@ -84,29 +81,34 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  }
                }
 
+               
+
 
         //---------------------- 
        
               
-    if (  positionMov == " premierePartie "){ 
-          if (measure<58){
+          if (  positionMov == " premierePartie "){ 
+             if (measure<58){
+
+
+
+
             if (measure<41  || measure>=42 ){
               if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
-                  oscillatorBlocked=5;
-               // timeToTrig=millis();
+               
                   propagationLevel=1;
                   oscillatorChangingPropagation=true;
 
                if (measure<17){ 
                    key = 'i'; keyReleased();
                    //  keyCode = CONTROL;keyReleased();
-            }
+                }
               }
 
             if (measure > 1 && measure<17){ 
              if (beatTrigged==true){ 
-             //    key = 'K'; keyReleased();  K is rotate-PI/4
-             //    key = 'K'; keyReleased();
+                  //    key = 'K'; keyReleased();  K is rotate-PI/4
+                 //    key = 'K'; keyReleased();
               }
              }
        
@@ -138,9 +140,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    for (int i = 0; i < networkSize*2; i++) { 
                     key='y';keyReleased();
                    } 
+                }
              }
 
-            if (measure>16){ 
+            if (measure>16 && measure<42){ 
                if (beatPrecised%4==0 && beatPrecisedTrigged==true){ 
                    oscillatorBlocked=0;
                   propagationLevel=1;
@@ -155,7 +158,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
             if (measure>16){ 
              if ((beatPrecised+2)%4==0 && beatPrecisedTrigged==true){ 
-                  oscillatorBlocked=0;
+              //    oscillatorBlocked=0;
                   propagationLevel=1;
                   oscillatorChangingPropagation=true;
                //   key = 'F'; keyReleased();
@@ -173,54 +176,78 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                }
              }
 
-            if (measure>=34){ 
-              if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){
+            if (measure>=34 && measure<42){ 
+              if (beatPrecised%1==0 && beatPrecisedTrigged==true  ){
                //  key = 'ç'; keyReleased();
                key = 'i'; keyReleased();
+                text ( " key = 'i'; keyReleased()0 " , 200, 200);
                 //  keyCode =ALT; key = 'r';
               }
             }
 
-           if (measure==42){ 
-            if (beatPrecised==4 && beatPrecisedTrigged==true  ){
-              key = 'ç'; keyReleased();
-              //   key = 'F'; keyReleased();
-              keyCode = CONTROL; keyReleased();
-              key = '0'; keyReleased();
-             //  keyCode =ALT; key = 'r';
-            }
-          }
-        }
-       }
-     }  // end measure 58
-
-
-            // TRANSITION
+               // TRANSITION
             if (measure>40  && measure<=42 ){
                if (beatPrecised==0 && measure==40  ){
-                   key= '0'; keyReleased();
+                   key= '0'; keyReleased(); // no frequency
                if (beatPrecised!=0 && beatPrecisedTrigged==true  ){
-                  key = 'r'; keyReleased();
+                   key= 'r'; keyReleased();
                 }
                }
-              }
-       // end transition
-   } // end premiere partie
+             }
+           // end transition
+                
+                
+
+           if (measure==42){ 
+             if (beatPrecised==4 && beatPrecisedTrigged==true  ){
+            //  key = 'a'; keyReleased();
+              key = 'ç'; keyReleased();
+        
+           //   keyCode = CONTROL; keyReleased();
+            //  key = '0'; keyReleased();      
+             }
+           }
+              textSize(100);
+
+           //-------measure 42
+
+
+               if  (measure%2==0 && measure>=42  &&  beatPrecised != 0 && beatPrecisedTrigged==true) {
+                  oscillatorBlocked=0;   text ( " oscillatoBlocked=0" , -800, -700);
+                   key = 's'; keyReleased(); 
+                   key = 's'; keyReleased();             
+                 }
+
+               if  ((measure+1)%2==0 && measure>=42 &&  beatPrecised != 0 && beatPrecisedTrigged==true){
+                  oscillatorBlocked=0;   text ( " oscillatoBlocked=5" ,  -800, -700);
+                   key = 'g'; keyReleased();      // g0 s0
+                   key = 'g'; keyReleased();   
+                             
+          }
+   
+        }  // 
+
+
+         
+       }
+     } // end premiere partie
 
       if (positionMov == " seconde " ){    // 58 to 68
         
             keyMode = " propagationBallRotationBis ";
+           //  switchFonctionDependingKeyMode();
+          // propagationBallRotationBis();
    
           // keyMode = " addSignalOneAndTwo ";
          
   
                       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
      
-                     oscillatorBlocked=0;
-                     timeToTrig=millis();
-                      propagationLevel=1;
-                      oscillatorChangingPropagation=true;
-                   //  key = 'D'; keyReleased();
+                        oscillatorBlocked=0;
+                        timeToTrig=millis();
+                        propagationLevel=1;
+                        oscillatorChangingPropagation=true;
+                        //  key = 'D'; keyReleased();
                        }   
 
 
@@ -297,19 +324,19 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
         if ( positionMov == " quatrieme "  ){ // 82.4
 
-         if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // 
-          key = 'ç'; keyReleased();
-          memoryi+=1;
-          key='0'; keyReleased();
-          key = 'E'; keyReleased();
-         } 
+             if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // 
+               key = 'ç'; keyReleased();
+               memoryi+=1;
+               key='0'; keyReleased();
+               key = 'E'; keyReleased();
+             } 
 
-         if (measure >= 84 && beatPrecisedTrigged==true  && (beatPrecised== 2 || beatPrecised== 6)) { // follow snare, trigged with snare        
+          if (measure >= 84 && beatPrecisedTrigged==true  && (beatPrecised== 2 || beatPrecised== 6)) { // follow snare, trigged with snare        
              key = 'r';  keyReleased(); 
              key = 'r';  keyReleased(); 
-         }  
+           }  
 
-         if (measure >= 84 && measure < 96 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          if (measure >= 84 && measure < 96 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
               key = 'h'; keyReleased(); 
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();
@@ -319,7 +346,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         
           } 
 
-         if (measure == 96 && beatPrecised == 2 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+          if (measure == 96 && beatPrecised == 2 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
             // key = 'ç';keyReleased();      
            } 
 
@@ -330,24 +357,25 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               key = 'H';keyReleased();
               key = 'H';keyReleased();
                  
-         } 
-        } // end quatrieme
-   } // end of  pleasureKraft Arrangement
+          }  
+     } // // end quatrieme
+ }  //  end of  pleasureKraft Arrangement
+   
    
 
-    textSize (50);
+        textSize (50);
 
-     for (int i = 0; i < networkSize-0; i++) {  
-      text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i], -1500 , 500 +(i*50));
-      } 
+          for (int i = 0; i < networkSize-0; i++) {  
+           text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i], -1500 , 500 +(i*50));
+             } 
  
   
-  //  text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency 0 " + net.naturalFrequency[0], 300, 1000);
-    text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 1100);
-    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 1200);
-    text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1300);
+            //  text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency 0 " + net.naturalFrequency[0], 300, 1000);
+               text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 1100);
+               text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 1200);
+               text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1300);
 
-     oldSplitTimeLfo = splitTimeLfo; 
+              oldSplitTimeLfo = splitTimeLfo; 
  }    
   
 
