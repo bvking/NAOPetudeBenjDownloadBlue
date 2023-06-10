@@ -1,8 +1,8 @@
 int delayTimeToTrig4; //ms
 float signalToSplit4;
-String positionMov;
+String positionMov;  // Original?
 
-void trigEventWithAbletonSignalOriginal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
+void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
 
      splitTimeLfo= int  (timeLfo%1000); 
@@ -39,7 +39,7 @@ void trigEventWithAbletonSignalOriginal() {  // change de sens de propagagtion. 
 
             if (measure == 66 && beatPrecised == 4  ) { // comeBack from alt y
         //      keyMode = " trigEventWithAbletonSignal ";
-             positionMov = " troisieme " ;
+          //   positionMov = " troisieme " ;
            //   keyCode = ALT; key = 'v'; // key 
             }
       
@@ -229,7 +229,7 @@ void trigEventWithAbletonSignalOriginal() {  // change de sens de propagagtion. 
 
 
          
-       }
+       } // end mesure 58
      } // end premiere partie
 
       if (positionMov == " seconde " ){    // 58 to 68
