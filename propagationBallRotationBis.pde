@@ -282,13 +282,13 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
       
 if (doo==false && propagationTrigged==true){ // propaga fixe
       LFO[oscillatorChange] = LFO[oldOscillatorChange];//
-      LFO[oscillatorChange] = LFO[oscillatorChange] + (PI/(1*networkSize-1));
+      LFO[oscillatorChange] = LFO[oscillatorChange] - (PI/(1*networkSize-1));
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
  }
 
 if (doo==true && propagationTrigged==true){  // propaga selon phaseAmount
       LFO[oscillatorChange] = LFO[oldOscillatorChange];//
-      LFO[oscillatorChange] -=  phaseAmount;
+      LFO[oscillatorChange] +=  phaseAmount;
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
  }
 

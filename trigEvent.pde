@@ -265,8 +265,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
      if ( positionMov == " troisieme "  ){ // à partir de 66.4   from   keyMode = " propaBis "; 
    
-           float valToRoot = 2.0;
-           float rootedFloat = squaredRootOccurrence(valToRoot,4);
+           float valToRoot = networkSize*1.0;
+           float rootedFloat = squaredRootOccurrence(valToRoot, networkSize);
            text (  " rootFloat " + rootedFloat, -200, 200); 
 
 
@@ -276,7 +276,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           key = 'E'; keyReleased();
          
             for (int i = 0; i < networkSize-0; i++) {  
-            net.naturalFrequency[i]= rootedFloat-0.8; // pow(2, -10);
+            net.naturalFrequency[i]= rootedFloat; // pow(2, -10);
       } 
             memoryi=5;  // set switch function trigged with key 'i'
             net.naturalFrequency[5]=0;           
@@ -291,14 +291,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             keyCode = CONTROL;keyReleased();
         } 
 
-        if (measure == 66  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1            
+        if (measure == 66  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1      
+         textSize (210);      
         }
 
-        if (measure%2==0 && measure > 66 && measure < 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
+        if (measure%2==0 && measure > 66 && measure =< 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
 
               for (int i = 0; i < networkSize; i++) {              
                    key = 'y'; keyReleased();
-                   key = 'y'; keyReleased();
+               //    key = 'y'; keyReleased();
                 }
                    key = 'i'; keyReleased(); // switch frequencies and phase upside :  position and frequency from oscillator 0 go to 1, 1 to 2, and on 
         }
@@ -328,7 +329,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                key = 'ç'; keyReleased();
                memoryi+=1;
                key='0'; keyReleased();
-               key = 'E'; keyReleased();
+               key = 'p'; keyReleased();
+               key = 'p'; keyReleased();
+               key = 'p'; keyReleased();
+           //    key = 'E'; keyReleased();
              } 
 
           if (measure >= 84 && beatPrecisedTrigged==true  && (beatPrecised== 2 || beatPrecised== 6)) { // follow snare, trigged with snare        
@@ -337,25 +341,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            }  
 
           if (measure >= 84 && measure < 96 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          /*
               key = 'h'; keyReleased(); 
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();
-        
+        */
           } 
 
-          if (measure == 96 && beatPrecised == 2 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
-            // key = 'ç';keyReleased();      
+          if (measure >= 90 && measure <= 100 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+              key = 'h'; keyReleased(); 
+              key = 'h'; keyReleased();
+              key = 'h'; keyReleased();
+              key = 'h'; keyReleased();
+              key = 'h'; keyReleased();
+              key = 'h'; keyReleased();    
            } 
 
           if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
-              key = 'ç';keyReleased();             
-              key = 'H';keyReleased();
-              key = 'H';keyReleased();
-              key = 'H';keyReleased();
-              key = 'H';keyReleased();
+             
                  
           }  
      } // // end quatrieme
