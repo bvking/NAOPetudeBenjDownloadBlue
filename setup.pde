@@ -6,7 +6,7 @@ import sync.*;
 PNetwork net;
 import java.util.Arrays;
 
-int networkSize = 6;
+int networkSize = 8;
 int nbBalls=networkSize;
 
 String  portsUSBfrom2;

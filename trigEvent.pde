@@ -295,7 +295,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          textSize (210);      
         }
 
-        if (measure%2==0 && measure > 66 && measure =< 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
+        if (measure%2==0 && measure > 66 && measure <= 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
 
               for (int i = 0; i < networkSize; i++) {              
                    key = 'y'; keyReleased();

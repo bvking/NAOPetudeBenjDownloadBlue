@@ -30,8 +30,8 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
   
   }
     if (portsUSBfrom2 != "NC")  {   // // If not null, then a match was found
-    //  teensyport.write(dataFromMode);
-   //   teensy4port.write(dataFromMode);
+      teensyport.write(dataFromMode);
+      teensy4port.write(dataFromMode);
      // println("port USB connected " + portsUSBfrom2 + " ");  
    }
 
@@ -63,13 +63,13 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
   //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
       teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
    if (portsUSB[2] != "NC")  { 
-   //   teensy4port = new Serial(this, ports[2],115200); // si port connecté Monterey
+      teensy4port = new Serial(this, ports[2],115200); // si port connecté Monterey
      }
   //*************** WITHOUT ENODEER connected
    if (portsUSB[2] != "NC")  { 
-   // encoderReceiveUSBport101 =  new Serial(this,ports[3], 1000000); // si port connecté Monterey
+    encoderReceiveUSBport101 =  new Serial(this,ports[3], 1000000); // si port connecté Monterey
 
   // Read bytes into a buffer until you get a linefeed (ASCII 10):
-  //  encoderReceiveUSBport101.bufferUntil('\n');
+    encoderReceiveUSBport101.bufferUntil('\n');
     }
  }
