@@ -114,14 +114,17 @@ void teensyPos(){
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
         if (positionMov != " troisieme " && measure<17) {
-            send24DatasToTeensy6motors(5, 3, -3, -1);
+            send24DatasToTeensy6motors(4, 3, -3, -1);
          }
 
         if (measure>=17 && measure<=41){
-            send24DatasToTeensy6motors(6, 3, -3, -1);
+            send24DatasToTeensy6motors(4, 3, -3, -1);
         }
-        if (measure>41 && measure<=100){
+        if (measure>41 && measure<=67){
             send24DatasToTeensy6motors(4, 3, -4, -1);
+        }
+        if (measure>67 && measure<=120){
+            send24DatasToTeensy6motors(3, 3, -4, -1);
         }
       }
     } 
@@ -145,7 +148,7 @@ void teensyPos(){
 
     if (keyMode == " trigEventWithAbletonSignal ") {
       if (measure>100 && measure<=124){
-       send24DatasToTeensy6motors(5, 3, -12, -1);
+       send24DatasToTeensy6motors(4, 3, -12, -1);
      }
     }    
   

@@ -105,10 +105,19 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 }
               }
 
-            if (measure > 1 && measure<17){ 
-             if (beatTrigged==true){ 
-                  //    key = 'K'; keyReleased();  K is rotate-PI/4
-                 //    key = 'K'; keyReleased();
+            if (measure == 1 ){ 
+             if (beatPrecised==2 && beatPrecisedTrigged==true  ){
+            //  key='k'; keyReleased();
+              key='f'; keyReleased();
+              key='f'; keyReleased();
+              key='f'; keyReleased();
+              key='f'; keyReleased();
+          
+
+                    for (int i = 0; i < networkSize-0; i++) {  
+                           net.naturalFrequency[i]= 0.25; // pow(2, -10);
+                          
+                     }
               }
              }
        
@@ -137,8 +146,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                            net.naturalFrequency[i]= rootedFloat-0.1; // pow(2, -10);
                      }
 
-                   for (int i = 0; i < networkSize*2; i++) { 
+                   for (int i = 0; i < networkSize; i++) { 
                     key='y';keyReleased();
+                  
                    } 
                 }
              }
@@ -200,11 +210,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
            if (measure==42){ 
              if (beatPrecised==4 && beatPrecisedTrigged==true  ){
-            //  key = 'a'; keyReleased();
               key = 'ç'; keyReleased();
-        
-           //   keyCode = CONTROL; keyReleased();
-            //  key = '0'; keyReleased();      
              }
            }
               textSize(100);
@@ -221,14 +227,18 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                if  ((measure+1)%2==0 && measure>=42 &&  beatPrecised != 0 && beatPrecisedTrigged==true){
                   oscillatorBlocked=0;   text ( " oscillatoBlocked=5" ,  -800, -700);
                    key = 'g'; keyReleased();      // g0 s0
-                   key = 'g'; keyReleased();   
-                             
-          }
+                   key = 'g'; keyReleased();                         
+                }
+
+               if (measure==50){ 
+             if (beatPrecised==4 && beatPrecisedTrigged==true  ){
+              key = 'E'; keyReleased();
+             }
+           }
+
+
    
-        }  // 
-
-
-         
+        }  // end >= 42
        } // end mesure 58
      } // end premiere partie
 
@@ -279,7 +289,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             net.naturalFrequency[i]= rootedFloat; // pow(2, -10);
       } 
             memoryi=5;  // set switch function trigged with key 'i'
-            net.naturalFrequency[5]=0;           
+         //   net.naturalFrequency[5]=0;           
       }
 
       if (measure >=66 && measure < 82) {
@@ -335,20 +345,19 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            //    key = 'E'; keyReleased();
              } 
 
-          if (measure >= 84 && beatPrecisedTrigged==true  && (beatPrecised== 2 || beatPrecised== 6)) { // follow snare, trigged with snare        
+          if (measure >= 84 && measure <=100 && beatPrecisedTrigged==true  && (beatPrecised== 2 || beatPrecised== 6)) { // follow snare, trigged with snare        
              key = 'r';  keyReleased(); 
              key = 'r';  keyReleased(); 
            }  
 
-          if (measure >= 84 && measure < 96 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
-          /*
-              key = 'h'; keyReleased(); 
-              key = 'h'; keyReleased();
-              key = 'h'; keyReleased();
-              key = 'h'; keyReleased();
-              key = 'h'; keyReleased();
-              key = 'h'; keyReleased();
-        */
+          if (measure == 84 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+              key = 'ç'; keyReleased();
+      
+          } 
+
+          if (measure == 90 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+              key = 't'; keyReleased();
+      
           } 
 
           if (measure >= 90 && measure <= 100 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
@@ -358,12 +367,20 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();
               key = 'h'; keyReleased();    
+              key = 'h'; keyReleased();
+              key = 'h'; keyReleased();  
            } 
 
-          if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
-             
+          if (measure >= 100 && beatPrecised !=0 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+                key = 'r';  keyReleased(); 
                  
-          }  
+          } 
+
+           if (measure >= 100 && beatPrecised ==1 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+                key = 'f';  keyReleased(); 
+                 
+          } 
+
      } // // end quatrieme
  }  //  end of  pleasureKraft Arrangement
    

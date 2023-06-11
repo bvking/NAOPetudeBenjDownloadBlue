@@ -288,7 +288,7 @@ if (doo==false && propagationTrigged==true){ // propaga fixe
 
 if (doo==true && propagationTrigged==true){  // propaga selon phaseAmount
       LFO[oscillatorChange] = LFO[oldOscillatorChange];//
-      LFO[oscillatorChange] +=  phaseAmount;
+      LFO[oscillatorChange] +=  phaseAmount+ PI;
      text ( "  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
  }
 
