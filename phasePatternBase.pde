@@ -300,14 +300,17 @@ void phasePatternBase() { // trigged with $ or *
         text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
     }
 
-    for (int i = 0; i < (networkSize-0); i++) {   
-      lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
+    for (int i = 1; i < (networkSize-0); i++) {   
+    //  lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
        netOldPhaseBase[i]=lastPositionFromCircularMode[i];
-     //  netOldPhaseBase[i]= dataMappedForMotorisedPosition[i];
+
+       netPhaseBase[i-1]= lastPositionFromCircularMode[i];
+   //  netOldPhaseBase[i]= dataMappedForMotorisedPosition[i];
        text (" netOld ", netOldPhaseBase[i], 200, 200+100*i);
        println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
      }
-	
+     //  netOldPhaseBase[networkSize-1]=  lastPositionFromCircularMode[0];
+	   //  netOldPhaseBase[networkSize-1]=  netOldPhaseBase[networkSize-1];
    
    
 
@@ -322,11 +325,12 @@ void phasePatternBase() { // trigged with $ or *
   
           }
 
-          netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
-          net.naturalFrequency[networkSize-1]= OldFrequency[0];
+       //   netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
+        //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
        
    }
-           for (int i = 1; i < (networkSize-0); i++) {  
+           for (int i = 0; i < (networkSize-0); i++) {  
+        //    net.phase[i]= netPhaseBase[i]; // find a way to display on screen
             //           text ( " netOld " +  netOldPhaseBase[i] + " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ " deltaOldPhaseActualPhase [i] " +     deltaOldPhaseActualPhase [i], 800, 500+100*i)  ;
         }
            text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;

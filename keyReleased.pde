@@ -358,11 +358,15 @@ void keyReleased() {
         println ("Frequencies adatped to PENDULAR way trigged with $");
      
 
-     phasePatternBase();
     
-   //  teensyPos();
-        
-     phasePattern(); // enable to change configuration in propagatin mode
+      //  teensyPos();  // selon PasePatternBase
+       phasePatternBase(); // only with * ?
+     //  teensyPos();  // selon PasePatternBase
+       phasePattern(); // enable to change configuration 
+
+      
+
+
         text (" NO trigEventWithAbletonSignal ", 0, 200 );
   } 
    } 
