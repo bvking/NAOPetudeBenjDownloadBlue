@@ -2,7 +2,7 @@
 void phasePatternBase() { // trigged with $ or *
   //************************************ DONT TOUCH
     if (key == 'i') {
-   text ("phasePatternBase " , width/2, height/2+100);
+   text ("phasePatternBase " , width/2 + 200, height/2);
    }
       if  (   keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
 
@@ -303,6 +303,7 @@ void phasePatternBase() { // trigged with $ or *
     for (int i = 0; i < (networkSize-0); i++) {   
       lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
        netOldPhaseBase[i]=lastPositionFromCircularMode[i];
+     //  netOldPhaseBase[i]= dataMappedForMotorisedPosition[i];
        text (" netOld ", netOldPhaseBase[i], 200, 200+100*i);
        println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
      }
@@ -934,11 +935,8 @@ void phasePatternBase() { // trigged with $ or *
   else if (key == 'P') { 
     println("INCREASE phases with special modulo P$   "); //P$ 
     for (int i = 0; i < networkSize; i++) {
-
-      //     netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
-      //  netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
-      netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-
+      netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected  // if networkSize-networkSize-i))%PI/3; --> oscillator 0 not affected
+    //  lastPositionFromCircularMode[i] += (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3;
       //     netPhaseBase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
     //  netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
       key='#';

@@ -356,10 +356,14 @@ void keyReleased() {
 
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
         println ("Frequencies adatped to PENDULAR way trigged with $");
-        text (" NO trigEventWithAbletonSignal ", 0, 200 );
-    phasePatternBase();
-     phasePattern(); // enable to change configuration in propagatin mode
      
+
+     phasePatternBase();
+    
+   //  teensyPos();
+        
+     phasePattern(); // enable to change configuration in propagatin mode
+        text (" NO trigEventWithAbletonSignal ", 0, 200 );
   } 
    } 
 

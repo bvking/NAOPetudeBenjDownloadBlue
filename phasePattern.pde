@@ -2,7 +2,7 @@ void phasePattern() { // need standard mode to be trigged
 textSize (100);
 
    if (key == 'i') {
-   text ("phasePattern " , width/2, height/2);
+   text ("phasePattern " ,-200+ width/2, height/2);
    }
 text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
 text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
