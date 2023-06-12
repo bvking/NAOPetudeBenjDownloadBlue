@@ -31,15 +31,22 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
   
      else  if (computeData>-1){dataTransformed = " dataComputeInTeensy from mode ";
      println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
-  
   }
-    if (portsUSBfrom2 != "NC")  {   // // If not null, then a match was found
-      teensyport.write(dataFromMode);
-      teensy4port.write(dataFromMode);
-     // println("port USB connected " + portsUSBfrom2 + " ");  
+    if (frameCount ==1) noLoop();
+
+      if (portsUSBfrom2 != "NC")  {   // // If not null, then a match was found
+   //   teensyport.write(dataFromMode);
+   //   teensy4port.write(dataFromMode);
+      if (frameCount <=200) 
+     Text ("port USB connected " + portsUSBfrom2 + " ", 0, 700);  
    }
 
-    if (frameCount ==1) noLoop();
+     if (portsUSBfrom2 == "NC")  {   // // If not null, then a match was found
+   //   teensyport.write(dataFromMode);
+   //   teensy4port.write(dataFromMode);
+      if (frameCount <=200) 
+     Text ("port not connected " + portsUSBfrom2 + " ", 0, 700);  
+   }
 
   }
 
