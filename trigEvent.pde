@@ -388,9 +388,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
         textSize (50);
 
-          for (int i = 0; i < networkSize-0; i++) {  
-           text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i], -1500 , 500 +(i*50));
-             } 
+          for (int i = 1; i < networkSize-0; i++) {  
+           text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i]+
+                   " netOld " +  netOldPhaseBase[i] + " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ " deltaOldPhaseActualPhase [i] " +deltaOldPhaseActualPhase[i], -1500 , 500 +(i*50));
+            } 
  
   
             //  text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency 0 " + net.naturalFrequency[0], 300, 1000);

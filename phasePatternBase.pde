@@ -1,10 +1,10 @@
 
 void phasePatternBase() { // trigged with $ or *
   //************************************ DONT TOUCH
-
-//  if  (   formerKeyMetro != 'c') {  // VERY IMPORTANT with CASE c
- if  (   keyMode != " truc "  ) {
-      if  (   keyMode == " propagationBallRotation "  ) {
+    if (key == 'i') {
+   text ("phasePatternBase " , width/2, height/2+100);
+   }
+      if  (   keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
 
 
   for (int i = 0; i < (networkSize); i++) { 
@@ -128,8 +128,6 @@ void phasePatternBase() { // trigged with $ or *
       println ((networkSize+1)-(i+1));
       net.naturalFrequency[i+1]= OldFrequency[(networkSize+1)-(i+1)];
     }
-
-    //}
   } else if (key == '3') {  
     println(" Set Frequencies to 3 + harmonic distance ");// boost l'effet 1  
     for (int i = 0; i < networkSize; i++) {  
@@ -287,7 +285,9 @@ void phasePatternBase() { // trigged with $ or *
   }
 
   if (key == 'i') {
-
+   println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
+    println (" iiiiiiiiiiiii Trigged ? ");
+     println (" iiiiiiiiiiiii Trigged ? ");
     if (memoryi>=0) {
     oldMemoryi=memoryi;
     memoryi=(memoryi-1);
@@ -301,8 +301,10 @@ void phasePatternBase() { // trigged with $ or *
     }
 
     for (int i = 0; i < (networkSize-0); i++) {   
-       netOldPhaseBase[i]=ActualVirtualPosition[i];
+      lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
+       netOldPhaseBase[i]=lastPositionFromCircularMode[i];
        text (" netOld ", netOldPhaseBase[i], 200, 200+100*i);
+       println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
      }
 	
    
@@ -311,7 +313,9 @@ void phasePatternBase() { // trigged with $ or *
 
         for (int i = 1; i < (networkSize-0); i++) {  
 	        deltaOldPhaseActualPhase[i]= netPhaseBase[i-1]-netOldPhaseBase[i];
+               println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
           netPhaseBase[i-1]= netOldPhaseBase[i];
+               println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
           net.naturalFrequency[i-1]= net.naturalFrequency[i];      
         
   
@@ -322,7 +326,7 @@ void phasePatternBase() { // trigged with $ or *
        
    }
            for (int i = 1; i < (networkSize-0); i++) {  
-           text ( " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ " deltaOldPhaseActualPhase [i] " +     deltaOldPhaseActualPhase [i], 800, 500+100*i)  ;
+            //           text ( " netOld " +  netOldPhaseBase[i] + " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ " deltaOldPhaseActualPhase [i] " +     deltaOldPhaseActualPhase [i], 800, 500+100*i)  ;
         }
            text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
 
@@ -365,7 +369,7 @@ void phasePatternBase() { // trigged with $ or *
     println (VirtualPosition[2]);
 
     oldMemoryi=memoryi;
-    memoryi=(memoryi+1)%12;
+    memoryi=(memoryi+1)%networkSize;
 
     if ( memoryi<=0) {
       memoryi=0;
@@ -520,7 +524,7 @@ void phasePatternBase() { // trigged with $ or *
    */
 
   if (key == 'i') { 
-    println ("= c$+I$  Shift frequencies -> one by one by keeping last position switched");
+    println ("= phaseBase c$+I$  Shift frequencies -> one by one by keeping last position switched");
     formerKey = 'i';
   }  
 
@@ -1092,5 +1096,5 @@ void phasePatternBase() { // trigged with $ or *
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   }
- }
+ 
 }
