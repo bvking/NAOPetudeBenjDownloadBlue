@@ -18,6 +18,8 @@ float trigedWithAnySign, oldTrigedWithAnySign;
 float [] trigedSignFromAbleton = new float [networkSize];
 float [] oldTrigedSignFromAbleton = new float [networkSize];
 
+ float [] deltaOldPhaseActualPhase = new float [networkSize];
+
 
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];

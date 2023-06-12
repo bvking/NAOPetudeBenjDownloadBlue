@@ -352,19 +352,19 @@ void keyReleased() {
   //*********************************************CIRCULAR
 
 
-  if ( keyMode != " trigEventWithAbletonSignal " )  {  
+  if ( keyMode == " trigEventWithAbletonSignal " && measure >64 )  {  
 
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
     println ("Frequencies adatped to PENDULAR way trigged with $");
         text (" NO trigEventWithAbletonSignal ", 0, 200 );
 
-     // phasePattern(); // enable to change configuration in propagatin mode
+     phasePattern(); // enable to change configuration in propagatin mode
      phasePatternBase();
   } 
    } 
 
 
-  else if ( keyMode == " trigEventWithAbletonSignal " )  {  
+  else if ( keyMode == " trigEventWithAbletonSignal " && measure < 64 )  {  
   if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
           text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);

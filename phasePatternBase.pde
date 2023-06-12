@@ -286,37 +286,45 @@ void phasePatternBase() { // trigged with $ or *
     }
   }
 
-  if (key == 'i') { 
+  if (key == 'i') {
 
-  
     if (memoryi>=0) {
     oldMemoryi=memoryi;
     memoryi=(memoryi-1);
     }
       
-  if ( memoryi<=-1) {
-      memoryi=networkSize-1;
-      oldMemoryi=0;
-    println (" your herreeeeeee iiiiiiiiiiiii ");
-    text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
-
-
-   }
-
-        for (int i = 1; i < (networkSize-0); i++) {  
-
-      netPhaseBase[i-1]= netOldPhaseBase[i];
-      net.naturalFrequency[i-1]= net.naturalFrequency[i];
-  //    netPhaseBase[i]= netPhaseBase[i+1];// netOldPhaseBase[i] keep phase at    
-  //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
+    if ( memoryi<=-1) {
+       memoryi=networkSize-1;
+       oldMemoryi=0;
+        println (" your herreeeeeee iiiiiiiiiiiii ");
+        text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
     }
 
-     netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
-    net.naturalFrequency[networkSize-1]= OldFrequency[0];
+    for (int i = 0; i < (networkSize-0); i++) {   
+       netOldPhaseBase[i]=ActualVirtualPosition[i];
+       text (" netOld ", netOldPhaseBase[i], 200, 200+100*i);
+     }
+	
    
-  }
+   
 
-  text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
+
+        for (int i = 1; i < (networkSize-0); i++) {  
+	        deltaOldPhaseActualPhase[i]= netPhaseBase[i-1]-netOldPhaseBase[i];
+          netPhaseBase[i-1]= netOldPhaseBase[i];
+          net.naturalFrequency[i-1]= net.naturalFrequency[i];      
+        
+  
+          }
+
+          netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
+          net.naturalFrequency[networkSize-1]= OldFrequency[0];
+       
+   }
+           for (int i = 1; i < (networkSize-0); i++) {  
+           text ( " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ " deltaOldPhaseActualPhase [i] " +     deltaOldPhaseActualPhase [i], 800, 500+100*i)  ;
+        }
+           text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
 
 
 
