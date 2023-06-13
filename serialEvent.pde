@@ -8,7 +8,7 @@ void serialEvent(Serial encoderReceiveUSBport101) {
   String[] m2 = match(myEncodeur, "encodeur2");
   String[] m3 = match(myEncodeur, "encodeur3");
   String[] m4 = match(myEncodeur, "encodeur4");
-  String[] m5 = match(myEncodeur, " encodeur5 ");
+  String[] m5 = match(myEncodeur, "encodeur5");
  
   
  
@@ -64,14 +64,15 @@ else  encoderTouched[4]=0;
 }
 if (m5 != null) {  // If not null, then a match was found
 
-    if (frameCount>formerFrameCountFromSerialEvent[5]+15){ 
+ //   if (frameCount>formerFrameCountFromSerialEvent[5]+15){ 
       encoderTouched[5]=1;
 formerFrameCountFromSerialEvent[5]=frameCount;
 println("Found encodeur5 a match in   " + encoderTouched[5]);  
 textSize(500);
 background(50);
 }
-else  encoderTouched[5]=0;
+else
+ {  encoderTouched[5]=0;
 }
 
 
