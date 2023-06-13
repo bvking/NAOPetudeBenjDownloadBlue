@@ -360,19 +360,23 @@ void keyReleased() {
 
     
       //  teensyPos();  // selon PasePatternBase
+/*
        phasePatternBase(); // only with * ?
+        for ( int i=0; i< networkSize; i++) {
+           oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+       }
      //  teensyPos();  // selon PasePatternBase
        phasePattern(); // enable to change configuration 
 
-      
+   */   
 
 
         text (" NO trigEventWithAbletonSignal ", 0, 200 );
   } 
    } 
 
-/*
-  else if ( keyMode == " trigEventWithAbletonSignal " && measure < 64 )  {  
+
+  else if ( keyMode == " trigEventWithAbletonSignal "  )  {  
   if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
           text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);
@@ -384,7 +388,7 @@ void keyReleased() {
      phasePattern(); //same as $
    } 
   }
-*/
+
  //key= '#'; 
 
 }

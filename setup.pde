@@ -6,7 +6,7 @@ import sync.*;
 PNetwork net;
 import java.util.Arrays;
 
-int networkSize = 8;
+int networkSize = 6;
 int nbBalls=networkSize;
 
 String  portsUSBfrom2;
@@ -23,6 +23,9 @@ float [] oldTrigedSignFromAbleton = new float [networkSize];
 
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
+
+
+int [] oldDataMappedForMotorisedPosition = new int [networkSize];
 int [] positionMotorisedFromContinuesMod = new int [networkSize];
 float [] oscillatorFollowing = new float [networkSize];
 boolean actualisePositionDataFromCircular;

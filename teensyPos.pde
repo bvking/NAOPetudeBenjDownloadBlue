@@ -126,6 +126,9 @@ void teensyPos(){
         if (measure>67 && measure<=120){
             send24DatasToTeensy6motors(3, 3, -4, -1);
         }
+           if (measure>=635 ){
+            send24DatasToTeensy6motors(635, 3, -4, -1);
+        }
       }
     } 
   }

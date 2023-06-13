@@ -2,9 +2,13 @@
 
 void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData){  // dataMarkedToTeensyArevoir
 
+      for ( int i=0; i< networkSize; i++) {
+          //  oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+       }
+
        dataFromMode ="<"
 
-      + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
+    //  + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
 
       + dataMappedForMotorisedPosition[5]+ ","+ dataMappedForMotorisedPosition[4]+ ","+ dataMappedForMotorisedPosition[3]+","+ dataMappedForMotorisedPosition[2]+ ","
       + dataMappedForMotorisedPosition[1]+ ","+ dataMappedForMotorisedPosition[0] + ","      // 
@@ -13,6 +17,7 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
     //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
       
        
+       +0+","+0+","
        +0+","+0+","
 
       +  accelerationRatio +","+ driver0_On_Off +","+ computeData +","+ eraseProcessingData + ","
@@ -29,21 +34,21 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
 
   }
   
-     else  if (computeData>-1){dataTransformed = " dataComputeInTeensy from mode ";
-     println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
+        else if (computeData>-1){dataTransformed = " dataComputeInTeensy from mode ";
+          println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
   }
  
 
       if (portsUSBfrom2 != "NC")  {   // // If not null, then a match was found
-   //   teensyport.write(dataFromMode);
+            teensyport.write(dataFromMode);
    //   teensy4port.write(dataFromMode);
       if (frameCount <=200) 
-     text ("port USB connected " + portsUSBfrom2 + " ", 0, 700); 
-     println ("port USB connected " + portsUSBfrom2 );  
+          text ("port USB connected " + portsUSBfrom2 + " ", 0, 700); 
+          println ("port USB connected " + portsUSBfrom2 );  
    }
 
      if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
-   //   teensyport.write(dataFromMode);
+     // teensyport.write(dataFromMode);
    //   teensy4port.write(dataFromMode);
       if (frameCount <=200) 
      text ("port not connected " + portsUSBfrom2 + " ", 0, 700); 

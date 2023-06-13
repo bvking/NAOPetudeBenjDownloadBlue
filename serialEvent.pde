@@ -68,6 +68,8 @@ if (m5 != null) {  // If not null, then a match was found
       encoderTouched[5]=1;
 formerFrameCountFromSerialEvent[5]=frameCount;
 println("Found encodeur5 a match in   " + encoderTouched[5]);  
+textSize(500);
+background(50);
 }
 else  encoderTouched[5]=0;
 }
@@ -84,7 +86,7 @@ else  encoderTouched[5]=0;
     int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
      
 
-   if (values.length == 6) {//  encodeur de 0 a 4000
+   if (values.length == networkSize) {//  encodeur de 0 a 4000
    encodeur[0] = abs ( (int) map (values[0], 0, 4000, 0, 800))%800;
    encodeur[1] = (int) map (values[1], 0, 4000, 0, 800)%800;
    encodeur[2] = (int) map (values[2], 0, 4000, 0, 800)%800;
