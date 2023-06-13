@@ -304,16 +304,21 @@ void phasePatternBase() { // trigged with $ or *
     for (int i = 0; i < (networkSize-0); i++) {   
    //   lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
     //  netOldPhaseBase[i]=lastPositionFromCircularMode[i];
-      netOldPhaseBase[i]=netPhaseBase[i];
-      netPhaseBase[i]=dataMappedForMotorisedPosition[i];
+   
+    //   netOldPhaseBase[i]=netPhaseBase[i];
+       netPhaseBase[i]= 800* (i+1);
+       net.oldPhase[i]=net.phase[i];
+       net.phase[i]= TWO_PI/16* (i+1);
+   //   netPhaseBase[i]=dataMappedForMotorisedPosition[i];
 
        text (" netOld " + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] , 200, 200+100*i);
          println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] ); 
    }
-
+       net.phase[networkSize-1]=net.oldPhase[0];
        for (int i = 1; i < (networkSize-0); i++) {  
     //  netPhaseBase[i-1]= netOldPhaseBase[i]
     //    netOldPhaseBase[i]= dataMappedForMotorisedPosition[i];
+       net.phase[i-1]=net.oldPhase[i];
        text (" netOld ", netOldPhaseBase[i], 200, 200+100*i);
        println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
      }
@@ -322,17 +327,18 @@ void phasePatternBase() { // trigged with $ or *
    
   
 
-
+           deltaOldPhaseActualPhase[0]+= netPhaseBase[networkSize-1]-netOldPhaseBase[0];
         for (int i = 1; i < (networkSize-0); i++) {  
-	        deltaOldPhaseActualPhase[i]= netPhaseBase[i-1]-netOldPhaseBase[i];
+	        deltaOldPhaseActualPhase[i] = netPhaseBase[i-1]-netOldPhaseBase[i];
                print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
-          netPhaseBase[i-1]= netOldPhaseBase[i];
+       //  netPhaseBase[i-1]= netPhaseBase[i-1] + deltaOldPhaseActualPhase[i];
+         dataMappedForMotorisedPosition[i] += (int)  deltaOldPhaseActualPhase[i];
                println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
           net.naturalFrequency[i-1]= net.naturalFrequency[i];      
         
   
           }
-          deltaOldPhaseActualPhase[0]= netPhaseBase[networkSize-1]-netOldPhaseBase[0];
+        
 
        //   netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
         //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
@@ -467,7 +473,7 @@ void phasePatternBase() { // trigged with $ or *
 
     // autoNote1();
     for (int i = 0; i < (networkSize-0); i++) { 
-     //  netOldPhaseBase[i]=netPhaseBase[i];
+       netOldPhaseBase[i]=netPhaseBase[i];
        netPhaseBase[i]+=1500+100*i;
 
       //   netPhaseBase[i]+= PI/(20+(networkSize-1-i));
