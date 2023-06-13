@@ -77,6 +77,8 @@ void handleKeyPressToChooseCircularMovementOrNot() {
 void displayArrays() {
   print("encodeur "); showArray(encodeur);
   print("countRev "); showArray(rev);
+ // print  (" encodeurTouched " + encoderTouched[0]+ "  " + encoderTouched[1]+ "  " + encoderTouched[2]+ "  " +
+   //                             encoderTouched[3]+ "  " + encoderTouched[4]+ "  " + encoderTouched[5]);
  // print("keyEvent "); showArray(keyEvent); showArray work with int only
   
   textSize(50);
