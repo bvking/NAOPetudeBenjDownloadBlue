@@ -19,6 +19,7 @@ void mousePressed() {
 
 
 void draw() {
+  //setPort();
 
  handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
  displayArrays(); // Affichage des tableaux

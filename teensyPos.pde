@@ -1,7 +1,8 @@
 void teensyPos(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
-
+ 
+ if ( measure < 635)  {  
 
   if ( keyMode == " propagationBallRotationBis "  
     )  {   // || keyMode == " addSignalOneAndTwo "
@@ -17,7 +18,9 @@ void teensyPos(){
     {    // actualise counter of normal mode from revLfo from method  not here
 
       for (int i = 0; i < networkSize; i++) {
-    
+       
+     
+            
       //*******************************  ASSIGN MOTOR WITH POSITION
 
       if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
@@ -39,26 +42,29 @@ void teensyPos(){
     }
   }
 
-  if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
-     for (int i = 0; i < networkSize; i++) {
-         dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
-         println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
-    }
-  }
+           if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
+            for (int i = 0; i < networkSize; i++) {
+               //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
+                println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
+              }
+            }
 
 
 
-  if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='*') { 
+    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='*') { 
 
-   if ( keyMode == " propagationBallRotationBisTest " ) { 
+         if ( keyMode == " propagationBallRotationBisTest " ) { 
         rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
         text ( " keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
-    }
+       }
 
 
      for (int i = 0; i < networkSize; i++) {
   
      //*******************************  ASSIGN MOTOR WITH POSITION
+
+         //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
 
       if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
@@ -75,15 +81,15 @@ void teensyPos(){
       }
      }
    
-   }
+     }
 
      //*******************  SWITCH MODE oTHER SoLUTION
 
-  if (formerKeyMetro == '$') {
+    if (formerKeyMetro == '$') {
     for (int i = 0; i < networkSize; i++) {
     dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-    }
-  }
+      }
+   }
 
    if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
@@ -93,7 +99,7 @@ void teensyPos(){
   }
 
 
-  if ( keyMode == " propagationBallRotationBis " ) {
+   if ( keyMode == " propagationBallRotationBis " ) {
     for (int i = 0; i < networkSize-0; i++) { // 
     recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
    //  actualisePositionDataFromCircular = false|| dol==true; //
@@ -107,6 +113,7 @@ void teensyPos(){
        //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
        } 
      }
+  } // end mesure 635
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 

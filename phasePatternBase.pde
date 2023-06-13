@@ -2,7 +2,8 @@
 void phasePatternBase() { // trigged with $ or *
   //************************************ DONT TOUCH
     if (key == 'i') {
-   text ("phasePatternBase " , width/2 + 200, height/2);
+       text ("phasePatternBase " , width/2 + 200, height/2);
+      print  (" phasePatternBase " + " key " + key , width/2 + 200, height/2);
    }
       if  (   keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
 
@@ -285,10 +286,10 @@ void phasePatternBase() { // trigged with $ or *
   }
 
   if (key == 'i') {
-   println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
-    println (" iiiiiiiiiiiii Trigged ? ");
-     println (" iiiiiiiiiiiii Trigged ? ");
-    if (memoryi>=0) {
+          println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
+           println (" iiiiiiiiiiiii Trigged ? ");
+          println (" iiiiiiiiiiiii Trigged ? ");
+      if (memoryi>=0) {
     oldMemoryi=memoryi;
     memoryi=(memoryi-1);
     }
@@ -299,12 +300,15 @@ void phasePatternBase() { // trigged with $ or *
         println (" your herreeeeeee iiiiiiiiiiiii ");
         text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
     }
-
+    textSize(250);
     for (int i = 0; i < (networkSize-0); i++) {   
-    //  lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
-     //  netOldPhaseBase[i]=lastPositionFromCircularMode[i];
-       netOldPhaseBase[i]=oldDataMappedForMotorisedPosition[i];
-       netPhaseBase[i]=dataMappedForMotorisedPosition[i];
+   //   lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
+    //  netOldPhaseBase[i]=lastPositionFromCircularMode[i];
+      netOldPhaseBase[i]=netPhaseBase[i];
+      netPhaseBase[i]=dataMappedForMotorisedPosition[i];
+
+       text (" netOld " + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] , 200, 200+100*i);
+         println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] ); 
    }
 
        for (int i = 1; i < (networkSize-0); i++) {  
@@ -316,18 +320,19 @@ void phasePatternBase() { // trigged with $ or *
      //  netOldPhaseBase[networkSize-1]=  lastPositionFromCircularMode[0];
 	   //  netOldPhaseBase[networkSize-1]=  netOldPhaseBase[networkSize-1];
    
-   
+  
 
 
         for (int i = 1; i < (networkSize-0); i++) {  
 	        deltaOldPhaseActualPhase[i]= netPhaseBase[i-1]-netOldPhaseBase[i];
-               println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
-       //   netPhaseBase[i-1]= netOldPhaseBase[i];
+               print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
+          netPhaseBase[i-1]= netOldPhaseBase[i];
                println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
           net.naturalFrequency[i-1]= net.naturalFrequency[i];      
         
   
           }
+          deltaOldPhaseActualPhase[0]= netPhaseBase[networkSize-1]-netOldPhaseBase[0];
 
        //   netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
         //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
@@ -417,7 +422,7 @@ void phasePatternBase() { // trigged with $ or *
     }
   }  
 
-  if (key == 'K') { //K$ invisible
+  if (key =='K') { //K$ invisible
     println ("I$ Shift frequencies -> one by one by keeping last position switched and divide /2");// based on i
     for (int i = 0; i < (networkSize-0); i++) {    
 
@@ -457,11 +462,14 @@ void phasePatternBase() { // trigged with $ or *
 
 
 
-  if (key == 'l') { 
-    println ("l$  Shift frequencies <- one by one by keeping last position switched and multipied *2"); // based on u || key == 'L'
+  if (key =='l') { 
+                        println ("l$  Shift frequencies <- one by one by keeping last position switched and multipied *2"); // based on u || key == 'L'
 
     // autoNote1();
     for (int i = 0; i < (networkSize-0); i++) { 
+     //  netOldPhaseBase[i]=netPhaseBase[i];
+       netPhaseBase[i]+=1500+100*i;
+
       //   netPhaseBase[i]+= PI/(20+(networkSize-1-i));
       //   netPhaseBase[i]+= PI/(networkSize-0-i)/10; // good
       //   automatiseWithNote();
@@ -534,7 +542,7 @@ void phasePatternBase() { // trigged with $ or *
 
   if (key == 'i') { 
     println ("= phaseBase c$+I$  Shift frequencies -> one by one by keeping last position switched");
-    formerKey = 'i';
+   // formerKey = 'i';
   }  
 
   //**************************************************PLAY WITH PHASES

@@ -94,7 +94,7 @@ void addSignalOneAndTwoOriginal(){
 
 
 
-    if (key != '#' ) {
+    if (key!='#' ) {
     if (keyMode == " addSignalOneAndTwo ") {
      phasePatternBase();
      

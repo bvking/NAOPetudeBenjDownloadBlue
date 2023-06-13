@@ -925,11 +925,12 @@ formerKeyMetro = '$';
 //--keyMode = " phasePattern ";
 //--phasePattern();
 
-//keyMode = " trigEventWithAbletonSignal "; 
+keyMode = " trigEventWithAbletonSignal "; 
 
-keyMode = " notNull "; 
 
-modeStartKeyToFollow = " samplingModeInternal " ;
+
+//***keyMode = " notNull "; 
+//***modeStartKeyToFollow = " samplingModeInternal " ;
 
 
 

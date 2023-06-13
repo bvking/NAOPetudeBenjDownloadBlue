@@ -355,28 +355,48 @@ void keyReleased() {
   if ( keyMode == " trigEventWithAbletonSignal " && measure >64 )  {  
 
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
-        println ("Frequencies adatped to PENDULAR way trigged with $");
+        println ("  Frequencies adatped to PENDULAR way trigged with $  > 54 ");
      
 
     
       //  teensyPos();  // selon PasePatternBase
-/*
-       phasePatternBase(); // only with * ?
-        for ( int i=0; i< networkSize; i++) {
-           oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-       }
+
+     //  phasePatternBase(); // only with * ?
+     //   for ( int i=0; i< networkSize; i++) {
+     //      oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+     //  }
      //  teensyPos();  // selon PasePatternBase
-       phasePattern(); // enable to change configuration 
 
-   */   
+     
+       //    phasePattern(); // enable to change configuration 
+       
+                for ( int i=0; i< networkSize; i++) {
+            //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+            }
+          phasePatternBase(); // only with * ?
+             for ( int i=0; i< networkSize; i++) {
+               oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+            }
 
+      
+            rotate (HALF_PI);
 
-        text (" NO trigEventWithAbletonSignal ", 0, 200 );
+        text (" NO trigEventWithAbletonSignal ", 0, -500 );
+         textSize (200);
+
+          for (int i = 1; i < networkSize-0; i++) {  
+           text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i]+
+                   " oldMotorisedPosition " + oldDataMappedForMotorisedPosition[i] + " MotorisedPosition[i] " +  dataMappedForMotorisedPosition[i]+
+                   " netOld " +  netOldPhaseBase[i] + " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ 
+                   " deltaOldPhaseActualPhase [i] " +deltaOldPhaseActualPhase[i], -1500 , -450 +(i*200));
+            } 
+
+              rotate (-HALF_PI);
   } 
    } 
 
 
-  else if ( keyMode == " trigEventWithAbletonSignal "  )  {  
+  else if ( keyMode == " trigEventWithAbletonSignal " && measure < 635 )  {  
   if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
           text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);
