@@ -925,7 +925,12 @@ formerKeyMetro = '$';
 //--keyMode = " phasePattern ";
 //--phasePattern();
 
-keyMode = " trigEventWithAbletonSignal ";   
+//keyMode = " trigEventWithAbletonSignal "; 
+
+keyMode = " notNull "; 
+
+modeStartKeyToFollow = " samplingModeInternal " ;
+
 
 
 music_from_ableton_live = " pleasureKraft ";

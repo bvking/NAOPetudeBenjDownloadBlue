@@ -130,15 +130,33 @@ void draw() {
    teensyPos(); 
 
 
+    if ( encoderTouched[4]==1){ 
+
+        println("Found encodeur4 a match in   " + encoderTouched[4]);  
+        textSize(200);
+        background(50);
+        } 
+
+    if ( encoderTouched[4]==0){ 
+     
+                  println("Found encodeur4 not a match in   " + encoderTouched[4]);  
+            textSize(100);
+            background(75);
+} 
+
+
     if ( encoderTouched[5]==1){ 
+
+        keyMode = " samplingModeInternal ";
+     
      
 println("Found encodeur5 a match in   " + encoderTouched[5]);  
-textSize(500);
+textSize(300);
 background(50);
 } 
 
     if ( encoderTouched[5]==0){ 
-     
+    
 println("Found encodeur5 not a match in   " + encoderTouched[5]);  
 textSize(100);
 background(75);
