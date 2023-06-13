@@ -128,6 +128,22 @@ void draw() {
      } 
 
    teensyPos(); 
+
+
+    if ( encoderTouched[5]==1){ 
+     
+println("Found encodeur5 a match in   " + encoderTouched[5]);  
+textSize(500);
+background(50);
+} 
+
+    if ( encoderTouched[5]==0){ 
+     
+println("Found encodeur5 not a match in   " + encoderTouched[5]);  
+textSize(100);
+background(75);
+} 
+
 //   arduinoPos(); // just to trig data to live when particular position of phase or pattern are created by the hole balls (oscillator)
    
      

@@ -8,7 +8,7 @@ void serialEvent(Serial encoderReceiveUSBport101) {
   String[] m2 = match(myEncodeur, "encodeur2");
   String[] m3 = match(myEncodeur, "encodeur3");
   String[] m4 = match(myEncodeur, "encodeur4");
-  String[] m5 = match(myEncodeur, "encodeur5");
+  String[] m5 = match(myEncodeur, " encodeur5 ");
  
   
  
