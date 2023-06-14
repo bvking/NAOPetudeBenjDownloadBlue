@@ -24,6 +24,8 @@ float [] oldTrigedSignFromAbleton = new float [networkSize];
 int [] encoderTouched = new int [networkSize];
 int [] RevsContinue = new int [networkSize];
 
+int [] positionFromShiftedOscillator  = new int [networkSize];
+
 
 int [] oldDataMappedForMotorisedPosition = new int [networkSize];
 int [] positionMotorisedFromContinuesMod = new int [networkSize];

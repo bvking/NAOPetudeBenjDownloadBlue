@@ -357,13 +357,13 @@ void keyReleased() {
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
         println ("  Frequencies adatped to PENDULAR way trigged with $  > 54 ");
   
-        //     phasePattern(); // enable to change configuration 
+             phasePattern(); // enable to change configuration 
        
              for ( int i=0; i< networkSize; i++) {
          //             oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                }
 
-             phasePatternBase(); // only with * ?
+         //    phasePatternBase(); // only with * ?
 
              for ( int i=0; i< networkSize; i++) {
                    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];

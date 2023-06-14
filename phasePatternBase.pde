@@ -4,272 +4,23 @@ void phasePatternBase() { // trigged with $ or *
     if (key == 'i') {
        text ("phasePatternBase " , width/2 + 200, height/2);
       print  (" phasePatternBase " + " key " + key , width/2 + 200, height/2);
-   }
-      if  (   keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
+      }
+ if  ( keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
 
 
-  for (int i = 0; i < (networkSize); i++) { 
-    {
-      OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
-    }
-  }
-  if  (   formerSartKey!= 'J')  
-  if (key == 'W') { // follow mode. What is w?  (formerKey=='w')
-    formerW();
-    key ='#';
-    //  pendular=5;
-  }
+     for (int i = 0; i < (networkSize); i++) {       
+            OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
+      }
+   
+     if (key == 'W') { // follow mode. What is w?  (formerKey=='w')
+        formerW();
+        key ='#';
+      }
  
                                                                                                                                                                                                                                                                                                                                                                                                                                
 
   //********** ********** ********** ********** ********** ********** ********** INCREASE FREQUENCIES in $ mode PENDULAR PATTERN
-  if (keyCode == LEFT) {  
-    if ( keyMode == " phasePattern "){
-     oscillatorBlocked++;
-     if (oscillatorBlocked > (networkSize-1)) { 
-     oscillatorBlocked=0;    
-     }
-     key='#'; // to trig only once
-     text (" blocked "  + oscillatorBlocked, width/2, height/4);
-    
-     }
-  }
-    if (keyCode == RIGHT) {  
-     if ( keyMode == " phasePattern "){
-     oscillatorBlocked=oscillatorBlocked-1;
-     if (oscillatorBlocked <= 0) { 
-     oscillatorBlocked=networkSize-1;    
-     }
-     key='#'; // to trig only once
-     text (" blocked "  + oscillatorBlocked, width/2, height/4);
-    
-     }
-  }
-
-  if (keyCode == RIGHT) {  
-    println( " pendularPattern right DECREASE phase shifting   witch formerStartKey ")  ; // Incremente together without changing phases   
-    if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro  == 'J')) {
-      k--;
-
-      if (k<-8) { 
-        k=8;
-      }    
-      println ("k= shiftingPhaseRatio ");
-      println (k);
-      keyCode = SHIFT; // to trig only once
-    }
-  }
-  if (keyCode == LEFT) { 
-    println("pendularPattern left INCREASE phase shifting"); // Incremente together without changing phases  
-    if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro == 'J')) {
-      k++;
-      k=k%8;
-    } else 
-    k++;
-    k=k%10;
-    if (k>8) { 
-      k=-8;
-    }    
-    println ("k= shiftingPhaseRatio ");
-    println (k);
-    keyCode = SHIFT; // to trig only once
-  } 
-
-  if (keyCode == DOWN) { 
-   //  d-=5;
-    println(" pendularPattern DOWN by 2 and change way of signal : LFO2 for example "); // 
-    for (int i = 2; i < 3; i++) { 
-      LFO[i]= map (LFO[i], 0, 1, 0, TWO_PI*2);
-      printSummary(i);
-    }
-  }  
-  if (keyCode == UP) { 
-  //   d+=5;
-    println(" pendularPattern UP by 2 and change way of signal : LFO2 for example "); //   TAB -
-    for (int i = 2; i < 3; i++) { 
-      LFO[i]= map (LFO[i], 0, 1, 0, PI);
-      printSummary(i);
-    }
-  }
-
-  if (key == '1') { 
-    println("Set Frequencies to 1+ harmonic distance with maxim different between them "); // boost l'effet du case é 
-    for (int i = 0; i < networkSize; i++) {
-      net.naturalFrequency[i] =    1.2-((i+0)*(1.0*0.1));
-      printSummary(i);
-    }
-  }
-  if (key == '&') {
-    println ("Opoosite of 1");
-    for (int i = 0; i < networkSize; i++) {
-      net.naturalFrequency[i]= ((i+1)*0.10);   // equivalent à     net.naturalFrequency[i] =1.2- (((networkSize-1)-i)*0.1 );
-      printSummary(i);
-    }
-  } else if (key == '2') { 
-    println("2$ Set Frequencies to 2+ harmonic distance from F0 "); 
-    for (int i = 0; i < networkSize-0; i++) {
-
-      //       net.naturalFrequency[i] =    2.4-((i+0)*(1.0*0.2)); //   
-      net.naturalFrequency[i]+=1.2-((i+0)*(1.0*0.1)); //F11 not affected if (i+1)
-      // net.naturalFrequency[i]=(i+1)*0.24;  
-      printSummary(i);
-    }
-  } 
-  if (key == 'é') { // e$  éà dans pendularpattern e$  Shift frequencies one by one.  //  0 to 9,  1 to 8, 2 to 7.....9 to 0 
-
-    //    if ( net.naturalFrequency[11]>net.naturalFrequency[0]){
-
-    println (" Shift frequencies one by one 0 <-- 11. ");
-
-    net.naturalFrequency[2]= OldFrequency[(networkSize-1)]; 
-
-    for (int i = 2; i < (networkSize-1); i++) {
-      print (i+1); 
-
-      println ((networkSize+1)-(i+1));
-      net.naturalFrequency[i+1]= OldFrequency[(networkSize+1)-(i+1)];
-    }
-  } else if (key == '3') {  
-    println(" Set Frequencies to 3 + harmonic distance ");// boost l'effet 1  
-    for (int i = 0; i < networkSize; i++) {  
-      net.naturalFrequency[i]  +=  OldFrequency[i]/2;
-      //    net.naturalFrequency[i]= 3.0-((i+0)*(3.0*0.1));
-      // net.naturalFrequency[i]= 2.4-((i+0)*(2.4*0.1));
-
-      printSummary(i);
-    }
-  } else if (key == '4') {  
-    println(" Set Frequencies to 4 + harmonic distance from F0 "); 
-    for (int i = 0; i < networkSize; i++) { 
-      //   net.naturalFrequency[i]=(i+1)*(0.30*1); 
-      //  net.naturalFrequency[i]=(i+1)*(0.24*1); 
-      net.naturalFrequency[i]+=(i+1)*(0.24*1); 
-      printSummary(i);
-    }
-  } else if (key == '5') {  
-    println(" 5 : Minus frequency by F0 in CCW "); // good with 1 and 3
-    for (int i = 0; i < networkSize; i++) {  
-      // net.naturalFrequency[i] -=2.0-((i+0)*(2.0*0.1));
-      net.naturalFrequency[i] -=1.0-((i+0)*(1.0*0.1));
-
-      //**************** I have to try to be proportionnal with frequencies in case 1, 2, 3..
-
-      printSummary(i);
-    }
-  } else if (key == '6') {  
-    println(" 6 : Minus frequency by F9 in CCW"); // the bottom turns the most quickly on the CW way // good with 1 and 3
-    for (int i = 0; i < networkSize; i++) { 
-
-      //      net.naturalFrequency[i]-=(i+1)*0.20; 
-      net.naturalFrequency[i]-=(i+1)*0.10; 
-      printSummary(i);
-    }
-  } else if (key == '7') {  
-    println(" 7 : Add frequency from F0(the front one) in CCW "); 
-    for (int i = 0; i < networkSize; i++) { 
-      //          net.naturalFrequency[i]+=2.0-((i+0)*(2.0*0.1));  
-      net.naturalFrequency[i]+=1.0-((i+0)*(1.0*0.1));  
-      printSummary(i);
-    }
-  } else if (key == '8') {  
-    println(" 8:  Add frequency from F0(the front one) in CW "); 
-    for (int i = 0; i < networkSize; i++) {
-      //     
-      net.naturalFrequency[i]+=(i+1)*0.10;  
-      printSummary(i);
-    }
-  } else if (key == '°') {  
-    println(" 8:  Add frequency from F0(the front one) in CW "); 
-    for (int i = 0; i < networkSize; i++) {    
-      net.naturalFrequency[i] =0;  
-      printSummary(i);
-    }
-  }
-  if (key == 'Q') { //Q$   
-    println ("F1, F3, F5.. are multipied 2");
-    for (int i = 0; i < (networkSize); i++) { 
-      //   net.naturalFrequency[i]= net.naturalFrequency[0];
-      int impair = 0;
-      int impairmodulo;
-      impairmodulo = (i+impair)%2;
-      print ("impairmodulo "); 
-      println (impairmodulo);
-      if (impairmodulo==1) {
-        net.naturalFrequency[i]= OldFrequency[i]*2;
-        printSummary(i);
-      }
-    }
-  } else if (key == 'q') {//q$    println ("F1, F3, F5.. are divided /2");
-    for (int i = 0; i < (networkSize); i++) { 
-      //   net.naturalFrequency[i]= net.naturalFrequency[0];
-      int impair = 0;
-      int impairmodulo;
-      impairmodulo = (i+impair)%2;
-      print ("impairmodulo "); 
-      println (impairmodulo);
-      if (impairmodulo==1) {
-        net.naturalFrequency[i]= OldFrequency[i]/2;
-        printSummary(i);
-      }
-    }
-  }
-
-  if (key == 'N') { //N$   println ("F1, F3, F5.. are divided /2");
-    println ("FO, F2, F5.. are multipied 2");
-    for (int i = 0; i < (networkSize); i++) { 
-      //net.naturalFrequency[i]= net.naturalFrequency[0];
-      int pair = 1;
-      int pairmodulo;
-      pairmodulo = (i+1)%2;
-      print ("pairmodulo "); 
-      println (pairmodulo);
-      if (pairmodulo==1) {
-        net.naturalFrequency[i]= OldFrequency[i]*2;
-        printSummary(i); 
-        key='#';
-      }
-    }
-  }
-  if (key == 'n') {//N$    println ("F1, F3, F5.. are divided /2");
-    println ("FO, F2, F5.. are divided 2");
-    for (int i = 0; i < (networkSize); i++) { 
-      int pair = 1;
-      int pairmodulo;
-      pairmodulo = (i+1)%2;
-      print ("pairmodulo "); 
-      println (pairmodulo);
-      if (pairmodulo==1) {
-        net.naturalFrequency[i]= OldFrequency[i]/2;
-        printSummary(i);
-        key='#';
-      }
-    }
-  }
-  /*
-        if (key == 'T') {  print ("EXPERIMENTAL T$"); 
-   float delaPhase    = map ((float (mouseY)/width*1), 0, 1, 0, QUARTER_PI ); 
-   //*********
-   for(int i = 0; i < (networkSize); i++) { 
-   if ( abs (net.naturalFrequency[2]) > abs (net.naturalFrequency[networkSize-1])){
-   net.naturalFrequency[i]= net.naturalFrequency[2];
    
-   }
-   else net.naturalFrequency[i]= net.naturalFrequency[networkSize-1];
-   printSummary(i);  
-   }
-   }
-   */
-  if (key == 'T') {  
-    print ("EXPERIMENTAL T$"); 
-    for (int i = 0; i < (networkSize-1); i++) { 
-      if ( (abs (net.naturalFrequency[i]) < abs (net.naturalFrequency[i+1])) // || 
-        )
-        net.naturalFrequency[i]=net.naturalFrequency[i+1];
-    }
-    if ( (abs (net.naturalFrequency[networkSize-1]) < abs (net.naturalFrequency[networkSize-1]))
-      )
-      net.naturalFrequency[networkSize-1]=net.naturalFrequency[0];
-  }   
 
   if (key=='t') {  
     print ("EXPERIMENTAL t$");
@@ -285,7 +36,40 @@ void phasePatternBase() { // trigged with $ or *
     }
   }
 
-  if (key == 'i') {
+   if (key == 'i') {
+           println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
+           println (" iiiiiiiiiiiii Trigged ? ");
+           println (" iiiiiiiiiiiii Trigged ? ");
+      if (memoryi>=0) {
+           oldMemoryi=memoryi;
+            memoryi=(memoryi-1);
+       }
+      
+       if ( memoryi<=-1) {
+          memoryi=networkSize-1;
+          oldMemoryi=0;
+           println (" your herreeeeeee iiiiiiiiiiiii ");
+           text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
+       }
+        
+        
+                
+                  deltaOldPhaseActualPhase[0]= dataMappedForMotorisedPosition[networkSize-1]-oldDataMappedForMotorisedPosition[0];
+                  positionFromShiftedOscillator[0]=(int) deltaOldPhaseActualPhase[0];
+                for (int i = 1; i < (networkSize-0); i++) {  
+	                deltaOldPhaseActualPhase[i] = dataMappedForMotorisedPosition[i-1]-oldDataMappedForMotorisedPosition[i];
+                  print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
+                    //   netPhaseBase[i-1]= netOldPhaseBase[i] ;//+ deltaOldPhaseActualPhase[i];
+                     //   dataMappedForMotorisedPosition[i] = (int)  deltaOldPhaseActualPhase[i];
+                  positionFromShiftedOscillator[i] = (int)  deltaOldPhaseActualPhase[i];
+                  println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
+                  net.naturalFrequency[i-1]= net.naturalFrequency[i];      
+                }
+      
+    }     
+
+
+  if (key == '%') {
            println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
@@ -343,15 +127,8 @@ void phasePatternBase() { // trigged with $ or *
                   
                  //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
        
-   }
-           for (int i = 0; i < (networkSize-0); i++) {  
-        //    net.phase[i]= netPhaseBase[i]; // find a way to display on screen
-            //           text ( " netOld " +  netOldPhaseBase[i] + " netPhaseBase[i-1] " +  netPhaseBase[i-1]+ " deltaOldPhaseActualPhase [i] " +     deltaOldPhaseActualPhase [i], 800, 500+100*i)  ;
-        }
-           text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
-
-
-
+  }
+  
   if (key == 'u'  ) { 
     println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && circularMov == false
     oldMemoryi=memoryi;
@@ -536,7 +313,8 @@ void phasePatternBase() { // trigged with $ or *
     println ("V$  Shift frequencies <- Two by one by keeping last position switched and multipied *2"); // based on i$ ||
     formerKey = 'V';
     //    formerKeyv();
-  } 
+  }
+
   /*
     if (key == 'x') { 
    println ("x$  FOLLOW OSCILLATOR 11"); // based on  ||
@@ -570,6 +348,7 @@ void phasePatternBase() { // trigged with $ or *
      net.naturalFrequency[0]=OldFrequency[(networkSize-1)];
     
   }
+
     if (key == 'A') { //A$  Shift frequencies one by one. 
     float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -4.34, 4.34); 
     for (int i = 0; i < networkSize; i++) {
@@ -592,107 +371,7 @@ void phasePatternBase() { // trigged with $ or *
   }
 
 
-  if (key == 'Z') { 
-    println (" Z$  Divide frequencies F11 by 12/2, F9 by 10/2 and, F7 by 8/2 so on. ");// fonctionne si F11=X et les autres vont à la meme vitesse
-    // " Z$  Divide frequencies F1 by 12/2, F3 by 10/2 and, F5 by 8/2, F7 by 6/2, F9 by 4/2, F11 by 2/2 so on. ");// fonctionne si F11=X et les autres vont à la meme vitesse
-    float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -2, 2);
-
-    //    net.naturalFrequency[i]= OldFrequency[networkSize-1]; 
-
-    net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1]; 
-    //    net.naturalFrequency[networkSize-1]= 4;
-
-    //    net.naturalFrequency[networkSize-3]= OldFrequency[networkSize-1]/2; 
-
-    // affecting only F1, F3...
-    for (int i = 0; i < (networkSize); i++) { 
-      //    net.naturalFrequency[i]=  net.naturalFrequency[networkSize-1];
-
-      //   net.naturalFrequency[i]= net.naturalFrequency[0];
-      int pair = 0; // impair
-
-      int pairmodulo;
-      pairmodulo = (i+pair)%2;
-      //     print ("pairmodulo "); println (pairmodulo);
-      if (pairmodulo==1) {
-        //    if (i%1==0){
-        // net.naturalFrequency[i]=  net.naturalFrequency[networkSize-1]/(i+1); // du plus haut au plus bas
-        // net.naturalFrequency[networkSize-i]= net.naturalFrequency[networkSize-1]/((i+1)/2.0);
-        // " Z$  Divide frequencies F1 by 12/2, F3 by 10/2 and, F5 by 8/2, F7 by 6/2, F9 by 4/2, F11 by 2/2 so on. ");// fonctionne si F11=X et les autres vont à la meme vitesse
-        //    divideFrequency[networkSize-i] = net.naturalFrequency[networkSize-1]/((i+1)/2.0);
-        //   divideFrequency[networkSize-i] = net.naturalFrequency[networkSize-1]/((i+1)/(8.0/12.0));
-
-
-        //      net.naturalFrequency[networkSize-i]= net.naturalFrequency[networkSize-1]/((i+1)/2.0);
-
-        //*********************
-        //        divideFrequency[networkSize-i] = net.naturalFrequency[networkSize-1]/((i+1)/(12/8.0));
-        //      net.naturalFrequency[networkSize-i]=  divideFrequency [networkSize-i];
-
-        print(" ");  
-        print (i); 
-        print ("  Oscillator pair : "); 
-        print (networkSize-i-1); 
-        print (" affected by the division: "); 
-        print  ((i+1)/(12/8.0)); // Oscillator 0 when i=11 Oscillator 10 when i = 1;
-        //      printSummary(networkSize-i);
-      }
-    }
-    println (" ");
-    // affecting only F0, F2.. divied with 7,6.. and F10 divided with 2 
-
-    for (int i = 0; i < (networkSize); i++) { 
-      //net.naturalFrequency[i]= net.naturalFrequency[0];
-      int pair = 1;
-      int pairmodulo;
-      pairmodulo = (i+1)%2;
-      //     print ("pairmodulo "); println (pairmodulo);
-      if (pairmodulo==1) {
-        //     net.naturalFrequency[networkSize-0-i]= net.naturalFrequency[networkSize-1]/((i+1)/2.0); // (multipild F11 of 2)
-
-        //       net.naturalFrequency[networkSize-i-2]= net.naturalFrequency[networkSize-1]/((i+4)/2.0); // (multipild F11 of 2) bug 
-
-        //*********
-        //          divideFrequency[networkSize-i-1] = net.naturalFrequency[networkSize-1]/((i+0.75)/(12/8.0));
-        //           net.naturalFrequency[networkSize-i-1]=  divideFrequency [networkSize-i-1];
-
-        //          print(" ");  print (i); print ("Oscillator impair : "); print (networkSize-i-1); print ("  affected by the division: "); println ((i+0.75)/(12/8.0));  //Oscillator 1 it's i=10  Oscillator 11 it's i= 0
-        //        printSummary(networkSize-i-1);
-        //       printSummary(i);
-      }
-    }
-  }
-  if (key == 'z') {  
-    println ("//z$  Shift frequencies one by one") ;
-    float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -2, 2);
-    net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1]/1; 
-
-    for (int i = 2; i < (networkSize-0); i++) { 
-      //    for (int i = networkSize-2; i > -1; i--) { 
-      //   net.naturalFrequency[i]= net.naturalFrequency[0];
-      int pair = 0;
-      if (pair==(i+1)%2) {
-        //    if (i%1==0){
-        //    net.naturalFrequency[i]=  net.naturalFrequency[networkSize-1]/(i+1);
-        //  net.naturalFrequency[networkSize-0-i]= net.naturalFrequency[networkSize-1]/((((i/2)*1)));
-        net.naturalFrequency[networkSize-i]= net.naturalFrequency[networkSize-1]/((i+1)/2.0);
-        print (i);
-        printSummary(i);
-      }
-    }
-  }
-  /*
-        if (key == 'a') { // a$
-   print("a");  println ("Incremente Same offset of phases 12hit");    
-   for (int i = 0; i < networkSize; i++) { 
-   netPhaseBase[i] += (TWO_PI/(networkSize/1))*(i+1); // TRES BIEN 
-   netPhaseBase[i]=  netPhaseBase[i]%TWO_PI; //
-   printSummary(i);
-   }
-   } 
-   */
-   
- //} //ENDFORMERSARTKEYJ
+  
  
   if (key == 'e') { 
     println ("Incremente positions  12/3 hit");  //e$
@@ -790,7 +469,9 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
     // }
-  } else if (key == 's') {
+  }
+  
+   else if (key == 's') {
     println(" s$s: Reduce the gap between phases by f0 "); //S$
     for (int i = 0; i < networkSize-0; i++) {
 
@@ -801,7 +482,9 @@ void phasePatternBase() { // trigged with $ or *
 
       printSummary(i);
     }
-  } else if (key == 'S') { 
+  }
+  
+   else if (key == 'S') { 
     println(" S$: Reduce the gap between phases by f0  ");    
     for (int i = 0; i < networkSize; i++) {      
       //   netPhaseBase[i] -=(networkSize-1-i)*0.1;
@@ -811,6 +494,7 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
   }
+
   else if (key == 'd') {
     println(" d$: INCREASE (clock way) the gap between phases of 5% from the oscillator " + oscillatorBlocked + " called with the same number as memoryi " + memoryi );
     for (int i = 0; i < networkSize; i++) {
@@ -904,55 +588,7 @@ void phasePatternBase() { // trigged with $ or *
   }
 
     //****************** To TEST when frequencies are set at 0
-  else if (keyCode == CONTROL) { 
-    println("INCREASE phases with special modulo   "); //P$ 
-    //else if (key == 'π') { println("INCREASE phases with special modulo   "); //P$ 
-
-    for (int i = 0; i < networkSize; i++) {
-
-    //  netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
-    //  netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
-    //** netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-
-     netPhaseBase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-
-
-      //     netPhaseBase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
-    //  netPhaseBase[i]=  netPhaseBase[i]%(TWO_PI/1); // try without dataMarkedToTeensyJo
-
-    //  for (int i = 0; i < networkSize; i++) {
-      
-      if (netPhaseBase[i] >=  0) { // number of revLfoolution is even and rotation is clock wise   
-        dataMappedForMotorisedPosition[i]= int (map (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep)); //
-        }
-      
-     }
-   
-      keyCode = BACKSPACE;
     
-    int speedLocalDelta=4; 
-    int driverOnOff=3;
-    int dataToTeensyNoJo=-3; // trig noJoe in Teensy
-
-    String dataMarkedToTeensyPhasePattern  ="<" //   
-
-     
-     + dataMappedForMotorisedPosition[5]+","+dataMappedForMotorisedPosition[4]+","+dataMappedForMotorisedPosition[3]+","+dataMappedForMotorisedPosition[2]+","
-     + dataMappedForMotorisedPosition[1]+","+dataMappedForMotorisedPosition[0]    //+          ","+ 0 + ","+ 0","+ 0","+ 0 +","
-    
-     +  speedLocalDelta + ","
-      // + driverOnOff +","+dataToTeensyNoJo+","+decompte[8]+","+decompte[7]+","+decompte[6]+","
-     +decompte[5]+","+decompte[4]+","+decompte[3]+","+decompte[2]+"," // to manage 12 note +decompte[1]+","+decompte[0]+ ","
-
-      +  decompte[1]+"," +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+">";    
-
-    println(frameCount + ": " +  " dataMarkedToTeensyPhasePattern " + ( dataMarkedToTeensyPhasePattern ));
-   // teensyport.write(dataMarkedToTeensyPhasePattern); // Send data to Teensy. only the movement
-
-
-  }
-
-
  
   else if (key == 'P') { 
     println("INCREASE phases with special modulo P$   "); //P$ 
@@ -1025,7 +661,10 @@ void phasePatternBase() { // trigged with $ or *
       //      netPhaseBase[i]= 0; 
       printSummary(i);
     }
-  } else if (key == 'ç') {
+  }
+
+
+  else if (key == 'ç') {
     if (circularMov==true) {
 
       for (int i = 0; i < networkSize; i++) {
@@ -1093,19 +732,24 @@ void phasePatternBase() { // trigged with $ or *
       // interFrequency[memoryi] = -1* net.naturalFrequency[i];
       printSummary(i);
     }
-  } else if (key == '0') {//Set all frequencies at 2.0");
+  }
+  
+   else if (key == '0') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize-0; i++) {   
       //  net.naturalFrequency[i]=2.0; 
       net.naturalFrequency[i]=1.0;
     }
     //  printSummary(i);
-  } else if (key == '°') {//Set all frequencies at 2.0");
+  }
+   else if (key == '°') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize; i++) {   
       //  net.naturalFrequency[i]=2.0; 
       net.naturalFrequency[i]=0;
     }
     //  printSummary(i);
-  } else if (keyCode == CONTROL) {  
+  }
+  
+   else if (keyCode == CONTROL) {  
     println(" RECORD COUPLING "); 
 
     text ( coupling, - 400, height - 1000); // coupling appears on screen and is recorded on the file data.txt
@@ -1115,6 +759,5 @@ void phasePatternBase() { // trigged with $ or *
   //************************************ ENDPENDULARPATTERN  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
-  }
- 
+ }
 }

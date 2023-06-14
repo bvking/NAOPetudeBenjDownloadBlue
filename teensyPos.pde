@@ -2,7 +2,7 @@ void teensyPos(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
  
- if ( measure < 635)  {  
+ if ( measure <= 635)  {  
 
   if ( keyMode == " propagationBallRotationBis "  
     )  {   // || keyMode == " addSignalOneAndTwo "
@@ -90,11 +90,18 @@ void teensyPos(){
     dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
       }
    }
-
+/*
    if (formerKeyMetro == '*' ) {
+        for (int i = 0; i < networkSize-0; i++) { // 
+        lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+         //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
+        } 
+   }
+*/
+  if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
-    lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
-   //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
+    
+     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];  
     } 
   }
 
