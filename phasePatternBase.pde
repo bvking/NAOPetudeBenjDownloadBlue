@@ -286,32 +286,32 @@ void phasePatternBase() { // trigged with $ or *
   }
 
   if (key == 'i') {
-          println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
+           println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
-          println (" iiiiiiiiiiiii Trigged ? ");
+           println (" iiiiiiiiiiiii Trigged ? ");
       if (memoryi>=0) {
-    oldMemoryi=memoryi;
-    memoryi=(memoryi-1);
+           oldMemoryi=memoryi;
+            memoryi=(memoryi-1);
     }
       
     if ( memoryi<=-1) {
-       memoryi=networkSize-1;
-       oldMemoryi=0;
-        println (" your herreeeeeee iiiiiiiiiiiii ");
-        text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
+          memoryi=networkSize-1;
+          oldMemoryi=0;
+           println (" your herreeeeeee iiiiiiiiiiiii ");
+           text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
     }
-    textSize(250);
-    for (int i = 0; i < (networkSize-0); i++) {   
+         textSize(250);
+        for (int i = 0; i < (networkSize-0); i++) {   
    //   lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
     //  netOldPhaseBase[i]=lastPositionFromCircularMode[i];
    
     //   netOldPhaseBase[i]=netPhaseBase[i];
-       netPhaseBase[i]= 800* (i+1);
-       net.oldPhase[i]=net.phase[i];
-       net.phase[i]= TWO_PI/16* (i+1);
+   //    netPhaseBase[i]= 800* (i+1);
+   //    net.oldPhase[i]=net.phase[i];
+   //    net.phase[i]= TWO_PI/16* (i+1);
    //   netPhaseBase[i]=dataMappedForMotorisedPosition[i];
 
-       text (" netOld " + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] , 200, 200+100*i);
+         text (" netOld " + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] , 200, 200+100*i);
          println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] ); 
    }
        net.phase[networkSize-1]=net.oldPhase[0];
@@ -327,21 +327,21 @@ void phasePatternBase() { // trigged with $ or *
    
   
 
-           deltaOldPhaseActualPhase[0]+= netPhaseBase[networkSize-1]-netOldPhaseBase[0];
-        for (int i = 1; i < (networkSize-0); i++) {  
-	        deltaOldPhaseActualPhase[i] = netPhaseBase[i-1]-netOldPhaseBase[i];
-               print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
-       //  netPhaseBase[i-1]= netPhaseBase[i-1] + deltaOldPhaseActualPhase[i];
-         dataMappedForMotorisedPosition[i] += (int)  deltaOldPhaseActualPhase[i];
-               println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
-          net.naturalFrequency[i-1]= net.naturalFrequency[i];      
+                deltaOldPhaseActualPhase[0]+= netPhaseBase[networkSize-1]-netOldPhaseBase[0];
+                 for (int i = 1; i < (networkSize-0); i++) {  
+	               deltaOldPhaseActualPhase[i] = netPhaseBase[i-1]-netOldPhaseBase[i];
+                  print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
+                 netPhaseBase[i-1]= netPhaseBase[i] ;//+ deltaOldPhaseActualPhase[i];
+                 dataMappedForMotorisedPosition[i] += (int)  deltaOldPhaseActualPhase[i];
+                 println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
+                 net.naturalFrequency[i-1]= net.naturalFrequency[i];      
         
   
-          }
+                  }
         
 
-       //   netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
-        //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
+                  netPhaseBase[networkSize-1]=  netOldPhaseBase[0];
+                 //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
        
    }
            for (int i = 0; i < (networkSize-0); i++) {  

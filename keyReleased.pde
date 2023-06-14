@@ -367,7 +367,7 @@ void keyReleased() {
      //  }
      //  teensyPos();  // selon PasePatternBase
 
-     
+
        //    phasePattern(); // enable to change configuration 
        
                 for ( int i=0; i< networkSize; i++) {
@@ -381,7 +381,7 @@ void keyReleased() {
       
             rotate (HALF_PI);
 
-        text (" NO trigEventWithAbletonSignal ", 0, -500 );
+         text (" NO trigEventWithAbletonSignal ", 0, -500 );
          textSize (200);
 
           for (int i = 1; i < networkSize-0; i++) {  
