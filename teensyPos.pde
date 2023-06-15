@@ -159,7 +159,7 @@ void teensyPos(){
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
 
-            send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+        //    send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
 
         if (positionMov != " troisieme " && measure<17) {
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);

@@ -111,7 +111,7 @@ void setPort() {
         if (portOfBigMachineConnected = true) { // 101  teensy 3.5
             
 
-            teensy4port = new Serial(this, ports[1],115200); // si port connecté Monterey
+            teensy4port = new Serial(this, ports[0],115200); // si port connecté Monterey
     
     }
     
@@ -121,7 +121,7 @@ void setPort() {
             //*************** WITH TEENSY connected
           //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
           //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
-            teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+            teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
     }
     }
     
@@ -132,8 +132,8 @@ void setPort() {
     //*************** WITHOUT ENCODER connected
     // if (portsUSBfrom2 == "/dev/cu.usbmodem127301101" ) {
          if(portConnected ==  true)  { 
-        println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3] + " portConnected " + portConnected);
-        encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
+        println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[2] + " portConnected " + portConnected);
+        encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
         
        // Read bytes into a buffer until you get a linefeed (ASCII 10):
         encoderReceiveUSBport101.bufferUntil('\n');
