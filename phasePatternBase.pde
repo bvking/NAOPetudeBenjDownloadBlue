@@ -40,6 +40,7 @@ void phasePatternBase() { // trigged with $ or *
            println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
+    /*
       if (memoryi>=0) {
            oldMemoryi=memoryi;
             memoryi=(memoryi-1);
@@ -51,13 +52,13 @@ void phasePatternBase() { // trigged with $ or *
            println (" your herreeeeeee iiiiiiiiiiiii ");
            text (" your herreeeeeee iiiiiiiiiiiii ", 200, 200);
        }
-        
+    */    
         
                 
-                  deltaOldPhaseActualPhase[0]= dataMappedForMotorisedPosition[networkSize-1]-oldDataMappedForMotorisedPosition[0];
+                  deltaOldPhaseActualPhase[0]=abs ( dataMappedForMotorisedPosition[networkSize-1]-oldDataMappedForMotorisedPosition[0]);
                   positionFromShiftedOscillator[0]=(int) deltaOldPhaseActualPhase[0];
                 for (int i = 1; i < (networkSize-0); i++) {  
-	                deltaOldPhaseActualPhase[i] = dataMappedForMotorisedPosition[i-1]-oldDataMappedForMotorisedPosition[i];
+	                deltaOldPhaseActualPhase[i] =abs ( dataMappedForMotorisedPosition[i-1]-oldDataMappedForMotorisedPosition[i]);
                   print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
                     //   netPhaseBase[i-1]= netOldPhaseBase[i] ;//+ deltaOldPhaseActualPhase[i];
                      //   dataMappedForMotorisedPosition[i] = (int)  deltaOldPhaseActualPhase[i];

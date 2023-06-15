@@ -21,7 +21,7 @@ float [] oldTrigedSignFromAbleton = new float [networkSize];
  float [] deltaOldPhaseActualPhase = new float [networkSize];
 
 
-int [] encoderTouched = new int [networkSize];
+boolean [] encoderTouched = new boolean [networkSize];
 int [] RevsContinue = new int [networkSize];
 
 int [] positionFromShiftedOscillator  = new int [networkSize];
