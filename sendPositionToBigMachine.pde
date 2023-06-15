@@ -4,9 +4,13 @@ void sendPositionToBigMachine(){
 
              if ( encoderTouched[i]==true){ 
    
-                println(" Main Found encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
+                println(" Main Found encodeur to BigMachine" ); 
 
                 readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep);
+
+                    println(" readPositionEncoder[i]" + readPositionEncoder[i] + " " + i + " " + encoderTouched[i] + " " + encodeur[i]);  
+                    println(" readPositionEncoder[i]" + readPositionEncoder[i] + " " + i + " " + encoderTouched[i] + " " + encodeur[i]);  
+
 
              } 
      } 
@@ -18,12 +22,13 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
      }
     
     dataFromMode = "<"
+
     
-     + dataMappedForMotorisedPosition[9]+ ","+ dataMappedForMotorisedPosition[8]+ ","
-     + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
+     + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
+     + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
     
-    + dataMappedForMotorisedPosition[5] + "," + dataMappedForMotorisedPosition[4] + "," + dataMappedForMotorisedPosition[3] + "," + dataMappedForMotorisedPosition[2] + ","
-    + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","      // 
+    + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
+    + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
     
     //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
     //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 

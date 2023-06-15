@@ -390,9 +390,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
           for (int i = 0; i < networkSize-0; i++) {  
            text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i]+
-                   " oldMotorisedPosition " + oldDataMappedForMotorisedPosition[i] + " MotorisedPosition[i] " +  dataMappedForMotorisedPosition[i]+
-                   " net " +  net.phase[i] + " oldPhaseBase[i] " +  net.oldPhase [i] + " netPhaseBase[i] " +  netPhaseBase[i]+ " netOld " +  netOldPhaseBase[i] + 
-                   " deltaOldPhaseActualPhase [i] " +deltaOldPhaseActualPhase[i], -1500 , 500 +(i*50));
+                    " readPositionEncoder " + readPositionEncoder[i]+ " "
+               //    " oldMotorisedPosition " + oldDataMappedForMotorisedPosition[i] + " MotorisedPosition[i] " +  dataMappedForMotorisedPosition[i]+
+              //     " net " +  net.phase[i] + " oldPhaseBase[i] " +  net.oldPhase [i] + " netPhaseBase[i] " +  netPhaseBase[i]+ " netOld " +  netOldPhaseBase[i] + 
+              //     " deltaOldPhaseActualPhase [i] " +deltaOldPhaseActualPhase[i]
+                   , -1500 , 500 +(i*50));
             } 
  
   

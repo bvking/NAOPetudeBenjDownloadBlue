@@ -19,7 +19,7 @@ float trigedWithAnySign, oldTrigedWithAnySign;
 float [] trigedSignFromAbleton = new float [networkSize];
 float [] oldTrigedSignFromAbleton = new float [networkSize];
 
- float [] deltaOldPhaseActualPhase = new float [networkSize];
+float [] deltaOldPhaseActualPhase = new float [networkSize];
 
 
 boolean [] encoderTouched = new boolean [networkSize];
@@ -27,6 +27,7 @@ int [] RevsContinue = new int [networkSize];
 
 int [] positionFromShiftedOscillator  = new int [networkSize];
 
+int [] dataMappedForMotorisedBigMachine = new int [networkSize];
 
 int [] oldDataMappedForMotorisedPosition = new int [networkSize];
 int [] positionMotorisedFromContinuesMod = new int [networkSize];

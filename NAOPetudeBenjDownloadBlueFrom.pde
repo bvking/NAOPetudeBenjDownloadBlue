@@ -128,11 +128,13 @@ void draw() {
     countRevs(); // below modePendular to compute revolution
      } 
 
-   teensyPos(); 
+   
 
 
     sendPositionFromTouchedEncodeurNetworkSizeOnly();
     sendPositionToBigMachine();
+
+    teensyPos(); 
        
 
 

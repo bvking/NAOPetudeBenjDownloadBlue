@@ -1,3 +1,4 @@
+
 void teensyPos(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
@@ -60,7 +61,7 @@ void teensyPos(){
        }
 
 
-     for (int i = 0; i < networkSize; i++) {
+         for (int i = 0; i < networkSize; i++) {
   
      //*******************************  ASSIGN MOTOR WITH POSITION
 
@@ -85,11 +86,12 @@ void teensyPos(){
 
      //******************* ADD POSITION FROM  SWITCHED MODE 
 
-    if (formerKeyMetro == '$') {
-    for (int i = 0; i < networkSize; i++) {
+       if (formerKeyMetro == '$') {
+         for (int i = 0; i < networkSize; i++) {
         dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-        }
-     }
+        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];
+            }
+          }
         /*
          if (formerKeyMetro == '*' ) {
         for (int i = 0; i < networkSize-0; i++) { // 
@@ -98,19 +100,31 @@ void teensyPos(){
            } 
           }
           */
-      if (formerKeyMetro == '*' ) {
-    for (int i = 0; i < networkSize-0; i++) { // 
+
+            if (formerKeyMetro == '*' && encoderTouched[0]) {
+              for (int i = 0; i < networkSize-0; i++) { // 
     
-     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];  
+     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+     dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
+        print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
        } 
         }
 
       if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
       for (int i = 0; i < networkSize-0; i++) { // 
        readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep); 
-       dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]+readPositionEncoder[i];  
-     } 
+     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];  
+     
+      dataMappedForMotorisedBigMachine[i] = dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+    
+       print ( " add Encodeur To Processing Position " + readPositionEncoder[i]);
+        print ( " add Encodeur To Processing Position ");
+         print ( " add Encodeur To Processing Position ");
+          print ( " add Encodeur To Processing Position ");
+      } 
     }
+
+    
 
 
       if ( keyMode == " propagationBallRotationBis " ) {
@@ -136,7 +150,7 @@ void teensyPos(){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
 
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
-            
+
         if (positionMov != " troisieme " && measure<17) {
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
          }
