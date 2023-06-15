@@ -111,7 +111,7 @@ void setPort() {
         if (portOfBigMachineConnected = true) { // 101  teensy 3.5
             
 
-            teensy4port = new Serial(this, ports[0],115200); // si port connecté Monterey
+      //      teensy4port = new Serial(this, ports[0],115200); // si port connecté Monterey
     
     }
     
