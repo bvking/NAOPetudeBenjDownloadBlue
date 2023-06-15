@@ -131,8 +131,8 @@ void draw() {
    
    //teensyPos(); 
 
-    sendPositionFromTouchedEncodeurNetworkSizeOnly();
-    sendPositionToBigMachine();
+   // sendPositionFromTouchedEncodeurNetworkSizeOnly();
+   // sendPositionToBigMachine();
 
     teensyPos(); 
        
