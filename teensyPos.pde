@@ -107,7 +107,7 @@ void teensyPos(){
 
     if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
       for (int i = 0; i < networkSize-0; i++) { // 
-       readPositionEncoder[i] = map (encodeur[i], 0, 800, 0, numberOfStep); 
+       readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep); 
 
     
      dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]+readPositionEncoder[i];  

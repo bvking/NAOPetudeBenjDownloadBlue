@@ -146,19 +146,19 @@ void draw() {
 } 
 
 
-    if ( encoderTouched[5]){ 
+    if ( encoderTouched[5]==true){ 
 
    //     keyMode = " samplingModeInternal ";
      
      
-println("Found encodeur5 a match in   " + encoderTouched[5] + " " + encodeur[5]);  
+println(" Main Found encodeur5 A MATCH in   " + encoderTouched[5] + " " + encodeur[5]);  
 textSize(300);
 //background(50);
 } 
 
-    if ( !encoderTouched[5]){ 
+    if ( encoderTouched[5]==false){ 
     
-println("Found encodeur5 not a match in   " + encoderTouched[5] + " " + encodeur[5]);  
+println(" Main Found encodeur5 not a match in   " + encoderTouched[5] + " " + encodeur[5]);  
 textSize(100);
 //background(75);
 } 

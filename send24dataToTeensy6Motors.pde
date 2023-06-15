@@ -9,13 +9,13 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
 
        dataFromMode ="<"
 
-    //  + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
+       //  + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
 
       + dataMappedForMotorisedPosition[5]+ ","+ dataMappedForMotorisedPosition[4]+ ","+ dataMappedForMotorisedPosition[3]+","+ dataMappedForMotorisedPosition[2]+ ","
       + dataMappedForMotorisedPosition[1]+ ","+ dataMappedForMotorisedPosition[0] + ","      // 
 
-    //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
-    //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
+       //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
+     //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
       
        
        +0+","+0+","
@@ -33,37 +33,42 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
       dataTransformed = " dataNotComputeInTeensy from mode ";
       println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
 
-  }
+      }
   
-        else if (computeData>-1){dataTransformed = " dataComputeInTeensy from mode ";
-          println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
-  }
+        else if (computeData>-1){
+            dataTransformed = " dataComputeInTeensy from mode ";
+            println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
+         }
  
 
-      if (portsUSBfrom2 != "NC")  {   // // If not null, then a match was found
-          //  teensyport.write(dataFromMode);
-         //   teensy4port.write(dataFromMode);
-      if (frameCount <=200) 
-          text ("port USB connected " + portsUSBfrom2 + " ", 0, 700); 
-          println ("port USB connected " + portsUSBfrom2 );  
-   }
+      if (portConnected)  {   // // If not null, then a match was found
+          
+             teensyport.write(dataFromMode);
+
+             //   teensy4port.write(dataFromMode);
+              if (frameCount <=200)  { 
+               text ("port USB connected " + portsUSBfrom2 + " ", 0, 700); 
+               println ("port USB connected " + portsUSBfrom2 + " portConnected " + portConnected );  
+            }
+          }
 
      if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
-        // teensyport.write(dataFromMode);
-       //   teensy4port.write(dataFromMode);
-      if (frameCount <=200) 
-     text ("port not connected " + portsUSBfrom2 + " ", 0, 700); 
-     println ("port USB connected " + portsUSBfrom2 );   
-   }
+                  // teensyport.write(dataFromMode);
+                //   teensy4port.write(dataFromMode);
+           if (frameCount <=200) { 
+             text ("port NOT connected " + portsUSBfrom2 + " ", 0, 700); 
+             println ("port  USB NOT connected " + portsUSBfrom2 );   
+       }
 
       if (frameCount ==1) noLoop();
 
-  }
+       }
+   }
 
   void setPort(){
 
    String[] ports = Serial.list();
-   String[] portsUSB = { "GA", "FL", "NC", "BLI", "BLA", "BLE" ,"BLI", "BLO", "BLU" };
+   String[] portsUSB = { "GA", "FL", "NC", "teensy4.1", "BLA", "BLE" ,"BLI", "BLO", "BLU" };
    arrayCopy(ports, portsUSB);
 
 
@@ -78,25 +83,41 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
       portConnected=true;  
       }
 
+   if (portsUSB[3] == "Teensy 4.1")  {   // // If not null, then a match was found
+    //  portsUSBfrom3 = portsUSB[3];
+      println(" Teensy 4.1 NOT CONNECTED " + portsUSBfrom2 + " ");  
+      }
+
+   if (portsUSB[3] != "Teensy 4.1")  {   // // If not null, then a match was found
+     
+      println(" Teensy 4.1 CONNECTED " ); //  + portsUSBfrom2 + " "
+    //  portConnected=true;  
+      }
+
   printArray (portsUSB);
   printArray (ports);
-
+  
+  if (portsUSBfrom2 != "NC" ) {
+    if (portConnected=true ) { // teensy 3.5
+    
     //*************** WITH TEENSY connected
   //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
   //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
-      teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+      teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+      }
+    }
 
    if ( portsUSBfrom2 == "NC" ) { 
          println ( " NO PORT CONNECTED ");
-         //  teensy4port = new Serial(this, ports[2],115200); // si port connecté Monterey
+         //  teensy4port = new Serial(this, ports[3],115200); // si port connecté Monterey
      }
   //*************** WITHOUT ENODEER connected
- //  if (portsUSBfrom2 != "NC")  { 
-  if ( portConnected)  { 
-        println ( "  PORT CONNECTED ");
- //   encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
+ //   if (portsUSBfrom2 == "/dev/cu.usbmodem127301101" ) {
+  if ( portConnected==true)  { 
+        println ( "  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3]+ " portConnected " + portConnected);
+    encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
 
   // Read bytes into a buffer until you get a linefeed (ASCII 10):
- //   encoderReceiveUSBport101.bufferUntil('\n');
+    encoderReceiveUSBport101.bufferUntil('\n');
     }
  }
