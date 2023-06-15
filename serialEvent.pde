@@ -2,17 +2,17 @@ void serialEvent(Serial encoderReceiveUSBport101) {
 
    String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');
  
-  String[] m0 = match(myEncodeur, " encodeur0 ");
-  String[] m1 = match(myEncodeur, " encodeur1 ");
+  String[] m0 = match(myEncodeur, "encodeur0");
+  String[] m1 = match(myEncodeur, "encodeur1");
  
-  String[] m2 = match(myEncodeur, " encodeur2 ");
-  String[] m3 = match(myEncodeur, " encodeur3 ");
+  String[] m2 = match(myEncodeur, "encodeur2");
+  String[] m3 = match(myEncodeur, "encodeur3");
   String[] m4 = match(myEncodeur, "encodeur4");
   String[] m5 = match(myEncodeur, "encodeur5");
 
     if (m0 != null) {  // If not null, then a match was found
       encoderTouched[0]=true;
-   }
+    }
    else  encoderTouched[0]=false;
 
      if (m1 != null) {  // If not null, then a match was found

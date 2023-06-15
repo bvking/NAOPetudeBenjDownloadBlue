@@ -132,6 +132,15 @@ void draw() {
 
 
     sendPositionFromTouchedEncodeurNetworkSizeOnly();
+       
+
+
+       if ( encoderTouched[5]==true){ 
+
+   //     keyMode = " samplingModeInternal ";
+     
+        } 
+
 
 //   arduinoPos(); // just to trig data to live when particular position of phase or pattern are created by the hole balls (oscillator)
    
