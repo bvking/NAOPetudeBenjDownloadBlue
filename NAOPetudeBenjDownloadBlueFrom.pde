@@ -137,7 +137,7 @@ void draw() {
 
        if ( encoderTouched[5]==true){ 
 
-   //     keyMode = " samplingModeInternal ";
+        keyMode = " samplingModeInternal ";
      
         } 
 
