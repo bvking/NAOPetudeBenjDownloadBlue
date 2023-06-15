@@ -129,9 +129,9 @@ void setPort() {
         println(" NO PORT CONNECTED ");
         //  teensy4port = new Serial(this, ports[3],115200); // si port connecté Monterey
 }
-    //*************** WITHOUT ENODEER connected
+    //*************** WITHOUT ENCODER connected
     // if (portsUSBfrom2 == "/dev/cu.usbmodem127301101" ) {
-    if(portConnected ==  true)  { 
+         if(portConnected ==  true)  { 
         println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3] + " portConnected " + portConnected);
         encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
         

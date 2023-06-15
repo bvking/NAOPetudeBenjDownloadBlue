@@ -100,7 +100,7 @@ void teensyPos(){
            } 
           }
           */
-
+/*
             if (formerKeyMetro == '*' && encoderTouched[0]) {
               for (int i = 0; i < networkSize-0; i++) { // 
     
@@ -109,7 +109,17 @@ void teensyPos(){
         print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
        } 
         }
+*/
 
+            if (formerKeyMetro == '*' ) {
+              for (int i = 0; i < networkSize-0; i++) { // 
+    
+     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+     dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
+        print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
+       } 
+        }
+    /*
       if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
       for (int i = 0; i < networkSize-0; i++) { // 
        readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep); 
@@ -123,7 +133,7 @@ void teensyPos(){
           print ( " add Encodeur To Processing Position ");
       } 
     }
-
+    */
     
 
 

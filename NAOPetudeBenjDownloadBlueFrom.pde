@@ -129,7 +129,7 @@ void draw() {
      } 
 
    
-
+   //teensyPos(); 
 
     sendPositionFromTouchedEncodeurNetworkSizeOnly();
     sendPositionToBigMachine();

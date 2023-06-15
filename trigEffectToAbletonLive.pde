@@ -10,9 +10,9 @@ void sendPositionFromTouchedEncodeurNetworkSizeOnly(){
 
    if ( encoderTouched[i]==true){ 
    
-println(" Main Found encodeur A MATCH in   " + encoderTouched[i] + " " + encodeur[i]);  
- Pos[i] =(int) map (encodeur[i], 0, 800, 0, 127);
-textSize(300);
+   println(" Main Found encodeur A MATCH in   " + encoderTouched[i] + " " + encodeur[i]);  
+   Pos[i] =(int) map (encodeur[i], 0, 800, 0, 127);
+   textSize(300);
 //background(50);
 } 
 } 
