@@ -104,6 +104,7 @@ int [] result_modulo  = new int [networkSize];
 int [] AlternativeVirtualPositionFromOtherMode = new int [networkSize];
 int [] oldEncodeur = new int [networkSize];
 int [] encodeur = new int [networkSize];
+int [] readPositionEncoder = new int [networkSize];
 float [] newPosFollowed= new float [networkSize]; // followOppositeWay
 
 
@@ -133,7 +134,7 @@ Serial encoderReceiveUSBport101; // The native serial port of the DUE fibish wit
 Serial teensyport;
 Serial teensy4port;
 
- int [] formerFrameCountFromSerialEvent = new int [networkSize];
+int [] formerFrameCountFromSerialEvent = new int [networkSize];
 
 String dataTransformed ;
 String dataFromMode ;
