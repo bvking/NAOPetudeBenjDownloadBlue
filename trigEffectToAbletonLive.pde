@@ -4,7 +4,19 @@ boolean[] trigEffectBisTo = new boolean[networkSize];
 int [] timeTriggedFromEncodeur = new int[networkSize];
 int [] startMeasureFromEncodeur = new int[networkSize];
 
+void sendPositionFromTouchedEncodeurNetworkSizeOnly(){
 
+     for (int i = 0; i < networkSize; i++) 
+
+   if ( encoderTouched[i]==true){ 
+   
+println(" Main Found encodeur A MATCH in   " + encoderTouched[i] + " " + encodeur[i]);  
+textSize(300);
+//background(50);
+} 
+} 
+
+ 
 void trigEffectToAbletonLive(){
 
   
