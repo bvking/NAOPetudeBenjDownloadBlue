@@ -505,7 +505,7 @@ void recordFrame() {
      for (int i = 0; i < networkSize; i++)  {
      // dataMappedForMotorisedPosition[i]=0;
     println ( " send24datasFromRecordFrameFuncrtion?? ");
-    send24DatasToTeensy6motors (10,3,-3,1); // 1 means erase data in Teensy
+    send24DatasToTeensy6motorsToLittleMachine (10,3,-3,1); // 1 means erase data in Teensy
   
   }
  

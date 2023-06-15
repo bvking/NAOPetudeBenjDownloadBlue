@@ -6,10 +6,11 @@ import sync.*;
 PNetwork net;
 import java.util.Arrays;
 
-int networkSize = 6;
+int networkSize = 10;
 int nbBalls=networkSize;
 
 String  portsUSBfrom2;
+boolean portConnected;
 
 String music_from_ableton_live;
 String [] eventToTrig = {"0","0","0","0"};

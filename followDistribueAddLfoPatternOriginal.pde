@@ -119,7 +119,7 @@ signal[2]= map ( signal[2], 0 , 1, 0, 1);  //from Processing signal2  is -1, 1
 
 
   key='#';
-  send24DatasToTeensy6motors(10, 3, -3, -1);
+  send24DatasToTeensy6motorsToLittleMachine(10, 3, -3, -1);
 
 } 
 
@@ -180,7 +180,7 @@ signal[2]= map ( signal[2], 0 , 1, 0, 1);  //from Processing signal2  is -1, 1
   }
 
   key='#';
-  send24DatasToTeensy6motors(10, 3, -3, -1);
+  send24DatasToTeensy6motorsToLittleMachine(10, 3, -3, -1);
 
 } 
 
@@ -305,5 +305,5 @@ void followDistribueAddLfoPatternControl(){
  // net.phase[i]=phaseMapped[i];
   }
 //key = '#';
-  send24DatasToTeensy6motors(10, 3, -3, -1);
+  send24DatasToTeensy6motorsToLittleMachine(10, 3, -3, -1);
 }  

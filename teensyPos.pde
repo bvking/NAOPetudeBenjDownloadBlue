@@ -80,77 +80,78 @@ void teensyPos(){
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
      }
-   
+      
      }
 
      //******************* ADD POSITION FROM  SWITCHED MODE 
 
     if (formerKeyMetro == '$') {
     for (int i = 0; i < networkSize; i++) {
-    dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-      }
-   }
-/*
-   if (formerKeyMetro == '*' ) {
+        dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+        }
+     }
+        /*
+         if (formerKeyMetro == '*' ) {
         for (int i = 0; i < networkSize-0; i++) { // 
         lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
          //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
-        } 
-   }
-*/
-  if (formerKeyMetro == '*' ) {
+           } 
+          }
+          */
+      if (formerKeyMetro == '*' ) {
     for (int i = 0; i < networkSize-0; i++) { // 
     
      dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];  
-    } 
-  }
+       } 
+        }
 
-    if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
+      if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
       for (int i = 0; i < networkSize-0; i++) { // 
        readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep); 
-
-    
-     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]+readPositionEncoder[i];  
-    } 
-  }
+       dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]+readPositionEncoder[i];  
+     } 
+    }
 
 
-   if ( keyMode == " propagationBallRotationBis " ) {
-    for (int i = 0; i < networkSize-0; i++) { // 
-    recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
-   //  actualisePositionDataFromCircular = false|| dol==true; //
-   //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
-    }  
-   }
+      if ( keyMode == " propagationBallRotationBis " ) {
+       for (int i = 0; i < networkSize-0; i++) { // 
+       recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
+        //  actualisePositionDataFromCircular = false|| dol==true; //
+        //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
+       }  
+      }
 
 
-   if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-      for (int i = 0; i < networkSize-0; i++) {
-       //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
-       } 
-     }
-  } // end mesure 635
+       if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
+        for (int i = 0; i < networkSize-0; i++) {
+         //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
+         } 
+         }
+        } // end mesure 635
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
   if (keyMode == " trigEventWithAbletonSignal ") {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
+
+            send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+            
         if (positionMov != " troisieme " && measure<17) {
-            send24DatasToTeensy6motors(4, 3, -3, -1);
+            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
          }
 
         if (measure>=17 && measure<=41){
-            send24DatasToTeensy6motors(4, 3, -3, -1);
+            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
         }
         if (measure>41 && measure<=67){
-            send24DatasToTeensy6motors(4, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);
         }
         if (measure>67 && measure<=120){
-            send24DatasToTeensy6motors(3, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine(3, 3, -4, -1);
         }
            if (measure>=635 ){
-            send24DatasToTeensy6motors(635, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine(635, 3, -4, -1);
         }
       }
     } 
@@ -160,21 +161,21 @@ void teensyPos(){
                  || keyMode == " trigEventWithAbletonSignal "  ) {
     if (measure<=3 )
      { 
-      send24DatasToTeensy6motors(5, -3, -3, -1);
+      send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
      }
     }
 
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationBallRotationBisTest " ) {
-       send24DatasToTeensy6motors(5, -11, -3, -1);  
+       send24DatasToTeensy6motorsToLittleMachine(5, -11, -3, -1);  
      }
 
     if (keyMode == " addSignalOneAndTwo ") {
-       send24DatasToTeensy6motors(5, -10, -3, -1); 
+       send24DatasToTeensy6motorsToLittleMachine(5, -10, -3, -1); 
     }
 
     if (keyMode == " trigEventWithAbletonSignal ") {
       if (measure>100 && measure<=124){
-       send24DatasToTeensy6motors(4, 3, -12, -1);
+       send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
      }
     }    
   

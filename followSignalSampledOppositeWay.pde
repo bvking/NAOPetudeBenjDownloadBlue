@@ -244,7 +244,7 @@ text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " +
       }
     }
 
- send24DatasToTeensy6motors(4, 3, -4, -1);  // avant dernier >-1 alors compute data
+ send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);  // avant dernier >-1 alors compute data
  // mapNewPosX(); // just to dislay on screen?
   
 }

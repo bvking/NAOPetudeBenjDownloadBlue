@@ -409,7 +409,7 @@ for (int i = 0; i < networkSize; i++) {
      //  newPosF[networkSize-1]=  map (v0, 0, 800, 0, TWO_PI);
      //==================== sampling from encoder
      if (measure <=3){
-     send24DatasToTeensy6motors(5, -3, -3, -1);
+     send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
       }
 
     //    newPosF[0]=  map (encodeur[0], 0, 800, 0, TWO_PI)%TWO_PI;  // tourner CCW
@@ -1257,7 +1257,7 @@ void recordFrame() {
      for (int i = 0; i < networkSize; i++)  {
      // dataMappedForMotorisedPosition[i]=0;
     println ( " send24datasFromRecordFrameFuncrtion?? ");
-    send24DatasToTeensy6motors (10,3,-3,1); // 1 means erase data in Teensy
+    send24DatasToTeensy6motorsToLittleMachine (10,3,-3,1); // 1 means erase data in Teensy
   
   }
  

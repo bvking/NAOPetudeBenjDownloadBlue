@@ -132,6 +132,7 @@ void draw() {
 
 
     sendPositionFromTouchedEncodeurNetworkSizeOnly();
+    sendPositionToBigMachine();
        
 
 
