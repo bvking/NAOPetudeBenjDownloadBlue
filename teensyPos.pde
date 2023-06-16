@@ -114,7 +114,7 @@ void teensyPos(){
             if (formerKeyMetro == '*' ) {
               for (int i = 0; i < networkSize-0; i++) { // 
     
-     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+   //  dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
         print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
        } 
@@ -155,7 +155,7 @@ void teensyPos(){
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-  if (keyMode == " trigEventWithAbletonSignal ") {
+  if (keyMode == " trigEventWithAbletonSignal " && measure < 635) {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
 

@@ -146,7 +146,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                            net.naturalFrequency[i]= rootedFloat-0.1; // pow(2, -10);
                      }
 
-                   for (int i = 0; i < networkSize; i++) { 
+                   for (int i = 0; i < 6; i++) { 
                     key='y';keyReleased();
                   
                    } 
