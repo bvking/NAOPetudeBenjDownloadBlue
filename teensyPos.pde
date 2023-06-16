@@ -3,7 +3,7 @@ void teensyPos(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
  
- if ( measure <= 635)  {  
+ if ( measure < 635)  {  
 
   if ( keyMode == " propagationBallRotationBis "  
     )  {   // || keyMode == " addSignalOneAndTwo "

@@ -1,9 +1,9 @@
 
 void phasePatternBase() { // trigged with $ or *
   //************************************ DONT TOUCH
-    if (key == 'i') {
-       text ("phasePatternBase " , width/2 + 200, height/2);
-      print  (" phasePatternBase " + " key " + key , width/2 + 200, height/2);
+    if (key == 'i' || key == 'm' ) {
+       text ("phasePatternBase " , width/2 + 300, height/2);
+       print  (" phasePatternBase " + " key " + key);
       }
  if  ( keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
 
@@ -70,7 +70,7 @@ void phasePatternBase() { // trigged with $ or *
     }     
 
 
-  if (key == '%') {
+  if (key == '%') {  // formerkeyi
            println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
@@ -100,6 +100,8 @@ void phasePatternBase() { // trigged with $ or *
          println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i] + " netPhaseBase[i] " + netPhaseBase[i] ); 
    }
        net.phase[networkSize-1]=net.oldPhase[0];
+
+
        for (int i = 1; i < (networkSize-0); i++) {  
     //  netPhaseBase[i-1]= netOldPhaseBase[i]
     //    netOldPhaseBase[i]= dataMappedForMotorisedPosition[i];
@@ -625,12 +627,13 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
   } else if (key == 'm') {
-    println("DECREASE phases with 0.5   "); // UTILISE SI ELLES ONT deja un ecart equidistant
+    println(" enregistre phase et decale les  "); // UTILISE SI ELLES ONT deja un ecart equidistant
+
+    text (" enregistre phase et decale les  " + char (key), width/2 + 300, height/2-100) ;
     for (int i = 0; i < networkSize; i++) {  
-      //   netPhaseBase[i] -= PI/32 * netOldPhaseBase[i] ;//
-      //   netPhaseBase[i] -= PI/8 * netPhaseBase[i] ;//OK
-      
-          netPhaseBase[i] -=netPhaseBase[i]- PI/8;
+
+       //   netPhaseBase[i] -=netPhaseBase[i]- PI/8;
+         netPhaseBase[i] =net.phase[i];
    
   /*   
       if  (netPhaseBase[i]<PI/2) { 

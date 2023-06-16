@@ -4,6 +4,7 @@ textSize (100);
    if (key == 'i') {
    text ("phasePattern " ,-200+ width/2, height/2);
    }
+
 text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
 text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //************************************ DONT TOUCH
@@ -954,14 +955,10 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     }
   } else if (key == 'm') {
     println("DECREASE phases with 0.5   "); // UTILISE SI ELLES ONT deja un ecart equidistant
-    for (int i = 0; i < networkSize; i++) {  
-      //   netPhaseBase[i] -= PI/32 * netOldPhaseBase[i] ;//
-      //   netPhaseBase[i] -= PI/8 * netPhaseBase[i] ;//OK
-      
-          net.phase[i] =net.phase[i]- QUARTER_PI/8;
-
-      printSummary(i);
-      key='#';
+    for (int i = 0; i < networkSize; i++) { 
+      //   net.phase[i] =net.oldPhase[i]+ (QUARTER_PI/8);
+      net.phase[i] += (QUARTER_PI/8)*(1+i);
+    
     } 
   }   
   // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.

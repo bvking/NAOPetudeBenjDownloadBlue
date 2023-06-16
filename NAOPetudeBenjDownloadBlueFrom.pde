@@ -129,12 +129,12 @@ void draw() {
      } 
 
    
-   //teensyPos(); 
+   teensyPos(); 
 
    sendPositionFromTouchedEncodeurNetworkSizeOnly();
     sendPositionToBigMachine();
 
-    teensyPos(); 
+   // teensyPos(); // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
        
 
 

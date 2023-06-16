@@ -1,16 +1,13 @@
+String portsUSBfrom3;
 void sendPositionToBigMachine(){
 
      for (int i = 0; i < networkSize; i++) 
 
              if ( encoderTouched[i]==true){ 
    
-                println(" Main Found encodeur to BigMachine" ); 
+                println(" Main Found encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
 
                 readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep);
-
-                    println(" readPositionEncoder[i]" + readPositionEncoder[i] + " " + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-                    println(" readPositionEncoder[i]" + readPositionEncoder[i] + " " + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-
 
              } 
      } 
@@ -22,13 +19,12 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
      }
     
     dataFromMode = "<"
-
     
-     + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
-     + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
+     + dataMappedForMotorisedPosition[9]+ ","+ dataMappedForMotorisedPosition[8]+ ","
+     + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
     
-    + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
-    + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
+    + dataMappedForMotorisedPosition[5] + "," + dataMappedForMotorisedPosition[4] + "," + dataMappedForMotorisedPosition[3] + "," + dataMappedForMotorisedPosition[2] + ","
+    + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","      // 
     
     //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
     //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
@@ -59,10 +55,19 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
         
        
         
-           teensy4port.write(dataFromMode);
+       ///    teensy4port.write(dataFromMode);
         if (frameCount <=  200)  { 
-            text(" BigMachine port USB connected " + portsUSBfrom2 + " ", 0, 700); 
-            println(" BigMachine port USB connected " + portsUSBfrom2 + " portConnected " + portConnected);  
+            text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
+            println(" BigMachine port USB connected " + portsUSBfrom1 + " portConnected " + portConnected +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
+
+              String[] matchPort = match(portsUSBfrom1, "/dev/cu.usbmodem127301101");
+
+            if ( matchPort!= null ){ 
+
+                 println(" only Little Machine  ENDING with 101" + portsUSBfrom1);
+
+                  }
+           else  println(" BigMachine CONNECTED to " + portsUSBfrom1);
         }
     }
     

@@ -388,14 +388,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
         textSize (50);
 
-          for (int i = 0; i < networkSize-0; i++) {  
-           text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency " + i + " "  + net.naturalFrequency[i]+
-                    " readPositionEncoder " + readPositionEncoder[i]+ " "
-               //    " oldMotorisedPosition " + oldDataMappedForMotorisedPosition[i] + " MotorisedPosition[i] " +  dataMappedForMotorisedPosition[i]+
-              //     " net " +  net.phase[i] + " oldPhaseBase[i] " +  net.oldPhase [i] + " netPhaseBase[i] " +  netPhaseBase[i]+ " netOld " +  netOldPhaseBase[i] + 
-              //     " deltaOldPhaseActualPhase [i] " +deltaOldPhaseActualPhase[i]
-                   , -1500 , 500 +(i*50));
-            } 
+           for (int i = 0; i < networkSize-4; i++) {  
+           text  ( " oscB " + oscillatorBlocked + " memi " + memoryi + " freq " + i + " "  + net.naturalFrequency[i]+
+                   " oldMotorisedP " + oldDataMappedForMotorisedPosition[i] + " MotorisedP[i] " +  dataMappedForMotorisedPosition[i]+
+                   " net.pha " +  net.phase[i] + " net.old[i] " +  net.oldPhase [i] + " netPha[i] " +  netPhaseBase[i]+ " netOld " +  netOldPhaseBase[i] + 
+                   " deltaOld [i] " +deltaOldPhaseActualPhase[i] +  " readPositionEncoder " + readPositionEncoder[i], -500 , 500 +(i*50));
+            }
+
  
   
             //  text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency 0 " + net.naturalFrequency[0], 300, 1000);
