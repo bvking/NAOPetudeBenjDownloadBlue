@@ -25,7 +25,7 @@ void draw() {
  displayArrays(); // Affichage des tableaux
  background(0);
 
-   if (frameCount ==5) noLoop();
+   if (frameCount <=1)  {setPort(); noLoop(); } 
 //  printDataOnScreen();
    print (" BEGIN OF MAIN KEYCODE  ");   
  

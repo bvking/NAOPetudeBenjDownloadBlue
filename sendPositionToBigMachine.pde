@@ -1,4 +1,5 @@
 String portsUSBfrom3;
+
 void sendPositionToBigMachine(){
 
      for (int i = 0; i < networkSize; i++) 
@@ -52,9 +53,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     
     if (portConnected)  {   // // If not null, then a match was found
-        
-       
-        
+          
        ///    teensy4port.write(dataFromMode);
         if (frameCount <=  200)  { 
             text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
@@ -63,11 +62,15 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
               String[] matchPort = match(portsUSBfrom1, "/dev/cu.usbmodem127301101");
 
             if ( matchPort!= null ){ 
+                allMachineConnected=false;
 
-                 println(" only Little Machine  ENDING with 101" + portsUSBfrom1);
+                 println(" only Little Machine  ENDING with 101" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
 
-                  }
-           else  println(" BigMachine CONNECTED to " + portsUSBfrom1);
+                 }
+             else  println(" BigMachine CONNECTED to " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
+
+                allMachineConnected=true;
+
         }
     }
     

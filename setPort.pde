@@ -1,4 +1,5 @@
 
+boolean allMachineConnected;
 void setPort() {
     portOfBigMachineConnected = false;
     
@@ -14,7 +15,7 @@ void setPort() {
     
     if (portsUSB[2] != "NC")  {   // // If not null, then a match was found
         portsUSBfrom2 = portsUSB[2];
-        println("serial port USB CONNECTED " + portsUSBfrom2 + " ");
+        println("serial port USB CONNECTED " + portsUSBfrom2 + " portConnected " + portConnected);
         portConnected = true;  
 }
     
@@ -43,36 +44,53 @@ void setPort() {
     printArray(portsUSB);
     printArray(ports);
 
- 
-        if (portOfBigMachineConnected = true) { // 101  teensy 3.5
-            
-
-            teensy4port = new Serial(this, ports[0],115200); // si port connecté Monterey
+   
+        if (portOfBigMachineConnected = true) { // 201  teensy 4.1
+              teensy4port = new Serial(this, ports[1],115200); // si port connecté Montere
+           }
     
-       }
-    
-    if(portsUSBfrom2 != "NC") {
-        if (portConnected = true) { // 101  teensy 3.5
-            
+         if(portsUSBfrom2 != "NC") {
+           if (portConnected = true) { // 101  teensy 3.5        
             //*************** WITH TEENSY connected
           //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
           //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
-            teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
-    }
-    }
-    
-    if (portsUSBfrom2 == "NC") { 
-        println(" NO PORT CONNECTED ");
-        //  teensy4port = new Serial(this, ports[3],115200); // si port connecté Monterey
-    }
+              teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+               }
+           }
 
-    //*************** WITHOUT ENODEER connected
-    // if (portsUSBfrom2 == "/dev/cu.usbserial-0001" ) {
-    if(portConnected ==  true)  { 
-        println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[2] + " portConnected " + portConnected);
-        encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
+            //*************** WITHOUT ENODEER connected
+             if(portConnected ==  true)  { 
+                 println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3] + " portConnected " + portConnected);
+                encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
         
-       // Read bytes into a buffer until you get a linefeed (ASCII 10):
-        encoderReceiveUSBport101.bufferUntil('\n');
-    }
+             // Read bytes into a buffer until you get a linefeed (ASCII 10):
+              encoderReceiveUSBport101.bufferUntil('\n');
+             }
+   
+  /*
+    if ( allMachineConnected){
+        if (portOfBigMachineConnected = true) { // 101  teensy 3.5
+            teensy4port = new Serial(this, ports[1],115200); // si port connecté Montere
+           }
+    
+        if(portsUSBfrom2 != "NC") {
+           if (portConnected = true) { // 101  teensy 3.5        
+            //*************** WITH TEENSY connected
+          //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
+          //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
+              teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+               }
+           }
+    
+    
+            //*************** WITHOUT ENODEER connected
+        if(portConnected ==  true)  { 
+                 println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[2] + " portConnected " + portConnected);
+                encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
+        
+             // Read bytes into a buffer until you get a linefeed (ASCII 10):
+              encoderReceiveUSBport101.bufferUntil('\n');
+        }
+   }
+ */ 
 }
