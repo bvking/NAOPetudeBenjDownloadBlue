@@ -44,8 +44,8 @@ void setPort() {
     printArray(portsUSB);
     printArray(ports);
 
-   
-        if (portOfBigMachineConnected = true) { // 201  teensy 4.1
+          if(portConnected ==  true)  { 
+       // if (portOfBigMachineConnected = true) { // 201  teensy 4.1
               teensy4port = new Serial(this, ports[1],115200); // si port connecté Montere
            }
     

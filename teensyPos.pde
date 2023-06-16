@@ -3,7 +3,7 @@ void teensyPos(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
  
- if ( measure < 635)  {  
+ if ( measure < 635)  {  // to avoid machine blocked 
 
   if ( keyMode == " propagationBallRotationBis "  
     )  {   // || keyMode == " addSignalOneAndTwo "
@@ -48,6 +48,7 @@ void teensyPos(){
                //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                      dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
                 println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
+                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
               }
             }
 
@@ -80,6 +81,7 @@ void teensyPos(){
       if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
      }
       
      }
@@ -89,7 +91,7 @@ void teensyPos(){
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
         dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];
+        //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
             }
           }
         /*
@@ -114,8 +116,8 @@ void teensyPos(){
             if (formerKeyMetro == '*' ) {
               for (int i = 0; i < networkSize-0; i++) { // 
     
-   //  dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
-     dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
+     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+    // dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
         print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
        } 
         }
@@ -158,9 +160,9 @@ void teensyPos(){
   if (keyMode == " trigEventWithAbletonSignal " && measure < 635) {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
-            if (allMachineConnected){
-           send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
-          }
+       //     if (allMachineConnected){
+            send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+      //    }
         if (positionMov != " troisieme " && measure<17) {
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
          }

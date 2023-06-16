@@ -2,9 +2,9 @@ String portsUSBfrom3;
 
 void sendPositionToBigMachine(){
 
-     for (int i = 0; i < networkSize; i++) 
+     for (int i = 0; i < networkSize; i++) { 
 
-             if ( encoderTouched[i]==true){ 
+        //     if ( encoderTouched[i]==true){ 
    
                 println(" Main Found encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
 
@@ -54,7 +54,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     if (portConnected)  {   // // If not null, then a match was found
           
-       ///    teensy4port.write(dataFromMode);
+            teensy4port.write(dataFromMode);
         if (frameCount <=  200)  { 
             text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
             println(" BigMachine port USB connected " + portsUSBfrom1 + " portConnected " + portConnected +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
@@ -77,10 +77,10 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
         // teensyport.write(dataFromMode);
         //   teensy4port.write(dataFromMode);
-        if (frameCount <=  200) { 
+     //   if (frameCount <=  200) { 
             text(" BigMachine port NOT connected " + portsUSBfrom2 + " ", 0, 700); 
             println(" BigMachine port  USB NOT connected " + portsUSBfrom2);   
-    }
+   // }
         
      //   if(frameCount ==  1) noLoop();
         

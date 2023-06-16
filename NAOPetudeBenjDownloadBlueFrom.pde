@@ -25,7 +25,7 @@ void draw() {
  displayArrays(); // Affichage des tableaux
  background(0);
 
-   if (frameCount <=1)  {setPort(); noLoop(); } 
+   if (frameCount <=1)  noLoop(); // setPort()
 //  printDataOnScreen();
    print (" BEGIN OF MAIN KEYCODE  ");   
  
@@ -129,10 +129,12 @@ void draw() {
      } 
 
    
-   teensyPos(); 
+  
 
    sendPositionFromTouchedEncodeurNetworkSizeOnly();
-    sendPositionToBigMachine();
+   sendPositionToBigMachine();
+    
+     teensyPos(); 
 
    // teensyPos(); // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
        
