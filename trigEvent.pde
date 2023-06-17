@@ -146,7 +146,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                            net.naturalFrequency[i]= rootedFloat-0.1; // pow(2, -10);
                      }
 
-                   for (int i = 0; i < 6; i++) { 
+                   for (int i = 0; i < 1; i++) { 
                     key='y';keyReleased();
                   
                    } 
@@ -298,7 +298,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
 
         if (measure == 76 && beatPrecised == 7 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
-            keyCode = CONTROL;keyReleased();
+           // keyCode = CONTROL;keyReleased();
+            for (int i = 0; i < 6; i++) {              
+                   key = 'p'; keyReleased();
+                   key = 'p'; keyReleased();
+                }
         } 
 
         if (measure == 66  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1      
@@ -307,7 +311,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
         if (measure%2==0 && measure > 66 && measure <= 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
 
-              for (int i = 0; i < networkSize; i++) {              
+              for (int i = 0; i < 6; i++) {              
                    key = 'y'; keyReleased();
                //    key = 'y'; keyReleased();
                 }
@@ -342,6 +346,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                key = 'p'; keyReleased();
                key = 'p'; keyReleased();
                key = 'p'; keyReleased();
+
            //    key = 'E'; keyReleased();
              } 
 

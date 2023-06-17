@@ -171,8 +171,8 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
   // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
 
   // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-   splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
-   propagation2wayRotationBis();
+  splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
+   propagation2wayRotationBis(); 
 
    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
    mapNewPosX(); // counter actived
@@ -227,9 +227,12 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
 
 
  void  splitTimeWithTrigSignalFromAudioAbleton(float trigedSignFromAbleton) { 
-        text ( "trigedSignFromAbleton " + trigedSignFromAbleton, 500, 900);
-
+       
         trigedWithAnySign=trigedSignFromAbleton;
+
+         text ( "trigedSignFromAbleton " + trigedSignFromAbleton, 500, 900);
+          print ( "trigedSignFromAbleton " + trigedSignFromAbleton);
+           print ( "trigedSignFromAbleton " + trigedSignFromAbleton);
 
  //    trigedWithAnySign = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
          

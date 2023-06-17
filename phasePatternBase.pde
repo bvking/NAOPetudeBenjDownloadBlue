@@ -5,7 +5,7 @@ void phasePatternBase() { // trigged with $ or *
        text ("phasePatternBase " , width/2 + 300, height/2);
        print  (" phasePatternBase " + " key " + key);
       }
- if  ( keyMode == " propagationBallRotation " || keyMode == " trigEventWithAbletonSignal " ) {
+ if  ( keyMode == " propagationBallRotationExp " || keyMode == " trigEventWithAbletonSignalExp " ) {
 
 
      for (int i = 0; i < (networkSize); i++) {       
