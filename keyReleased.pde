@@ -352,7 +352,7 @@ void keyReleased() {
   //*********************************************CIRCULAR
 
 
-  if ( keyMode == " trigEventWithAbletonSignal " && measure >64 )  {  
+  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )  {  
 
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
         println ("  Frequencies adatped to PENDULAR way trigged with $  > 54 ");
@@ -360,10 +360,10 @@ void keyReleased() {
              phasePattern(); // enable to change configuration 
        
              for ( int i=0; i< networkSize; i++) {
-         //             oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+              //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                }
 
-           //  teensyPos();
+              teensyPos();
 
              phasePatternBase(); // only with * ?
 
@@ -379,7 +379,7 @@ void keyReleased() {
 
            
 
-            rotate (-HALF_PI);
+              rotate (-HALF_PI);
      } 
    } 
 
@@ -393,7 +393,7 @@ void keyReleased() {
        String valueText[] =  displayEventFromKeyReleased (keyEvent);
          
     } 
-     phasePattern(); //same as $
+   //  phasePattern(); //same as $
    } 
   }
 

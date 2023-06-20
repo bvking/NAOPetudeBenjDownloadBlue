@@ -5,7 +5,7 @@ void teensyPos(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
  
- if ( measure < 635)  {  // to avoid machine blocked 
+ if ( measure <= 635)  {  // to avoid machine blocked 
 
   if ( keyMode == " propagationBallRotationBis "  
     )  {   // || keyMode == " addSignalOneAndTwo "
@@ -187,9 +187,11 @@ void teensyPos(){
         if (measure>67 && measure<=90){
             send24DatasToTeensy6motorsToLittleMachine(3, 3, -4, -1);
         }
-           if (measure>=90 ){
+
+        if (measure>=90 ){
             send24DatasToTeensy6motorsToLittleMachine(2, 3, -4, -1);
-             send24DatasToTeensy10motorsToBigMachine(1, 3, -3, -1);
+
+            send24DatasToTeensy10motorsToBigMachine(1, 3, -3, -1);
         }
       }
     } 

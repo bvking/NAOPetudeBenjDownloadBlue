@@ -1089,8 +1089,8 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
     text ( coupling, - 400, height - 1000); // coupling appears on screen and is recorded on the file data.txt
     net.setCoupling(coupling);
   } 
-  phasePatternBase();
-  key ='#';
+//  phasePatternBase();
+//  key ='#';
   //************************************ ENDPENDULARPATTERN  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
