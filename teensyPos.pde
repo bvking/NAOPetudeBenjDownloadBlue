@@ -126,7 +126,7 @@ void teensyPos(){
     
         dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
     // dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
-        print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
+      //  print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
               dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
 
        } 

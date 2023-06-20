@@ -357,21 +357,23 @@ void keyReleased() {
    if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
         println ("  Frequencies adatped to PENDULAR way trigged with $  > 54 ");
   
-             phasePattern(); // enable to change configuration 
-       
+             phasePattern(); // enable to change configuration, but program go away
+              formerKey= char (key);
              for ( int i=0; i< networkSize; i++) {
               //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                }
 
-              teensyPos();
-
+            //   all below inside phasePattern
+            /*
+             teensyPos();
+              key=formerKey;
              phasePatternBase(); // only with * ?
 
              for ( int i=0; i< networkSize; i++) {
                    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
               }
 
-      
+            */
              rotate (HALF_PI);
 
               text (" NO trigEventWithAbletonSignal ", 0, -500 );

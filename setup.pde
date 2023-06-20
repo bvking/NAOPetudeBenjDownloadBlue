@@ -610,7 +610,7 @@ int constrainedBPM;
 int onOFF;
 
 //********** to RECORD and  playback data in the skecth folder
-int formerKey; 
+char formerKey; 
 int formerSartKey; 
 int formerKeyCode;
 int formerFormerKey; 

@@ -1,11 +1,13 @@
 
 void phasePatternBase() { // trigged with $ or *
   //************************************ DONT TOUCH
+   textSize (150);
     if (key == 'i' || key == 'm' ) {
-       text ("phasePatternBase " , width/2 + 300, height/2);
-       print  (" phasePatternBase " + " key " + key);
+       text ("  phasePatternBase " + key + " "  + deltaOldPhaseActualPhase[networkSize-1]  , width/2 , height/2);
+       println  (" phasePatternBase " + " key " + key);
       }
- if  ( keyMode == " propagationBallRotationExp " || keyMode == " trigEventWithAbletonSignalExp " ) {
+     
+ if  ( keyMode == " propagationBallRotationExp " || keyMode == " trigEventWithAbletonSignalExp " || keyMode == " trigEventWithAbletonSignal " ) {
 
 
      for (int i = 0; i < (networkSize); i++) {       
@@ -35,11 +37,16 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
   }
+             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
+             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
+             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
+
 
    if (key == 'i') {
            println (" iiiiiiiiiiiii Trigged ? ");  println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
            println (" iiiiiiiiiiiii Trigged ? ");
+              
     /*
       if (memoryi>=0) {
            oldMemoryi=memoryi;
@@ -253,6 +260,7 @@ void phasePatternBase() { // trigged with $ or *
 
     // autoNote1();
     for (int i = 0; i < (networkSize-0); i++) { 
+       deltaOldPhaseActualPhase[i]+=100*i;
        netOldPhaseBase[i]=netPhaseBase[i];
        netPhaseBase[i]+=1500+100*i;
 
