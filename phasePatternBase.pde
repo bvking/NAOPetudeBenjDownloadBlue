@@ -138,7 +138,23 @@ void phasePatternBase() { // trigged with $ or *
                  //  net.naturalFrequency[networkSize-1]= OldFrequency[0];
        
   }
-  
+
+    if (key == 'u'  ) { 
+
+              deltaOldPhaseActualPhase[0]=abs ( dataMappedForMotorisedPosition[networkSize-1]-oldDataMappedForMotorisedPosition[0]);
+                  positionFromShiftedOscillator[0]=(int) deltaOldPhaseActualPhase[0];
+                for (int i = 1; i < (networkSize-0); i++) {  
+	                deltaOldPhaseActualPhase[i] =abs ( dataMappedForMotorisedPosition[i-1]-oldDataMappedForMotorisedPosition[i]);
+                  print ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
+                    //   netPhaseBase[i-1]= netOldPhaseBase[i] ;//+ deltaOldPhaseActualPhase[i];
+                     //   dataMappedForMotorisedPosition[i] = (int)  deltaOldPhaseActualPhase[i];
+                  positionFromShiftedOscillator[i] = (int)  deltaOldPhaseActualPhase[i];
+                  println ( "  deltaOldPhaseActualPhase[i] "  +  deltaOldPhaseActualPhase[i]); 
+                  net.naturalFrequency[i-1]= net.naturalFrequency[i];  
+
+           }
+
+  /*
   if (key == 'u'  ) { 
     println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && circularMov == false
     oldMemoryi=memoryi;
@@ -161,6 +177,7 @@ void phasePatternBase() { // trigged with $ or *
     netPhaseBase[networkSize-1]=  netOldPhaseBase[networkSize-1-1]; // useless
     net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
   } 
+*/
 
   if (key == 'U' && formerKeyMetro == '<') { 
 
