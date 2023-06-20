@@ -168,7 +168,7 @@ void teensyPos(){
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-  if (keyMode == " trigEventWithAbletonSignal " && measure < 90) {
+  if (keyMode == " trigEventWithAbletonSignal " && measure < 120) {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){
@@ -184,7 +184,7 @@ void teensyPos(){
         if (measure>41 && measure<=67){
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);
         }
-        if (measure>67 && measure<=120){
+        if (measure>67 && measure<=90){
             send24DatasToTeensy6motorsToLittleMachine(3, 3, -4, -1);
         }
            if (measure>=90 ){
