@@ -128,13 +128,13 @@ void draw() {
     countRevs(); // below modePendular to compute revolution
      } 
 
-   
+  
   
 
    sendPositionFromTouchedEncodeurNetworkSizeOnly();
-   sendPositionToBigMachine();
+   sendPositionToBigMachine(); // enabling send position à finir
     
-     teensyPos(); 
+     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine
 
    // teensyPos(); // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
        
