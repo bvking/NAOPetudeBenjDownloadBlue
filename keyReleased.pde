@@ -364,8 +364,8 @@ void keyReleased() {
                }
 
             //   all below inside phasePattern
-            /*
-             teensyPos();
+            
+            // teensyPos();
               key=formerKey;
              phasePatternBase(); // only with * ?
 
@@ -373,7 +373,7 @@ void keyReleased() {
                    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
               }
 
-            */
+            
              rotate (HALF_PI);
 
               text (" NO trigEventWithAbletonSignal ", 0, -500 );

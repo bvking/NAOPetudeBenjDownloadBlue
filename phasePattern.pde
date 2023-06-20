@@ -1092,12 +1092,14 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
 //  phasePatternBase();
 //  key ='#';
     //  teensyPos();
+    /*
               key=formerKey;
              phasePatternBase(); // only with * ?
 
              for ( int i=0; i< networkSize; i++) {
                    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
               }
+      */
   //************************************ ENDPENDULARPATTERN  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
