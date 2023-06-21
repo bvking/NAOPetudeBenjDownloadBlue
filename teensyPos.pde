@@ -51,9 +51,9 @@ void teensyPos(){
            if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
+                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2);
                 println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
-                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; // put it lower in the program
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
             }
@@ -87,8 +87,12 @@ void teensyPos(){
       if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
+
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
-     // recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+
+
+      recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+       print ( " record 1 " + recordLastDataOfMotorPosition[i] );
 
      }
       
@@ -98,7 +102,9 @@ void teensyPos(){
 
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
-        dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+       // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+         dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];
+         print ( " record 2 " + recordLastDataOfMotorPosition[i] );
         //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
             }
           }
@@ -265,19 +271,11 @@ void teensyPosOri(){
         dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
       }
       
-    //  recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
+    // recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
     }
   }
 
-           if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
-            for (int i = 0; i < networkSize; i++) {
-               //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
-                println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
-                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
-            //    recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
-              }
-            }
+        
 
 
 
@@ -308,18 +306,38 @@ void teensyPosOri(){
       if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
+
+
+      dataMappedForMotorisedPosition[i]-=numberOfStep/2;
+
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];//+(int)deltaOldPhaseActualPhase[i];
-     // recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+      recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+      print ( " record1 " + recordLastDataOfMotorPosition[i] );
 
      }
       
      }
 
+        if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
+            for (int i = 0; i < networkSize; i++) {
+               //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
+
+                     
+                println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
+                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+            //    recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+              }
+            }
+
      //******************* ADD POSITION FROM  SWITCHED MODE 
 
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
-        dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+      //  dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+         dataMappedForMotorisedPosition[i]+= recordLastDataOfMotorPosition[i];
+
+         print ( " record2 " + recordLastDataOfMotorPosition[i] );
         //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
             }
           }
@@ -345,7 +363,7 @@ void teensyPosOri(){
           if (formerKeyMetro == '*' ) {
                for (int i = 0; i < networkSize-0; i++) { // 
     
-        dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+        dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]; // from i or u
     // dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
         print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
        } 

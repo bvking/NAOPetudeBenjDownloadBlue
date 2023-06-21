@@ -105,7 +105,7 @@ void serialEvent(Serial encoderReceiveUSBport101) {
       }
     }
 */
-     print (" originalVal ");   showArray (values);
-     print (" followProc ");    showArray (encodeur);
-   //  print (" followHand ");    showArray (encoderMapped);
+  //   print (" originalVal ");   showArray (values);
+   //  print (" followProc ");    showArray (encodeur);
+  
 }

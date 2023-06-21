@@ -397,12 +397,16 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            text  (
                   // " oscB " + oscillatorBlocked + " memi " + memoryi + " freq " + i + " "  + net.naturalFrequency[i]+
               
-                   " oldMotorisedP " + oldDataMappedForMotorisedPosition[i] + " MotorisedP[i] " +  dataMappedForMotorisedPosition[i]+
+                //   " oldMotorisedP " + oldDataMappedForMotorisedPosition[i] +
+                   " MotorisedP[i] " +  dataMappedForMotorisedPosition[i]+
               //     " net.pha " +  net.phase[i] + " net.old[i] " +  net.oldPhase [i] + " netPha[i] " +  netPhaseBase[i]+ " netOld " +  netOldPhaseBase[i] + 
                    " deltaOld [i] " +deltaOldPhaseActualPhase[i] +  " readPositionEncoder " + readPositionEncoder[i]+
-                   " MotorisedBig[i] " +  dataMappedForMotorisedBigMachine[i]
+                   " MotorisedBig[i] " +  dataMappedForMotorisedBigMachine[i] +
+                   " net.pha " +  net.phase[i] + " metro " + metroPhase[i]+ " recordFromCir " + recordLastDataOfMotorPosition[i]
+                  
+
                    
-                   , -500 , 500 +(i*50));
+                   , -300 , 500 +(i*50));
             }
 
  

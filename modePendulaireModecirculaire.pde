@@ -315,7 +315,7 @@ void  modePendulaireModeCirculaire() {
    // metroPhase[i]= metroPhase[i];     
                        
     println ( " metro " + metroPhase[i] + " net " + net.phase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-
+    //  net.phase[i]+=net.phase[i]+PI/2;
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
   

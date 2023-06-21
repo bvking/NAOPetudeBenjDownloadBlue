@@ -7,14 +7,15 @@ String portsUSBfrom3;
 
    if (formerKeyMetro == '*') {
           for (int i =0; i<numberOfEncodeur; i++){
-              encodeur[i] = encodeur[i]%6400;
+          //    encodeur[i] = encodeur[i]%6400;
+                encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
     } 
 
    if (formerKeyMetro == '$') {
           for (int i =0; i<numberOfEncodeur; i++){
-              encoderMapped[i] = encodeur[i]%3200;
-              encodeur[i] = encodeur[i]%3200;
+            //  encoderMapped[i] =  map (encodeur[i], 0, 800, 0, numberOfStep/2);
+              encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
     }
 
@@ -31,6 +32,7 @@ String portsUSBfrom3;
              if ( encoderTouched[i]==false){ 
                 println(" encodeur is at it good position" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
               //  readPositionEncoder[i] = 0;
+                readPositionEncoder[i] = encodeur[i];
              } 
         } 
      } 
