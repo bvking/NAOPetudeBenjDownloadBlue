@@ -21,23 +21,27 @@ void keyReleased() {
     if (key == '=' && formerKeyMetro == '*') {
     
 
-    for (int i = 0; i < 1; i++) {
+    if (networkSize ==6){
   
      // ActualVirtualPosition[i]
       
-        ActualVirtualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+        ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
-   //   lastPositionFromCircularMode[i]=
-    //  CircularVirtualPosition[i]=0;
-        text ( ActualVirtualPosition[i], 100, 100*i);
-    //  dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-      //   dataToLive[i]=(float) map(dataMappedForMotorisedPosition[i], 0, 6400, 0f, 1f);
+ 
    //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
+      }
+         if (networkSize ==10){
+       
+        ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+        dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+
+
+        dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9]      
+        )/(networkSize-1);
       }
 
      for (int i = 0; i < networkSize; i++) {
-       CircularVirtualPosition[i]=0;
-       ActualVirtualPosition[i]=ActualVirtualPosition[0];
+     //  CircularVirtualPosition[i]=0;
+        dataMappedForMotorisedPosition[i]=ActualVirtualPosition[0];
       // lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
        } 
     

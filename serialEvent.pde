@@ -61,8 +61,10 @@ void serialEvent(Serial encoderReceiveUSBport101) {
     myEncodeur = trim(myEncodeur);
     
     int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
+
+    int numberOfEncodeur = 6;
      
-  if (values.length == 6) {//  always 6 when only 6 encoders
+  if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
   /*
    encodeur[0] = abs ( (int) map (values[0], 0, 4000, 0, 800))%800;
    encodeur[1] = (int) map (values[1], 0, 4000, 0, 800)%800;
@@ -73,18 +75,37 @@ void serialEvent(Serial encoderReceiveUSBport101) {
    */
   } 
 
-   if (values.length == 6) {//  always 6 when only 6 encoders
-     //  for (int i = 0; i<networkSize; i++){
-     //  encodeur[i] = values[i]; 
-     //  }
-   encodeur[0] = values[0];
-   encodeur[1] = values[1];
-   encodeur[2] = values[2];
-   encodeur[3] = values[3];
-   encodeur[4] = values[4];
-   encodeur[5] = values[5];
-    }
-   
+   if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
+       for (int i = 0; i<networkSize; i++){
+     //  encodeur[i] = values[i];  DON'T WORK
+        }
+        
+       encodeur[0] = values[0];
+       encodeur[1] = values[1];
+       encodeur[2] = values[2];
+       encodeur[3] = values[3];
+       encodeur[4] = values[4];
+       encodeur[5] = values[5];
     
-    showArray (encodeur);
+
+    }
+   /*
+       int encoderMapped [] = new int [numberOfEncodeur];
+
+   if (formerKeyMetro == '*') {
+          for (int i =0; i<numberOfEncodeur; i++){
+              encodeur[i] = values[i]%6400;
+         }
+    } 
+
+   if (formerKeyMetro == '$') {
+          for (int i =0; i<numberOfEncodeur; i++){
+              encoderMapped[i] = encodeur[i]%3200;
+               encodeur[i] = values[i]%3200;
+      }
+    }
+*/
+     print (" originalVal ");   showArray (values);
+     print (" followProc ");    showArray (encodeur);
+   //  print (" followHand ");    showArray (encoderMapped);
 }

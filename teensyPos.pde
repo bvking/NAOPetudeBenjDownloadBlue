@@ -50,11 +50,11 @@ void teensyPos(){
 
            if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
             for (int i = 0; i < networkSize; i++) {
-               //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+                  // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                      dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
                 println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
                 dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
-            //    recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+                 //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
             }
 
@@ -127,7 +127,7 @@ void teensyPos(){
         dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
     // dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
       //  print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
-              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+             dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
 
        } 
         }
@@ -308,7 +308,7 @@ void teensyPosOri(){
       if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
-      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];//+(int)deltaOldPhaseActualPhase[i];
      // recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
 
      }

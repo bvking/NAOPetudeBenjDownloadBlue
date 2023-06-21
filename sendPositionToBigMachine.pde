@@ -2,6 +2,25 @@ String portsUSBfrom3;
 
     void sendPositionToBigMachine(){
 
+       int numberOfEncodeur = 6;
+       int encoderMapped [] = new int [numberOfEncodeur];
+
+   if (formerKeyMetro == '*') {
+          for (int i =0; i<numberOfEncodeur; i++){
+              encodeur[i] = encodeur[i]%6400;
+         }
+    } 
+
+   if (formerKeyMetro == '$') {
+          for (int i =0; i<numberOfEncodeur; i++){
+              encoderMapped[i] = encodeur[i]%3200;
+              encodeur[i] = encodeur[i]%3200;
+         }
+    }
+
+
+
+
      for (int i = 0; i < networkSize; i++) { 
              if ( encoderTouched[i]==true){ 
                 println(" Main Found encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
@@ -11,7 +30,7 @@ String portsUSBfrom3;
 
              if ( encoderTouched[i]==false){ 
                 println(" encodeur is at it good position" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-                readPositionEncoder[i] = 0;
+              //  readPositionEncoder[i] = 0;
              } 
         } 
      } 
