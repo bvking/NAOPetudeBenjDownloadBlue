@@ -153,7 +153,7 @@ void phasePatternBase() { // trigged with $ or *
                   net.naturalFrequency[i-1]= net.naturalFrequency[i];  
 
            }
-
+}
   /*
   if (key == 'u'  ) { 
     println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && circularMov == false
