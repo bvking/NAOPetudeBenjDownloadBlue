@@ -131,7 +131,7 @@ void  modePendulaireModeCirculaire() {
 
    // display trigEventWithAbletonSignal
        colorMode(RGB, 255, 255, 255);
-
+      rotate ( -PI/2);
      for (int i = 0; i < networkSize; i++) {
        pushMatrix();
           translate (x*1, y*1, 200+(50*5*(i+1)));  //*-1 go in clockwise, *1 go in CCW     
