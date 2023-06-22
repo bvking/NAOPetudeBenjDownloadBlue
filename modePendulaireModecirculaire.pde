@@ -142,8 +142,8 @@ void  modePendulaireModeCirculaire() {
           // metroPhase[i]= metroPhase[i];     
          println ( " metro " + metroPhase[i]  + " net " + net.phase[i] + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
          //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
-          x = displacement*cos(metroPhase[i]);
-          y = displacement*sin(metroPhase[i]);
+          x = displacement*cos(metroPhase[i]+PI/2);
+          y = displacement*sin(metroPhase[i]+PI/2);
    
          sphere(side*3);
          sphereDetail( 4*5);
@@ -164,8 +164,8 @@ void  modePendulaireModeCirculaire() {
                        
             println ( " metro " + metroPhase[i] + " net " + net.phase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
             //    net.phase[i]+=net.phase[i]+PI;
-           x = displacement*cos(net.phase[i]);
-           y = displacement*sin(net.phase[i]);
+           x = displacement*cos(net.phase[i]-PI/2); //
+           y = displacement*sin(net.phase[i]-PI/2); // attention  la presentation
   
         sphere(side*3);
         sphereDetail( 4*5);
