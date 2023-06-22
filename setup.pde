@@ -8,20 +8,6 @@ import java.util.Arrays;
 
 
 
-// custom look and feel knowledge
-import interfascia.*;
-
-GUIController c;
-IFButton startButton, stopButton;
-IFProgressBar progress;
-IFCheckBox global, nothing;
-
-IFLookAndFeel defaultLook, redLook, greenLook;
-boolean running = false;
- //end  custom look and feel
-
-
-
 
 int networkSize = 10;
 int nbBalls = networkSize;
@@ -674,46 +660,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
                 frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
-                //------------ custom look and feel.pde
-               //  translate (0, 0, 1000*networkSize);
-
-                c = new GUIController(this);
-                
-                startButton = new IFButton ("Start", 0, 100, 100, 200);
-                stopButton = new IFButton ("Stop", 200, 100, 100, 200);
-                progress = new IFProgressBar (100, 500, 200);// x, y et taille
-                global = new IFCheckBox("Use global look and feel", 10, 15);
-                nothing = new IFCheckBox("Cook breakfast", 10, 35);
-                
-                startButton.addActionListener(this);
-                stopButton.addActionListener(this);
-                global.addActionListener(this);
-                
-                c.add(progress);
-                
-                defaultLook = new IFLookAndFeel(this, IFLookAndFeel.DEFAULT);
-                
-                greenLook = new IFLookAndFeel(this, IFLookAndFeel.DEFAULT);
-                greenLook.baseColor = color(100, 180, 100);
-                greenLook.highlightColor = color(70, 135, 70);
-                
-                redLook = new IFLookAndFeel(this, IFLookAndFeel.DEFAULT);
-                redLook.baseColor = color(175, 100, 100);
-                redLook.highlightColor = color(175, 50, 50);
-                
-                c.setLookAndFeel(greenLook);
-                
-                c.add(global);
-                c.add(nothing);
-                c.add(startButton);
-                c.add(stopButton);
-                
-                stopButton.setLookAndFeel(redLook);
-
-               //   translate (0, 0, -100*networkSize);
-
-                
-                // end setup------------ custom look and feel.pde
+              
                 
                 
                 
@@ -980,6 +927,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                     for (int j = 0; j < nbMaxDelais; j++)
                         phases[i][j] = -PI;      
                     }
+
                 
                 //***************************************** SET 3D CAM 
                 
