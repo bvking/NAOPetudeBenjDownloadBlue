@@ -311,7 +311,7 @@ void handleInternalSamplingMode(){
    }
 
 void computeAngularTimeSpeed(){
-   if (running == false) return;
+   if (running_Timer == false) return;
 
   int m = millis();
   timeFrame += float(m - lastMillis) * 0.001;

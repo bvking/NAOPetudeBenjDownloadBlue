@@ -129,7 +129,7 @@ void  modePendulaireModeCirculaire() {
 
 
 
-   // display TrigEvent
+   // display trigEventWithAbletonSignal
        colorMode(RGB, 255, 255, 255);
 
      for (int i = 0; i < networkSize; i++) {
