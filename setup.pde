@@ -604,7 +604,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int cohesionCounterHighLow;
             float LevelCohesionToSend;
             
-            // MANAGE PERSPECTIVE
+            // MANAGE PERSPECTIVE CAMERA
             import peasy.*;
             PeasyCam cam;
             
@@ -669,14 +669,19 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                     }
                 }     
             void setup() {
+
+              size(600, 600, P3D);
+               frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
+                frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
+                
                 //------------ custom look and feel.pde
-                 translate (0, 0, 1000*networkSize);
+               //  translate (0, 0, 1000*networkSize);
 
                 c = new GUIController(this);
                 
-                startButton = new IFButton("Start", 10, 70, 40, 17);
-                stopButton = new IFButton("Stop", 60, 70,40, 17);
-                progress = new IFProgressBar(120, 72, 70);
+                startButton = new IFButton ("Start", 0, 100, 100, 200);
+                stopButton = new IFButton ("Stop", 200, 100, 100, 200);
+                progress = new IFProgressBar (100, 500, 200);// x, y et taille
                 global = new IFCheckBox("Use global look and feel", 10, 15);
                 nothing = new IFCheckBox("Cook breakfast", 10, 35);
                 
@@ -792,9 +797,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 
                 
                 startStop = 0; // data used in Live
-                frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
-                frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
-                
+               
                 stepSize = 10; // no effect //  net.stepSize = 1; // no effect  
                 // Creat text with cases, in order to havea sequence according cases
                 //======== = = = = = = = = record data to the skecth folder
@@ -979,12 +982,14 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                     }
                 
                 //***************************************** SET 3D CAM 
+                
                 cam = new PeasyCam(this, 2000);
                 cameraZ = (h / 2.0) / tan(radians(fov) / 2.0);
                 zNear = cameraZ / 10.0;
                 zFar = cameraZ * 10.0;
                 println("CamZ: " + cameraZ);
                 rectMode(CENTER);
+                
                 //***************************************** END 3D CAM  
                 
                 

@@ -11,7 +11,7 @@ IFLookAndFeel defaultLook, redLook, greenLook;
 boolean running = false;
 */
 void actionPerformed (GUIEvent e) {
-      translate (0, 0, -10000);
+     // translate (0, 0, -10000);
   if (e.getSource() == startButton) {
     running = true;
   } else if (e.getSource() == stopButton) {

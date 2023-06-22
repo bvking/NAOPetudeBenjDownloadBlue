@@ -408,7 +408,7 @@ void displayOscillatorSpheres() {
   // Draw  spheres corresponding to the phase of each oscillator
   colorMode(RGB, 255, 255, 255);
    rotate(HALF_PI ); 
-   translate(width/2, -height/2, -4000);// To set the center of the perspective
+   translate(width/2, -height/2, -2000);// To set the center of the perspective
 
  }
 void trigFollowSignalSampled() {
