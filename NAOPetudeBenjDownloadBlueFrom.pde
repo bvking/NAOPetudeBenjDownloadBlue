@@ -20,9 +20,7 @@ void mousePressed() {
 
 void draw() {
     //setPort();
-    if (running_Timer) {
-        progress.setProgress((progress.getProgress() + 0.01) % 1);//speed progression libraray interfascia in custom look and feel.pde
-    }
+ 
     
     handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux
@@ -116,14 +114,21 @@ void draw() {
                     //****************************
                     
                     trigFollowSignalSampled();
-                    
-                    
+
+                          translate (0, 0, -10000);
+                       if (running_Timer) {
+                      
+                       progress.setProgress((progress.getProgress() + 0.01) % 1);//speed progression libraray interfascia in custom look and feel.pde
+                      }
+                          translate (0, 0, 10000);
+
+
                     modePendulaireModeCirculaire();
                     displayKeyModeNull(); 
                     
                     
                     net.step(); // actualise step insync library ==> actualise net.phase[i]
-                   netG.step(); //Does it make any meaning?
+                    netG.step(); //Does it make any meaning?
                     
                     
                     // if (circularMov==true) { // why it doesn' t work?
@@ -164,11 +169,11 @@ void draw() {
                             //mouseMovedPrinted();
                            //SoundmouseMoved(); // to automatise sound with speed. In the setup uncomment the out1, out2 ...
                             
-                       if(formerKey == '!'){
+                       if (formerKey == '!'){
                                // formerSartKey = formerKey;
                             }
                                 
-                            if(key ==  'j') {// senda trig to start record in Ableton live 
+                        if (key ==  'j') {// senda trig to start record in Ableton live 
                                     background(255);
                                     startStop = 3;//
                                     key = '='; 
@@ -176,11 +181,14 @@ void draw() {
                                    print("startStop from the beginning: "); 
                                     println(startStop);
                                     key = '#'; // reset key to akey doing nothing
-                            } else {
+                            }
+                             else
+                              {
                                     startStop = 2;
-                                } 
+                                }
+
                                     
-                                  //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left  
+                                //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left  
                                    if(formerSartKey == '!' &&  TrigmodPos[networkSize - 1] ==  0) { 
                                         println("TRIG LIVE WITH oscillator 11 on LEFT"); //
                                         startStop = 1;  
@@ -227,6 +235,6 @@ void draw() {
                                             oscSend();
                                             //====== = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP   
                                             
-                                        }
+                    }
                                             
                                             

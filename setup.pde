@@ -8,6 +8,21 @@ import java.util.Arrays;
 
 
 
+// custom look and feel knowledge
+import interfascia.*;
+
+GUIController c;
+IFButton startButton, stopButton;
+IFProgressBar progress;
+IFCheckBox global, nothing;
+
+IFLookAndFeel defaultLook, redLook, greenLook;
+boolean running = false;
+ //end  custom look and feel
+
+
+
+
 int networkSize = 10;
 int nbBalls = networkSize;
 
@@ -55,7 +70,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             if (oscillatorMaster > 0) { 
                 
-                for (inti = oscillatorMaster - 1; i <=  oscillatorMaster; i++) { 
+                for (int i = oscillatorMaster - 1; i <=  oscillatorMaster; i++) { 
                     println(" oscillatorFollowi " + (oscillatorMaster - i) + " " + oscillatorFollowing[oscillatorMaster - i] + " " + oscillatorMaster + " " +  oscillatorFollowing[oscillatorMaster] , -300, 250 * i);
                     
                     
@@ -75,7 +90,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                     
                 }
                 
-                returnphaseOfOscillator0;  // 
+                return phaseOfOscillator0;  // 
             }
             
             float log10(float x) {
@@ -367,10 +382,10 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int lastTimeTrigged;
             int TimeTrigged;
             float[] TrigRightTemp  =  new float[networkSize];
-            float[] interPosition = newfloat[networkSize];
+            float[] interPosition = new float[networkSize];
             int[] upstairVpos = new int[networkSize];
             int[] upstairOldVpos = new int[networkSize];
-            int[] LasttimeTrigged = newint[networkSize];
+            int[] LasttimeTrigged = new int[networkSize];
             int[] timeTrigged = new int[networkSize];
             int lastTimeUpstair;
             boolean[] upstairShifting;
@@ -392,7 +407,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             String JoDebug;
             int incrementSpeed; // the speed of periodic wave
             int[] formerEvent = new int[networkSize];
-            int[] TimeEllapsedBall = newint[networkSize];
+            int[] TimeEllapsedBall = new int[networkSize];
             
             float[] automationLFO;
             int numberOfStep = 6400;
@@ -533,7 +548,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             // MANAGE data TO SEND POSITION or SPEED to ARDUINO
             int[] oldVirtualPosition = new int[networkSize];
-            int[] VirtualPosition  = newint[networkSize];
+            int[] VirtualPosition  = new int[networkSize];
             int[] pos = new int[networkSize];
             int[] oldPos = new int[networkSize];
             int[] Pos = new int[networkSize]; // to convert data of position always positively
@@ -655,6 +670,8 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 }     
             void setup() {
                 //------------ custom look and feel.pde
+                 translate (0, 0, 1000*networkSize);
+
                 c = new GUIController(this);
                 
                 startButton = new IFButton("Start", 10, 70, 40, 17);
@@ -687,8 +704,11 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 c.add(stopButton);
                 
                 stopButton.setLookAndFeel(redLook);
+
+               //   translate (0, 0, -100*networkSize);
+
                 
-                // end ------------ custom look and feel.pde
+                // end setup------------ custom look and feel.pde
                 
                 
                 
@@ -847,7 +867,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 PendularLeftVirtualPosition = new int[networkSize];
                 PendularOldLeftVirtualPosition = new int[networkSize];
                 PendularOldOldLeftVirtualPosition = new int[networkSize];
-                PendularOldOldOldLeftVirtualPosition = newint[networkSize];
+                PendularOldOldOldLeftVirtualPosition = new int[networkSize];
                 TrigmodPos = new int[networkSize]; 
                 revolution = new int[networkSize];
                 pseudoRevolutionTodeblock = new int[networkSize];
