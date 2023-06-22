@@ -15,7 +15,13 @@ int valueOfKnobA = 180;
 Knob myKnobA;
 Knob myKnobB;
 //end knowledge
+
+// print value of knob
 void knob(int theValue) {
   myColorBackground = color(theValue);
   println("a knob event. setting background to "+theValue);
+}
+void knobValue(int theValue) {
+  myColorBackground = color(theValue);
+  println("b knob event. setting background to "+theValue);
 }
