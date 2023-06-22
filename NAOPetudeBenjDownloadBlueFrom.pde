@@ -123,10 +123,13 @@ void draw() {
                     trigFollowSignalSampled();
 
                           translate (0, 0, -10000);
-                       if (running_Timer) {
-                      
-                       progress.setProgress((progress.getProgress() + 0.01) % 1);//speed progression libraray interfascia in custom look and feel.pde
-                      }
+                      background(myColorBackground);
+                     fill(knobValue);
+                      rect(0,height/2,width,height/2);
+                         fill(0,100);
+                         rect(80,40,140,320);
+                      // getId(myKnobA);
+                        //getArrayValue(2); 
                           translate (0, 0, 10000);
 
 

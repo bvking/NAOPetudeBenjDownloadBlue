@@ -1,5 +1,13 @@
 void keyReleased() {
 
+    switch(keyCode) { // to modulate Knob
+ 
+    case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
+    case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
+    case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
+    case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
+  }
+
   textSize (100);
    if (key == 'n') {
     oldFaz=faz;

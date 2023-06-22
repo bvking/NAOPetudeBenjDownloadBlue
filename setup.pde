@@ -928,6 +928,34 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                         phases[i][j] = -PI;      
                     }
 
+                smooth();
+                       noStroke();
+  
+                cp5 = new ControlP5(this);
+  
+               myKnobA = cp5.addKnob("valueOfKnobA")
+               .setRange(0,255)
+               .setValue(50)
+               .setPosition(100,70)
+               .setRadius(50)
+               .setDragDirection(Knob.VERTICAL)
+               ;
+                     
+               myKnobB = cp5.addKnob("knob")
+               .setRange(0,255)
+               .setValue(220)
+               .setPosition(100,210)
+               .setRadius(50)
+               .setNumberOfTickMarks(10)
+               .setTickMarkLength(4)
+               .snapToTickMarks(true)
+               .setColorForeground(color(255))
+               .setColorBackground(color(0, 160, 100))
+               .setColorActive(color(255,255,0))
+               .setDragDirection(Knob.HORIZONTAL)
+               ;
+       
+
                 
                 //***************************************** SET 3D CAM 
                 

@@ -1,0 +1,21 @@
+import controlP5.*;
+
+//ControlP5 Controller;
+
+
+
+
+ControlP5 cp5;
+
+int myColorBackground = color(0,0,0);
+int knobValue = 100;
+
+int valueOfKnobA = 180;
+
+Knob myKnobA;
+Knob myKnobB;
+//end knowledge
+void knob(int theValue) {
+  myColorBackground = color(theValue);
+  println("a knob event. setting background to "+theValue);
+}

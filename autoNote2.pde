@@ -37,10 +37,13 @@ void autoNote2() {//1 67 69 72
     ((note1 == 69 && velocity1 == 96) || (note2 == 69 && velocity2 == 96) || (note3 == 69 && velocity3 == 96))) {
     formerEvent[169] = millis();
     key = 'p';
+
     keyReleased();
-    keyEvent[0] = "  autoNote2 Pressed " + formerEvent[169];
-    text("formerEvent[169] INSIDE " + formerEvent[167], 500, 700);
-    println(" formerEvent[160] INSIDE " + formerEvent[167]);
+
+   // keyEvent[0] = " autoNote2 Pressed " + formerEvent[169]; 
+
+    text("formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
+    println(" formerEvent[160] INSIDE " + formerEvent[169]);
   }
 
   if ((measure > 40 && measure < 75 && millis() > formerEvent[169] + 450 + d) &&
