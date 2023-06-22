@@ -2,7 +2,7 @@ void  modePendulaireModeCirculaire() {
 
   for (int i = 0; i <networkSize-0; i++) {
    
-    pushMatrix();
+   
 
     // ***************************************DATA TO MANAGE SOUND in Processing USELESS
     j[i]= rev[i]%2; // if j==0 the number of revolution is pair, j==1 -->impair, j==-1--> impair and negative
@@ -91,6 +91,10 @@ void  modePendulaireModeCirculaire() {
       //***     net.phase[networkSize-0-i]= abstractPhase[networkSize-0-i];
 
     }
+
+      // end MAPPING circular vs pendular
+
+   }
  
     translate(-w2, -h2, -1000); // Set the perspective 3D with two fingers on the trackpad
     line (250, 250, 250, 250);  // line showing how ball will behang by the motor's axe.
@@ -102,8 +106,8 @@ void  modePendulaireModeCirculaire() {
    
 
     // Color sphere and Draw them, depending of acceleration or later with "chimera state"
-    mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
-    mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
+    // mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
+      // mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
     //********************************************************* BEGIN GRAPHIC CHIMERA STATE
     colorMode(HSB, TWO_PI, 100, 100);
     noStroke();
@@ -122,42 +126,52 @@ void  modePendulaireModeCirculaire() {
      } 
      */
     //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (x*1, y*1, 200+(50*5*(i+1)));  //*-1 go in clockwise, *1 go in CCW
-    colorMode(RGB, 255, 255, 255);
-  //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
-      fill( 175, 175, 255 );
-    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {
 
+
+
+   // display TrigEvent
+       colorMode(RGB, 255, 255, 255);
+
+     for (int i = 0; i < networkSize; i++) {
+       pushMatrix();
+          translate (x*1, y*1, 200+(50*5*(i+1)));  //*-1 go in clockwise, *1 go in CCW     
+             //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
+          fill( 175, 175, 255 );
+       if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {
                text (  " IIIIII ", -width/4, -height/4 ) ;  
-
-   // metroPhase[i]= metroPhase[i];     
-                       
-    println ( " metro " + metroPhase[i]  + " net " + net.phase[i] + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-    //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
+          // metroPhase[i]= metroPhase[i];     
+         println ( " metro " + metroPhase[i]  + " net " + net.phase[i] + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+         //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
+          x = displacement*cos(metroPhase[i]);
+          y = displacement*sin(metroPhase[i]);
    
-  
-    sphere(side*3);
-    sphereDetail( 4*5);
-    }
+         sphere(side*3);
+         sphereDetail( 4*5);
+         }
+     popMatrix();
+     }
 
-     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' ) {
+        for (int i = 0; i < networkSize; i++) {
+        pushMatrix();
+          translate (x*1, y*1, 200+(50*5*(i+1)));  //*-1 go in clockwise, *1 go in CCW     
+             //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
+          fill( 175, 175, 255 );
+        if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' ) {
 
                text (  " iiiiii ", -width/4, -height/4 ) ;  
 
-   // metroPhase[i]= metroPhase[i];     
+           // metroPhase[i]= metroPhase[i];     
                        
-    println ( " metro " + metroPhase[i] + " net " + net.phase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-    //  net.phase[i]+=net.phase[i]+PI/2;
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
+            println ( " metro " + metroPhase[i] + " net " + net.phase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+            //    net.phase[i]+=net.phase[i]+PI;
+           x = displacement*cos(net.phase[i]);
+           y = displacement*sin(net.phase[i]);
   
-    sphere(side*3);
-    sphereDetail( 4*5);
-    }
-    popMatrix();
-  }
+        sphere(side*3);
+        sphereDetail( 4*5);
+      }
+     popMatrix();
+     }
 
   // displayKeyModeNull(); 
 
