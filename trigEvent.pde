@@ -406,7 +406,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   
 
                    
-                   , -300 , 500 +(i*50));
+                   , -300 , 500 +(i*50), 1000);
             }
 
  

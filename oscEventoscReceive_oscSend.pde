@@ -751,8 +751,9 @@ void oscSend(){
   myMessage38.add(revolution[3]);
   myMessage39.add(revolution[2]);
 */
+rotate (PI/2);
  textSize (100);
-  text ( " revolution in osc " + 0 + " " + revolution[0], -500, 0+100*1);
+  text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
   
 
   } 

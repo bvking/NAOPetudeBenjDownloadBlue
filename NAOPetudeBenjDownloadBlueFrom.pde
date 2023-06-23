@@ -122,15 +122,14 @@ void draw() {
                     
                     trigFollowSignalSampled();
 
-                          translate (0, 0, -5000);
-                         background(myColorBackground);
-                         fill(knobValue);
-                      rect(0,height/2,width,height/2);
-                         fill(0,100);
+                      //    translate (0, 0, -5000);
+                     //    background(myColorBackground);
+                       //  fill(knobValue);
+                      //rect(0,height/2,width,height/2);
+                        // fill(0,100);
                          rect(80,40,140,320);
-                      // getId(myKnobA);
-                        //getArrayValue(2); 
-                          translate (0, 0, 10000);
+                      
+                     //     translate (0, 0, 10000);
 
 
                     modePendulaireModeCirculaire();
