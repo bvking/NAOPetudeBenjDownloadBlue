@@ -396,12 +396,19 @@ void frameratio() {
   }
 } 
 void keyPressed() {
-  
-  setMovement(key, true);
-  
- if (keyCode == ALT){ // .. in Keypressed
+  // to modulate Knob with control controlIP5knob
+  switch(keyCode) { 
+  case(DOWN): valueOfKnobA-=5; myKnobA.setValue( valueOfKnobA);break;
+  case(UP):   valueOfKnobA+=5; myKnobA.setValue( valueOfKnobA);break;
+  }
+  //------
+
+  // set movement with good key and good keyCode
+   setMovement(key, true); 
+   if (keyCode == ALT){ // .. in Keypressed
     moveKeys[8]=true;
    }
+  //------
   
  
   if (key == '@'|| keyCode == ESC) {
