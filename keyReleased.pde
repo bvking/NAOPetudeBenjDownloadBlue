@@ -34,25 +34,26 @@ void keyReleased() {
    
    
 
-    if (key == '=' && formerKeyMetro == '*') {
+    if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) { 
     
 
     if (networkSize ==6){
   
-     // ActualVirtualPosition[i]
+    
       
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
-        dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
+        dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-0);
  
-   //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
+          //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
       }
-         if (networkSize ==10){
+
+     if (networkSize ==10){
        
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+
 
         dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9]      
-        )/(networkSize-1);
+        )/(networkSize-0);
       }
 
      for (int i = 0; i < networkSize; i++) {
@@ -63,28 +64,25 @@ void keyReleased() {
     
       }
 
-   if (key == '='  && formerKeyMetro == '$') {
+   if (key == ';' ) {  //  && formerKeyMetro == '$'
     
 
     for (int i = 0; i < 1; i++) {
   
-     // ActualVirtualPosition[i]
+    
       
       lastPositionFromCircularMode[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
       dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
-   //   lastPositionFromCircularMode[i]=
-    //  CircularVirtualPosition[i]=0;
+
       text ( lastPositionFromCircularMode[i], 100, 100*i);
-    //  dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-      //   dataToLive[i]=(float) map(dataMappedForMotorisedPosition[i], 0, 6400, 0f, 1f);
-   //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
+  
     }
 
      for (int i = 0; i < networkSize; i++) {
        CircularVirtualPosition[i]=0;
-        // ActualVirtualPosition[i]=ActualVirtualPosition[0];
-        lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
-       } 
+         ActualVirtualPosition[i]=ActualVirtualPosition[0];
+        //lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
+    } 
     
   }
 

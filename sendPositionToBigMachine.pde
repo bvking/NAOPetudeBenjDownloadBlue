@@ -7,14 +7,14 @@ String portsUSBfrom3;
 
    if (formerKeyMetro == '*') {
           for (int i =0; i<numberOfEncodeur; i++){
-          //    encodeur[i] = encodeur[i]%6400;
+         
                 encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
     } 
 
    if (formerKeyMetro == '$') {
           for (int i =0; i<numberOfEncodeur; i++){
-            //  encoderMapped[i] =  map (encodeur[i], 0, 800, 0, numberOfStep/2);
+          
                 encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
     }
@@ -25,14 +25,14 @@ String portsUSBfrom3;
      for (int i = 0; i < networkSize; i++) { 
              if ( encoderTouched[i]==true){ 
                 println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-           //     readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep);
-                readPositionEncoder[i] = encodeur[i];
+         
+           //     readPositionEncoder[i] = encodeur[i];
              } 
 
              if ( encoderTouched[i]==false){ 
                 println(" False encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-              //  readPositionEncoder[i] = 0;
-                readPositionEncoder[i] = encodeur[i];
+           //     readPositionEncoder[i] = 0;
+            
              } 
         } 
      } 
@@ -78,8 +78,8 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     if (portConnected)  {   // // If not null, then a match was found
           
-           //teensy4port.write(dataFromMode);
-        if (frameCount <=  200)  { 
+           teensy4port.write(dataFromMode);
+        if (frameCount >=  0)  { 
             text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
             println(" BigMachine port USB connected " + portsUSBfrom1 + " portConnected " + portConnected +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
 

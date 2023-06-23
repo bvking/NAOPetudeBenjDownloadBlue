@@ -311,9 +311,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
         if (measure%2==0 && measure > 66 && measure <= 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
 
-              for (int i = 0; i < 6; i++) {              
+              for (int i = 0; i < 1; i++) {      // DO NOT CHANGE THIS         
                    key = 'y'; keyReleased();
-               //    key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
                 }
                    key = 'i'; keyReleased(); // switch frequencies and phase upside :  position and frequency from oscillator 0 go to 1, 1 to 2, and on 
         }

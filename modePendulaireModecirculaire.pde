@@ -34,7 +34,7 @@ void  modePendulaireModeCirculaire() {
 
            float scaleOfAmplitudeOfOscillation = map ( valueOfKnobA, 0, 255, 0, 2);
            println ( " scaleOfAmplitudeOfOscillation " + scaleOfAmplitudeOfOscillation );
-            metroPhase[i]= map ((metroPhase[i]),  HALF_PI, -HALF_PI, scaleOfAmplitudeOfOscillation* HALF_PI, scaleOfAmplitudeOfOscillation* -HALF_PI);
+        //    metroPhase[i]= map ((metroPhase[i]),  HALF_PI, -HALF_PI, scaleOfAmplitudeOfOscillation* HALF_PI, scaleOfAmplitudeOfOscillation* -HALF_PI);
             metroPhase[i] =  metroPhase[i] - PI / 2;
 
             //   metroPhase[i]%=TWO_PI;

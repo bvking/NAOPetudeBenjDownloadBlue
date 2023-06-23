@@ -91,7 +91,7 @@ void teensyPos(){
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
 
 
-      recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
+   //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
        print ( " record 1 " + recordLastDataOfMotorPosition[i] );
 
      }
