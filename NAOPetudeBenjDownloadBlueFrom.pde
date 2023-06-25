@@ -42,7 +42,9 @@ void draw() {
     
     setMovement(key, false);
     
-    println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed + "keyMode" +  keyMode + "formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+    println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
+             "keyMode" + keyMode + "formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+
     keyModeRed = keyMode; // dont read keyMode in file.txt
     
     switchFonctionDependingKeyMode();
@@ -56,17 +58,16 @@ void draw() {
     if (modeStartKeyToFollow != " samplingModeInternal ")
     { 
         setMeasureAndBeatPrecised();
-    }  
-        
+    }         
         trigBeatWithMeasure();
         //  printDataOnScreen();
         rotate(-HALF_PI);
-       printMidiNoteVelocity();
-          rotate(HALF_PI);
+        printMidiNoteVelocity();
+        rotate(HALF_PI);
         
         
-        if (keyMode != " phasePattern ")
-        {   
+    if (keyMode != " phasePattern ")
+    {   
             if (key ==  'B' ||  key ==  'c' ||  key ==  '>' ||  key ==  '<' || key ==  'd' || key ==  'e') // 
             {
                 //  formerKeyMetro = key;   // press l to change formerKeyMetro Mode
@@ -88,23 +89,22 @@ void draw() {
         }
             
             
-            if (formerKeyMetro == 'B') {
-                lfoPattern();
-                splitTimeLfo();
-                //splitWithTime();
-                addSignal(); 
-                
-            } 
+        if (formerKeyMetro == 'B') {
+           lfoPattern();
+           splitTimeLfo();
+             //splitWithTime();
+           addSignal();              
+        } 
             
             if (modeStartKeyToFollow == "samplingMode") {
                 SamplingModeMayBeUsefull();
             }
                 
-                updateInternalClock();
+            updateInternalClock();
                 
-                if (modeStartKeyToFollow == " samplingModeInternal "   ) { // || formerKeyMetro == 'J'
-                    handleInternalSamplingMode(); 
-                }
+            if (modeStartKeyToFollow == " samplingModeInternal "   ) { // || formerKeyMetro == 'J'
+            handleInternalSamplingMode(); 
+            }
                     
                     //trigEffectToAbletonLive();  // add Size to Text
                     //**************END MODE SETTING   *************************
@@ -144,26 +144,21 @@ void draw() {
                     
                     // if (circularMov==true) { // why it doesn' t work?
                     if (formerKeyMetro ==  '*') {
-                       countRevs(); // below modePendular to compute revolution
+                        countRevs(); // below modePendular to compute revolution
                     } 
                         
-                        
-                        
-                        
+  
                         sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
                         sendPositionToBigMachine(); // enabling send position à finir
                         
-                     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine
+                        teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
                         
-                        // teensyPos(); // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
-                        
-                        
-                        
-                        if (encoderTouched[5] ==  true) { 
+          
+                    if (encoderTouched[5] ==  true) { 
                             
                          //   keyMode = " samplingModeInternal ";
                             
-                        } 
+                     } 
                             
                             
                            //  arduinoPos(); // just to trig data to live when particular position of phase or pattern are created by the hole balls (oscillator)
@@ -246,6 +241,6 @@ void draw() {
                                             oscSend();
                                             //====== = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP   
                                             
-                    }
+    }
                                             
                                             

@@ -3,12 +3,14 @@
 
 void teensyPos(){
   
-  text ( " circularMov " + !circularMov , 200, 100) ; //
+ // text ( " circularMov " + !circularMov , 200, 100) ; //
  
  if ( measure <= 635)  {  // to avoid machine blocked 
 
-  if ( keyMode == " propagationBallRotationBis "  
-    )  {   // || keyMode == " addSignalOneAndTwo "
+  if ( keyMode == " propagationBallRotationBis "   // || keyMode == " addSignalOneAndTwo "
+    )  
+    
+  {  
      rev=revLfo; // actualise counter of normal mode  
    for(int i = 0; i < networkSize; i++) {  
    //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work

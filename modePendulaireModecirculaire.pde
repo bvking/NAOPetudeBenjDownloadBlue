@@ -111,13 +111,14 @@ void  modePendulaireModeCirculaire() {
     // display trigEventWithAbletonSignal
     colorMode(RGB, 255, 255, 255);
     rotate( -PI / 2);
+    translate(-1000, 0, 0);
     for (int i = 0; i < networkSize; i++) {
         pushMatrix();
         translate(x * 1, y * 1, -2000 + (50 * 5 * (i + 1)));  //*-1 go in clockwise, *1 go in CCW     
         //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
         fill(175, 175, 255);
         if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$') {
-            text( " IIIIII ", -width / 4, -height / 4);  
+            text( " I ", -width / 4, -height / 4);  
             //metroPhase[i]= metroPhase[i];     
             println(" metro " + metroPhase[i]  + " net " + net.phase[i] + " formerKeyMetro " + " " + i + " " + char(formerKeyMetro)); 
             // metroPhase[i] %= TWO_PI;  // in arduinoPos?
@@ -137,7 +138,7 @@ void  modePendulaireModeCirculaire() {
         fill(175, 175, 255);
         if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*') {
             
-            text( " iiiiii ", -width / 4, -height / 4);  
+            text( " i ", -width / 4, -height / 4);  
             
             // metroPhase[i]= metroPhase[i];     
             
