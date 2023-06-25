@@ -60,6 +60,7 @@ void keyReleased() {
      //  CircularVirtualPosition[i]=0;
         dataMappedForMotorisedPosition[i]=ActualVirtualPosition[0];
       // lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];
        } 
     
       }
@@ -79,9 +80,9 @@ void keyReleased() {
     }
 
      for (int i = 0; i < networkSize; i++) {
-       CircularVirtualPosition[i]=0;
-         ActualVirtualPosition[i]=ActualVirtualPosition[0];
-        //lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
+         CircularVirtualPosition[i]=0;
+         ActualVirtualPosition[i]=lastPositionFromCircularMode[0];
+        lastPositionFromCircularMode[i]= lastPositionFromCircularMode[0];
     } 
     
   }
@@ -385,7 +386,7 @@ void keyReleased() {
             
             // teensyPos();
               key=formerKey;
-             phasePatternBase(); // only with * ?
+            // phasePatternBase(); // only with * ?
 
              for ( int i=0; i< networkSize; i++) {
                    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];

@@ -60,7 +60,9 @@ void draw() {
         
         trigBeatWithMeasure();
         //  printDataOnScreen();
-        //  printMidiNoteVelocity();
+        rotate(-HALF_PI);
+       printMidiNoteVelocity();
+          rotate(HALF_PI);
         
         
         if (keyMode != " phasePattern ")

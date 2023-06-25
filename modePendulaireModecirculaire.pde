@@ -157,7 +157,7 @@ void  modePendulaireModeCirculaire() {
     
     rotate(HALF_PI);
     for (int i = 0; i < 3; i++)  {  
-        String valueText[] =  displayEventFromKeyReleased(keyEvent);     
+  //      String valueText[] =  displayEventFromKeyReleased(keyEvent);     
     } 
     if (keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis " ) { //drive ball with lfo
         // displayPropagationControl();
