@@ -86,24 +86,38 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     key='*';
     keyReleased();
 
-    key='T';
+    key='Y';
     keyReleased();
-    key='T';
+    key='Y';
     keyReleased();
-    key='T';
+    key='Y';
     keyReleased();
-    key='T';
+    key='Y';
     keyReleased();
-
-    key='T';
+    key='Y';
     keyReleased();
-    key='T';
+    key='Y';
     keyReleased();
-    key='T';
-    keyReleased();
-    key='T';
+    key='Y';
     keyReleased();
 
+
+    key='Y';
+    keyReleased();
+    key='Y';
+    keyReleased();
+    key='Y';
+    keyReleased();
+    key='Y';
+    keyReleased();
+    key='Y';
+    keyReleased();
+
+     }
+  if  (measure==78 && beatPrecisedTrigged==true && beatPrecisedTrigged<=18 ) {
+    key='T';
+    keyReleased();
+    
     key='T';
     keyReleased();
     key='T';
@@ -114,36 +128,11 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     keyReleased();
     key='t';
     keyReleased();
-    keyCode=CONTROL;
+   // keyCode=CONTROL;
     keyReleased();
-    speedDelta=4;
+   // speedDelta=4;
 
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-
-
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
+    
   //    key='Y';keyReleased();
     //   key='Y';keyReleased();
   }

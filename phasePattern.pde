@@ -261,14 +261,17 @@ textSize (100);
   if (key == 'T') {  
     if ( net.naturalFrequency[memoryi]<0.25 ) 
    // key = 'a'; keyReleased();
-    { net.naturalFrequency[memoryi]=0.25; 
+    {
+      // net.naturalFrequency[memoryi]=0.25; 
     }
      oldMemoryi=memoryi;
+     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; 
      memoryi-=1;
   
     if ( memoryi<0) {
       memoryi=networkSize-1;
-    }  
+    } 
+
    } 
 
 
@@ -546,10 +549,11 @@ textSize (100);
     if (key == 'A') { //A$  Shift frequencies one by one. 
     float speeed    = map ((float (mouseY)/width*1.0), 0, 1, -4.68, 4.68); 
     for (int i = 0; i < networkSize; i++) {
-      net.naturalFrequency[i]=OldFrequency[i]; 
+    //  net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
     }
-    memoryi=0;
+   // memoryi=0; // to start well with 'T'
+    memoryi=9; // to start well with 'T'
     net.naturalFrequency[memoryi]= 1;//4.68/2; // 124 bpm
   }
 
