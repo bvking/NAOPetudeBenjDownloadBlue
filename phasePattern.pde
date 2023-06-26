@@ -265,13 +265,13 @@ textSize (100);
       // net.naturalFrequency[memoryi]=0.25; 
     }
      oldMemoryi=memoryi;
-     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; 
+    
      memoryi-=1;
   
     if ( memoryi<0) {
       memoryi=networkSize-1;
     } 
-
+     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; // oldMemoryi
    } 
 
 

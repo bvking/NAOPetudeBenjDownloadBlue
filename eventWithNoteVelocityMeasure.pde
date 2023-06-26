@@ -114,22 +114,14 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     keyReleased();
 
      }
-  if  (measure==78 && beatPrecisedTrigged==true && beatPrecisedTrigged<=18 ) {
+  if  (measure==78 && beatPrecisedTrigged==true && beatPrecised<=18 ) {
+
     key='T';
     keyReleased();
-    
-    key='T';
-    keyReleased();
-    key='T';
-    keyReleased();
-    key='T';
-    keyReleased();
-    key='T';
-    keyReleased();
-    key='t';
-    keyReleased();
+   // key='t';
+   // keyReleased();
    // keyCode=CONTROL;
-    keyReleased();
+   // keyReleased();
    // speedDelta=4;
 
     
