@@ -12,7 +12,7 @@ void  modePendulaireModeCirculaire() {
         
         //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
         if (formerKeyMetro == '$' ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
-            text(" mapped GENERAL pendular way $ ", 400, 600);
+         //   text(" mapped GENERAL pendular way $ ", 400, 600);
           //  println (" you are in $ et non x ");
          //   net.phase[i]=net.phase[i]%TWO_PI;//
             

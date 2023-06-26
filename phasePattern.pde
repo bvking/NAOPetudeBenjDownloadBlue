@@ -2,11 +2,11 @@ void phasePattern() { // need standard mode to be trigged
 textSize (100);
 
    if (key == 'i') {
-   text ("phasePattern " ,-200+ width/2, height/2);
+      text ("phasePattern " ,-200+ width/2, height/2);
    }
 
-text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
-text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
+   // text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
+    //  text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //************************************ DONT TOUCH
     for (int i = 0; i < (networkSize); i++) { 
    if  (   key == 'J')  {
@@ -53,10 +53,9 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
                                                                                                                                                                                                                                                                                                                                                                                                                           
 
   //********** ********** ********** ********** ********** ********** ********** INCREASE FREQUENCIES in $ mode PENDULAR PATTERN
- //********** ********** ********** ********** ********** ********** ********** TRIG PATTERN SHIFTING IN KEYREASED
+  //********** ********** ********** ********** ********** ********** ********** TRIG PATTERN SHIFTING IN KEYREASED
 
   if (keyCode == LEFT) {  
- //   if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro  == 'J')) {
        k--;
          if (k<-8) { 
         k=8;
@@ -72,14 +71,13 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
         oscillatorBlocked=networkSize-1;
       }
 
-  // k= shiftingPhaseRatio USELESS?
+     // k= shiftingPhaseRatio USELESS?
       text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
     }
   
 
   if (keyCode == RIGHT) { 
-    println("pendularPattern left INCREASE phase shifting"); // Incremente together without changing phases  
-  //  if ((formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w' || formerKeyMetro == 'J')) {
+       println("pendularPattern left INCREASE phase shifting"); // Incremente together without changing phases  
       k++;
       k=k%8;
     
@@ -1038,14 +1036,12 @@ text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   else if (key == 'o') 
   { 
     if ( keyMode != " phasePattern "){
-  // for (int i = 0; i < networkSize; i++) {
-   //  net.naturalFrequency[i]=signal[2]; 
      signal[2]= - signal[2]; 
-   //  } 
-     }  
-    println("  Changes way of rotation  "); 
+      }  
+       println("  Changes way of rotation  "); 
     for (int i = 0; i < networkSize; i++) {
       background(120, 20, 20);
+      // net.naturalFrequency[i] = signal[2];
       net.naturalFrequency[i] = -1* net.naturalFrequency[i];
 
       // interFrequency[memoryi] = -1* net.naturalFrequency[i];

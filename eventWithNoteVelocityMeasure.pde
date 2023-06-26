@@ -1,6 +1,6 @@
 String[] displayEventFromKeyReleased(String[] keyEvent) { 
   for (int i = 0; i < keyEvent.length; i++) { 
-    text ( " keyEvent " + i + keyEvent[i], 500, 700+100*i); 
+  //  text ( " keyEvent " + i + keyEvent[i], 500, 700+100*i); 
   } 
   return keyEvent;  // Returns an array of 3 ints: 20, 40, 60 
 }
@@ -15,53 +15,42 @@ void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
 
 void trigBeatWithMeasure()
  {
- //   beatTrigged=false;
- //   beatPrecisedTrigged=false; 
    if (formerBeatPrecised!=beatPrecised) {
          beatPrecisedTrigged=true;
-  }
-  else  beatPrecisedTrigged=false; 
+   }
+     else  beatPrecisedTrigged=false; 
 
-   if (formerMeasure!=measure) {
-  
+  if (formerMeasure!=measure) {
     beatTrigged=true;
-
     beatOnMeasure=(measure%4)+1;
-    print("  ******** "); 
-    print("  ******** "); 
-    print("  ******** "); 
-    print("  ******** "); 
-    print("  ******** "); 
-    println(measure);
+    println(" MEASURE " + measure);
     formerFrameBeat=frameCount;
-    //    if (formerBeatPrecised
- }
+   }
  
- else beatTrigged=false;
+   else beatTrigged=false;
  
-      if (formerBeatPrecised!=beatPrecised) {   
-    //     background (127, 50, 50);
-    beatPrecisedTrigged=true;
-    print("  ******** "); 
-    print("  ******** "); 
-    print(" automation1*100 ");  println( automation1*100 );
-    print("  ******** "); 
-    print("  ******** "); 
-    print("  beatPrecised "); 
-    println(beatPrecisedTrigged);
-  }
+  if (formerBeatPrecised!=beatPrecised) {   
+     beatPrecisedTrigged=true;
+     println(beatPrecisedTrigged);
+    }
   
-  else  beatPrecisedTrigged=false; 
+   else  beatPrecisedTrigged=false; 
   
-} 
+ } 
 
-void autmationWithMeasureAndNote() {
+void autmationWithMeasureAndNote()
+ {
+
+    char lastKey = key;
+     if (key!='#'){
+    text(" autmationWith" + lastKey, 1500, -900);
+     }
 
   //autoNote1VelInf64();
   //autoNote1();
-  if (measure ==1 && beatPrecised == 1 && beatTrigged==true  ) { // && beatTrigged==true 
- keyCode = CONTROL;
- keyReleased();
+   if (measure ==1 && beatPrecised == 1 && beatTrigged==true  ) { // && beatTrigged==true 
+      keyCode = CONTROL;
+      keyReleased();
   } 
 
   if (measure<5 ) { // && beatTrigged==true 

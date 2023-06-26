@@ -81,19 +81,19 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
               }
          //  teensy4port.write(dataFromMode);
         if (frameCount >=  0)  { 
-            text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
+            text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
             println(" BigMachine port USB connected " + portsUSBfrom1 + " portConnected " + portConnected +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
 
               String[] matchPort = match(portsUSBfrom1, "/dev/cu.usbmodem127301101");
 
             if ( matchPort!= null ){ 
                 allMachineConnected=false;
-               text(" only Little Machine  ENDING with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 700); 
+               text(" only Little Machine  ENDING with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
 
                  }
             else  println(" BigMachine CONNECTED to " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
                  if (frameCount <=  200)  { 
-                        text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
+                        text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
               }
                 allMachineConnected=true;
 
@@ -108,7 +108,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
         // teensyport.write(dataFromMode);
         //   teensy4port.write(dataFromMode);
        if (frameCount <=  200) { 
-               text(" USB port NOT connected " + portsUSBfrom1 + " ", 0, 700); 
+               text(" USB port NOT connected " + portsUSBfrom1 + " ", 0, 1000); 
 
             println(" BigMachine port  USB NOT connected " + portsUSBfrom1);   
     }

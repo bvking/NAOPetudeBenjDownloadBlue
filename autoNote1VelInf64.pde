@@ -1,9 +1,9 @@
 void autoNote1VelInf64() {  // 64 69 70 72 74 76
     char lastKey = key;
      if (key!='#'){
-    text(" lastKey autoNote1VelInf64" + lastKey, 500, 800);
+    text(" lastKey autoNote1VelInf64" + lastKey, 1500, -1000);
      }
-     
+
     if(measure <= 15 && millis() > formerEvent[64] + 950 + d && 
         
        ((note1 == 64 && velocity1 >= 1 && velocity1 <= 64) || (note2 == 64 && velocity2 >= 1 && velocity2 <= 64) || 

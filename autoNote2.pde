@@ -6,7 +6,7 @@ void autoNote2() {//1 67 69 72
   d = 0;
   char lastKey = key;
   if (key!='#'){
-   text(" lastKey autonote2" + lastKey, 0, 700);
+   text(" lastKey autonote2" + lastKey, 1500, -800);
    }
 
 
