@@ -10,7 +10,9 @@ void setPort() {
     
     if (portsUSB[2] == "NC")  {   // // If not null, then a match was found
         portsUSBfrom2 = portsUSB[2];
-        println("port USB NOT CONNECTED " + portsUSBfrom2 + " ");  
+        portsUSBfrom1=  portsUSB[1];
+        println("port USB NOT CONNECTED " + portsUSBfrom2 + " "); 
+        portConnected= false; 
 }
     
     if (portsUSB[2] != "NC")  {   // // If not null, then a match was found

@@ -77,7 +77,8 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     
     if (portConnected)  {   // // If not null, then a match was found
-          
+           if (frameCount <=  0)  { 
+              }
          //  teensy4port.write(dataFromMode);
         if (frameCount >=  0)  { 
             text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
@@ -87,24 +88,30 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 
             if ( matchPort!= null ){ 
                 allMachineConnected=false;
-
-                 println(" only Little Machine  ENDING with 101" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
+               text(" only Little Machine  ENDING with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 700); 
 
                  }
-             else  println(" BigMachine CONNECTED to " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
-
+            else  println(" BigMachine CONNECTED to " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
+                 if (frameCount <=  200)  { 
+                        text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 700); 
+              }
                 allMachineConnected=true;
 
         }
     }
      if (!portConnected)  {  
+
+               String[] matchPort = match(portsUSBfrom1, "/dev/tty.Bluetooth-Incoming-Port");
+
+     
  //   if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
         // teensyport.write(dataFromMode);
         //   teensy4port.write(dataFromMode);
-     //   if (frameCount <=  200) { 
-            text(" BigMachine port NOT connected " + portsUSBfrom2 + " ", 0, 700); 
-            println(" BigMachine port  USB NOT connected " + portsUSBfrom2);   
-   // }
+       if (frameCount <=  200) { 
+               text(" USB port NOT connected " + portsUSBfrom1 + " ", 0, 700); 
+
+            println(" BigMachine port  USB NOT connected " + portsUSBfrom1);   
+    }
         
      //   if(frameCount ==  1) noLoop();
         

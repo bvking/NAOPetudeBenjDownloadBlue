@@ -176,7 +176,7 @@ void teensyPos(){
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-  if (keyMode == " trigEventWithAbletonSignal " && measure < 120) {
+  if (keyMode == " trigEventWithAbletonSignal " ) {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){

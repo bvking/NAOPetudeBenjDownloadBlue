@@ -395,7 +395,7 @@ void keyReleased() {
             
              rotate (HALF_PI);
 
-              text (" NO trigEventWithAbletonSignal ", 0, -500 );
+            //  text (" NO trigEventWithAbletonSignal ", 0, -500 );
               textSize (200);
 
            
@@ -411,7 +411,7 @@ void keyReleased() {
         //  displayDebugWhenKeyReleased (eventToTrig[]);
 
         for (int i = 0; i < 3; i++)  {  
-       String valueText[] =  displayEventFromKeyReleased (keyEvent);
+     //  String valueText[] =  displayEventFromKeyReleased (keyEvent);
          
     } 
    //  phasePattern(); //same as $

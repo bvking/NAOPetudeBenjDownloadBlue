@@ -753,7 +753,7 @@ void oscSend(){
 */
 rotate (PI/2);
  textSize (100);
-  text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
+  // text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
   
 
   } 
