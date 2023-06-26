@@ -1,43 +1,3 @@
-String[] displayEventFromKeyReleased(String[] keyEvent) { 
-  for (int i = 0; i < keyEvent.length; i++) { 
-  //  text ( " keyEvent " + i + keyEvent[i], 500, 700+100*i); 
-  } 
-  return keyEvent;  // Returns an array of 3 ints: 20, 40, 60 
-}
-
-/*
-void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
- {
-       text  (" eventToTrig " + eventToTrig[0], 500, 700);  
-        text  (" eventToTrig " + eventToTrig[1], 500, 700);  
-   }
-*/
-
-void trigBeatWithMeasure()
- {
-   if (formerBeatPrecised!=beatPrecised) {
-         beatPrecisedTrigged=true;
-   }
-     else  beatPrecisedTrigged=false; 
-
-  if (formerMeasure!=measure) {
-    beatTrigged=true;
-    beatOnMeasure=(measure%4)+1;
-    println(" MEASURE " + measure);
-    formerFrameBeat=frameCount;
-   }
- 
-   else beatTrigged=false;
- 
-  if (formerBeatPrecised!=beatPrecised) {   
-     beatPrecisedTrigged=true;
-     println(beatPrecisedTrigged);
-    }
-  
-   else  beatPrecisedTrigged=false; 
-  
- } 
-
 void autmationWithMeasureAndNote()
  {
 
@@ -298,4 +258,42 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   // autoNote2();
 }
 
+String[] displayEventFromKeyReleased(String[] keyEvent) { 
+  for (int i = 0; i < keyEvent.length; i++) { 
+  //  text ( " keyEvent " + i + keyEvent[i], 500, 700+100*i); 
+  } 
+  return keyEvent;  // Returns an array of 3 ints: 20, 40, 60 
+}
 
+/*
+void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
+ {
+       text  (" eventToTrig " + eventToTrig[0], 500, 700);  
+        text  (" eventToTrig " + eventToTrig[1], 500, 700);  
+   }
+*/
+
+void trigBeatWithMeasure()
+ {
+   if (formerBeatPrecised!=beatPrecised) {
+         beatPrecisedTrigged=true;
+   }
+     else  beatPrecisedTrigged=false; 
+
+  if (formerMeasure!=measure) {
+    beatTrigged=true;
+    beatOnMeasure=(measure%4)+1;
+    println(" MEASURE " + measure);
+    formerFrameBeat=frameCount;
+   }
+ 
+   else beatTrigged=false;
+ 
+  if (formerBeatPrecised!=beatPrecised) {   
+     beatPrecisedTrigged=true;
+     println(beatPrecisedTrigged);
+    }
+  
+   else  beatPrecisedTrigged=false; 
+  
+ } 
