@@ -68,7 +68,7 @@ void autoNote2() {//1 67 69 72
     key = '#';
     keyReleased();
     formerEvent[169] = millis();
-    print("formerEvent[269] INSIDE ");
+    text (" formerEvent[269] INSIDE ", 1500, -1100);
     println(formerEvent[169]);
   }
 

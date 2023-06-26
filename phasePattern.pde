@@ -549,8 +549,8 @@ textSize (100);
       net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
     }
-   // memoryi=0;
-    net.naturalFrequency[memoryi]= speeed;//4.68/2; // 124 bpm
+    memoryi=0;
+    net.naturalFrequency[memoryi]= 1;//4.68/2; // 124 bpm
   }
 
   if (key == 'a') { //A$  Shift frequencies one by one. 

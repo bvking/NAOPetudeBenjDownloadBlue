@@ -1,8 +1,12 @@
 void autoNote1VelInf64() {  // 64 69 70 72 74 76
     char lastKey = key;
+     text(" memoryi" +memoryi, 1500, -1200);
+     text(" oscBloc" + oscillatoBlocked, 1500, -1100);
      if (key!='#'){
-    text(" lastKey autoNote1VelInf64" + lastKey, 1500, -1000);
-     }
+    lastKey = key;
+     } 
+     text(" lastKey " + lastKey, 1500, -1000);
+    
 
     if(measure <= 15 && millis() > formerEvent[64] + 950 + d && 
         

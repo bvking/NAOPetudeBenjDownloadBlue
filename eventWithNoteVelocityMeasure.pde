@@ -116,7 +116,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     keyReleased();
     keyCode=CONTROL;
     keyReleased();
-    speedDelta=12;
+    speedDelta=4;
 
     key='Y';
     keyReleased();
