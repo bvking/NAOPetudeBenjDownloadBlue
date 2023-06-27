@@ -16,7 +16,7 @@ void teensyPos(){
    //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
     
       dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep)+ (int) recordLastDataOfMotorPosition[i];
-      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
     }
   }
 
@@ -44,8 +44,8 @@ void teensyPos(){
         dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
       }
       
-    //  recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
-       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+       recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
+       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
     }
   }
@@ -55,7 +55,7 @@ void teensyPos(){
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                      dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2);
                 println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
-                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; // put it lower in the program
+                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i]; // put it lower in the program
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
             }
@@ -89,12 +89,13 @@ void teensyPos(){
       if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
-
-      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+      recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
 
    //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
        print ( " record * " + recordLastDataOfMotorPosition[i] );
+       println();
 
      }
       
@@ -105,40 +106,41 @@ void teensyPos(){
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
        // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];
+        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i]+lastPositionFromCircularMode[i];// RECALL
          print ( " record $ " + recordLastDataOfMotorPosition[i] );
         //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
             }
           }
-        /*
-         if (formerKeyMetro == '*' ) {
-        for (int i = 0; i < networkSize-0; i++) { // 
-        lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
-         //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
+           /*
+          if (formerKeyMetro == '*' ) {
+           for (int i = 0; i < networkSize-0; i++) { // 
+           lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+          //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
            } 
           }
           */
-/*
+         /*
             if (formerKeyMetro == '*' && encoderTouched[0]) {
               for (int i = 0; i < networkSize-0; i++) { // 
     
-     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
-     dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
-        print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
-       } 
-        }
-*/
+           dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+           dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
+           print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
+           } 
+         }
+         */
 
           if (formerKeyMetro == '*' ) {
                for (int i = 0; i < networkSize-0; i++) { // 
     
-        dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
-    // dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
-      //  print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
-             dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
+             //   dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];// useless but find something to make i and u working in circular movement
+             //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
 
-       } 
-        }
+             //   print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
+             //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];// +readPositionEncoder[i]
+
+            } 
+          }
     /*
       if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
       for (int i = 0; i < networkSize-0; i++) { // 
@@ -162,7 +164,7 @@ void teensyPos(){
       // recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
         //  actualisePositionDataFromCircular = false|| dol==true; //
         //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
-        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]+recordLastDataOfMotorPosition[i];
+        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+recordLastDataOfMotorPosition[i]; // +readPositionEncoder[i]
        }  
       }
 
@@ -180,26 +182,27 @@ void teensyPos(){
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){
+         if (measure<105 ){
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
-      //    }
-        if (positionMov != " troisieme " && measure<17) {
+          }
+         if (positionMov != " troisieme " && measure<17) {
+            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
+          }
+
+         if (measure>=17 && measure<=41){
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
          }
-
-        if (measure>=17 && measure<=41){
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
-        }
-        if (measure>41 && measure<=67){
+         if (measure>41 && measure<=67){
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);
-        }
-        if (measure>67 && measure<=90){
+         }
+         if (measure>67 && measure<=90){
             send24DatasToTeensy6motorsToLittleMachine(3, 3, -4, -1);
-        }
+         }
 
-        if (measure>=90 ){
-            send24DatasToTeensy6motorsToLittleMachine(2, 3, -4, -1);
+         if (measure>=105 ){
+            send24DatasToTeensy6motorsToLittleMachine(6, 3, -4, -1);
 
-            send24DatasToTeensy10motorsToBigMachine(1, 3, -3, -1);
+            send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
       }
     } 
@@ -209,7 +212,7 @@ void teensyPos(){
                  || keyMode == " trigEventWithAbletonSignal "  ) {
     if (measure<=3 )
      { 
-      send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+     // send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
      }
     }
 

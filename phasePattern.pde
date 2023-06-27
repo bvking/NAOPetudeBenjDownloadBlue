@@ -292,7 +292,8 @@ textSize (100);
   if (key == 'i') {  // memory == 0 is the ball "behind"  the screen
 
       oldMemoryi=memoryi;
-      memoryi=(memoryi+1)%networkSize;
+      memoryi=(memoryi+1);
+      memoryi%=networkSize;
   
 
 
@@ -319,13 +320,10 @@ textSize (100);
 
   if (key == 'u'  ) { 
     
-
-          if (memoryi>=0) {
-       oldMemoryi=memoryi;
-       memoryi=(memoryi-1);
-    }
+        oldMemoryi=memoryi;
+        memoryi=(memoryi-1);
       
-    if ( memoryi<=-1) {
+    if ( memoryi==-1) {
         memoryi=networkSize-1;
         oldMemoryi=0;
     }
@@ -556,7 +554,7 @@ textSize (100);
     //  net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
     }
-   // memoryi=0; // to start well with 'T'
+    memoryi=0; // to start well with 'T'
     memoryi=networkSize-1; // to start well with 'T'
     net.naturalFrequency[memoryi]= 1;//4.68/2; // 124 bpm
   }

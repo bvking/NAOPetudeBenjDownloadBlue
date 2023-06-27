@@ -88,28 +88,37 @@ void keyReleased() {
   }
 
 
-     if (keyCode == LEFT) {  
+     if (keyCode == UP) {  
          if (key!='#') { 
      if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
        || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
       ){
+         speedDelta++;
+         speedDelta%=8;
+       //   key='#'; // to trig only once
         /*
       oscillatorBlocked++;
       oscillatorBlocked%=networkSize;
 
-     
+    
       key='#'; // to trig only once
        
    */
    }
       }
    }
-     if (keyCode == RIGHT) {  
+     if (keyCode == DOWN) {  
         if (key!='#') {  
 
       if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
        || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
       ){
+
+        speedDelta--;
+        if (speedDelta < 1) { 
+          speedDelta=4;
+           }
+       //  key='#'; // to trig only once
 /*
       oscillatorBlocked--;
       if (oscillatorBlocked < 0) { 
@@ -377,7 +386,7 @@ void keyReleased() {
         println ("  Frequencies adatped to PENDULAR way trigged with $  > 54 ");
   
              phasePattern(); // enable to change configuration, but program go away
-              formerKey= char (key);
+             // formerKey= char (key);
              for ( int i=0; i< networkSize; i++) {
               //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                }
@@ -385,7 +394,7 @@ void keyReleased() {
             //   all below inside phasePattern
             
             // teensyPos();
-              key=formerKey;
+            //  key=formerKey;
             // phasePatternBase(); // only with * ?
 
              for ( int i=0; i< networkSize; i++) {

@@ -19,7 +19,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120;
 
       if  (music_from_ableton_live == " madRush " ) { 
-                 autmationWithMeasureAndNote();
+            //     autmationWithMeasureAndNote();
             }
 
 
@@ -418,7 +418,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    " MotorisedP[j] " +  dataMappedForMotorisedPosition[j]+
               //     " net.pha " +  net.phase[j] + " net.old[j] " +  net.oldPhase [j] + " netPha[j] " +  netPhaseBase[j]+ " netOld " +  netOldPhaseBase[j] + 
                    " deltaOld [j] " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
-                   " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] +
+                   " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
                    " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]
                   
 

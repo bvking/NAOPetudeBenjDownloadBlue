@@ -6,15 +6,13 @@ String portsUSBfrom3;
        int encoderMapped [] = new int [numberOfEncodeur];
 
    if (formerKeyMetro == '*') {
-          for (int i =0; i<numberOfEncodeur; i++){
-         
+          for (int i =0; i<numberOfEncodeur; i++){       
                 encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
     } 
 
    if (formerKeyMetro == '$') {
-          for (int i =0; i<numberOfEncodeur; i++){
-          
+          for (int i =0; i<numberOfEncodeur; i++){       
                 encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
     }
@@ -22,10 +20,9 @@ String portsUSBfrom3;
 
 
 
-     for (int i = 0; i < networkSize; i++) { 
+     for (int i = 0; i < 6; i++) { 
              if ( encoderTouched[i]==true){ 
-                println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-         
+                println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);          
            //     readPositionEncoder[i] = encodeur[i];
              } 
 
@@ -38,6 +35,8 @@ String portsUSBfrom3;
      } 
 
 void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir
+
+        accelerationRatio = speedDelta;
     
     for (int i = 0; i < networkSize; i++) {
         //  oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
@@ -79,7 +78,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     if (portConnected)  {   // // If not null, then a match was found
            if (frameCount <=  0)  { 
               }
-         //  teensy4port.write(dataFromMode);
+           teensy4port.write(dataFromMode);
         if (frameCount >=  0)  { 
             text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
             println(" BigMachine port USB connected " + portsUSBfrom1 + " portConnected " + portConnected +  " portOfBigMachineConnected " + portOfBigMachineConnected);  

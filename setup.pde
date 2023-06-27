@@ -397,7 +397,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             float[] automationLFO;
             int numberOfStep = 6400;
-            int speedDelta = 18; // ratio of speed and acceleration in Arduino
+            int speedDelta = 4; // ratio of speed and acceleration in Arduino
             float averageDeltaPhase;
             boolean twoTree = false;
             boolean treeFour = false;
