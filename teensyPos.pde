@@ -94,7 +94,7 @@ void teensyPos(){
 
 
    //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
-       print ( " record 1 " + recordLastDataOfMotorPosition[i] );
+       print ( " record * " + recordLastDataOfMotorPosition[i] );
 
      }
       
@@ -105,8 +105,8 @@ void teensyPos(){
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
        // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-         dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];
-         print ( " record 2 " + recordLastDataOfMotorPosition[i] );
+        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];
+         print ( " record $ " + recordLastDataOfMotorPosition[i] );
         //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
             }
           }

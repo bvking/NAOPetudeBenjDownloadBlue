@@ -394,6 +394,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         textSize (50);
 
            for (int i = 0; i < networkSize-4; i++) {  
+
            text  (
                   // " oscB " + oscillatorBlocked + " memi " + memoryi + " freq " + i + " "  + net.naturalFrequency[i]+
               
@@ -408,13 +409,29 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    
                    , -300 , 500 +(i*50), 1000);
             }
+          int j =  networkSize-1;
+
+             text  (
+                  // " oscB " + oscillatorBlocked + " memi " + memoryi + " freq " + i + " "  + net.naturalFrequency[i]+
+              
+                //   " oldMotorisedP " + oldDataMappedForMotorisedPosition[i] +
+                   " MotorisedP[j] " +  dataMappedForMotorisedPosition[j]+
+              //     " net.pha " +  net.phase[j] + " net.old[j] " +  net.oldPhase [j] + " netPha[j] " +  netPhaseBase[j]+ " netOld " +  netOldPhaseBase[j] + 
+                   " deltaOld [j] " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
+                   " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] +
+                   " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]
+                  
+
+                   
+                   , -300 , 500 +(j*50), 1000);
 
  
-  
+               for (int i = 0; i < networkSize-4; i++) { 
             //  text  ( " oscillatorBlocked " + oscillatorBlocked + " memoryi " + memoryi + " frequency 0 " + net.naturalFrequency[0], 300, 1000);
                text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 1100);
                text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 1200);
                text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1300);
+                } 
 
               oldSplitTimeLfo = splitTimeLfo; 
  }    

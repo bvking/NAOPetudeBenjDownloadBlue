@@ -135,7 +135,7 @@ void draw() {
 
 
                     modePendulaireModeCirculaire();
-                    displayKeyModeNull(); 
+                 //   displayKeyModeNull(); 
                     
                     
                     net.step(); // actualise step insync library ==> actualise net.phase[i]

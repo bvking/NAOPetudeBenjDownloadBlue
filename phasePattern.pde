@@ -291,16 +291,10 @@ textSize (100);
 
   if (key == 'i') {  // memory == 0 is the ball "behind"  the screen
 
+      oldMemoryi=memoryi;
+      memoryi=(memoryi+1)%networkSize;
   
-    if (memoryi>=0) {
-       oldMemoryi=memoryi;
-       memoryi=(memoryi-1);
-    }
-      
-    if ( memoryi<=-1) {
-        memoryi=networkSize-1;
-        oldMemoryi=0;
-    }
+
 
      for (int i = 1; i < (networkSize-0); i++) {  
 
@@ -309,12 +303,13 @@ textSize (100);
        net.naturalFrequency[i-1]= net.naturalFrequency[i];
        //    net.phase[i]= net.phase[i+1];// net.oldPhase[i] keep phase at    
        //    netPhaseBase[i]= netPhaseBase[i+1];// net.oldPhase[i] keep phase at    
-       //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
+        //   net.naturalFrequency[i]= net.naturalFrequency[i+1];
      }
 
        net.phase[networkSize-1]=  net.oldPhase[0];
      //  netPhaseBase[networkSize-1]=  net.oldPhase[0];
        net.naturalFrequency[networkSize-1]= OldFrequency[0];
+    //    net.naturalFrequency[networkSize-1]= net.naturalFrequency[0];
    
   }
 
@@ -323,8 +318,17 @@ textSize (100);
 
 
   if (key == 'u'  ) { 
-      oldMemoryi=memoryi;
-      memoryi=(memoryi+1)%networkSize;
+    
+
+          if (memoryi>=0) {
+       oldMemoryi=memoryi;
+       memoryi=(memoryi-1);
+    }
+      
+    if ( memoryi<=-1) {
+        memoryi=networkSize-1;
+        oldMemoryi=0;
+    }
 
     net.shiftPhases(1); 
     net.shiftFrequencies(1); 
