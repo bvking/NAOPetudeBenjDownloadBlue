@@ -183,7 +183,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
                    (note4 == 64 &&velocity4 >= 1 && velocity4 <= 64) || 
                    (note5 == 64 &&velocity5 >= 1 && velocity5 <= 64) || 
                    (note6 == 64 &&velocity6 >= 1 && velocity6 <= 64))) {
-                    oscillatorBlocked = 10;
+                    oscillatorBlocked = 0;
                     key = 'f';
                     keyReleased();
                   // key = 'f';
@@ -201,7 +201,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
                        (note4 == 69 && velocity4 >= 1 && velocity4 <= 64) || 
                        (note5 == 69 && velocity5 >= 1 && velocity5 <= 64) || 
                        (note6 == 69 && velocity6 >= 1 && velocity6 <= 64))) {
-                        oscillatorBlocked = 1;
+                        oscillatorBlocked = 0;
                         key = 'd';
                         keyReleased();
                       // key = 'd';
@@ -216,7 +216,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
                            ((note1 == 67 && velocity1 >= 1 && velocity1 <= 64) || 
                            (note2 == 67 && velocity2 >= 1 && velocity2 <= 64) || 
                            (note3 == 67 && velocity3 >= 1 && velocity3 <= 64))) {
-                           // oscillatorBlocked = 1;
+                            oscillatorBlocked = 0;
                             key = 'd';
                             keyReleased();
                           // key = 'd';
@@ -245,7 +245,8 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
                                    (note4 == 74 && velocity4 >= 1 && velocity4 <= 64) || 
                                    (note5 == 74 && velocity5 >= 1 && velocity5 <= 64) || 
                                    (note6 == 74 && velocity6 >= 1 && velocity6 <= 64))) {
-                                    oscillatorBlocked = networkSize;
+                                  //  oscillatorBlocked = networkSize;
+                                  oscillatorBlocked = 0;
                                     key = 'f';
                                    keyReleased(); // i=105
                                     formerEvent[74] = millis();

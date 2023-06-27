@@ -553,18 +553,17 @@ textSize (100);
       printSummary(i);
     }
    // memoryi=0; // to start well with 'T'
-    memoryi=9; // to start well with 'T'
+    memoryi=networkSize-1; // to start well with 'T'
     net.naturalFrequency[memoryi]= 1;//4.68/2; // 124 bpm
   }
 
   if (key == 'a') { //A$  Shift frequencies one by one. 
- 
+    oldMemoryi=memoryi;
     memoryi++;
     memoryi%=networkSize;
-    net.naturalFrequency[memoryi]= 4.68/2/2/2/2;      //4.68/2; // 124 bpm  4=108 bpm
-
+    net.naturalFrequency[memoryi]= net.naturalFrequency[oldMemoryi];
+   // net.naturalFrequency[memoryi]= 4.68/2/2/2/2;      //4.68/2; // 124 bpm  4=108 bpm
    // net.naturalFrequency[memoryi]=pow(4, -2);
-
   }
 
 
