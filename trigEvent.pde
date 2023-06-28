@@ -19,7 +19,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120;
 
       if  (music_from_ableton_live == " madRush " ) { 
-            //     autmationWithMeasureAndNote();
+               autmationWithMeasureAndNote();
             }
 
 
