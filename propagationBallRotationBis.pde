@@ -453,7 +453,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
     signal[2] = -signal[2];
   }
   
-  if (!doZ) {
+  if (!doZ) { // option à mettre à l'ecran
     propagationTrigged = false;
     if (oldSplitTimeLfo > splitTimeLfo) {
       oldOscillatorChange = oscillatorChange;
