@@ -166,16 +166,15 @@ void propagationBallRotationBis(){ // as addSignalOneAndTwoQuater() in NAOP
 
 
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
- //  splitTimeScaleRotation(signal[2]);
+      splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
 
-  // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
+       // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
+       // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+       // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
+       propagation2wayRotationBis(); 
 
-  // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-  splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
-   propagation2wayRotationBis(); 
-
-   actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-   mapNewPosX(); // counter actived
+       actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
+        mapNewPosX(); // counter actived
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
     //  keyMode = " trigEventWithAbletonSignal ";
