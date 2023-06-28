@@ -339,7 +339,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             String debug = "";
             String dataToControlMotor;
             
-            int nbBall = 12;
+            int nbBall = networkSize;
             int nbMaxDelais = 2000;
             
             // Variable pour suivre un mouvement avec un decalage en frame et phase.DANS les FONCTIONS commencant par follow
@@ -991,7 +991,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 memoryi = networkSize - 1;
                 oscillatorFollowing[0] = 3.14;
                 
-                translate(0, -800,1000);
+              //  translate(0, -800,1000);
                 
                 
                 }
