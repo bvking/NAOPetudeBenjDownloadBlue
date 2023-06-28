@@ -291,9 +291,13 @@ textSize (100);
 
   if (key == 'i') {  // memory == 0 is the ball "behind"  the screen
 
-      oldMemoryi=memoryi;
-      memoryi=(memoryi+1);
-      memoryi%=networkSize;
+         oldMemoryi=memoryi;
+        memoryi=(memoryi-1);
+      
+    if ( memoryi==-1) {
+        memoryi=networkSize-1;
+        oldMemoryi=0;
+    }
   
 
 
@@ -319,14 +323,12 @@ textSize (100);
 
 
   if (key == 'u'  ) { 
+
+     oldMemoryi=memoryi;
+      memoryi=(memoryi+1);
+      memoryi%=networkSize;
     
-        oldMemoryi=memoryi;
-        memoryi=(memoryi-1);
-      
-    if ( memoryi==-1) {
-        memoryi=networkSize-1;
-        oldMemoryi=0;
-    }
+    
 
     net.shiftPhases(1); 
     net.shiftFrequencies(1); 
