@@ -445,7 +445,6 @@ void  modePendulaireModeCirculaire() {
 
       text ( char (formerKeyMetro) , 100,100);
 
-    
       x = displacement*cos(newPosF[i]);
       y = displacement*sin(newPosF[i]);
 
@@ -468,11 +467,7 @@ void  modePendulaireModeCirculaire() {
 
    }                                                                                                                                                                                                                                                                                                                                                                                                                                    
     popMatrix();
-  
 
-    
-  net.step(); 
-  netG.step(); //Does it make any meaning?
   
     } 
 
