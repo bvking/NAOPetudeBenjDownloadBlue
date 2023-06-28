@@ -90,7 +90,7 @@ void teensyPos(){
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
       recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
-      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+   //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
 
    //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
@@ -132,6 +132,9 @@ void teensyPos(){
 
           if (formerKeyMetro == '*' ) {
                for (int i = 0; i < networkSize-0; i++) { // 
+
+                      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+
     
              //   dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];// useless but find something to make i and u working in circular movement
              //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work

@@ -3,13 +3,7 @@ void  modePendulaireModeCirculaire() {
    
     pushMatrix();
 
-    // ***************************************DATA TO MANAGE SOUND in Processing USELESS
-    j[i]= rev[i]%2; // if j==0 the number of revolution is pair, j==1 -->impair, j==-1--> impair and negative
-    if (net.naturalFrequency[i] < 0) {
-   //   freqi[i] = constrain( map( net.naturalFrequency[i], 0, -5, 200, 16000 ), freqMin, 12000 );
-    } else {
-   //   freqi[i]=  constrain( map( net.naturalFrequency[i], 0, 5, 200, 16000 ), freqMin, 12000 );
-    }
+ 
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      text ( memoryi + " mapped GENERAL pendular way $ ", 300, 600);
@@ -41,89 +35,7 @@ void  modePendulaireModeCirculaire() {
     } 
 
 
-    if (formerKeyMetro == '$' && (formerSartKey == 'X' || formerSartKey == 'x' ) ) {  // circular to pendular) //|| formerSartKey == 'w' || formerSartKey == 'W'
-    if (keyMode != " truc ")  {  
-  text ( " mapped SECOND pendular way $ ", 400, 700);
-     
-
-      if (net.phase[i] >= 0 && net.phase[i] <= PI ) {
-        metroPhase[i]= map( net.phase[i], 0, PI, -HALF_PI, HALF_PI);
-      }
-
-      if (net.phase[i] >= PI  && net.phase[i] <= TWO_PI) {   
-        metroPhase[i]= map( net.phase[i], PI, TWO_PI, HALF_PI, -HALF_PI );
-      }
-
-      if (net.phase[i] <= 0 && net.phase[i] >= -PI ) {
-        metroPhase[i]= map( net.phase[i], 0, -PI, HALF_PI, -HALF_PI);
-      }
-
-      if (net.phase[i] >= -PI  && net.phase[i] <= -TWO_PI) {   
-        //    metroPhase[i]= map( net.phase[i], -PI, -TWO_PI, -HALF_PI, HALF_PI );
-      }
-
-      for (int n = 0; n < (1); n++) {// pendular from -800 to 800
-/*
-        print (" interPhas "); 
-        print (memoryi); 
-        print (" "); 
-        print (interPhase[memoryi]); 
-        print (" interPCia "); 
-        print (memoryi); 
-        print (" "); 
-        print (interPhaseCircular[memoryi]);
-
-        print (" metroPhas "); 
-        print (memoryi); 
-        print (" "); 
-        print (metroPhase[memoryi]); 
-        print (" meOldPhas "); 
-        print (memoryi); 
-        print (" "); 
-        print (metroOldPhase[memoryi]);
-
-        print (" net.phase "); 
-        print (memoryi); 
-        print (" "); 
-        print (net.phase[memoryi]); 
-        print (" netOphase "); 
-        print (memoryi); 
-        print (" "); 
-        println (net.oldPhase[memoryi]);
-
-        print (" interPhas "); 
-        print (oldMemoryi); 
-        print (" "); 
-        print (interPhase[oldMemoryi]); 
-        print (" interPCia "); 
-        print (oldMemoryi); 
-        print (" "); 
-        print (interPhaseCircular[oldMemoryi]);
-
-        print (" metroPhas "); 
-        print (oldMemoryi); 
-        print (" "); 
-        print (metroPhase[oldMemoryi]); 
-        print (" meOldPhas "); 
-        print (oldMemoryi); 
-        print (" "); 
-        print (metroOldPhase[oldMemoryi]);
-
-        print (" net.phase "); 
-        print (oldMemoryi); 
-        print (" "); 
-        print (net.phase[oldMemoryi]); 
-        print (" netOphase "); 
-        print (oldMemoryi); 
-        print (" "); 
-        println (net.oldPhase[oldMemoryi]);
-        */
-      }  
-
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
-    }
-   }
+  
 
     if ((formerKeyMetro == '$' || formerKeyMetro == '*' || formerKeyMetro == '@'  ) && (formerSartKey == 'w' || formerSartKey == 'W' ) ) {  // circular to pendular) //|| formerSartKey == 'w' || formerSartKey == 'W'
     if (keyMode != " truc " ) {   

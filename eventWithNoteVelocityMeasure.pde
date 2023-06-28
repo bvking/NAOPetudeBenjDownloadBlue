@@ -14,7 +14,7 @@ void autmationWithMeasureAndNote()
   } 
 
   if (measure<5 ) { // && beatTrigged==true 
-    speedDelta=4; 
+    speedDelta=3; 
     autoNote2();
   } 
   
@@ -23,7 +23,7 @@ void autmationWithMeasureAndNote()
    autoNote1VelInf64();
     } 
   if (measure==5 && beatTrigged==true) {
-    speedDelta=4 ;
+    speedDelta=3 ;
   } 
   if ( measure==1 && beatTrigged==true ) {
 
@@ -78,46 +78,21 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
 
   if  (measure==78 && beatTrigged==true) {
-    key='A'; 
-    keyReleased();
+   // key='A'; 
+   // keyReleased();
+    memoryi=9;
+    net.naturalFrequency[9]=0.25;
     key='o'; 
     keyReleased();
-
     key='*';
-    keyReleased();
-
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-
-
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
-    keyReleased();
-    key='Y';
     keyReleased();
 
      }
   if  (measure==78 && beatPrecisedTrigged==true && beatPrecised<=18 ) {
 
-    key='T';
+    key='T'; // speed is propaged to  next oscilltor 
     keyReleased();
+    key='y';keyReleased(); // uprise speed 
    // key='t';
    // keyReleased();
    // keyCode=CONTROL;
@@ -130,7 +105,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
   
   if  (measure>=79+1 && measure<=79+1 && beatTrigged==true) {
-    speedDelta= 8;
+    speedDelta= 5;
   }  
   if  (measure>=79+1 && measure<=200 ) {//129
     autoNote2();

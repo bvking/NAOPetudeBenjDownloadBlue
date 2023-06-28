@@ -558,7 +558,7 @@ textSize (100);
     }
     memoryi=0; // to start well with 'T'
     memoryi=networkSize-1; // to start well with 'T'
-    net.naturalFrequency[memoryi]= 1;//4.68/2; // 124 bpm
+    net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
   }
 
   if (key == 'a') { //A$  Shift frequencies one by one. 
