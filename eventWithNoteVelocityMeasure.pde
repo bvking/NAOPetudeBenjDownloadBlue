@@ -88,7 +88,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     keyReleased();
 
      }
-  if  (measure==78 && beatPrecisedTrigged==true && beatPrecised<=18 ) {
+  if  (measure==78 && beatPrecisedTrigged==true && beatPrecised!=0 ) {
 
     key='T'; // speed is propaged to  next oscilltor 
     keyReleased();
@@ -105,7 +105,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
   
   if  (measure>=79+1 && measure<=79+1 && beatTrigged==true) {
-    speedDelta= 5;
+    speedDelta= 4;
   }  
   if  (measure>=79+1 && measure<=200 ) {//129
     autoNote2();

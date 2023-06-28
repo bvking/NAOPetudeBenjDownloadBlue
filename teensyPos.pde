@@ -90,7 +90,7 @@ void teensyPos(){
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
       recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
-   //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
 
    //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
@@ -106,7 +106,9 @@ void teensyPos(){
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
        // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i]+lastPositionFromCircularMode[i];// RECALL
+        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i]+lastPositionFromCircularMode[i];// RENAME
+        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+
          print ( " record $ " + recordLastDataOfMotorPosition[i] );
         //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
             }
@@ -372,7 +374,7 @@ void teensyPosOri(){
                for (int i = 0; i < networkSize-0; i++) { // 
     
         dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]; // from i or u
-    // dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
+       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
         print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
        } 
         }
