@@ -6,7 +6,7 @@ void  modePendulaireModeCirculaire() {
  
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
-     text ( memoryi + " mapped GENERAL pendular way $ ", 300, 600);
+     text ( memoryi + " mapped GENERAL pendular way $ " +  circularMov, 300, 600);
       //  println (" you are in $ et non x ");
          net.phase[i]=net.phase[i]%TWO_PI;//
       if (net.phase[i] >= PI ) { 
@@ -40,7 +40,7 @@ void  modePendulaireModeCirculaire() {
     if ((formerKeyMetro == '$' || formerKeyMetro == '*' || formerKeyMetro == '@'  ) && (formerSartKey == 'w' || formerSartKey == 'W' ) ) {  // circular to pendular) //|| formerSartKey == 'w' || formerSartKey == 'W'
     if (keyMode != " truc " ) {   
     
-     text ( " mapped to THIRD pendular way 2$ ", 400, 800);
+     text ( " mapped to THIRD pendular way 2$  ", 400, 800);
       if (net.phase[i] <= 0 && net.phase[i] >= -PI ) {   
         metroPhase[i]= (map( net.phase[i], 0, -PI, HALF_PI, -HALF_PI));
       }
@@ -129,10 +129,11 @@ void  modePendulaireModeCirculaire() {
       y = displacement*sin(metroPhase[i]);
     }
   }
-
+ if (formerKeyMetro == '*') {  circularMov = true; }
+ else circularMov = false;
 
     if (formerKeyMetro == '£' || formerKeyMetro == '*' ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
- text ( " mapped to GENERAL CIRCULAR way 2$ ", 400, 900);
+ text ( " mapped to GENERAL CIRCULAR way 2 * " + circularMov, 400, 900);
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
     }

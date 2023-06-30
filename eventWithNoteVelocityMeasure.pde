@@ -78,47 +78,52 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
 
   if  (measure==78 && beatTrigged==true) {
+    speedDelta=3;
    // key='A'; 
    // keyReleased();
     memoryi=9;
-    net.naturalFrequency[9]=0.25;
+    net.naturalFrequency[9]=1;
     key='o'; 
     keyReleased();
     key='*';
     keyReleased();
-
      }
-  if  (measure==78 && beatPrecisedTrigged==true && beatPrecised!=0 ) {
+    if  (measure==78 && beatPrecisedTrigged==true  ) { 
 
     key='T'; // speed is propaged to  next oscilltor 
     keyReleased();
     key='y';keyReleased(); // uprise speed 
-   // key='t';
-   // keyReleased();
-   // keyCode=CONTROL;
-   // keyReleased();
-   // speedDelta=4;
-
-    
-  //    key='Y';keyReleased();
-    //   key='Y';keyReleased();
+   
   }
-  
-  if  (measure>=79+1 && measure<=79+1 && beatTrigged==true) {
+
+     if  (measure==79 && beatTrigged==true) {
     speedDelta= 4;
   }  
-  if  (measure>=79+1 && measure<=200 ) {//129
+
+   if  (measure==79 && beatPrecisedTrigged==true  ) { 
+         key='y';keyReleased(); // uprise speed 
+   
+  }
+
+    if  (measure==80 && beatTrigged==true) {
+    speedDelta= 5;
+  }  
+  
+  if  (measure==81  && beatTrigged==true) {
+     //   speedDelta= 6;
+  }  
+  if  (measure==80 && measure<=200 ) {//129
     autoNote2();
   }
   if  (measure>=79+2 && measure<=79+2 && beatTrigged==true) {
-    speedDelta= 4;
+   // speedDelta= 4;
   }
   if  (measure>=79+3 && measure<=79+3 && beatTrigged==true) {
-    speedDelta= 4;
+  //  speedDelta= 4;
   }
   
   if  (measure>=79+4 && measure<=79+4 && beatTrigged==true) {
-    speedDelta= 2;
+  //  speedDelta= 4;
   }
 
   if  (measure>=84 && measure<=92 && beatTrigged==true) {

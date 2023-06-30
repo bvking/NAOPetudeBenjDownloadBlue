@@ -1849,7 +1849,7 @@ void followDirectLfo(){
     
   if (formerFormerKey == '#') { //  && doA==true
      lfoPattern();
-      for (int i = 2; i < networkSize-0; i+=1) { 
+      for (int i = 0; i < networkSize-0; i+=1) { 
       print ( " LFO  == '#' "); println (LFO[i]);   
       LFO[i]= lfoPhase[1];
     //  LFO[i]= 0;
@@ -1902,7 +1902,7 @@ void followDirectLfo(){
 //    LFO[oscillatorChange] =  LFO[oscillatorChange]+phaseFollowLFO[oscillatorChange];  // add offset given by pendularPattern
 //    LFO[oscillatorChange] =  LFO[oscillatorChange]%TWO_PI; 
 
-    for (int i = 2; i < networkSize-0; i+=1) { 
+    for (int i = 0; i < networkSize-0; i+=1) { 
       
    if (LFO[i]<0){
    
@@ -1978,7 +1978,7 @@ void followDirectLfo(){
 
     println(frameCount + ": " +  " dataMarkedToTeensyNoJo" + ( dataMarkedToTeensyNoJo ));
    //  encoderReceiveUSBport101.write(dataMarkedToTeensyNoJo );// Send data to Arduino.
-    teensyport.write(dataMarkedToTeensyNoJo); // Send data to Teensy. only the movement
+   // teensyport.write(dataMarkedToTeensyNoJo); // Send data to Teensy. only the movement
  
  } 
 

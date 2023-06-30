@@ -1,14 +1,13 @@
 void switchFonctionDependingKeyMode() {
 
  if (  keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal " ) {
-    //  formerKeyMetro = '@';       
-          //  modeStartKeyToFollow = " trigEventWithAbletonSignal ";
+    
             trigEventWithAbletonSignal();
-      text ( keyMode, -width, -height); 
+      text (" ALT v " + keyMode, -width, -height); 
        }
      
       if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater " ) { //drive ball with lfo
-    //   PatternFollowLfo();
+  
      propagationMode();
       text ( keyMode, -width, -height); 
     }

@@ -152,7 +152,8 @@ void draw() {
                         sendPositionToBigMachine(); // enabling send position à finir
                         
                         teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
-                        
+                        arduinoPos(); // just to trig TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
+
           
                     if (encoderTouched[5] ==  true) { 
                             
@@ -161,7 +162,6 @@ void draw() {
                      } 
                             
                             
-                           //  arduinoPos(); // just to trig data to live when particular position of phase or pattern are created by the hole balls (oscillator)
                             
                             
                             //== = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
