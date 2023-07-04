@@ -63,6 +63,7 @@ void setPort() {
             //*************** WITHOUT ENODEER connected
              if(portConnected ==  true)  { 
                  println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3] + " portConnected " + portConnected);
+                 if (ports[3]== "/dev/cu.usbserial-000") println( ports[3] + " reading position serial port connected ");
                 encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
         
              // Read bytes into a buffer until you get a linefeed (ASCII 10):
