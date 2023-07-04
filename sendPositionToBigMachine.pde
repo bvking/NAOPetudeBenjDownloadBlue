@@ -1,7 +1,7 @@
 String portsUSBfrom3;
 
     void sendPositionToBigMachine(){
-
+        rotate (-PI/2);
        int numberOfEncodeur = 6;
        int encoderMapped [] = new int [numberOfEncodeur];
 
@@ -32,10 +32,11 @@ String portsUSBfrom3;
             
              } 
         } 
+      rotate (PI/2);
      } 
 
 void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir
-
+     rotate (-PI/2);
         accelerationRatio = speedDelta;
     
     for (int i = 0; i < networkSize; i++) {
@@ -103,7 +104,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
                String[] matchPort = match(portsUSBfrom1, "/dev/tty.Bluetooth-Incoming-Port");
 
      
- //   if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
+      //   if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
         // teensyport.write(dataFromMode);
         //   teensy4port.write(dataFromMode);
        if (frameCount <=  200) { 
@@ -115,5 +116,6 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
      //   if(frameCount ==  1) noLoop();
         
    }
+  rotate (PI/2);
 } 
 

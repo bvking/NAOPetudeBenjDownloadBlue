@@ -1,6 +1,7 @@
 
 boolean allMachineConnected;
 void setPort() {
+   // rotate (-PI/2);
     portOfBigMachineConnected = false;
     
     String[] ports = Serial.list();
@@ -69,6 +70,7 @@ void setPort() {
              // Read bytes into a buffer until you get a linefeed (ASCII 10):
               encoderReceiveUSBport101.bufferUntil('\n');
              }
+  //  rotate (PI/2);
    
   /*
     if ( allMachineConnected){

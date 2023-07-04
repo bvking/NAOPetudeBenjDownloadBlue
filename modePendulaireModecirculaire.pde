@@ -1,4 +1,5 @@
 void  modePendulaireModeCirculaire() {
+  rotate (-PI/2);
   for (int i = 0; i <networkSize-0; i++) {
    
     pushMatrix();
@@ -480,7 +481,8 @@ void  modePendulaireModeCirculaire() {
  // line (width/8*i, 0, width/8*i, height); // vertical
 
        }
-  } 
+  }
+  rotate (PI/2); 
 
   }  
 
