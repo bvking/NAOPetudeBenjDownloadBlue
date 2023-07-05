@@ -1,5 +1,7 @@
 void  modePendulaireModeCirculaire() {
   rotate (-PI/2);
+   rotate (-PI/2);
+  textSize (50);
   for (int i = 0; i <networkSize-0; i++) {
    
     pushMatrix();
@@ -7,7 +9,7 @@ void  modePendulaireModeCirculaire() {
  
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
-     text ( memoryi + " mapped GENERAL pendular way $ " +  circularMov, 300, 600);
+     text ( memoryi + " mapped GENERAL pendular way $ " +  circularMov, 300, height+200);
       //  println (" you are in $ et non x ");
          net.phase[i]=net.phase[i]%TWO_PI;//
       if (net.phase[i] >= PI ) { 

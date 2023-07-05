@@ -511,9 +511,8 @@ void arduinoPos() {
 
   if (rev[networkSize-1]%8==0 && decompte[networkSize-1]==0 ) {// send a trig to change scene in Ableton live (if oscillator 11 makes 8 round an djust when it pass trought its position 0 -->trig next scene in Live)
     nextScene= 1;//
-    println ("nextScenenextScenenextScenenextScenenextScene");
-    println ("nextScenenextScenenextScenenextScenenextScene");
-    println (nextScene);
+  //  println ("nextScenenextScenenextScenenextScenenextScene");
+  //  println (nextScene);
   } else {
     nextScene= 0;
   }     
