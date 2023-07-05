@@ -120,7 +120,7 @@ textSize (100);
       printSummary(i);
     }
   } 
-  if (key == 'é') { // e$  éà dans pendularpattern e$  Shift frequencies one by one.  //  0 to 9,  1 to 8, 2 to 7.....9 to 0 
+  if (key == 'é') { // Move the frequencies one by one and a cross manner, mirror  //  0 to 9,  1 to 8, 2 to 7.....9 to 0 
 
     println (" Shift frequencies one by one 0 <-- 11. ");
 
