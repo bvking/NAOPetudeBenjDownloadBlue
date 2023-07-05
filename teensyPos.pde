@@ -90,7 +90,7 @@ void teensyPos(){
       dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
       }
       recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
-      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastPositionFromCircularMode[i]; // RENAME;//+readPositionEncoder[i];
 
 
    //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
@@ -106,7 +106,7 @@ void teensyPos(){
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
        // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i]+lastPositionFromCircularMode[i];// RENAME
+        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];// RENAME
         dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
          print ( " record $ " + recordLastDataOfMotorPosition[i] );
@@ -135,7 +135,7 @@ void teensyPos(){
           if (formerKeyMetro == '*' ) {
                for (int i = 0; i < networkSize-0; i++) { // 
 
-                      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+                      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastPositionFromCircularMode[i];//+readPositionEncoder[i];
 
     
              //   dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];// useless but find something to make i and u working in circular movement
