@@ -18,6 +18,8 @@ boolean portConnected;
 String music_from_ableton_live;
 String[] eventToTrig = {"0","0","0","0"};
 String[] keyEvent = {" bla "," bli ","0","0"};
+char specialPropagationKey;
+int propagationTimeElapsed;
 float trigedWithAnySign, oldTrigedWithAnySign;
 float[] trigedSignFromAbleton = new float[networkSize];
 float[] oldTrigedSignFromAbleton = new float[networkSize];
@@ -992,6 +994,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 memoryi = networkSize - 1;
                 oscillatorFollowing[0] = 3.14;
                 
+                 
               //  translate(0, -800,1000);
                 
                 
