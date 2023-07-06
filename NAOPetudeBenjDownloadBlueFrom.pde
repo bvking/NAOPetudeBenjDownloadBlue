@@ -28,7 +28,7 @@ void draw() {
     
     //***************************************** END 3D CAM  
     
-    print(" BEGIN OF MAIN ");
+    println(" BEGIN OF MAIN " +  "specialPropagationKey "+ specialPropagationKey);
     handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux
     background(0);

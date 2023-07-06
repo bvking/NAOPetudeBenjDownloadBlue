@@ -44,7 +44,7 @@ textSize (100);
       OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
     }
   }
-  if  (   formerSartKey!= 'J')  
+  //if  (   formerSartKey!= 'J')  
   if (key == 'W') { // follow mode. What is w?  (formerKey=='w')
     formerW();
     key ='#';
@@ -385,18 +385,27 @@ textSize (100);
   } 
 */
  } 
-      if (key == '>' ) {
+
+    
+     if (key == '>' ) {
      specialPropagationKey = '>' ;
+     formerKeyMetro = ':';
      } 
      if (key == '<' ) {
      specialPropagationKey = '<' ;
+     formerKeyMetro = ':';
      } 
+      
     if (key == ':' ) {
-     specialPropagationKey = ':' ;
+    // specialPropagationKey = ':' ;
+     //formerKeyMetro = ':';
      } 
 
+     text ( " specialPropagationKey " + specialPropagationKey,  0, 500);
+
+
   if (key == 'U' && specialPropagationKey == '<') { 
-     //  net.shiftPhases(1);
+      net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
      net.phase[i]+=PI/8;
      net.phase[i]%=TWO_PI;
@@ -452,7 +461,9 @@ textSize (100);
     // netPhaseBase[networkSize-1]=  net.oldPhase[networkSize-1-1]; // useless
 
     // net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
-  } 
+  }
+
+
      boolean repeatU = true;
      if (millis() > propagationTimeElapsed+1000) {
      if (formerKey == 'U' && specialPropagationKey == '>')  {  //|| repeatU
