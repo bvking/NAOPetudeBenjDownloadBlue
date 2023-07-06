@@ -407,19 +407,10 @@ textSize (100);
   if (key == 'U' && specialPropagationKey == '<') { 
       net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
-     net.phase[i]+=PI/8;
-     net.phase[i]%=TWO_PI;
+     net.phase[i]+=PI/20*(0+1);
+
     }
-    print (" U$< oldActualVirtualPosition2 ");
-    println (oldActualVirtualPosition[2]);
-    print (" U$< ActualVirtualPosition2 ");
-    println (ActualVirtualPosition[2]);
-
-    print (" U$< oldVirtualPosition2 ");
-    println (oldVirtualPosition[2]);
-    print (" U$< virtualPosition[2] ");
-    println (VirtualPosition[2]);
-
+  
     oldMemoryi=memoryi;
     memoryi=(memoryi+1)%networkSize;
 
@@ -429,7 +420,7 @@ textSize (100);
     for (int i = 0; i < (networkSize-1); i++) {
 
        netOldPhaseBase[i+1]=netPhaseBase[i];
-       netPhaseBase[i]= map (net.phase[i], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[i]
+    //   netPhaseBase[i]= map (net.phase[i], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[i]
      
      // net.naturalFrequency[i+1]= net.naturalFrequency[i];
       //**   net.naturalFrequency[2]= OldFrequency[networkSize-1];
@@ -448,34 +439,36 @@ textSize (100);
     //   net.naturalFrequency[2]= net.naturalFrequency[networkSize-1];
 
            netOldPhaseBase[networkSize-1]=netPhaseBase[0];
-          netPhaseBase[0]= map (net.phase[0], 0, TWO_PI, 0, 6400 ); //+ lastPositionFromCircularMode[0] +dataMappedForMotorisedBigMachine[0]
+       //   netPhaseBase[0]= map (net.phase[0], 0, TWO_PI, 0, 6400 ); //+ lastPositionFromCircularMode[0] +dataMappedForMotorisedBigMachine[0]
          
         //   lastPositionFromCircularMode[0]+=netPhaseBase[0];
          lastPositionFromCircularMode[0]+=netOldPhaseBase[0];
 
            text ("U$<  add phase from the previous oscillator " + lastPositionFromCircularMode[0] , 200, 200); // && circularMov == false
 
-    //***net.naturalFrequency[0]= OldFrequency[networkSize-1];
-    //  VirtualPosition[2]=VirtualPosition[networkSize-1];
-   // ActualVirtualPosition[0]=VirtualPosition[0];
-    // netPhaseBase[networkSize-1]=  net.oldPhase[networkSize-1-1]; // useless
-
-    // net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
+       for (int i = 0; i < (networkSize-0); i++) { 
+    // net.phase[i]+=PI/20*(i+1);
+    // net.phase[i]%=TWO_PI;
+      netPhaseBase[i]=net.phase[i];
+    }
   }
 
 
      boolean repeatU = true;
-     if (millis() > propagationTimeElapsed+1000) {
+     if (millis() > propagationTimeElapsed+200) {
      if (formerKey == 'U' && specialPropagationKey == '>')  {  //|| repeatU
 
       
-     //  net.shiftPhases(1);
-      for (int i = 0; i < (networkSize-0); i++) { 
-      netOldPhaseBase[i]=netPhaseBase[i]-0/8;
-      netPhaseBase[i]+=netPhaseBase[i]-PI/8;
-      net.phase[i]=netPhaseBase[i];
+       net.shiftPhases(1);
+         for (int i = 0; i < (networkSize-0); i++) { 
+     // netOldPhaseBase[i]=netPhaseBase[i]-0/8;
+    //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
+      
+    //  net.phase[i]=netPhaseBase[i];
+      netPhaseBase[i]=net.phase[i];
    
     }
+ 
    
 
     oldMemoryi=memoryi;
@@ -484,7 +477,7 @@ textSize (100);
     if ( memoryi<=0) {
         memoryi=0;
     }
-  
+        netOldPhaseBase[networkSize-1]=netPhaseBase[0];
      
     for (int i = 0; i < (networkSize-1); i++) {
 
@@ -508,7 +501,7 @@ textSize (100);
     //   ActualVirtualPosition[2]= ActualVirtualPosition[networkSize-1];
     //   net.naturalFrequency[2]= net.naturalFrequency[networkSize-1];
 
-           netOldPhaseBase[networkSize-1]=netPhaseBase[0];
+      //**     netOldPhaseBase[networkSize-1]=netPhaseBase[0];
        //   netPhaseBase[0]= map (net.phase[0], 0, TWO_PI, 0, 6400 ); //+ lastPositionFromCircularMode[0] +dataMappedForMotorisedBigMachine[0]
        //   netPhaseBase[0]= map (netPhaseBase[0], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[0]
        //   net.phase[0]=map (netPhaseBase[0], 0, 6400, 0, TWO_PI ); // just to display
@@ -520,6 +513,16 @@ textSize (100);
            text ("U$ >  add phase from the previous oscillator " + lastPositionFromCircularMode[0] , 200, 200); // && circularMov == false
 
   }
+       for (int i = 0; i < (networkSize-0); i++) { 
+     // netOldPhaseBase[i]=netPhaseBase[i]-0/8;
+    //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
+      
+    //  net.phase[i]=netPhaseBase[i];
+    //  net.phase[i]+=netOldPhaseBase[i];
+
+      net.phase[i]=netOldPhaseBase[i];
+   
+    }
          propagationTimeElapsed= millis();
          key = 'U'; keyReleased();
 
