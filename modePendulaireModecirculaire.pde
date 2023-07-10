@@ -42,7 +42,8 @@ void  modePendulaireModeCirculaire() {
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      if ( specialPropagationKey != '>'  ) { 
-     text ( memoryi + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
+       if ( key != '#'  ) {
+     text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
       /*
@@ -71,6 +72,8 @@ void  modePendulaireModeCirculaire() {
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
        } 
+       key='#';
+        }
     } 
 
 
