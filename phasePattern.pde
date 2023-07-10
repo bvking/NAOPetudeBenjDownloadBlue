@@ -40,7 +40,7 @@ textSize (100);
     //     text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
       
   for (int i = 0; i < (networkSize); i++) { 
-    {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase );
+    {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
 
       metroOldPhase[i]= metroPhase[i];
       OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
@@ -412,7 +412,7 @@ textSize (100);
      //formerKeyMetro = ':';
      } 
 
-     text ( " specialPropagationKey " + specialPropagationKey,  0, 500);
+   
 
    if (key == 'U' && specialPropagationKey == '?' && circularMov) { 
       net.shiftPhases(1);
@@ -422,9 +422,12 @@ textSize (100);
     }
   
     if (key == 'U' && specialPropagationKey == '?' && !circularMov) { // 
+      text ( " key " + key,  0, 500 );
          for (int i = 1; i < (networkSize-0); i++) {  
 
        metroPhase[i]= metroOldPhase[i-1];
+       println ( i + "sifted  metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
+
          //   netPhaseBase[i-1]= net.oldPhase[i];
        net.naturalFrequency[i-1]= net.naturalFrequency[i];
          //   metroPhase[i]= metroPhase[i+1];// net.oldPhase[i] keep phase at    
@@ -439,7 +442,7 @@ textSize (100);
      
     //  net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
-     metroPhase[i]+=PI/20*(0+1);
+      metroPhase[i]+=PI/20*(0+1);
       }
     }
   

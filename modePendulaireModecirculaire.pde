@@ -10,6 +10,41 @@ void  modePendulaireModeCirculaire() {
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
 
+      
+      if (net.phase[i] >= PI ) { 
+        metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
+  //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+
+      }
+      if (net.phase[i] >= 0 && net.phase[i] < PI ) {
+        metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
+     //metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
+      }
+      if (net.phase[i] <= -PI) { 
+        metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
+     //  metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
+
+      }  
+      if (net.phase[i] < 0  && net.phase[i] > -PI) {   
+        metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
+     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
+      }
+        
+      
+        // metroPhase[i]=netOldPhaseBase[i];
+         metroPhase[i]=net.phase[i];
+         metroPhase[i]=  metroPhase[i]-PI/2;
+       //   metroPhase[i]%=TWO_PI;
+      x = displacement*cos(metroPhase[i]);
+      y = displacement*sin(metroPhase[i]);
+    } 
+ 
+    //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
+    if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
+     if ( specialPropagationKey != '>'  ) { 
+     text ( memoryi + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
+      //  println (" you are in $ et non x ");
+      //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
       /*
       if (net.phase[i] >= PI ) { 
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
@@ -28,42 +63,9 @@ void  modePendulaireModeCirculaire() {
       if (net.phase[i] < 0  && net.phase[i] > -PI) {   
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
      // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
-      }
-      */  
-      
-        // metroPhase[i]=netOldPhaseBase[i];
-         metroPhase[i]=net.phase[i];
-         metroPhase[i]=  metroPhase[i]-PI/2;
-       //   metroPhase[i]%=TWO_PI;
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
-    } 
- 
-    //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
-    if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
-     if ( specialPropagationKey != '>'  ) { 
-     text ( memoryi + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
-      //  println (" you are in $ et non x ");
-      //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
-      if (net.phase[i] >= PI ) { 
-        metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-  //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
-      if (net.phase[i] >= 0 && net.phase[i] < PI ) {
-        metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
-     //metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
-      }
-      if (net.phase[i] <= -PI) { 
-        metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
-     //  metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
-
-      }  
-      if (net.phase[i] < 0  && net.phase[i] > -PI) {   
-        metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
-     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
-
-      }
+    */
        //  metroPhase[i]=  metroPhase[i]-PI/2;
        //   metroPhase[i]%=TWO_PI;
       x = displacement*cos(metroPhase[i]);
@@ -148,12 +150,12 @@ void  modePendulaireModeCirculaire() {
       fill( 175, 175, 255 );
     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
 
-               text (  " lIlIlIlI ", -width/4, -height/4 ) ;  
+               text (  " lI " + specialPropagationKey, -width/4, -height/4 ) ;  
 
    // metroPhase[i]= metroPhase[i];     
                        
    // println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-    if (specialPropagationKey == '?') { metroPhase[i]+=PI/4;   }
+   // if (specialPropagationKey == '?') {    }  // metroPhase[i]+=PI/4;
     //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
    
       x = displacement*cos(metroPhase[i]);
