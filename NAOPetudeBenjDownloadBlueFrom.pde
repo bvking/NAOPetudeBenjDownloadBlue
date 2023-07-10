@@ -28,7 +28,7 @@ void draw() {
     
     //***************************************** END 3D CAM  
     
-    println(" BEGIN OF MAIN " +  "specialPropagationKey "+ specialPropagationKey);
+    println(" BEGIN OF MAIN " +                                      "specialPropagationKey "+  specialPropagationKey);
     handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux
     background(0);
@@ -208,7 +208,7 @@ void draw() {
     
     textSize(100);
     rotate(-HALF_PI-PI);
-    bpmAsPulsationFunction();
+    bpmAsPulsationFunction(); // function works only ont a period of 750 ms. under it bugs due to low resolution
     rotate( HALF_PI+PI);
     
     

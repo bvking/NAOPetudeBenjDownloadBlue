@@ -54,7 +54,7 @@ void teensyPos(){
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
                      dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2);
-                println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
+             //   println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
                 dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i]; // put it lower in the program
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
@@ -94,7 +94,7 @@ void teensyPos(){
 
 
    //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
-       print ( " record * " + recordLastDataOfMotorPosition[i] );
+     //  print ( " record * " + recordLastDataOfMotorPosition[i] );
        println();
 
      }

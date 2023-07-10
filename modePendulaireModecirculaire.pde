@@ -6,7 +6,7 @@ void  modePendulaireModeCirculaire() {
    
     pushMatrix();
        if (formerKeyMetro == '$' && ( specialPropagationKey == '>' || specialPropagationKey == '<')) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
-     text ( memoryi + " mapped GENERAL pendular way < " +  circularMov, 300, height+200);
+        text ( memoryi + " mapped GENERAL $ with > or < " + specialPropagationKey+ " "   +  circularMov, 300, height+200);
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
 
@@ -42,7 +42,7 @@ void  modePendulaireModeCirculaire() {
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      if ( specialPropagationKey != '>'  ) { 
-     text ( memoryi + " mapped GENERAL pendular way $ " +  circularMov, 300, height+200);
+     text ( memoryi + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
       if (net.phase[i] >= PI ) { 
@@ -90,7 +90,7 @@ void  modePendulaireModeCirculaire() {
   
     }
     if (formerKeyMetro == 's') { //drive ball with lfo
-         text ( " mapped to s CIRCULAR or PENDULAR way 2$ ", 400, 1100);
+         text ( " mapped to sample?  CIRCULAR or PENDULAR way 2$ ", 400, 1100);
       //    net.phase[i]=net.phase[i]+LFO[i];
       //     net.phase[i]=LFO[i];
       x = displacement*cos(net.phase[i]);
@@ -146,14 +146,16 @@ void  modePendulaireModeCirculaire() {
     colorMode(RGB, 255, 255, 255);
 //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
       fill( 175, 175, 255 );
-    if (keyMode == " trigEventWithAbletonSignal " ) {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
+    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
 
                text (  " lIlIlIlI ", -width/4, -height/4 ) ;  
 
    // metroPhase[i]= metroPhase[i];     
                        
-    println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+   // println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+    if (specialPropagationKey == '?') { metroPhase[i]+=PI/4;   }
     //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
+   
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
    

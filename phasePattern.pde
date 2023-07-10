@@ -40,7 +40,9 @@ textSize (100);
     //     text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
       
   for (int i = 0; i < (networkSize); i++) { 
-    {
+    {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase );
+
+      metroOldPhase[i]= metroPhase[i];
       OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
     }
   }
@@ -386,14 +388,23 @@ textSize (100);
 */
  } 
 
+     if (key == '?' ) {
+     specialPropagationKey = '?' ;
+    // formerKeyMetro = ':';
+     } 
+     if (key == ',' ) {
+     specialPropagationKey = ',' ;
+    // formerKeyMetro = ':';
+     } 
+
     
      if (key == '>' ) {
      specialPropagationKey = '>' ;
-     formerKeyMetro = ':';
+   //  formerKeyMetro = ':';
      } 
      if (key == '<' ) {
      specialPropagationKey = '<' ;
-     formerKeyMetro = ':';
+    // formerKeyMetro = ':';
      } 
       
     if (key == ':' ) {
@@ -402,6 +413,38 @@ textSize (100);
      } 
 
      text ( " specialPropagationKey " + specialPropagationKey,  0, 500);
+
+   if (key == 'U' && specialPropagationKey == '?' && circularMov) { 
+      net.shiftPhases(1);
+      for (int i = 0; i < (networkSize-0); i++) { 
+     net.phase[i]+=PI/20*(0+1);
+      }
+    }
+  
+    if (key == 'U' && specialPropagationKey == '?' && !circularMov) { // 
+         for (int i = 1; i < (networkSize-0); i++) {  
+
+       metroPhase[i]= metroOldPhase[i-1];
+         //   netPhaseBase[i-1]= net.oldPhase[i];
+       net.naturalFrequency[i-1]= net.naturalFrequency[i];
+         //   metroPhase[i]= metroPhase[i+1];// net.oldPhase[i] keep phase at    
+        //    netPhaseBase[i]= netPhaseBase[i+1];// net.oldPhase[i] keep phase at    
+        //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
+     }
+
+       metroPhase[0]=  metroOldPhase[networkSize-1];
+       //  netPhaseBase[networkSize-1]=  net.oldPhase[0];
+       net.naturalFrequency[networkSize-1]= OldFrequency[0];
+       //    net.naturalFrequency[networkSize-1]= net.naturalFrequency[0]; 
+     
+    //  net.shiftPhases(1);
+      for (int i = 0; i < (networkSize-0); i++) { 
+     metroPhase[i]+=PI/20*(0+1);
+      }
+    }
+  
+
+
 
 
   if (key == 'U' && specialPropagationKey == '<') { 
@@ -453,26 +496,24 @@ textSize (100);
     }
   }
 
-
      boolean repeatU = true;
-     if (millis() > propagationTimeElapsed+200) {
-     if (formerKey == 'U' && specialPropagationKey == '>')  {  //|| repeatU
 
-      
+
+     if (millis() > propagationTimeElapsed+200 && specialPropagationKey == '>') {
+     if (formerKey == 'U' )  {  //|| repeatU
+    
        net.shiftPhases(1);
          for (int i = 0; i < (networkSize-0); i++) { 
-     // netOldPhaseBase[i]=netPhaseBase[i]-0/8;
-    //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
+     //  netOldPhaseBase[i]=netPhaseBase[i]-0/8;
+     //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
       
-    //  net.phase[i]=netPhaseBase[i];
-      netPhaseBase[i]=net.phase[i];
+     //  net.phase[i]=netPhaseBase[i];
+         netPhaseBase[i]=net.phase[i];
    
     }
  
-   
-
-    oldMemoryi=memoryi;
-    memoryi=(memoryi+1)%networkSize;
+           oldMemoryi=memoryi;
+           memoryi=(memoryi+1)%networkSize;
 
     if ( memoryi<=0) {
         memoryi=0;
