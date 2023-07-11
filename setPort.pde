@@ -31,7 +31,7 @@ void setPort() {
        if (matchPort3!= null) { 
         allMachineConnected = true;
         portsUSBfrom3=portsUSB[3];
-        println(" serial port 2 of little mahine " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
+        println(" serial port 2 of little mahine " + portsUSB[3] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = false;
     }
     
@@ -75,14 +75,20 @@ void setPort() {
                 //*************** WITH TEENSY connected
                 //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
                 //teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
-                //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+                 //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+               
             }
         }
         
         //*************** WITHOUT ENODEER connected
         if (allMachineConnected)  { 
             println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3] + " portConnectedOfBigMachine " + portConnectedOfBigMachine);
-            if (ports[3] == "/dev/cu.usbserial-000") println(ports[3] + " reading position serial port connected ");
+
+           teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+               
+
+       
+
             encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
             
             // Read bytes into a buffer until you get a linefeed (ASCII 10):
