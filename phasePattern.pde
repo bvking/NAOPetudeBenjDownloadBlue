@@ -418,6 +418,7 @@ textSize (100);
       net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
      net.phase[i]+=PI/20*(0+1);
+     net.phase[i]%=PI;
       }
     }
   

@@ -44,8 +44,8 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     
     if (portConnected)  {   // // If not null, then a match was found
         
-        teensyport.write(dataFromMode);
-        //   teensy4port.write(dataFromMode);
+      //  teensyport.write(dataFromMode);
+       
         
         
         if (frameCount <=  200)  { 

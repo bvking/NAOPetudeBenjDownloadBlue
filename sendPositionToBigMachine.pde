@@ -79,7 +79,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     if (portConnected)  {   // // If not null, then a match was found
            if (frameCount <=  0)  { 
               }
-           teensy4port.write(dataFromMode);
+          // teensy4port.write(dataFromMode);
         if (frameCount >=  0)  { 
             text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
             println(" BigMachine port USB connected " + portsUSBfrom1 + " portConnected " + portConnected +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
