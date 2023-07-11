@@ -6,10 +6,12 @@ void mouseXY () {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. N
   println (sigma);
   Freq  =  (  map ((float (mouseY)/width*1), 0, 1, 0.0, 0.05 ));
 }
+/*
 public void settings() {
   size(600, 600, P3D);
 //  windowRatio(600, 600);
-} 
+}
+*/ 
 void goZero () {
   for (int i = 0; i < 12; i++) {
     //  net.phase[i]=-PI+0.5*PI+PI/12;

@@ -8,8 +8,8 @@ void mouseXY() {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No
 }
 /*
 public void settings() {
-//  size(600, 600, P3D);
-//  windowRatio(600, 600);
+  size(600, 600, P3D);
+ // windowRatio(600, 600);
 } 
 */
 void mousePressed() {  
