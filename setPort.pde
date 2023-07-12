@@ -30,7 +30,7 @@ void setPort() {
     if (matchPort3!= null) { 
         allMachineConnected = true;
         portsUSBfrom3=portsUSB[3];
-        println(" serial programming port conncected OF BIG MACHINE " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
+        println(" serial port 2 of little mahine " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = false;
     }
     
@@ -59,11 +59,12 @@ void setPort() {
         
         if (portsUSBfrom2 != "NC") {
             if (portConnectedOfBigMachine) { // 101  teensy 3.5    
-                text (" Port 2 CONNECTED to programming port of Teensy 3.5 ",  200, 200); 
-                println (" Port 2 CONNECTED to programming port of Teensy 3.5 ");
-              //  teensy4port = new Serial(this, ports[1],115200); // si port connecté Montere
-               
-         }
+                println(" Port 2 CONNECTED to programming port of Teensy 3.5 ");
+                //*************** WITH TEENSY connected
+                //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
+                //teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
+                //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+            }
         }
         
         //*************** WITHOUT ENODEER connected

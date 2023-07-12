@@ -1003,7 +1003,7 @@ void setup() {
                 memoryi = networkSize - 1;
                 oscillatorFollowing[0] = 3.14;
 
-                size(600, 600, P2D);
+               // size(600, 600, P3D);
                 
                  
               //  translate(0, -800,1000);
