@@ -6,6 +6,12 @@ import sync.*;
 PNetwork net;
 import java.util.Arrays;
 
+/*
+public void settings() {
+//size(600, 600, P3D);
+// windowRatio(600, 600);
+} 
+*/
 
 
 
@@ -46,7 +52,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
         dVal = sqrt(dVal);
     }
         return dVal;  // 
-    }
+}
         float oldFaz;
         float faz = 3;
         int oscillatorMaster = 0;
@@ -656,12 +662,14 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                     orderframe  = framecount;
                     //       print("a:ctual order : ");println(orderframe);
                     }
-                }     
-            void setup() {
+                }
 
-              size(600, 600, P3D);
-               frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
-                frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
+
+void setup() {
+
+            
+            frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
+            frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
               
                 
@@ -994,9 +1002,11 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 oscillatorBlocked = networkSize - 1;
                 memoryi = networkSize - 1;
                 oscillatorFollowing[0] = 3.14;
+
+                size(600, 600, P2D);
                 
                  
               //  translate(0, -800,1000);
                 
                 
-                }
+}

@@ -6,12 +6,9 @@ void mouseXY() {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No
     println(sigma);
     Freq  = (map((float(mouseY) / width * 1), 0, 1, 0.0, 0.05));
 }
-/*
-public void settings() {
-size(600, 600, P3D);
-// windowRatio(600, 600);
-} 
-*/
+
+
+
 void mousePressed() {  
     mouseRecorded = true;
     measure = 0;
