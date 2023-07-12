@@ -40,11 +40,6 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
         dataTransformed = " dataComputeInTeensy from mode ";
         println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);
     }
-
-    if (onlyLitteMachineWithSecondSerialPort)  { 
-            teensyport.write(dataFromMode);
-             println(" ONLY LITTLE " + portsUSBfrom3 + " is the modem "); 
-         }
     
     
     if (portConnectedOfBigMachine)  {   // // If not null, then a match was found
@@ -55,7 +50,7 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
         
         if (frameCount <=  200)  { 
             text("port USB connected to little with portUSBfrom2" + portsUSBfrom2 + " ending with 101 ", 0, 700); 
-            println(" port of BIG Machine CONNECTED?   or MODEM ? " + portsUSBfrom3 + " ending with 101 ");  
+            println("port USB connected to little with portUSBfrom2 " + portsUSBfrom2 + " ending with 101 ");  
         }
     }
     

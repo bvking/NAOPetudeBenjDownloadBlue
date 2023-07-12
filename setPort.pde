@@ -59,7 +59,8 @@ void setPort() {
         
         if (portsUSBfrom2 != "NC") {
             if (portConnectedOfBigMachine) { // 101  teensy 3.5    
-                println(" Port 2 CONNECTED to programming port of Teensy 3.5 "); 
+                text (" Port 2 CONNECTED to programming port of Teensy 3.5 ",  200, 200); 
+                println (" Port 2 CONNECTED to programming port of Teensy 3.5 ");
                 teensy4port = new Serial(this, ports[1],115200); // si port connecté Montere
                
             }
@@ -70,7 +71,11 @@ void setPort() {
             println("  PORT 2 or PORT 3 CONNECTED so CONNECT serial " + ports[3] + " portConnectedOfBigMachine " + portConnectedOfBigMachine);
 
            teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
-           encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
+               
+
+       
+
+            encoderReceiveUSBport101 =  new Serial(this,ports[3], 115200); // si port connecté Monterey
             
             // Read bytes into a buffer until you get a linefeed (ASCII 10):
             encoderReceiveUSBport101.bufferUntil('\n');
