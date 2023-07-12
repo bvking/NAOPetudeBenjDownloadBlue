@@ -70,7 +70,7 @@ void setPort() {
         }
         
         if (portsUSBfrom2 != "NC") {
-            if (portConnectedOfBigMachine = true) { // 101  teensy 3.5    
+            if (portConnectedOfBigMachine) { // 101  teensy 3.5    
                 println(" Port 2 CONNECTED to programming port of Teensy 3.5 ");
                 //*************** WITH TEENSY connected
                 //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
