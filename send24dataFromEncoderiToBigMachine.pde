@@ -1,7 +1,7 @@
 String portsUSBfrom3;
 
-    void sendPositionToBigMachine(){
-        rotate (-PI/2);
+void mapEncodeurToNumberOfStepsMotor(){
+        rotate (-PI/2); // add rotation to well display data on screen
        int numberOfEncodeur = 6;
        int encoderMapped [] = new int [numberOfEncodeur];
 
@@ -17,9 +17,6 @@ String portsUSBfrom3;
          }
     }
 
-
-
-
      for (int i = 0; i < 6; i++) { 
              if ( encoderTouched[i]==true){ 
                 println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);          
@@ -28,12 +25,11 @@ String portsUSBfrom3;
 
              if ( encoderTouched[i]==false){ 
                 println(" False encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
-           //     readPositionEncoder[i] = 0;
-            
+           //     readPositionEncoder[i] = 0;           
              } 
         } 
       rotate (PI/2);
-     } 
+} 
 
 void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir
      rotate (-PI/2);
@@ -54,7 +50,6 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
     //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
     
-   
     
     +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
     
@@ -71,7 +66,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 }
     
     else if (computeData >-  1) {
-        dataTransformed = " BigMachine dataComputeInTeensy from mode ";
+        dataTransformed = " BigMachine     dataComputeInTeensy from mode ";
         println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);
     }
     
@@ -88,33 +83,24 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 
             if ( matchPort!= null ){ 
                 allMachineConnected=false;
-               text(" only Little Machine  ENDING with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
+                text(" only Little Machine  ENDING with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
 
                  }
             else  println(" BigMachine CONNECTED to " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
                  if (frameCount <=  200)  { 
-                        text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
+                     text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
               }
                 allMachineConnected=true;
 
         }
     }
      if (!portConnectedOfBigMachine)  {  
-
-               String[] matchPort = match(portsUSBfrom1, "/dev/tty.Bluetooth-Incoming-Port");
-
-     
-      //   if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
-        // teensyport.write(dataFromMode);
+        String[] matchPort = match(portsUSBfrom3, "/dev/tty.Bluetooth-Incoming-Port");
         //   teensy4port.write(dataFromMode);
        if (frameCount <=  200) { 
-               text(" USB port NOT connected " + portsUSBfrom1 + " ", 0, 1000); 
-
-            println(" BigMachine port  USB NOT connected " + portsUSBfrom1);   
-    }
-        
-     //   if(frameCount ==  1) noLoop();
-        
+          text(" USB port of BigMachine is NOT connected " + portsUSBfrom3 + " ", 0, 1000); 
+          println(" BigMachine port  USB NOT connected " + portsUSBfrom3);   
+    }  
    }
   rotate (PI/2);
 } 

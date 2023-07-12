@@ -8,8 +8,8 @@ void mouseXY() {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No
 }
 /*
 public void settings() {
-  size(600, 600, P3D);
- // windowRatio(600, 600);
+size(600, 600, P3D);
+// windowRatio(600, 600);
 } 
 */
 void mousePressed() {  
@@ -28,19 +28,19 @@ void draw() {
     
     //***************************************** END 3D CAM  
     
-    println(" BEGIN OF MAIN " +                                      "specialPropagationKey "+  specialPropagationKey);
+    println(" BEGIN OF MAIN " +                                      "specialPropagationKey " +  specialPropagationKey);
     handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux
     background(0);
     
     if (frameCount <=  1)  noLoop(); // setPort()
     //  printDataOnScreen();
-       
+    
     
     printModeAndKey();
     setKeyModeByTappingKeyPadOnce();
     
-    setMovement(key, false);
+    setMovement(key, false);  // to enable to set a next keyMode
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
         "keyMode" + keyMode + "formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
@@ -61,7 +61,7 @@ void draw() {
     }         
     trigBeatWithMeasure();
     //  printDataOnScreen();
-    rotate( - HALF_PI);
+    rotate( -HALF_PI);
     printMidiNoteVelocity();
     rotate(HALF_PI);
     
@@ -76,7 +76,7 @@ void draw() {
     
     if (keyMode == " null ")
         { 
-        checkKeyModeToFollow();  
+      //  checkKeyModeToFollowIfALTisJustReleased();  
     }
     
     
@@ -98,13 +98,13 @@ void draw() {
     
     if (modeStartKeyToFollow == "samplingMode") {
         SamplingModeMayBeUsefull();
-        }
+    }
     
     updateInternalClock();
     
-    if (modeStartKeyToFollow == " samplingModeInternal "  ) { // || formerKeyMetro == 'J'
+    if (modeStartKeyToFollow == " samplingModeInternal ") { // || formerKeyMetro == 'J'
         handleInternalSamplingMode(); 
-        }
+    }
     
     //trigEffectToAbletonLive();  // add Size to Text
     //**************END MODE SETTING   *************************
@@ -145,11 +145,11 @@ void draw() {
     // if (circularMov==true) { // why it doesn' t work?
     if (formerKeyMetro ==  '*') {
         countRevs(); // below modePendular to compute revolution
-        } 
+    } 
     
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
-    sendPositionToBigMachine(); // enabling send position à finir
+    mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
     rotate(PI);
@@ -160,7 +160,7 @@ void draw() {
         
         //   keyMode = " samplingModeInternal ";
         
-        } 
+    } 
     
     
     
@@ -178,7 +178,7 @@ void draw() {
     
     if (formerKey == '!') {
         // formerSartKey = formerKey;
-        }
+    }
     
     if (key ==  'j') {// senda trig to start record in Ableton live 
         background(255);
@@ -188,11 +188,11 @@ void draw() {
         print("startStop from the beginning: "); 
         println(startStop);
         key = '#'; // reset key to akey doing nothing
-        }
+    }
     else
         {
         startStop = 2;
-        }
+    }
     
     
     //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left  
@@ -204,12 +204,12 @@ void draw() {
         
         formerKey = '#'; //reset formerkey to not trigging LIVE
         formerSartKey = formerKey;
-        }
+    }
     
     textSize(100);
-    rotate(-HALF_PI-PI);
+    rotate( -HALF_PI - PI);
     bpmAsPulsationFunction(); // function works only ont a period of 750 ms. under it bugs due to low resolution
-    rotate( HALF_PI+PI);
+    rotate(HALF_PI + PI);
     
     
     cohesionTrig = int(map(LevelCohesionToSend, 0, 1, 0, 100));
@@ -222,7 +222,7 @@ void draw() {
     if (formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
         //  countRevs();
         //    countRevsContinue();
-        }
+    }
     
     //****** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *    
     // STARTERCASE with formerKey

@@ -238,9 +238,9 @@ void arduinoPos() {
         
      if ((CircularVirtualPosition[i]%numberOfStep>3199 && CircularOldVirtualPosition[i]%numberOfStep<3200 && CircularOldVirtualPosition[i]%numberOfStep>201  )
           || (CircularVirtualPosition[i]%numberOfStep<3201 && CircularOldVirtualPosition[i]%numberOfStep>3200 && CircularVirtualPosition[i]%numberOfStep>201  )  ) {
-   //   background ((i+1)*10, 127/5*(i+1), 50);
+
        TrigmodPos[i]=0;     
-       print (i);  print(" CIRCULAR PASS CLOCKWISE THROUG 0: "); println (  TrigmodPos[i]=0); print (" virt ");  println (  VirtualPosition[i]); print (" Cirvirt "); print(  CircularVirtualPosition[i]); print (" CirOldvirt "); println (  CircularOldVirtualPosition[i]);
+      // print (i);  print(" CIRCULAR PASS CLOCKWISE THROUG 0: "); println (  TrigmodPos[i]=0); print (" virt ");  println (  VirtualPosition[i]); print (" Cirvirt "); print(  CircularVirtualPosition[i]); print (" CirOldvirt "); println (  CircularOldVirtualPosition[i]);
         } else  TrigmodPos[i]=1;
       } else {
         CircularOldVirtualPosition[i]=CircularVirtualPosition[i]%numberOfStep; 
@@ -248,8 +248,9 @@ void arduinoPos() {
         Pos[i]= int (map (net.phase[i], 0, -TWO_PI, 127, 0))*-1;  // to Oscsend  
 
     if ((CircularVirtualPosition[i]%numberOfStep<3201 && CircularOldVirtualPosition[i]%numberOfStep>3200 )   ) {
-       TrigmodPos[i]=0; print (i); print(" CIRCULAR PASS CLOCKWISE THROUG 0: ");  println (  TrigmodPos[i]=0); print (" virt ");  println (  VirtualPosition[i]); print (" Cirvirt "); print(  CircularVirtualPosition[i]); print (" CirOldvirt "); println (  CircularOldVirtualPosition[i]);
-     // background ((i+1)*10, 127/5*(i+1), 50);
+       TrigmodPos[i]=0;
+      //  print (i); print(" CIRCULAR PASS CLOCKWISE THROUG 0: ");  println (  TrigmodPos[i]=0); print (" virt ");  println (  VirtualPosition[i]); print (" Cirvirt "); print(  CircularVirtualPosition[i]); print (" CirOldvirt "); println (  CircularOldVirtualPosition[i]);
+
         } else  TrigmodPos[i]=1;
       } 
        
@@ -257,7 +258,10 @@ void arduinoPos() {
 
 
    //    dataMappedForMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
-       lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
+
+    //******   lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
+
+
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
 
       }
@@ -337,14 +341,14 @@ void arduinoPos() {
         || ( PendularLeftVirtualPosition[i]<PendularOldLeftVirtualPosition[i] && modOldPos[i]>720  && modPos[i]<=modOldPos[i] &&  modOldOldPos[i]<=modPos[i] &&  modOldOldPos[i]>=500 &&  modOldOldPos[i]<=800)  // discrimination speed 8
         || ( PendularLeftVirtualPosition[i]<PendularOldLeftVirtualPosition[i] && modOldPos[i]>720  && modPos[i]<=modOldPos[i] &&  modOldOldPos[i]>=modPos[i] &&  modOldOldPos[i]>=600 &&  modOldOldPos[i]<=800)  // discrimination speed 8
         )) {
-
+        /*
         println ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"); 
         print ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"); 
         print ("VirtualPosition: ") ; 
         print (i);  
         print (" =Pendularleft: ");  
         println  (PendularLeftVirtualPosition[i]);
-        //   background (int ((i+1)*22), int ((i+1)*22),int ((i+1)*22) );
+        
 
         print (i); 
         print(" OLDOLD PENDULAR ");
@@ -352,7 +356,8 @@ void arduinoPos() {
         print("OLD PENDULAR ");  
         print (modOldPos[i]);
         print(" Actual PENDULAR "); 
-        println (  modPos[i]); 
+        println (  modPos[i]);
+        */
         TrigmodPos[i]=0;
                             text (modOldPos[i] + "    " +  modPos[i] + "  VirtualPosition " + i +  VirtualPosition[i] , 400, 400+400*i);
 
@@ -436,7 +441,7 @@ void arduinoPos() {
         || ( PendularLeftVirtualPosition[i]<PendularOldLeftVirtualPosition[i] && modOldPos[i]>720  && modPos[i]<=modOldPos[i] &&  modOldOldPos[i]>=modPos[i] &&  modOldOldPos[i]>=600 &&  modOldOldPos[i]<=800)  // discrimination speed 8
         )) {
 
-
+      /*
         println ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"); 
         print ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"); 
         print ("VirtualPosition: ") ; 
@@ -452,6 +457,7 @@ void arduinoPos() {
         print (modOldPos[i]);
         print(" Actual PENDULAR "); 
         println (  modPos[i]); 
+     */   
         TrigmodPos[i]=0;
       } else { 
         TrigmodPos[i]=1;

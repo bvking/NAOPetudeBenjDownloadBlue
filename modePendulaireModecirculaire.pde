@@ -289,17 +289,9 @@ void  modePendulaireModeCirculaire() {
    */  
     
  if ( keyMode == " null " ) {      
-    if ( keyMode == " methodAbleton " ) { //drive ball with lfo   
   
-    println ( "****************************** DISPLAY ", keyMode );   
-    fill (255, 0, 255);
-      x = displacement*cos(phaseAbleton[i]); //);
-      y = displacement*sin(phaseAbleton[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
       
-    if ( keyMode == " signal " ) { //drive ball with lfo
+    if ( modeStartKeyToFollow == " samplingModeInternal " ) { //drive ball with lfo
     println ( "****************************** DISPLAY ", keyMode );    
     fill (100, 100 , 255);
       x = displacement*cos(net.phase[i]);
@@ -307,6 +299,8 @@ void  modePendulaireModeCirculaire() {
       sphere(side*3);
       sphereDetail( 4*5); 
       }
+
+
     if ( keyMode == " followDirectLfo " ) { //drive ball with lfo    
       println ( "****************************** DISPLAY ", keyMode );    
       fill (255, 100 , 255);    
@@ -376,30 +370,32 @@ void  modePendulaireModeCirculaire() {
       circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
 
 
-   //    circle ( 100* cos ( interpolatedAngle[0])+400, 100*sin ( interpolatedAngle[0])+400, 200);
-   //    circle ( 100* cos ( interpolatedAngle[1])+400, 100*sin ( interpolatedAngle[1])+400, 200);
+      //    circle ( 100* cos ( interpolatedAngle[0])+400, 100*sin ( interpolatedAngle[0])+400, 200);
+      //    circle ( 100* cos ( interpolatedAngle[1])+400, 100*sin ( interpolatedAngle[1])+400, 200);
       sphere(side*3);
       sphereDetail( 4*5); 
       } 
 
-   }                                                                                                                                                                                                                                                                                                                                                                                                                                    
-    popMatrix();
+    }    // end KeyMode==null                                                                                                                                                                                                                                                                                                                                                                                                                                 
+       popMatrix();
 
   
-    } 
+  } // end of i == networkSize
 
     if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " ){ 
 
       for (int i=0; i<=8; i++ ){ 
  // stroke(2);
- // line (0, height/8*i, width, height/8*i); // horizon
- // line (width/8*i, 0, width/8*i, height); // vertical
+  line (0, height/8*i, width, height/8*i); // horizon
+  line (width/8*i, 0, width/8*i, height); // vertical
 
        }
   }
   rotate (PI/2); 
 
-  }  
+}  
+
+
 
 
 
