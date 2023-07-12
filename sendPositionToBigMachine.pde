@@ -1,6 +1,6 @@
 String portsUSBfrom3;
 
-    void sendPositionToBigMachine(){
+void sendPositionToBigMachine(){
         rotate (-PI/2);
        int numberOfEncodeur = 6;
        int encoderMapped [] = new int [numberOfEncodeur];
