@@ -39,7 +39,7 @@ if (formerDecayTime>decayTime){
        phases[0][frameCountBis % nbMaxDelais]=movementInterpolated;
   //     drawBall( 0, movementInterpolated);
     //MAP movementInterpolated
-       println ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated  );
+    //   println ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated  );
     /*
     if (phases[0][frameCountBis % nbMaxDelais]<=0){
    
@@ -117,7 +117,7 @@ if (formerDecayTime>decayTime){
  
   if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
     
-text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " + newPosFollowed[0], 500, 600);
+    //text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " + newPosFollowed[0], 500, 600);
 
       for (int i = 0; i < networkSize-0; i+=1) { 
         
