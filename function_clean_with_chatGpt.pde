@@ -285,7 +285,7 @@ void handleInternalSamplingMode(){
      if (measure <=3){
       //  send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
       }
-        newPosF[0]=  map (encodeur[0], 0, 800, 0, TWO_PI)%TWO_PI;  // tourner CCW
+        newPosF[0]=  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
      //   text  ( " newPosF[0] " + newPosF[0] + " encodeur[0] " +  abs ((int)map (encodeur[0], 0, 800, 0, 800)%800), 300, -1200);
 
      //==================== sampling from mouseY

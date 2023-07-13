@@ -213,9 +213,9 @@ void teensyPos(){
     } 
   }
   
-  if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) "
-                 || keyMode == " trigEventWithAbletonSignal "  ) {
-    if (measure<=3 )
+  if ( (modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
+                 && keyMode == " trigEventWithAbletonSignal "  ) {
+    if (measure<=5 )
      { 
      // send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
      }
