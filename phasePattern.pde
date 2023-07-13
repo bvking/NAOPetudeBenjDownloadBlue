@@ -506,13 +506,13 @@ textSize (100);
      if (millis() > propagationTimeElapsed+200 && specialPropagationKey == '>') {
      if (formerKey == 'I' )  {  //|| repeatU
     
-       net.shiftPhases(1);
+      // net.shiftPhases(1);
          for (int i = 0; i < (networkSize-0); i++) { 
      //  netOldPhaseBase[i]=netPhaseBase[i]-0/8;
      //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
       
      //  net.phase[i]=netPhaseBase[i];
-         netPhaseBase[i]=net.phase[i];
+         netPhaseBase[i]=net.oldPhase[i];
    
     }
  
@@ -555,7 +555,7 @@ textSize (100);
         //   lastPositionFromCircularMode[0]+=netPhaseBase[0];
          lastPositionFromCircularMode[0]+=netOldPhaseBase[0];
 
-           text ("U$ >  add phase from the previous oscillator " + lastPositionFromCircularMode[0] , 200, 200); // && circularMov == false
+           text ("I$ >  add phase from the previous oscillator " + lastPositionFromCircularMode[0] , 200, 200); // && circularMov == false
 
   }
        for (int i = 0; i < (networkSize-0); i++) { 
@@ -569,7 +569,7 @@ textSize (100);
    
     }
          propagationTimeElapsed= millis();
-         key = 'U'; keyReleased();
+        // key = 'U'; keyReleased();
 
           text (propagationTimeElapsed + "U$ AGAIN " + " repeatU " + repeatU + " " + lastPositionFromCircularMode[0] , 200, 400); // && circularMov == false
     }  
