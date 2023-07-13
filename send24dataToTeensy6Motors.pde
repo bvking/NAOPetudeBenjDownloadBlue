@@ -49,8 +49,8 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
         
         
         if (frameCount <=  200)  { 
-            text("port USB connected to little with portUSBfrom2" + portsUSBfrom2 + " ending with 101 ", 0, 700); 
-            println("port USB connected to little with portUSBfrom2 " + portsUSBfrom2 + " ending with 101 ");  
+            text("Data port USB connected to port2" + portsUSBfrom2 + " ending with -0001 ", 0, 700); 
+            println("Data port USB connected to port2" + portsUSBfrom2 + " ending with -0001 ");  
         }
     }
     

@@ -99,10 +99,10 @@ void computePhaseSum() {
   }
     }
   addPhaseAllMode/=networkSize;
-  print("average phase is with order");
+  print("average phase is with order ");
   print (addPhaseAllMode);
   addPhaseAllMode = map(addPhaseAllMode, -(networkSize - 1) * TWO_PI, (networkSize - 1) * TWO_PI, 0, 1);
-  print("averagemapped ");
+  print(" averagemapped ");
   println(addPhaseAllMode);
 }
 
@@ -275,7 +275,9 @@ void handleInternalSamplingMode(){
     //   println ( " samplingModeInternal  ");
     
      beginSample=millis();
-     text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + modeStartKeyToFollow + " mouseY " +  mouseY  + " mouseX " +  mouseX  +  measure , -width/4, - height + 100);   
+     rotate (-HALF_PI);
+     text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + " " +  
+            modeStartKeyToFollow + " mouseY " +  mouseY  + " measure "  +  measure , -width/4, - height + 300);   
 
      //==================== sampling from encoder
      if (measure <=3){
@@ -293,8 +295,6 @@ void handleInternalSamplingMode(){
       sphereDetail( 4*5); 
       //==================== 
 
-      text ( " newPosF " + newPosF[0], 0, 600);
- 
       float rayon=displacement;
       float polarToCartesionX= displacement*cos(newPosF[0]);
       float polarToCartesionY= displacement*sin(newPosF[0]);
@@ -302,11 +302,12 @@ void handleInternalSamplingMode(){
     //  mouseX= (int) polarToCartesionX;
     //  mouseY= (int) polarToCartesionY;
 
-    //  println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
 
-         activeSamplingInternalClock(1); //do not work
-         stopSamplingInternalClock(3);  //do not work
+         activeSamplingInternalClock(2); //start sampling
+         stopSamplingInternalClock(4);  //stop sampling
          samplingMovementPro(); 
+
+      rotate (HALF_PI);
 
    }
 
@@ -326,9 +327,9 @@ void differentFunction(){
   //  spotLight(102, 153, 100, mouseX, mouseY,cameraZ, 0, 0, -1, PI/2, 1000); 
   //  pointLight(51, 102, 126, mouseX, mouseY, cameraZ);
   if (1000/pulsation*60>=50 && 1000/pulsation*60<=200) { // pulsation of oscillator 11, at the front of the screen; transformed in BPM
-    lights();
+     lights();
     if (frameCount%6==0) {
-      noLights();
+       noLights();
     }
   }
   //************************* end of manage light

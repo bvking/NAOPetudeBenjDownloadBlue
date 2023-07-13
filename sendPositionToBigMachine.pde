@@ -75,7 +75,8 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
         println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);
     }
     
-    
+    // display if port are well connected when big machine is connected
+
     if (portConnectedOfBigMachine)  {   // // If not null, then a match was found
            if (frameCount <=  0)  { 
               }
@@ -101,16 +102,9 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     }
      if (!portConnectedOfBigMachine)  {  
 
-            //   String[] matchPort = match(portsUSBfrom3, "/dev/tty.Bluetooth-Incoming-Port");
-
-     
-      //   if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
-        // teensyport.write(dataFromMode);
-        //   teensy4port.write(dataFromMode);
        if (frameCount <=  200) { 
-               text(" USB PROCESSING port NOT connected " + portsUSBfrom3 + " ", 0, 1000); 
-
-            println(" BigMachine port  USB NOT connected " + portsUSBfrom3);   
+               text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
+               println(" BigMachine port  USB NOT connected " + portsUSBfrom3);   
     }
         
      //   if(frameCount ==  1) noLoop();

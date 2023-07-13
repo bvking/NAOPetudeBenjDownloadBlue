@@ -16,12 +16,14 @@ void setPort() {
     
     if (matchPort1!= null) { 
         allMachineConnected = false;
+        portsUSBfrom2=portsUSB[2];
         portsUSBfrom3=portsUSB[3];
         println(" serial port 1 as programming port ending with 101 " + portsUSB[1] + " allMachineConnected " + allMachineConnected);       
     }
 
     if (matchPort2!= null) { 
         allMachineConnected = false;
+        portsUSBfrom2=portsUSB[2];
         portsUSBfrom3=portsUSB[3];
         println(" serial port 2 as data port        ending with 001 " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = true;
@@ -29,6 +31,7 @@ void setPort() {
 
     if (matchPort3!= null) { 
         allMachineConnected = true;
+        portsUSBfrom2=portsUSB[2];
         portsUSBfrom3=portsUSB[3];
         println(" serial port 2 of little mahine " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = false;

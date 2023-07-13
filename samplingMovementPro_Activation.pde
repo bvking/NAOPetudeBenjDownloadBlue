@@ -7,8 +7,6 @@ void samplingMovementPro() {
     sampler.addSample( newPosF[0], newPosF[0] ); // polar Version
   //  sampler.addSample( polarToCartesionX, polarToCartesionY ); // cartesian version
 
-  print (" 679 SEC  mouse Y REC " );  print (mouseY);  print (" v1 REC " );  print (v1);
-  print (" 679 SEC  mouse Y REC " );  print (mouseY);  print (" v1 REC " );  println (v1);
  
   //**   samplers.get(samplers.size()-1).addSample( currTime, mouseX, v1InMainLoop );
 
