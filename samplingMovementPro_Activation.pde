@@ -17,13 +17,51 @@ void samplingMovementPro() {
  else {
     if( sampler.fullTime() > 0 )
         sampler.draw();
-        
-        text ( " do the sample " , 100, 200);
-
-       
+        textSize(50);
+        text ( " do the sample " , 100, 400);
 
   }
 }
+
+void handleInternalSamplingMode(){
+
+     beginSample=millis();
+     rotate (-HALF_PI);
+     textSize(50);
+     text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + " " +  
+            modeStartKeyToFollow + " mouseY " +  mouseY  + " measure "  +  measure , -width/4, - height + 300);   
+
+     //==================== sampling from ENCODER
+     if (measure <=3){
+      //  send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+      }
+      //  newPosF[0]=  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+
+     //==================== sampling from MOUSE_Y
+         float radianTorec;
+           radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Processing mouseY    
+           newPosF[0]= radianTorec;
+
+      sphere(side*3);
+      sphereDetail( 4*5); 
+      //==================== 
+
+      float rayon=displacement;
+      float polarToCartesionX= displacement*cos(newPosF[0]);
+      float polarToCartesionY= displacement*sin(newPosF[0]);
+
+    //  mouseX= (int) polarToCartesionX; // to draw circle with end
+    //  mouseY= (int) polarToCartesionY; // to draw circle with end
+
+
+         activeSamplingInternalClock(1); //start sampling
+         stopSamplingInternalClock(3);  //stop sampling
+         samplingMovementPro(); 
+
+      rotate (HALF_PI);
+
+   }
+
 
 void activeSamplingSecond() { 
    if (actualSec<=0 && actualSec!=lastSec && mouseRecorded == true) {
