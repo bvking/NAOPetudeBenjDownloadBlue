@@ -504,7 +504,7 @@ textSize (100);
 
 
      if (millis() > propagationTimeElapsed+200 && specialPropagationKey == '>') {
-     if (formerKey == 'U' )  {  //|| repeatU
+     if (formerKey == 'I' )  {  //|| repeatU
     
        net.shiftPhases(1);
          for (int i = 0; i < (networkSize-0); i++) { 
