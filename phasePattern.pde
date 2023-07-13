@@ -512,6 +512,7 @@ textSize (100);
      //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
       
      //  net.phase[i]=netPhaseBase[i];
+     net.phase[i]=net.oldPhase[i];
          netPhaseBase[i]=net.oldPhase[i];
    
     }
