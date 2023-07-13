@@ -42,9 +42,9 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     }
     
     
-    if (portConnectedOfBigMachine)  {   // // If not null, then a match was found
+    if (onlyLitteMachineWithSecondSerialPort)  {   // // If not null, then a match was found
         
-        //teensyport.write(dataFromMode);
+        teensyport.write(dataFromMode);
         
         
         
@@ -57,16 +57,16 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     if (portOfBigMachineConnected)  {   // // If not null, then a match was found
         
         if (frameCount <=  200)  { 
-            text("portOfBigMachineConnected " + portOfBigMachineConnected + " ", 0, 700); 
-            println("portOfBigMachineConnectedNOT USED?  " + portOfBigMachineConnected + " portConnectedOfBigMachine " + portConnectedOfBigMachine);  
+            text("port NOT USB connected to little with portUSBfrom2" + portsUSBfrom2 + " ending with 101 ", 0, 700); 
+            println("port NOT USB connected to little with portUSBfrom2 " + portsUSBfrom2 + " ending with 101 ");   
         }
     }
     
     if (portsUSBfrom2 == "NC")  {   // // If  null, then a match was not found
         
         if (frameCount <=  200) { 
-            text("port NOT connected " + portsUSBfrom2 + " ", 0, 700); 
-            println("port  USB NOT connected " + portsUSBfrom2);   
+            text("NO port connected " + portsUSBfrom2 + " ", 0, 700); 
+            println("NO port connected " + portsUSBfrom2);   
         }
         
         if (frameCount ==  1) noLoop();
