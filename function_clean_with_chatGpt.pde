@@ -279,10 +279,10 @@ void handleInternalSamplingMode(){
 
      //==================== sampling from encoder
      if (measure <=3){
-        send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+      //  send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
       }
         newPosF[0]=  map (encodeur[0], 0, 800, 0, TWO_PI)%TWO_PI;  // tourner CCW
-        text  ( " newPosF[0] " + newPosF[0] + " encodeur[0] " +  abs ((int)map (encodeur[0], 0, 800, 0, 800)%800), 300, -1200);
+     //   text  ( " newPosF[0] " + newPosF[0] + " encodeur[0] " +  abs ((int)map (encodeur[0], 0, 800, 0, 800)%800), 300, -1200);
 
      //==================== sampling from mouseY
          float radianTorec;
@@ -302,7 +302,7 @@ void handleInternalSamplingMode(){
     //  mouseX= (int) polarToCartesionX;
     //  mouseY= (int) polarToCartesionY;
 
-      println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
+    //  println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
 
          activeSamplingInternalClock(1); //do not work
          stopSamplingInternalClock(3);  //do not work

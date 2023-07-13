@@ -73,7 +73,7 @@ void draw() {
     
     if (keyMode == " null ")
         { 
-       // checkKeyModeToFollowIfALTisJustReleased();  
+        checkKeyModeToFollowIfALTisJustReleased();  
     }
     
     
