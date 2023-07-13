@@ -111,7 +111,7 @@ float x =mlerp( s0.x, s1.x, dt, TWO_PI ); // interpolation with modulo, it's bet
 float y =mlerp( s0.x, s1.x, dt, TWO_PI );
 
 movementInterpolated = y ;
-text (" mov " +  (movementInterpolated) , 100, 500);
+text (" mike_mov " +  (movementInterpolated) , 100, 900);
 fill (255,255,255);
 circle ( 100* cos (movementInterpolated)+200, 100*sin (movementInterpolated)+200, 20);
 stroke(255);

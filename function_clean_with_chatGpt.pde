@@ -120,6 +120,7 @@ void setMeasureAndBeatPrecised() {
 void checkKeyModeToFollowIfALTisJustReleased() {
    
     //formerKeyCode= keyCode;
+    rotate (-HALF_PI); //to well display
     if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) // 
     {
      if ( formerKeyCode == ALT){
@@ -181,7 +182,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
      //   print ( " modeStartKeyToFollow " );
 
     // keyMode = " samplingModeInternal " ;
-    text ( modeStartKeyToFollow, width/4, -height/4); 
+    // text ( modeStartKeyToFollow, width/4, -height/4); 
     break;
 
     case 'j': 
@@ -189,7 +190,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
     
 
-    text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4); 
+    // text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4); 
     text ( keyMode, width/4, -height/4); 
    // samplingMovementPro();
    // followSignalSampledOppositeWay(frameRatio);
@@ -215,6 +216,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
      addSignalOneAndTwoTer();
     break;
    }
+   rotate (HALF_PI);
   }
 
 void SamplingModeMayBeUsefull() {
@@ -303,8 +305,8 @@ void handleInternalSamplingMode(){
     //  mouseY= (int) polarToCartesionY;
 
 
-         activeSamplingInternalClock(2); //start sampling
-         stopSamplingInternalClock(4);  //stop sampling
+         activeSamplingInternalClock(1); //start sampling
+         stopSamplingInternalClock(3);  //stop sampling
          samplingMovementPro(); 
 
       rotate (HALF_PI);
