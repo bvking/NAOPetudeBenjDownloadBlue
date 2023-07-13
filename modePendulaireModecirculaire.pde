@@ -248,7 +248,7 @@ void  modePendulaireModeCirculaire() {
       sphereDetail( 4*5);
       }
       
-       if (keyMode == " samplingModeBis "  ) { //drive ball with lfo
+       if (keyMode == " samplingMode "  ) { //drive ball with lfo
      fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
      fill (100, 110, 120);
      samplingMovementPro();
