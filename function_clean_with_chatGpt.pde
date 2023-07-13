@@ -117,10 +117,11 @@ void setMeasureAndBeatPrecised() {
 }
 }
 
-void checkKeyModeToFollow() {
-
- if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) // 
-   {
+void checkKeyModeToFollowIfALTisJustReleased() {
+   
+    //formerKeyCode= keyCode;
+    if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) // 
+    {
      if ( formerKeyCode == ALT){
     modeStartKey = key;   // press l to change formerKeyMetro Mode
      }
@@ -257,22 +258,21 @@ void SamplingModeMayBeUsefull() {
     }
 
 void updateInternalClock(){
-   print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
+  // print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
 
 
-      if  (actualSec!=lastSec){
-         lastSec=actualSec;
+      if (actualSec!=lastSec){
+            lastSec=actualSec;
       if (modeStartKeyToFollow == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ){    
-          measure ++;
+            measure ++;
        }
       }
-
-         actualSec =(int) (millis()*0.001); 
+          actualSec =(int) (millis()*0.001); 
 
    }
 
 void handleInternalSamplingMode(){
-       println ( " samplingModeInternal  ");
+    //   println ( " samplingModeInternal  ");
     
      beginSample=millis();
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[0] " + newPosF[0] + modeStartKeyToFollow + " mouseY " +  mouseY  + " mouseX " +  mouseX  +  measure , -width/4, - height + 100);   

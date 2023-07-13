@@ -34,7 +34,7 @@ void draw() {
     //  printDataOnScreen();
     
     
-    printModeAndKey();
+    //printModeAndKey();
     setKeyModeByTappingKeyPadOnce();
     
     setMovement(key, false);  // to enable to set a next keyMode
@@ -73,7 +73,7 @@ void draw() {
     
     if (keyMode == " null ")
         { 
-      //  checkKeyModeToFollowIfALTisJustReleased();  
+       // checkKeyModeToFollowIfALTisJustReleased();  
     }
     
     
@@ -233,7 +233,16 @@ void draw() {
     //frameStop();
     formerFormerKey = formerKey; 
     handleKeyPressToChooseCircularMovementOrNot(); // in keyReleased?
-    
+
+    if ( key!=':' ) {
+     if (  key<65535) { // if there is no SHIFT but the other key
+      formerKey= key;   
+     }
+    }
+    if ( keyCode != 0) {
+    formerKeyCodeAzerty = keyCode;
+    formerKeyCode = keyCode;
+    }
     printModeAndKey();
     
     oscSend();

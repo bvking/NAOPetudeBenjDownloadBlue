@@ -1,18 +1,5 @@
 void printModeAndKey()  {
-  if ( key!=':' ) {// formerKey!=':' ||  || key=='ç'
-     if (  key<65535) { // if there is no SHIFT but the other key
- //   if (formerKeyMetro != 'J') { // if there is no SHIFT but the other key
-      formerKey= key;   
-      //     formerKeyCodeAzerty = keyCode;
-      //       formerKeyCode = keyCode;
-    //  }
-    }
-  }
-  if ( keyCode != 0) {// formerKey!=':' ||  || key=='ç'
-    //      formerKey= key;   
-    formerKeyCodeAzerty = keyCode;
-    formerKeyCode = keyCode;
-  }
+    /*
   print (" KEY  ");    
   print  (key); 
   print (" FORMERKEY "); 
@@ -21,6 +8,7 @@ void printModeAndKey()  {
   print (formerFormerKey); 
   print (" FORMERSTARTKEY ");  
   print (formerSartKey);
+    */
 
   print (" KEY  ");    
   print (char(key)); 
@@ -50,6 +38,6 @@ void printModeAndKey()  {
   print (" beatTrigged ");  
   print (beatTrigged);
   print ( " mouseRec ");  print (  mouseRecorded );
-  print ( "positionMov ");  println (  positionMov );
+  println ( "positionMov ");  println (  positionMov );
   
    }

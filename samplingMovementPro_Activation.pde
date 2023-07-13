@@ -47,7 +47,7 @@ void activeSamplingMeasure(int beginMeasure) {
 
   bRecording = true; 
   sampler.beginRecording();
-   print (" 12689 MEA  mouse Y rec " );  println (mouseY); 
+  text ( " mouseY " + mouseY + " encodeur0 " + encodeur[0], 300, 300);
   }
 }
 void stopSamplingMeasure(int endMeasure) { 
