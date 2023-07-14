@@ -291,13 +291,14 @@ void  displayModePendulaireModeCirculaire() {
   
       
     if ( modeStartKeyToFollow == " samplingModeInternal " ) { //drive ball with lfo
+     fill (255, 150, 255);
     circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
     println ( "****************************** DISPLAY ", keyMode );    
-    fill (100, 100 , 255);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);    
-      sphere(side*3);
-      sphereDetail( 4*5); 
+   
+    //  x = displacement*cos(net.phase[i]);
+    //  y = displacement*sin(net.phase[i]);    
+    //  sphere(side*3);
+    //  sphereDetail( 4*5); 
       }
 
 
@@ -355,12 +356,12 @@ void  displayModePendulaireModeCirculaire() {
      //   println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
 
       text ( char (formerKeyMetro) , 200,100);
-      fill (255 /(networkSize-i+1), 255, 255 /(25*(i+1)));    
+      fill (255 /(networkSize-i+1), 127, 255 /(25*(i+1)));    
 
       // x = displacement*cos(newPosF[i]);
       //y = displacement*sin(newPosF[i]);
 
-      if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternalB "  ) {
+      if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternal "  ) {
 
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);

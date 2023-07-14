@@ -407,7 +407,7 @@ void trigFollowSignalSampled() {
   
     
     rotate(PI/2);
-    printDataOnScreen();
+    //printDataOnScreen();
     stroke(255);
     
     rect( (currTime % 2) / 2 * width, 10, 2, 8 );

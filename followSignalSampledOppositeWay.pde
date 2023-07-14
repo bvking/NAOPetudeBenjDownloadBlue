@@ -1,12 +1,9 @@
 void followSignalSampledOppositeWay(int ratioTimeFrame){
  
-if (formerDecayTime>decayTime){
+
   frameCountBis=frameCountBis+1;
-  } 
-  /*
-  formerDecayTime = decayTime;
-  decayTime = millis()%25;// incremente frameCountBis+1 each 100 millisecondes
-  */
+
+
   int delayRatio=ratioTimeFrame;
 
  //**   samplingMovement(2);
@@ -17,7 +14,8 @@ if (formerDecayTime>decayTime){
      //here in a previous function we could change the ball followed if the space of phase between phases[0] and phase 9 is more than 360° for example
 
     samplingMovementPro();
-    text ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated , 400, 900 );
+  //  text ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated , 400, 900 );
+
   //  if (oldMovementInterpolated>movementInterpolated){
    //   movementInterpolated= map (movementInterpolated, 0, TWO_PI, TWO_PI, 0);
    //   }
@@ -37,6 +35,7 @@ if (formerDecayTime>decayTime){
  
     
        phases[0][frameCountBis % nbMaxDelais]=movementInterpolated;
+
   //     drawBall( 0, movementInterpolated);
     //MAP movementInterpolated
     //   println ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated  );
@@ -57,7 +56,7 @@ if (formerDecayTime>decayTime){
      }
     */ 
   
-   //drawBall(  0, phases[0][frameCountBis % nbMaxDelais] );  
+    drawBall(  0, phases[0][frameCountBis % nbMaxDelais] );  
     // newPosFollowed[i]
     // newPosFollowed[0]= phases[0][frameCountBis % nbMaxDelais]; // %TWO_PI
     // println ( " phases[0][frameCountBis % nbMaxDelais " + phases[0][frameCountBis % nbMaxDelais] ) ; // %TWO_PI
@@ -68,7 +67,7 @@ if (formerDecayTime>decayTime){
        
   //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
   //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
-     followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
+     followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1, (phaseShiftingFollowPhase11*1.0));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
       
       phaseMapped[i]=phases[i+0][frameCount % nbMaxDelais]; // use varaible phaseMapped (to play movement with time delay or phase delay) to well send it in Teensy
    
