@@ -427,11 +427,12 @@ void printMidiNoteVelocity() {
     println (velocity7);
   }
 
-  textSize (120);
+   textSize (100);
    translate (400, 0);
+   
   //  if  (1!=0) {
   if  (velocity1>0) {
-    rotate (PI/2);
+   
     //  String NOTE1= nf (note1, 0, 0); // transform time elapsed betwween two pulsation in BPM
     text (measure, (-width+1350), -height );  
     text ("1", (-width-150), -height );
@@ -457,7 +458,7 @@ void printMidiNoteVelocity() {
     text (velocity6, -width+950+50, -height+100 );   
     text (velocity7, -width+1150+50, -height+100 );
   } else {
-    rotate (PI/2);
+    
     note1=note2=note3=note4=note5=note6=note7=note8=0;
     velocity1=velocity2=velocity3=velocity4=velocity5=velocity6=velocity7=velocity8=0;
 

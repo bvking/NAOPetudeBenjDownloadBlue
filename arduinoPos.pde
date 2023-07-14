@@ -493,7 +493,7 @@ void arduinoPos() {
 
  // countRevs();  
  // bpmAsPulsationFunction();
-    printMidiNoteVelocity();
+   
   //SUBZERO
 
 

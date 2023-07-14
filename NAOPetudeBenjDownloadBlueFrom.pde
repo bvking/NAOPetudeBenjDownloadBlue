@@ -7,58 +7,49 @@ void mouseXY() {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No
     Freq  = (map((float(mouseY) / width * 1), 0, 1, 0.0, 0.05));
 }
 
-
-
 void mousePressed() {  
     mouseRecorded = true;
     measure = 0;
 }
-// before draw
-
-
 
 void draw() {
-    //setPort();
-    //***************************************** SET 3D CAM 
-    
-    
-    
-    //***************************************** END 3D CAM  
-    
-    println(" BEGIN OF MAIN " +                                      "specialPropagationKey " +  specialPropagationKey);
-    handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
-    displayArrays(); // Affichage des tableaux
+        
+    println(" BEGIN OF MAIN " + "                                                               specialPropagationKey " +  specialPropagationKey);
+
+    //handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
+    displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
     background(0);
     
-    if (frameCount <=  1)  noLoop(); // setPort()
+    if (frameCount <=  1)  noLoop(); // check setPort()
     //  printDataOnScreen();
-    
-    
-    //printModeAndKey();
-    setKeyModeByTappingKeyPadOnce();
-    
-    setMovement(key, false);  // to enable to set a next keyMode
+
+    setKeyModeByTappingKeyPadOnce();   
+    setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-        "keyMode" + keyMode + "formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+            " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
     
-    keyModeRed = keyMode; // dont read keyMode in file.txt
+    keyModeRed = keyMode; // don't read keyMode in file.txt
     
     switchFonctionDependingKeyMode();
+    computePhaseSum(); // to improve
     
-    computePhaseSum();
-    
+    //--- discriminate position from time line of Ableton
     formerBeatPrecised = beatPrecised;
     formerMeasure = measure;
     formerBeatOnMeasure = beatOnMeasure;
-    
-    if (modeStartKeyToFollow != " samplingModeInternal ")
+    //---
+
+    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
     { 
         setMeasureAndBeatPrecised();
-    }         
+    } 
+    
+         
     trigBeatWithMeasure();
     //  printDataOnScreen();
-    rotate( -HALF_PI);
+
+    //  rotate( -HALF_PI);
     printMidiNoteVelocity();
     rotate(HALF_PI);
     
@@ -67,7 +58,7 @@ void draw() {
     {   
         if (key ==  'B' ||  key ==  'c' ||  key ==  '>' ||  key ==  '<' || key ==  'd' || key ==  'e') // 
             {
-            //  formerKeyMetro = key;   // press l to change formerKeyMetro Mode
+          // switch (key) : different mode of speed, shift, propagation ....
         }
     }
     
@@ -77,12 +68,10 @@ void draw() {
     }
     
     
-    if (beatTrigged ==  true && formerKeyMetro == 's') { // formerBeatOnMeasure>=4 && beatOnMeasure<=1 && 
+    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { // formerBeatOnMeasure>=4 && beatOnMeasure<=1 && 
         measureRecordStart = measure;
         //  beginSample=millis();
         print("*****************************************************************************++++++++++++++++++++++ START SAMPLING  "); 
-        
-        //formerKeyMetro = 'S';  // back to normal Mode with formerKeyMetro = '$';
     }
     
     
