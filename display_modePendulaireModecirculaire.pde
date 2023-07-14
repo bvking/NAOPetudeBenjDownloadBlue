@@ -250,7 +250,7 @@ void  displayModePendulaireModeCirculaire() {
        if (keyMode == " samplingMode "  ) { //drive ball with lfo
      fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
      fill (100, 110, 120);
-     samplingMovementPro();
+    // samplingMovementPro();
       x = displacement*cos(net.phase[i]); //);
       y = displacement*sin(net.phase[i]);      // display ball in blue lagub
       print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
@@ -349,7 +349,7 @@ void  displayModePendulaireModeCirculaire() {
       }  
 
 
-    if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " 
+    if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  //|| modeStartKeyToFollow  == " samplingModeInternal " 
       || modeStartKeyToFollow  == " followSignalSampled " ) {
         println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
 
@@ -366,7 +366,7 @@ void  displayModePendulaireModeCirculaire() {
        } 
 
      fill (255 /(networkSize-i+1), 255, 255 /(25*(i+1)));    
-      circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
+     // circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
 
 
       //    circle ( 100* cos ( interpolatedAngle[0])+400, 100*sin ( interpolatedAngle[0])+400, 200);
