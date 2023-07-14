@@ -349,7 +349,7 @@ void  displayModePendulaireModeCirculaire() {
       }  
 
 
-    if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  //|| modeStartKeyToFollow  == " samplingModeInternal " 
+    if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  || modeStartKeyToFollow  == " samplingModeInternal " 
       || modeStartKeyToFollow  == " followSignalSampled " ) {
         println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
 
