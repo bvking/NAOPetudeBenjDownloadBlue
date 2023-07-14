@@ -554,9 +554,9 @@ void bpmAsPulsationFunction() {
       textSize (100);
     }
   }
-     rotate (-PI/2);
-     text("Average time between two pulsation = " + pulsation + "ms", -2200, -500 );
-     rotate (PI/2);
+ 
+     text("Average time between two pulsation = " + pulsation + "ms", -2200, 500 );
+   
 
 }
 
@@ -2138,7 +2138,7 @@ void addSignal(){
    }
     print ("  LFO+LFOoscillatorChange  "); print (oscillatorChange); print ("   ") ;  println (LFO[oscillatorChange]  ); 
    
-  key='#';// 
+    key='#';// 
 
      for (int i = 2; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
     drawBall(i, newPosX[i] );

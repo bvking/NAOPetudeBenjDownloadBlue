@@ -13,21 +13,21 @@ void mousePressed() {
 }
 
 void draw() {
-        
+    
     println(" BEGIN OF MAIN " + "                                                               specialPropagationKey " +  specialPropagationKey);
-
+    
     //handleKeyPressToChooseCircularMovementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
     background(0);
     
     if (frameCount <=  1)  noLoop(); // check setPort()
     //  printDataOnScreen();
-
+    
     setKeyModeByTappingKeyPadOnce();   
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-            " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+        " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
@@ -39,16 +39,16 @@ void draw() {
     formerMeasure = measure;
     formerBeatOnMeasure = beatOnMeasure;
     //---
-
+    
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
     { 
         setMeasureAndBeatPrecised();
     } 
     
-         
+    
     trigBeatWithMeasure();
     //  printDataOnScreen();
-
+    
     //  rotate( -HALF_PI);
     printMidiNoteVelocity();
     rotate(HALF_PI);
@@ -58,7 +58,7 @@ void draw() {
     {   
         if (key ==  'B' ||  key ==  'c' ||  key ==  '>' ||  key ==  '<' || key ==  'd' || key ==  'e') // 
             {
-          // switch (key) : different mode of speed, shift, propagation ....
+            //switch (key) : different mode of speed, shift, propagation ....
         }
     }
     
@@ -68,19 +68,12 @@ void draw() {
     }
     
     
-    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { // formerBeatOnMeasure>=4 && beatOnMeasure<=1 && 
+    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { // 
         measureRecordStart = measure;
         //  beginSample=millis();
-        print("*****************************************************************************++++++++++++++++++++++ START SAMPLING  "); 
+        text(" START SAMPLING  ", 200, 200); 
     }
     
-    
-    if (formerKeyMetro == 'B') {
-        lfoPattern();
-        splitTimeLfo();
-        //splitWithTime();
-        addSignal();              
-    } 
     
     if (modeStartKeyToFollow == "samplingMode") {
         SamplingModeMayBeUsefull();
@@ -110,22 +103,14 @@ void draw() {
     
     trigFollowSignalSampled();
     
-    //    translate (0, 0, -5000);
-    //    background(myColorBackground);
-    //  fill(knobValue);
-    //rect(0,height/2,width,height/2);
-    // fill(0,100);
     rect(80,40,140,320);
     
-    //     translate (0, 0, 10000);
-    
-    
-    modePendulaireModeCirculaire();
+    displayModePendulaireModeCirculaire();
     //  displayKeyModeNull(); 
     
     
-    net.step(); // actualise step insync library ==> actualise net.phase[i]
-    netG.step(); //Does it make any meaning?
+    net.step(); // actualise step in sync library ==> actualise net.phase[i]
+    netG.step(); //actualise step for chimera state, not use yet
     
     
     // if (circularMov==true) { // why it doesn' t work?
@@ -222,15 +207,15 @@ void draw() {
     //frameStop();
     formerFormerKey = formerKey; 
     handleKeyPressToChooseCircularMovementOrNot(); // in keyReleased?
-
-    if ( key!=':' ) {
-     if (  key<65535) { // if there is no SHIFT but the other key
-      formerKey= key;   
-     }
+    
+    if (key!= ':') {
+        if ( key < 65535) { // if there is no SHIFT but the other key
+            formerKey = key;   
     }
-    if ( keyCode != 0) {
-    formerKeyCodeAzerty = keyCode;
-    formerKeyCode = keyCode;
+    }
+    if (keyCode != 0) {
+        formerKeyCodeAzerty = keyCode;
+        formerKeyCode = keyCode;
     }
     printModeAndKey();
     

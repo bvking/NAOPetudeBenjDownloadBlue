@@ -615,7 +615,7 @@ for (int i = 0; i < networkSize; i++) {
  //  print (" in trig___(frameRatio) before and before arduinoPos "); countRevs();
    }
 
-     modePendulaireModeCirculaire();
+     displayModePendulaireModeCirculaire();
     if (circularMov==true) {
     countRevs(); 
      }  

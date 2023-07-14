@@ -360,6 +360,7 @@ class B_String {
 } 
 
 void printMidiNoteVelocity() {
+   translate (0, -height);
 
   if  (note1>0) {
 
@@ -427,9 +428,9 @@ void printMidiNoteVelocity() {
     println (velocity7);
   }
 
-   textSize (100);
-   translate (400, 0);
-   
+   textSize (50);
+  
+
   //  if  (1!=0) {
   if  (velocity1>0) {
    
@@ -487,6 +488,7 @@ void printMidiNoteVelocity() {
     text (velocity7, -width+1150+50, -height+100 );
     //println (" ");
   }
+  translate (0, height);
 }
 
 

@@ -1,4 +1,4 @@
-void  modePendulaireModeCirculaire() {
+void  displayModePendulaireModeCirculaire() {
   rotate (-PI/2);
   // rotate (-PI);
   textSize (50);
@@ -399,7 +399,7 @@ void  modePendulaireModeCirculaire() {
 
 
 
-void  modePendulaireModeCirculaireDerniere() {
+void  displayModePendulaireModeCirculaireDerniere() {
 
   for (int i = 0; i <networkSize-0; i++) {
    
