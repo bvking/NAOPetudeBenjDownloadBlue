@@ -384,7 +384,7 @@ void  displayModePendulaireModeCirculaire() {
     if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " ){ 
 
       for (int i=0; i<=8; i++ ){ 
- // stroke(2);
+  stroke(25);
   line (0, height/8*i, width, height/8*i); // horizon
   line (width/8*i, 0, width/8*i, height); // vertical
 
