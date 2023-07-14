@@ -291,6 +291,7 @@ void  displayModePendulaireModeCirculaire() {
   
       
     if ( modeStartKeyToFollow == " samplingModeInternal " ) { //drive ball with lfo
+    circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
     println ( "****************************** DISPLAY ", keyMode );    
     fill (100, 100 , 255);
       x = displacement*cos(net.phase[i]);
@@ -351,26 +352,25 @@ void  displayModePendulaireModeCirculaire() {
 
     if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  || modeStartKeyToFollow  == " samplingModeInternal " 
       || modeStartKeyToFollow  == " followSignalSampled " ) {
-        println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
+     //   println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
 
-      text ( char (formerKeyMetro) , 100,100);
+      text ( char (formerKeyMetro) , 200,100);
+      fill (255 /(networkSize-i+1), 255, 255 /(25*(i+1)));    
 
-      x = displacement*cos(newPosF[i]);
-      y = displacement*sin(newPosF[i]);
+      // x = displacement*cos(newPosF[i]);
+      //y = displacement*sin(newPosF[i]);
 
-      if (modeStartKeyToFollow  == " followSignalSampled " ) {
+      if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternalB "  ) {
 
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
 
        } 
 
-     fill (255 /(networkSize-i+1), 255, 255 /(25*(i+1)));    
-     // circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
+     
+     //  circle ( 100* cos ( newPosF[i])+400, 100*sin ( newPosF[i])+400, 50);
 
 
-      //    circle ( 100* cos ( interpolatedAngle[0])+400, 100*sin ( interpolatedAngle[0])+400, 200);
-      //    circle ( 100* cos ( interpolatedAngle[1])+400, 100*sin ( interpolatedAngle[1])+400, 200);
       sphere(side*3);
       sphereDetail( 4*5); 
       } 
