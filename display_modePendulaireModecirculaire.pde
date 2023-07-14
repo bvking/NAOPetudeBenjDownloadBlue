@@ -1,6 +1,6 @@
 void  displayModePendulaireModeCirculaire() {
   rotate (-PI/2);
-  // rotate (-PI);
+
   textSize (50);
   for (int i = 0; i <networkSize-0; i++) {
    
@@ -13,16 +13,16 @@ void  displayModePendulaireModeCirculaire() {
       
       if (net.phase[i] >= PI ) { 
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-  //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+     // metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
       if (net.phase[i] >= 0 && net.phase[i] < PI ) {
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
-     //metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
+     // metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
       }
       if (net.phase[i] <= -PI) { 
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
-     //  metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
+     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
 
       }  
       if (net.phase[i] < 0  && net.phase[i] > -PI) {   
@@ -30,9 +30,8 @@ void  displayModePendulaireModeCirculaire() {
      // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
       }
         
-      
-        // metroPhase[i]=netOldPhaseBase[i];
-         metroPhase[i]=net.phase[i];
+      // metroPhase[i]=netOldPhaseBase[i];
+         metroPhase[i]=  net.phase[i];
          metroPhase[i]=  metroPhase[i]-PI/2;
        //   metroPhase[i]%=TWO_PI;
       x = displacement*cos(metroPhase[i]);
@@ -42,12 +41,12 @@ void  displayModePendulaireModeCirculaire() {
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      if ( specialPropagationKey != '>'  ) { 
-       if ( key != '#'  ) {
+     //  if ( key == '#'  ) {
         
      text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
-      /*
+      
       if (net.phase[i] >= PI ) { 
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
   //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
@@ -67,13 +66,13 @@ void  displayModePendulaireModeCirculaire() {
      // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
 
       }
-    */
+    
        //  metroPhase[i]=  metroPhase[i]-PI/2;
        //   metroPhase[i]%=TWO_PI;
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
-       } 
-       key='#';
+       // }
+      // key='#';
         }
     } 
 

@@ -458,7 +458,7 @@ for (int i = 0; i < networkSize; i++) {
   // see storeinput example to create sample
 
   //Display with strings midi note (pitch and duration).  Display with  ellipse cyclicals and continues datas (potar, fader, lfo). from Ableton Live 
-  displayNoteandPotarFromAbleton();
+  displaySignalFromAbleton();
    
   // COMPUTE ANGULAR TIME SPEED
   if (running_Timer == false) return;

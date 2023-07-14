@@ -389,28 +389,24 @@ textSize (100);
  } 
 
      if (key == '?' ) {
-     specialPropagationKey = '?' ;
-    // formerKeyMetro = ':';
+     specialPropagationKey = key ;
+
      } 
-     if (key == ',' ) {
-     specialPropagationKey = ',' ;
-    // formerKeyMetro = ':';
+     if (key == ':' ) {
+     specialPropagationKey = key ;
+
      } 
 
     
      if (key == '>' ) {
-     specialPropagationKey = '>' ;
-   //  formerKeyMetro = ':';
+     specialPropagationKey = key ;
+
      } 
      if (key == '<' ) {
-     specialPropagationKey = '<' ;
-    // formerKeyMetro = ':';
+     specialPropagationKey = key ;
+ 
      } 
       
-    if (key == ':' ) {
-    // specialPropagationKey = ':' ;
-     //formerKeyMetro = ':';
-     } 
 
    
 

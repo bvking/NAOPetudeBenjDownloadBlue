@@ -92,7 +92,7 @@ void draw() {
     //see storeinputexample to create sample
     
     //Display with strings midi note (pitch and duration).  Display with  ellipse cyclicals and continues datas (potar, fader, lfo). from Ableton Live 
-    displayNoteandPotarFromAbleton();
+    displaySignalFromAbleton();
     
     computeAngularTimeSpeed(); 
     //**printDataOnScreen();
@@ -209,9 +209,9 @@ void draw() {
     handleKeyPressToChooseCircularMovementOrNot(); // in keyReleased?
     
     if (key!= ':') {
-        if ( key < 65535) { // if there is no SHIFT but the other key
+        if (key < 65535) { // if there is no SHIFT but the other key
             formerKey = key;   
-    }
+        }
     }
     if (keyCode != 0) {
         formerKeyCodeAzerty = keyCode;
