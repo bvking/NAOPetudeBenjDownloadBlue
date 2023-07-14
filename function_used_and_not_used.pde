@@ -1459,7 +1459,7 @@ void drawBallOppositeWay(int n, float phase) {
 }
 
 void followOppositeWay( int target, int follower, int delais, float deltaphase) {
-  int step = frameCountBis % nbMaxDelais;
+  int step = frameCount % nbMaxDelais;
   int followedStep = (step + nbMaxDelais - delais) % nbMaxDelais;
   phases[follower][step] = diffAngle(phases[target][followedStep] + deltaphase, 0);
 }
