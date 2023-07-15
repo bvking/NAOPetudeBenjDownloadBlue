@@ -5,8 +5,6 @@ textSize (100);
       text ("phasePattern " ,-200+ width/2, height/2);
    }
 
-   // text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
-    //  text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //************************************ DONT TOUCH
     for (int i = 0; i < (networkSize); i++) { 
    if  (   key == 'J')  {
@@ -15,13 +13,13 @@ textSize (100);
   }
 
  if  (  keyMode == " phasePattern "  ) {
-//  splitIncomingSignal();
-//   text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
-  if ( propagationLevel==1) {
- // key = 'f';
-   }
-   if ( propagationLevel==2) {
-  //key = 'd';
+    //  splitIncomingSignal();
+    //   text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
+    if ( propagationLevel==1) {
+      // key = 'f';
+     }
+    if ( propagationLevel==2) {
+      //key = 'd';
      }
   }
 
