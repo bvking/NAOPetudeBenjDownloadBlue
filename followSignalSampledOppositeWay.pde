@@ -1,7 +1,9 @@
 void followSignalSampledOppositeWay(int ratioTimeFrame){
-    rotate (-PI/2);
-      //frameCountBis=frameCountBis+1;
-      frameCount=frameCount+1;
+ rotate (-PI/2);
+
+  //frameCountBis=frameCountBis+1;
+  frameCount=frameCount+1;
+
 
        int delayRatio=ratioTimeFrame;
 
@@ -14,11 +16,10 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
        newPosFollowed[0]= (phases[0][frameCount % nbMaxDelais]);
 
   
-
-     for (int i = 1; i < networkSize; i+=1) { // 1 follow phase 0     
-            //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
-            //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/
-                 followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
+    for (int i = 1; i < networkSize; i+=1) { // 1 follow phase 0     
+       //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
+       //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/
+     followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
 
 
           if ((phases[i][frameCount % nbMaxDelais])<0){
@@ -41,7 +42,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
          // }       
         }
  
-    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
+      if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
        for (int i = 0; i < networkSize-0; i+=1) { 
            phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];//+phaseMappedFollow[i]+phasePatternFollow[i]; // new signal is a composition 
  
@@ -65,24 +66,24 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
         }
         */
    
-      if (keyCode == BACKSPACE ) {
+  if (keyCode == BACKSPACE ) {
     
-         for (int i = 0; i < networkSize-0; i+=1) { 
-         println (" ALIGN MTF " );
-         phaseMapped[i] = phases[i-0][frameCountBis % nbMaxDelais]+0; // to aligin ball with the followed one
+     for (int i = 0; i < networkSize-0; i+=1) { 
+      println (" ALIGN MTF " );
+      phaseMapped[i] = phases[i-0][frameCountBis % nbMaxDelais]+0; // to aligin ball with the followed one
    
-          if (phaseMapped[i]<0){
+      if (phaseMapped[i]<0){
    
-          dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-          //   net.oldPhase[i]=phaseMapped[i];
-          //  net.phase[i]= phaseMapped[i];
-          phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+      dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
+      //   net.oldPhase[i]=phaseMapped[i];
+      //  net.phase[i]= phaseMapped[i];
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
        }
         
-       else
+      else
   
-        dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
-        phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+      dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
 
      } 
       keyCode = TAB;
@@ -96,32 +97,31 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
    }
 
 
-   // COUNT REVOLUTION  in teensyPos?  use 
+  // COUNT REVOLUTION  in teensyPos?  use 
    
-   mapNewPosX();  // good to count but to display?
-    /*
-      for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
+   //mapNewPosX()
 
-     //drawBall(i, newPosX[i] ); //  good. 
+    for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
 
-     print( " newPosX[i] " ); print ( newPosX[i]);
+  //drawBall(i, newPosX[i] ); //  good. 
+
+   print( " newPosX[i] " ); print ( newPosX[i]);
 
    
     print( " oldPositionToMotor[i]" ); print ( oldPositionToMotor[i]);
-      positionToMotor[i]= ((int) map (newPosX[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
-        // newPosX[i]=positionToMotor[i]%6400;
-        //   if (oldPositionToMotor[i]>positionToMotor[i]){
-         if ( oldPosF[i]>newPosF[i]){
-         revLfo[i]++;
-        } 
+    positionToMotor[i]= ((int) map (newPosX[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
+   // newPosX[i]=positionToMotor[i]%6400;
+  //   if (oldPositionToMotor[i]>positionToMotor[i]){
+    if ( oldPosF[i]>newPosF[i]){
+      revLfo[i]++;
+     } 
 
-        print( " positionToMotor[i] " ); print ( positionToMotor[i]);
-        print( " newPosF[i] " ); print ( newPosF[i]); print( " oldPosF[i] " ); print ( oldPosF[i]);
-        print (" revolutionLFO "); print ( i); print ("  "); println (revLfo[i]); 
-        oldPositionToMotor[i]=  positionToMotor[i];
-        oldPosF[i]=newPosF[i]; 
-     }
-    */ 
-    // mapNewPosX(); // just to dislay on screen?
-    rotate (PI/2);  
-}
+      print( " positionToMotor[i] " ); print ( positionToMotor[i]);
+      print( " newPosF[i] " ); print ( newPosF[i]); print( " oldPosF[i] " ); print ( oldPosF[i]);
+      print (" revolutionLFO "); print ( i); print ("  "); println (revLfo[i]); 
+     oldPositionToMotor[i]=  positionToMotor[i];
+     oldPosF[i]=newPosF[i]; 
+    }
+  // mapNewPosX(); // just to dislay on screen?
+   rotate (PI/2);  
+    }
