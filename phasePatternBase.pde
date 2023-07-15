@@ -7,7 +7,7 @@ void phasePatternBase() { // trigged with $ or *
        println  (" phasePatternBase " + " key " + key);
       }
      
- if  ( keyMode == " propagationBallRotationExp " || keyMode == " trigEventWithAbletonSignalExp " || keyMode == " trigEventWithAbletonSignal " ) {
+ if  ( keyMode == " propagationBallRotationExp " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " || keyMode == " trigEventWithAbletonSignal " ) {
 
 
      for (int i = 0; i < (networkSize); i++) {       
@@ -454,17 +454,10 @@ void phasePatternBase() { // trigged with $ or *
 
     for (int i = 0; i < networkSize; i++) {
       //   netPhaseBase[i] += (i+1) *(TWO_PI/12); // 12 hit
-
-
       //    netPhaseBase[i] +=  -(i+2)%PI/6; // mieux
-    
-      netPhaseBase[i] += (i*TWO_PI/5)%PI/10; // 
-
+      netPhaseBase[i] += (i*TWO_PI/5)%PI/4/(networkSize+1); // 
       //    netPhaseBase[i] -=  +(i+1)%PI/6; 
-
      // netPhaseBase[i]=  netPhaseBase[i]%(TWO_PI/1) ; // bien en pendulaire?
- 
-      printSummary(i);
     }
   }
 
@@ -472,13 +465,8 @@ void phasePatternBase() { // trigged with $ or *
   if (key == 'R') {
     println ("Add PI/6 PENDULAR $ without move 11, 8, 5"); // R$
     for (int i = 0; i < networkSize; i++) {
-      //   netPhaseBase[i] += (i+1) *(TWO_PI/12); // 12 hit
-      // if (  net.naturalFrequency[networkSize-1]>=0 ) {
-      print (" Avant ");    
-      print (netPhaseBase[networkSize-1-i]); 
-      print ("  ");
-      //   netPhaseBase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
-      netPhaseBase[i] -= (i*TWO_PI/5)%PI/5;
+      
+      netPhaseBase[i] -= (i*TWO_PI/5)%PI/((networkSize+1)*2);
       //   netPhaseBase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
       //    netPhaseBase[networkSize-1-i] += (i*TWO_PI/3)%TWO_PI/10;    //PAS TOUCHER // ne va pas avec P
       //     netPhaseBase[networkSize-1-i] += (i*TWO_PI/3)%TWO_PI/11;    //PAS TOUCHER
@@ -488,15 +476,11 @@ void phasePatternBase() { // trigged with $ or *
       //   netPhaseBase[i]  += ((PI/(networkSize/6))*(i+1))%PI/3; // OK
       //   netPhaseBase[i]  +=  netPhaseBase[i] +(PI/((networkSize-i/12))*(i+1))%PI/12; // OK
 
-
-      print (" ApresR ");  
-      print (netPhaseBase[networkSize-1-i]); 
-      print ("  "); 
       netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
       //   netOldPhaseBase[i]=  netPhaseBase[i];
       printSummary(i);
     }
-    // }
+ 
   }
   
    else if (key == 's') {

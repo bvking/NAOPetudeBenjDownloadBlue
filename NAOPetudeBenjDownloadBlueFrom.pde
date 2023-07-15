@@ -103,7 +103,7 @@ void draw() {
     
     trigFollowSignalSampled();
     
-    rect(80,40,140,320);
+    //rect(80,40,140,320);
     
     displayModePendulaireModeCirculaire();
     //  displayKeyModeNull(); 

@@ -1462,6 +1462,8 @@ void followOppositeWay( int target, int follower, int delais, float deltaphase) 
   int step = frameCount % nbMaxDelais;
   int followedStep = (step + nbMaxDelais - delais) % nbMaxDelais;
   phases[follower][step] = diffAngle(phases[target][followedStep] + deltaphase, 0);
+          text("follow " +  phases[follower][step], -1000, 0); // seems OK
+
 }
 
 float diffAngleOppositeWayOppositeWay(float angle1, float angle2) { // return the difference angle1 - angle2 between two angle between -PI PI

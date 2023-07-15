@@ -7,151 +7,58 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
 
   int delayRatio=ratioTimeFrame;
 
- //**   samplingMovement(2);
- //**    phases[0][frameCountBis % nbMaxDelais]= newPosF[0];
      
   //  keyReleasedfollowSignal(); useless  phseShifting is controlled in keyRelesead
       float deltaFollow = TWO_PI; // not used
      //here in a previous function we could change the ball followed if the space of phase between phases[0] and phase 9 is more than 360° for example
 
     samplingMovementPro();
-  //  text ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated , 400, 900 );
 
-  //  if (oldMovementInterpolated>movementInterpolated){
-   //   movementInterpolated= map (movementInterpolated, 0, TWO_PI, TWO_PI, 0);
-   //   }
-/*
-     if (movementInterpolated>PI) {
- 
-  //  dataMappedForMotorisedPosition[0]= int (map (movementInterpolated, PI, TWO_PI, 0, - numberOfStep)%numberOfStep); 
-   dataMappedForMotorisedPosition[0]= int (map (movementInterpolated, PI, TWO_PI,  numberOfStep, 0)); 
-    net.oldPhase[0]=net.phase[0];
-   //*** net.phase[0]= map (dataMappedForMotorisedPosition[0], numberOfStep, 0, 0, -TWO_PI);
-   movementInterpolated = map (dataMappedForMotorisedPosition[0], numberOfStep, 0, -PI, -TWO_PI);
-
-    print ("  movInter<0  "); print (2); print ( " ");   println (  movementInterpolated  ); 
-}
-*/
-
- 
     
        phases[0][frameCount % nbMaxDelais]=movementInterpolated;
+       newPosFollowed[0]= (phases[0][frameCount % nbMaxDelais]);
 
-  //     drawBall( 0, movementInterpolated);
-    //MAP movementInterpolated
-    //   println ( "  movementInterpolated in FOLLOW opposite WAY" +  movementInterpolated +  " oldmovementInterpolated " + oldMovementInterpolated  );
-
-    /*
-    
-    if (phases[0][frameCountBis % nbMaxDelais]<=0){
-   
-     dataMappedForMotorisedPosition[0]= int (map (phases[0][frameCountBis % nbMaxDelais], 0, -TWO_PI, numberOfStep, 0)); 
- 
-     phases[0][frameCountBis % nbMaxDelais]= map (dataMappedForMotorisedPosition[0], numberOfStep, 0, 0, -TWO_PI);
-
-       }  
-   else {
-    
-    dataMappedForMotorisedPosition[0]= (int) map (phases[0][frameCountBis % nbMaxDelais], 0, TWO_PI, 0, numberOfStep); 
-
-      phases[0][frameCountBis % nbMaxDelais]= map (dataMappedForMotorisedPosition[0], 0, numberOfStep, 0, TWO_PI);
-   
-     }
-*/
-     
-    
   
-   //  drawBall(  0, phases[0][frameCountBis % nbMaxDelais] );  
-    // newPosFollowed[i]
-    // newPosFollowed[0]= phases[0][frameCountBis % nbMaxDelais]; // %TWO_PI
-    // println ( " phases[0][frameCountBis % nbMaxDelais " + phases[0][frameCountBis % nbMaxDelais] ) ; // %TWO_PI
-
-    //  drawBallOppositeWay(0, phases[0][frameCountBis % nbMaxDelais]); //networkSize-5 affiche le point 0. NE PAS AFFICHER SINON IL APPARAIT EN DOUBLE
- 
     for (int i = 1; i < networkSize; i+=1) { // 1 follow phase 0
        
-  //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
-  //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/
-  //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
-      followOppositeWay( i-1, i+0, 0, (0)); 
-    //  phaseMapped[i]=phases[i+0][frameCount % nbMaxDelais]; // use varaible phaseMapped (to play movement with time delay or phase delay) to well send it in Teensy
-   // text(" phaseMapped[0 et i " +  phaseMapped[0] + " " + phaseMapped[0], 0, 100+ (100*i)); // seems OK
-  //  text(" phaseMapped[0 et i " +  phaseMapped[0] + " " + phaseMapped[i], 0, 100+ (100*i)); // seems OK
+      //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
+       //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/
+     followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
 
 
-          if (phases[i][frameCount % nbMaxDelais]<0){
-   
-     dataMappedForMotorisedPosition[i]= int (map (phases[i][frameCount % nbMaxDelais], 0, -TWO_PI, numberOfStep, 0)); 
- 
-     phases[i][frameCount % nbMaxDelais]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
+          if ((phases[i][frameCount % nbMaxDelais])<0){
+           //      newPosFollowed[i]= (phases[i][frameCount % nbMaxDelais])+TWO_PI; // easier
+           dataMappedForMotorisedPosition[i]= int (map (phases[i][frameCount % nbMaxDelais], PI, TWO_PI, numberOfStep/2, numberOfStep));           
+           newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], numberOfStep/2, numberOfStep/1,  PI, TWO_PI)+TWO_PI;
+           } 
 
-       }  
+          else if ((phases[i][frameCount % nbMaxDelais])>=0)
+           { newPosFollowed[i]= phases[i][frameCount % nbMaxDelais] ; }
+           }
 
-   else {
-    
-    dataMappedForMotorisedPosition[i]= (int) map (phases[i][frameCount % nbMaxDelais], 0, TWO_PI, 0, numberOfStep); 
+         // if (key != '#' ) {
+             if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {  
+             phasePatternBase(); // dans SIMPLIFICATION
+             for (int i = 0; i < networkSize; i+=1) { 
 
-      phases[i][frameCount % nbMaxDelais]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-   
-     }
-     
-   
-    //   drawBallOppositeWay( i, phases[i-0][frameCountBis % nbMaxDelais] ); 
-    //  println ( " phases[i][frameCountBis % nbMaxDelais " + i + " " + phases[i][frameCountBis % nbMaxDelais] ) ; 
- }
-
-  for (int i = 0; i < networkSize; i+=1) { // 1 follow phase 0
-       
-     phaseMapped[i]=phases[i][frameCount % nbMaxDelais]; // signals to follow
-     text(movementInterpolated + " phaseMapped[F et i " +  " " + phaseMapped[i], 200, 100+ (100*i)); // seems OK
-
- }
-
-   for (int i = 1; i < networkSize; i+=1) { // 1 follow phase 0
-
-     if (newPosFollowed[i]<=0){
-   
- //    dataMappedForMotorisedPosition[0]= int (map (newPosFollowed[i], 0, -TWO_PI, numberOfStep, 0)); 
- 
-  //   newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
-
-       }  
-   else {
-    
- //   dataMappedForMotorisedPosition[0]= (int) map (newPosFollowed[i], 0, TWO_PI, 0, numberOfStep); 
-
-  //   newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-   
-    }
-  }
-
-
-       if (key != '#' ) {
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
+               phasePatternFollow[i] = netPhaseBase[i]; //
+               phasePatternFollow[i] = phasePatternFollow[i]%TWO_PI;  
+          //  }
   
-    phasePatternBase(); // dans SIMPLIFICATION
-
-   for (int i = 0; i < networkSize; i+=1) { 
-
-    phasePatternFollow[i] = netPhaseBase[i]; //
-    phasePatternFollow[i] = phasePatternFollow[i]%TWO_PI;  
-    }
-  
-   }
-  }
+           }
+        }
  
-  if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
+      if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
     
-    //text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " + newPosFollowed[0], 500, 600);
+         //text ( " modeStartKeyToFollow " + modeStartKeyToFollow + " newPosFollowed[0] " + newPosFollowed[0], 500, 600);
 
       for (int i = 0; i < networkSize-0; i+=1) { 
         
-       newPosFollowed[i]=phases[i-0][frameCount % nbMaxDelais]; // signals to follow
-       newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
+    
 
-       //phaseMapped[i] = newPosFollowed[i];//+phaseMappedFollow[i]+phasePatternFollow[i]; // new signal is a composition 
+       phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];//+phaseMappedFollow[i]+phasePatternFollow[i]; // new signal is a composition 
 
-          text(" phaseMapped[0 et i " +  phaseMapped[0] + " " + phaseMapped[i], -1000, 100+ (100*i)); // seems OK
+       //   text(" phaseMapped[0 et i " +  phaseMapped[0] + " " + phaseMapped[i], -1000, 100+ (100*i)); // seems OK
    
     if (phaseMapped[i]<0){
    
@@ -250,7 +157,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
 
   
 
- send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);  // avant dernier >-1 alors compute data
+ //send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);  // avant dernier >-1 alors compute data
  // mapNewPosX(); // just to dislay on screen?
  rotate (PI/2);
   
