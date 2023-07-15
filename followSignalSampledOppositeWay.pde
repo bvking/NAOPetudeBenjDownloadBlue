@@ -45,20 +45,18 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
       if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
        for (int i = 0; i < networkSize-0; i+=1) { 
            phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];//+phaseMappedFollow[i]+phasePatternFollow[i]; // new signal is a composition 
-
-          //   text(" phaseMapped[0 et i " +  phaseMapped[0] + " " + phaseMapped[i], -1000, 100+ (100*i)); // seems OK
-   
-       if (phaseMapped[i]<0){
+ 
+        if (phaseMapped[i]<0){
           dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
           phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
-           }
+         }
        
-       else { 
+        else { 
           dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
           phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
          }
-       }
-     }
+        }
+      }
 
         // option to add rotationSpeed
        /*
@@ -68,15 +66,13 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
         }
         */
    
-
-
-   if (keyCode == BACKSPACE ) {
+  if (keyCode == BACKSPACE ) {
     
-      for (int i = 0; i < networkSize-0; i+=1) { 
+     for (int i = 0; i < networkSize-0; i+=1) { 
       println (" ALIGN MTF " );
       phaseMapped[i] = phases[i-0][frameCountBis % nbMaxDelais]+0; // to aligin ball with the followed one
    
-    if (phaseMapped[i]<0){
+      if (phaseMapped[i]<0){
    
       dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
       //   net.oldPhase[i]=phaseMapped[i];
@@ -84,17 +80,17 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
       phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
        }
         
-     else
+      else
   
-     dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
-     phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+      dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
 
-    }
-    keyCode = TAB;
+     } 
+      keyCode = TAB;
    }
 
     for (int i = 0; i < networkSize-0; i+=1) { 
-      newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
+       newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
        net.phase[i]=phaseMapped[i]; // get trouble something
        newPosX[i]=phaseMapped[i]; // better to count revolution
        //print ( " newPosF[i] " + newPosF[i]);
