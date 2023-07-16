@@ -158,7 +158,7 @@ void teensyPos(){
      }
     }
 
-   if (( keyMode == " propagationBallRotationBisExperimental " || keyMode == " followSignalSampledOppositeWay(frameRatio) " )
+   if (( keyMode == " propagationBallRotationBisExperimental " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
                                                                && formerKeyMetro=='*')
         {    // actualise counter of normal mode from revLfo from method  not here
 
@@ -198,7 +198,7 @@ void teensyPos(){
 
 
 
-    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") || keyMode == " followSignalSampledOppositeWay(frameRatio) "  
+    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " )
                                                      && formerKeyMetro =='*') { 
 
      if ( keyMode == " propagationBallRotationBisTest " ) { 
@@ -319,7 +319,7 @@ void teensyPos(){
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-  if (keyMode == " trigEventWithAbletonSignal " ) {
+  if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " ) {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
      // if (modeStartKeyToFollow= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){
