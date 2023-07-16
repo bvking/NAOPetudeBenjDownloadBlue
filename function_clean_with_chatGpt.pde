@@ -418,5 +418,4 @@ void trigFollowSignalSampled() {
  //  print (" in trig___(frameRatio) before and before arduinoPos "); countRevs();
       }
      }
-    
 }

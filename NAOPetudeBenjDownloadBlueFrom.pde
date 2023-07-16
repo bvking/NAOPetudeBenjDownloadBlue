@@ -102,9 +102,6 @@ void draw() {
     //****************************
     
     trigFollowSignalSampled();
-    if (moveKeys[8]=false && modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
-     //  modeStartKeyToFollow = "null " ;
-    } 
     
     //rect(80,40,140,320);
     

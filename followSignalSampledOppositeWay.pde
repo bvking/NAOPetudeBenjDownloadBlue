@@ -93,34 +93,35 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
        newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
        net.phase[i]=phaseMapped[i]; // get trouble something
        newPosX[i]=phaseMapped[i]; // better to count revolution
-       newPosXaddSignal[i]=phaseMapped[i];  // to count revolution with mapNewPosX();
        //print ( " newPosF[i] " + newPosF[i]);
    }
 
 
   // COUNT REVOLUTION  in teensyPos?  use 
    
-   mapNewPosX();
+   //mapNewPosX()
 
-    /*
     for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
-    //drawBall(i, newPosX[i] ); //  good. 
-    print( " newPosX[i] " ); print ( newPosX[i]);
+
+  //drawBall(i, newPosX[i] ); //  good. 
+
+   print( " newPosX[i] " ); print ( newPosX[i]);
+
+   
     print( " oldPositionToMotor[i]" ); print ( oldPositionToMotor[i]);
     positionToMotor[i]= ((int) map (newPosX[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
-    // newPosX[i]=positionToMotor[i]%6400;
-    //   if (oldPositionToMotor[i]>positionToMotor[i]){
+   // newPosX[i]=positionToMotor[i]%6400;
+  //   if (oldPositionToMotor[i]>positionToMotor[i]){
     if ( oldPosF[i]>newPosF[i]){
       revLfo[i]++;
      } 
+
       print( " positionToMotor[i] " ); print ( positionToMotor[i]);
       print( " newPosF[i] " ); print ( newPosF[i]); print( " oldPosF[i] " ); print ( oldPosF[i]);
       print (" revolutionLFO "); print ( i); print ("  "); println (revLfo[i]); 
      oldPositionToMotor[i]=  positionToMotor[i];
      oldPosF[i]=newPosF[i]; 
     }
-    */
-
   // mapNewPosX(); // just to dislay on screen?
    rotate (PI/2);  
     }
