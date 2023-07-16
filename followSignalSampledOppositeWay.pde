@@ -90,9 +90,9 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
    }
 
     for (int i = 0; i < networkSize-0; i+=1) { 
-       newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
-     //  net.phase[i]=phaseMapped[i]; // get trouble something
-     //  newPosX[i]=phaseMapped[i]; // better to count revolution
+       newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
+       net.phase[i]=phaseMapped[i]; //used to display
+       newPosX[i]=phaseMapped[i]; // better to count revolution
       // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
        //print ( " newPosF[i] " + newPosF[i]);
    }
