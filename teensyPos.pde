@@ -99,29 +99,29 @@ void teensyPos(){
 
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
-       // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
-        dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];// RENAME
-        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+          // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+             dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];// RENAME
+             dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
-         print ( " record $ " + recordLastDataOfMotorPosition[i] );
-        //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
+              print ( " record $ " + recordLastDataOfMotorPosition[i] );
+             //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
+             }
+          }
+            /*
+           if (formerKeyMetro == '*' ) {
+            for (int i = 0; i < networkSize-0; i++) { // 
+            lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+            //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
+             } 
             }
-          }
+           */
            /*
-          if (formerKeyMetro == '*' ) {
-           for (int i = 0; i < networkSize-0; i++) { // 
-           lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
-          //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
-           } 
-          }
-          */
-         /*
             if (formerKeyMetro == '*' && encoderTouched[0]) {
               for (int i = 0; i < networkSize-0; i++) { // 
     
-           dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
-           dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
-           print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
+            dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];
+            dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]; 
+            print ( " add Encodeur To Processing Position In Pendular Mode" + readPositionEncoder[i]); 
            } 
          }
          */
@@ -256,8 +256,6 @@ void teensyPosOri(){
 
       for (int i = 0; i < networkSize; i++) {
        
-     
-            
       //*******************************  ASSIGN MOTOR WITH POSITION
 
       if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
@@ -464,6 +462,8 @@ void teensyPosOri(){
 void mapNewPosX() {
 
     textSize(40);
+
+
     if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
     for (int i = 0; i <  networkSize-0; i+=1) { 
     text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
@@ -501,7 +501,7 @@ void mapNewPosX() {
        newPosF[i]=positionToMotor[i]%6400;
       }
      } 
-   // end map depending way of rotation
+    // end map depending way of rotation
   
      textSize (50);
 
@@ -509,8 +509,8 @@ void mapNewPosX() {
          TrigmodPos[i]=1; 
       }
 
-    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { 
-         for (int i = 0; i <  networkSize-0; i+=1) { 
+     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { 
+     for (int i = 0; i <  networkSize-0; i+=1) { 
            //newPosF[i]=phaseMapped[i];
             if ( oldPosF[i]>newPosF[i] ) { //
             revLfo[i]++;
@@ -524,7 +524,7 @@ void mapNewPosX() {
         }
      }
 
-    else  if ( modeStartKeyToFollow == " propagationBallRotationBis " ) { 
+     else  if ( modeStartKeyToFollow == " propagationBallRotationBis " ) { 
 
   
       //____ only with popagation
@@ -539,7 +539,7 @@ void mapNewPosX() {
         }
       }
 
-      if (dol && !doo ) { // && TrigmodPos[oscillatorChange]!=0
+     if (dol && !doo ) { // && TrigmodPos[oscillatorChange]!=0
 
             if ( propagationTrigged)  {    // set j as 2  
              int j; 
@@ -555,9 +555,9 @@ void mapNewPosX() {
               TrigmodPos[j]=3;   
       
             }
-       }
+      }
  
-          for (int i = 0; i <  networkSize-0; i+=1) { 
+      for (int i = 0; i <  networkSize-0; i+=1) { 
          //  text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
  
        if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
@@ -566,9 +566,9 @@ void mapNewPosX() {
          revLfo[i]--;
          TrigmodPos[i]=0;
          }
-      }
+       }
 
-        if (dol && doo  && TrigmodPos[i]!=0) {
+       if (dol && doo  && TrigmodPos[i]!=0) {
 
          if ( propagationTrigged)  {    // set j as 2  
          int j; 
@@ -586,7 +586,7 @@ void mapNewPosX() {
        }
       }
      }
-   }
+  }
 
        for (int i = 0; i <  networkSize-0; i+=1) { 
             oldPositionToMotor[i]=  positionToMotor[i];
