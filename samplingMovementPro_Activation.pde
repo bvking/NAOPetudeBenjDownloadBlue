@@ -9,6 +9,7 @@ void samplingMovementPro() {
     fill(0, 255, 0);
     text(measure, 200, 100);
     sampler.addSample(angleToInterpolate);
+    text ( " angleToInterpolate " + angleToInterpolate , 200, 200);
   }
 
   else {

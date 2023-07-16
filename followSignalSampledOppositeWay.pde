@@ -108,7 +108,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
     positionToMotor[i]= ((int) map (newPosX[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
    // newPosX[i]=positionToMotor[i]%6400;
    //   if (oldPositionToMotor[i]>positionToMotor[i]){
-    if ( oldPosF[i]>newPosF[i]){
+    if ( oldPosF[i]>newPosF[i]&& newPosF[i]<=100){
       revLfo[i]++;
      } 
       print( " positionToMotor[i] " ); print ( positionToMotor[i]);
