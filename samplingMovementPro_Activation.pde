@@ -2,21 +2,18 @@ void samplingMovementPro() {
    // currTime = millis() * 0.001;  // seconds since app started
   //  float polarToCartesionX= displacement*cos(newPosF[0]);
   //  float polarToCartesionY= displacement*sin(newPosF[0]);
-   if( bRecording ) {
-  //  circle( polarToCartesionX,polarToCartesionY, 10 );
-    sampler.addSample( newPosF[0], newPosF[0] ); // polar Version
-  //  sampler.addSample( polarToCartesionX, polarToCartesionY ); // cartesian version
-
- 
-  //**   samplers.get(samplers.size()-1).addSample( currTime, mouseX, v1InMainLoop );
-
- //net.phase[networkSize-1]=  map (mouseY, 0, height/2, 0, TWO_PI);
-  //*** */  newPosF[0]=  map (mouseY, 0, height/2, 0, TWO_PI);// uncomment doesn't change anything
-
+   if (bRecording) {  // draw circle
+                     //   circle( mouseX, mouseY, 10 );
+                     //   sampler.addSample( mouseX, mouseY );
+    textSize(100);
+    fill(0, 255, 0);
+    text(measure, 200, 100);
+    sampler.addSample(angleToInterpolate);
   }
- else {
-    if( sampler.fullTime() > 0 )
-        sampler.draw();
+
+  else {
+    if (sampler.fullTime() > 0)
+      sampler.draw();
         textSize(50);
         text ( " do the sample " , 100, 400);
 
@@ -39,8 +36,9 @@ void handleInternalSamplingMode(){
 
      //==================== sampling from MOUSE_Y
          float radianTorec;
-           radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Processing mouseY    
-           newPosF[0]= radianTorec;
+          // radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Processing mouseY   
+           angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+           newPosF[0]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
@@ -55,7 +53,7 @@ void handleInternalSamplingMode(){
 
 
          activeSamplingInternalClock(1); //start sampling
-         stopSamplingInternalClock(3);  //stop sampling
+         stopSamplingInternalClock(5);  //stop sampling
          samplingMovementPro(); 
 
       rotate (HALF_PI);

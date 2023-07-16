@@ -126,7 +126,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             boolean oscillatorChangingPropagation; // splitIncoming
             
             
-            // INTERPOLATION
+            // SAMPLING AND " INTERPOLATION "
             int actualSec,lastSec, lastLastSec, measure;  // trig internal clock each seconde as a measure  (period of 1 seconde)
             
             int currTime;
@@ -136,7 +136,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             int Movement;
             
-            float oldMovementInterpolated, movementInterpolated;
+            float oldMovementInterpolated, movementInterpolated, angleToInterpolate;;
             float formerInterpolatedY;
             float interpolatedX, interpolatedY;
             
@@ -671,14 +671,9 @@ void setup() {
             frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
-              
                 
-                
-                
-                
-                
-                
-                sampler = new Sampler();
+                //sampler = new Sampler();
+                sampler = new SamplerTheta();
                 
                 
                 //  noStroke();
