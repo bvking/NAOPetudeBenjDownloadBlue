@@ -20,24 +20,15 @@ void keyReleased() {
    if (key == 'n') {
     oldFaz=faz;
     faz+=1;
-
     getOldPositionOfActiveOscillator(faz);
-
-  
-      }
-
+     }
      recordFrame();
-
-    if (keyCode == ALT){
+   if (keyCode == ALT){
     moveKeys[8]=false;
    }
-   
-   
-
-    if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) { 
-    
-
-    if (networkSize ==6){
+  
+   if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) { 
+     if (networkSize == 6){
   
     
       
