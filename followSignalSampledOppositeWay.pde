@@ -104,6 +104,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
  
     for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
    print( " newPosX[i] " ); print ( newPosX[i]);
+   print( " newPosFollowed[i] "); print (  newPosFollowed[i]);
    print( " oldPositionToMotor[i]" ); print ( oldPositionToMotor[i]);
     positionToMotor[i]= ((int) map (newPosX[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
    // newPosX[i]=positionToMotor[i]%6400;
