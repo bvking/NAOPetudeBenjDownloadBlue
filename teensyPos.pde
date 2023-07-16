@@ -1,3 +1,144 @@
+void mapNewPosX() {
+    textSize(40);
+
+    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
+     for (int i = 0; i <  networkSize-0; i+=1) { 
+     text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
+     newPosXaddSignal[i]%=TWO_PI;
+     net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
+     }
+    }
+
+    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
+     for (int i = 0; i <  networkSize-0; i+=1) { 
+         // phaseMapped[i]%=TWO_PI;
+         // net.phase[i]=phaseMapped[i]; // to trig something with arduinoPos
+          newPosXaddSignal[i]=phaseMapped[i];
+          net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
+          text (" phaseMapped[i] " + phaseMapped[i] + " oldOldPosF[i] " + oldOldPosF[i] + " oldPosF[i] " + oldPosF[i] + " newPosF " + newPosF[i] +
+                " revLfo[i] " + revLfo[i] + " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i)); // + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  
+      }
+    }
+
+    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
+     for (int i = 0; i <  networkSize-0; i+=1) {
+     net.oldPhase[i]=net.phase[i];
+      }
+    }
+
+    // map depending way of rotation
+
+    for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
+         positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
+         newPosF[i]=positionToMotor[i]%6400;
+   
+     if (net.oldPhase[i] > net.phase[i] ) {
+
+       positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0)%numberOfStep); //
+       newPosF[i]=positionToMotor[i]%6400;
+      }
+     } 
+    // end map depending way of rotation
+  
+     textSize (50);
+
+     for (int i = 0; i <  networkSize-0; i+=1) { 
+         TrigmodPos[i]=1; 
+      }
+
+     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { 
+     for (int i = 0; i <  networkSize-0; i+=1) { 
+           //newPosF[i]=phaseMapped[i];
+            if ( oldPosF[i]>newPosF[i] ) { //
+            revLfo[i]++;
+            TrigmodPos[i]=0;   
+            }
+          
+            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){  // voir dans quel sens la retropropagation oriente  i et j
+            revLfo[i]--;
+            TrigmodPos[i]=0;
+          }
+        }
+     }
+
+     else  if ( modeStartKeyToFollow == " propagationBallRotationBis " ) { 
+
+  
+      //____ only with popagation
+
+     for (int i = 0; i <  networkSize-0; i+=1) { 
+       if ( doo==false && formerKeyMetro == '*') { //  work with propaBis in circularMode only
+
+          if ( oldPosF[i]>newPosF[i] ) { //
+            revLfo[i]++;
+            TrigmodPos[i]=0;   
+          }
+        }
+      }
+
+     if (dol && !doo ) { // && TrigmodPos[oscillatorChange]!=0
+
+            if ( propagationTrigged)  {    // set j as 2  
+             int j; 
+             j= (oscillatorChange-1);
+              if (j<= -1){
+                j= networkSize-1;
+                TrigmodPos[j]=2;
+              }
+    
+              text ( " cancel counting bug by minusing ", 400, 400);
+              revLfo[oscillatorChange]--;  // cancel counter
+             // revLfo[j]--;  // cancel counter
+              TrigmodPos[j]=3;   
+      
+            }
+      }
+ 
+      for (int i = 0; i <  networkSize-0; i+=1) { 
+         //  text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
+ 
+       if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
+  
+         if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){  // voir dans quel sens la retropropagation oriente  i et j
+         revLfo[i]--;
+         TrigmodPos[i]=0;
+         }
+       }
+
+       if (dol && doo  && TrigmodPos[i]!=0) {
+
+         if ( propagationTrigged)  {    // set j as 2  
+         int j; 
+         j= (oscillatorChange-1);
+         if (j<= -1){
+         j= networkSize-1;
+         TrigmodPos[j]=2;
+       }
+
+       //   text ( " cancel counting bug by adding ", 400, 400);
+       //   revLfo[oscillatorChange]++;
+       //   revLfo[j]++;  // cancel counter
+         TrigmodPos[j]=4;   
+    
+       }
+      }
+     }
+  }
+
+       for (int i = 0; i <  networkSize-0; i+=1) { 
+            oldPositionToMotor[i]=  positionToMotor[i];
+            oldOldPosF[i]=oldPosF[i];
+            oldPosF[i]=newPosF[i];
+          }
+ 
+         // text ("revLFO " + revLfo[i] + "metro " + metroPhase[i], -1600, height-500 - 75*i);
+   
+        //  text (" mode " + keyMode + " signal2 " + signal[2] +  " net " + net.phase[2] + " metro " +   metroPhase[2] , -1600, height-300 );  
+}
+
+
+
+
 void teensyPos(){
   
  // text ( " circularMov " + !circularMov , 200, 100) ; //
@@ -42,7 +183,7 @@ void teensyPos(){
        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
     }
-  }
+   }
 
            if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
             for (int i = 0; i < networkSize; i++) {
@@ -126,12 +267,9 @@ void teensyPos(){
          }
          */
 
-          if (formerKeyMetro == '*' ) {
-               for (int i = 0; i < networkSize-0; i++) { // 
-
-                      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastPositionFromCircularMode[i];//+readPositionEncoder[i];
-
-    
+       if (formerKeyMetro == '*' ) {
+        for (int i = 0; i < networkSize-0; i++) { // 
+            dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastPositionFromCircularMode[i];//+readPositionEncoder[i];  
              //   dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];// useless but find something to make i and u working in circular movement
              //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
 
@@ -140,6 +278,8 @@ void teensyPos(){
 
             } 
           }
+
+
     /*
       if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
       for (int i = 0; i < networkSize-0; i++) { // 
@@ -364,7 +504,7 @@ void teensyPosOri(){
         }
 */
 
-          if (formerKeyMetro == '*' ) {
+      if (formerKeyMetro == '*' ) {
                for (int i = 0; i < networkSize-0; i++) { // 
     
         dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i]; // from i or u
@@ -458,145 +598,4 @@ void teensyPosOri(){
     }    
   
 }
-
-void mapNewPosX() {
-
-    textSize(40);
-
-
-    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
-    for (int i = 0; i <  networkSize-0; i+=1) { 
-    text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
-    newPosXaddSignal[i]%=TWO_PI;
-    net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
-    }
-    }
-
-    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
-      for (int i = 0; i <  networkSize-0; i+=1) { 
-         // phaseMapped[i]%=TWO_PI;
-         // net.phase[i]=phaseMapped[i]; // to trig something with arduinoPos
-          newPosXaddSignal[i]=phaseMapped[i];
-          net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
-          text (" phaseMapped[i] " + phaseMapped[i] + " oldOldPosF[i] " + oldOldPosF[i] + " oldPosF[i] " + oldPosF[i] + " newPosF " + newPosF  +
-                " revLfo[i] " + revLfo[i] + " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i)); // + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  
-      }
-    }
-
-    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
-     for (int i = 0; i <  networkSize-0; i+=1) {
-     net.oldPhase[i]=net.phase[i];
-      }
-     }
-
-    // map depending way of rotation
-
-    for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
-         positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
-         newPosF[i]=positionToMotor[i]%6400;
-   
-     if (net.oldPhase[i] > net.phase[i] ) {
-
-       positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0)%numberOfStep); //
-       newPosF[i]=positionToMotor[i]%6400;
-      }
-     } 
-    // end map depending way of rotation
-  
-     textSize (50);
-
-     for (int i = 0; i <  networkSize-0; i+=1) { 
-         TrigmodPos[i]=1; 
-      }
-
-     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { 
-     for (int i = 0; i <  networkSize-0; i+=1) { 
-           //newPosF[i]=phaseMapped[i];
-            if ( oldPosF[i]>newPosF[i] ) { //
-            revLfo[i]++;
-            TrigmodPos[i]=0;   
-            }
-          
-            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){  // voir dans quel sens la retropropagation oriente  i et j
-            revLfo[i]--;
-            TrigmodPos[i]=0;
-          }
-        }
-     }
-
-     else  if ( modeStartKeyToFollow == " propagationBallRotationBis " ) { 
-
-  
-      //____ only with popagation
-
-     for (int i = 0; i <  networkSize-0; i+=1) { 
-       if ( doo==false && formerKeyMetro == '*') { //  work with propaBis in circularMode only
-
-          if ( oldPosF[i]>newPosF[i] ) { //
-            revLfo[i]++;
-            TrigmodPos[i]=0;   
-          }
-        }
-      }
-
-     if (dol && !doo ) { // && TrigmodPos[oscillatorChange]!=0
-
-            if ( propagationTrigged)  {    // set j as 2  
-             int j; 
-             j= (oscillatorChange-1);
-              if (j<= -1){
-                j= networkSize-1;
-                TrigmodPos[j]=2;
-              }
-    
-              text ( " cancel counting bug by minusing ", 400, 400);
-              revLfo[oscillatorChange]--;  // cancel counter
-             // revLfo[j]--;  // cancel counter
-              TrigmodPos[j]=3;   
-      
-            }
-      }
- 
-      for (int i = 0; i <  networkSize-0; i+=1) { 
-         //  text (  " net.oldPhase[i] " + net.phase[i] + " " + newPosXaddSignal[i] + " oldOldPosF " + oldOldPosF[i] + " oldPosF " + oldPosF[i] + " newPosF " + newPosF[i], width*2, i*50);
- 
-       if ( doo==true && formerKeyMetro == '*' ){  // compteur pour propagation circulaire
-  
-         if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){  // voir dans quel sens la retropropagation oriente  i et j
-         revLfo[i]--;
-         TrigmodPos[i]=0;
-         }
-       }
-
-       if (dol && doo  && TrigmodPos[i]!=0) {
-
-         if ( propagationTrigged)  {    // set j as 2  
-         int j; 
-         j= (oscillatorChange-1);
-         if (j<= -1){
-         j= networkSize-1;
-         TrigmodPos[j]=2;
-       }
-
-       //   text ( " cancel counting bug by adding ", 400, 400);
-       //   revLfo[oscillatorChange]++;
-       //   revLfo[j]++;  // cancel counter
-         TrigmodPos[j]=4;   
-    
-       }
-      }
-     }
-  }
-
-       for (int i = 0; i <  networkSize-0; i+=1) { 
-            oldPositionToMotor[i]=  positionToMotor[i];
-            oldOldPosF[i]=oldPosF[i];
-            oldPosF[i]=newPosF[i];
-          }
- 
-         // text ("revLFO " + revLfo[i] + "metro " + metroPhase[i], -1600, height-500 - 75*i);
-   
-        //  text (" mode " + keyMode + " signal2 " + signal[2] +  " net " + net.phase[2] + " metro " +   metroPhase[2] , -1600, height-300 );  
-}
-
 
