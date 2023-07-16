@@ -9,7 +9,6 @@ void samplingMovementPro() {
     fill(0, 255, 0);
     text(measure, 200, 100);
     sampler.addSample(angleToInterpolate);
-    text ( "angleToInterpolate "  + angleToInterpolate, 400, 400);
   }
 
   else {
@@ -33,14 +32,13 @@ void handleInternalSamplingMode(){
      if (measure <=3){
       //  send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
       }
-         newPosF[0]=  map (encodeur[0], 0, 2000, 0, TWO_PI)%TWO_PI;  // display on screen
-       //  angleToInterpolate = newPosF[0]; 
+      //  newPosF[0]=  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
 
-     //==================== sampling from MOUSE_Y  
-      //   angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI;  // display on screen
-      //   newPosF[0] = angleToInterpolate;  // dataToInterpolate to compute with newPosF[0]
-
-      //=================== assign dataToInterpolate
+     //==================== sampling from MOUSE_Y
+         float radianTorec;
+          // radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Processing mouseY   
+           angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+           newPosF[0]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
