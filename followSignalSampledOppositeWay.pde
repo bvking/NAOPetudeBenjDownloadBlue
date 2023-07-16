@@ -90,7 +90,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
    }
 
     for (int i = 0; i < networkSize-0; i+=1) { 
-     //  newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
+       newPosF[i]=phaseMapped[i]; // %TWO_PI      display data and use them to control motor
      //  net.phase[i]=phaseMapped[i]; // get trouble something
      //  newPosX[i]=phaseMapped[i]; // better to count revolution
       // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
@@ -100,8 +100,8 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
 
   // COUNT REVOLUTION  in teensyPos?  use 
    
-       mapNewPosX();
- /*
+     //  mapNewPosX();
+ 
     for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
    print( " newPosX[i] " ); print ( newPosX[i]);
    print( " oldPositionToMotor[i]" ); print ( oldPositionToMotor[i]);
@@ -117,7 +117,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
      oldPositionToMotor[i]=  positionToMotor[i];
      oldPosF[i]=newPosF[i]; 
     }
-  */
+  
   // mapNewPosX(); // just to dislay on screen?
    rotate (PI/2);  
     }
