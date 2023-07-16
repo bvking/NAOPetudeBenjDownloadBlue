@@ -29,16 +29,17 @@ void handleInternalSamplingMode(){
             modeStartKeyToFollow + " mouseY " +  mouseY  + " measure "  +  measure , -width/4, - height + 300);   
 
      //==================== sampling from ENCODER
-     if (measure <=3){
-      //  send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+     if (measure>=0 && measure<=7 ){
+        send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
       }
-      //  newPosF[0]=  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+       angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+       newPosF[0]= angleToInterpolate;
 
      //==================== sampling from MOUSE_Y
          float radianTorec;
           // radianTorec=(float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI;  // position from Processing mouseY   
-           angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-           newPosF[0]= angleToInterpolate;
+          // angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+          // newPosF[0]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
