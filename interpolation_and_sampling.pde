@@ -125,8 +125,10 @@ class SamplerTheta {
   }
 }
 
+SamplerTheta sampler;
 
 
+/*
 class Sample {
   int t;
   float x, y;
@@ -229,107 +231,7 @@ class Sampler {
   }
 }
 
-SamplerTheta sampler;
 
 
 
 
-
-/*
-void setup() {  
-  size( 800, 800, P3D );
-  frameRate(30); // when size is set as P3D (3 dimension) we have 27 or 28 frame (loop) per seconde
-  sampler = new Sampler(); 
-  mouseY= height/2;
-}
-
-
-void draw() {
-  background(50);
-   for (int i=0; i<=8; i++ ){ 
-    stroke(2);
-  line (0, height/8*i, width, height/8*i); // horizon
-  line (width/8*i, 0, width/8*i, height); // vertical
-
-  }
-  textSize (20);
-   //----------------------------------------
-  angleToInterpolate = (float) map (mouseY, 0, 200, 0, TWO_PI)%TWO_PI; 
-  fill( 100, 0, 0);
-  circle ( 100* cos (angleToInterpolate)+200, 100*sin (angleToInterpolate)+200, 20); 
-  //----------------------------------------
-  pushMatrix();
-  translate(width/2, height/2);
-  rotate(angleToInterpolate);
-  translate(28, 0);
-  rect(-30, -5, 60, 10);
-  popMatrix();
-  //----------------------------------------
-  ellipse(width/2, height/2, 5, 5);
-  text( " repeted  " +nf (movementInterpolated, 0, 2)  + " original " +nf (angleToInterpolate,0,2 ),width/2, height/4);
-//  text( " repeted  " +nf (movementInterpolated, 0, 2) , 10, 0);
-  textSize (20);
- 
-
- if  (actualSec!=lastSec){
-       lastSec=actualSec;
-       measure++;
-   }
-   
-  text (measure, 100, 100 );
-  actualSec =(int) (millis()*0.001);  // 
-
-  activeSampling();
-  stopSampling();
-  
-  if( bRecording) { // draw circle
- //   circle( mouseX, mouseY, 10 );
- //   sampler.addSample( mouseX, mouseY );
-     textSize(100);
-     fill (0, 255, 0);
-     text (measure, 200, 100 );
-  sampler.addSample( angleToInterpolate, angleToInterpolate );
-  }
-  
-  else {    
-  if( sampler.fullTime() > 0 )
-        sampler.draw();
-  }
-
-  if(numberOfSample > 0){
-  
-  println (frameCount%numberOfSample+1 + " " + movementInterpolated);
-  }
-}
-
-
-void mousePressed() {
-  bRecording = true;   // draw circle
-  mouseRecorded = true;
-  measure=0;
-}
-
-
-void activeSampling() { 
-  if (measure==0 && actualSec!=lastSec && mouseRecorded == true) {
-     textSize(100);
-    
-     fill (0, 255, 0);
-     text (measure, 200, 100 );
-  sampler.beginRecording();
-  }
-}
-
-void stopSampling() { 
-  if (measure==2 && actualSec!=lastSec) {  
-     textSize(100);
-   
-     fill (255, 0, 0); 
-       text (measure, 200, 100 );
-  mouseRecorded = false;
-     //**REPEAT
-  bRecording = false;
-  sampler.beginPlaying();
-  }
-}
-*/ 

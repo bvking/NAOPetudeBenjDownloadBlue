@@ -27,7 +27,7 @@ void mapNewPosX() {
           
              specialPhase[i] = map (phaseMapped[i], 0, TWO_PI, -TWO_PI, 0);  // map and transform data in good way to be use in countRevs()  
              //net.phase[i]=phaseMapped[i]; //  
-                          text ( OldSpecialPhase[i] + " -spec " + specialPhase[i] + " phase " + net.phase[i]  , 200, -500 + (50*i));
+                          text ( OldSpecialPhase[i] + " -spec " + specialPhase[i] + " phase " + net.phase[i] + " r " + rev[i]  , 200, -500 + (50*i));
   
                }
 
@@ -36,7 +36,7 @@ void mapNewPosX() {
             // phaseMapped[i]%=TWO_PI;
              specialPhase[i]=phaseMapped[i];
            //  net.phase[i]=phaseMapped[i]; // 
-                          text ( OldSpecialPhase[i] + " +spec " + specialPhase[i] + " phase " + net.phase[i]  , 200, -500 + (50*i));
+                          text ( OldSpecialPhase[i] + " +spec " + specialPhase[i] + " phase " + net.phase[i] + " r " + rev[i]  , 200, -500 + (50*i));
 
            }
        
