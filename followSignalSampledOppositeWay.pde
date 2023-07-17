@@ -57,11 +57,11 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
          }
        
         else { 
-          dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-          phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+            dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+            phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
          }
         }
-      }
+       }
 
         // option to add rotationSpeed
        /*
@@ -100,7 +100,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
        newPosX[i]=phaseMapped[i]; // better to count revolution
       // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
        //print ( " newPosF[i] " + newPosF[i]);
-   }
+  }
 
 
   // COUNT REVOLUTION  in teensyPos?  use 

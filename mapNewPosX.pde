@@ -21,12 +21,21 @@ void mapNewPosX() {
          // net.phase[i]=phaseMapped[i]; // to trig something with arduinoPos
           newPosXaddSignal[i]=phaseMapped[i];
           net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
+         
+    
+
+
           text (" phaseMapped[i] " + phaseMapped[i] + " oldOldPosF[i] " + oldOldPosF[i] + " oldPosF[i] " + oldPosF[i] + " newPosF " + newPosF[i] +
                 " revLfo[i] " + revLfo[i] + " net.old " + net.oldPhase[i] + " phase " + net.phase[i] , 0, 100*(i));
                 
                 // " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i)); // + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  
       }
-    }
+    } 
+
+       countRevs();
+       println ( " rev in mapNew "); showArray(rev);
+
+   
 
     if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
      for (int i = 0; i <  networkSize-0; i+=1) {
@@ -40,7 +49,8 @@ void mapNewPosX() {
          positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
          newPosF[i]=positionToMotor[i]%6400;
    
-     if (net.oldPhase[i] > net.phase[i] ) {
+     //if (net.oldPhase[i] > net.phase[i] ) {
+      if ( oldPositionToMotor[i]>positionToMotor[i]) {
 
        positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0)%numberOfStep); //
        newPosF[i]=positionToMotor[i]%6400;
