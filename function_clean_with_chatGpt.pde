@@ -402,7 +402,7 @@ void trigFollowSignalSampled() {
  
   print (" trigFollowSampling ");   println (trigFollowSampling); 
  if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) { 
-  //   followSignalSampled(frameRatio); //no WORK with frame
+    // followSignalSampled(frameRatio); // not well 
     followSignalSampledOppositeWay(frameRatio);// with millis()
   
     

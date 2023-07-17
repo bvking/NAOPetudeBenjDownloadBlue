@@ -30,6 +30,9 @@ int propagationTimeElapsed;
 float trigedWithAnySign, oldTrigedWithAnySign;
 float[] trigedSignFromAbleton = new float[networkSize];
 float[] oldTrigedSignFromAbleton = new float[networkSize];
+float [] oldPhaseMapped = new float [networkSize];
+float [] specialPhase =new float [networkSize];
+float [] OldSpecialPhase =new float [networkSize];
 
 float[] deltaOldPhaseActualPhase = new float[networkSize];
 

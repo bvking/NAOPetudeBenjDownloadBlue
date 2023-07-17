@@ -491,7 +491,7 @@ void arduinoPos() {
      //*********** END COMPUTE ACCELERATION 
   
 
- // countRevs();  
+   
  // bpmAsPulsationFunction();
    
   //SUBZERO

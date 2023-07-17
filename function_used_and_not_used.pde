@@ -54,6 +54,53 @@ void devant_derriere() {
     keyReleased();
   }
 }
+void countRevsSpecialOldPhase() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
+
+  onOFF=0;
+
+  for (int i = 0; i < networkSize; i++) { 
+
+    if (
+      ((OldSpecialPhase[i] < 0.25 *PI && OldSpecialPhase[i]>0)  && (specialPhase[i] > -0.25* PI && specialPhase[i] <0))  || 
+      (OldSpecialPhase[i] < -1.75 * PI && specialPhase[i] > -0.25 * PI)// ||
+      // (OldSpecialPhase[i] < 0.25 * PI && specialPhase[i] > -0.25 * PI)
+      ) {
+      onOFF = 1;
+      //    TrigmodPos[i]=0;
+      rev[i]--;
+      //      print (" revultion negative  "); println (revolution[i]=i+1);
+      //   revolution[i]=i+1;
+      revolution[i]=0; // trig 0 to sent 0 in Max4Live
+  //**    memoryi=i;
+
+
+      decompte[i] = -1; // // RESET COUNTER AT 0 (i know it's strange, otherwise with 0 it begin at 1, not 0)
+    } else { // if you do twice there is a funny bug
+    
+    }
+
+
+    // increment caused by positive angular velocity
+    // both positive angles || both negative angles || negative-to-positive angle
+
+    if (
+      ((OldSpecialPhase[i] > -0.25 *PI && OldSpecialPhase[i]<0)  && (specialPhase[i] < 0.25* PI && specialPhase[i] >0))  || 
+      (OldSpecialPhase[i] > 1.75 * PI && specialPhase[i] < 0.25*PI)
+      ) {
+      onOFF = 1;
+      //   TrigmodPos[i]=0;
+      rev[i]++;
+      //   revolution[i]=i+1;
+      revolution[i]=0;   // trig 0 to sent 0 in Max4Live
+      decompte[i] = 0;  // RESET COUNTER AT 0
+    } else {
+
+      decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
+      revolution[i]=1;
+    }
+   
+    }
+  }
 
 
 void countRevs() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
@@ -1425,7 +1472,9 @@ float [] phaseReturnedBis(float[] netPhase) {
 void follow( int target, int follower, int delais, float deltaphase) {
   int step = frameCount % nbMaxDelais;
   int followedStep = (step + nbMaxDelais - delais) % nbMaxDelais;
-  phases[follower][step] = diffAngle(phases[target][followedStep] + deltaphase, 0);
+//  phases[follower][step] = diffAngle(phases[target][followedStep] + deltaphase, 0);
+//     text("follow" +  phases[follower][step], -100, 0); // seems OK
+
 }
 
 float diffAngle(float angle1, float angle2) { // return the difference angle1 - angle2 between two angle between -PI PI
@@ -1462,7 +1511,7 @@ void followOppositeWay( int target, int follower, int delais, float deltaphase) 
   int step = frameCount % nbMaxDelais;
   int followedStep = (step + nbMaxDelais - delais) % nbMaxDelais;
   phases[follower][step] = diffAngle(phases[target][followedStep] + deltaphase, 0);
-          text("follow " +  phases[follower][step], -1000, 0); // seems OK
+          text("followOpposit " +  phases[follower][step], -100, 0); // seems OK
 
 }
 

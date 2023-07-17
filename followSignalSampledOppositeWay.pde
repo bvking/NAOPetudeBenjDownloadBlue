@@ -1,3 +1,5 @@
+
+
 void followSignalSampledOppositeWay(int ratioTimeFrame){
  rotate (-PI/2);
         frameCount=frameCount+1;
@@ -45,21 +47,25 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                   newPosFollowed[i]= phases[i][frameCount % nbMaxDelais] ;
                  }
       
-
-
-
             phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
 
 
-        if (phaseMapped[i]<0){
-            dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
-            phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
-         }
+       // if (phaseMapped[i]<0){ // useless even with 'p' ?
+      /*
+
+             if (phaseMapped[i]<oldPhaseMapped[i]){
+               dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
+                phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+                }
        
-        else { 
-            dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-            phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-         }
+             else { 
+                dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
+                phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+              }
+      */
+              //  oldPhaseMapped[i]=phaseMapped[i];
+
+
         }
        }
 
@@ -95,9 +101,9 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
    }
 
     for (int i = 0; i < networkSize-0; i+=1) { 
-       newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
-       net.phase[i]=phaseMapped[i]; //used to display
-       newPosX[i]=phaseMapped[i]; // better to count revolution
+    //   newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
+    //   net.phase[i]=phaseMapped[i]; //used to display
+     //  newPosX[i]=phaseMapped[i]; // better to count revolution
       // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
        //print ( " newPosF[i] " + newPosF[i]);
   }
@@ -106,6 +112,21 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
   // COUNT REVOLUTION  in teensyPos?  use 
    
      mapNewPosX();
+
+    
+
+     for (int i = 0; i < networkSize-0; i+=1) {
+        oldPhaseMapped[i]=phaseMapped[i]; // used in mapNawPosX to have CCW data 
+
+       newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
+     //  net.phase[i]=phaseMapped[i]; //used to display
+       newPosX[i]=phaseMapped[i]; // better to count revolution
+      // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
+       //print ( " newPosF[i] " + newPosF[i]);
+  }
+
+
+
    /*
     for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
    print( " newPosX[i] " ); print ( newPosX[i]);
