@@ -19,14 +19,14 @@ void mapNewPosX() {
      for (int i = 0; i <  networkSize-0; i+=1) { 
          // phaseMapped[i]%=TWO_PI;
          // net.phase[i]=phaseMapped[i]; // to trig something with arduinoPos
-          newPosXaddSignal[i]=phaseMapped[i];
+          newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
           net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
          
     
 
 
           text (" phaseMapped[i] " + phaseMapped[i] + " oldOldPosF[i] " + oldOldPosF[i] + " oldPosF[i] " + oldPosF[i] + " newPosF " + newPosF[i] +
-                " revLfo[i] " + revLfo[i] + " net.old " + net.oldPhase[i] + " phase " + net.phase[i] , 0, 100*(i));
+                " rev[i] " + rev[i] + " revLfo[i] " + revLfo[i] + " net.old " + net.oldPhase[i] + " phase " + net.phase[i] , 0, 100*(i));
                 
                 // " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i)); // + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  
       }
@@ -39,7 +39,7 @@ void mapNewPosX() {
 
     if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
      for (int i = 0; i <  networkSize-0; i+=1) {
-     net.oldPhase[i]=net.phase[i];
+       net.oldPhase[i]=net.phase[i];
       }
     }
 
