@@ -1,54 +1,48 @@
 void followSignalSampledOppositeWay(int ratioTimeFrame){
  rotate (-PI/2);
-
-  //frameCountBis=frameCountBis+1;
-  frameCount=frameCount+1;
-
-
-       int delayRatio=ratioTimeFrame;
-
-       //  keyReleasedfollowSignal(); useless  phseShifting is controlled in keyRelesead
-       float deltaFollow = TWO_PI; // not used
+        frameCount=frameCount+1;
+        float deltaFollow = TWO_PI; // not used
        //here in a previous function we could change the ball followed if the space of phase between phases[0] and phase 9 is more than 360° for example
-
-       samplingMovementPro();  
+ 
        phases[0][frameCount % nbMaxDelais]=movementInterpolated;
        newPosFollowed[0]= (phases[0][frameCount % nbMaxDelais]);
+       newPosFollowed[0]%=TWO_PI;
 
-  
-    for (int i = 1; i < networkSize; i+=1) { // 1 follow phase 0     
-       //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
-       //   followOppositeWay( i-1, i+0, delayTimeFollowPhase11*1*frameRatio/ratioTimeFrame, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/
-     followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
 
+
+       for (int i = 1; i < networkSize; i+=1) { // 1 follow phase 0     
+            //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
+                 followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
 
           if ((phases[i][frameCount % nbMaxDelais])<0){
            //      newPosFollowed[i]= (phases[i][frameCount % nbMaxDelais])+TWO_PI; // easier
            dataMappedForMotorisedPosition[i]= int (map (phases[i][frameCount % nbMaxDelais], PI, TWO_PI, numberOfStep/2, numberOfStep));           
            newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], numberOfStep/2, numberOfStep/1,  PI, TWO_PI)+TWO_PI;
-           } 
+          } 
 
           else if ((phases[i][frameCount % nbMaxDelais])>=0)
            { newPosFollowed[i]= phases[i][frameCount % nbMaxDelais] ; }
-           }
+       }
 
-         // if (key != '#' ) {
-             if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {  
-             phasePatternBase(); // dans SIMPLIFICATION
-             for (int i = 0; i < networkSize; i+=1) { 
+
+           samplingMovementPro();  
+     
+          //if (key != '#' ) {
+       if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {  
+                   phasePatternBase(); // 
+            for (int i = 0; i < networkSize; i+=1) { 
                phasePatternFollow[i] = netPhaseBase[i]; //
                phasePatternFollow[i] = phasePatternFollow[i]%TWO_PI;  
-           } 
-         // }       
-        }
+             } 
+          //}       
+       }
  
       if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#' 
        for (int i = 0; i < networkSize-0; i+=1) { 
-           phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];//+phaseMappedFollow[i]+phasePatternFollow[i]; // new signal is a composition 
- 
+            phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
         if (phaseMapped[i]<0){
-          dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
-          phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+            dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
+            phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
          }
        
         else { 
