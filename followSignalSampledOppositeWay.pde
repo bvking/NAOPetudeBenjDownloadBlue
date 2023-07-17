@@ -1,5 +1,3 @@
-
-
 void followSignalSampledOppositeWay(int ratioTimeFrame){
  rotate (-PI/2);
         frameCount=frameCount+1;
@@ -16,8 +14,6 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
             //   follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
                  followOppositeWay( i-1, i+0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
            }
-      
-
 
            samplingMovementPro();  
      
@@ -48,24 +44,6 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                  }
       
             phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
-
-
-       // if (phaseMapped[i]<0){ // useless even with 'p' ?
-      /*
-
-             if (phaseMapped[i]<oldPhaseMapped[i]){
-               dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0));  // map and transform data in good way or rotation
-                phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
-                }
-       
-             else { 
-                dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
-                phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-              }
-      */
-              //  oldPhaseMapped[i]=phaseMapped[i];
-
-
         }
        }
 
@@ -100,50 +78,15 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
       keyCode = TAB;
    }
 
-    for (int i = 0; i < networkSize-0; i+=1) { 
-    //   newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
-    //   net.phase[i]=phaseMapped[i]; //used to display
-     //  newPosX[i]=phaseMapped[i]; // better to count revolution
-      // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
-       //print ( " newPosF[i] " + newPosF[i]);
-  }
-
-
-  // COUNT REVOLUTION  in teensyPos?  use 
+  // COUNT REVOLUTION  
    
      mapNewPosX();
-
-    
-
+ 
      for (int i = 0; i < networkSize-0; i+=1) {
         oldPhaseMapped[i]=phaseMapped[i]; // used in mapNawPosX to have CCW data 
 
        newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
-     //  net.phase[i]=phaseMapped[i]; //used to display
-       newPosX[i]=phaseMapped[i]; // better to count revolution
-      // newPosXaddSignal[i]=phaseMapped[i]%TWO_PI;
-       //print ( " newPosF[i] " + newPosF[i]);
-  }
-
-
-
-   /*
-    for (int i = 0; i <  networkSize+0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11
-   print( " newPosX[i] " ); print ( newPosX[i]);
-   print( " newPosFollowed[i] "); print (  newPosFollowed[i]);
-   print( " oldPositionToMotor[i]" ); print ( oldPositionToMotor[i]);
-    positionToMotor[i]= ((int) map (newPosX[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
-   // newPosX[i]=positionToMotor[i]%6400;
-   //   if (oldPositionToMotor[i]>positionToMotor[i]){
-    if ( oldPosF[i]>newPosF[i]&& newPosF[i]<=100){
-      revLfo[i]++;
-     } 
-      print( " positionToMotor[i] " ); print ( positionToMotor[i]);
-      print( " newPosF[i] " ); print ( newPosF[i]); print( " oldPosF[i] " ); print ( oldPosF[i]);
-      print (" revolutionLFO "); print ( i); print ("  "); println (revLfo[i]); 
-     oldPositionToMotor[i]=  positionToMotor[i];
-     oldPosF[i]=newPosF[i]; 
-    }
-  */
+       newPosX[i]=phaseMapped[i]; // better to count revolution  
+      }
    rotate (PI/2);  
     }

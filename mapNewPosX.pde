@@ -15,20 +15,17 @@ void mapNewPosX() {
      }
     }
 
-
-
     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
+     text ( " delay " + delayTimeFollowPhase11 + " phase " + degrees (phaseShiftingFollowPhase11), 0, -800 );
      for (int i = 0; i <  networkSize-0; i+=1) { 
          //  net.phase[i]=phaseMapped[i];
 
              OldSpecialPhase[i]=specialPhase[i];
            //  net.oldPhase[i]=net.phase[i];
            if ( oldPhaseMapped[i]>=phaseMapped[i] ){
-          
              specialPhase[i] = map (phaseMapped[i], 0, TWO_PI, -TWO_PI, 0);  // map and transform data in good way to be use in countRevs()  
              //net.phase[i]=phaseMapped[i]; //  
                           text ( OldSpecialPhase[i] + " -spec " + specialPhase[i] + " phase " + net.phase[i] + " r " + rev[i]  , 200, -500 + (50*i));
-  
                }
 
           else  {
