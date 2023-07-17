@@ -161,11 +161,9 @@ void mapNewPosX() {
             oldPosF[i]=newPosF[i];
             oldPhaseMapped[i]=phaseMapped[i];
             net.phase[i]=phaseMapped[i];
+           // net.phase[i]=specialPhase[i];
           }
- 
-         // text ("revLFO " + revLfo[i] + "metro " + metroPhase[i], -1600, height-500 - 75*i);
    
-        //  text (" mode " + keyMode + " signal2 " + signal[2] +  " net " + net.phase[2] + " metro " +   metroPhase[2] , -1600, height-300 );  
 }
 
 

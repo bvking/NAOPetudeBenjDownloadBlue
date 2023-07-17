@@ -356,13 +356,17 @@ void  displayModePendulaireModeCirculaire() {
      //   println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
 
       text ( char (formerKeyMetro) , 200,100);
-      fill (255 /(networkSize-i+1), 127, 255 /(25*(i+1)));    
+      fill (255 /(networkSize-i+1), 127, 255 /(25*(i+1))); 
 
-      // x = displacement*cos(newPosF[i]);
-      //y = displacement*sin(newPosF[i]);
+        if (
+          modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " ) {   
 
-      if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternal " ||
-          modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " ) {
+     //  x = displacement*cos(phaseMapped[i]);
+     //  y = displacement*sin(phaseMapped[i]);
+        }
+
+      if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternal " 
+         || modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " ) {
 
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
