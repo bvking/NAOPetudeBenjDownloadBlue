@@ -25,7 +25,7 @@ void mapNewPosX() {
            if ( oldPhaseMapped[i]>=phaseMapped[i] ){
              specialPhase[i] = map (phaseMapped[i], 0, TWO_PI, -TWO_PI, 0);  // map and transform data in good way to be use in countRevs()  
              //net.phase[i]=phaseMapped[i]; //  
-                          text ( OldSpecialPhase[i] + " -spec " + specialPhase[i] + " phase " + net.phase[i] + " r " + rev[i]  , 200, -500 + (50*i));
+                          text ( OldSpecialPhase[i] + " -spec " + specialPhase[i]+ " r " + rev[i] + "  revL " + revLfo[i]+ " phaseNO " + net.phase[i]   , 200, -500 + (50*i));
                }
 
           else  {
@@ -33,15 +33,16 @@ void mapNewPosX() {
             // phaseMapped[i]%=TWO_PI;
              specialPhase[i]=phaseMapped[i];
            //  net.phase[i]=phaseMapped[i]; // 
-                          text ( OldSpecialPhase[i] + " +spec " + specialPhase[i] + " phase " + net.phase[i] + " r " + rev[i]  , 200, -500 + (50*i));
+                          text ( OldSpecialPhase[i] + " +spec " + specialPhase[i]+ " r " + rev[i] + "  revL " + revLfo[i]+ " phaseNO " + net.phase[i]   , 200, -500 + (50*i));
 
            }
        
       }
     } 
 
-      countRevsSpecialOldPhase();
-      println ( " revsSpecial in mapNew "); showArray(rev);
+      countRevsSpecialOldPhase();   // TrigmodPos[i]=0 to do in counter?
+      println ( " revsSpecial in mapNew "); showArray(rev);    
+      // 
      // countRevs();
      //  println ( " revs_______ in mapNew "); showArray(rev);
 
@@ -150,7 +151,7 @@ void mapNewPosX() {
        }
       }
      }
-  }
+   }
 
        for (int i = 0; i <  networkSize-0; i+=1) { 
             oldPositionToMotor[i]=  positionToMotor[i];

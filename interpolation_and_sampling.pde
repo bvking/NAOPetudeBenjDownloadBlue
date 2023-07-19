@@ -94,8 +94,8 @@ class SamplerTheta {
     //**RECORD
     beginShape(LINES);
     for (int i = 1; i < samples.size(); i++) {
-     // vertex(samplesModified.get(i - 1).x, samplesModified.get(i - 1).y);  // replace vertex with Pvector
-     // vertex(samplesModified.get(i).x, samplesModified.get(i).y);
+    //  vertex(samplesModified.get(i - 1).x, samplesModified.get(i - 1).y);  // replace vertex with Pvector
+    // vertex(samplesModified.get(i).x, samplesModified.get(i).y);
     }
     endShape();
     //**ENDRECORD
@@ -114,10 +114,11 @@ class SamplerTheta {
     //float x =lerp( s0.x, s1.x, dt );  // interpolation without modulo
     //float y =lerp( s0.y, s1.y, dt ); //
 
-   // float x = mlerp(s0.x, s1.x, dt, TWO_PI);  // interpolation with modulo, it's better
-   // float y = mlerp(s0.x, s1.x, dt, TWO_PI);
+   //float x = mlerp(s0.x, s1.x, dt, TWO_PI);  
+    float y = mlerp(s0.theta, s1.theta, dt, TWO_PI); // interpolation with modulo, it's better
 
-    movementInterpolated = s0.theta;
+    //movementInterpolated = s0.theta; // withou interpolation
+    movementInterpolated = y;  // with interoplation
     text(" mov " + (movementInterpolated), 100, 500);
     fill(255, 255, 255);
     circle(100 * cos(movementInterpolated) + 200, 100 * sin(movementInterpolated) + 200, 20);
@@ -237,7 +238,7 @@ class Sampler {
 
 
 
-/*
+
 void setup() {  
   size( 800, 800, P3D );
   frameRate(30); // when size is set as P3D (3 dimension) we have 27 or 28 frame (loop) per seconde
