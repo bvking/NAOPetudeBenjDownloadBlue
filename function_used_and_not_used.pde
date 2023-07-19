@@ -54,6 +54,64 @@ void devant_derriere() {
     keyReleased();
   }
 }
+void countRevsPhaseMappedPositiveOnly() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
+
+  onOFF=0;
+
+  for (int i = 0; i < networkSize; i++) { 
+     // print(" YOUR HZRE???", 200, 1000);
+
+    if (
+   //   (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* TWO_PI && phaseMapped[i] <TWO_PI))
+    (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* TWO_PI ))
+       
+   
+     //  || (oldPhaseMapped[i] < -1.75 * PI && specialPhase[i] > -0.25 * PI)// ||
+
+      
+      
+      // (OldSpecialPhase[i] < 0.25 * PI && specialPhase[i] > -0.25 * PI)
+       {
+         print (" YOUR HZRE???", 200, 200+(i*10));
+      onOFF = 1;
+      //    TrigmodPos[i]=0;
+      rev[i]--;
+      //      print (" revultion negative  "); println (revolution[i]=i+1);
+      //   revolution[i]=i+1;
+      revolution[i]=0; // trig 0 to sent 0 in Max4Live
+      //**    memoryi=i;
+
+
+      decompte[i] = -1; // // RESET COUNTER AT 0 (i know it's strange, otherwise with 0 it begin at 1, not 0)
+    } else { // if you do twice there is a funny bug
+    
+    }
+
+
+    // increment caused by positive angular velocity
+    // both positive angles || both negative angles || negative-to-positive angle
+        /*
+    if (
+      ((OldSpecialPhase[i] > -0.25 *PI && OldSpecialPhase[i]<0)  && (specialPhase[i] < 0.25* PI && specialPhase[i] >0))  || 
+      (OldSpecialPhase[i] > 1.75 * PI && specialPhase[i] < 0.25*PI)
+      ) {
+      onOFF = 1;
+      //   TrigmodPos[i]=0;
+      rev[i]++;
+      //   revolution[i]=i+1;
+      revolution[i]=0;   // trig 0 to sent 0 in Max4Live
+      decompte[i] = 0;  // RESET COUNTER AT 0
+    } else {
+
+      decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
+      revolution[i]=1;
+    }
+    */
+   
+  }
+}
+
+
 void countRevsSpecialOldPhase() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
 
   onOFF=0;
@@ -62,6 +120,8 @@ void countRevsSpecialOldPhase() { // ===========================================
 
     if (
       ((OldSpecialPhase[i] < 0.25 *PI && OldSpecialPhase[i]>0)  && (specialPhase[i] > -0.25* PI && specialPhase[i] <0))  || 
+
+
       (OldSpecialPhase[i] < -1.75 * PI && specialPhase[i] > -0.25 * PI)// ||
       // (OldSpecialPhase[i] < 0.25 * PI && specialPhase[i] > -0.25 * PI)
       ) {

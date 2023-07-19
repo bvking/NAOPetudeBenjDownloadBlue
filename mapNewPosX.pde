@@ -22,21 +22,24 @@ void mapNewPosX() {
 
              OldSpecialPhase[i]=specialPhase[i];
            //  net.oldPhase[i]=net.phase[i];
+            // net.phase[i]=phaseMapped[i];
+
+
            if ( oldPhaseMapped[i]>phaseMapped[i] ){
-             specialPhase[i] = map (phaseMapped[i], 0, TWO_PI, -TWO_PI, 0);  // map and transform data in good way to be use in countRevs()  
+             specialPhase[i] = map (phaseMapped[i], TWO_PI, 0, 0, TWO_PI);  // map and transform data in good way to be use in countRevs()  
              //net.phase[i]=phaseMapped[i]; // 
-             phaseMapped[i]=specialPhase[i]; 
-                  text ( OldSpecialPhase[i] + " -spec " + specialPhase[i]+ " phaM " + phaseMapped[i] + "  revL " + revLfo[i]   , 0, -500 + (50*i));
+            // phaseMapped[i]=specialPhase[i]; 
+                  text ( OldSpecialPhase[i] + " -spec " + specialPhase[i]+ "old " +oldPhaseMapped[i] +  " phaM " + phaseMapped[i]  + "net" + net.phase[i]  , 0, -500 + (50*i));
                }
 
     
-             else  if ( OldSpecialPhase[i]<0 && oldPhaseMapped[i]<phaseMapped[i] ){ 
+             else  {       //
 
-                 OldSpecialPhase[i]=specialPhase[i];
+             //    OldSpecialPhase[i]=specialPhase[i];
             // phaseMapped[i]%=TWO_PI;
-             specialPhase[i]=-phaseMapped[i];
+             specialPhase[i]=phaseMapped[i];
            //  net.phase[i]=phaseMapped[i]; // 
-                  text ( OldSpecialPhase[i] + " ^spec " + specialPhase[i]+ " phaM " + phaseMapped[i] + " phaM " + phaseMapped[i]   , 0, -500 + (50*i));
+                  text ( OldSpecialPhase[i] + " ^spec " + specialPhase[i]+ "old " +oldPhaseMapped[i] + " phaM " + phaseMapped[i] + "net" + net.phase[i]  , 0, -500 + (50*i));
 
            }  
     
@@ -55,8 +58,11 @@ void mapNewPosX() {
        
       }
     } 
+      //  countRevs();
 
-      countRevsSpecialOldPhase();   // TrigmodPos[i]=0 to do in counter?
+      countRevsPhaseMappedPositiveOnly();
+
+     // countRevsSpecialOldPhase();   // TrigmodPos[i]=0 to do in counter?
       println ( " revsSpecial in mapNew "); showArray(rev);    
      
     // map depending way of rotation
