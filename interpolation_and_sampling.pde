@@ -95,7 +95,7 @@ class SamplerTheta {
     beginShape(LINES);
     for (int i = 1; i < samples.size(); i++) {
     //  vertex(samplesModified.get(i - 1).x, samplesModified.get(i - 1).y);  // replace vertex with Pvector
-    // vertex(samplesModified.get(i).x, samplesModified.get(i).y);
+    //  vertex(samplesModified.get(i).x, samplesModified.get(i).y);
     }
     endShape();
     //**ENDRECORD
@@ -119,7 +119,7 @@ class SamplerTheta {
 
     //movementInterpolated = s0.theta; // withou interpolation
     movementInterpolated = y;  // with interoplation
-    text(" mov " + (movementInterpolated), 100, 500);
+    text(" s0.theta " + s0.theta + " mov " + (movementInterpolated), 100, 500);
     fill(255, 255, 255);
     circle(100 * cos(movementInterpolated) + 200, 100 * sin(movementInterpolated) + 200, 20);
     stroke(255);

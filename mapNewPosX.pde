@@ -7,7 +7,7 @@ void mapNewPosX() {
 
 
 
-    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
+    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
      for (int i = 0; i <  networkSize-0; i+=1) { 
      text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
      newPosXaddSignal[i]%=TWO_PI;
@@ -22,34 +22,43 @@ void mapNewPosX() {
 
              OldSpecialPhase[i]=specialPhase[i];
            //  net.oldPhase[i]=net.phase[i];
-           if ( oldPhaseMapped[i]>=phaseMapped[i] ){
+           if ( oldPhaseMapped[i]>phaseMapped[i] ){
              specialPhase[i] = map (phaseMapped[i], 0, TWO_PI, -TWO_PI, 0);  // map and transform data in good way to be use in countRevs()  
-             //net.phase[i]=phaseMapped[i]; //  
-                          text ( OldSpecialPhase[i] + " -spec " + specialPhase[i]+ " r " + rev[i] + "  revL " + revLfo[i]+ " phaseNO " + net.phase[i]   , 200, -500 + (50*i));
+             //net.phase[i]=phaseMapped[i]; // 
+             phaseMapped[i]=specialPhase[i]; 
+                  text ( OldSpecialPhase[i] + " -spec " + specialPhase[i]+ " phaM " + phaseMapped[i] + "  revL " + revLfo[i]   , 0, -500 + (50*i));
                }
 
-          else  {
+    
+             else  if ( OldSpecialPhase[i]<0 && oldPhaseMapped[i]<phaseMapped[i] ){ 
+
+                 OldSpecialPhase[i]=specialPhase[i];
+            // phaseMapped[i]%=TWO_PI;
+             specialPhase[i]=-phaseMapped[i];
+           //  net.phase[i]=phaseMapped[i]; // 
+                  text ( OldSpecialPhase[i] + " ^spec " + specialPhase[i]+ " phaM " + phaseMapped[i] + " phaM " + phaseMapped[i]   , 0, -500 + (50*i));
+
+           }  
+    
+
+          //      phaseMapped[i]= specialPhase[i];
+    /*
+          else  if ( OldSpecialPhase[i]>0 && oldPhaseMapped[i]<phaseMapped[i] ){ 
 
             // phaseMapped[i]%=TWO_PI;
              specialPhase[i]=phaseMapped[i];
            //  net.phase[i]=phaseMapped[i]; // 
-                          text ( OldSpecialPhase[i] + " +spec " + specialPhase[i]+ " r " + rev[i] + "  revL " + revLfo[i]+ " phaseNO " + net.phase[i]   , 200, -500 + (50*i));
+                  text ( OldSpecialPhase[i] + " +spec " + specialPhase[i]+ " phaM " + phaseMapped[i] + " phaM " + phaseMapped[i]   , 0, -500 + (50*i));
 
            }
+   */
        
       }
     } 
 
       countRevsSpecialOldPhase();   // TrigmodPos[i]=0 to do in counter?
       println ( " revsSpecial in mapNew "); showArray(rev);    
-      // 
-     // countRevs();
-     //  println ( " revs_______ in mapNew "); showArray(rev);
-
-   
-
- 
-
+     
     // map depending way of rotation
 
 
