@@ -34,21 +34,21 @@ void handleInternalSamplingMode(){
        int disableDriver=-4;
         send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
       }
-       angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
-       newPosF[0]= angleToInterpolate;
+      // angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+      // newPosF[0]= angleToInterpolate;
 
      //==================== sampling from MOUSE_Y
          
-       ///  angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-       ///  newPosF[0]= angleToInterpolate;
+        angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+        newPosF[networkSize-1]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
       //==================== 
 
       float rayon=displacement;
-      float polarToCartesionX= displacement*cos(newPosF[0]);
-      float polarToCartesionY= displacement*sin(newPosF[0]);
+      float polarToCartesionX= displacement*cos(newPosF[networkSize-1]);
+      float polarToCartesionY= displacement*sin(newPosF[networkSize-1]);
 
     //  mouseX= (int) polarToCartesionX; // to draw circle with end
     //  mouseY= (int) polarToCartesionY; // to draw circle with end

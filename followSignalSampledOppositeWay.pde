@@ -46,8 +46,22 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                 else if ((phases[i][frameCount % nbMaxDelais])>=0){ 
                   newPosFollowed[i]= phases[i][frameCount % nbMaxDelais] ;
                  }
+
       
-            phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
+                 phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
+
+               // phaseMapped always > 0 with below
+                   if ((phaseMapped[i])<0){
+                  phaseMapped[i]= (phaseMapped[i])+TWO_PI; // easier
+                  phaseMapped[i]%=TWO_PI;
+     
+                 } 
+
+                else if (phaseMapped[i]>=0){ 
+                   phaseMapped[i]%=TWO_PI;
+                 }
+
+
             specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
         }
        }
