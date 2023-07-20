@@ -6,7 +6,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
  
        phases[0][frameCount % nbMaxDelais]=movementInterpolated;
        newPosFollowed[0]= (phases[0][frameCount % nbMaxDelais]);
-       if (newPosFollowed[0]<0) newPosFollowed[0]=TWO_PI+newPosFollowed[0];
+      // if (newPosFollowed[0]<0) newPosFollowed[0]=TWO_PI+newPosFollowed[0];
        newPosFollowed[0]%=TWO_PI;
 
 
