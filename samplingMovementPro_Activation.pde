@@ -38,8 +38,8 @@ void handleInternalSamplingMode(){
 
      //==================== sampling from MOUSE_Y
          
-         angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-         newPosF[0]= angleToInterpolate;
+       ///  angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+       ///  newPosF[0]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
