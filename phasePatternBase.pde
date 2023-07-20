@@ -37,9 +37,9 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
   }
-             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
-             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
-             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
+             println (" old vs ac "+  dataMappedForMotorisedPosition[networkSize-1] + " " + (networkSize-1) + " "  +  oldDataMappedForMotorisedPosition[networkSize-1] , 0, -400 );
+             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-2] + " " + (networkSize-2) + " "  +  oldDataMappedForMotorisedPosition[networkSize-2] , 0, -400 );
+             println (" motorBase "+  dataMappedForMotorisedPosition[networkSize-3] + " " + (networkSize-3) + " "  +  oldDataMappedForMotorisedPosition[networkSize-3] , 0, -400 );
 
 
    if (key == 'i') {
@@ -676,13 +676,14 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
   }
+
  else if (key == 'ç') {
     if (circularMov==true) {
       println(" Align oscillator vertically to the down  CIRCU" );
     float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
        realign[i] = netPhaseBase[i]%TWO_PI;
-       netPhaseBase[i]=  netPhaseBase[i] - realign[i];   
+       netPhaseBase[i]+=  netPhaseBase[i] - realign[i];   
       //   netPhaseBase[i]%=TWO_PI;
       }
     }
@@ -693,8 +694,9 @@ void phasePatternBase() { // trigged with $ or *
 
     float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
+      netPhaseBase[i]=net.phase[i];
        realign[i] = netPhaseBase[i]%TWO_PI+PI/2;
-       netPhaseBase[i]=  netPhaseBase[i] - realign[i];
+       netPhaseBase[i]+=  netPhaseBase[i] - realign[i];
       //  netPhaseBase[i]%=TWO_PI;
 
       //  netPhaseBase[i]= 0+PI/2  ; // position 0+PI/2  

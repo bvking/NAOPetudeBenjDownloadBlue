@@ -41,8 +41,13 @@ void mapNewPosX() {
            //  net.phase[i]=phaseMapped[i]; // 
                   text ( OldSpecialPhase[i] + " ^spec " + specialPhase[i]+ "old " +oldPhaseMapped[i] + " phaM " + phaseMapped[i] + "net" + net.phase[i]  , 0, -500 + (50*i));
 
-           }  
+           } 
+             // oldPositionToMotor[i]=  positionToMotor[i];
+              positionToMotor[i]= dataMappedForMotorisedPosition[i]%numberOfStep;
     
+                            text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));
+
+
 
           //      phaseMapped[i]= specialPhase[i];
     /*
@@ -71,7 +76,7 @@ void mapNewPosX() {
 
 
 
-
+    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
     for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
          positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
          newPosF[i]=positionToMotor[i]%6400;
@@ -81,8 +86,11 @@ void mapNewPosX() {
 
        positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0)%numberOfStep); //
        newPosF[i]=positionToMotor[i]%6400;
+       }
       }
      } 
+    
+
     // end map depending way of rotation
   
      textSize (50);
@@ -169,7 +177,7 @@ void mapNewPosX() {
    }
 
        for (int i = 0; i <  networkSize-0; i+=1) { 
-            oldPositionToMotor[i]=  positionToMotor[i];
+          oldPositionToMotor[i]=  positionToMotor[i];
             oldOldPosF[i]=oldPosF[i];
             oldPosF[i]=newPosF[i];
             oldOldPhaseMapped[i]=oldPhaseMapped[i];

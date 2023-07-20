@@ -64,7 +64,9 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     if (  
       // (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
  
-        (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* PI ))
+      //  (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* PI ))
+
+            (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) ))
        
        {
        
@@ -88,7 +90,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     // both positive angles || both negative angles || negative-to-positive angle
         
     if (
-      (phaseMapped[i] < 0.25 *PI && phaseMapped[i]>0)  && (oldPhaseMapped[i] > 1.75* PI ))
+      (positionToMotor[i] < 0.25 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.75 * numberOfStep/2 ))
     
        {
       onOFF = 1;
