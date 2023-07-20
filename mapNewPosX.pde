@@ -36,7 +36,7 @@ void mapNewPosX() {
           countRevsPhaseMappedPositiveOnly();
           }
 
-      println ( " revsSpecial in mapNew "); showArray(rev);    
+      print ( " cou+Only in mapNew "); showArray(rev);    
      
     // map depending way of rotation
 
