@@ -61,7 +61,8 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
   for (int i = 0; i < networkSize; i++) { 
    
 
-    if (
+    if (  
+       (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
  
         (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* PI ))
        

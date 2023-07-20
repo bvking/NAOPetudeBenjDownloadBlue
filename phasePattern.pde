@@ -1153,6 +1153,7 @@ textSize (100);
       for (int i = 0; i < networkSize; i++) {
        realign[i] = net.phase[i]%TWO_PI;
        net.phase[i]=  net.phase[i] - realign[i];   
+         net.phase[i]%=TWO_PI;
       }
     }
 
@@ -1164,6 +1165,7 @@ textSize (100);
       for (int i = 0; i < networkSize; i++) {
        realign[i] = net.phase[i]%TWO_PI+PI/2;
        net.phase[i]=  net.phase[i] - realign[i];
+        net.phase[i]%=TWO_PI;
 
       //  net.phase[i]= 0+PI/2  ; // position 0+PI/2  
         printSummary(i);

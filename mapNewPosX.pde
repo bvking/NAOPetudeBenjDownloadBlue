@@ -172,6 +172,7 @@ void mapNewPosX() {
             oldPositionToMotor[i]=  positionToMotor[i];
             oldOldPosF[i]=oldPosF[i];
             oldPosF[i]=newPosF[i];
+            oldOldPhaseMapped[i]=oldPhaseMapped[i];
             oldPhaseMapped[i]=phaseMapped[i];
             net.phase[i]=phaseMapped[i];
            // net.phase[i]=specialPhase[i];
