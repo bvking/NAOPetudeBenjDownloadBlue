@@ -62,7 +62,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
    
 
     if (  
-       (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
+      // (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
  
         (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* PI ))
        

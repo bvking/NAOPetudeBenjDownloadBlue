@@ -665,6 +665,7 @@ void phasePatternBase() { // trigged with $ or *
   }   
   // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
 
+
   else if (key == '9')//9$
 
   { 
@@ -675,23 +676,28 @@ void phasePatternBase() { // trigged with $ or *
       printSummary(i);
     }
   }
-
-
-  else if (key == 'ç') {
+ else if (key == 'ç') {
     if (circularMov==true) {
-
+      println(" Align oscillator vertically to the down  CIRCU" );
+    float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
-        netPhaseBase[i]= 0;
+       realign[i] = netPhaseBase[i]%TWO_PI;
+       netPhaseBase[i]=  netPhaseBase[i] - realign[i];   
+      //   netPhaseBase[i]%=TWO_PI;
       }
     }
-    if (circularMov==false) {
-      println(" Align oscillator vertically to the down  ");
-      formerKey = 'o';
-      for (int i = 0; i < networkSize; i++) {
-        //   netPhaseBase[i]=-PI+0.5*PI+PI/12; // position 0+PI/2  
-        netPhaseBase[i]= 0+PI/2  ; // position 0+PI/2  
 
-        //     netPhaseBase[i]=netPhaseBase[i]+PI/3;    // position 0+PI/2   add 90° turning in CW
+    if (circularMov==false) {
+      println(" Align oscillator vertically to the down PENDU  ");
+      //formerKey = 'o';
+
+    float [] realign = new float [networkSize];
+      for (int i = 0; i < networkSize; i++) {
+       realign[i] = netPhaseBase[i]%TWO_PI+PI/2;
+       netPhaseBase[i]=  netPhaseBase[i] - realign[i];
+      //  netPhaseBase[i]%=TWO_PI;
+
+      //  netPhaseBase[i]= 0+PI/2  ; // position 0+PI/2  
         printSummary(i);
       }
     }
