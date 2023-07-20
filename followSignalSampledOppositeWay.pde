@@ -39,8 +39,8 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                   newPosFollowed[i]= (phases[i][frameCount % nbMaxDelais])+TWO_PI; // easier
                   newPosFollowed[i]%=TWO_PI;
 
-                    // dataMappedForMotorisedPosition[i]= int (map (phases[i][frameCount % nbMaxDelais], PI, TWO_PI, numberOfStep/2, numberOfStep));           
-                    // newPosFollowed[i]= map (dataMappedForMotorisedPosition[i], numberOfStep/2, numberOfStep/1,  PI, TWO_PI)+TWO_PI;
+                    // dataMappedForMotorisedPosition[i]= int (map (phases[i][frameCount % nbMaxDelais], PI, TWO_PI, numberOfStep/2, numberOfStep));   
+                    // dataMappedForMotorisedPosition[i] USED in mode propagation        
                  } 
 
                 else if ((phases[i][frameCount % nbMaxDelais])>=0){ 
@@ -65,20 +65,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
      for (int i = 0; i < networkSize-0; i+=1) { 
       println (" ALIGN MTF " );
       phaseMapped[i] = phases[i-0][frameCountBis % nbMaxDelais]+0; // to aligin ball with the followed one
-   /*
-      if (phaseMapped[i]<0){
-   
-      dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
-      //   net.oldPhase[i]=phaseMapped[i];
-      //  net.phase[i]= phaseMapped[i];
-      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);
-       }
-        
-      else
   
-      dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
-      phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-     */
      } 
    
       keyCode = TAB;
@@ -89,8 +76,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
      mapNewPosX();
  
      for (int i = 0; i < networkSize-0; i+=1) {
-        oldPhaseMapped[i]=phaseMapped[i]; // used in mapNawPosX to have CCW data 
-
+       oldPhaseMapped[i]=phaseMapped[i]; // used in mapNawPosX to have CCW data 
        newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
        newPosX[i]=phaseMapped[i]; // better to count revolution  
       }
