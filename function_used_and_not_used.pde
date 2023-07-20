@@ -59,23 +59,18 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
   onOFF=0;
 
   for (int i = 0; i < networkSize; i++) { 
-     // print(" YOUR HZRE???", 200, 1000);
+   
 
     if (
-   //   (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* TWO_PI && phaseMapped[i] <TWO_PI))
-    (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* TWO_PI ))
+ 
+        (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* PI ))
        
-   
-     //  || (oldPhaseMapped[i] < -1.75 * PI && specialPhase[i] > -0.25 * PI)// ||
-
-      
-      
-      // (OldSpecialPhase[i] < 0.25 * PI && specialPhase[i] > -0.25 * PI)
        {
-         print (" YOUR HZRE???", 200, 200+(i*10));
+       
       onOFF = 1;
       //    TrigmodPos[i]=0;
       rev[i]--;
+        text (" YOUR HZRE???" + rev[i], 200, -900+(i*10));
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       //   revolution[i]=i+1;
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
@@ -90,14 +85,15 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
     // increment caused by positive angular velocity
     // both positive angles || both negative angles || negative-to-positive angle
-        /*
+        
     if (
-      ((OldSpecialPhase[i] > -0.25 *PI && OldSpecialPhase[i]<0)  && (specialPhase[i] < 0.25* PI && specialPhase[i] >0))  || 
-      (OldSpecialPhase[i] > 1.75 * PI && specialPhase[i] < 0.25*PI)
-      ) {
+      (phaseMapped[i] < 0.25 *PI && phaseMapped[i]>0)  && (oldPhaseMapped[i] > 1.75* PI ))
+    
+       {
       onOFF = 1;
       //   TrigmodPos[i]=0;
       rev[i]++;
+        text (" YOUR HZRE???" + rev[i], 200, -900+(i*10));
       //   revolution[i]=i+1;
       revolution[i]=0;   // trig 0 to sent 0 in Max4Live
       decompte[i] = 0;  // RESET COUNTER AT 0
@@ -106,7 +102,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
       revolution[i]=1;
     }
-    */
+    
    
   }
 }
