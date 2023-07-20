@@ -6,6 +6,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
  
        phases[0][frameCount % nbMaxDelais]=movementInterpolated;
        newPosFollowed[0]= (phases[0][frameCount % nbMaxDelais]);
+       if (newPosFollowed[0]<0) newPosFollowed[0]=TWO_PI+newPosFollowed[0];
        newPosFollowed[0]%=TWO_PI;
 
 
@@ -47,6 +48,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                  }
       
             phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
+            specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
         }
        }
 
@@ -63,7 +65,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
      for (int i = 0; i < networkSize-0; i+=1) { 
       println (" ALIGN MTF " );
       phaseMapped[i] = phases[i-0][frameCountBis % nbMaxDelais]+0; // to aligin ball with the followed one
-   
+   /*
       if (phaseMapped[i]<0){
    
       dataMappedForMotorisedPosition[i]= int (map (phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
@@ -76,8 +78,9 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
   
       dataMappedForMotorisedPosition[i]= (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
       phaseMapped[i]= map (dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-
+     */
      } 
+   
       keyCode = TAB;
    }
 

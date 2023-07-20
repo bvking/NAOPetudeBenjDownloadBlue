@@ -671,7 +671,7 @@ void phasePatternBase() { // trigged with $ or *
   { 
     println(" Align oscillator vertically to the top  ");
     for (int i = 0; i < networkSize; i++) {
-      netPhaseBase[i]= 0-PI/2; 
+    //  netPhaseBase[i]= 0-PI/2; 
       //      netPhaseBase[i]= 0; 
       printSummary(i);
     }

@@ -12,12 +12,25 @@ void teensyPos(){
       for(int i = 0; i < networkSize; i++) {  
       //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
     
-      dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep)+ (int) recordLastDataOfMotorPosition[i];
+      dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
     }
 
-   if (( keyMode == " propagationBallRotationBisExperimental " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
+      if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) "   // || keyMode == " addSignalOneAndTwo "
+        )  
+    
+        {  
+      //rev=revLfo; // actualise counter of normal mode  
+      for(int i = 0; i < networkSize; i++) {  
+    //  dataMappedForMotorisedPosition[i]=(int) positionToFollow[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
+    
+      dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+     }
+    }
+
+   if (( keyMode == " propagationBallRotationBisExperimental "  ) // || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) "
                                                                && formerKeyMetro=='*')
         {    // actualise counter of normal mode from revLfo from method  not here
 
@@ -130,6 +143,7 @@ void teensyPos(){
 
        if (formerKeyMetro == '*' ) {
         for (int i = 0; i < networkSize-0; i++) { // 
+          //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
             dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastPositionFromCircularMode[i];//+readPositionEncoder[i];  
              //   dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];// useless but find something to make i and u working in circular movement
              //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work

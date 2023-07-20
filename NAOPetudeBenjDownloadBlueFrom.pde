@@ -124,7 +124,9 @@ void draw() {
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
     rotate(PI);
-    //arduinoPos(); // just to trig TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
+   // arduinoPos(); // just to trig TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
+   // abletonPos();
+    print (" showPos " ); showArray(Pos);
     
     
     if (encoderTouched[5] ==  true) { 
