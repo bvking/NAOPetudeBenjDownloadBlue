@@ -50,8 +50,9 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
       
                  phaseMapped[i] = newPosFollowed[i]+phasePatternFollow[i];
 
-               // phaseMapped always > 0 with below
-                   if ((phaseMapped[i])<0){
+                  // phaseMapped always > 0 with below to be well use in the counter
+
+                if ((phaseMapped[i])<0){
                   phaseMapped[i]= (phaseMapped[i])+TWO_PI; // easier
                   phaseMapped[i]%=TWO_PI;
      
