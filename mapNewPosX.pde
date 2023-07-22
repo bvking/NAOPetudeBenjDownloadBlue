@@ -18,13 +18,11 @@ void mapNewPosX() {
     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
      text ( " delay " + delayTimeFollowPhase11 + " phase " + degrees (phaseShiftingFollowPhase11), 0, -800 );
      for (int i = 0; i <  networkSize-0; i+=1) { 
-         //  net.phase[i]=phaseMapped[i];
-
+         //  net.phase[i]=phaseMapped[i]
              OldSpecialPhase[i]=specialPhase[i]; //specialPhase[i] from  followSignal
+             positionToMotor[i]= specialPhase[i]%numberOfStep;
     
-              positionToMotor[i]= specialPhase[i]%numberOfStep;
-    
-                            text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));
+             text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));
 
 
        

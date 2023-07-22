@@ -36,6 +36,7 @@ void handleInternalSamplingMode(){
       }
       //angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
       //newPosF[0]= angleToInterpolate;
+      //newPosF[networkSize-1]= angleToInterpolate; // good one
 
      //==================== sampling from MOUSE_Y
          
