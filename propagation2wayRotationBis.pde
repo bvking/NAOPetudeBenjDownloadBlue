@@ -8,9 +8,13 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
     
     if (doo ==  false && propagationTrigged ==  true) { // propaga fixe
         LFO[oscillatorChange] = LFO[oldOscillatorChange];//
-      //  LFO[oscillatorChange] = LFO[oscillatorChange] - (PI / (1 * networkSize - 1));
+     if ( keyMode == " propagationBallRotationBis ")  { 
+        LFO[oscillatorChange] = LFO[oscillatorChange] - (PI / (1 * networkSize - 1));
+     }
+     if ( keyMode == " propagationSampleBall ")  { 
         LFO[oscillatorChange] = movementInterpolated - (PI / (1 * networkSize - 1));
         text("  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+     }
     }
     
     if (doo ==  true && propagationTrigged ==  true) {  // propaga selon phaseAmount
