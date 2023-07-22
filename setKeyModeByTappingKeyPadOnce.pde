@@ -57,6 +57,15 @@
     }
 
 
+      if (moveKeys[8]==true && moveKeys[20]==true){ // ALT && u pressed
+    keyMode = " propagationSampleBall "  ;
+  //  formerKeyMetro = '*';
+    print ("Alt j + keyMode ",  keyMode );
+    }
+
+
+
+
         
     if (moveKeys[8]==true && moveKeys[3]==true){ // CONTROL && q pressed
     keyMode = " followDirectLfo " ;

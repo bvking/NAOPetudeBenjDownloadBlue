@@ -77,15 +77,28 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     // display if port are well connected when big machine is connected
 
-    if (portConnectedOfBigMachine)  {   // // If not null, then a match was found
+    if (portConnectedOfBigMachine || portConnectedToBigMachineOnly)  {   // // If not null, then a match was found
            if (frameCount <=  0)  { 
               }
           // teensy4port.write(dataFromMode);
         if (frameCount >=  0)  { 
             text(" BigMachine port USB connected " + portsUSBfrom3 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1100); 
+
             println(" BigMachine port USB connected " + portsUSBfrom3 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
 
+              String[] matchPort1B = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
+
+             if ( matchPort1B!= null ){ 
+                allMachineConnected=false;
+               text(" only BIG Machine  ENDING with 201 on port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
+              // portConnectedToBigMachineOnly=true;
+               teensy4port.write(dataFromMode);
+
+                 }
+
+
               String[] matchPort = match(portsUSBfrom3, "/dev/tty.Bluetooth-Incoming-Port");
+              
 
             if ( matchPort!= null ){ 
                 allMachineConnected=false;
@@ -100,6 +113,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 
         }
     }
+
      if (!portConnectedOfBigMachine)  {  
 
        if (frameCount <=  200) { 

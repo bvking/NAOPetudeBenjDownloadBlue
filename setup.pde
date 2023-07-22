@@ -20,7 +20,7 @@ int nbBalls = networkSize;
 
 String  portsUSBfrom2;
 
-boolean allMachineConnected, onlyLitteMachineWithSecondSerialPort,portConnectedOfBigMachine;
+boolean allMachineConnected, onlyLitteMachineWithSecondSerialPort,portConnectedOfBigMachine,portConnectedToBigMachineOnly;
 
 String music_from_ableton_live;
 String[] eventToTrig = {"0","0","0","0"};
