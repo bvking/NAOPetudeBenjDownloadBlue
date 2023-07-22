@@ -460,12 +460,27 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
       oscillatorChange++;
       propagationTrigged = true;
     }
-    
+  
     oscillatorChange %= networkSize;
     if (oscillatorChange <= 0) {
       oscillatorChange = 0;
       oldOscillatorChange = networkSize - 1;
     }
+
+    // propagtion opposite way
+
+    if ( splitTimeLfo>oldSplitTimeLfo) {
+      oldOscillatorChange = oscillatorChange;
+      oscillatorChange--;
+      propagationTrigged = true;
+    }
+
+    if (oscillatorChange <= -1) {
+      oldOscillatorChange = 0;
+      oscillatorChange = networkSize - 1;
+    }
+
+
   }
   
   if (doZ) {
