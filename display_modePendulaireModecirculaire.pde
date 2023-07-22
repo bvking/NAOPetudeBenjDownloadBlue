@@ -270,6 +270,20 @@ void  displayModePendulaireModeCirculaire() {
       sphere(side*3);
       sphereDetail( 4*5);     
      }
+
+
+   if ( keyMode  ==  " propagationSampleBall " || keyMode  ==  " propagationSampleBall "  ) { //drive ball with lfo
+  
+      println ( "****************************** DISPLAY ", keyMode ); 
+      text ( char (formerKeyMetro), 100,100);
+      fill (75, 255 , 100);    
+   //   x = displacement*cos(phaseMapped[i]);
+   //   y = displacement*sin(phaseMapped[i]);
+      x = displacement*cos(net.phase[i]);
+      y = displacement*sin(net.phase[i]);   
+      sphere(side*3);
+      sphereDetail( 4*5);     
+     }
      
   /*
     if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo

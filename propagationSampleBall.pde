@@ -1,6 +1,7 @@
   void propagationSampleBall(){ 
 
     samplingMovementPro();
+    phaseMapped[0] = movementInterpolated;
   
         modeStartKeyToFollow = " null ";
         keyMode = " propagationSampleBall ";
@@ -143,6 +144,10 @@
 
 
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
+         //   lfoPhase[3] = map((((cos (frameCount / 10.0)) *-  1) % 2), -1, 1, -TWO_PI, TWO_PI);  // sinusoida
+
+         signal[2] = map((((cos (frameCount / 100.0)) *-  1) % 2), -1, 1, -1, 1);  // sinusoida
+
       splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
 
        // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
@@ -151,6 +156,7 @@
        propagation2wayRotationBis(); 
 
        actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
+
         mapNewPosX(); // counter actived
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
