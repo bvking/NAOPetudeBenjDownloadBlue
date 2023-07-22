@@ -9,10 +9,19 @@ void setPort() {
     arrayCopy(ports, portsUSB); // rename portsUSB with real ports names
     printArray(portsUSB);
     
-    
+    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
     String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
     String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
+
+     if (matchPort1B!= null) { 
+        allMachineConnected = false;
+        portsUSBfrom1=portsUSB[1];
+        portsUSBfrom2=portsUSB[2];
+        portsUSBfrom3=portsUSB[3];
+        println(" serial port 1 as programming port ending with 201 " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
+        portConnectedToBigMachineOnly=true;      
+    }
     
     if (matchPort1!= null) { 
         allMachineConnected = false;
@@ -61,11 +70,11 @@ void setPort() {
         }
         
         if (portsUSBfrom2 != "NC") {
-            if (portConnectedOfBigMachine) { // 101  teensy 3.5    
-                println(" Port 2 CONNECTED to programming port of Teensy 3.5 ");
+            if (portConnectedToBigMachineOnly) { // 101  teensy 3.5    
+                println(" Port 1 CONNECTED to programming port of Teensy 4.1 ");
                 //*************** WITH TEENSY connected
                 //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
-                //teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
+                teensy4port = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
                 //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
             }
         }
