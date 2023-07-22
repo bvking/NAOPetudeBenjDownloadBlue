@@ -132,7 +132,7 @@
 */     
       if (key != '#' ) {
       if (modeStartKeyToFollow == " null ") {
-      phasePatternBase();
+      //phasePatternBase();
 
       for (int i = 0; i < networkSize-0; i+=1) {
       phaseMappedFollow[i] = netPhaseBase[i];
@@ -142,10 +142,9 @@
 
 
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
-         //   lfoPhase[3] = map((((cos (frameCount / 10.0)) *-  1) % 2), -1, 1, -TWO_PI, TWO_PI);  // sinusoida
 
-         signal[2] = map((((cos (frameCount / 20.0)) *-  1) % 2), -1, 1, -1, 1);  // sinusoida
-
+         signal[2] = map((((cos (frameCount / 30.0)) *-  1) % 1), -1, 1, -1, 1);  // sinusoida
+      // dans Live on peut avoir dent scie ou triange ou sinusoidal   
       splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
 
        // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
