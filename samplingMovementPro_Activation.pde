@@ -34,8 +34,8 @@ void handleInternalSamplingMode(){
        int disableDriver=-4;
         send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
       }
-      angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
-      newPosF[0]= angleToInterpolate;
+     // angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+     // newPosF[0]= angleToInterpolate;
 
      //==================== sampling from MOUSE_Y
          
