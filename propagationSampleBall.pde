@@ -129,9 +129,7 @@
       phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
       }
      }
-*/    
- 
- 
+*/     
       if (key != '#' ) {
       if (modeStartKeyToFollow == " null ") {
       phasePatternBase();
@@ -146,7 +144,7 @@
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
          //   lfoPhase[3] = map((((cos (frameCount / 10.0)) *-  1) % 2), -1, 1, -TWO_PI, TWO_PI);  // sinusoida
 
-         signal[2] = map((((cos (frameCount / 100.0)) *-  1) % 2), -1, 1, -1, 1);  // sinusoida
+         signal[2] = map((((cos (frameCount / 20.0)) *-  1) % 2), -1, 1, -1, 1);  // sinusoida
 
       splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
 
@@ -160,11 +158,7 @@
         mapNewPosX(); // counter actived
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
-    //  keyMode = " trigEventWithAbletonSignal ";
-     //   switchFonctionDependingKeyMode();
-    //  keyCode= ALT; keyReleased(); key='v'; keyReleased();
-     // switchFonctionDependingKeyMode();
-      //  trigEventWithAbletonSignal(); 
+
         addSignalOneAndTwoTer();
      //     positionMov = " troisieme " ;  
        textSize (500);         

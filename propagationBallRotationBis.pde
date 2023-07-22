@@ -453,7 +453,7 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
     signal[2] = -signal[2];
   }
   
-  if (!doZ) { // option à mettre à l'ecran
+  if (doZ) { // option à mettre à l'ecran
     propagationTrigged = false;
     if (oldSplitTimeLfo > splitTimeLfo) {
       oldOscillatorChange = oscillatorChange;
@@ -483,26 +483,44 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
 
   }
   
-  if (doZ) {
-    propagationTrigged = false;
-    if (oldSplitTimeLfo > splitTimeLfo) {
+  if (!doZ) {
+      propagationTrigged = false;
+
+    // just below work
+    if (oldSplitTimeLfo > splitTimeLfo+50) { // only whe spliTimeLfo is sliced timeLfo by 100
+      text (" signal monte ", 200, 200);
+
       oldOscillatorChange = oscillatorChange;
       oscillatorChange--;
       propagationTrigged = true;
-    }
+       
+    if (oscillatorChange <= -1) {
+      oldOscillatorChange = 0;
+      oscillatorChange = networkSize - 1;
+      }
+     }
+
+    if (splitTimeLfo > oldSplitTimeLfo+50) {
+      text (" signal descend ", 200, 200);
+ 
+      oldOscillatorChange = oscillatorChange;
+      oscillatorChange--;
+      propagationTrigged = true;
+    
     
     if (oscillatorChange <= -1) {
       oldOscillatorChange = 0;
       oscillatorChange = networkSize - 1;
-    }
-  }
+      }
+     }
+   }
   
   timeLfo = int(map(signal[2], 0, 1, 0, networkSize * 100));
   if (doo) {
     timeLfo = -timeLfo;
   }
   
-  text("SPLIT TIME timeLfoooooooooo " + splitTimeLfo + " timeLFO " + timeLfo, -width - 200, +height);
+  text("oldSplit " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo, -width - 200, +height);
   
   oldSplitTimeLfo = splitTimeLfo;
   splitTimeLfo = int((timeLfo) % 100) + 0;
