@@ -58,6 +58,9 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
   case 'u':
   moveKeys[19] = b;
   break;
+  case 'j':
+  moveKeys[20] = b;
+  break;
    
   }
 }

@@ -9,11 +9,12 @@ void switchFonctionDependingKeyMode() {
         }
     
     translate(0, 0, 1000);
-    text(" Acc " + speedDelta + " key " + lastKey + " Ball " + memoryi +  " mode " + keyMode , -width, -height); 
+    text(" Acc " + speedDelta + " key " + lastKey + " Ball " + memoryi +  " mode " + keyMode , -width, -height+200); 
     if (keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal ") {
         
         trigEventWithAbletonSignal();
-        // text(" ALT v " + keyMode, -width, -height); 
+    text(" Alt v " + keyMode, -width * 2, -height * 3+100);
+
     }
     
     if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater ") { //drive ball with lfo
@@ -25,7 +26,7 @@ void switchFonctionDependingKeyMode() {
     if (keyMode == " addSignalOneAndTwoTer " || keyModeRed == " addSignalOneAndTwoTer ") { //drive ball with lfo
         //  PatternFollowLfo();
         addSignalOneAndTwoTer();
-        text(" ALT a " + keyMode, -width, -height); 
+        text(" Alt a " + keyMode, -width * 2, -height * 3+100);
     }
     
     
@@ -40,7 +41,8 @@ void switchFonctionDependingKeyMode() {
         //  addSignalOneAndTwo();
         // doo=true;
         addSignalOneAndTwoOriginal();
-        text(" ALT z " + keyMode, -width, -height); 
+        text(" Alt z " + keyMode, -width * 2, -height * 3+100);
+
     }
     
     if (keyMode == " methodAbleton " || keyModeRed == " methodAbleton ") { //drive ball with lfo
@@ -61,12 +63,14 @@ void switchFonctionDependingKeyMode() {
     
     if (keyMode == " followDistribueAddLfoPatternBis " || keyModeRed == " followDistribueAddLfoPatternBis ") { //drive ball with lfo
         followDistribueAddLfoPattern();
-        text(keyMode, -width, -height); 
+
+       text(" Alt d? not used " + keyMode, -width * 2, -height * 3+100);
+
         }
     
     if (keyMode == " samplingMode " || keyModeRed == " samplingMode ") { //drive ball with lfo
-        //   followDistribueAddLfoPattern();
-        text(keyMode, -width, -height);
+
+        text(" Alt w not used " + keyMode, -width * 2, -height * 3+100);
         }
     
     
@@ -81,25 +85,28 @@ void switchFonctionDependingKeyMode() {
     
     if (keyMode == " propagationBallRotationTest " || keyMode == " propagationBallRotationTest ") { 
         propagationBallRotationTest();
-        text(" Alt t " + keyMode, -width * 2, -height * 3);
+        text(" Alt t " + keyMode, -width * 2, -height * 3+100);
         }
     
     if (keyMode == " propagationBallRotationBis " || keyModeRed == " propagationBallRotationBis ") { 
         propagationBallRotationBis();
-        text(" Alt y " + keyMode, -width * 2, -height * 3);
-        
+        text(" Alt y " + keyMode, -width * 2, -height * 3+100);
         }
     
     if (keyMode == " propagationBallRotationBisTest " || keyModeRed == " propagationBallRotationBisTest ") { 
         propagationBallRotationBisTest();
-        text(" Alt u " + keyMode, -width * 2, -height * 3);
-        
+        text(" Alt u " + keyMode, -width * 2, -height * 3+100);     
+        }
+
+    if (keyMode == " propagationSampleBall " || keyModeRed == " propagationSampleBall ") { 
+        propagationSampleBall();
+        text(" Alt j " + keyMode, -width * 2, -height * 3+100);     
         }
     
     
     
     if (keyMode == " null " || keyModeRed == " null ") { //drive ball with lfo
-        text(keyMode,(width / 2), height / 2);  
+        text(" Alt x " + keyMode, -width * 2, -height * 3+100);
         
         }
     
