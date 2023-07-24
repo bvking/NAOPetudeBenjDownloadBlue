@@ -143,7 +143,7 @@
 
     propagationSpeed=70.0; // useless if propagation comes from ableton Live
 
-         signal[2] = map((((cos (frameCount / 30.0)) *-  1) % 1), -1, 1, -1, 1);  // sinusoida
+     signal[2] = map((((cos (frameCount / 30.0)) *-  1) % 1), -1, 1, -1, 1);  // sinusoida
       // dans Live on peut avoir dent scie ou triange ou sinusoidal   
       splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
 
@@ -155,6 +155,7 @@
        actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
 
         mapNewPosX(); // counter actived
+      //  mapPropagationSampledBall();
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
 
