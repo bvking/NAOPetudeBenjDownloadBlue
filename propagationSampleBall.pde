@@ -154,8 +154,8 @@
 
        actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
 
-        mapNewPosX(); // counter actived
-      //  mapPropagationSampledBall();
+      //  mapNewPosX(); // counter actived
+        mapPropagationSampledBall();
    
       if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) { 
 
