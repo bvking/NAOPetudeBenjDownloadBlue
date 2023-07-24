@@ -6,10 +6,11 @@ void  displayModePendulaireModeCirculaire() {
   textSize (50);
       //  rotate (PI/3*(networkSize-0)); // to rotate only once
 
-          if (formerKeyMetro == '$' || formerKeyMetro == '*'  )
+          if (formerKeyMetro == '$' || formerKeyMetro == '*'  ) // display ball only at good position
        { translate (0, -1000, 0);
          }
        rotate (-PI/2);
+      // rotate (PI/2);
    
 
 
@@ -52,15 +53,15 @@ void  displayModePendulaireModeCirculaire() {
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      if ( specialPropagationKey != '>'  ) { 
-       //  if ( key == '#'  ) {
+          //  if ( key == '#'  ) {
         
-       text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
-      //  println (" you are in $ et non x ");
-      //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
+         text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL $ without < or >  " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
+         //  println (" you are in $ et non x ");
+         //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
       
       if (net.phase[i] >= PI ) { 
-        metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-       //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
+         //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
       if (net.phase[i] >= 0 && net.phase[i] < PI ) {
@@ -427,6 +428,14 @@ void  displayModePendulaireModeCirculaire() {
 
        }
     }
+
+        if (formerKeyMetro == '$' || formerKeyMetro == '*'  ) // display ball only at good position
+       { translate (0, 1000, 0);
+         }
+       rotate (PI/2);
+      // rotate (-PI/2);
+
+
     rotate (PI/2); 
 
 }  
