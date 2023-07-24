@@ -1,51 +1,43 @@
 void mapNewPosX() {
     textSize(40);
 
-         for (int i = 0; i <  networkSize-0; i+=1) { 
-       //  TrigmodPos[i]=1; 
-         }
-
-
+    for (int i = 0; i <  networkSize-0; i+=1) { 
+           //  TrigmodPos[i]=1; 
+     }
 
     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
      for (int i = 0; i <  networkSize-0; i+=1) { 
-   //  text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
-     newPosXaddSignal[i]%=TWO_PI;
-     net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
+          //  text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
+         newPosXaddSignal[i]%=TWO_PI;
+         net.phase[i]=newPosXaddSignal[i]; // to trig something with arduinoPos
      }
     }
 
     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) {
      text ( " delay " + delayTimeFollowPhase11 + " phase " + degrees (phaseShiftingFollowPhase11), 0, -800 );
      for (int i = 0; i <  networkSize-0; i+=1) { 
-         //  net.phase[i]=phaseMapped[i]
+             //  net.phase[i]=phaseMapped[i]
              OldSpecialPhase[i]=specialPhase[i]; //specialPhase[i] from  followSignal
              positionToMotor[i]= specialPhase[i]%numberOfStep;
-    
-             text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));
-
-
-       
+             text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
       }
     } 
-  
-    //  if (circularMov==true) {
-       if (formerKeyMetro == '*') {
+     
+     if (formerKeyMetro == '*') { // //  if (circularMov==true) { doesn't work
           countRevsPhaseMappedPositiveOnly();
-          }
+      }
 
       print ( " cou+Only in mapNew "); showArray(rev);    
      
-    // map depending way of rotation
+      // map depending way of rotation
 
-    if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
-    for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
+     if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
+      for (int i = 0; i <  networkSize-0; i+=1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
          positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep)%numberOfStep); //
          newPosF[i]=positionToMotor[i]%6400;
    
-     //if (net.oldPhase[i] > net.phase[i] ) {
+         //if (net.oldPhase[i] > net.phase[i] ) {
       if ( oldPositionToMotor[i]>positionToMotor[i]) {
-
        positionToMotor[i]= ((int) map (newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0)%numberOfStep); //
        newPosF[i]=positionToMotor[i]%6400;
        }
@@ -53,7 +45,7 @@ void mapNewPosX() {
      } 
     
 
-    // end map depending way of rotation
+     // end map depending way of rotation
   
      textSize (50);
 
@@ -138,16 +130,15 @@ void mapNewPosX() {
      }
    }
 
-       for (int i = 0; i <  networkSize-0; i+=1) { 
-          oldPositionToMotor[i]=  positionToMotor[i];
-            oldOldPosF[i]=oldPosF[i];
-            oldPosF[i]=newPosF[i];
-            oldOldPhaseMapped[i]=oldPhaseMapped[i];
-            oldPhaseMapped[i]=phaseMapped[i];
-            net.phase[i]=phaseMapped[i];
+    for (int i = 0; i <  networkSize-0; i+=1) { 
+           oldPositionToMotor[i]=  positionToMotor[i];
+           oldOldPosF[i]=oldPosF[i];
+           oldPosF[i]=newPosF[i];
+           oldOldPhaseMapped[i]=oldPhaseMapped[i];
+           oldPhaseMapped[i]=phaseMapped[i];
+           net.phase[i]=phaseMapped[i];
            // net.phase[i]=specialPhase[i];
-          }
-   
+         }
 }
 
 

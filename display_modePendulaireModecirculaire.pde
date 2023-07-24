@@ -1,7 +1,19 @@
 void  displayModePendulaireModeCirculaire() {
   rotate (-PI/2);
 
+
+
   textSize (50);
+      //  rotate (PI/3*(networkSize-0)); // to rotate only once
+
+          if (formerKeyMetro == '$' || formerKeyMetro == '*'  ) // display ball only at good position
+       { translate (0, -1000, 0);
+         }
+       rotate (-PI/2);
+      // rotate (PI/2);
+   
+
+
   for (int i = 0; i <networkSize-0; i++) {
    
     pushMatrix();
@@ -41,29 +53,29 @@ void  displayModePendulaireModeCirculaire() {
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      if ( specialPropagationKey != '>'  ) { 
-     //  if ( key == '#'  ) {
+          //  if ( key == '#'  ) {
         
-     text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL  $ with " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
-      //  println (" you are in $ et non x ");
-      //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
+         text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL $ without < or >  " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
+         //  println (" you are in $ et non x ");
+         //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
       
       if (net.phase[i] >= PI ) { 
-        metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-  //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
+         //        metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
       if (net.phase[i] >= 0 && net.phase[i] < PI ) {
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
-     //metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
+       //metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
       }
       if (net.phase[i] <= -PI) { 
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
-     //  metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
+       //  metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
 
       }  
       if (net.phase[i] < 0  && net.phase[i] > -PI) {   
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
-     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
+       // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
 
       }
     
@@ -123,50 +135,50 @@ void  displayModePendulaireModeCirculaire() {
     //line (0,0,0,0,0, 11*250+200+250); //axe helping the 3D representation. axe qui relie les pendules
    // noFill (); 
 
-  //  sphere(side*3); // this sphere serves as a reference
+   //  sphere(side*3); // this sphere serves as a reference
    
 
-    // Color sphere and Draw them, depending of acceleration or later with "chimera state"
-    mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
-    mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
-    //********************************************************* BEGIN GRAPHIC CHIMERA STATE
-    colorMode(HSB, TWO_PI, 100, 100);
-    noStroke();
-    // chimera state
-    // mouseXY (); // no effect
-    // initializeCoupling(net.coupling, sigma);
-    /* 
-     for (int k = 0; k < numRows; k++) {
-     for (int l = 0; l < numCols; l++) {
-     int x = l * gridSize;
-     int y = k * gridSize;
-     int index = k * numCols + l;
-     fill(netG.phase[index], 100, 100);
-     rect(x, y, gridSize, gridSize);
-     }
-     } 
+     // Color sphere and Draw them, depending of acceleration or later with "chimera state"
+     mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255); 
+     mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
+     //********************************************************* BEGIN GRAPHIC CHIMERA STATE
+     colorMode(HSB, TWO_PI, 100, 100);
+     noStroke();
+     // chimera state
+     // mouseXY (); // no effect
+     // initializeCoupling(net.coupling, sigma);
+     /* 
+      for (int k = 0; k < numRows; k++) {
+      for (int l = 0; l < numCols; l++) {
+      int x = l * gridSize;
+      int y = k * gridSize;
+      int index = k * numCols + l;
+      fill(netG.phase[index], 100, 100);
+      rect(x, y, gridSize, gridSize);
+      }
+      } 
      */
-    //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (x*1, y*1, 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
-    colorMode(RGB, 255, 255, 255);
-//    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
+     //********************************************************* END GRAPHIC CHIMERA STATE
+     translate (x*1, y*1, 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
+     colorMode(RGB, 255, 255, 255);
+     //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
       fill( 175, 175, 255 );
-    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
+     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
+      //rotate (PI/3*(networkSize-0)); // to rotate only once
+               text ( formerKeyMetro +  " lI " + specialPropagationKey, -width/4, -height/4 ) ;  
 
-               text (  " lI " + specialPropagationKey, -width/4, -height/4 ) ;  
-
-   // metroPhase[i]= metroPhase[i];     
+      // metroPhase[i]= metroPhase[i];     
                        
-   // println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
-   // if (specialPropagationKey == '?') {    }  // metroPhase[i]+=PI/4;
-    //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
+      // println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
+      // if (specialPropagationKey == '?') {    }  // metroPhase[i]+=PI/4;
+      //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
    
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
+      x = displacement*cos(metroPhase[i]); // -PI/2
+      y = displacement*sin(metroPhase[i]);// -PI/2
    
   
-    sphere(side*3);
-    sphereDetail( 4*5);
+      sphere(side*3);
+      sphereDetail( 4*5);
     }
 
      if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' ) {
@@ -189,84 +201,84 @@ void  displayModePendulaireModeCirculaire() {
        if (formerKeyMetro == 'B' ) { //drive ball with lfo
      fill( 255, 255, 0 ); // Spheres are all modulated with the same color. depending of acceleration
    //   followLFO();  // better to repare
-   //  followLFObis(); // same as below
+       //  followLFObis(); // same as below
          println (" formerKeyMetro  ", i, " ",  formerKeyMetro );    
 
          x = displacement*cos(newPosX[i]);
          y = displacement*sin(newPosX[i]);   
         sphere(side*3);
         sphereDetail( 4*5);
-   //    followMovementAll();
-   //    displayfollowMovementAll();
+       //    followMovementAll();
+       //    displayfollowMovementAll();
       }
 
          if (keyMode == " addSignalOneAndTwoQuater "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (100, 155, 100);
-    //  x = displacement*cos(net.phase[i]);
-    //  y = displacement*sin(net.phase[i]); 
-     x = displacement*cos(newPosXaddSignal[i]);   
-     y = displacement*sin(newPosXaddSignal[i]);   
+         fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
+         fill (100, 155, 100);
+        //  x = displacement*cos(net.phase[i]);
+       //  y = displacement*sin(net.phase[i]); 
+         x = displacement*cos(newPosXaddSignal[i]);   
+          y = displacement*sin(newPosXaddSignal[i]);   
       
-//      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+       //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
       sphere(side*3);
       sphereDetail( 4*5);
       }
           
        if (keyMode == " addSignalOneAndTwoTer "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (100, 155, 255);
+         fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
+         fill (100, 155, 255);
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);    
-//      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+       //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
       sphere(side*3);
       sphereDetail( 4*5);
       }
 
          if (keyMode == " addSignalOneAndTwoBis "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (255, 0 , 255);
-    //  x = displacement*cos(newPosXaddSignal[i]);
-    //  y = displacement*sin(newPosXaddSignal[i]); 
-       x = displacement*cos(net.phase[i]);
-       y = displacement*sin(net.phase[i]);    
-//      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
+           fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
+           fill (255, 0 , 255);
+          //  x = displacement*cos(newPosXaddSignal[i]);
+          //  y = displacement*sin(newPosXaddSignal[i]); 
+             x = displacement*cos(net.phase[i]);
+           y = displacement*sin(net.phase[i]);    
+          //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+         sphere(side*3);
+         sphereDetail( 4*5);
       }
        
        if (keyMode == " addSignalOneAndTwo "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-    // fill (100, 255, 255);
-    //   net.phase[i]=newPosF[i];
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]); 
+           fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
+           // fill (100, 255, 255);
+           //   net.phase[i]=newPosF[i];
+          x = displacement*cos(net.phase[i]);
+          y = displacement*sin(net.phase[i]); 
 
- //     print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+          //     print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
       sphere(side*3);
       sphereDetail( 4*5);
       }
       
        if (keyMode == " samplingMode "  ) { //drive ball with lfo
-     fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
-     fill (100, 110, 120);
-    // samplingMovementPro();
-      x = displacement*cos(net.phase[i]); //);
-      y = displacement*sin(net.phase[i]);      // display ball in blue lagub
-      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
+        fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
+        fill (100, 110, 120);
+         // samplingMovementPro();
+         x = displacement*cos(net.phase[i]); //);
+         y = displacement*sin(net.phase[i]);      // display ball in blue lagub
+           print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+            sphere(side*3);
+            sphereDetail( 4*5);
+         }
 
    if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
       fill (75, 255 , 100);    
-   //   x = displacement*cos(newPosF[i]);
-   //   y = displacement*sin(newPosF[i]);
-    //  x = displacement*cos(net.phase[i]);
-    //  y = displacement*sin(net.phase[i]);   
+       //   x = displacement*cos(newPosF[i]);
+       //   y = displacement*sin(newPosF[i]);
+        //  x = displacement*cos(net.phase[i]);
+       //  y = displacement*sin(net.phase[i]);   
       sphere(side*3);
       sphereDetail( 4*5);     
      }
@@ -277,31 +289,31 @@ void  displayModePendulaireModeCirculaire() {
       println ( "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
       fill (75, 255 , 100);    
-   //   x = displacement*cos(phaseMapped[i]);
-   //   y = displacement*sin(phaseMapped[i]);
+       //   x = displacement*cos(phaseMapped[i]);
+       //   y = displacement*sin(phaseMapped[i]);
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);   
       sphere(side*3);
       sphereDetail( 4*5);     
      }
      
-  /*
-    if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+      /*
+        if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
-      println ( "****************************** DISPLAY ", keyMode ); 
-      text ( char (formerKeyMetro), 100,100);
-      fill (175, 75 , 75);    
-   //   x = displacement*cos(newPosF[i]);
-   //   y = displacement*sin(newPosF[i]);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);   
-      sphere(side*3);
-      sphereDetail( 4*5); 
+        println ( "****************************** DISPLAY ", keyMode ); 
+        text ( char (formerKeyMetro), 100,100);
+        fill (175, 75 , 75);    
+        //   x = displacement*cos(newPosF[i]);
+        //   y = displacement*sin(newPosF[i]);
+         x = displacement*cos(net.phase[i]);
+          y = displacement*sin(net.phase[i]);   
+        sphere(side*3);
+        sphereDetail( 4*5); 
       
-     }
-   */  
+       }
+       */  
     
- if ( keyMode == " null " ) {      
+    if ( keyMode == " null " ) {      
   
       
     if ( modeStartKeyToFollow == " samplingModeInternal " ) { //drive ball with lfo
@@ -367,6 +379,8 @@ void  displayModePendulaireModeCirculaire() {
 
     if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  || modeStartKeyToFollow  == " samplingModeInternal " 
       || modeStartKeyToFollow  == " followSignalSampled " ) {
+
+       // rotate (PI/2)/(networkSize); // to rotate only once
      //   println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
 
       text ( char (formerKeyMetro) , 200,100);
@@ -399,18 +413,30 @@ void  displayModePendulaireModeCirculaire() {
        popMatrix();
 
   
-  } // end of i == networkSize
+   } // end of i == networkSize
+
+       if ( keyMode  ==  " trigEventWithAbletonSignal " && formerKeyMetro == '$'  ) { //
+          // rotate (PI);
+        } 
 
     if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " ){ 
 
       for (int i=0; i<=8; i++ ){ 
-  stroke(25);
-  line (0, height/8*i, width, height/8*i); // horizon
-  line (width/8*i, 0, width/8*i, height); // vertical
+        stroke(25);
+       line (0, height/8*i, width, height/8*i); // horizon
+        line (width/8*i, 0, width/8*i, height); // vertical
 
        }
-  }
-  rotate (PI/2); 
+    }
+
+        if (formerKeyMetro == '$' || formerKeyMetro == '*'  ) // display ball only at good position
+       { translate (0, 1000, 0);
+         }
+       rotate (PI/2);
+      // rotate (-PI/2);
+
+
+    rotate (PI/2); 
 
 }  
 
@@ -418,7 +444,7 @@ void  displayModePendulaireModeCirculaire() {
 
 
 
-void  displayModePendulaireModeCirculaireDerniere() {
+void  displayModePendulaireModeCirculaireDernier() {
 
   for (int i = 0; i <networkSize-0; i++) {
    
@@ -439,12 +465,12 @@ void  displayModePendulaireModeCirculaireDerniere() {
       //   net.phase[i]=net.phase[i]%TWO_PI;//
       if (net.phase[i] >= PI ) { 
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-   //      metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+     //      metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
       if (net.phase[i] >= 0 && net.phase[i] < PI ) {
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
-   //  metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
+     //  metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
       }
       if (net.phase[i] <= -PI) { 
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
@@ -456,9 +482,9 @@ void  displayModePendulaireModeCirculaireDerniere() {
      // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
 
       }
- //  metroPhase[i]=  metroPhase[i]-PI/2;
-  //   metroPhase[i]%=TWO_PI;
-  if (keyMode != " propagationBallRotation ")  {  
+    //  metroPhase[i]=  metroPhase[i]-PI/2;
+     //   metroPhase[i]%=TWO_PI;
+   if (keyMode != " propagationBallRotation ")  {  
      if (keyMode != " propagationBallRotationBis ")  {  
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
@@ -467,9 +493,9 @@ void  displayModePendulaireModeCirculaireDerniere() {
     } 
 
 
-    if (formerKeyMetro == '$' && (formerSartKey == 'X' || formerSartKey == 'x' ) ) {  // circular to pendular) //|| formerSartKey == 'w' || formerSartKey == 'W'
+   if (formerKeyMetro == '$' && (formerSartKey == 'X' || formerSartKey == 'x' ) ) {  // circular to pendular) //|| formerSartKey == 'w' || formerSartKey == 'W'
     if (keyMode != " truc ")  {  
-  text ( " mapped SECOND pendular way $ ", 400, 700);
+     text ( " mapped SECOND pendular way $ ", 400, 700);
      
 
       if (net.phase[i] >= 0 && net.phase[i] <= PI ) {
@@ -489,7 +515,7 @@ void  displayModePendulaireModeCirculaireDerniere() {
       }
 
       for (int n = 0; n < (1); n++) {// pendular from -800 to 800
- /*
+      /*
         print (" interPhas "); 
         print (memoryi); 
         print (" "); 
@@ -587,7 +613,7 @@ void  displayModePendulaireModeCirculaireDerniere() {
       }
 
       for (int n = 0; n < (1); n++) {// pendular from -800 to 800
- /*
+     /*
         print (" interPhas "); 
         print (memoryi); 
         print (" "); 
@@ -641,17 +667,17 @@ void  displayModePendulaireModeCirculaireDerniere() {
         print (oldMemoryi); 
         print (" "); 
         println (net.oldPhase[oldMemoryi]);
-  */       
+        */       
       }  
 
        if (keyMode != " propagationBallRotation ")  {  
-     if (keyMode != " propagationBallRotationBis ")  {  
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
-      } 
+         if (keyMode != " propagationBallRotationBis ")  {  
+           x = displacement*cos(metroPhase[i]);
+           y = displacement*sin(metroPhase[i]);
+         } 
+       } 
      } 
-    } 
-    }
+   } // end if formerSartKey
   
 
 
@@ -684,7 +710,7 @@ void  displayModePendulaireModeCirculaireDerniere() {
     //line (0,0,0,0,0, 11*250+200+250); //axe helping the 3D representation. axe qui relie les pendules
    // noFill (); 
 
-  //  sphere(side*3); // this sphere serves as a reference
+   //  sphere(side*3); // this sphere serves as a reference
    
 
     // Color sphere and Draw them, depending of acceleration or later with "chimera state"
@@ -710,7 +736,7 @@ void  displayModePendulaireModeCirculaireDerniere() {
     //********************************************************* END GRAPHIC CHIMERA STATE
     translate (x*1, y*1, 200+(50*5*(i+1)));  //*-1 go in clockwise, *1 go in CCW
     colorMode(RGB, 255, 255, 255);
-  //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
+   //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
       fill( 175, 175, 255 );
     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {
 
@@ -743,25 +769,26 @@ void  displayModePendulaireModeCirculaireDerniere() {
     sphereDetail( 4*5);
     }
     popMatrix();
-  }
+ }
 
   // displayKeyModeNull(); 
 
   
-  rotate (HALF_PI);
+   rotate (HALF_PI);
          for (int i = 0; i < 3; i++)  {  
        String valueText[] =  displayEventFromKeyReleased (keyEvent);     
     } 
-       if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
-     //  displayPropagationControl();
-  }  
-  rotate (-HALF_PI); 
+      
         if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
-//   net.step(); 
-//  netG.step(); //Does it make any meaning?
-  } 
- // net.step(); 
- // netG.step(); //Does it make any meaning?
+           //  displayPropagationControl();
+        }  
+   rotate (-HALF_PI); 
+        if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+          //   net.step(); 
+          //  netG.step(); //Does it make any meaning?
+        } 
+   // net.step(); 
+   // netG.step(); //Does it make any meaning?
   
 } 
    
