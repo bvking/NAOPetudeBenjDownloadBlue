@@ -1,10 +1,10 @@
 void autmationWithMeasureAndNote()
- {
-
-    char lastKey = key;
-     if (key!='#'){
-    text(" autmationWith" + lastKey, 1500, -900);
-     }
+  {
+  char lastKey = key;
+  if (key!='#'){
+  lastKey=key; 
+    }
+     text(" autmationWith " + lastKey, 1500, -900);
 
   //autoNote1VelInf64();
   //autoNote1();
@@ -78,17 +78,30 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
 
   if  (measure==78 && beatTrigged==true) {
+
+    key='*';
+    keyReleased();
+    key='9';
+    keyReleased();
     speedDelta=3;
-   // key='A'; 
-   // keyReleased();
     memoryi=9;
+    key='A'; 
+    keyReleased();
     net.naturalFrequency[9]=1;
     key='o'; 
     keyReleased();
-    key='*';
-    keyReleased();
+ 
      }
-    if  (measure==78 && beatPrecisedTrigged==true  ) { 
+    if  (measure==79 && beatPrecisedTrigged==true  ) { 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+
+    key='T'; // speed is propaged to  next oscilltor 
+    keyReleased();
+    key='y';keyReleased(); // uprise speed 
+   
+  }
+  if  (measure==80 && beatPrecisedTrigged==true  ) { 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
 
     key='T'; // speed is propaged to  next oscilltor 
     keyReleased();
@@ -101,7 +114,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }  
 
    if  (measure==79 && beatPrecisedTrigged==true  ) { 
-         key='y';keyReleased(); // uprise speed 
+      //   key='y';keyReleased(); // uprise speed 
    
   }
 

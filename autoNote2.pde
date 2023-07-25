@@ -6,11 +6,13 @@ void autoNote2() {//1 67 69 72
   d = 0;
   char lastKey = key;
   if (key!='#'){
-   text(" lastKey autonote2" + lastKey, 1500, -800);
+  lastKey=key;
    }
+    text(" autonote2with   " + lastKey, 1500, -800);
 
      if (measure ==1   ) { // && beatTrigged==true 
       key ='A';
+      //net.naturalFrequency[9]=1;
       keyReleased();
      } 
 

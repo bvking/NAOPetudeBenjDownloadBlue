@@ -30,7 +30,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
         println(formerEvent[69]);
 }
     
-    if(measure <= 11 && millis() > formerEvent[72] + 350 + d && 
+    if(measure >= 11 && measure <= 40 && millis() > formerEvent[72] + 350 + d && 
         
       ((note1 == 72 && velocity1 >= 1 && velocity1 <= 64) || 
        (note2 == 72 && velocity2 >= 1 && velocity2 <= 64) || 
@@ -39,8 +39,8 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
        (note5 == 72 && velocity5 >= 1 && velocity5 <= 64) || 
        (note6 == 72 && velocity6 >= 1 && velocity6 <= 64))) {
         
-        //key = 'U';
-        key = 'u';
+        key = 'U';
+        //key = 'u';
         keyReleased();
         formerEvent[72] = millis();
         print("formerEvent[72] INSIDE");
