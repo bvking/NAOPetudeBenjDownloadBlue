@@ -12,7 +12,8 @@ void autoNote2() {//1 67 69 72
 
 
   if ((measure <= 5 && millis() > formerEvent[172] + 150 + d) &&
-    ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
+   // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
+     ((note1 == 72  || note2 == 72 || note3 == 72 ))) {
     formerEvent[172] = millis();
     key = 'i';
     keyReleased();

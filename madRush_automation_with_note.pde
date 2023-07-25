@@ -1,23 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void autoNote1VelInf64Origin() {//1 61 63 64 66 85 
  // keyPressedLFO();
 

@@ -344,6 +344,28 @@ textSize (100);
        //    net.naturalFrequency[networkSize-1]= net.naturalFrequency[0]; 
   }
 
+   if (key == 'U') {  // memory == 0 is the ball "behind"  the screen
+
+      oldMemoryi=memoryi;
+      memoryi=(memoryi+1);
+      memoryi%=networkSize;
+  
+     for (int i = 1; i < (networkSize-0); i++) {  
+
+     
+       net.phase[i]=net.oldPhase[i-1];
+       
+       
+       net.naturalFrequency[i]= 0;
+     
+     }
+
+       
+       net.phase[0]= net.oldPhase[networkSize-1];
+     
+       net.naturalFrequency[0]= 0;
+     
+
 
 
   //  text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
