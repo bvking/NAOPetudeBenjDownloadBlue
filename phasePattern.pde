@@ -352,18 +352,12 @@ textSize (100);
   
      for (int i = 1; i < (networkSize-0); i++) {  
 
-     
-       net.phase[i]=net.oldPhase[i-1];
-       
-       
+       net.phase[i]=net.oldPhase[i-1];       
        net.naturalFrequency[i]= 0;
-     
      }
-
-       
        net.phase[0]= net.oldPhase[networkSize-1];
-     
        net.naturalFrequency[0]= 0;
+   } 
      
 
 

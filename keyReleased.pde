@@ -374,9 +374,6 @@ void keyReleased() {
     //  pendularOtherPattern ();
   }
 
-
-
-
   //*********************************************CIRCULAR
 
 

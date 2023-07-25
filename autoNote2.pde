@@ -9,13 +9,40 @@ void autoNote2() {//1 67 69 72
    text(" lastKey autonote2" + lastKey, 1500, -800);
    }
 
+     if (measure ==1   ) { // && beatTrigged==true 
+      key ='A';
+      keyReleased();
+     } 
+
+       if (measure ==3 && beatTrigged==true    ) { // && beatTrigged==true 
+      key ='°';
+      keyReleased();
+     } 
+
+    if ((measure > 5 && measure <= 40 && millis() > formerEvent[169] + 150 + d) &&
+    ((note1 == 69 && velocity1 == 96) || (note2 == 69 && velocity2 == 96) || (note3 == 69 && velocity3 == 96))) {
+    formerEvent[169] = millis();
+    key = 'p';
+
+    keyReleased();
+
+   // keyEvent[0] = " autoNote2 Pressed " + formerEvent[169]; 
+
+    text("formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
+    println(" formerEvent[160] INSIDE " + formerEvent[169]);
+    }
+   
 
 
-  if ((measure <= 5 && millis() > formerEvent[172] + 150 + d) &&
+  if ((measure >= 3 && measure <= 5 && millis() > formerEvent[172] + 150 + d) &&
    // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
-     ((note1 == 72  || note2 == 72 || note3 == 72 ))) {
+    // ((note1 == 72  || note2 == 72 || note3 == 72 ))) 
+       ((note1 == 69  || note2 == 69 || note3 == 69 ))) 
+     
+     {
     formerEvent[172] = millis();
-    key = 'i';
+    //key = 'i';
+    key = 'U';
     keyReleased();
     keyEvent[1] = "  autoNote2 Pressed " + formerEvent[172];
     oscillatorBlocked = networkSize % 2;
@@ -40,18 +67,7 @@ void autoNote2() {//1 67 69 72
     println(formerEvent[167]);
   }
 
-  if ((measure <= 40 && millis() > formerEvent[169] + 10 + d) &&
-    ((note1 == 69 && velocity1 == 96) || (note2 == 69 && velocity2 == 96) || (note3 == 69 && velocity3 == 96))) {
-    formerEvent[169] = millis();
-    key = 'p';
 
-    keyReleased();
-
-   // keyEvent[0] = " autoNote2 Pressed " + formerEvent[169]; 
-
-    text("formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
-    println(" formerEvent[160] INSIDE " + formerEvent[169]);
-  }
 
   if ((measure > 40 && measure < 75 && millis() > formerEvent[169] + 450 + d) &&
     ((note1 == 69 && velocity1 == 96) || (note2 == 69 && velocity2 == 96) || (note3 == 69 && velocity3 == 96))) {
