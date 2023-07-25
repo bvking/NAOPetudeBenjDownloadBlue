@@ -41,7 +41,7 @@ void mapPropagationSampledBall() {
      for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];
 
-             text ( " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 600, -800+100*i );  // //degrees (signal[2])
+             text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 600, -800+100*i );  // //degrees (signal[2])
      
             if ( oldPosF[i]>newPosF[i] ) { //
             revLfo[i]++;
@@ -55,7 +55,7 @@ void mapPropagationSampledBall() {
         }
      } 
 
-       print ( " cou+PropSampled in maPropa "); showArray(revLfo);  
+       print ( " Good+PropSampl in maPropa "); showArray(revLfo);  
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
          //  oldPositionToMotor[i]=  positionToMotor[i];
