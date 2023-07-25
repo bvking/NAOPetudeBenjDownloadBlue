@@ -77,20 +77,21 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     formerEvent[74]=millis();
   }
 
-  if  (measure==82 && beatTrigged==true) {
+  if  (measure==82 &&   beatPrecised == 1 && beatPrecisedTrigged==true) {
     key = '°'; keyReleased();
     formerKeyMetro = '*';
   
-    key='9'; // aligné
+    key='9'; // aligné  à une position 
     keyReleased();
     speedDelta=4;
    
     memoryi = 9;
     keyReleased();
     net.naturalFrequency[memoryi]= 2;
+    key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
   }
 
-    if  (measure==82 && beatPrecisedTrigged==true &&  beatPrecised <= networkSize) { 
+    if  (measure==82 && beatPrecisedTrigged==true &&  ( beatPrecised > 1 && beatPrecised <= networkSize+1)) { 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
 
     key='T'; // speed is propaged to  next oscilltor 
@@ -99,26 +100,26 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
    
    }
 
-     if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize ) { 
+    if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) { 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
       key='y';keyReleased(); // uprise speed 
    
    }
 
-  if  (measure==83 && beatPrecisedTrigged==true) {  //  &&  beatPrecised <=8 
+  if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 5;
-   // key='T'; // speed is propaged to  next oscilltor 
-   // keyReleased();
-    key='y';keyReleased(); // uprise speed 
+      speedDelta= 6;
+      key='y';keyReleased(); // uprise speed 
    
+  }
+
+    if  (measure==87 && beatTrigged) {  //  &&  beatPrecised <=8 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+      speedDelta= 6;
+      keyCode=CONTROL; keyReleased(); 
+      
   }
  
-  
-   
-  if  (measure==80 && measure<=200 ) {//129
-   // autoNote2();
-  }
 
    if ( measure>=106 && measure<=106 && beatTrigged==true) {
        speedDelta= 2;
