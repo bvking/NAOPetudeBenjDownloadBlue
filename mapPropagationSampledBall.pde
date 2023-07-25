@@ -31,7 +31,7 @@ void mapPropagationSampledBall() {
       }
      
      
-     if (formerKeyMetro == '*' || formerKeyMetro == '$') { // //  if (circularMov==true) { doesn't work
+     if (formerKeyMetro == '*' ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only
       } 
           print ( " cou+Only in maPropa "); showArray(rev);    
@@ -41,7 +41,7 @@ void mapPropagationSampledBall() {
      for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];
 
-             text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 600, -800+100*i );  // //degrees (signal[2])
+             text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 1000, -700+50*i );  // //degrees (signal[2])
      
             if ( oldPosF[i]>newPosF[i] ) { //
             revLfo[i]++;

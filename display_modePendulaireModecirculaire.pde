@@ -55,9 +55,9 @@ void  displayModePendulaireModeCirculaire() {
      if ( specialPropagationKey != '>'  ) { 
           //  if ( key == '#'  ) {
         
-         text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL $ without < or >  " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
-         //  println (" you are in $ et non x ");
-         //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
+       text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL $ without < or >  " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
+       //  println (" you are in $ et non x ");
+       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
       
       if (net.phase[i] >= PI ) { 
          metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
@@ -81,23 +81,23 @@ void  displayModePendulaireModeCirculaire() {
     
        //  metroPhase[i]=  metroPhase[i]-PI/2;
        //   metroPhase[i]%=TWO_PI;
-      x = displacement*cos(metroPhase[i]);
-      y = displacement*sin(metroPhase[i]);
+       x = displacement*cos(metroPhase[i]);
+       y = displacement*sin(metroPhase[i]);
        // }
-      // key='#';
+       // key='#';
         }
-    } 
+     } 
 
+      if (formerKeyMetro == '*') {  circularMov = true; }
+      else circularMov = false;
 
-     if (formerKeyMetro == '*') {  circularMov = true; }
-     else circularMov = false;
-
-    if (formerKeyMetro == '£' || formerKeyMetro == '*' ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
+      if (formerKeyMetro == '£' || formerKeyMetro == '*' ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
         text ( " mapped to GENERAL CIRCULAR way 2 * " + circularMov, 400, 900);
         // net.phase[i]-=PI/2;
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
-    }
+
+      }
 
     if (formerKeyMetro == 'J') { //USELLL play sample recorded with s
        text ( " mapped to J CIRCULAR or PENDULAR way 2$ ", 400, 1000);
@@ -132,10 +132,10 @@ void  displayModePendulaireModeCirculaire() {
     translate(-w2, -h2, -1000); // Set the perspective 3D with two fingers on the trackpad
     line (250, 250, 250, 250);  // line showing how ball will behang by the motor's axe.
     fill (123);
-    //line (0,0,0,0,0, 11*250+200+250); //axe helping the 3D representation. axe qui relie les pendules
-   // noFill (); 
+      //line (0,0,0,0,0, 11*250+200+250); //axe helping the 3D representation. axe qui relie les pendules
+      // noFill (); 
 
-   //  sphere(side*3); // this sphere serves as a reference
+      //  sphere(side*3); // this sphere serves as a reference
    
 
      // Color sphere and Draw them, depending of acceleration or later with "chimera state"
@@ -185,7 +185,7 @@ void  displayModePendulaireModeCirculaire() {
 
                text (  memoryi, -width/4, -height/4 ) ;  
 
-   // metroPhase[i]= metroPhase[i];     
+    // metroPhase[i]= metroPhase[i];     
                        
     println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) ); 
 
@@ -198,9 +198,9 @@ void  displayModePendulaireModeCirculaire() {
 
 
     
-       if (formerKeyMetro == 'B' ) { //drive ball with lfo
-     fill( 255, 255, 0 ); // Spheres are all modulated with the same color. depending of acceleration
-   //   followLFO();  // better to repare
+     if (formerKeyMetro == 'B' ) { //drive ball with lfo
+         fill( 255, 255, 0 ); // Spheres are all modulated with the same color. depending of acceleration
+       //   followLFO();  // better to repare
        //  followLFObis(); // same as below
          println (" formerKeyMetro  ", i, " ",  formerKeyMetro );    
 
@@ -212,40 +212,39 @@ void  displayModePendulaireModeCirculaire() {
        //    displayfollowMovementAll();
       }
 
-         if (keyMode == " addSignalOneAndTwoQuater "  ) { //drive ball with lfo
+      if (keyMode == " addSignalOneAndTwoQuater "  ) { //drive ball with lfo
          fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
          fill (100, 155, 100);
-        //  x = displacement*cos(net.phase[i]);
-       //  y = displacement*sin(net.phase[i]); 
-         x = displacement*cos(newPosXaddSignal[i]);   
+         //  x = displacement*cos(net.phase[i]);
+         //  y = displacement*sin(net.phase[i]); 
+          x = displacement*cos(newPosXaddSignal[i]);   
           y = displacement*sin(newPosXaddSignal[i]);   
-      
-       //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
+         //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+        sphere(side*3);
+        sphereDetail( 4*5);
       }
           
        if (keyMode == " addSignalOneAndTwoTer "  ) { //drive ball with lfo
          fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
          fill (100, 155, 255);
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);    
-       //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-      sphere(side*3);
-      sphereDetail( 4*5);
-      }
+         x = displacement*cos(net.phase[i]);
+         y = displacement*sin(net.phase[i]);    
+         //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+        sphere(side*3);
+        sphereDetail( 4*5);
+       }
 
          if (keyMode == " addSignalOneAndTwoBis "  ) { //drive ball with lfo
            fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
            fill (255, 0 , 255);
-          //  x = displacement*cos(newPosXaddSignal[i]);
-          //  y = displacement*sin(newPosXaddSignal[i]); 
-             x = displacement*cos(net.phase[i]);
-           y = displacement*sin(net.phase[i]);    
-          //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
-         sphere(side*3);
-         sphereDetail( 4*5);
-      }
+            //  x = displacement*cos(newPosXaddSignal[i]);
+            //  y = displacement*sin(newPosXaddSignal[i]); 
+            x = displacement*cos(net.phase[i]);
+            y = displacement*sin(net.phase[i]);    
+            //      print (" keyMode ", i, " ",  newPosXaddSignal[i] );    
+           sphere(side*3);
+           sphereDetail( 4*5);
+         }
        
        if (keyMode == " addSignalOneAndTwo "  ) { //drive ball with lfo
            fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
