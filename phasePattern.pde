@@ -43,7 +43,7 @@ textSize (100);
     {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
 
       metroOldPhase[i]= metroPhase[i];
-      OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
+    //  OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
     }
   }
   //if  (   formerSartKey!= 'J')  

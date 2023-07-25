@@ -77,72 +77,49 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     formerEvent[74]=millis();
   }
 
-  if  (measure==78 && beatTrigged==true) {
+  if  (measure==82 && beatTrigged==true) {
+    key = '°'; keyReleased();
+    formerKeyMetro = '*';
+  
+    key='9'; // aligné
+    keyReleased();
+    speedDelta=4;
+   
+    memoryi = 9;
+    keyReleased();
+    net.naturalFrequency[memoryi]= 2;
+  }
 
-    key='*';
+    if  (measure==82 && beatPrecisedTrigged==true &&  beatPrecised <= networkSize) { 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+
+    key='T'; // speed is propaged to  next oscilltor 
     keyReleased();
-    key='9';
-    keyReleased();
-    speedDelta=3;
-    memoryi=9;
-    key='A'; 
-    keyReleased();
-    net.naturalFrequency[9]=1;
-    key='o'; 
-    keyReleased();
+   // key='y';keyReleased(); // uprise speed 
+   
+   }
+
+     if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize ) { 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+      key='y';keyReleased(); // uprise speed 
+   
+   }
+
+  if  (measure==83 && beatPrecisedTrigged==true) {  //  &&  beatPrecised <=8 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+      speedDelta= 5;
+   // key='T'; // speed is propaged to  next oscilltor 
+   // keyReleased();
+    key='y';keyReleased(); // uprise speed 
+   
+  }
  
-     }
-    if  (measure==79 && beatPrecisedTrigged==true  ) { 
-      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-
-    key='T'; // speed is propaged to  next oscilltor 
-    keyReleased();
-    key='y';keyReleased(); // uprise speed 
-   
-  }
-  if  (measure==80 && beatPrecisedTrigged==true  ) { 
-      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-
-    key='T'; // speed is propaged to  next oscilltor 
-    keyReleased();
-    key='y';keyReleased(); // uprise speed 
-   
-  }
-
-     if  (measure==79 && beatTrigged==true) {
-    speedDelta= 4;
-  }  
-
-   if  (measure==79 && beatPrecisedTrigged==true  ) { 
-      //   key='y';keyReleased(); // uprise speed 
-   
-  }
-
-    if  (measure==80 && beatTrigged==true) {
-    speedDelta= 5;
-  }  
   
-  if  (measure==81  && beatTrigged==true) {
-     //   speedDelta= 6;
-  }  
+   
   if  (measure==80 && measure<=200 ) {//129
-    autoNote2();
-  }
-  if  (measure>=79+2 && measure<=79+2 && beatTrigged==true) {
-   // speedDelta= 4;
-  }
-  if  (measure>=79+3 && measure<=79+3 && beatTrigged==true) {
-  //  speedDelta= 4;
-  }
-  
-  if  (measure>=79+4 && measure<=79+4 && beatTrigged==true) {
-  //  speedDelta= 4;
+   // autoNote2();
   }
 
-  if  (measure>=84 && measure<=92 && beatTrigged==true) {
-
-    //   key='y';keyReleased();
-  }
    if ( measure>=106 && measure<=106 && beatTrigged==true) {
        speedDelta= 2;
   //     key='e'; keyReleased();
