@@ -13,7 +13,9 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 */
 
 
-void propagationBallRotationBis() { // as addSignalOneAndTwoQuater() in NAOP 
+void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as addSignalOneAndTwoQuater() in NAOP 
+
+    propagationSpeed= speedOfPropagationFromLiveOrNot-10;
     //---------- come back to trigEventWithAbletonSignal ------- 
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         
@@ -109,25 +111,21 @@ void propagationBallRotationBis() { // as addSignalOneAndTwoQuater() in NAOP
               //  newPosFollowed[i]=-newPosFollowed[i];
         }
         }
-        
-        
+              
         for (int i = 0; i < networkSize - 0; i += 1) {             
        //     newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
            //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
             phaseMapped[i] = newPosFollowed[i] + phaseMappedFollow[i]; // new signal is a composition 
             
-           if (phaseMapped[i] < 0) {
+        if (phaseMapped[i] < 0) {
                 dataMappedForMotorisedPosition[i] = int(map(phaseMapped[i], 0, -TWO_PI, numberOfStep, 0)); 
                 phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI);  
-        }
-            
-        else {
-                
+        }    
+        else {              
                 dataMappedForMotorisedPosition[i] = (int) map(phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
                 phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
         }
-            
-            
+               
             //  newPosXaddSignal[i]=phaseMapped[i];  // realign Balls
             
         }
@@ -136,7 +134,7 @@ void propagationBallRotationBis() { // as addSignalOneAndTwoQuater() in NAOP
     //lockOscillatorToPositionFromPreviousProagedBall();
     //******** Lock last oscillator to the lastPhase
     
-    if (  dol ==  true) {
+    if (dol) {
     //    lockOscillatorToPositionFromPreviousProagedBallTest();
         for (int i = 0; i < networkSize - 0; i += 1) { 
         //    phaseMappedFollow[i] = netPhaseBase[i];
@@ -152,24 +150,20 @@ void propagationBallRotationBis() { // as addSignalOneAndTwoQuater() in NAOP
 }
 }
     */  
-    
-    
+      
     if (key != '#') {
         if(modeStartKeyToFollow == " null ") {
             phasePatternBase();
             
-            for (int i = 0; i < networkSize - 0; i += 1) {
-                phaseMappedFollow[i] = netPhaseBase[i];
+        for (int i = 0; i < networkSize - 0; i += 1) {
+            phaseMappedFollow[i] = netPhaseBase[i];
         }
     }
     }
-    
-    
-    propagationSpeed = 70.0; // useless if propagation comes from ableton Live
+       
+    //propagationSpeed = 30.0; // useless if propagation comes from ableton Live
 
-    signal[2] = map((((cos (frameCount / 30.0)) *-  1) % 1), -1, 1, -1, 1);  // sinusoida
-
-    
+    signal[2] = map((((cos (frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
     splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
     
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
