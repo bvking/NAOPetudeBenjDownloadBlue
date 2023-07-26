@@ -100,54 +100,42 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
    
    }
 
-    if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) { 
-      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      key='y';keyReleased(); // uprise speed 
+     if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) { 
+        text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+        key='y';keyReleased(); // uprise speed 
    
-   }
+     }
 
-  if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
+    if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
       speedDelta= 6;
       key='y';keyReleased(); // uprise speed 
    
-  }
+    }
 
     if  (measure==87 && beatTrigged) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
       speedDelta= 6;
       keyCode=CONTROL; keyReleased(); 
       
-  }
+    }
  
 
-   if ( measure>=106 && measure<=106 && beatTrigged==true) {
-       speedDelta= 2;
-  //     key='e'; keyReleased();
+     if ( measure>=106 && measure<=106 && beatTrigged==true) {
+       speedDelta= 4;
+      //     key='e'; keyReleased();
     
-  } 
-  if ( measure>=107 && measure<=107 && beatTrigged==true) {
-       speedDelta= 2;
-  //     key='e'; keyReleased();
+     } 
+    if ( measure>=107 && measure<=107 && beatTrigged==true) {
+       speedDelta= 4;
+        //     key='e'; keyReleased();
       keyCode =CONTROL; keyReleased();
-    
-  } 
-    if ( measure>=109 && measure<=109 && beatTrigged==true) {
-       speedDelta= 2;
-     
-  } 
-    if ( measure>=115 && measure<=115 && beatTrigged==true) {
-       speedDelta= 2;
-    //   key='e'; keyReleased();
-    
-  } 
-      if ( measure>=116 && measure<=116 && beatTrigged==true) {
-       speedDelta= 2;
-     
-  } 
+     } 
+    if ( measure==108 && beatTrigged==true) {
+       speedDelta= 5; 
+    }
 
-
-  if  (measure>=129 && measure<130 && beatTrigged==true) {// measure>=41 && measure<=42
+    if ( measure==122 && beatTrigged==true) {
     speedDelta=4;
     key='$';
     keyReleased();
@@ -179,20 +167,28 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     keyReleased(); // speed=0
     key='n';
     keyReleased(); // speed=0
+     
+  } 
+
+
+  if  (measure==123 && beatTrigged==true) {// measure>=41 && measure<=42
+
+   keyMode == " propagationBallRotationBis ";
+  //  key='w';    
+  //  keyReleased();
+  }
+
+
+  if  (measure>=129 && measure<130 && beatTrigged==true) {// measure>=41 && measure<=42
+
   }
   if  (measure>=129 ) {// measure>=41 && measure<=42
     //  autoNote1();
   }
 
 
-  if  (measure>=133 && measure<=137 && beatTrigged==true) {// measure>=41 && measure<=42
 
-    //  key='o';    keyReleased();
-    key='*';    
-    keyReleased();
-    key='w';    
-    keyReleased();
-  }
+
   if  (measure>=137 && measure<=137 && beatTrigged==true) {// measure>=41 && measure<=42
 
     //  key='o';    keyReleased();
