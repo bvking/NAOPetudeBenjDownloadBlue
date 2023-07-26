@@ -1084,8 +1084,7 @@ textSize (100);
 
     else if (keyCode == CONTROL) { 
 
-    println("INCREASE phases with special modulo   "); //P$ 
-     text ("INCREASE phases with special modulo   ",  200, 200); //P$ 
+     text ("INCREASE phases with special CONTROL   ",  200, 200); //P$ 
 
 
     for (int i = 0; i < networkSize; i++) {
@@ -1113,7 +1112,7 @@ textSize (100);
 
 
     else if (key == 'P') { 
-    println("INCREASE phases with special modulo P$   "); //P$ 
+    text ("INCREASE phases with special MODULO   ", 200, 200); //P$ 
     for (int i = 0; i < networkSize; i++) {
 
       //     net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
