@@ -120,9 +120,13 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
         
       if (measure ==  36 && beatTrigged ==  true ) {// measure>=41 && measure<=42
             // for (int i = 0; i < networkSize; i++) {
-            key = 'a';
+        memoryi=0;
+        net.naturalFrequency[memoryi]=1;
+            key = 'a';  // frequency  [0]= 1
             keyReleased();
-            key = '0';
+            key = 't';  // align
+            keyReleased();
+            key = '0';  // same speed
             keyReleased();
             key = 'q';
             keyReleased();

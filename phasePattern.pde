@@ -43,7 +43,7 @@ textSize (100);
     {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
 
       metroOldPhase[i]= metroPhase[i];
-      OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
+    //  OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
     }
   }
   //if  (   formerSartKey!= 'J')  
@@ -1083,7 +1083,10 @@ textSize (100);
     }
 
     else if (keyCode == CONTROL) { 
+
     println("INCREASE phases with special modulo   "); //P$ 
+     text ("INCREASE phases with special modulo   ",  200, 200); //P$ 
+
 
     for (int i = 0; i < networkSize; i++) {
 
@@ -1092,7 +1095,12 @@ textSize (100);
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
     // net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-     net.phase[i]+=   TWO_PI/(networkSize+1)*(networkSize-1-i); // front 
+
+
+   //  net.phase[i]= net.phase[i]+ (TWO_PI/(networkSize-(i+1)));      //*(networkSize+0-i); // front 
+      net.phase[i]= net.phase[i]+ (TWO_PI/(i+1));      
+
+
       //  net.phase[i]+=   TWO_PI/(networkSize-2)*i; // behind
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
@@ -1109,8 +1117,14 @@ textSize (100);
     for (int i = 0; i < networkSize; i++) {
 
       //     net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
+
       //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
-      net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+
+    //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+
+      //  net.phase[i]+=   (TWO_PI/(networkSize-2));//*(1*(networkSize-1-i)); // 8 hit
+
+        net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
     //  net.phase[i]=  net.phase[i]%TWO_PI;

@@ -77,99 +77,65 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     formerEvent[74]=millis();
   }
 
-  if  (measure==78 && beatTrigged==true) {
+  if  (measure==82 &&   beatPrecised == 1 && beatPrecisedTrigged==true) {
+    key = '°'; keyReleased();
+    formerKeyMetro = '*';
+  
+    key='9'; // aligné  à une position 
+    keyReleased();
+    speedDelta=4;
+   
+    memoryi = 9;
+    keyReleased();
+    net.naturalFrequency[memoryi]= 2;
+    key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
+  }
 
-    key='*';
+    if  (measure==82 && beatPrecisedTrigged==true &&  ( beatPrecised > 1 && beatPrecised <= networkSize+1)) { 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+
+    key='T'; // speed is propaged to  next oscilltor 
     keyReleased();
-    key='9';
-    keyReleased();
-    speedDelta=3;
-    memoryi=9;
-    key='A'; 
-    keyReleased();
-    net.naturalFrequency[9]=1;
-    key='o'; 
-    keyReleased();
- 
+   // key='y';keyReleased(); // uprise speed 
+   
+   }
+
+     if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) { 
+        text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+        key='y';keyReleased(); // uprise speed 
+   
      }
-    if  (measure==79 && beatPrecisedTrigged==true  ) { 
+
+    if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-
-    key='T'; // speed is propaged to  next oscilltor 
-    keyReleased();
-    key='y';keyReleased(); // uprise speed 
+      speedDelta= 6;
+      key='y';keyReleased(); // uprise speed 
    
-  }
-  if  (measure==80 && beatPrecisedTrigged==true  ) { 
+    }
+
+    if  (measure==87 && beatTrigged) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+      speedDelta= 6;
+      keyCode=CONTROL; keyReleased(); 
+      
+    }
+ 
 
-    key='T'; // speed is propaged to  next oscilltor 
-    keyReleased();
-    key='y';keyReleased(); // uprise speed 
-   
-  }
-
-     if  (measure==79 && beatTrigged==true) {
-    speedDelta= 4;
-  }  
-
-   if  (measure==79 && beatPrecisedTrigged==true  ) { 
-      //   key='y';keyReleased(); // uprise speed 
-   
-  }
-
-    if  (measure==80 && beatTrigged==true) {
-    speedDelta= 5;
-  }  
-  
-  if  (measure==81  && beatTrigged==true) {
-     //   speedDelta= 6;
-  }  
-  if  (measure==80 && measure<=200 ) {//129
-    autoNote2();
-  }
-  if  (measure>=79+2 && measure<=79+2 && beatTrigged==true) {
-   // speedDelta= 4;
-  }
-  if  (measure>=79+3 && measure<=79+3 && beatTrigged==true) {
-  //  speedDelta= 4;
-  }
-  
-  if  (measure>=79+4 && measure<=79+4 && beatTrigged==true) {
-  //  speedDelta= 4;
-  }
-
-  if  (measure>=84 && measure<=92 && beatTrigged==true) {
-
-    //   key='y';keyReleased();
-  }
-   if ( measure>=106 && measure<=106 && beatTrigged==true) {
-       speedDelta= 2;
-  //     key='e'; keyReleased();
+     if ( measure>=106 && measure<=106 && beatTrigged==true) {
+       speedDelta= 4;
+      //     key='e'; keyReleased();
     
-  } 
-  if ( measure>=107 && measure<=107 && beatTrigged==true) {
-       speedDelta= 2;
-  //     key='e'; keyReleased();
+     } 
+    if ( measure>=107 && measure<=107 && beatTrigged==true) {
+       speedDelta= 4;
+        //     key='e'; keyReleased();
       keyCode =CONTROL; keyReleased();
-    
-  } 
-    if ( measure>=109 && measure<=109 && beatTrigged==true) {
-       speedDelta= 2;
-     
-  } 
-    if ( measure>=115 && measure<=115 && beatTrigged==true) {
-       speedDelta= 2;
-    //   key='e'; keyReleased();
-    
-  } 
-      if ( measure>=116 && measure<=116 && beatTrigged==true) {
-       speedDelta= 2;
-     
-  } 
+     } 
+    if ( measure==108 && beatTrigged==true) {
+       speedDelta= 5; 
+    }
 
-
-  if  (measure>=129 && measure<130 && beatTrigged==true) {// measure>=41 && measure<=42
+    if ( measure==122 && beatTrigged==true) {
     speedDelta=4;
     key='$';
     keyReleased();
@@ -201,20 +167,49 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     keyReleased(); // speed=0
     key='n';
     keyReleased(); // speed=0
+     
+  } 
+
+
+  if  (measure==123 && beatTrigged==true) {// measure>=41 && measure<=42
+
+   keyMode = " propagationBallRotationBis ";
+  //  key='w';    
+  //  keyReleased();
+  }
+
+   if  (measure==124 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
+
+    keyCode = ALT;  keyPressed ();
+    key= 'v'; keyReleased ();
+    keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+
+   }
+
+    if  (measure==124 && beatTrigged==true) {// measure>=41 && measure<=42
+
+  
+  //  key='w';    
+  //  keyReleased();
+  }
+  
+    if  (measure==125 && beatTrigged==true) {// measure>=41 && measure<=42
+
+    keyMode = " propagationBallRotationBis ";
+  //  key='w';    
+  //  keyReleased();
+  }
+
+  if  (measure>=129 && measure<130 && beatTrigged==true) {// measure>=41 && measure<=42
+
   }
   if  (measure>=129 ) {// measure>=41 && measure<=42
     //  autoNote1();
   }
 
 
-  if  (measure>=133 && measure<=137 && beatTrigged==true) {// measure>=41 && measure<=42
 
-    //  key='o';    keyReleased();
-    key='*';    
-    keyReleased();
-    key='w';    
-    keyReleased();
-  }
+
   if  (measure>=137 && measure<=137 && beatTrigged==true) {// measure>=41 && measure<=42
 
     //  key='o';    keyReleased();

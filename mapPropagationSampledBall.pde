@@ -3,7 +3,11 @@ void mapPropagationSampledBall() {
      for (int i = 0; i <  networkSize-0; i+=1) { 
           //   net.phase[i]=newPosXaddSignal[i]; // use to display  ?
 
-            /*
+              //     net.phase[i]=phaseMapped[i]; // use with trigEventWithAbletonLive            /*
+          if ( keyMode == " trigEventWithAbletonSignal ") { 
+              phaseMapped[i]=net.phase[i];
+                    } 
+
                if ((phaseMapped[i])<0){
                   phaseMapped[i]= (phaseMapped[i])+TWO_PI; // easier
                   phaseMapped[i]%=TWO_PI;     
@@ -12,16 +16,8 @@ void mapPropagationSampledBall() {
                 else if (phaseMapped[i]>=0){ 
                    phaseMapped[i]%=TWO_PI;
                  }
-            */
-
-
-             //specialPhase[i]=newPosXaddSignal[i];
-             //if (specialPhase[i] < 0) { 
-             //   specialPhase[i]= TWO_PI-specialPhase[i];
-              //  }
-             //specialPhase[i] = map (specialPhase[i], 0, TWO_PI, 0, numberOfStep);
-             // specialPhase[i]=dataMappedForMotorisedPosition[i];
             
+
              OldSpecialPhase[i]=specialPhase[i]; // Old not used
              specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
             // oldPositionToMotor[i]=  positionToMotor[i];
@@ -37,7 +33,7 @@ void mapPropagationSampledBall() {
           print ( " cou+Only in maPropa "); showArray(rev);    
           text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
-      if ( keyMode == " propagationSampleBall " ) { 
+      if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal ") { 
      for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];
 

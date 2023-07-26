@@ -89,7 +89,7 @@ void switchFonctionDependingKeyMode() {
         }
     
     if (keyMode == " propagationBallRotationBis " || keyModeRed == " propagationBallRotationBis ") { 
-        propagationBallRotationBis();
+        propagationBallRotationBis(30.0);
         text(" Alt y " + keyMode, -width * 2, -height * 3+100);
         }
     

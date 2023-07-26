@@ -387,9 +387,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           } 
 
      } // // end quatrieme
- }  //  end of  pleasureKraft Arrangement
+ }
+ 
+   //  end of  pleasureKraft Arrangement
    
-   
+          mapPropagationSampledBall();
 
         textSize (50);
 
