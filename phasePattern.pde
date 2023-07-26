@@ -1122,9 +1122,9 @@ textSize (100);
 
     //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
-        net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // 8 hit
+      //  net.phase[i]+=   (TWO_PI/(networkSize-2));//*(1*(networkSize-1-i)); // 8 hit
 
-      //  net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
+        net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
     //  net.phase[i]=  net.phase[i]%TWO_PI;
