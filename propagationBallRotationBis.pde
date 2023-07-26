@@ -190,8 +190,18 @@ void propagationBallRotationBis() { // as addSignalOneAndTwoQuater() in NAOP
         // positionMov = " troisieme " ;  
         textSize(500);         
     } 
+
+       if  (measure==124 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
+
+   // keyCode = ALT;  keyReleased ();
+   // key= 'v'; keyReleased ();
+    keyMode = " trigEventWithAbletonSignal ";
+
+   }
     
 }
+
+
 void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareSignal) { 
     text(" Z to change Propagation Way trigedSignFromAbleton3 ou 2 " + trigedSignFromAbleton[2] + " 3 " + trigedSignFromAbleton[3],  500, 900);
     
