@@ -170,24 +170,16 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     mapNewPosX(); // counter actived
     
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
-        //  keyMode = " trigEventWithAbletonSignal ";
-        // switchFonctionDependingKeyMode();
-        //  keyCode= ALT; keyReleased(); key='v'; keyReleased();
-        // switchFonctionDependingKeyMode();
-        //trigEventWithAbletonSignal(); 
         addSignalOneAndTwoTer();
         // positionMov = " troisieme " ;  
         textSize(500);         
     } 
     
-    if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
-        
+    if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
         // keyCode = ALT;  keyReleased ();
         // key= 'v'; keyReleased ();
         keyMode = " trigEventWithAbletonSignal ";
-        
     }
-    
 }
 
 
