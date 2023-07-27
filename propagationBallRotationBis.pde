@@ -15,7 +15,8 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as addSignalOneAndTwoQuater() in NAOP 
     
-    propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
+   // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
+   // propagationSpeed =100.0;
     //---------- come back to trigEventWithAbletonSignal ------- 
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         //keyMode = " trigEventWithAbletonSignal ";
@@ -23,7 +24,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     } 
      
     modeStartKeyToFollow = " null ";
-    keyMode = " propagationBallRotationBis ";
+   // keyMode = " propagationBallRotationBis ";
     formerKeyMetro = '*';
     
     textSize(50);

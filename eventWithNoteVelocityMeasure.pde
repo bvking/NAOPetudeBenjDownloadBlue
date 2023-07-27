@@ -174,33 +174,46 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   if  (measure==123 && beatTrigged==true) {// measure>=41 && measure<=42
 
    keyMode = " propagationBallRotationBis ";
+    propagationSpeed= 90.0;
   //  key='w';    
   //  keyReleased();
   }
 
-   if  (measure==124 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
+   if  (measure==126 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
-    keyCode = ALT;  keyPressed ();
-    key= 'v'; keyReleased ();
+   // keyCode = ALT;  keyPressed ();
+   // key= 'v'; keyReleased ();
     keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+    propagationSpeed= 180.0;
 
    }
 
-    if  (measure==124 && beatTrigged==true) {// measure>=41 && measure<=42
+      if  (measure==127 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
-  
-  //  key='w';    
-  //  keyReleased();
-  }
-  
-    if  (measure==125 && beatTrigged==true) {// measure>=41 && measure<=42
+   // keyCode = ALT;  keyPressed ();
+   // key= 'v'; keyReleased ();
+    keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+    propagationSpeed= 30.0;
 
+   }
+
+    if  (measure==128 && beatTrigged==true) {// measure>=41 && measure<=42
     keyMode = " propagationBallRotationBis ";
+  
+  //  key='w';    
+  //  keyReleased();
+  }
+  
+    if  (measure==129 && beatTrigged==true) {// measure>=41 && measure<=42
+    propagationSpeed= 280.0;
+   
   //  key='w';    
   //  keyReleased();
   }
 
-  if  (measure>=129 && measure<130 && beatTrigged==true) {// measure>=41 && measure<=42
+  if  (measure==130 && beatTrigged==true) {// measure>=41 && measure<=42
+   keyMode = " propagationBallRotationBis ";
+   propagationSpeed= 120.0;
 
   }
   if  (measure>=129 ) {// measure>=41 && measure<=42
