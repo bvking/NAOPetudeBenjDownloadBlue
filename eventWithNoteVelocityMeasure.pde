@@ -173,7 +173,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
 
   if  (measure==123 && beatTrigged==true) {// measure>=41 && measure<=42
 
-   keyMode = " null ";
+   // keyMode = " null ";
    keyModePropagation = " propagationBallRotationBis ";
    propagationBallRotationBis(200);
   //  key='w';    
@@ -207,6 +207,8 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   if  (measure>=129 && measure<130 && beatTrigged==true) {// measure>=41 && measure<=42
 
   }
+
+
   if  (measure>=129 ) {// measure>=41 && measure<=42
     //  autoNote1();
   }
@@ -214,11 +216,11 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
 
 
 
-  if  (measure>=137 && measure<=137 && beatTrigged==true) {// measure>=41 && measure<=42
+  if  (measure==137 && beatTrigged==true) {// measure>=41 && measure<=42
 
     //  key='o';    keyReleased();
-    key='*';    
-    keyReleased();
+    //key='*';    
+    //keyReleased();
     
   }
    if  (measure>=166 && beatTrigged==true) {// measure>=41 && measure<=42

@@ -285,7 +285,7 @@ void  displayModePendulaireModeCirculaire() {
 
     if ( keyModePropagation  ==  " propagationSampleBall "   ) { //drive ball with lfo
   
-              println ( " net.phase[i] ", net.phase[i], " new " , newPosF[i], " map ", phaseMapped[i], " ", keyModePropagation ); 
+        println (" propagationSpeed ",  propagationSpeed, "net.phase[i] ", net.phase[i], " new " , newPosF[i], " map ", phaseMapped[i], " ", keyModePropagation ); 
 
       text ( char (formerKeyMetro), 100,100);
       fill (75, 255 , 100);    
@@ -300,7 +300,7 @@ void  displayModePendulaireModeCirculaire() {
       
        if ( keyModePropagation  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
-        println ( " net.phase[i] ", net.phase[i], " new " , newPosF[i], " map ", phaseMapped[i], " ", keyModePropagation ); 
+        println (" propagationSpeed ",  propagationSpeed, "net.phase[i] ", net.phase[i], " new " , newPosF[i], " map ", phaseMapped[i], " ", keyModePropagation ); 
         text ( char (formerKeyMetro), 100,100);
         fill (175, 75 , 75);    
         //   x = displacement*cos(newPosF[i]);
