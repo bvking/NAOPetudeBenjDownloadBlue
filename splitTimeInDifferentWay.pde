@@ -192,7 +192,7 @@ void splitTimeScaleRotation(float propagationSpeedFromFunction) {
         timeLfo = -timeLfo;
         }
     
-    text("oldSplit " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo, -width - 200, + height);
+    text(" propagationSpeedFromFunction " + propagationSpeedFromFunction + "oldSplit " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo, -width - 200, + height);
     
     oldSplitTimeLfo = splitTimeLfo;
     splitTimeLfo = int((timeLfo) % 100) + 0;
