@@ -108,7 +108,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             float Automation1[] = new float[numFrame];
             int formerAuto;
             
-            String keyMode;
+            String keyMode, keyModePropagation;
             boolean[] moveKeys = new boolean[99];
             
             int numberOfPointInterpolated = 2; 
