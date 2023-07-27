@@ -159,7 +159,10 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     //propagationSpeed = 30.0; // useless if propagation comes from ableton Live
     
     signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
-    splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
+
+    float signalWithOutLive = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+
+    splitTimeScaleRotation(signalWithOutLive);  // ascendant vs descendant => changement de sens de propagation
     
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
     // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
