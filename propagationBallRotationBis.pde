@@ -104,7 +104,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (doo == true) {
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
-                //newPosFollowed[i]=-newPosFollowed[i];
+               // newPosFollowed[i]=-newPosFollowed[i];
+               // phaseAmount=-phaseAmount;
             }
         }
         
@@ -121,6 +122,11 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
                 dataMappedForMotorisedPosition[i] = (int) map(phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
                 phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
             }
+
+            if (doo)  { 
+             //   phaseMapped[i]=-phaseMapped[i];:
+            
+             }
             
             //  newPosXaddSignal[i]=phaseMapped[i];  // realign Balls
             
@@ -175,17 +181,17 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         // positionMov = " troisieme " ;  
         textSize(500);         
     } 
-    
-    if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-       //keyMode = " trigEventWithAbletonSignal ";
+    // MODULATION of phase and propagaation
 
-       
-       levelFromArrow= PI / (1 * networkSize - 1);
+
+    if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+      
+       levelFromArrow= (PI / (1 * networkSize - 1));
        modulePhaseAmountWithArrow=true;
     }
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
        propagationSpeed= 90.0;
-    //   keyMode = " trigEventWithAbletonSignal ";
+ 
     }
     if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
        propagationSpeed= 60.0;
@@ -193,7 +199,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     }
 
     if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-      keyMode = " trigEventWithAbletonSignal ";
+    //  keyMode = " trigEventWithAbletonSignal ";
     }
 }
 

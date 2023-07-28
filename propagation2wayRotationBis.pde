@@ -8,34 +8,39 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
           phaseAmount= levelFromArrow;
           phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
      }
+
+
+    if (doo)   { 
+          phaseAmount=-phaseAmount;  // change Way of phaseAmount
+    }
+
   
    
-    text("phaseAmount " + phaseAmount, 500, 1000);
+    text( - (PI / (1 * networkSize - 1)) + "-  phaseAmount  " + ( -  phaseAmount  ), 500, 1000);
     
     
-    if (doo ==  false && propagationTrigged ==  true) { // propaga fixe
+    if (propagationTrigged ==  true) { // propaga fixe   doo ==  false && 
         LFO[oscillatorChange] = LFO[oldOscillatorChange];//
      if ( keyMode == " propagationBallRotationBis " && modulePhaseAmountWithArrow)  { 
-        LFO[oscillatorChange] = LFO[oscillatorChange] +=  phaseAmount + PI;
+        LFO[oscillatorChange] = LFO[oscillatorChange] -  phaseAmount ;
      }
 
       if ( keyMode == " propagationBallRotationBis " && !modulePhaseAmountWithArrow)  { 
         LFO[oscillatorChange] = LFO[oscillatorChange] - (PI / (1 * networkSize - 1));
      }
 
-
-     if ( keyMode == " propagationSampleBall ")  { 
+     if ( doo && keyMode == " propagationSampleBall ")  { 
         LFO[oscillatorChange] = movementInterpolated - (PI / (1 * networkSize - 1));
         text("  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
      }
-    }
-    
-    if (doo ==  true && propagationTrigged ==  true) {  // propaga selon phaseAmount
-        LFO[oscillatorChange] = LFO[oldOscillatorChange];//
-        LFO[oscillatorChange] +=  phaseAmount + PI;
+
+     if ( keyMode == " propagationSampleBall ")  { 
+        LFO[oscillatorChange] = movementInterpolated + (PI / (1 * networkSize - 1));
         text("  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
+     }
     }
-    
+ 
+   
     //---------- map all propaged Lfo  (angular incrementation from phase Amount)
     for (int i = 0; i < networkSize; i++) {
         
@@ -56,7 +61,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
     // end ---------- map all propaged Lfo  (angular incrementation from phase Amount)
     
     
-    if (doo ==  true  && propagationTrigged ==  true) {  //AMPLITUDE  negative way : ccw
+    if (dol ==  true  && propagationTrigged ==  true) {  //AMPLITUDE  negative way : ccw
         int i;  
         i = (oscillatorChange);
         
@@ -84,7 +89,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
            m = networkSize - 1;
         }
 
-       if (dol ==  true)  { 
+      if (dol ==  true)  { 
             
           if (newPosXaddSignal[j] < 0) { 
                 
@@ -123,6 +128,6 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
                 }
             }
                 // end ---------- map all propaged Lfo (angular incrementation from phase Amount) 
-     } // end dol
-    } // end doo
+       } // end dol
+    } // end dol
 }

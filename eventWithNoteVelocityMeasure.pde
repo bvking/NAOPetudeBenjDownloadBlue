@@ -222,7 +222,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
 
   if  (measure==130 && beatTrigged==true) {// measure>=41 && measure<=42
-   keyMode = " propagationBallRotationBis ";
+     keyMode = " propagationBallRotationBis ";
    // propagationSpeed= 120.0;
 
   }
