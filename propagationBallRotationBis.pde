@@ -4,6 +4,7 @@ boolean propagationTrigged;
 boolean doo = false;
 boolean dol = false;
 boolean doC = false;
+boolean doRotation = false;
 /*
 String modeStartKeyToFollow, keyMode;
 
@@ -33,6 +34,16 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     letter = key;   
     
     switch(letter) {
+        case'r' : // way of rotation
+        doRotation = true;
+        key = '#';
+        
+        break;
+        
+        case'R' : // way of rotation
+        doRotation = false;
+        key = '#';
+
         case'o' : // way of rotation
         doo = true;
         key = '#';
@@ -101,10 +112,10 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     if (formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
         
         println(" modeStartKeyToFollow " + modeStartKeyToFollow);
-        if (doo == true) {
+        if (doRotation == true) {
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
-               // newPosFollowed[i]=-newPosFollowed[i];
+             newPosFollowed[i]+=0.1;
                // phaseAmount=-phaseAmount;
             }
         }
