@@ -38,6 +38,9 @@ int  [] positionToFollow =new int [networkSize];
 
 float[] deltaOldPhaseActualPhase = new float[networkSize];
 
+float levelFromArrow, phaseAmount;
+boolean modulePhaseAmountWithArrow;
+
 
 boolean[] encoderTouched = new boolean[networkSize];
 int[] RevsContinue = new int[networkSize];

@@ -10,25 +10,33 @@ void keyReleased() {
     case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
   }
 
-  
+  if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
+    
+      levelFromArrow = levelFromArrow-0.1;
+       if (levelFromArrow<=0) {
+           levelFromArrow=1;
+        }
+     keyCode= TAB; // to trig once 
+  }
 
 
-
-
+  if (keyCode == RIGHT  && modulePhaseAmountWithArrow) { 
+           levelFromArrow = levelFromArrow+1;
+           levelFromArrow = levelFromArrow%(1+0.1);   
+       
+     keyCode= TAB; // to trig once 
+  }
 
   textSize (100);
    if (key == 'n') {
     oldFaz=faz;
     faz+=1;
-
     getOldPositionOfActiveOscillator(faz);
-
-  
-      }
+    }
 
      recordFrame();
 
-    if (keyCode == ALT){
+   if (keyCode == ALT){
     moveKeys[8]=false;
    }
    

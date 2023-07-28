@@ -1,16 +1,29 @@
 void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
     textSize (100);
-    float phaseAmount = trigedSignFromAbleton[1];
+    phaseAmount = trigedSignFromAbleton[1];
     phaseAmount = map(phaseAmount, 0, 1, 1, 0);     
     phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
+    
+    if (modulePhaseAmountWithArrow)  { 
+          phaseAmount= levelFromArrow;
+          phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
+     }
+  
+   
     text("phaseAmount " + phaseAmount, 500, 1000);
     
     
     if (doo ==  false && propagationTrigged ==  true) { // propaga fixe
         LFO[oscillatorChange] = LFO[oldOscillatorChange];//
-     if ( keyMode == " propagationBallRotationBis ")  { 
+     if ( keyMode == " propagationBallRotationBis " && modulePhaseAmountWithArrow)  { 
+        LFO[oscillatorChange] = LFO[oscillatorChange] +=  phaseAmount + PI;
+     }
+
+      if ( keyMode == " propagationBallRotationBis " && !modulePhaseAmountWithArrow)  { 
         LFO[oscillatorChange] = LFO[oscillatorChange] - (PI / (1 * networkSize - 1));
      }
+
+
      if ( keyMode == " propagationSampleBall ")  { 
         LFO[oscillatorChange] = movementInterpolated - (PI / (1 * networkSize - 1));
         text("  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
