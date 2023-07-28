@@ -171,10 +171,10 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   } 
 
 
-  if  (measure==123 && beatTrigged==true) {// measure>=41 && measure<=42
+  if  (measure==122 && beatTrigged==true) {// 124 basse
 
    keyMode = " propagationBallRotationBis ";
-    propagationSpeed= 90.0;
+    propagationSpeed= 60.0;
   //  key='w';    
   //  keyReleased();
   }
@@ -182,17 +182,27 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
    if  (measure==126 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
    // keyCode = ALT;  keyPressed ();
-   // key= 'v'; keyReleased ();
-    keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-    propagationSpeed= 180.0;
+    key= 'P'; keyReleased ();
+   // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+   // propagationSpeed= 90.0;
+   // keyMode = " propagationBallRotationBis ";
 
    }
 
-      if  (measure==127 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
+    if  (measure==126 && beatPrecised==2 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
    // keyCode = ALT;  keyPressed ();
-   // key= 'v'; keyReleased ();
-    keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+  //  key= 'P'; keyReleased ();
+   // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+  //  propagationSpeed= 90.0;
+    keyMode = " propagationBallRotationBis ";
+
+   }
+
+      if  (measure==130 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
+
+    key= 'M'; keyReleased ();
+   // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
     propagationSpeed= 30.0;
 
    }
@@ -205,7 +215,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
   }
   
     if  (measure==129 && beatTrigged==true) {// measure>=41 && measure<=42
-    propagationSpeed= 280.0;
+   // propagationSpeed= 280.0;
    
   //  key='w';    
   //  keyReleased();
@@ -213,7 +223,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
 
   if  (measure==130 && beatTrigged==true) {// measure>=41 && measure<=42
    keyMode = " propagationBallRotationBis ";
-   propagationSpeed= 120.0;
+   // propagationSpeed= 120.0;
 
   }
   if  (measure>=129 ) {// measure>=41 && measure<=42

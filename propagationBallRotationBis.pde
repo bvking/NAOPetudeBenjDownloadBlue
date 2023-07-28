@@ -176,10 +176,20 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         textSize(500);         
     } 
     
-    if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-        // keyCode = ALT;  keyReleased ();
-        // key= 'v'; keyReleased ();
-        keyMode = " trigEventWithAbletonSignal ";
+    if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+       keyMode = " trigEventWithAbletonSignal ";
+    }
+
+     if (measure ==  126 && beatPrecised ==  2 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
+       propagationSpeed= 90.0;
+        
+    
+    //   keyMode = " trigEventWithAbletonSignal ";
+    }
+
+    if (measure ==  130 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+    
+       keyMode = " trigEventWithAbletonSignal ";
     }
 }
 
