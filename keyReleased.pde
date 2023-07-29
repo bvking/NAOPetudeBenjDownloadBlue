@@ -11,7 +11,8 @@ void keyReleased() {
 
    if (keyCode == DOWN ) {  
 
-      propagationSpeed=propagationSpeed+10;
+     
+   //  propagationSpeed=propagationSpeed+10;
         //  propagationSpeed=propagationSpeed%211;
      if (propagationSpeed==210){
        //  propagationSpeed%=200 ;
