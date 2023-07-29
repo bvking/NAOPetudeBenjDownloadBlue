@@ -9,16 +9,18 @@ void keyReleased() {
     case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
     case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
   }
-  if ( keyMode == "propagationBallRotationBis " ) {
+  if ( keyMode == " propagationBallRotationBis " ) {
 
-    if (keyCode == UP ) {  
+   if (keyCode == DOWN ) {  
 
-      propagationSpeed=propagationSpeed-10;
-   //   propagationSpeed%=10;
-
-
-    } 
-   } 
+      propagationSpeed=propagationSpeed+10;
+        //  propagationSpeed=propagationSpeed%211;
+     if (propagationSpeed==210){
+       //  propagationSpeed%=200 ;
+       propagationSpeed=1;
+     } 
+   }
+  } 
 
   if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
     
