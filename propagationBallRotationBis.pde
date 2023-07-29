@@ -29,6 +29,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     formerKeyMetro = '*';
     
     textSize(50);
+    translate (500, 0);
     displayPropagationControl();
     
     letter = key;   
@@ -212,6 +213,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
     //  keyMode = " trigEventWithAbletonSignal ";
     }
+
+    translate (-500, 0);
 }
 
 
