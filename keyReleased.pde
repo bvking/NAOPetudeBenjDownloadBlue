@@ -9,7 +9,7 @@ void keyReleased() {
     case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
     case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
   }
-  if ( keyMode == "propagationBallRotationBis " ) {
+  if ( keyMode == " propagationBallRotationBis " ) {
 
     if (keyCode == UP ) {  
 
@@ -27,6 +27,7 @@ void keyReleased() {
 
 
     } 
+    keyCode = TAB ;
    } 
 
   if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
