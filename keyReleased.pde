@@ -1,5 +1,7 @@
 void keyReleased() {
 
+
+
     switch(keyCode) { // to modulate Knob
  
   //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;

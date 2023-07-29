@@ -14,8 +14,9 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
           phaseAmount=-phaseAmount;  // change Way of phaseAmount
     }
 
-
-    text( - (PI / (1 * networkSize - 1)) + "-  phaseAmount  " + ( -  phaseAmount  ) + " doo " + doo, 500, 1000);
+  
+   
+    text( - (PI / (1 * networkSize - 1)) + "-  phaseAmount  " + ( -  phaseAmount  ), 500, 1000);
     
     
     if (propagationTrigged ==  true) { // propaga fixe   doo ==  false && 
