@@ -182,7 +182,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
     // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
-    propagation2wayRotationBis(); 
+    propagation2wayRotationBis(int speedOfPropagationFromLiveOrNot); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
     mapNewPosX(); // counter actived

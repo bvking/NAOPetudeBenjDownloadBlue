@@ -13,7 +13,7 @@ void keyReleased() {
 
     if (keyCode == UP ) {  
 
-      propagationSpeed-=10;
+      propagationSpeed=propagationSpeed-10;
    //   propagationSpeed%=10;
 
 
