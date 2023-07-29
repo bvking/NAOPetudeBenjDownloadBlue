@@ -112,7 +112,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     if (formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
         
-       text (" modeStartKeyToFollow " + modeStartKeyToFollow + " propagationSpeed " + propagationSpeed, 0, 400);
+        println(" modeStartKeyToFollow " + modeStartKeyToFollow);
         if (doRotation == true) {
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
@@ -202,11 +202,11 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
        modulePhaseAmountWithArrow=true;
     }
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-      // propagationSpeed= 90.0;
+       propagationSpeed= 90.0;
  
     }
     if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-     //  propagationSpeed= 60.0;
+       propagationSpeed= 60.0;
     //   keyMode = " trigEventWithAbletonSignal ";
     }
 
