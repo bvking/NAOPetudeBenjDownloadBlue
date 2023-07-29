@@ -171,7 +171,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             float splitTimeLfo, oldSplitTimeLfo; // renvoie la valeur discontine du timeLFO. Quand timeLFO va de 0 à 1000, splitTimeLfo renvoie la valeur restante du timeLfo
             
-            float propagationSpeed = 20.0; // " vitesse " à laquelle on change d'oscillateur
+            float propagationSpeed = 130.0; // " vitesse " à laquelle on change d'oscillateur
             
             int oscillatorChanging; // next or last changing oscillator
             //** * * * * * * * * * * * * * * * *         followSignalLfo
