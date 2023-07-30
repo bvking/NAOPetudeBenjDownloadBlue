@@ -1,5 +1,5 @@
 void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
-    textSize (100);
+    textSize (50);
     phaseAmount = trigedSignFromAbleton[1];
     phaseAmount = map(phaseAmount, 0, 1, 1, 0);     
     phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
@@ -16,7 +16,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
 
   
    
-    text( - (PI / (1 * networkSize - 1)) + "-  phaseAmount  " + ( -  phaseAmount  ), 500, 1000);
+    text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow +  (- (PI / (1 * networkSize - 1))) + "-  phaseAmount  " + ( -  phaseAmount  ), 500, -1000);
     
     
     if (propagationTrigged ==  true) { // propaga fixe   doo ==  false && 

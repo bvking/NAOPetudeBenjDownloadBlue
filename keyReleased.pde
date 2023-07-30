@@ -1,50 +1,46 @@
 void keyReleased() {
 
-
-
-    switch(keyCode) { // to modulate Knob
+   switch(keyCode) { // to modulate Knob
  
-  //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
-  //  case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
-    case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
-    case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
-  }
-  if ( keyMode == " propagationBallRotationBis " ) {
+        //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
+        //  case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
+      case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
+      case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
+   }
 
-    if (keyCode == UP ) {  
+   if ( keyMode == " propagationBallRotationBis " ) {
 
-     
-   //  propagationSpeed=propagationSpeed+10;
-        //  propagationSpeed=propagationSpeed%211;
-    // if (propagationSpeed==210){
-       //  propagationSpeed%=200 ;
-   //    propagationSpeed=1;
-   //  } 
-   
-   
-      propagationSpeed=propagationSpeed+10;
-   //   propagationSpeed%=10;
+    if (keyCode == UP ) {    
+        propagationSpeed=propagationSpeed+5;
+        propagationSpeed=propagationSpeed%205;
+     }
+     if (keyCode == DOWN ) {    
+        propagationSpeed=propagationSpeed-5;       
+     } 
 
-
-    } 
-    keyCode = TAB ;
+     if (propagationSpeed==0){
+         propagationSpeed=5;
+     }    
+   // keyCode = TAB ;
    } 
 
   if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
     
       levelFromArrow = levelFromArrow-0.1;
+        //  levelFromArrow -=0.1;
        if (levelFromArrow<=0) {
            levelFromArrow=1;
         }
-     keyCode= TAB; // to trig once 
+    // keyCode= TAB; // to trig once 
   }
 
 
-  if (keyCode == RIGHT  && modulePhaseAmountWithArrow) { 
-           levelFromArrow = levelFromArrow+1;
-           levelFromArrow = levelFromArrow%(1+0.1);   
+  if (keyCode == DOWN ) {  // && modulePhaseAmountWithArrow
+         //  levelFromArrow = levelFromArrow+1;
+            levelFromArrow +=0.1;
+         //  levelFromArrow = levelFromArrow%(1+0.1);   
        
-     keyCode= TAB; // to trig once 
+   //  keyCode= TAB; // to trig once 
   }
 
   textSize (100);
@@ -179,149 +175,9 @@ void keyReleased() {
     key= '#'; // to trig once keyPressedLFO
   }
    
-    if (formerKeyMetro == 'B')  {
-
-      if (keyCode == CONTROL) {
-         oscillatorChange++;
-         oscillatorChange=oscillatorChange%12;
-      if (oscillatorChange<=0) {
-         oscillatorChange=2;
-     }
-         keyCode =SHIFT; // to trig once keyPressedLFO
-  }
-
-     if (keyCode == LEFT) {  
-    println( " LEFT INCREASE decay offseft shiftFollowMov ")  ; 
- //   decayshiftFollowMov=decayshiftFollowMov+50;
-    decayshiftFollowMov+=1;
-    decayshiftFollowMov=decayshiftFollowMov%200;
-  
-    println ("d= timeOffsetRatio: "); 
-    println ( decayshiftFollowMov);
-    textSize (100);
-
-
-    keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-
-     if (keyCode == RIGHT) { 
-
-    println( " right INCREASE decay offseft shiftFollowMov")  ; 
-     decayshiftFollowMov=decayshiftFollowMov-1;  
-      println ("d= timeOffsetRatio: "); 
-    println ( decayshiftFollowMov);
-    textSize (100);
-    text (" decayshiftFollowMov  ",  200,200);
-    text ( decayshiftFollowMov,  200,300);
-   keyCode=SHIFT; // to trig once keyPressedLFO
-  }
-  
-   if (keyCode == UP) {
-     println(" lfoPhase phase shifting"); 
-        println(" lfoPhase INCREASE phase shifting"); 
-           println(" lfoPhase INCREASE phase shifting"); //
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
-    phaseShiftingFollowPhase11=phaseShiftingFollowPhase11%PI;
-    phaseShiftingFollowLFO= phaseShiftingFollowLFO+QUARTER_PI/8;  
-    phaseShiftingFollowLFO= phaseShiftingFollowLFO%PI;
-    
- /*       
-  if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    } 
-    */
-   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowLFO));
-    key= '#';
-  }
-  
-    if (keyCode == DOWN) {
-     println(" lfoPhase DECREASE phase shifting"); //
-      println(" lfoPhase DECREASE phase shifting"); //
-       println(" lfoPhase DECREASE phase shifting"); //
-     phaseShiftingFollowLFO= 0;   
-     phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
- //   phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-   /*     
-  if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowPhase11));
-    */
-    keyCode = SHIFT;
-  }
-  
-   
-  
- } 
  
  
 
-  if (formerKeyMetro == 'J' || keyMode == " null ")  {
-    
-  
-    if (keyCode == LEFT) {
-      
-  //   float timeReleased= (millis()/5)%1000;
-    println(" followSignal right INCREASE timeOffset ")  ; // Incremente together without changing phases
-    delayTimeFollowPhase11=delayTimeFollowPhase11+1;
-    delayTimeFollowPhase11=delayTimeFollowPhase11%65;  
-    print ("delayTimeFollowPhase11: ");
-    println (delayTimeFollowPhase11);
-    if ( delayTimeFollowPhase11<=0 && delayTimeFollowPhase11>=0){
-      trigLfo=0;
-       }
-     else if (delayTimeFollowPhase11>0){   trigLfo=1;   }
-      keyCode = SHIFT;
-  }
-  
-  if (keyCode == RIGHT) {
-    println(" right INCREASE timeOffset ")  ; // Incremente together without changing phases
-    delayTimeFollowPhase11=delayTimeFollowPhase11-1;
-    if (delayTimeFollowPhase11<0) {
-      delayTimeFollowPhase11=60;
-       }
- //   delayTimeFollowPhase11=delayTimeFollowPhase11%61;
-    print ("delayTimeFollowPhase11: ");
-    println (delayTimeFollowPhase11);
-      if ( delayTimeFollowPhase11<=0 && delayTimeFollowPhase11>=0){
-      trigLfo=0;
-       }
-     else if (delayTimeFollowPhase11>0){ trigLfo=1;  }    // 
-    keyCode = SHIFT;
-  }
-
-  if (keyCode == UP) {
-     println(" left INCREASE phase shifting"); //
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-  if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowPhase11));
-    keyCode = SHIFT;
-  }
-  
-    if (keyCode == DOWN) {
-     println(" left INCREASE phase shifting"); //
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-  if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowPhase11));
-    keyCode = SHIFT;
-  }
-  
-  
-  
-  } 
   // Choose TimeSpace of Sampling with Sculdy Sampling Method
 
 
