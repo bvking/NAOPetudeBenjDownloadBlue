@@ -201,9 +201,9 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
 
       if  (measure==130 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
-    key= 'M'; keyReleased ();
+   // key= 'M'; keyReleased ();
    // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-    propagationSpeed= 30.0;
+   // propagationSpeed= 30.0;
 
    }
 
