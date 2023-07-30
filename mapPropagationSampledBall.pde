@@ -27,24 +27,24 @@ void mapPropagationSampledBall() {
       }
      
      
-     if (formerKeyMetro == '*' ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
+     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only
       } 
           print ( " cou+Only in maPropa "); showArray(rev);    
           text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
-      if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal ") { 
+      if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis ") { 
      for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];
 
              text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 1000, -700+50*i );  // //degrees (signal[2])
      
-            if ( oldPosF[i]>newPosF[i] ) { //
+            if ( oldPosF[i]>newPosF[i] && (oldPosF[i]> PI*1.75 && newPosF[i]<(0.25*PI))) { //
             revLfo[i]++;
             TrigmodPos[i]=0;   
             }
           
-            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i]) ){  // voir dans quel sens la retropropagation oriente  i et j
+            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i])  && (oldPosF[i]< PI*1.75 && newPosF[i]>0.25) ){  // voir dans quel sens la retropropagation oriente  i et j
             revLfo[i]--;
             TrigmodPos[i]=0;
           }

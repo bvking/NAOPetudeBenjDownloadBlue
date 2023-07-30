@@ -115,7 +115,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (doRotation == true) {
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
-             newPosFollowed[i]+=0.1;
+            // newPosFollowed[i]+=0.1;
                // phaseAmount=-phaseAmount;
             }
         }
@@ -185,7 +185,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     propagation2wayRotationBis(); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-    mapNewPosX(); // counter actived
+   // mapNewPosX(); // counter actived
+    mapPropagationSampledBall(); // mapPropagationTomanageCounter
     
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         addSignalOneAndTwoTer();
@@ -197,7 +198,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
       
-       levelFromArrow= (PI / (1 * networkSize - 1));
+       levelFromArrow= (PI / (1 * networkSize - 1)); // set 
+      // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
        modulePhaseAmountWithArrow=true;
     }
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     

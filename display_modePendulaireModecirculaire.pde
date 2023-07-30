@@ -271,7 +271,7 @@ void  displayModePendulaireModeCirculaire() {
 
    if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
-      println ( "****************************** DISPLAY ", keyMode ); 
+      println (  phaseMapped[i] + "****************************** DISPLAY ", keyMode ); 
       text ( char (formerKeyMetro), 100,100);
       fill (75, 255 , 100);    
        //   x = displacement*cos(newPosF[i]);

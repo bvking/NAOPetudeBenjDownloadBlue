@@ -16,13 +16,13 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
 
   
    
-    text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow +  (- (PI / (1 * networkSize - 1))) + "-  phaseAmount  " + ( -  phaseAmount  ), 500, -1000);
+    text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow +  ( (PI / (1 * networkSize - 1))) + "  phaseAmount  " + (  phaseAmount  ), 500, -1000);
     
     
     if (propagationTrigged ==  true) { // propaga fixe   doo ==  false && 
         LFO[oscillatorChange] = LFO[oldOscillatorChange];//
      if ( keyMode == " propagationBallRotationBis " && modulePhaseAmountWithArrow)  { 
-        LFO[oscillatorChange] = LFO[oscillatorChange] -  phaseAmount ;
+        LFO[oscillatorChange] = LFO[oscillatorChange] + phaseAmount ;
      }
 
       if ( keyMode == " propagationBallRotationBis " && !modulePhaseAmountWithArrow)  { 
