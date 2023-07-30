@@ -82,12 +82,15 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
 
   // COUNT REVOLUTION  
    
-     mapNewPosX();
+   //  mapNewPosX();
+    
  
      for (int i = 0; i < networkSize-0; i+=1) {
        oldPhaseMapped[i]=phaseMapped[i]; // used in mapNawPosX to have CCW data 
        newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
-       newPosX[i]=phaseMapped[i]; // better to count revolution  
+     //  newPosX[i]=phaseMapped[i]; // better to count revolution  
       }
+     mapPropagationSampledBall();
+
    rotate (PI/2);  
     }

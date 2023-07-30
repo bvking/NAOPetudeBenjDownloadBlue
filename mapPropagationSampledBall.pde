@@ -27,13 +27,13 @@ void mapPropagationSampledBall() {
       }
      
      
-     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
+     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only
       } 
           print ( " cou+Only in maPropa "); showArray(rev);    
           text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
-      if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis ") { 
+      if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { 
      for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];
 
