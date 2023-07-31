@@ -219,6 +219,8 @@ void draw() {
         formerKeyCodeAzerty = keyCode;
         formerKeyCode = keyCode;
     }
+
+     formerKeyMode = keyMode;
     printModeAndKey();
     
     oscSend();

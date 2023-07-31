@@ -1,5 +1,6 @@
 void mapPropagationSampledBall() {
-   textSize(40);
+
+        textSize(40);
      for (int i = 0; i <  networkSize-0; i+=1) { 
           //   net.phase[i]=newPosXaddSignal[i]; // use to display  ?
 
@@ -18,7 +19,7 @@ void mapPropagationSampledBall() {
                  }
             
 
-//        OldSpecialPhase[i]=specialPhase[i]; // Old not used
+            //        OldSpecialPhase[i]=specialPhase[i]; // Old not used
              specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
             // oldPositionToMotor[i]=  positionToMotor[i];
 
@@ -26,24 +27,33 @@ void mapPropagationSampledBall() {
 
              positionToMotor[i]= specialPhase[i]%numberOfStep;
              text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
-      }
+    }
+  if (formerKeyMode == " propagationSampledBall ") { 
+      rev=revLfo;
+    }
+   if (formerKeyMode != " propagationSampledBall ") { 
+      revLfo=rev;
+    }
      
-     
+  if (circularMov ) {
      if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
-       if (circularMov) {
-          countRevsPhaseMappedPositiveOnly(); // with motor Positive Only
-          } 
+      
+          countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev
+           
       } 
+
         for (int i = 0; i <  networkSize-0; i+=1) {
            oldPositionToMotor[i]=  positionToMotor[i];
-           } 
+        } 
 
 
           print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev);    
           text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
-      if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { 
-     for (int i = 0; i <  networkSize-0; i+=1) { 
+      if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " 
+           || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// || keyMode == " trigEventWithAbletonSignal " || 
+
+         for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];
 
              text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 1000, -700+50*i );  // //degrees (signal[2])
@@ -58,7 +68,8 @@ void mapPropagationSampledBall() {
             TrigmodPos[i]=0;
           }
         }
-     } 
+      } 
+    } 
 
        print ( " Good+PropSampl in maPropa "); showArray(revLfo);  
 
@@ -70,6 +81,6 @@ void mapPropagationSampledBall() {
            oldPhaseMapped[i]=phaseMapped[i];
            net.phase[i]=phaseMapped[i];
            // net.phase[i]=specialPhase[i];
-         }
+       }
 
   }

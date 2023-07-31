@@ -61,8 +61,7 @@ void teensyPos(){
 
     }
 
-   if (( keyMode == " propagationBallRotationBisExperimental "  ) // || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) "
-                                                               && formerKeyMetro=='*')
+   if ( keyMode == " propagationBallRotationBisExperimental "  ) 
         {    // actualise counter of normal mode from revLfo from method  not here
 
     for (int i = 0; i < networkSize; i++) {        
@@ -83,8 +82,8 @@ void teensyPos(){
         dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
       }
       
-       recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
-       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+       recordLastDataOfMotorPosition[i]= dataMappedForMotorisedPosition[i];
+       dataMappedForMotorisedBigMachine[i]= dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
     }
   }
@@ -92,8 +91,8 @@ void teensyPos(){
            if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2);
-             //   println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
+
+                dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + rev[i]*numberOfStep;
                 dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i]; // put it lower in the program
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
@@ -102,7 +101,7 @@ void teensyPos(){
 
 
     if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " )
-     
+    
                                                      && formerKeyMetro =='*') { 
 
      if ( keyMode == " propagationBallRotationBisTest " ) { 
