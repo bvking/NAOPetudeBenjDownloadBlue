@@ -30,14 +30,16 @@ void mapPropagationSampledBall() {
      
      
      if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
+       if (circularMov) {
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only
+          } 
       } 
         for (int i = 0; i <  networkSize-0; i+=1) {
            oldPositionToMotor[i]=  positionToMotor[i];
            } 
 
 
-          print ( " cou+Only in maPropa "); showArray(rev);    
+          print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev);    
           text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
       if ( keyMode == " propagationSampleBall " || keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { 

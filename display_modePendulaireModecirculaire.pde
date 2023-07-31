@@ -6,9 +6,18 @@ void  displayModePendulaireModeCirculaire() {
   textSize (50);
       //  rotate (PI/3*(networkSize-0)); // to rotate only once
 
-          if (formerKeyMetro == '$' || formerKeyMetro == '*'  ) // display ball only at good position
-       { translate (0, -1000, 0);
-         }
+      translate (0, -1000, 0);
+
+
+          if (key == '*' || key == '$') {  formerKeyMetro = key; }
+          
+          if (formerKeyMetro == '*') {  circularMov = true; }
+          if (formerKeyMetro == '$') {  circularMov = false; }
+     
+
+         println ( " cricular ......???????" + circularMov);
+
+
        rotate (-PI/2);
       // rotate (PI/2);
    
@@ -17,7 +26,7 @@ void  displayModePendulaireModeCirculaire() {
   for (int i = 0; i <networkSize-0; i++) {
    
     pushMatrix();
-       if (formerKeyMetro == '$' && ( specialPropagationKey == '>' || specialPropagationKey == '<')) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
+       if (!circularMov && ( specialPropagationKey == '>' || specialPropagationKey == '<')) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
         text ( memoryi + " mapped GENERAL $ with > or < " + specialPropagationKey+ " "   +  circularMov, 300, height+200);
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
@@ -51,7 +60,7 @@ void  displayModePendulaireModeCirculaire() {
     } 
  
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
-    if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
+    if (specialPropagationKey != '<'  ) { //!circularMov  &&  || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
      if ( specialPropagationKey != '>'  ) { 
           //  if ( key == '#'  ) {
         
@@ -88,10 +97,9 @@ void  displayModePendulaireModeCirculaire() {
         }
      } 
 
-      if (formerKeyMetro == '*') {  circularMov = true; }
-      else circularMov = false;
+     
 
-      if (formerKeyMetro == '£' || formerKeyMetro == '*' ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
+      if (formerKeyMetro == '£' || circularMov ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
         text ( " mapped to GENERAL CIRCULAR way 2 * " + circularMov, 400, 900);
         // net.phase[i]-=PI/2;
       x = displacement*cos(net.phase[i]);
@@ -99,20 +107,7 @@ void  displayModePendulaireModeCirculaire() {
 
       }
 
-    if (formerKeyMetro == 'J') { //USELLL play sample recorded with s
-       text ( " mapped to J CIRCULAR or PENDULAR way 2$ ", 400, 1000);
-
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
   
-    }
-    if (formerKeyMetro == 's') { //drive ball with lfo
-         text ( " mapped to sample?  CIRCULAR or PENDULAR way 2$ ", 400, 1100);
-      //    net.phase[i]=net.phase[i]+LFO[i];
-      //     net.phase[i]=LFO[i];
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
-    }
 
 
     if (formerKeyMetro == '<') { //experimental pattern of phases
@@ -197,20 +192,7 @@ void  displayModePendulaireModeCirculaire() {
     }
 
 
-    
-     if (formerKeyMetro == 'B' ) { //drive ball with lfo
-         fill( 255, 255, 0 ); // Spheres are all modulated with the same color. depending of acceleration
-       //   followLFO();  // better to repare
-       //  followLFObis(); // same as below
-         println (" formerKeyMetro  ", i, " ",  formerKeyMetro );    
 
-         x = displacement*cos(newPosX[i]);
-         y = displacement*sin(newPosX[i]);   
-        sphere(side*3);
-        sphereDetail( 4*5);
-       //    followMovementAll();
-       //    displayfollowMovementAll();
-      }
 
       if (keyMode == " addSignalOneAndTwoQuater "  ) { //drive ball with lfo
          fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
@@ -386,17 +368,17 @@ void  displayModePendulaireModeCirculaire() {
       fill (255 /(networkSize-i+1), 127, 255 /(25*(i+1))); 
 
         if (
-          modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " ) {   
+          modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " && circularMov) {   
 
-     //  x = displacement*cos(phaseMapped[i]);
-     //  y = displacement*sin(phaseMapped[i]);
+   //    x = displacement*cos(phaseMapped[i]);
+   //    y = displacement*sin(phaseMapped[i]);
         }
 
       if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternal " 
-         || modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " ) {
+         || modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  && !circularMov) {
 
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
+    //  x = displacement*cos(metroPhase[i]);
+    //  y = displacement*sin(metroPhase[i]);
 
        } 
 

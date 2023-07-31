@@ -1,4 +1,17 @@
 void followSignalSampledOppositeWay(int ratioTimeFrame){
+
+          if (key == '*' || key == '$') {  formerKeyMetro = key; }
+          
+          if (formerKeyMetro == '*') {  circularMov = true; }
+          if (formerKeyMetro == '$') {  circularMov = false; }
+     
+
+         println ( " cricular in followSOWay(frameRatio) ..... ??" + circularMov);
+
+         // above to  avoid bug 
+
+
+
  rotate (-PI/2);
         frameCount=frameCount+1;
         float deltaFollow = TWO_PI; // not used
@@ -35,9 +48,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
 
                 if ((phases[i][frameCount % nbMaxDelais])<0){
                   newPosFollowed[i]= (phases[i][frameCount % nbMaxDelais])+TWO_PI; // easier
-                  newPosFollowed[i]%=TWO_PI;
-                    // dataMappedForMotorisedPosition[i]= int (map (phases[i][frameCount % nbMaxDelais], PI, TWO_PI, numberOfStep/2, numberOfStep));   
-                    // dataMappedForMotorisedPosition[i] USED in mode propagation        
+                  newPosFollowed[i]%=TWO_PI;     
                  } 
 
                 else if ((phases[i][frameCount % nbMaxDelais])>=0){ 
@@ -57,8 +68,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                    phaseMapped[i]%=TWO_PI;
                  }
 
-           // specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
-          // positionToMotor[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); not here
+                net.phase[i] = phaseMapped[i]; // to be used in !circularMov
         }
        }
 
@@ -91,7 +101,10 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
        newPosF[i]=phaseMapped[i]; // %TWO_PI      used to count revolution
      //  newPosX[i]=phaseMapped[i]; // better to count revolution  
       }
+    
+   // if (circularMov) {
      mapPropagationSampledBall();
+   //   }
 
    rotate (PI/2);  
     }

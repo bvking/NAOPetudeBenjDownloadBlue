@@ -208,7 +208,7 @@ void draw() {
     //countPendularTrig();
     //frameStop();
     formerFormerKey = formerKey; 
-    handleKeyPressToChooseCircularMovementOrNot(); // in keyReleased?
+  
     
     if (key!= ':') {
         if (key < 65535) { // if there is no SHIFT but the other key
