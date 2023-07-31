@@ -22,8 +22,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         textSize(1000);         
     } 
      
-    modeStartKeyToFollow = " null ";
-    keyMode = " propagationBallRotationBis ";
+   // modeStartKeyToFollow = " null ";
+   // keyMode = " propagationBallRotationBis ";
     formerKeyMetro = '*';
     
     textSize(50);
@@ -97,7 +97,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     }
     
     
-    if (formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
+    if (formerFormerKey == '#' ) { // || modeStartKeyToFollow == " null " formerFormerKey == '#' || 
         
         println(" modeStartKeyToFollow " + modeStartKeyToFollow);
         if (doo == true) {
@@ -147,24 +147,27 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     */  
     
     if (key != '#') {
-        if (modeStartKeyToFollow == " null ") {
+      //  if (modeStartKeyToFollow == " null ") {
             phasePatternBase();
             
             for (int i = 0; i < networkSize - 0; i += 1) {
                 phaseMappedFollow[i] = netPhaseBase[i];
             }
-        }
+     //   }
     }
     
     //propagationSpeed = 30.0; // useless if propagation comes from ableton Live
     
     signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
-    splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
+
+    float signalWithOutLive = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+
+    splitTimeScaleRotation(signalWithOutLive);  // ascendant vs descendant => changement de sens de propagation
     
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
     // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
-    propagation2wayRotationBis(); 
+    propagation2wayRotationBis(); // CAREFULL to keyModePropagation INSIDE function   <== propagationBallRotationBis wether propagationSampledBall
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
     mapNewPosX(); // counter actived
@@ -178,7 +181,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
         // keyCode = ALT;  keyReleased ();
         // key= 'v'; keyReleased ();
-        keyMode = " trigEventWithAbletonSignal ";
+     //  keyMode = " trigEventWithAbletonSignal ";
     }
 }
 

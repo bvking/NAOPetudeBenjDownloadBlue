@@ -1,11 +1,30 @@
 void keyReleased() {
 
+  if (keyModePropagation ==  " propagationBallRotationBis ") {
+
+         if (keyCode == LEFT ) {    
+           propagationSpeed = propagationSpeed-20;
+         if (propagationSpeed<=0) {
+           propagationSpeed=200;
+          }  
+  }
+
+          if (keyCode == RIGHT ) { 
+           propagationSpeed= propagationSpeed+20;
+           propagationSpeed= propagationSpeed%200;
+  }
+
+    text ( " propagationSpeed " + propagationSpeed, width/8, height-800 );
+    keyCode= TAB; // to trig once keyPressedLFO
+
+  } 
+
 
 
     switch(keyCode) { // to modulate Knob
  
-  //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
-  //  case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
+          //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
+        //  case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
     case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
     case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
   }

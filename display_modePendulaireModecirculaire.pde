@@ -25,30 +25,30 @@ void  displayModePendulaireModeCirculaire() {
       
       if (net.phase[i] >= PI ) { 
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, 1.5*PI, -0.5*PI);
-     // metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
+        // metroPhase[i]= map( net.phase[i], 0, TWO_PI, PI/2, -PI/2);
 
       }
       if (net.phase[i] >= 0 && net.phase[i] < PI ) {
         metroPhase[i]= map( net.phase[i], 0, TWO_PI, -0.5*PI, 1.5*PI);
-     // metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
+        // metroPhase[i]= map( net.phase[i], 0, TWO_PI, -PI/2, PI/2);
       }
       if (net.phase[i] <= -PI) { 
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, 1.5*PI, -0.5*PI);
-     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
+        // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, PI/2, -PI/2);
 
       }  
       if (net.phase[i] < 0  && net.phase[i] > -PI) {   
         metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI, 1.5*PI );
-     // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
+         // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
       }
         
-      // metroPhase[i]=netOldPhaseBase[i];
+         // metroPhase[i]=netOldPhaseBase[i];
          metroPhase[i]=  net.phase[i];
          metroPhase[i]=  metroPhase[i]-PI/2;
-       //   metroPhase[i]%=TWO_PI;
+         //   metroPhase[i]%=TWO_PI;
       x = displacement*cos(metroPhase[i]);
       y = displacement*sin(metroPhase[i]);
-    } 
+      } 
  
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
     if (formerKeyMetro == '$' && specialPropagationKey != '<'  ) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
@@ -269,23 +269,24 @@ void  displayModePendulaireModeCirculaire() {
             sphereDetail( 4*5);
          }
 
-   if ( keyMode  ==  " propagationBallRotation " || keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+      if ( keyMode  ==  " propagationBallRotation " ) { //drive ball with lfo
   
-      println ( "****************************** DISPLAY ", keyMode ); 
-      text ( char (formerKeyMetro), 100,100);
-      fill (75, 255 , 100);    
-       //   x = displacement*cos(newPosF[i]);
-       //   y = displacement*sin(newPosF[i]);
-        //  x = displacement*cos(net.phase[i]);
-       //  y = displacement*sin(net.phase[i]);   
-      sphere(side*3);
-      sphereDetail( 4*5);     
-     }
+        println ( "****************************** DISPLAY ", keyMode ); 
+        text ( char (formerKeyMetro), 100,100);
+        fill (75, 255 , 100);    
+         //   x = displacement*cos(newPosF[i]);
+         //   y = displacement*sin(newPosF[i]);
+         //  x = displacement*cos(net.phase[i]);
+        //  y = displacement*sin(net.phase[i]);   
+        sphere(side*3);
+        sphereDetail( 4*5);     
+      }
 
 
-   if ( keyMode  ==  " propagationSampleBall " || keyMode  ==  " propagationSampleBall "  ) { //drive ball with lfo
+    if ( keyModePropagation  ==  " propagationSampleBall "   ) { //drive ball with lfo
   
-      println ( "****************************** DISPLAY ", keyMode ); 
+        println (" propagationSpeed ",  propagationSpeed, "net.phase[i] ", net.phase[i], " new " , newPosF[i], " map ", phaseMapped[i], " ", keyModePropagation ); 
+
       text ( char (formerKeyMetro), 100,100);
       fill (75, 255 , 100);    
        //   x = displacement*cos(phaseMapped[i]);
@@ -296,10 +297,10 @@ void  displayModePendulaireModeCirculaire() {
       sphereDetail( 4*5);     
      }
      
-      /*
-        if (  keyMode  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
+      
+       if ( keyModePropagation  ==  " propagationBallRotationBis "  ) { //drive ball with lfo
   
-        println ( "****************************** DISPLAY ", keyMode ); 
+        println (" propagationSpeed ",  propagationSpeed, "net.phase[i] ", net.phase[i], " new " , newPosF[i], " map ", phaseMapped[i], " ", keyModePropagation ); 
         text ( char (formerKeyMetro), 100,100);
         fill (175, 75 , 75);    
         //   x = displacement*cos(newPosF[i]);
@@ -310,7 +311,7 @@ void  displayModePendulaireModeCirculaire() {
         sphereDetail( 4*5); 
       
        }
-       */  
+         
     
     if ( keyMode == " null " ) {      
   
