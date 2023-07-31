@@ -57,7 +57,8 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
                    phaseMapped[i]%=TWO_PI;
                  }
 
-            specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+           // specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
+          // positionToMotor[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep); not here
         }
        }
 

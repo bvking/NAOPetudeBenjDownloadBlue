@@ -18,10 +18,12 @@ void mapPropagationSampledBall() {
                  }
             
 
-             OldSpecialPhase[i]=specialPhase[i]; // Old not used
+//        OldSpecialPhase[i]=specialPhase[i]; // Old not used
              specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
             // oldPositionToMotor[i]=  positionToMotor[i];
-             oldPositionToMotor[i]=  OldSpecialPhase[i];
+
+           //  oldPositionToMotor[i]=  OldSpecialPhase[i];
+
              positionToMotor[i]= specialPhase[i]%numberOfStep;
              text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
       }
@@ -30,6 +32,11 @@ void mapPropagationSampledBall() {
      if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only
       } 
+        for (int i = 0; i <  networkSize-0; i+=1) {
+           oldPositionToMotor[i]=  positionToMotor[i];
+           } 
+
+
           print ( " cou+Only in maPropa "); showArray(rev);    
           text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
