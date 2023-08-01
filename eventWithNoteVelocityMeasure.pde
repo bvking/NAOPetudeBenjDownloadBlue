@@ -4,7 +4,7 @@ void autmationWithMeasureAndNote()
   if (key!='#'){
   lastKey=key; 
     }
-     text(" autmationWith " + lastKey, 1500, -900);
+     text( (beatPrecised-1) %4 + " autmationWith " + lastKey, 1500, -900);
 
   //autoNote1VelInf64();
   //autoNote1();
@@ -19,7 +19,7 @@ void autmationWithMeasureAndNote()
       keyReleased();
      } 
 
-   if ((measure >= 1 && beatPrecisedTrigged == true && (beatPrecised-1 %4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
+   if ((measure >= 1 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
 
    // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
     // ((note1 == 72  || note2 == 72 || note3 == 72 ))) 
@@ -270,6 +270,8 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     key='*';    keyReleased();
     
   }
+
+  lastKey = '#';
  
   // autoNote1Original(); // !=0
   // autoNote2();
