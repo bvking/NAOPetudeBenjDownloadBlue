@@ -1181,10 +1181,8 @@ textSize (100);
   }   
   // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
 
-  else if (key == '9' && circularMov==true )   //9$
-
+  else if (key == '9' )   //9$ //&& circularMov==true 
   { 
-
     println(" Align oscillator vertically to the top  ");
     for (int i = 0; i < networkSize; i++) {
       net.phase[i]= 0-PI/2; 
