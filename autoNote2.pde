@@ -33,22 +33,28 @@ void autoNote2() {//1 67 69 72
  
    
 
+   if (measure ==2 && beatPrecised >= 12 && beatPrecisedTrigged==true && millis() > formerEvent[172] + 150  &&  
+       ((note1 == 69  || note2 == 69 || note3 == 69 )))  {
+        key = 'i'; // ok mais trouve mieux quad basse arrive
+        keyReleased();
+      
+  } 
 
-  if ((measure >= 3 && measure <= 5 && millis() > formerEvent[172] + 150 + d) &&
-   // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
-    // ((note1 == 72  || note2 == 72 || note3 == 72 ))) 
+  if ((measure >= 3 && measure <= 5 && millis() > formerEvent[172] + 150 ) &&
+ 
        ((note1 == 69  || note2 == 69 || note3 == 69 ))) 
      
      {
     formerEvent[172] = millis();
-    key = 'i';
+    key = 'i'; // ok mais trouve mieux quad basse arrive
    // key = 'T';
     keyReleased();
     keyEvent[1] = "  autoNote2 Pressed " + formerEvent[172];
-    oscillatorBlocked = networkSize % 2;
+  //  oscillatorBlocked = networkSize % 2;
     eventToTrig[1] = " formerEvent[172] INSIDE i ";
     println(eventToTrig[1]);
   }
+
 
   if (measure == 42 && beatTrigged) {
     for (int i = 0; i < networkSize; i++) {
@@ -60,7 +66,7 @@ void autoNote2() {//1 67 69 72
     }
   }
 
-  if ((measure <= 40 && millis() > formerEvent[167] + 450 + d) &&
+  if ((measure > 4 && measure <= 40 && millis() > formerEvent[167] + 450 + d) &&
     ((note1 == 67 && velocity1 == 96) || (note2 == 67 && velocity2 == 96) || (note3 == 67 && velocity3 == 96))) {
     formerEvent[167] = millis();
     text("formerEvent[167] INSIDE " + formerEvent[167], 500, 700);

@@ -8,12 +8,9 @@ void autmationWithMeasureAndNote()
 
   //autoNote1VelInf64();
   //autoNote1();
-   if (measure ==1 && beatPrecised == 2 && beatPrecisedTrigged==true  ) { // && beatTrigged==true 
-    //  keyCode = CONTROL;
-      keyReleased();
-  } 
 
-     if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged!=true   ) { // && beatTrigged==true 
+
+    if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged!=true   ) { // && beatTrigged==true 
       key ='A';
       //net.naturalFrequency[9]=1;
       keyReleased();
@@ -36,19 +33,36 @@ void autmationWithMeasureAndNote()
     //eventToTrig[1] = " formerEvent[172] INSIDE i ";
     //println(eventToTrig[1]);
   }
+  
+  if (measure ==2 && beatPrecised == 12 && beatPrecisedTrigged==true  ) { // && beatTrigged==true 
+      key = '°'; keyReleased();
+  } 
 
+  
   if (measure<5 ) { // && beatTrigged==true 
     speedDelta=3; 
     autoNote2();
   } 
   
-  if (measure>4  ) {
-  //autoNote1();
-   autoNote1VelInf64();
-    } 
+
   if (measure==5 && beatTrigged==true) {
     speedDelta=3 ;
+    key = '9'; keyReleased();
+    key = 'A'; keyReleased(); // decale une à une et revient dans l'alignement
+    net.naturalFrequency[9]= 4;
   } 
+
+  if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+    speedDelta=3 ;
+
+    key = '°';
+    keyReleased();
+  } 
+
+  if (measure>4  ) {
+  //autoNote1();
+   autoNote1VelInf64();  // declaer avec A . arrete A puis faire des i ou u
+    } 
   if ( measure==1 && beatTrigged==true ) {
 
     key='$';

@@ -287,20 +287,21 @@ textSize (100);
    if (key == 'T' && specialPropagationKey == ':') {  
     if ( net.naturalFrequency[memoryi]<0.25 ) 
     {
-      // net.naturalFrequency[memoryi]=0.25; 
+       // net.naturalFrequency[memoryi]=0.25; 
     }
-     oldMemoryi=memoryi;
-    
+     oldMemoryi=memoryi;  
      memoryi-=1;
   
     if ( memoryi<0) {
       memoryi=networkSize-1;
     } 
-     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; // oldMemoryi
+   //  net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi];// placé avavnt les phases elles s'alignent // commenté ça les balles suivantes s'alignent à la balle 9 (la premiere qui tourne)
      net.phase[memoryi]=net.phase[oldMemoryi];
+     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi];
+
    }
    
-  if (key == 'T' ) {  
+  if (key == 'T' && specialPropagationKey == ':' ) {  
     if ( net.naturalFrequency[memoryi]<0.25 ) 
     {
       // net.naturalFrequency[memoryi]=0.25; 

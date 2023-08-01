@@ -25,14 +25,15 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
       ((note1 == 69 && velocity1 >= 1 && velocity1 <= 64) || (note2 == 69 && velocity2 >= 1 && velocity2 <= 64) || 
        (note3 == 69 && velocity3 >= 1 && velocity3 <= 64) || (note4 == 69 && velocity4 >= 1 && velocity4 <= 64) || 
        (note5 == 69 && velocity5 >= 1 && velocity5 <= 64) || (note6 == 69 && velocity6 >= 1 && velocity6 <= 64))) {
-        key ='f';
-        keyReleased();
+      //  key ='f';
+     //  key ='9';
+     //  keyReleased();
         formerEvent[69] = millis();
         print("formerEvent[69] INSIDE");
         println(formerEvent[69]);
-}
+    }
     
-    if(measure >= 11 && measure <= 40 && millis() > formerEvent[72] + 100 + d && 
+    if(measure >= 5 && measure <= 40 && millis() > formerEvent[72] + 100 + d && 
         
       ((note1 == 72 && velocity1 >= 1 && velocity1 <= 64) || 
        (note2 == 72 && velocity2 >= 1 && velocity2 <= 64) || 
@@ -49,7 +50,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
        // println(formerEvent[72]);
     }
 
-     if (measure > 11 && measure < 41 && millis() > formerEvent[73] + 100 + d && 
+     if (measure > 11 && measure < 41 && millis() > formerEvent[172] + 100 + d && 
             
           ((note1 == 72 && velocity1 > 64) || 
            (note2 == 72 && velocity2 > 64) || 
@@ -57,10 +58,11 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
            (note4 == 72 && velocity4 > 64) || 
            (note5 == 72 && velocity5 > 64) || 
            (note6 == 72 && velocity6 > 64)   )) {
-            key = 'i';// i=105
-            keyReleased();
-             text("<=64 lastKey " + lastKey + " event " + formerEvent[note1] + " event " + formerEvent[73] + " vel " + velocity1, 500, 0);
-            formerEvent[73] = millis();
+           // key = 'i';// i=105
+           //  key = '9'; keyReleased();
+           // keyReleased();
+             text("<=64 lastKey " + lastKey + " event " + formerEvent[note1] + " event " + formerEvent[172] + " vel " + velocity1, 500, 0);
+            formerEvent[172] = millis();
            // print("formerEvent[72] INSIDE");
            // println(formerEvent[72]);
         }
