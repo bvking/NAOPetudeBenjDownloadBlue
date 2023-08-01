@@ -29,10 +29,10 @@ void mapPropagationSampledBall() {
              text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
     }
   if (formerKeyMode == " propagationSampledBall ") { 
-      rev=revLfo;
+     // rev=revLfo;
     }
    if (formerKeyMode != " propagationSampledBall ") { 
-      revLfo=rev;
+    //  revLfo=rev;
     }
      
   if (circularMov ) {
@@ -48,7 +48,7 @@ void mapPropagationSampledBall() {
 
 
           print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev);    
-          text ( " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
+          text (rev + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " 
            || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// || keyMode == " trigEventWithAbletonSignal " || 

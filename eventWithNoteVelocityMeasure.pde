@@ -175,35 +175,35 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
 
    keyMode = " propagationBallRotationBis ";
     propagationSpeed= 60.0;
-  //  key='w';    
-  //  keyReleased();
+        //  key='w';    
+        //  keyReleased();
   }
 
    if  (measure==126 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
-   // keyCode = ALT;  keyPressed ();
+      // keyCode = ALT;  keyPressed ();
     key= 'P'; keyReleased ();
-   // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-   // propagationSpeed= 90.0;
-   // keyMode = " propagationBallRotationBis ";
+       // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+       // propagationSpeed= 90.0;
+       // keyMode = " propagationBallRotationBis ";
 
    }
 
     if  (measure==126 && beatPrecised==2 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
-   // keyCode = ALT;  keyPressed ();
-  //  key= 'P'; keyReleased ();
-   // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-  //  propagationSpeed= 90.0;
+      // keyCode = ALT;  keyPressed ();
+      //  key= 'P'; keyReleased ();
+     // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+      //  propagationSpeed= 90.0;
     keyMode = " propagationBallRotationBis ";
 
    }
 
       if  (measure==130 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
 
-   // key= 'M'; keyReleased ();
-   // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-   // propagationSpeed= 30.0;
+     // key= 'M'; keyReleased ();
+     // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
+    // propagationSpeed= 30.0;
 
    }
 
@@ -246,6 +246,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     key='*';    keyReleased();
     
   }
+ 
   // autoNote1Original(); // !=0
   // autoNote2();
 }
