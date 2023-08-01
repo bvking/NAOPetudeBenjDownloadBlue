@@ -86,9 +86,9 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     speedDelta=4;
    
     memoryi = 9;
-    keyReleased();
+    
     net.naturalFrequency[memoryi]= 2;
-    key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
+     key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
   }
 
     if  (measure==82 && beatPrecisedTrigged==true &&  ( beatPrecised > 1 && beatPrecised <= networkSize+1)) { 

@@ -4,10 +4,8 @@ String positionMov;  // Original?
 
 void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
-
      splitTimeLfo= int  (timeLfo%1000); 
-         //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
-
+              //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
              textSize (100);
                 text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
                 text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 500-1000);
@@ -20,13 +18,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
       if  (music_from_ableton_live == " madRush " ) { 
                autmationWithMeasureAndNote();
-               mapPropagationSampledBall();
+               //mapPropagationSampledBall();
             }
 
-
-
-
-     if (music_from_ableton_live == " pleasureKraft ") {
+      if (music_from_ableton_live == " pleasureKraft ") {
           
             if (measure < 58 ){
                 positionMov = " premierePartie ";
@@ -241,7 +236,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
    
         }  // end >= 42
        } // end mesure 58
-     } // end premiere partie
+      } // end premiere partie
 
       if (positionMov == " seconde " ){    // 58 to 68
         
@@ -388,11 +383,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           } 
 
      } // // end quatrieme
- }
- 
-   //  end of  pleasureKraft Arrangement
-   
-        //  mapPropagationSampledBall();
+ } //  end of  pleasureKraft Arrangement
+
+            oldSplitTimeLfo = splitTimeLfo; // actualise oldSignal
+  
+        //  displayData----------------------------
 
                textSize (50);
 
@@ -404,12 +399,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    //   " oldMotorisedP " + oldDataMappedForMotorisedPosition[i] +
                    " MotorisedP[i] " +  dataMappedForMotorisedPosition[i]+
                    //     " net.pha " +  net.phase[i] + " net.old[i] " +  net.oldPhase [i] + " netPha[i] " +  netPhaseBase[i]+ " netOld " +  netOldPhaseBase[i] + 
-                   " deltaOld [i] " +deltaOldPhaseActualPhase[i] +  " readPositionEncoder " + readPositionEncoder[i]+
+                   " deltaOld [i] " +deltaOldPhaseActualPhase[i] +  " readPositionEncoder " + readPositionEncoder[i]+ " recordFromCir " + recordLastDataOfMotorPosition[i] +
                    " MotorisedBig[i] " +  dataMappedForMotorisedBigMachine[i] +
-                   " net.pha " +  net.phase[i] + " metro " + metroPhase[i]+ " recordFromCir " + recordLastDataOfMotorPosition[i]
-                  
-
-                   
+                   " net.pha " +  net.phase[i] + " metro " + metroPhase[i]+ " rev " + rev[i] + " revLfo " + revLfo[i]
+                        
                    , -300 , 500 +(i*50), 1000);
                }
 
@@ -436,7 +429,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1300);
                 } 
 
-              oldSplitTimeLfo = splitTimeLfo; 
+            
  }    
   
 

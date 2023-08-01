@@ -274,22 +274,39 @@ textSize (100);
       memoryi=networkSize-1;
     } 
      net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; // oldMemoryi
-   } 
+   }
+
+   
+  if (key=='t' && circularMov) {  
+    print (" stop previous frequency with memory t$"); // good with memory=9
+      if ( net.naturalFrequency[memoryi]>0.25 ) 
+    {
+     net.naturalFrequency[memoryi]=0; // oldMemoryi
+    }
+
+     oldMemoryi=memoryi;   
+     memoryi-=1;
+  
+    if ( memoryi<0) {
+      memoryi=networkSize-1;
+    }
+  } 
 
 
-  if (key=='t') {  
-    print ("EXPERIMENTAL t$");
 
-  //  float delaPhase    = map ((float (mouseY)/width*1), 0, 1, 0, QUARTER_PI );                
+  if (key=='t' && !circularMov) {  
+    print (" average t$");
+               
     for (int i = 0; i < (networkSize-0); i++) {          
       {
         net.phase[i]= averagePhase;  // order.heading() . from MacYntre library
-        //    net.phase[i]= net.phase[i]%PI/2; 
         net.phase[i]= net.phase[i]%TWO_PI;
       } 
       printSummary(i);
     }
   }
+
+
 
 
   if (key == 'i') {  // memory == 0 is the ball "behind"  the screen
@@ -1164,7 +1181,7 @@ textSize (100);
   }   
   // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
 
-  else if (key == '9' && circularMov==true )//9$
+  else if (key == '9' && circularMov==true )   //9$
 
   { 
 
@@ -1176,14 +1193,14 @@ textSize (100);
     }
   } 
   
-    else if (key == 'ç') {
+  else if (key == 'ç') {
     if (circularMov==true) {
 
     float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
-       realign[i] = net.phase[i]%TWO_PI;
-       net.phase[i]+=  net.phase[i] - realign[i];   
-         net.phase[i]%=TWO_PI;
+          realign[i] = net.phase[i]%TWO_PI;
+          net.phase[i]+=  net.phase[i] - realign[i];   
+          net.phase[i]%=TWO_PI;
       }
     }
 
@@ -1193,11 +1210,11 @@ textSize (100);
 
     float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
-       realign[i] = net.phase[i]%TWO_PI+PI/2;
-       net.phase[i]+=  net.phase[i] - realign[i];
-        net.phase[i]%=TWO_PI;
+           realign[i] = net.phase[i]%TWO_PI+PI/2;
+           net.phase[i]+=  net.phase[i] - realign[i];
+           net.phase[i]%=TWO_PI;
 
-      //  net.phase[i]= 0+PI/2  ; // position 0+PI/2  
+         //  net.phase[i]= 0+PI/2  ; // position 0+PI/2  
         printSummary(i);
       }
     }
