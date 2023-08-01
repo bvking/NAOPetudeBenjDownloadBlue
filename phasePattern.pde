@@ -1,6 +1,30 @@
 void phasePattern() { // need standard mode to be trigged
 textSize (100);
 
+   // use with i, u, T
+     if (key == '?' ) {
+     specialPropagationKey = key ;
+
+     } 
+     if (key == ':' ) {
+     specialPropagationKey = key ;
+
+     } 
+
+    
+     if (key == '>' ) {
+     specialPropagationKey = key ;
+
+     } 
+     if (key == '<' ) {
+     specialPropagationKey = key ;
+ 
+     } 
+      
+
+   
+
+
    if (key == 'i') {
       text ("phasePattern " ,-200+ width/2, height/2);
    }
@@ -259,10 +283,25 @@ textSize (100);
   
    //    memoryi++;
    //   memoryi=(memoryi+1)%networkSize;
-   
-  if (key == 'T') {  
+
+   if (key == 'T' && specialPropagationKey == ':') {  
     if ( net.naturalFrequency[memoryi]<0.25 ) 
-   // key = 'a'; keyReleased();
+    {
+      // net.naturalFrequency[memoryi]=0.25; 
+    }
+     oldMemoryi=memoryi;
+    
+     memoryi-=1;
+  
+    if ( memoryi<0) {
+      memoryi=networkSize-1;
+    } 
+     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; // oldMemoryi
+     net.phase[memoryi]=net.phase[oldMemoryi];
+   }
+   
+  if (key == 'T' ) {  
+    if ( net.naturalFrequency[memoryi]<0.25 ) 
     {
       // net.naturalFrequency[memoryi]=0.25; 
     }
@@ -278,6 +317,21 @@ textSize (100);
 
    
   if (key=='t' && circularMov) {  
+    print (" stop previous frequency with memory t$"); // good with memory=9
+      if ( net.naturalFrequency[memoryi]>0.25 ) 
+    {
+     net.naturalFrequency[memoryi]=0; // oldMemoryi
+    }
+
+     oldMemoryi=memoryi;   
+     memoryi-=1;
+  
+    if ( memoryi<0) {
+      memoryi=networkSize-1;
+    }
+  } 
+
+   if (key=='t' && !circularMov) {  
     print (" stop previous frequency with memory t$"); // good with memory=9
       if ( net.naturalFrequency[memoryi]>0.25 ) 
     {
@@ -420,28 +474,6 @@ textSize (100);
   } 
 */
  } 
-
-     if (key == '?' ) {
-     specialPropagationKey = key ;
-
-     } 
-     if (key == ':' ) {
-     specialPropagationKey = key ;
-
-     } 
-
-    
-     if (key == '>' ) {
-     specialPropagationKey = key ;
-
-     } 
-     if (key == '<' ) {
-     specialPropagationKey = key ;
- 
-     } 
-      
-
-   
 
    if (key == 'U' && specialPropagationKey == '?' && circularMov) { 
       net.shiftPhases(1);
@@ -1253,14 +1285,15 @@ textSize (100);
   } 
 
   //************************** CHANGE THE WAY OF ROTATION O$
-  else if (key == 'o') 
-  { 
+  else if (key == 'o') { 
+        //  text("<=64 lastKey " + lastKey + " event " + formerEvent[note1] + " event " + formerEvent[73] + " vel " + velocity1, 500, 50);
+
     if ( keyMode != " phasePattern "){
-     signal[2]= - signal[2]; 
+         signal[2]= - signal[2]; 
       }  
-       println("  Changes way of rotation  "); 
+    
     for (int i = 0; i < networkSize; i++) {
-      background(120, 20, 20);
+      //background(120, 20, 20);
       // net.naturalFrequency[i] = signal[2];
       net.naturalFrequency[i] = -1* net.naturalFrequency[i];
 

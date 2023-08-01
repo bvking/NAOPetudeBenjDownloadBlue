@@ -10,15 +10,11 @@ void autoNote2() {//1 67 69 72
    }
     text(" autonote2with   " + lastKey, 1500, -800);
 
-     if (measure ==1   ) { // && beatTrigged==true 
-      key ='A';
-      //net.naturalFrequency[9]=1;
-      keyReleased();
-     } 
+   
 
        if (measure ==3 && beatTrigged==true    ) { // && beatTrigged==true 
-      key ='°';
-      keyReleased();
+    //  key ='°';
+    //  keyReleased();
      } 
 
     if ((measure > 5 && measure <= 40 && millis() > formerEvent[169] + 150 + d) &&
@@ -33,6 +29,8 @@ void autoNote2() {//1 67 69 72
     text("formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
     println(" formerEvent[160] INSIDE " + formerEvent[169]);
     }
+
+ 
    
 
 
@@ -43,8 +41,8 @@ void autoNote2() {//1 67 69 72
      
      {
     formerEvent[172] = millis();
-    //key = 'i';
-    key = 'U';
+    key = 'i';
+   // key = 'T';
     keyReleased();
     keyEvent[1] = "  autoNote2 Pressed " + formerEvent[172];
     oscillatorBlocked = networkSize % 2;

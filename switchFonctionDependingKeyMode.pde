@@ -2,14 +2,17 @@ void switchFonctionDependingKeyMode() {
        // boolean truc = true;
       // setMovement( key, truc);
     
-    char lastKey = ':';
+    char lastKey;
     if (key!= '#') {
        // lastKey = char(key); 
-       lastKey = char(key); 
+    
         }
+           lastKey = char(key); 
     
     translate(0, 0, 1000);
-    text(" Acc " + speedDelta + " key " + lastKey + " Ball " + memoryi +  " mode " + keyMode , -width, -height+200); 
+    text(" Acc " + speedDelta + " key " + lastKey + " beatP " + beatPrecised + " Ball " + memoryi +  " mode " + keyMode , -width, -height+200); 
+
+
     if (keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal ") {
         
         trigEventWithAbletonSignal();
@@ -17,10 +20,8 @@ void switchFonctionDependingKeyMode() {
 
     }
     
-    if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater ") { //drive ball with lfo
-        
+    if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater ") { //drive ball with lfo      
         propagationMode();
-       
     }
     
     if (keyMode == " addSignalOneAndTwoTer " || keyModeRed == " addSignalOneAndTwoTer ") { //drive ball with lfo
@@ -140,5 +141,6 @@ void switchFonctionDependingKeyMode() {
 
             }
         }
+    lastKey = '#';
     translate(0, 0, -1000);   
 }

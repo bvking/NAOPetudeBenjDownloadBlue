@@ -8,10 +8,34 @@ void autmationWithMeasureAndNote()
 
   //autoNote1VelInf64();
   //autoNote1();
-   if (measure ==1 && beatPrecised == 1 && beatTrigged==true  ) { // && beatTrigged==true 
+   if (measure ==1 && beatPrecised == 2 && beatPrecisedTrigged==true  ) { // && beatTrigged==true 
     //  keyCode = CONTROL;
       keyReleased();
   } 
+
+     if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged!=true   ) { // && beatTrigged==true 
+      key ='A';
+      //net.naturalFrequency[9]=1;
+      keyReleased();
+     } 
+
+   if ((measure >= 1 && beatPrecisedTrigged == true && (beatPrecised-1 %4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
+
+   // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
+    // ((note1 == 72  || note2 == 72 || note3 == 72 ))) 
+      // ((note1 == 69  || note2 == 69 || note3 == 69 ))
+       ) 
+     
+     {
+    formerEvent[172] = millis();
+   // key = 'i';
+    key = 'T';
+    keyReleased();
+    //keyEvent[1] = "  autoNote2 Pressed " + formerEvent[172];
+    //oscillatorBlocked = networkSize % 2;
+    //eventToTrig[1] = " formerEvent[172] INSIDE i ";
+    //println(eventToTrig[1]);
+  }
 
   if (measure<5 ) { // && beatTrigged==true 
     speedDelta=3; 
@@ -88,7 +112,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
     memoryi = 9;
     
     net.naturalFrequency[memoryi]= 2;
-     key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
+  //   key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
   }
 
     if  (measure==82 && beatPrecisedTrigged==true &&  ( beatPrecised > 1 && beatPrecised <= networkSize+1)) { 
@@ -113,7 +137,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
    
     }
 
-    if  (measure==87 && beatTrigged) {  //  &&  beatPrecised <=8 
+    if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
       speedDelta= 6;
       keyCode=CONTROL; keyReleased(); 
