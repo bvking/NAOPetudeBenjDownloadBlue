@@ -99,7 +99,7 @@ void  displayModePendulaireModeCirculaire() {
 
      
 
-      if (formerKeyMetro == '£' || circularMov ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
+      if (circularMov ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
         text ( " mapped to GENERAL CIRCULAR way 2 * " + circularMov, 400, 900);
         // net.phase[i]-=PI/2;
       x = displacement*cos(net.phase[i]);

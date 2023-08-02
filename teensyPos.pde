@@ -4,10 +4,17 @@ void teensyPos(){
   text ( " circularMov " + circularMov , 200, -300) ; //
 
   if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
- // if ( keyMode != " trigEventWithAbletonSignal " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+       // if ( keyMode != " trigEventWithAbletonSignal " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
   }
+
+  if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+  }
+
+
+  
  
  if ( measure <= 635)  {  // to avoid machine blocked 
 

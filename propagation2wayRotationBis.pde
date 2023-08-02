@@ -47,6 +47,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
         if(LFO[i] < 0) {
             dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
             phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+            
             newPosXaddSignal[i] = phaseMapped[i]; 
     }
         

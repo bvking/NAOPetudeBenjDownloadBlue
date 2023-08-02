@@ -7,7 +7,12 @@ void mapPropagationSampledBall() {
               //     net.phase[i]=phaseMapped[i]; // use with trigEventWithAbletonLive            /*
           if ( keyMode == " trigEventWithAbletonSignal ") { 
               phaseMapped[i]=net.phase[i];
-                    } 
+            } 
+          
+          if ( keyMode == " propagationBallRotationBis ") { 
+              phaseMapped[i]=newPosXaddSignal[i];
+            }
+            
 
                if ((phaseMapped[i])<0){
                   phaseMapped[i]= (phaseMapped[i])+TWO_PI; // easier
@@ -58,12 +63,12 @@ void mapPropagationSampledBall() {
 
              text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 1000, -700+50*i );  // //degrees (signal[2])
      
-            if ( oldPosF[i]>newPosF[i] && (oldPosF[i]> PI*1.75 && newPosF[i]<(0.25*PI))) { //
+            if ( oldPosF[i]>newPosF[i]   && (oldPosF[i]>=oldOldPosF[i])  && (oldPosF[i]>= PI*1.75 && newPosF[i]<(0.25*PI))) { //
             revLfo[i]++;
             TrigmodPos[i]=0;   
             }
           
-            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i])  && (oldPosF[i]< PI*1.75 && newPosF[i]>0.25) ){  // voir dans quel sens la retropropagation oriente  i et j
+            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i])  && (oldPosF[i]<= PI*1.75 && newPosF[i]>0.25) ){  // voir dans quel sens la retropropagation oriente  i et j
             revLfo[i]--;
             TrigmodPos[i]=0;
           }
