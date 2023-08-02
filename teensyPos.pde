@@ -1,36 +1,35 @@
 void teensyPos(){
   rotate(PI/2);
+  textSize (100);
   text ( " circularMov " + circularMov , 200, -300) ; //
+
+  if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+ // if ( keyMode != " trigEventWithAbletonSignal " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+
+       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+  }
  
  if ( measure <= 635)  {  // to avoid machine blocked 
 
     if ( keyMode == " propagationBallRotationBis "   // || keyMode == " addSignalOneAndTwo "
         )  
     {  
-     
-
       for(int i = 0; i < networkSize; i++) {  
       //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work. Try to adapt rev with revLfo method
-
-     //  revLfo[i]=revLfo[i]+rev[i];// actualise counter from normal mode  
-    
       dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
     }
 
-
-
-
-      if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& circularMov    // || keyMode == " addSignalOneAndTwo "
+    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& circularMov    // || keyMode == " addSignalOneAndTwo "
         )   
         {  
       //rev=revLfo; // actualise counter of normal mode  
       for(int i = 0; i < networkSize; i++) {  
     //  dataMappedForMotorisedPosition[i]=(int) positionToFollow[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
     
-    //  dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
-    //  dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+      dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+      dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
 
       //  if (circularMov)
@@ -94,13 +93,7 @@ void teensyPos(){
   }
 
 
-     if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
-             // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
-             textSize (100);
-              revLfo=rev;
-              text ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
-              print ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
-          }
+
 
 
 

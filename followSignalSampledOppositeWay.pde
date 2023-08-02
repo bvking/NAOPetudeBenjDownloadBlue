@@ -85,6 +85,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame){
      for (int i = 0; i < networkSize-0; i+=1) { 
       println (" ALIGN MTF " );
       phaseMapped[i] = phases[i-0][frameCountBis % nbMaxDelais]+0; // to aligin ball with the followed one
+      phasePatternFollow[i]=0;
   
      } 
    
