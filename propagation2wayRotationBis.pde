@@ -1,5 +1,6 @@
 void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
     textSize (50);
+    modulePhaseAmountWithArrow=true;
     phaseAmount = trigedSignFromAbleton[1];
     phaseAmount = map(phaseAmount, 0, 1, 1, 0);     
     phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
@@ -45,17 +46,22 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
     for (int i = 0; i < networkSize; i++) {
         
         if(LFO[i] < 0) {
-            dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
-            phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+       //     dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
+       //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+
+       
+         //  LFO[i]=LFO[i]+TWO_PI;
             
-            newPosXaddSignal[i] = phaseMapped[i]; 
+            phaseMapped [i] = LFO[i]; 
     }
         
         else {
             
-            dataMappedForMotorisedPosition[i] = (int) map(LFO[i], 0, TWO_PI, 0, numberOfStep); 
-            phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-            newPosXaddSignal[i] = phaseMapped[i]; 
+         //   dataMappedForMotorisedPosition[i] = (int) map(LFO[i], 0, TWO_PI, 0, numberOfStep); 
+         //   phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+         //   newPosXaddSignal[i] = LFO[i]; 
+
+              phaseMapped [i] = LFO[i]; 
             
         }
     }

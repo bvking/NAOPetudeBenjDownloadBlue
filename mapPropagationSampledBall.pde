@@ -10,12 +10,12 @@ void mapPropagationSampledBall() {
             } 
           
           if ( keyMode == " propagationBallRotationBis ") { 
-              phaseMapped[i]=newPosXaddSignal[i];
+            //  phaseMapped[i]=newPosXaddSignal[i];
             }
-            
+
 
                if ((phaseMapped[i])<0){
-                  phaseMapped[i]= (phaseMapped[i])+TWO_PI; // easier
+                  phaseMapped[i]= abs ((phaseMapped[i])+TWO_PI); // easier
                   phaseMapped[i]%=TWO_PI;     
                  } 
 
@@ -39,9 +39,9 @@ void mapPropagationSampledBall() {
    if (formerKeyMode != " propagationSampledBall ") { 
     //  revLfo=rev;
     }
-     
-  if (circularMov ) {
-     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
+      
+  if (circularMov ) {  // || keyMode == " propagationBallRotationBis "
+     if (keyMode == " trigEventWithAbletonSignal "  || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
       
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev
            
@@ -53,35 +53,42 @@ void mapPropagationSampledBall() {
 
 
           print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev);    
-          text (rev + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
+          text (rev[0] + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " ) {// 
            //|| modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// 
 
          for (int i = 0; i <  networkSize-0; i+=1) { 
+
+            oldOldPosF[i]=oldPosF[i];
+            oldPosF[i]=newPosF[i];
             newPosF[i]=phaseMapped[i];
 
-             text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i], 1000, -700+50*i );  // //degrees (signal[2])
+             text (revLfo[i] +  " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] , 500, -700+50*i );  // //degrees (signal[2])
      
-            if ( oldPosF[i]>newPosF[i]   && (oldPosF[i]>=oldOldPosF[i])  && (oldPosF[i]>= PI*1.75 && newPosF[i]<(0.25*PI))) { //
-            revLfo[i]++;
-            TrigmodPos[i]=0;   
-            }
+         
           
-            if (  newPosF[i]>oldPosF[i]  && (oldPosF[i]<=oldOldPosF[i])  && (oldPosF[i]<= PI*1.75 && newPosF[i]>0.25) ){  // voir dans quel sens la retropropagation oriente  i et j
-            revLfo[i]--;
-            TrigmodPos[i]=0;
+            if ( newPosF[i]>oldPosF[i] && (oldPosF[i]>=oldOldPosF[i]) && (oldPosF[i]<= PI*1.75 && newPosF[i]>PI) ){  //  && (oldPosF[i]<=oldOldPosF[i]) // voir dans quel sens la retropropagation oriente  i et j
+             revLfo[i]--;TrigmodPos[i]=0;
+             }
+
+            if ( (oldPosF[i]>= PI*1.75 && newPosF[i]<PI)  // newPosF[i]<oldPosF[i] && 
+            // && (oldPosF[i]<=oldOldPosF[i]) && (oldPosF[i]>= PI*1.0 && newPosF[i]<(PI))
+             ) { //  && (oldPosF[i]>=oldOldPosF[i]) 
+            revLfo[i]++;TrigmodPos[i]=0;   
+            
           }
         }
       } 
-    } 
+    } // end circularMov 
 
        print ( " Good+PropSampl in maPropa "); showArray(revLfo);  
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
          //  oldPositionToMotor[i]=  positionToMotor[i];
-           oldOldPosF[i]=oldPosF[i];
-           oldPosF[i]=newPosF[i];
+         //  oldOldPosF[i]=oldPosF[i];
+         //  oldPosF[i]=newPosF[i];
+
            oldOldPhaseMapped[i]=oldPhaseMapped[i];
            oldPhaseMapped[i]=phaseMapped[i];
            net.phase[i]=phaseMapped[i];
