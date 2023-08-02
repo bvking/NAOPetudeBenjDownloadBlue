@@ -49,7 +49,7 @@ void autmationWithMeasureAndNote()
     speedDelta=3 ;
     key = '9'; keyReleased();
     key = 'A'; keyReleased(); // decale une à une et revient dans l'alignement
-    net.naturalFrequency[9]= 4;
+    net.naturalFrequency[9]= 5;
   } 
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
