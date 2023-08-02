@@ -16,7 +16,7 @@ void autmationWithMeasureAndNote()
       keyReleased();
      } 
 
-   if ((measure >= 1 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
+   if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
 
    // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
     // ((note1 == 72  || note2 == 72 || note3 == 72 ))) 
@@ -70,11 +70,11 @@ void autmationWithMeasureAndNote()
   }
   if ( measure==5 && beatTrigged==true) {
     // d=0;
-    oscillatorBlocked=networkSize/2;
+   // oscillatorBlocked=networkSize/2;
 //    d=100;
   }
   if ( measure==6 && beatTrigged==true) {
-    d=200;
+  //  d=200;
   }
 
   if  (measure==61 && beatTrigged==true  ) {
