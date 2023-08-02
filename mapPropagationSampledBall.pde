@@ -50,8 +50,8 @@ void mapPropagationSampledBall() {
           print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev);    
           text (rev + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
      
-      if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " 
-           || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// || keyMode == " trigEventWithAbletonSignal " || 
+      if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " ) {// 
+           //|| modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// 
 
          for (int i = 0; i <  networkSize-0; i+=1) { 
             newPosF[i]=phaseMapped[i];

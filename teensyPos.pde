@@ -24,22 +24,15 @@ void teensyPos(){
     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& circularMov    // || keyMode == " addSignalOneAndTwo "
         )   
         {  
-      //rev=revLfo; // actualise counter of normal mode  
+      revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
       for(int i = 0; i < networkSize; i++) {  
-    //  dataMappedForMotorisedPosition[i]=(int) positionToFollow[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
-    
       dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
 
-      //  if (circularMov)
-
+    /*
        for (int i = 0; i < networkSize; i++) {
-  
              //*******************************  ASSIGN MOTOR WITH POSITION
-
-         //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-
          if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
              dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
          }
@@ -56,13 +49,11 @@ void teensyPos(){
 
           //   recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
               dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastPositionFromCircularMode[i]; // RENAME;//+readPositionEncoder[i];
-
               //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               //  print ( " record * " + recordLastDataOfMotorPosition[i] );
-            println();
 
          }
-
+    */
     }
 
    if ( keyMode == " propagationBallRotationBisExperimental "  ) 
