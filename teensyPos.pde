@@ -1,21 +1,26 @@
 void teensyPos(){
-  
- // text ( " circularMov " + !circularMov , 200, 100) ; //
+  rotate(PI/2);
+  text ( " circularMov " + circularMov , 200, -300) ; //
  
  if ( measure <= 635)  {  // to avoid machine blocked 
 
     if ( keyMode == " propagationBallRotationBis "   // || keyMode == " addSignalOneAndTwo "
         )  
-    
-        {  
-      rev=revLfo; // actualise counter of normal mode  
+    {  
+     
+
       for(int i = 0; i < networkSize; i++) {  
-      //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work
+      //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work. Try to adapt rev with revLfo method
+
+     //  revLfo[i]=revLfo[i]+rev[i];// actualise counter from normal mode  
     
       dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
     }
+
+
+
 
       if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& circularMov    // || keyMode == " addSignalOneAndTwo "
         )   
@@ -88,7 +93,20 @@ void teensyPos(){
     }
   }
 
+
+     if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+             // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
+             textSize (100);
+              revLfo=rev;
+              text ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
+              print ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
+          }
+
+
+
            if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
+         
+         
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
 
@@ -105,8 +123,9 @@ void teensyPos(){
                                                      && formerKeyMetro =='*') { 
 
      if ( keyMode == " propagationBallRotationBisTest " ) { 
-              rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
-              text ( " keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
+             // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
+              revLfo=rev;
+              text ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
           }
 
 
@@ -276,7 +295,9 @@ void teensyPos(){
       if (measure>100 && measure<=124){
        send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
      }
+         
     }    
+    rotate(-PI/2);  
   
 }
 
@@ -503,7 +524,8 @@ void teensyPosOri(){
       if (measure>100 && measure<=124){
        send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
      }
-    }    
+    } 
+  
   
 }
 
