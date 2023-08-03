@@ -272,6 +272,9 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             float[] LFO = new float[networkSize]; //;
             
             float[] phaseFollowLFO = new float[networkSize]; // 
+
+            // used to count rotation with propagation Modes
+            float[] oldOldOldPosF = new float[networkSize]; // 
             float[] oldOldPosF = new float[networkSize]; // 
             float[] oldPosF = new float[networkSize]; // 
             float[] newPosF = new float[networkSize]; //
