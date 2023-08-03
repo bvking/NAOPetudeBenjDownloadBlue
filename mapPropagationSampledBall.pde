@@ -1,10 +1,9 @@
 void mapPropagationSampledBall() {
 
         textSize(20);
-     for (int i = 0; i <  networkSize-0; i+=1) { 
+      for (int i = 0; i <  networkSize-0; i+=1) { 
           //   net.phase[i]=newPosXaddSignal[i]; // use to display  ?
 
-              //     net.phase[i]=phaseMapped[i]; // use with trigEventWithAbletonLive            /*
           if ( keyMode == " trigEventWithAbletonSignal ") { 
               phaseMapped[i]=net.phase[i];
             } 
@@ -12,7 +11,6 @@ void mapPropagationSampledBall() {
           if ( keyMode == " propagationBallRotationBis ") { 
             //  phaseMapped[i]=newPosXaddSignal[i];
             }
-
 
                if ((phaseMapped[i])<0){
                   phaseMapped[i]= abs ((phaseMapped[i])+TWO_PI); // easier
@@ -22,26 +20,15 @@ void mapPropagationSampledBall() {
                 else if (phaseMapped[i]>=0){ 
                    phaseMapped[i]%=TWO_PI;
                  }
-            
-
-            //        OldSpecialPhase[i]=specialPhase[i]; // Old not used
+    
              specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
-            // oldPositionToMotor[i]=  positionToMotor[i];
-
-           //  oldPositionToMotor[i]=  OldSpecialPhase[i];
 
              positionToMotor[i]= specialPhase[i]%numberOfStep;
              text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
-    }
-  if (formerKeyMode == " propagationSampledBall ") { 
-     // rev=revLfo;
-    }
-   if (formerKeyMode != " propagationSampledBall ") { 
-    //  revLfo=rev;
-    }
-      
-  if (circularMov ) {  // || keyMode == " propagationBallRotationBis "
-  textSize( 20);
+       }
+
+     if (circularMov ) {  // || keyMode == " propagationBallRotationBis "
+     textSize( 20);
      if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
   
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   

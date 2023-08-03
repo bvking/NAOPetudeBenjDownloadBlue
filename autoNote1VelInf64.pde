@@ -99,7 +99,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
        } 
         
     
-    if (measure >= 12 && measure <= 34 && millis() > formerEvent[76] + 1000 && 
+    if (measure >= 12 && measure <= 34 && millis() > formerEvent[76] + 35000 && 
             
            ((note1 == 76 && velocity1 >= 1 && velocity1 <= 127) || 
            (note2 == 76 && velocity2 >= 1 && velocity2 <= 127) || 
@@ -107,20 +107,21 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
            (note4 == 76 && velocity4 >= 1 && velocity4 <= 127) || 
            (note5 == 76 && velocity5 >= 1 && velocity5 <= 127) || 
            (note6 == 76 && velocity6 >= 1 && velocity6 <= 127))) {
-            
+           textSize (100);
             key = '9';
             keyReleased();
+           /*
             key = 'P';
             keyReleased();
             key = 'P';
             keyReleased();
-            
+           */ 
             formerEvent[76] = millis();
         }
 
 
         
-       if (measure >= 24 && measure <= 34 && millis() > formerEvent[76] + 1000 && 
+       if (measure >= 24 && measure <= 34 && millis() > formerEvent[76] + 35000 && 
             
            ((note1 == 76 && velocity1 >= 1 && velocity1 <= 127) || 
            (note2 == 76 && velocity2 >= 1 && velocity2 <= 127) || 
@@ -129,15 +130,17 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
            (note5 == 76 && velocity5 >= 1 && velocity5 <= 127) || 
            (note6 == 76 && velocity6 >= 1 && velocity6 <= 127))) {
             
+          textSize (100);
             key = '9';
             keyReleased();
+           /* 
             key = 'P';
             keyReleased();
             key = 'P';
             keyReleased();
             key = 'p';
             keyReleased();
-            
+           */ 
             formerEvent[76] = millis();
         }
         

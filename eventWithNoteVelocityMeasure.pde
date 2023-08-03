@@ -11,9 +11,9 @@ void autmationWithMeasureAndNote()
 
 
     if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged!=true   ) { // && beatTrigged==true 
-      key ='A';
-      //net.naturalFrequency[9]=1;
-      keyReleased();
+      key ='A'; keyReleased();
+      net.naturalFrequency[9]=1;
+     
      } 
 
    if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
@@ -68,32 +68,66 @@ void autmationWithMeasureAndNote()
     key='$';
     keyReleased();
   }
-  if ( measure==5 && beatTrigged==true) {
-    // d=0;
-   // oscillatorBlocked=networkSize/2;
-//    d=100;
+  if ( measure==7 && beatTrigged==true) {
+    key='9'; keyReleased();
+    key='F'; keyReleased();
+
   }
-  if ( measure==6 && beatTrigged==true) {
-  //  d=200;
+  if ( measure==9 && beatTrigged==true) {
+    key='D'; keyReleased();
   }
 
-  if  (measure==61 && beatTrigged==true  ) {
-    key='o';
+   if ( measure==11 && beatTrigged==true) {
+    key='F'; keyReleased();
+  }
+
+    if ( measure==13 && beatTrigged==true) {
+    key='D'; keyReleased();
+  }
+
+   if ( measure==14 && beatTrigged==true) {
+    key='D'; keyReleased();
+  }
+
+   if ( measure==15 && beatTrigged==true) {
+    key='D'; keyReleased();
+  }
+
+    if  (measure==37 && beatTrigged==true  ) {
+    key='P';
     keyReleased();
+  }
+
+   if  (measure==40 && beatTrigged==true  ) {
+    key='p';
+    keyReleased();
+    key='p';
+    keyReleased();
+  }
+
+
+  if  (measure==61 && beatTrigged==true  ) {
+  //  key='o';
+  //  keyReleased();
   }
 
   if  (measure>=71 && measure<78 ) {
     autoNote2();
   }
 
-  if  (measure==40 && beatTrigged==true ) {//77  //&& beatTrigged==true
+  if  (measure==41 && beatTrigged==true ) {//77  //&& beatTrigged==true
     //    key='o';
     //    keyReleased();
     key='9';
     keyReleased();
-    key=CONTROL;
+    key='1';
     keyReleased();
-    oscillatorBlocked=networkSize-1;
+    key='à';
+    keyReleased();
+
+   // key=CONTROL;
+   // keyReleased();
+   // oscillatorBlocked=networkSize-1;
     speedDelta=4;
   }
 
@@ -110,7 +144,7 @@ if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
      (note5 == 74 && velocity5 >= 1 && velocity5 <= 64) ||
      (note6 == 74 && velocity6 >= 1 && velocity6 <= 64))) { 
     //     key='9'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
-    key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
+   // key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
     keyReleased();
     formerEvent[74]=millis();
   }

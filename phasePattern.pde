@@ -306,8 +306,7 @@ textSize (100);
     {
       // net.naturalFrequency[memoryi]=0.25; 
     }
-     oldMemoryi=memoryi;
-    
+     oldMemoryi=memoryi;  
      memoryi-=1;
   
     if ( memoryi<0) {
