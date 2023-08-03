@@ -187,14 +187,15 @@ void autmationWithMeasureAndNote()
   //   key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
   }
 
-    if  (measure==82 && beatPrecisedTrigged==true &&  ( beatPrecised > 1 && beatPrecised <= networkSize+1)) { 
-      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
 
-    key='T'; // speed is propaged to  next oscilltor 
-    keyReleased();
-   // key='y';keyReleased(); // uprise speed 
+
+      if  (measure==82 && beatPrecisedTrigged==true &&  ( beatPrecised > 1 && beatPrecised <= networkSize+1)) { 
+        text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+       key='T'; // speed is propaged to  next oscilltor 
+       keyReleased();
+      // key='y';keyReleased(); // uprise speed 
    
-   }
+      }
 
      if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) { 
         text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
@@ -228,35 +229,21 @@ void autmationWithMeasureAndNote()
     } 
     
      if ( (measure==89 || measure==92 || measure==94) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-       speedDelta= 5;
-     } 
+          speedDelta= 5;
+       } 
 
      if ( (measure==97 || measure==100 || measure==102) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-       speedDelta= 5;
+          speedDelta= 5;
      } 
 
-      if ( measure=104 && beatTrigged==true) {
-      
+     if ( measure==104 && beatTrigged==true) {
           key='R'; keyReleased();
-    
      } 
 
-      if ( measure=106  && beatPrecisedTrigged==true && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
-      
+     if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
           key='r'; keyReleased();
-    
      } 
-
-
-
-
-
-
-     if ( measure>=106 && measure<=106 && beatTrigged==true) {
-       speedDelta= 4;
-      //     key='e'; keyReleased();
-    
-     } 
+ 
     if ( measure>=107 && measure<=107 && beatTrigged==true) {
        speedDelta= 4;
         //     key='e'; keyReleased();
@@ -265,6 +252,29 @@ void autmationWithMeasureAndNote()
     if ( measure==108 && beatTrigged==true) {
        speedDelta= 5; 
     }
+
+      if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+          key='r'; keyReleased();
+     } 
+
+      if  (((measure==119)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+          key='T'; keyReleased();
+     } 
+
+
+    if  (((measure==120)  && beatTrigged==true)  ) {
+         memoryi=9;// set Memoryi to 9 to start stop frequency at 0 by tapping 't'
+     } 
+
+      if  (((measure==120)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+          key='t'; keyReleased();
+     } 
+
+       if  (((measure==121)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+          key='t'; keyReleased();
+     } 
+
+
 
     if ( measure==122 && beatTrigged==true) {
     speedDelta=4;
@@ -303,9 +313,10 @@ void autmationWithMeasureAndNote()
 
 
   if  (measure==122 && beatTrigged==true) {// 124 basse
-
-   keyMode = " propagationBallRotationBis ";
     propagationSpeed= 60.0;
+    keyCode = LEFT; // to do in propa
+   keyMode = " propagationBallRotationBis ";
+
         //  key='w';    
         //  keyReleased();
   }

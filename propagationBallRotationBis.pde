@@ -195,6 +195,20 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     } 
     // MODULATION of phase and propagaation
 
+     if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+      
+       levelFromArrow= (PI / (1 * networkSize - 1)); // set 
+      // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+       modulePhaseAmountWithArrow=true; // enable pahseAmout = levelFromArrow
+    }
+
+    if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+      keyCode = RIGHT; keyReleased ();
+      keyCode = DOWN; keyReleased ();
+      // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+       modulePhaseAmountWithArrow=true;
+    }
+
 
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
       
