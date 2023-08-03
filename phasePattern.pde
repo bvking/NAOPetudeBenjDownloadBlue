@@ -1299,6 +1299,7 @@ textSize (100);
 
       // interFrequency[memoryi] = -1* net.naturalFrequency[i];
       printSummary(i);
+      
     }
   }
 /*
