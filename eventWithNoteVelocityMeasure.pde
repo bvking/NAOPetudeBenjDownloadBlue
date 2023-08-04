@@ -205,14 +205,14 @@ void autmationWithMeasureAndNote()
 
     if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 6;
-      key='y';keyReleased(); // uprise speed 
+      speedDelta= 4;
+    //  key='y';keyReleased(); // uprise speed 
    
     }
 
     if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 6;
+      speedDelta= 5;
       keyCode=CONTROL; keyReleased(); 
       
     }
