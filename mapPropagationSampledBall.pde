@@ -27,7 +27,7 @@ void mapPropagationSampledBall() {
              text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
        }
 
-     if (circularMov ) {  // || keyMode == " propagationBallRotationBis "
+     if (circularMov ) {  
      textSize( 20);
      if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
   
@@ -58,10 +58,8 @@ void mapPropagationSampledBall() {
               } 
 
             if ( //((newPosF[i]<oldPosF[i]) && (oldPosF[i]<=oldOldPosF[i]) && (oldPosF[i]>= PI && newPosF[i]<PI))
-               newPosF[i]<oldPosF[i] && doo==false && (oldPosF[i]>=oldOldPosF[i])// false CW newPos uprise
+               newPosF[i]<oldPosF[i] && doo==false && (oldPosF[i]>=oldOldPosF[i])// doo false CW newPos uprise
             
-              // newPosF[i]<oldPosF[i] && 
-             // && (oldPosF[i]<=oldOldPosF[i]) && (oldPosF[i]>= PI*1.0 && newPosF[i]<(PI))
              ) { //  && (oldPosF[i]>=oldOldPosF[i]) 
               revLfo[i]++;TrigmodPos[i]=0;   
               text (i + " " + revLfo[i], 0, -700+50*i); 
@@ -73,10 +71,7 @@ void mapPropagationSampledBall() {
     } // end circularMov 
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
-         //  oldPositionToMotor[i]=  positionToMotor[i];
-         //  oldOldPosF[i]=oldPosF[i];
-         //  oldPosF[i]=newPosF[i];
-
+      
            oldOldPhaseMapped[i]=oldPhaseMapped[i];
            oldPhaseMapped[i]=phaseMapped[i];
            net.phase[i]=phaseMapped[i];
