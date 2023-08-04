@@ -115,7 +115,7 @@ void draw() {
     
     // if (circularMov==true) { // why it doesn' t work?
     if (formerKeyMetro ==  '*') {
-      //  countRevs(); // below modePendular to compute revolution
+        countRevs(); // below modePendular to compute revolution
     } 
     
     

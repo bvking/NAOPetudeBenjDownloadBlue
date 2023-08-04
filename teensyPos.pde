@@ -14,7 +14,7 @@ void teensyPos(){
   }
 
 
-  
+
  
  if ( measure <= 635)  {  // to avoid machine blocked 
 

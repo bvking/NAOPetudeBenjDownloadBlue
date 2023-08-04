@@ -253,24 +253,23 @@ void autmationWithMeasureAndNote()
        speedDelta= 5; 
     }
 
-      if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+     if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
           key='r'; keyReleased();
      } 
 
-      if  (((measure==119)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+     if  (((measure==119)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16|| beatPrecised == 21 ) ) {
           key='T'; keyReleased();
      } 
 
-
-    if  (((measure==120)  && beatTrigged==true)  ) {
+     if  (((measure==120)  && beatTrigged==true)  ) {
          memoryi=9;// set Memoryi to 9 to start stop frequency at 0 by tapping 't'
      } 
 
-      if  (((measure==120)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+     if  (((measure==120)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16 || beatPrecised == 21 ) ) {
           key='t'; keyReleased();
      } 
 
-       if  (((measure==121)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+     if  (((measure==121)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16 || beatPrecised == 21 ) ) {
           key='t'; keyReleased();
      } 
 
