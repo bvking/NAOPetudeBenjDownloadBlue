@@ -11,6 +11,7 @@ void autmationWithMeasureAndNote()
 
 
     if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged!=true   ) { // && beatTrigged==true 
+    speedDelta = 5;
       key ='A'; keyReleased();
       net.naturalFrequency[9]=1;
      
@@ -40,20 +41,20 @@ void autmationWithMeasureAndNote()
 
   
   if (measure<5 ) { // && beatTrigged==true 
-    speedDelta=3; 
+  //  speedDelta=3; 
     autoNote2();
   } 
   
 
   if (measure==5 && beatTrigged==true) {
-    speedDelta=3 ;
+    speedDelta=4 ;
     key = '9'; keyReleased();
     key = 'A'; keyReleased(); // decale une à une et revient dans l'alignement
     net.naturalFrequency[9]= 5;
   } 
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-    speedDelta=3 ;
+    speedDelta=4 ;
 
     key = '°';
     keyReleased();
@@ -205,35 +206,35 @@ void autmationWithMeasureAndNote()
 
     if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 4;
+      speedDelta= 6;
     //  key='y';keyReleased(); // uprise speed 
    
     }
 
     if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 5;
+      speedDelta= 6;
       keyCode=CONTROL; keyReleased(); 
       
     }
 
     if ( (measure==89 || measure==92 || measure==94) && beatTrigged==true) {
-       speedDelta= 4;
+       speedDelta= 6;
          key='P'; keyReleased(); 
      } 
 
     if ( (measure==96 || measure==99 || measure==101) && beatTrigged==true) {
-       speedDelta= 4;
+       speedDelta= 6;
          key='p'; keyReleased(); 
          key='p'; keyReleased(); 
     } 
     
      if ( (measure==89 || measure==92 || measure==94) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-          speedDelta= 5;
+      //    speedDelta= 5;
        } 
 
      if ( (measure==97 || measure==100 || measure==102) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-          speedDelta= 5;
+      //    speedDelta= 5;
      } 
 
      if ( measure==104 && beatTrigged==true) {
@@ -245,12 +246,12 @@ void autmationWithMeasureAndNote()
      } 
  
     if ( measure>=107 && measure<=107 && beatTrigged==true) {
-       speedDelta= 4;
+     //  speedDelta= 4;
         //     key='e'; keyReleased();
       keyCode =CONTROL; keyReleased();
      } 
     if ( measure==108 && beatTrigged==true) {
-       speedDelta= 5; 
+     //  speedDelta= 5; 
     }
 
      if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {

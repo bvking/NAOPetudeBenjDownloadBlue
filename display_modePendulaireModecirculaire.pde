@@ -15,7 +15,7 @@ void  displayModePendulaireModeCirculaire() {
           if (formerKeyMetro == '$') {  circularMov = false; }
      
 
-         println ( " cricular ......???????" + circularMov);
+         println ( " cricular ......???????" + circularMov+ " speedDelta " + speedDelta);
 
 
        rotate (-PI/2);

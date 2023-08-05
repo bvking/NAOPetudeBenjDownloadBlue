@@ -55,7 +55,7 @@ void teensyPos(){
          }
 
           //   recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
-              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastPositionFromCircularMode[i]; // RENAME;//+readPositionEncoder[i];
+              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i]; // RENAME;//+readPositionEncoder[i];
               //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               //  print ( " record * " + recordLastDataOfMotorPosition[i] );
 
@@ -141,7 +141,7 @@ void teensyPos(){
          }
 
            //  recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
-              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastPositionFromCircularMode[i]; // RENAME;//+readPositionEncoder[i];
+              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i]; // RENAME;//+readPositionEncoder[i];
 
               //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               //  print ( " record * " + recordLastDataOfMotorPosition[i] );
@@ -155,20 +155,20 @@ void teensyPos(){
 
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
-          // dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+          // dataMappedForMotorisedPosition[i]+= lastActualPosition[i];  // lastActualPosition[i] comes with key k too
 
-             dataMappedForMotorisedPosition[i]+=recordLastDataOfMotorPosition[i];// RENAME good with k only
+             dataMappedForMotorisedPosition[i]+=lastActualPosition[i];// RENAME good with k only
 
              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
-              print ( " record $ " + recordLastDataOfMotorPosition[i] );
+              print ( " record $ " + recordLastDataOfMotorPosition[i] + " lastPos " + lastActualPosition );
              //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
              }
           }
             /*
            if (formerKeyMetro == '*' ) {
             for (int i = 0; i < networkSize-0; i++) { // 
-            lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+            lastActualPosition[i]=dataMappedForMotorisedPosition[i]; 
             //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
              } 
             }
@@ -187,7 +187,7 @@ void teensyPos(){
        if (formerKeyMetro == '*' ) {
         for (int i = 0; i < networkSize-0; i++) { // 
           //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
-            dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastPositionFromCircularMode[i];//+readPositionEncoder[i];  
+            dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i];//+lastActualPosition[i];//+readPositionEncoder[i];  
              //   dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];// useless but find something to make i and u working in circular movement
              //   dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i];  // doesn' t work
 
@@ -218,7 +218,7 @@ void teensyPos(){
 
       if ( keyMode == " propagationBallRotationBis " ) {
        for (int i = 0; i < networkSize-0; i++) { // 
-      // recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
+      // recordLastDataOfMotorPosition[i]+= lastActualPosition[i];
         //  actualisePositionDataFromCircular = false|| dol==true; //
         //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
         dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+recordLastDataOfMotorPosition[i]; // +readPositionEncoder[i]
@@ -385,7 +385,7 @@ void teensyPosOri(){
         if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
             for (int i = 0; i < networkSize; i++) {
                //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastPositionFromCircularMode[i];
+                     dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + recordLastDataOfMotorPosition[i] +lastActualPosition[i];
 
                      
                 println ( " dataMappedForMotorisedPosition[i] " + dataMappedForMotorisedPosition[i] );
@@ -398,7 +398,7 @@ void teensyPosOri(){
 
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
-      //  dataMappedForMotorisedPosition[i]+= lastPositionFromCircularMode[i];  // lastPositionFromCircularMode[i] comes with key k too
+      //  dataMappedForMotorisedPosition[i]+= lastActualPosition[i];  // lastActualPosition[i] comes with key k too
          dataMappedForMotorisedPosition[i]+= recordLastDataOfMotorPosition[i];
 
          print ( " record2 " + recordLastDataOfMotorPosition[i] );
@@ -408,7 +408,7 @@ void teensyPosOri(){
         /*
          if (formerKeyMetro == '*' ) {
         for (int i = 0; i < networkSize-0; i++) { // 
-        lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i]; 
+        lastActualPosition[i]=dataMappedForMotorisedPosition[i]; 
          //  dataMappedForMotorisedPosition[i]+= positionFromPropaBis[i];  
            } 
           }
@@ -452,7 +452,7 @@ void teensyPosOri(){
 
       if ( keyMode == " propagationBallRotationBis " ) {
        for (int i = 0; i < networkSize-0; i++) { // 
-       recordLastDataOfMotorPosition[i]+= lastPositionFromCircularMode[i];
+       recordLastDataOfMotorPosition[i]+= lastActualPosition[i];
         //  actualisePositionDataFromCircular = false|| dol==true; //
         //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
         dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+readPositionEncoder[i]+recordLastDataOfMotorPosition[i];

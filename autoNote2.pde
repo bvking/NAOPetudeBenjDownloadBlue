@@ -26,21 +26,21 @@ void autoNote2() {//1 67 69 72
 
    // keyEvent[0] = " autoNote2 Pressed " + formerEvent[169]; 
 
-    text("formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
+    text(" autonote 2 formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
     println(" formerEvent[160] INSIDE " + formerEvent[169]);
     }
 
  
    
 
-   if (measure ==2 && beatPrecised >= 12 && beatPrecisedTrigged==true && millis() > formerEvent[172] + 150  &&  
+   if (measure ==2 && beatPrecised >= 12 && beatPrecisedTrigged==true && millis() > formerEvent[172] + 500  &&  
        ((note1 == 69  || note2 == 69 || note3 == 69 )))  {
         key = 'i'; // ok mais trouve mieux quad basse arrive
         keyReleased();
       
   } 
 
-  if ((measure >= 3 && measure <= 5 && millis() > formerEvent[172] + 150 ) &&
+  if ((measure >= 3 && measure <= 5 && millis() > formerEvent[172] + 500 ) &&
  
        ((note1 == 69  || note2 == 69 || note3 == 69 ))) 
      

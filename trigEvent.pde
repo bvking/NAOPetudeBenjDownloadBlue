@@ -446,8 +446,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
     /*
         if (formerKeyMetro == '$' && key == '='){
        for (int i = 0; i < networkSize; i=+1 ){
-         AlternativeVirtualPositionFromOtherMode[i]=dataMappedForMotorisedPosition[i]- lastPositionFromCircularMode[i];
-         text ( "   AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  lastPositionFromCircularMode[i] , -800, 800-10*i );
+         AlternativeVirtualPositionFromOtherMode[i]=dataMappedForMotorisedPosition[i]- lastActualPosition[i];
+         text ( "   AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  lastActualPosition[i] , -800, 800-10*i );
        } 
     } 
     */

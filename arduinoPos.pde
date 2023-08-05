@@ -218,7 +218,7 @@ void arduinoPos() {
       } 
       dataMappedForMotorisedPosition[i]=CircularVirtualPosition[i]+ActualVirtualPosition[i];
     //  VirtualPosition[i]= CircularVirtualPosition[i]+ActualVirtualPosition[i]; 
-    //  lastPositionFromCircularMode[i]=VirtualPosition[i];
+    //  lastActualPosition[i]=VirtualPosition[i];
       }
      }
 
@@ -259,7 +259,7 @@ void arduinoPos() {
 
    //    dataMappedForMotorisedPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
 
-    //******   lastPositionFromCircularMode[i]=dataMappedForMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
+    //******   lastActualPosition[i]=dataMappedForMotorisedPosition[i];//+positionMotorisedFromContinuesMod[i];
 
 
      //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
@@ -273,10 +273,10 @@ void arduinoPos() {
 
   if (formerKeyMetro == '$') {
   //  actualisePositionDataFromCircular=true;
-        // ActualVirtualPosition[i]=lastPositionFromCircularMode[i];
+        // ActualVirtualPosition[i]=lastActualPosition[i];
 
     for (int i = 0; i < networkSize; i++) {
-        // ActualVirtualPosition[i]=lastPositionFromCircularMode[i];
+        // ActualVirtualPosition[i]=lastActualPosition[i];
   
       // VirtualPosition[i]= (int) map ( VirtualPosition[i], 1600, 4800, -800, 800); // mapped at the scale in Max 4 live
       PendularOldOldOldLeftVirtualPosition[i]=PendularOldOldLeftVirtualPosition[i];  
@@ -299,7 +299,7 @@ void arduinoPos() {
     
 
 
-    //  dataMappedForMotorisedPosition[i]=PendularVirtualPosition[i]+  lastPositionFromCircularMode[i];
+    //  dataMappedForMotorisedPosition[i]=PendularVirtualPosition[i]+  lastActualPosition[i];
       ActualVirtualPosition[i]=dataMappedForMotorisedPosition[i];
       ActualVirtualPosition[i]%= numberOfStep;
 

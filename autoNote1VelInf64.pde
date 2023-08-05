@@ -33,7 +33,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
         println(formerEvent[69]);
     }
     
-    if(measure >= 5 && measure <= 40 && millis() > formerEvent[72] + 100 + d && 
+    if(measure >= 5 && measure <= 40 && millis() > formerEvent[72] + 500 + d && // 250 means  each 4 notes
         
       ((note1 == 72 && velocity1 >= 1 && velocity1 <= 64) || 
        (note2 == 72 && velocity2 >= 1 && velocity2 <= 64) || 
@@ -167,7 +167,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
                 println(formerEvent[64]);
             }
 
-            if (measure > 41 && measure <=  42  && beatTrigged ==  true ) {// measure>=41 && measure<=42
+            if (measure ==  42  && beatTrigged ==  true ) {// measure>=41 && measure<=42
                  for (int i = 0; i < networkSize; i++) {
                       //    ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
                 }

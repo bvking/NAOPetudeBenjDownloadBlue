@@ -94,8 +94,8 @@ void phasePatternBase() { // trigged with $ or *
     }
          textSize(250);
         for (int i = 0; i < (networkSize-0); i++) {   
-   //   lastPositionFromCircularMode[i]= dataMappedForMotorisedPosition[i];
-    //  netOldPhaseBase[i]=lastPositionFromCircularMode[i];
+   //   lastActualPosition[i]= dataMappedForMotorisedPosition[i];
+    //  netOldPhaseBase[i]=lastActualPosition[i];
    
     //   netOldPhaseBase[i]=netPhaseBase[i];
    //    netPhaseBase[i]= 800* (i+1);
@@ -116,7 +116,7 @@ void phasePatternBase() { // trigged with $ or *
        text (" netOld ", netOldPhaseBase[i], 200, 200+100*i);
        println ( " netOldPhaseBase[i] "  + netOldPhaseBase[i]); 
      }
-     //  netOldPhaseBase[networkSize-1]=  lastPositionFromCircularMode[0];
+     //  netOldPhaseBase[networkSize-1]=  lastActualPosition[0];
 	   //  netOldPhaseBase[networkSize-1]=  netOldPhaseBase[networkSize-1];
    
   
@@ -606,7 +606,7 @@ void phasePatternBase() { // trigged with $ or *
     println("INCREASE phases with special modulo P$   "); //P$ 
     for (int i = 0; i < networkSize; i++) {
       netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected  // if networkSize-networkSize-i))%PI/3; --> oscillator 0 not affected
-    //  lastPositionFromCircularMode[i] += (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3;
+    //  lastActualPosition[i] += (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3;
       //     netPhaseBase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
     //  netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
       key='#';

@@ -576,7 +576,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int[] CircularVirtualPosition  = new int[networkSize];
             int[] dataMappedForMotorisedPosition  = new int[networkSize];
             int[] ActualVirtualPosition = new int[networkSize];
-            int[] lastPositionFromCircularMode  = new int[networkSize];
+            int[] lastActualPosition  = new int[networkSize];
             int[] oldActualVirtualPosition  = new int[networkSize];
             int[] PendularOldVirtualPosition  = new int[networkSize];
             int[] CircularOldVirtualPosition  = new int[networkSize];
@@ -826,7 +826,7 @@ void setup() {
                 CircularVirtualPosition = new int[networkSize]; 
                 dataMappedForMotorisedPosition = new int[networkSize]; 
                 ActualVirtualPosition = new int[networkSize];
-                lastPositionFromCircularMode = new int[networkSize];
+                lastActualPosition = new int[networkSize];
                 oldActualVirtualPosition = new int[networkSize];
                 
                 PendularOldVirtualPosition = new int[networkSize]; 
