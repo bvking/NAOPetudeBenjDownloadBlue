@@ -528,17 +528,13 @@ textSize (100);
     for (int i = 0; i < (networkSize-1); i++) {
 
        netOldPhaseBase[i+1]=netPhaseBase[i];
-    //   netPhaseBase[i]= map (net.phase[i], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[i]
-     
+    //   netPhaseBase[i]= map (net.phase[i], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[i]     
      // net.naturalFrequency[i+1]= net.naturalFrequency[i];
-      //**   net.naturalFrequency[2]= OldFrequency[networkSize-1];
-      //  VirtualPosition[i]=VirtualPosition[i+1];
+
       lastActualPosition[i]+=netOldPhaseBase[i+1];
      //lastActualPosition[i]+=netPhaseBase[i];
-
      
       // ActualVirtualPosition[i+1]= ActualVirtualPosition[i+1]+1600;U
-      //  
 
       printSummary(i);
     }

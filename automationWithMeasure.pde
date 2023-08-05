@@ -1,33 +1,28 @@
-void autmationWithMeasureAndNoteOriginal()
+void autmationWithMeasureAndNote()
   {
   char lastKey = key;
-  if (key!='#'){
+ // if (key!='#'){
   lastKey=key; 
-    }
+ //   }
      text( (beatPrecised-1) %4 + " autmationWith " + lastKey, 500, -800);
 
   //autoNote1VelInf64();
   //autoNote1();
 
 
-    if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged!=true   ) { // && beatTrigged==true 
+    if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged==true   ) { // && beatTrigged==true 
     speedDelta = 5;
-      key ='A'; keyReleased();
-      net.naturalFrequency[9]=1;
+     keyCode = CONTROL;
      
      } 
 
-   if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  ) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
-
-   // ((note1 == 72 && velocity1 == 96) || (note2 == 72 && velocity2 == 96) || (note3 == 72 && velocity3 == 96))) {
-    // ((note1 == 72  || note2 == 72 || note3 == 72 ))) 
-      // ((note1 == 69  || note2 == 69 || note3 == 69 ))
-       ) 
-     
+   if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  )) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
+      //((note1 == 72  || note2 == 72 || note3 == 72 ))) 
+      //((note1 == 69  || note2 == 69 || note3 == 69 )) 
      {
-    formerEvent[172] = millis();
-   // key = 'i';
-    key = 'T';
+    formerEvent[172] = millis(); // 
+    key = 'i';
+   // key = 'T';
     keyReleased();
     //keyEvent[1] = "  autoNote2 Pressed " + formerEvent[172];
     //oscillatorBlocked = networkSize % 2;
@@ -47,14 +42,14 @@ void autmationWithMeasureAndNoteOriginal()
   
 
   if (measure==5 && beatTrigged==true) {
-    speedDelta=4 ;
+  
     key = '9'; keyReleased();
     key = 'A'; keyReleased(); // decale une à une et revient dans l'alignement
     net.naturalFrequency[9]= 5;
   } 
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-    speedDelta=4 ;
+   
 
     key = '°';
     keyReleased();
@@ -165,13 +160,23 @@ void autmationWithMeasureAndNoteOriginal()
   }
 
 
-  if  (measure==61 && beatTrigged==true  ) {
-  //  key='o';
-  //  keyReleased();
+  if  (measure==71 && beatTrigged==true  ) {
+  speedDelta=6;
   }
 
   if  (measure>=71 && measure<78 ) {
     autoNote2();
+     
+  }
+
+  if  (measure==80 && beatTrigged) {
+    autoNote2();
+     speedDelta=7;
+  }
+
+    if  (measure==81 && beatTrigged) {
+   
+     speedDelta=8;
   }
 
   if  (measure==82 &&   beatPrecised == 1 && beatPrecisedTrigged==true) {
@@ -180,7 +185,7 @@ void autmationWithMeasureAndNoteOriginal()
   
     key='9'; // aligné  à une position 
     keyReleased();
-    speedDelta=4;
+    speedDelta=9;
    
     memoryi = 9;
     
@@ -204,27 +209,45 @@ void autmationWithMeasureAndNoteOriginal()
    
      }
 
-    if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8 
+      if  (measure==83 && beatTrigged ) {
+   
+     speedDelta=10;
+  }
+
+    if  (measure==83 && beatPrecisedTrigged==true && (beatPrecised+1)%4==0  ) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 6;
-    //  key='y';keyReleased(); // uprise speed 
+     
+     key='y';keyReleased(); // uprise speed 
+   
+    }
+
+   if  (measure==84 && beatTrigged ) {
+   
+     speedDelta=11;
+  }
+
+
+    if  (measure==84 && beatPrecisedTrigged==true && (beatPrecised+1)%4==0  ) {  //  &&  beatPrecised <=8 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+     
+     key='y';keyReleased(); // uprise speed 
    
     }
 
     if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8 
       text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-      speedDelta= 6;
+    
       keyCode=CONTROL; keyReleased(); 
       
     }
 
     if ( (measure==89 || measure==92 || measure==94) && beatTrigged==true) {
-       speedDelta= 6;
+     
          key='P'; keyReleased(); 
      } 
 
     if ( (measure==96 || measure==99 || measure==101) && beatTrigged==true) {
-       speedDelta= 6;
+      
          key='p'; keyReleased(); 
          key='p'; keyReleased(); 
     } 
@@ -388,10 +411,53 @@ void autmationWithMeasureAndNoteOriginal()
     key='*';    keyReleased();
     
   }
+ 
+ if (formerEvent[99] > millis() + 100) {
+  key = '#';
+  formerEvent[99]=millis();
 
-  lastKey = '#';
+   }
  
   // autoNote1Original(); // !=0
   // autoNote2();
 }
 
+String[] displayEventFromKeyReleased(String[] keyEvent) { 
+  for (int i = 0; i < keyEvent.length; i++) { 
+  //  text ( " keyEvent " + i + keyEvent[i], 500, 700+100*i); 
+  } 
+  return keyEvent;  // Returns an array of 3 ints: 20, 40, 60 
+}
+
+/*
+void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
+ {
+       text  (" eventToTrig " + eventToTrig[0], 500, 700);  
+        text  (" eventToTrig " + eventToTrig[1], 500, 700);  
+   }
+*/
+
+void trigBeatWithMeasure()
+ {
+   if (formerBeatPrecised!=beatPrecised) {
+         beatPrecisedTrigged=true;
+   }
+     else  beatPrecisedTrigged=false; 
+
+  if (formerMeasure!=measure) {
+    beatTrigged=true;
+    beatOnMeasure=(measure%4)+1;
+    println(" MEASURE " + measure);
+    formerFrameBeat=frameCount;
+   }
+ 
+   else beatTrigged=false;
+ 
+  if (formerBeatPrecised!=beatPrecised) {   
+     beatPrecisedTrigged=true;
+     println(beatPrecisedTrigged);
+    }
+  
+   else  beatPrecisedTrigged=false; 
+  
+ } 

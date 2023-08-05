@@ -89,7 +89,7 @@ void keyReleased() {
     
       }
 
-   if (key == ';' ) {  //  && formerKeyMetro == '$'
+   if (key == ';' && networkSize == 6 ) {  //  && formerKeyMetro == '$'
     
 
     for (int i = 0; i < 1; i++) {
@@ -118,7 +118,7 @@ void keyReleased() {
        || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
       ){
          speedDelta++;
-         speedDelta%=8;
+         speedDelta%=12;
        //   key='#'; // to trig only once
         /*
       oscillatorBlocked++;
@@ -139,7 +139,7 @@ void keyReleased() {
       ){
 
         speedDelta--;
-        if (speedDelta < 1) { 
+        if (speedDelta <= 1) { 
           speedDelta=4;
            }
        //  key='#'; // to trig only once
@@ -384,6 +384,7 @@ void keyReleased() {
    } 
   }
 
+  keyCode = TAB; // to stop speedDelta
  //key= '#'; 
 
 }
