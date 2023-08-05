@@ -206,32 +206,25 @@ void autmationWithMeasureAndNote()
      if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) { 
         text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
         key='y';keyReleased(); // uprise speed 
-   
      }
-
-      if  (measure==83 && beatTrigged ) {
-   
+     if  (measure==83 && beatTrigged ) {
      speedDelta=10;
-  }
-
+     }
     if  (measure==83 && beatPrecisedTrigged==true && (beatPrecised+1)%4==0  ) {  //  &&  beatPrecised <=8 
-      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-     
-     key='y';keyReleased(); // uprise speed 
-   
+     text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);  
+     key='y';keyReleased(); // uprise speed  
+    }
+    if  (measure==84 && beatTrigged ) {
+     speedDelta=11;
     }
 
-   if  (measure==84 && beatTrigged ) {
-   
-     speedDelta=11;
-  }
+    if  (measure==84 && beatPrecisedTrigged==true && (beatPrecised+1)%6==0  ) {  //  &&  beatPrecised <=8 
+      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);     
+      key='y';keyReleased(); // uprise speed 
+    }
 
-
-    if  (measure==84 && beatPrecisedTrigged==true && (beatPrecised+1)%4==0  ) {  //  &&  beatPrecised <=8 
-      text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-     
-     key='y';keyReleased(); // uprise speed 
-   
+    if  (measure==85 && beatTrigged ) {
+     speedDelta=12;
     }
 
     if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8 
@@ -268,7 +261,7 @@ void autmationWithMeasureAndNote()
           key='r'; keyReleased();
      } 
  
-    if ( measure>=107 && measure<=107 && beatTrigged==true) {
+    if ( measure==107 && beatTrigged==true) {
      //  speedDelta= 4;
         //     key='e'; keyReleased();
       keyCode =CONTROL; keyReleased();
