@@ -79,8 +79,8 @@ void  displayModePendulaireModeCirculaire() {
           // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
         }
 
-        //  metroPhase[i]=  metroPhase[i]-PI/2;
-        //   metroPhase[i]%=TWO_PI;
+          metroPhase[i]=  metroPhase[i]-PI/2;
+           metroPhase[i]%=TWO_PI;
         x = displacement*cos(metroPhase[i]);
         y = displacement*sin(metroPhase[i]);
         // }
