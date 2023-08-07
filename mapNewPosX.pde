@@ -140,6 +140,3 @@ void mapNewPosX() {
            // net.phase[i]=specialPhase[i];
          }
 }
-
-
-

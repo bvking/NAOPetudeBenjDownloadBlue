@@ -74,4 +74,3 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     }
     rotate(PI / 2);
 }
-

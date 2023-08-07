@@ -5,52 +5,51 @@ void autoNote2() {//1 67 69 72
   keyEvent[3] = " 0 ";
   d = 0;
   char lastKey = key;
-  if (key!='#'){
-  lastKey=key;
-   }
-    text(" autonote2with   " + lastKey, 1500, -800);
+  if (key!='#') {
+    lastKey=key;
+  }
+  text(" autonote2with   " + lastKey, 1500, -800);
 
-   
 
-       if (measure ==3 && beatTrigged==true    ) { // && beatTrigged==true 
+
+  if (measure ==3 && beatTrigged==true    ) { // && beatTrigged==true
     //  key ='°';
     //  keyReleased();
-     } 
+  }
 
-    if ((measure > 5 && measure <= 40 && millis() > formerEvent[169] + 150 + d) &&
+  if ((measure > 5 && measure <= 40 && millis() > formerEvent[169] + 150 + d) &&
     ((note1 == 69 && velocity1 == 96) || (note2 == 69 && velocity2 == 96) || (note3 == 69 && velocity3 == 96))) {
     formerEvent[169] = millis();
     key = 'p';
 
     keyReleased();
 
-   // keyEvent[0] = " autoNote2 Pressed " + formerEvent[169]; 
+    // keyEvent[0] = " autoNote2 Pressed " + formerEvent[169];
 
     text(" autonote 2 formerEvent[169] INSIDE " + formerEvent[169], 500, 700);
     println(" formerEvent[160] INSIDE " + formerEvent[169]);
-    }
+  }
 
- 
-   
 
-   if (measure ==2 && beatPrecised >= 12 && beatPrecisedTrigged==true && millis() > formerEvent[172] + 500  &&  
-       ((note1 == 69  || note2 == 69 || note3 == 69 )))  {
-        key = 'i'; // ok mais trouve mieux quad basse arrive
-        keyReleased();
-      
-  } 
+
+
+  if (measure ==2 && beatPrecised >= 12 && beatPrecisedTrigged==true && millis() > formerEvent[172] + 500  &&
+    ((note1 == 69  || note2 == 69 || note3 == 69 ))) {
+    key = 'i'; // ok mais trouve mieux quad basse arrive
+    keyReleased();
+  }
 
   if ((measure >= 3 && measure <= 5 && millis() > formerEvent[172] + 500 ) &&
- 
-       ((note1 == 69  || note2 == 69 || note3 == 69 ))) 
-     
-     {
+
+    ((note1 == 69  || note2 == 69 || note3 == 69 )))
+
+  {
     formerEvent[172] = millis();
     key = 'i'; // ok mais trouve mieux quad basse arrive
-   // key = 'T';
+    // key = 'T';
     keyReleased();
     keyEvent[1] = "  autoNote2 Pressed " + formerEvent[172];
-  //  oscillatorBlocked = networkSize % 2;
+    //  oscillatorBlocked = networkSize % 2;
     eventToTrig[1] = " formerEvent[172] INSIDE i ";
     println(eventToTrig[1]);
   }
@@ -95,17 +94,17 @@ void autoNote2() {//1 67 69 72
     println(formerEvent[169]);
   }
 
-    
 
- 
+
+
   if  (measure>41 && measure<=42  && beatTrigged==true  ) {// measure>=41 && measure<=42
-      for (int i = 0; i < networkSize; i++) {
+    for (int i = 0; i < networkSize; i++) {
 
-        //    ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
-        //     ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
-        //    key=';';keyPressed(); print ("rise up frameratio +5 ");
-        //    key=';';keyPressed(); print ("rise up frameratio +5 ");
-        //    key=';';keyPressed(); print ("rise up frameratio +5 ");
-      }
+      //    ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
+      //     ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
+      //    key=';';keyPressed(); print ("rise up frameratio +5 ");
+      //    key=';';keyPressed(); print ("rise up frameratio +5 ");
+      //    key=';';keyPressed(); print ("rise up frameratio +5 ");
     }
- }
+  }
+}

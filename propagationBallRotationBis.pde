@@ -266,5 +266,3 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
     } 
     
 }
-
-

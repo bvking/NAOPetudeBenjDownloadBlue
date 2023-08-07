@@ -24,44 +24,43 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
   case 'x':
     moveKeys[7] = b;
     break;
-  /*       if (keyCode == CONTROL){ // .. in Keypressed =true, inKeyRelesed == false  // moveKeys[8]=true; }   */
+    /*       if (keyCode == CONTROL){ // .. in Keypressed =true, inKeyRelesed == false  // moveKeys[8]=true; }   */
   case 'c':
-  moveKeys[9] = b;
-  break;
+    moveKeys[9] = b;
+    break;
   case 'r':
-  moveKeys[10] = b;
-  break;
+    moveKeys[10] = b;
+    break;
   case 'f':
-  moveKeys[11] = b;
-  break;
+    moveKeys[11] = b;
+    break;
   case 'v':
-  moveKeys[12] = b;
-  break;
+    moveKeys[12] = b;
+    break;
   case 't':
-  moveKeys[13] = b;
-  break;
+    moveKeys[13] = b;
+    break;
   case 'g':
-  moveKeys[14] = b;
-  break;
+    moveKeys[14] = b;
+    break;
   case 'b':
-  moveKeys[15] = b;
-  break;
+    moveKeys[15] = b;
+    break;
   case 'y':
-  moveKeys[16] = b;
-  break;
+    moveKeys[16] = b;
+    break;
   case 'h':
-  moveKeys[17] = b;
-  break;
+    moveKeys[17] = b;
+    break;
   case 'n':
-  moveKeys[18] = b;
-  break;
+    moveKeys[18] = b;
+    break;
   case 'u':
-  moveKeys[19] = b;
-  break;
+    moveKeys[19] = b;
+    break;
   case 'j':
-  moveKeys[20] = b;
-  break;
-   
+    moveKeys[20] = b;
+    break;
   }
 }
 
@@ -69,21 +68,23 @@ void handleKeyPressToChooseCircularMovementOrNot() {
   if (key == '*') {
     circularMov = true;
   }
-  
+
   if (key == '$') {
     circularMov = false;
   }
-  
+
   String[] valueText = displayEventFromKeyReleased(keyEvent);
 }
 
 void displayArrays() {
-  print("encodeur "); showArray(encodeur);
-  print("countRev "); showArray(rev);
- // print  (" encodeurTouched " + encoderTouched[0]+ "  " + encoderTouched[1]+ "  " + encoderTouched[2]+ "  " +
-   //                             encoderTouched[3]+ "  " + encoderTouched[4]+ "  " + encoderTouched[5]);
- // print("keyEvent "); showArray(keyEvent); showArray work with int only
-  
+  print("encodeur ");
+  showArray(encodeur);
+  print("countRev ");
+  showArray(rev);
+  // print  (" encodeurTouched " + encoderTouched[0]+ "  " + encoderTouched[1]+ "  " + encoderTouched[2]+ "  " +
+  //                             encoderTouched[3]+ "  " + encoderTouched[4]+ "  " + encoderTouched[5]);
+  // print("keyEvent "); showArray(keyEvent); showArray work with int only
+
   textSize(50);
   for (int i = 0; i < networkSize; i++) {
     text("rev " + i + rev[i] + " enc " + i + " " + encodeur[i], -width * 2, 0 - 50 * i);
@@ -92,15 +93,15 @@ void displayArrays() {
 
 void computePhaseSum() {
   if (circularMov=true) {
-  for (int i = 0; i < networkSize; i++) {
-    addPhaseAllMode += net.phase[i];
-  }
+    for (int i = 0; i < networkSize; i++) {
+      addPhaseAllMode += net.phase[i];
     }
-   if (circularMov=false) {
-  for (int i = 0; i < networkSize; i++) {
-    addPhaseAllMode += metroPhase[i];
   }
+  if (circularMov=false) {
+    for (int i = 0; i < networkSize; i++) {
+      addPhaseAllMode += metroPhase[i];
     }
+  }
   addPhaseAllMode/=networkSize;
   print("average phase is with order ");
   print (addPhaseAllMode);
@@ -109,193 +110,192 @@ void computePhaseSum() {
   println(addPhaseAllMode);
 }
 
-void setMeasureAndBeatPrecised() {  
-    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ") {
-      measure = (int) map(automation4 * 10, 0, 7.874016, 1, 1000);
-      print("measure ");
-      print(measure);
-      print("AUTOMATION 5 = beatPrecised ");
-      beatPrecised = (int) map(automation5 * 10, 0, 7.874016, 1, 1000);
-      println(beatPrecised);
-}
+void setMeasureAndBeatPrecised() {
+  if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ") {
+    measure = (int) map(automation4 * 10, 0, 7.874016, 1, 1000);
+    print("measure ");
+    print(measure);
+    print("AUTOMATION 5 = beatPrecised ");
+    beatPrecised = (int) map(automation5 * 10, 0, 7.874016, 1, 1000);
+    println(beatPrecised);
+  }
 }
 
 void checkKeyModeToFollowIfALTisJustReleased() {
-   
-    //formerKeyCode= keyCode;
-    rotate (-HALF_PI); //to well display
-    if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) // 
-    {
-     if ( formerKeyCode == ALT){
-    modeStartKey = key;   // press l to change formerKeyMetro Mode
-     }
+
+  //formerKeyCode= keyCode;
+  rotate (-HALF_PI); //to well display
+  if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) //
+  {
+    if ( formerKeyCode == ALT) {
+      modeStartKey = key;   // press l to change formerKeyMetro Mode
     }
-   
-       
-    switch( modeStartKey) {
-    case 'a': 
+  }
+
+
+  switch( modeStartKey) {
+  case 'a':
     modeStartKeyToFollow = " followSignalSampledLPF ";
     print ( " modeStartKeyToFollow " );
     followSignalSampledLPF(frameRatio);
     break;
-    case 'b': 
+  case 'b':
     modeStartKeyToFollow = " followDistribueAddLfoPatternLPF ";
-        print ( " modeStartKeyToFollow " );
+    print ( " modeStartKeyToFollow " );
 
-    text ( " followDistribueAddLfoPatternLPF ", width/4, -height/4);  
+    text ( " followDistribueAddLfoPatternLPF ", width/4, -height/4);
     followDistribueAddLfoPatternLPF();
     break;
-    case 'c':  
-    formerKeyMetro = '@';       
+  case 'c':
+    formerKeyMetro = '@';
     modeStartKeyToFollow = " followDistribueAddLfoPatternControl ";
-        
-   // text ( modeStartKeyToFollow, width/2, -height/4);  
-    followDistribueAddLfoPatternControl();  
+
+    // text ( modeStartKeyToFollow, width/2, -height/4);
+    followDistribueAddLfoPatternControl();
     //if (formerFormerKey!='#'){
-          if (Key!='#'){
-   // controlTrigLfoPattern = millis();
-   // text (  controlTrigLfoPattern, 200, 300 );
-  
-    //}
+    if (Key!='#') {
+      // controlTrigLfoPattern = millis();
+      // text (  controlTrigLfoPattern, 200, 300 );
+
+      //}
     }
     break;
-    case 'f':   
-    // formerKeyMetro = '@';  
+  case 'f':
+    // formerKeyMetro = '@';
     modeStartKeyToFollow = " followSignalfo ";
-        print ( " modeStartKeyToFollow " );
+    print ( " modeStartKeyToFollow " );
 
-    text ( modeStartKeyToFollow + " follow  signal " + (networkSize-1)+ " "  + signal[networkSize-1], width/4, -height/4); 
+    text ( modeStartKeyToFollow + " follow  signal " + (networkSize-1)+ " "  + signal[networkSize-1], width/4, -height/4);
     followSignalLfo(frameRatio, signal[networkSize-1]);
     break;
 
-    case 'd': 
-    //formerKeyMetro = '@';    
+  case 'd':
+    //formerKeyMetro = '@';
     modeStartKeyToFollow = " followDistribueAddLfoPattern ";
-      //  print ( " followDistribueAddLfoPattern in KeyMode null " );
+    //  print ( " followDistribueAddLfoPattern in KeyMode null " );
 
-    text ( modeStartKeyToFollow, width/4, -height/4); 
-  
+    text ( modeStartKeyToFollow, width/4, -height/4);
+
     followDistribueAddLfoPattern();
     break;
 
 
-    case 's':  
-    // formerKeyMetro = '*';    
+  case 's':
+    // formerKeyMetro = '*';
     modeStartKeyToFollow = " samplingModeInternal ";
-     //   print ( " modeStartKeyToFollow " );
+    //   print ( " modeStartKeyToFollow " );
 
     // keyMode = " samplingModeInternal " ;
-    // text ( modeStartKeyToFollow, width/4, -height/4); 
+    // text ( modeStartKeyToFollow, width/4, -height/4);
     break;
 
-    case 'j': 
-    
+  case 'j':
+
     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-    
 
-    // text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4); 
-    text ( keyMode, width/4, -height/4); 
-   // samplingMovementPro();
-   // followSignalSampledOppositeWay(frameRatio);
 
-    break;
-/*
-     case 'j': 
-    
-    modeStartKeyToFollow = " followSignalSampled ";
-    
-
-    text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4); 
-    text ( keyMode, width/4, -height/4); 
-    followSignalSampled(frameRatio);
+    // text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4);
+    text ( keyMode, width/4, -height/4);
+    // samplingMovementPro();
+    // followSignalSampledOppositeWay(frameRatio);
 
     break;
-*/
-    case 'z':     
- //   modeStartKeyToFollow = " samplingMode ";
- //   text ( modeStartKeyToFollow, width/4, -height/4); 
-     keyMode = " addSignalOneAndTwoTer " ;
-     text ( keyMode, width/4, -height/4); 
-     addSignalOneAndTwoTer();
+    /*
+     case 'j':
+     
+     modeStartKeyToFollow = " followSignalSampled ";
+     
+     
+     text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4);
+     text ( keyMode, width/4, -height/4);
+     followSignalSampled(frameRatio);
+     
+     break;
+     */
+  case 'z':
+    //   modeStartKeyToFollow = " samplingMode ";
+    //   text ( modeStartKeyToFollow, width/4, -height/4);
+    keyMode = " addSignalOneAndTwoTer " ;
+    text ( keyMode, width/4, -height/4);
+    addSignalOneAndTwoTer();
     break;
-   }
-   rotate (HALF_PI);
   }
+  rotate (HALF_PI);
+}
 
 void SamplingModeMayBeUsefull() {
 
-     beginSample=millis();
-    text (keyMode + " samplingMode LFOdecay ", width/4, - height - 100);  
-     
- //    mouseY=(int) map (automationLFO[1], 0, 1, 0, 400);  // position from Ableton LFOdecay
+  beginSample=millis();
+  text (keyMode + " samplingMode LFOdecay ", width/4, - height - 100);
 
-    
-     //  mouseY=mouseY+10;
-       mouseX=mouseX+20;
-/*
+  //    mouseY=(int) map (automationLFO[1], 0, 1, 0, 400);  // position from Ableton LFOdecay
+
+
+  //  mouseY=mouseY+10;
+  mouseX=mouseX+20;
+  /*
       oldMov = movementRecording;
-      
-      movementRecording= mouseY;
-      
-           
-       if (oldMov>=  movementRecording){
-      
-    movementRecording= map (y, 0, 400, 0 , TWO_PI); 
-      }
-    else  
-    movementRecording= map (y, 400, 0, TWO_PI, 0);
-     
- */   
-     
-    
- 
-    //****  mouseY=(int) map (automation1, 0, 1, 0, 400);  //POSITION MOTOR  
-        //  mouseY = (int) map (signal[3], 0, 1, 0, 400);   // POSITION from ABLETON 
-        //  mouseY=(int) map (Movement/1000.0, 0, 1, 0, 400);  // to do WHAT?
+   
+   movementRecording= mouseY;
+   
+   
+   if (oldMov>=  movementRecording){
+   
+   movementRecording= map (y, 0, 400, 0 , TWO_PI);
+   }
+   else
+   movementRecording= map (y, 400, 0, TWO_PI, 0);
+   
+   */
 
-    //***** */   activeSamplingMeasure(3);
-     //***** */    stopSamplingMeasure(4);
-    
-   //      activeSamplingInternalClock(7); //do not work
-   //      stopSamplingInternalClock(8);  //do not work
-      //   samplingMovement(2);
-   //***** */     samplingMovementPro();
-    }
 
-void updateInternalClock(){
+
+  //****  mouseY=(int) map (automation1, 0, 1, 0, 400);  //POSITION MOTOR
+  //  mouseY = (int) map (signal[3], 0, 1, 0, 400);   // POSITION from ABLETON
+  //  mouseY=(int) map (Movement/1000.0, 0, 1, 0, 400);  // to do WHAT?
+
+  //***** */   activeSamplingMeasure(3);
+  //***** */    stopSamplingMeasure(4);
+
+  //      activeSamplingInternalClock(7); //do not work
+  //      stopSamplingInternalClock(8);  //do not work
+  //   samplingMovement(2);
+  //***** */     samplingMovementPro();
+}
+
+void updateInternalClock() {
   // print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
 
 
-      if (actualSec!=lastSec){
-            lastSec=actualSec;
-      if (modeStartKeyToFollow == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ){    
-            measure ++;
-       }
-      }
-          actualSec =(int) (millis()*0.001); 
+  if (actualSec!=lastSec) {
+    lastSec=actualSec;
+    if (modeStartKeyToFollow == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
+      measure ++;
+    }
+  }
+  actualSec =(int) (millis()*0.001);
+}
 
-   }
 
-
-void computeAngularTimeSpeed(){
-   if (running_Timer == false) return;
+void computeAngularTimeSpeed() {
+  if (running_Timer == false) return;
 
   int m = millis();
   timeFrame += float(m - lastMillis) * 0.001;
   lastMillis = m;
-  }
+}
 
-void differentFunction(){
+void differentFunction() {
 
 
 
   //* ************************ manage strobe with light()
-  //  spotLight(102, 153, 100, mouseX, mouseY,cameraZ, 0, 0, -1, PI/2, 1000); 
+  //  spotLight(102, 153, 100, mouseX, mouseY,cameraZ, 0, 0, -1, PI/2, 1000);
   //  pointLight(51, 102, 126, mouseX, mouseY, cameraZ);
   if (1000/pulsation*60>=50 && 1000/pulsation*60<=200) { // pulsation of oscillator 11, at the front of the screen; transformed in BPM
-     lights();
+    lights();
     if (frameCount%6==0) {
-       noLights();
+      noLights();
     }
   }
   //************************* end of manage light
@@ -304,15 +304,15 @@ void differentFunction(){
   //==============================TAKE ON BELOW TO RECORD COUPLING
 
   if (mousePressed != true) {
-  //  coupling = map ((float (mouseX)/width*1), 0, 1, -5, 5 ); //SET COUPLING
+    //  coupling = map ((float (mouseX)/width*1), 0, 1, -5, 5 ); //SET COUPLING
     //   key= '#'; keyReleased();
     // keyCode =CONTROL; keyReleased();
-   //   net.setCoupling(coupling);
+    //   net.setCoupling(coupling);
   }
 
 
-  text(couplingRed, -400, height - 20); 
-  //  *********** TAKE ON BELOW TO HAVE THE COUPLING RECORDED RED. AND TAKE OFF ABOVE 
+  text(couplingRed, -400, height - 20);
+  //  *********** TAKE ON BELOW TO HAVE THE COUPLING RECORDED RED. AND TAKE OFF ABOVE
   /*
     couplingRecorded= float (couplingRed)/1000;
    coupling= couplingRecorded;
@@ -320,20 +320,20 @@ void differentFunction(){
    
    text(couplingRecorded, 400, height - 20);
    */
-  //******************************** 
+  //********************************
 
   //======================== TAKE OFF BELOW TO RECORD DATA //======================== TAKE OFF TO RECORD DATA
   if (frameCount == nextFrame) {
-    readOneLine();  
-    keyReleased(); 
+    readOneLine();
+    keyReleased();
     keyPressed();
   }
   //****************************
   // BEAT_DETECT ();
   //****************************
-  print ("FRAMERATIO "); 
+  print ("FRAMERATIO ");
   print ((1*frameRatio)); // utilise map (de 1 à 60);
-  print ("  ******   FRAMERATIO "); 
+  print ("  ******   FRAMERATIO ");
 
   // Calculate the overall order (cohesion) in the network
   PVector order = net.getOrderVector();
@@ -341,84 +341,81 @@ void differentFunction(){
   // DATA of cohesion and acceleration of the first and last oscillator
   orderParameter = net.getOrderParameter();
 
-   averagePhase = order.heading();
- // averagePhase= (net.phase[11]+net.phase[10]+net.phase[9]+net.phase[8]+net.phase[7]+net.phase[6]+net.phase[5]+
- //   net.phase[4]+net.phase[3]+net.phase[2])/(networkSize-2);
-  print ("AVERGE PHASE "); 
+  averagePhase = order.heading();
+  // averagePhase= (net.phase[11]+net.phase[10]+net.phase[9]+net.phase[8]+net.phase[7]+net.phase[6]+net.phase[5]+
+  //   net.phase[4]+net.phase[3]+net.phase[2])/(networkSize-2);
+  print ("AVERGE PHASE ");
   print (averagePhase);
 
- // averageFrequency= (net.naturalFrequency[11]+net.naturalFrequency[10]+net.naturalFrequency[9]+net.naturalFrequency[8]+net.naturalFrequency[7]+net.naturalFrequency[6]+net.naturalFrequency[5]+
- //   net.naturalFrequency[4]+net.naturalFrequency[3]+net.naturalFrequency[2])/(networkSize-2);
+  // averageFrequency= (net.naturalFrequency[11]+net.naturalFrequency[10]+net.naturalFrequency[9]+net.naturalFrequency[8]+net.naturalFrequency[7]+net.naturalFrequency[6]+net.naturalFrequency[5]+
+  //   net.naturalFrequency[4]+net.naturalFrequency[3]+net.naturalFrequency[2])/(networkSize-2);
 
 
-  print ("                                   AVERGE FREQUENCY ");  
+  print ("                                   AVERGE FREQUENCY ");
   print (averageFrequency);
 
   float deltaPhase = map ((float (mouseY)/width*1), 0, 1, 0, QUARTER_PI ); // option not used
-   
-//**   averageDeltaPhase=  TWO_PI/ ((net.phase[11]+net.phase[10]+net.phase[9]+net.phase[8]+net.phase[7]+net.phase[6]+net.phase[5]+
-// **  net.phase[4]+net.phase[3]+net.phase[2])/ (networkSize-2))*360;
-   
+
+  //**   averageDeltaPhase=  TWO_PI/ ((net.phase[11]+net.phase[10]+net.phase[9]+net.phase[8]+net.phase[7]+net.phase[6]+net.phase[5]+
+  // **  net.phase[4]+net.phase[3]+net.phase[2])/ (networkSize-2))*360;
+
   //   averageDeltaPhase=                    (abs((net.phase[11]+net.phase[10])))/TWO_PI*360;
- // averageDeltaPhase=                    (((abs (metroPhase[11])+ abs(metroPhase[10]))))/TWO_PI*360;
-//  averageDeltaPhase= map (averageDeltaPhase, 0, TWO_PI, 0, 180);
-  print ("                                    averageDeltaPhase ");  
+  // averageDeltaPhase=                    (((abs (metroPhase[11])+ abs(metroPhase[10]))))/TWO_PI*360;
+  //  averageDeltaPhase= map (averageDeltaPhase, 0, TWO_PI, 0, 180);
+  print ("                                    averageDeltaPhase ");
   println (averageDeltaPhase);
 
   // SHOW_DATA ();
-   }
+}
 
 void displayOscillatorSpheres() {
-   translate(width/2, -height/2, -1000);// To set the center of the perspective
-   rotate(-HALF_PI ); //TO change the beginning of the 0 (cercle trigo) and the cohesion point to - HALF_PI 
+  translate(width/2, -height/2, -1000);// To set the center of the perspective
+  rotate(-HALF_PI ); //TO change the beginning of the 0 (cercle trigo) and the cohesion point to - HALF_PI
 
   // Draw  spheres corresponding to the phase of each oscillator
   colorMode(RGB, 255, 255, 255);
-   rotate(HALF_PI ); 
- }
+  rotate(HALF_PI );
+}
 void trigFollowSignalSampled() {
 
- if (actualSec==lastSec) {  // trigged on internal clock
-      trigRatio = true;
+  if (actualSec==lastSec) {  // trigged on internal clock
+    trigRatio = true;
     //  background(127, 40, 60);
-   }
-   
-   else trigRatio = false;
-   
-   if (beatTrigged== true) {  // trigged with measure
-      trigRatio = true;
+  } else trigRatio = false;
+
+  if (beatTrigged== true) {  // trigged with measure
+    trigRatio = true;
     //  background(127, 40, 60);
-   }
-  
-   else trigRatio = false;
-   
+  } else trigRatio = false;
+
   if (formerKeyMetro == 'J' ) { //drive ball with lfo ONCE //  && trigRatio == true
-  trigFollowSampling=true;
-  }
-  
- if (formerKeyMetro != 'J' ) {
-//   if (formerKeyMetro == 's' ||  formerKeyMetro ==  '@' || formerKeyMetro ==  'B' ) { //you can't distribuate data to others balls  //formerKeyMetro == '*' || formerKeyMetro == '$' ||
-  trigFollowSampling=false;
+    trigFollowSampling=true;
   }
 
- if (trigFollowSampling == true || trigFollowSampling==false  ) {  // CHECK from old
- 
-  print (" trigFollowSampling ");   println (trigFollowSampling); 
- if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) { 
-    // followSignalSampled(frameRatio); // not well 
-    followSignalSampledOppositeWay(frameRatio);// with millis()
-  
-    
-    rotate(PI/2);
-    //printDataOnScreen();
-    stroke(255);
-    
-    rect( (currTime % 2) / 2 * width, 10, 2, 8 );
-    rect( (currTime % 4) / 4 * width, 20, 2, 8 );
-    rect( (currTime % 8) / 8 * width, 30, 2, 8 );
-    
-    rotate(-PI/2);
- //  print (" in trig___(frameRatio) before and before arduinoPos "); countRevs();
-      }
-     }
+  if (formerKeyMetro != 'J' ) {
+    //   if (formerKeyMetro == 's' ||  formerKeyMetro ==  '@' || formerKeyMetro ==  'B' ) { //you can't distribuate data to others balls  //formerKeyMetro == '*' || formerKeyMetro == '$' ||
+    trigFollowSampling=false;
+  }
+
+  if (trigFollowSampling == true || trigFollowSampling==false  ) {  // CHECK from old
+
+    print (" trigFollowSampling ");
+    println (trigFollowSampling);
+    if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {
+      // followSignalSampled(frameRatio); // not well
+      followSignalSampledOppositeWay(frameRatio);// with millis()
+
+
+      rotate(PI/2);
+      //printDataOnScreen();
+      stroke(255);
+
+      rect( (currTime % 2) / 2 * width, 10, 2, 8 );
+      rect( (currTime % 4) / 4 * width, 20, 2, 8 );
+      rect( (currTime % 8) / 8 * width, 30, 2, 8 );
+
+      rotate(-PI/2);
+      //  print (" in trig___(frameRatio) before and before arduinoPos "); countRevs();
+    }
+  }
 }

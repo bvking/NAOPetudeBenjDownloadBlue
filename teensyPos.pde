@@ -1,21 +1,18 @@
 void teensyPos(){
   rotate(PI/2);
-  textSize (100);
+  textSize (75);
+  translate (0, -1000, 0);
+  rotate(PI);
   text ( " circularMov " + circularMov , 200, -300) ; //
-
-  if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
-       // if ( keyMode != " trigEventWithAbletonSignal " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
-
+  rotate(-PI);
+    if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-  }
+    }
 
-  if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-  }
+    }
 
-
-
- 
  if ( measure <= 635)  {  // to avoid machine blocked 
 
     if ( keyMode == " propagationBallRotationBis "   // || keyMode == " addSignalOneAndTwo "
@@ -519,4 +516,3 @@ void teensyPosOri(){
   
   
 }
-
