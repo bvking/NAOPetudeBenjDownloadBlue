@@ -211,6 +211,11 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                     print(array[i] + "   ");
                 println();
             }
+             void showArrayF(float[] array) {
+                for (int i = 0; i < array.length; i++)
+                    print(array[i] + "   ");
+                println();
+            }
             
             //
             

@@ -241,6 +241,10 @@ void teensyPos(){
               textSize (500);
               text ( " here in TeensyPos ", 400, height/2);
 
+            print ("net "); showArrayF (net.phase);
+            print ("old "); showArrayF (net.oldPhase);
+
+
             print ( "oldPos ");      showArray (oldDataMappedForMotorisedPosition); 
             print ( "updPos ");      showArray (dataMappedForMotorisedPosition);
 
@@ -254,9 +258,10 @@ void teensyPos(){
                println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
                println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
              //  println ( "upd " + i + " " + update[i]) ;
-         //    update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
+           // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
+           // dataMappedForMotorisedPosition=update;
             net.phase[i]+=TWO_PI;
-               println ( "befA " + i + " " + dataMappedForMotorisedPosition[i]);
+               println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
           //     println ( "updA " + i + " " + update[i]) ;
             
               
