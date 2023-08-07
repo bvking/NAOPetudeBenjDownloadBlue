@@ -5,7 +5,7 @@ String portsUSBfrom1;
 void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir
     rotate( -PI / 2);
     for (int i = 0; i < networkSize; i++) {
-        //  oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+       //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
     }
     
     dataFromMode = "<"

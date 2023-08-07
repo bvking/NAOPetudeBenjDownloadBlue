@@ -1343,7 +1343,7 @@ textSize (100);
     
         for (int i = 0; i < (networkSize-0); i++) {          
             if (net.oldPhase[i]<net.phase[i]){ 
-               net.phase[i]+=TWO_PI;
+          //     net.phase[i]+=TWO_PI;
                }
           }
      } 

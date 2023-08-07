@@ -355,7 +355,7 @@ void keyReleased() {
             // phasePatternBase(); // only with * ?
 
              for ( int i=0; i< networkSize; i++) {
-                   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+               //    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
               }
 
             

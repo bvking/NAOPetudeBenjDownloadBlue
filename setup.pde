@@ -18,6 +18,15 @@ public void settings() {
 int networkSize = 10;
 int nbBalls = networkSize;
 
+int[] changeMotorisedPosition = new int [networkSize];
+
+  int[] upDateMotorisedPosition (int[] newMotorPositions) { 
+  for (int i = 0; i < newMotorPositions.length; i++) { 
+    newMotorPositions[i] = newMotorPositions[i] + numberOfStep; 
+  } 
+  return newMotorPositions;  // Returns an array of 3 ints: 20, 40, 60 
+}
+
 String  portsUSBfrom2;
 
 boolean allMachineConnected, onlyLitteMachineWithSecondSerialPort,portConnectedOfBigMachine,portConnectedToBigMachineOnly;

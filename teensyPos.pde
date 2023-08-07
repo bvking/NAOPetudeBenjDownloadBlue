@@ -1,3 +1,5 @@
+
+
 void teensyPos(){
   rotate(PI/2);
   textSize (75);
@@ -6,8 +8,10 @@ void teensyPos(){
   text ( " circularMov " + circularMov , 200, -300) ; //
   rotate(-PI);
 
-       oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition;
 
+    //  oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition; 
+
+   
 
     if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
@@ -18,11 +22,11 @@ void teensyPos(){
     }
 
  if ( measure <= 635)  {  // to avoid machine blocked 
-
     if ( keyMode == " propagationBallRotationBis "   // || keyMode == " addSignalOneAndTwo "
         )  
     {  
-      for(int i = 0; i < networkSize; i++) {  
+      for(int i = 0; i < networkSize; i++) {
+
       //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work. Try to adapt rev with revLfo method
       dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
@@ -235,15 +239,33 @@ void teensyPos(){
        if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
        //  if (key=='U'|| key=='u') {
               textSize (500);
-              text ( " here ", 400, height/2);
+              text ( " here in TeensyPos ", 400, height/2);
+
+            print ( "oldPos ");      showArray (oldDataMappedForMotorisedPosition); 
+            print ( "updPos ");      showArray (dataMappedForMotorisedPosition);
+
+
         for (int i = 0; i < networkSize-0; i++) {
-          println (" here ", formerKey,  " " ,key);
+          println (" here   in TeensyPos", formerKey,  " " ,key);
           if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
-              dataMappedForMotorisedPosition[i]+=numberOfStep;
-            } 
-         }
+             
+             int [] update;
+               println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
+             //  println ( "upd " + i + " " + update[i]) ;
+             update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
+             net.phase[i]+=TWO_PI;
+               println ( "befA " + i + " " + dataMappedForMotorisedPosition[i]);
+               println ( "updA " + i + " " + update[i]) ;
+            
+              
+            }
+            
+         }key='#';
           formerFormerKey='#';
+          formerKey='#';
        }
+
+
          
 
 
@@ -307,11 +329,10 @@ void teensyPos(){
          
     }    
     rotate(-PI/2);  
-  
 }
 
 
-
+//-
 void teensyPosOri(){
   
   text ( " circularMov " + !circularMov , 200, 100) ; //
@@ -534,6 +555,9 @@ void teensyPosOri(){
        send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
      }
     } 
+
+    
+         
   
   
 }
