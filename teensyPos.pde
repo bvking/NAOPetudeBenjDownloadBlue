@@ -5,6 +5,10 @@ void teensyPos(){
   rotate(PI);
   text ( " circularMov " + circularMov , 200, -300) ; //
   rotate(-PI);
+
+       oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition;
+
+
     if ( keyMode == " propagationBallRotationBis " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
     }
@@ -158,7 +162,7 @@ void teensyPos(){
 
              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
-              print ( " record $ " + recordLastDataOfMotorPosition[i] + " lastPos " + lastActualPosition );
+              print ( " record $ " + recordLastDataOfMotorPosition[i] + " lastPos " + lastActualPosition [i] );
              //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
              }
           }
@@ -211,16 +215,14 @@ void teensyPos(){
     }
     */
     
-
-
-      if ( keyMode == " propagationBallRotationBis " ) {
-       for (int i = 0; i < networkSize-0; i++) { // 
-      // recordLastDataOfMotorPosition[i]+= lastActualPosition[i];
-        //  actualisePositionDataFromCircular = false|| dol==true; //
-        //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
-        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+recordLastDataOfMotorPosition[i]; // +readPositionEncoder[i]
-       }  
-      }
+       if ( keyMode == " propagationBallRotationBis " ) {
+         for (int i = 0; i < networkSize-0; i++) { // 
+          // recordLastDataOfMotorPosition[i]+= lastActualPosition[i];
+          //  actualisePositionDataFromCircular = false|| dol==true; //
+          //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
+          dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+recordLastDataOfMotorPosition[i]; // +readPositionEncoder[i]
+          }  
+         }
 
 
        if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
@@ -228,7 +230,26 @@ void teensyPos(){
          //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
          } 
          }
-        } // end mesure 635
+
+     
+       if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
+       //  if (key=='U'|| key=='u') {
+              textSize (500);
+              text ( " here ", 400, height/2);
+        for (int i = 0; i < networkSize-0; i++) {
+          println (" here ", formerKey,  " " ,key);
+          if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
+              dataMappedForMotorisedPosition[i]+=numberOfStep;
+            } 
+         }
+          formerFormerKey='#';
+       }
+         
+
+
+
+
+  } // end mesure 635
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 

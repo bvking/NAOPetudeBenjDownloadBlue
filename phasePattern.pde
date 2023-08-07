@@ -4,21 +4,16 @@ textSize (100);
    // use with i, u, T
      if (key == '?' ) {
      specialPropagationKey = key ;
-
      } 
      if (key == ':' ) {
      specialPropagationKey = key ;
-
      } 
-
-    
+  
      if (key == '>' ) {
      specialPropagationKey = key ;
-
      } 
      if (key == '<' ) {
      specialPropagationKey = key ;
- 
      } 
       
 
@@ -482,8 +477,9 @@ textSize (100);
      net.phase[i]%=PI;
       }
     }
+
   
-    if (key == 'U' && specialPropagationKey == '?' && !circularMov) { // 
+   if (key == 'U' && specialPropagationKey == '?' && !circularMov) { // 
       text ( " key " + key,  0, 500 );
          for (int i = 1; i < (networkSize-0); i++) {  
 
@@ -1308,34 +1304,58 @@ textSize (100);
   }
 */
 
-        if (key == 'à') {  print (" from EXPERIMENTAL T$");   
-   for(int i = 0; i < (networkSize); i++) { 
-   if ( abs (net.naturalFrequency[0]) >= abs (net.naturalFrequency[networkSize-1])){
-   net.naturalFrequency[i]= net.naturalFrequency[0];
-   }
-   else net.naturalFrequency[i]= net.naturalFrequency[networkSize-1];
-   }
-   } 
+    else if (key == 'à') {  print (" from EXPERIMENTAL T$");   
+    for(int i = 0; i < (networkSize); i++) { 
+    if ( abs (net.naturalFrequency[0]) >= abs (net.naturalFrequency[networkSize-1])){
+    net.naturalFrequency[i]= net.naturalFrequency[0];
+    }
+    else net.naturalFrequency[i]= net.naturalFrequency[networkSize-1];
+    }
+    } 
 
-
-   else if (key == '0') {//Set all frequencies at 2.0");
+    else if (key == '0') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize-0; i++) {   
       text (" memoryi " + memoryi, 500, 500);
       net.naturalFrequency[i]=net.naturalFrequency[memoryi];
-    }
-    
-  } else if (key == '°') {//Set all frequencies at 2.0");
+    }   
+    } 
+  
+    else if (key == '°') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize; i++) {   
       //  net.naturalFrequency[i]=2.0; 
       net.naturalFrequency[i]=0;
-    }
-    //  printSummary(i);
-  } else if (keyCode == CONTROL) {  
-    println(" RECORD COUPLING "); 
+     }
+    } 
 
-    text ( coupling, - 400, height - 1000); // coupling appears on screen and is recorded on the file data.txt
+    if (key == 'u' || key == 'U' || key == 'i' ){
+      formerFormerKey='U';
+     for (int i = 1; i < (networkSize-0); i++) {  
+       if (net.oldPhase[i]<net.phase[i-1]){ 
+           net.phase[i]+=TWO_PI;
+        }
+      }
+       
+        if (net.oldPhase[networkSize-1]<net.phase[0]){ 
+            net.phase[0]+=TWO_PI;
+        }
+      //_____________________
+        
+    
+        for (int i = 0; i < (networkSize-0); i++) {          
+            if (net.oldPhase[i]<net.phase[i]){ 
+               net.phase[i]+=TWO_PI;
+               }
+          }
+     } 
+    
+    else if (keyCode == CONTROL) { 
+    text ( coupling, 500, 500); // coupling appears on screen and is recorded on the file data.txt
     net.setCoupling(coupling);
   } 
+
+
+
+  
 //  phasePatternBase();
 //  key ='#';
     //  teensyPos();
