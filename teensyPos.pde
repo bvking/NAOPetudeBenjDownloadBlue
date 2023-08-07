@@ -247,15 +247,17 @@ void teensyPos(){
 
         for (int i = 0; i < networkSize-0; i++) {
           println (" here   in TeensyPos", formerKey,  " " ,key);
-          if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
-             
+          //if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
+                  if (net.oldPhase[i]>net.phase[i]) {
+     
              int [] update;
+               println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
                println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
              //  println ( "upd " + i + " " + update[i]) ;
-             update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
-             net.phase[i]+=TWO_PI;
+         //    update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
+            net.phase[i]+=TWO_PI;
                println ( "befA " + i + " " + dataMappedForMotorisedPosition[i]);
-               println ( "updA " + i + " " + update[i]) ;
+          //     println ( "updA " + i + " " + update[i]) ;
             
               
             }

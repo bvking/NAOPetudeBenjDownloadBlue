@@ -12,6 +12,9 @@ void mousePressed() {
 }
 
 void draw() {
+      for (int i = 0; i < networkSize; i++) {
+          oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+     }
 
   println(" BEGIN OF MAIN " + "                                                               specialPropagationKey " +  specialPropagationKey);
 

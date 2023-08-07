@@ -40,7 +40,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
         accelerationRatio = speedDelta;
     
     for (int i = 0; i < networkSize; i++) {
-          oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+        //  oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
      }
     
     dataFromMode = "<"
