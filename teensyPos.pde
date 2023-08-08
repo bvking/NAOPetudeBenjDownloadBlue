@@ -230,47 +230,92 @@ void teensyPos(){
 
 
        if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-        for (int i = 0; i < networkSize-0; i++) {
-         //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
-         } 
-         }
+          for (int i = 0; i < networkSize-0; i++) {
+           //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
+          } 
+       }
 
-     
-       if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
-       //  if (key=='U'|| key=='u') {
-              textSize (500);
-              text ( " here in TeensyPos ", 400, height/2);
+
 
             print ("net "); showArrayF (net.phase);
             print ("old "); showArrayF (net.oldPhase);
 
+     
+      // if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
+      if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
+              
+              textSize (500);
+              text ( " here in TeensyPos ", 400, height/2);
 
             print ( "oldPos ");      showArray (oldDataMappedForMotorisedPosition); 
             print ( "updPos ");      showArray (dataMappedForMotorisedPosition);
 
 
         for (int i = 0; i < networkSize-0; i++) {
-          println (" here   in TeensyPos", formerKey,  " " ,key);
-          //if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
-                  if (net.oldPhase[i]>net.phase[i]) {
+          println (" here U in TeensyPos", formerKey,  " " ,key);
+              //if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
+                  if (net.oldPhase[i]%TWO_PI>net.phase[i]) {
      
              int [] update;
                println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
                println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
-             //  println ( "upd " + i + " " + update[i]) ;
-           // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
-           // dataMappedForMotorisedPosition=update;
-            net.phase[i]+=TWO_PI;
+                //  println ( "upd " + i + " " + update[i]) ;
+                // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
+                // dataMappedForMotorisedPosition=update;
+                // net.phase[i]+=TWO_PI;
+           rev[i]-=1;
                println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
-          //     println ( "updA " + i + " " + update[i]) ;
-            
-              
+          //     println ( "updA " + i + " " + update[i]) ;          
             }
-            
-         }key='#';
+         } 
+          key='#';
           formerFormerKey='#';
           formerKey='#';
        }
+
+
+
+
+    /*
+       if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
+             
+              textSize (500);
+              text ( " here I in TeensyPos ", 400, height/2);
+
+            print ( "oldPos ");      showArray (oldDataMappedForMotorisedPosition); 
+            print ( "updPos ");      showArray (dataMappedForMotorisedPosition);
+
+
+          for (int i = 0; i < networkSize-0; i++) {
+               println (" here   in TeensyPos", formerKey,  " " ,key);
+
+             
+           
+              oldOldPosShifted[i]=oldPosShifted[i];
+              oldPosShifted[i]=newPosShifted[i];
+              newPosShifted[i]=phaseMapped[i];
+
+
+             if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
+     
+                 int [] update;
+                 println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
+                 println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
+                  //  println ( "upd " + i + " " + update[i]) ;
+                  // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
+                 // dataMappedForMotorisedPosition=update;
+                 // net.phase[i]+=TWO_PI;
+                 rev[i]-=1;
+                 println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
+                 //     println ( "updA " + i + " " + update[i]) ;          
+               }
+             } 
+                 key='#';
+                 formerFormerKey='#';
+                 formerKey='#';
+        }
+
+      */ 
 
 
          

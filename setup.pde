@@ -252,8 +252,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             int decayTimeLfo;
             int formerDecayTimeLfo;
-            
-            
+        
             //int[] j = new int[networkSize];// number of the last changed oscillator
             float[] phaseKeptAtChange =  new float[networkSize]; //;
             float[] phasePatternFollow =  new float[networkSize]; //;
@@ -261,7 +260,6 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             float[] newPosXaddSignal =  new float[networkSize]; //;
             float[] newPosX =  new float[networkSize]; //;
             float[] oldPosX =  new float[networkSize]; //;
-            
             
             int decayTimeBis;
             int formerDecayTimeBis;
@@ -272,7 +270,6 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int formerDecayTime,decayTime;
             int frameCountBis = 0;
             int decayshiftFollowMov = 0;
-            
             
             float[] ableton = new float[networkSize]; //;
             float[] signal = new float[networkSize]; //;
@@ -292,6 +289,12 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             float[] oldOldPosF = new float[networkSize]; // 
             float[] oldPosF = new float[networkSize]; // 
             float[] newPosF = new float[networkSize]; //
+
+            float[] oldOldOldPosShifted = new float[networkSize]; // 
+            float[] oldOldPosShifted = new float[networkSize]; // 
+            float[] oldPosShifted = new float[networkSize]; // 
+            float[] newPosShifted = new float[networkSize]; //
+
             float[] oldLfoPhase =  new float[networkSize]; //
             float[] lfoPhase =  new float[networkSize]; //
             int[] dataMappedForMotor =  new int[networkSize]; //
@@ -1024,6 +1027,7 @@ void setup() {
                 oscillatorFollowing[0] = 3.14;
 
                 size(600, 600, P3D);
+               //  windowRatio(600, 600);
                 
                  
               //  translate(0, -800,1000);

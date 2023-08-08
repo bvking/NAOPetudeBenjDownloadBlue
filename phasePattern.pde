@@ -1325,29 +1325,60 @@ textSize (100);
       //  net.naturalFrequency[i]=2.0; 
       net.naturalFrequency[i]=0;
      }
-    } 
+    }
 
-    if (key == 'u' || key == 'U' || key == 'i' ){
-      formerFormerKey='U';
+
+
+  //  if (key == 'u' || key == 'U' ){
+  //      formerFormerKey='U';
+
+    if (key == 'i' || key == 'I' ){
+        formerFormerKey='I';
+
      for (int i = 1; i < (networkSize-0); i++) {  
-       if (net.oldPhase[i]<net.phase[i-1]){ 
-           net.phase[i]+=TWO_PI;
+         if (net.oldPhase[i]<net.phase[i-1]){ 
+              //  if (net.oldPhase[i-1]<net.phase[i]){ 
+             net.phase[i]-=TWO_PI;
+          }
         }
-      }
        
-        if (net.oldPhase[networkSize-1]<net.phase[0]){ 
-            net.phase[0]+=TWO_PI;
-        }
-      //_____________________
+         if (net.oldPhase[networkSize-1]<net.phase[0]){ 
+              //  if (net.oldPhase[0]<net.phase[networkSize-1]){ 
+             net.phase[0]-=TWO_PI;
+         }
+             //_____________________
+        
+         for (int i = 0; i < (networkSize-0); i++) {          
+            if (net.oldPhase[i]<net.phase[i]){ 
+                 //     net.phase[i]+=TWO_PI;
+              }
+          }
+     }
+
+    /*
+     if (key == 'Z' || key == 'z' ){
+        formerFormerKey='Z';
+     for (int i = 1; i < (networkSize-0); i++) {  
+         if (net.oldPhase[i-1]<net.phase[i]){ 
+    
+        //     net.phase[i]+=TWO_PI;
+         }
+       }
+       
+         if (net.oldPhase[0]<net.phase[networkSize-1]){ 
+        //     net.phase[networkSize-1]+=TWO_PI;
+         }
+             //_____________________
         
     
-        for (int i = 0; i < (networkSize-0); i++) {          
-            if (net.oldPhase[i]<net.phase[i]){ 
-          //     net.phase[i]+=TWO_PI;
-               }
+         for (int i = 0; i < (networkSize-0); i++) {          
+            if (net.oldPhase[i]>net.phase[i]){ 
+                 //     net.phase[i]+=TWO_PI;
+              }
           }
-     } 
-    
+     }
+    */
+ 
     else if (keyCode == CONTROL) { 
     text ( coupling, 500, 500); // coupling appears on screen and is recorded on the file data.txt
     net.setCoupling(coupling);
