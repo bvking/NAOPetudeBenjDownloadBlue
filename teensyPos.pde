@@ -42,30 +42,6 @@ void teensyPos(){
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
 
-    /*
-       for (int i = 0; i < networkSize; i++) {
-             //*******************************  ASSIGN MOTOR WITH POSITION
-         if (rev[i]!=0  && (net.phase[i] >  0) ) { // number of revolution is even and rotation is clock wise   
-             dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ rev[i]*numberOfStep;
-         }
-         if (rev[i]!=0  && (net.phase[i] <  0)) { // number of revolution is even and rotation is Counter clock wise   
-             dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0))+ rev[i]*numberOfStep;
-          }
-          if (rev[i]==0 && (net.phase[i] < 0) ) { //  number of revolution is 0 and rotation is counter clock wise 
-              dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
-          //    print ("pos "); print (i); print (" CCW rev=0");println (pos[i]);
-          }         
-         if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
-             dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
-         }
-
-          //   recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
-              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i]; // RENAME;//+readPositionEncoder[i];
-              //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
-              //  print ( " record * " + recordLastDataOfMotorPosition[i] );
-
-         }
-    */
     }
 
    if ( keyMode == " propagationBallRotationBisExperimental "  ) 
@@ -241,8 +217,8 @@ void teensyPos(){
             print ("old "); showArrayF (net.oldPhase);
 
      
-      // if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
-      if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
+       if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { //U--> +1   utiliser return
+      //if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
               
               textSize (500);
               text ( " here in TeensyPos ", 400, height/2);
@@ -254,7 +230,7 @@ void teensyPos(){
         for (int i = 0; i < networkSize-0; i++) {
           println (" here U in TeensyPos", formerKey,  " " ,key);
               //if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
-                  if (net.oldPhase[i]%TWO_PI>net.phase[i]) {
+                  if (net.oldPhase[i]%TWO_PI<net.phase[i]) {
      
              int [] update;
                println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
@@ -263,7 +239,7 @@ void teensyPos(){
                 // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
                 // dataMappedForMotorisedPosition=update;
                 // net.phase[i]+=TWO_PI;
-           rev[i]-=1;
+        //**   rev[i]+=1;
                println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
           //     println ( "updA " + i + " " + update[i]) ;          
             }
@@ -277,7 +253,7 @@ void teensyPos(){
 
 
     /*
-       if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
+       if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
              
               textSize (500);
               text ( " here I in TeensyPos ", 400, height/2);
@@ -305,7 +281,7 @@ void teensyPos(){
                   // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
                  // dataMappedForMotorisedPosition=update;
                  // net.phase[i]+=TWO_PI;
-                 rev[i]-=1;
+                 rev[i]+=1;
                  println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
                  //     println ( "updA " + i + " " + update[i]) ;          
                }
@@ -315,7 +291,7 @@ void teensyPos(){
                  formerKey='#';
         }
 
-      */ 
+    */  
 
 
          
