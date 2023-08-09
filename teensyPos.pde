@@ -216,9 +216,27 @@ void teensyPos(){
             print ("net "); showArrayF (net.phase);
             print ("old "); showArrayF (net.oldPhase);
 
+          if (formerFormerKey=='I' ){
+         for (int i = 0; i < (networkSize-0); i++) {  
+
+           oldOldPosShifted[i]=oldPosShifted[i];
+           oldPosShifted[i]=newPosShifted[i];
+           newPosShifted[i]=net.phase[i];
+
+            if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
+        //if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
+
+              //  net.phase[i]-=TWO_PI;
+                 rev[i]-=1;
+              }
+          }
+     }
+
+    //if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
+
+      /*
      
        if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { //U--> +1   utiliser return
-      //if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
               
               textSize (500);
               text ( " here in TeensyPos ", 400, height/2);
@@ -249,6 +267,8 @@ void teensyPos(){
           formerKey='#';
        }
 
+
+      */
 
 
 

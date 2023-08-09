@@ -388,27 +388,24 @@ textSize (100);
 
         oldMemoryi=memoryi;
         memoryi=(memoryi-1);
+
+      
       
     if ( memoryi==-1) {
         memoryi=networkSize-1;
         oldMemoryi=0;
     }
+
+      net.phase[networkSize-1]=  net.oldPhase[0];
+      net.naturalFrequency[networkSize-1]= 0;
   
      for (int i = 1; i < (networkSize-0); i++) {  
 
        net.phase[i-1]= net.oldPhase[i];
-         //   netPhaseBase[i-1]= net.oldPhase[i];
        net.naturalFrequency[i-1]= 0;
-         //   net.phase[i]= net.phase[i+1];// net.oldPhase[i] keep phase at    
-        //    netPhaseBase[i]= netPhaseBase[i+1];// net.oldPhase[i] keep phase at    
-        //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
      }
 
-       net.phase[networkSize-1]=  net.oldPhase[0];
-       //  netPhaseBase[networkSize-1]=  net.oldPhase[0];
-       net.naturalFrequency[networkSize-1]= 0;
-       //    net.naturalFrequency[networkSize-1]= net.naturalFrequency[0]; 
-  }
+   }
 
    if (key == 'U') {  // memory == 0 is the ball "behind"  the screen
 
@@ -565,7 +562,8 @@ textSize (100);
      //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
       
      //  net.phase[i]=netPhaseBase[i];
-     net.phase[i]=net.oldPhase[i];
+
+         net.phase[i]=net.oldPhase[i];
          netPhaseBase[i]=net.oldPhase[i];
    
     }
@@ -1338,22 +1336,40 @@ textSize (100);
      for (int i = 1; i < (networkSize-0); i++) {  
          if (net.oldPhase[i]<net.phase[i-1]){ 
               //  if (net.oldPhase[i-1]<net.phase[i]){ 
-             net.phase[i]+=TWO_PI;
+           //  net.phase[i]+=TWO_PI;  better without 
           }
         }
        
          if (net.oldPhase[networkSize-1]<net.phase[0]){ 
               //  if (net.oldPhase[0]<net.phase[networkSize-1]){ 
-             net.phase[0]+=TWO_PI;
+           //  net.phase[0]+=TWO_PI;  better without 
          }
              //_____________________
         
          for (int i = 0; i < (networkSize-0); i++) {          
             if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
-                     net.phase[i]+=TWO_PI;
+                net.phase[i]+=TWO_PI;
               }
           }
      }
+
+      if (key == 'i' || key == 'I' ){
+        formerFormerKey='I';
+        
+         for (int i = 0; i < (networkSize-0); i++) {  
+
+           oldOldPosShifted[i]=oldPosShifted[i];
+           oldPosShifted[i]=newPosShifted[i];
+           newPosShifted[i]=net.phase[i];
+
+            if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
+        //if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
+
+                net.phase[i]-=TWO_PI;
+              }
+          }
+     }
+     
 
     /*
      if (key == 'Z' || key == 'z' ){
