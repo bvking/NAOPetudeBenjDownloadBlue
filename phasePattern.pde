@@ -389,6 +389,11 @@ textSize (100);
         oldMemoryi=memoryi;
         memoryi=(memoryi-1);
 
+    if (memoryi==-1) {
+        memoryi=networkSize-1;
+        oldMemoryi=0;
+     }
+
      for (int i = 0; i < (networkSize-0); i++) { 
 
            oldOldPosShifted[i]=oldPosShifted[i];
@@ -398,24 +403,25 @@ textSize (100);
        if (newPosShifted[i]<=0)  { 
            newPosShifted[i]+=TWO_PI;
          }
-
       }
-      
-     if ( memoryi==-1) {
-        memoryi=networkSize-1;
-        oldMemoryi=0;
-     }
-
       net.phase[networkSize-1]=  net.oldPhase[0];
       net.naturalFrequency[networkSize-1]= 0;
   
      for (int i = 1; i < (networkSize-0); i++) {  
-
        net.phase[i-1]= net.oldPhase[i];
        net.naturalFrequency[i-1]= 0;
      }
-
+       formerFormerKey= 'I';
    }
+
+   if (formerFormerKey== 'I' ){     
+         for (int i = 0; i < (networkSize-0); i++) {  
+                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
+                net.phase[i]-=TWO_PI;
+                // rev[i]-=1;
+              }
+          }
+    }
 
    if (key == 'U') {  // memory == 0 is the ball "behind"  the screen
 
@@ -432,23 +438,29 @@ textSize (100);
        if (newPosShifted[i]<=0)  { 
            newPosShifted[i]+=TWO_PI;
          }
-
       }
   
      for (int i = 1; i < (networkSize-0); i++) {  
-
        net.phase[i]=net.oldPhase[i-1];       
        net.naturalFrequency[i]= 0;
      }
        net.phase[0]= net.oldPhase[networkSize-1];
        net.naturalFrequency[0]= 0;
+       formerFormerKey='U';
    } 
+
+    if ( formerFormerKey== 'U' ){
+       
+         for (int i = 0; i < (networkSize-0); i++) {          
+                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
+                net.phase[i]+=TWO_PI;
+               // rev[i]+=1;
+              }
+          }
+     }
+
+ 
      
-
-
-
-  //  text ( " memoryi " +  memoryi + " oldMemoryi " + oldMemoryi, 800, 400)  ;
-
 
 
   if (key == 'u'  ) { 
@@ -1348,53 +1360,6 @@ textSize (100);
     }
 
 
-
-    if (key == 'u' || key == 'U' ){
-        formerFormerKey='U';
-
-  //  if (key == 'i' || key == 'I' ){
-  //      formerFormerKey='I';
-
-     for (int i = 1; i < (networkSize-0); i++) {  
-         if (net.oldPhase[i]<net.phase[i-1]){ 
-              //  if (net.oldPhase[i-1]<net.phase[i]){ 
-           //  net.phase[i]+=TWO_PI;  better without 
-          }
-        }
-       
-         if (net.oldPhase[networkSize-1]<net.phase[0]){ 
-              //  if (net.oldPhase[0]<net.phase[networkSize-1]){ 
-           //  net.phase[0]+=TWO_PI;  better without 
-         }
-             //_____________________
-        
-         for (int i = 0; i < (networkSize-0); i++) {          
-          //  if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
-                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
-                net.phase[i]+=TWO_PI;
-              }
-          }
-     }
-
-      if (key == 'i' || key == 'I' ){
-        formerFormerKey='I';
-        
-         for (int i = 0; i < (networkSize-0); i++) {  
-        /*
-           oldOldPosShifted[i]=oldPosShifted[i];
-           oldPosShifted[i]=newPosShifted[i];
-           newPosShifted[i]=net.phase[i];
-        */
-
-         //   if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
-                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
-
-        //if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
-
-                net.phase[i]-=TWO_PI;
-              }
-          }
-     }
      
 
     /*
