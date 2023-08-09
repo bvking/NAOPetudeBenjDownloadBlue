@@ -227,7 +227,7 @@ void teensyPos(){
         //if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
 
               //  net.phase[i]-=TWO_PI;
-                 rev[i]-=1;
+              //   rev[i]-=1;
               }
           }
      }

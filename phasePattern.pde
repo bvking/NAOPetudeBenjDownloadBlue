@@ -389,12 +389,22 @@ textSize (100);
         oldMemoryi=memoryi;
         memoryi=(memoryi-1);
 
+     for (int i = 0; i < (networkSize-0); i++) { 
+
+           oldOldPosShifted[i]=oldPosShifted[i];
+           oldPosShifted[i]=newPosShifted[i];
+           newPosShifted[i]=net.phase[i];
+
+       if (newPosShifted[i]<=0)  { 
+           newPosShifted[i]+=TWO_PI;
+         }
+
+      }
       
-      
-    if ( memoryi==-1) {
+     if ( memoryi==-1) {
         memoryi=networkSize-1;
         oldMemoryi=0;
-    }
+     }
 
       net.phase[networkSize-1]=  net.oldPhase[0];
       net.naturalFrequency[networkSize-1]= 0;
@@ -412,6 +422,18 @@ textSize (100);
       oldMemoryi=memoryi;
       memoryi=(memoryi+1);
       memoryi%=networkSize;
+
+        for (int i = 0; i < (networkSize-0); i++) { 
+
+           oldOldPosShifted[i]=oldPosShifted[i];
+           oldPosShifted[i]=newPosShifted[i];
+           newPosShifted[i]=net.phase[i];
+
+       if (newPosShifted[i]<=0)  { 
+           newPosShifted[i]+=TWO_PI;
+         }
+
+      }
   
      for (int i = 1; i < (networkSize-0); i++) {  
 
@@ -1347,7 +1369,8 @@ textSize (100);
              //_____________________
         
          for (int i = 0; i < (networkSize-0); i++) {          
-            if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
+          //  if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
+                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
                 net.phase[i]+=TWO_PI;
               }
           }
@@ -1357,12 +1380,15 @@ textSize (100);
         formerFormerKey='I';
         
          for (int i = 0; i < (networkSize-0); i++) {  
-
+        /*
            oldOldPosShifted[i]=oldPosShifted[i];
            oldPosShifted[i]=newPosShifted[i];
            newPosShifted[i]=net.phase[i];
+        */
 
-            if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
+         //   if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
+                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
+
         //if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
 
                 net.phase[i]-=TWO_PI;
