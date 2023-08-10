@@ -423,6 +423,8 @@ textSize (100);
           }
     }
 
+
+
    if (key == 'U') {  // memory == 0 is the ball "behind"  the screen
 
       oldMemoryi=memoryi;
@@ -929,13 +931,15 @@ textSize (100);
    
  //} //ENDFORMERSARTKEYJ
  
+
   if (key == 'e') { 
     println ("Incremente positions  12/3 hit");  //e$
+   // formerKeyCode = CONTROL;
     for (int i = 0; i < networkSize; i++) {    
       //    net.phase[i] -= (QUARTER_PI/(networkSize-0))*(i+1); // TRES BIEN
 
       net.phase[i] += ((TWO_PI/(networkSize/1))*(i+1)); // TRES BIEN  ==     net.phase[i] += (i+1)*TWO_PI/4; //4hit  ==   net.phase[i] +=  (i+1)*3.5*PI; 
-    //  net.phase[i] = net.phase[i] % TWO_PI; // TRES BIEN
+      net.phase[i] = net.phase[i] % TWO_PI; // TRES BIEN
 
       printSummary(i);
       key ='#'; keyReleased();
@@ -1158,6 +1162,8 @@ textSize (100);
 
     else if (keyCode == CONTROL) { 
 
+      formerKeyCode= CONTROL;
+
      text ("INCREASE phases with special CONTROL   ",  200, 200); //P$ 
 
 
@@ -1168,7 +1174,7 @@ textSize (100);
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
      net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-
+     net.phase[i]%=TWO_PI;
 
      // net.phase[i]= net.phase[i]+ (TWO_PI/(networkSize-(i+1)));      //*(networkSize+0-i); // front 
 
@@ -1184,6 +1190,28 @@ textSize (100);
 
     }
   }
+
+           if (formerKeyCode == CONTROL){  
+           
+         for (int i = 0; i < (networkSize-0); i++) {  
+
+           oldOldPosShifted[i]=oldPosShifted[i];
+           oldPosShifted[i]=newPosShifted[i];
+           newPosShifted[i]=net.phase[i];
+
+       if (newPosShifted[i]<=0)  { 
+           newPosShifted[i]+=TWO_PI;
+         }
+      
+
+
+                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
+                //net.phase[i]-=TWO_PI;
+                // rev[i]-=1;
+                 rev[i]+=1;
+              }
+          }
+    }
 
 
     else if (key == 'P') { 
