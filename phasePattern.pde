@@ -431,16 +431,6 @@ textSize (100);
       memoryi=(memoryi+1);
       memoryi%=networkSize;
 
-        for (int i = 0; i < (networkSize-0); i++) { 
-
-           oldOldPosShifted[i]=oldPosShifted[i];
-           oldPosShifted[i]=newPosShifted[i];
-           newPosShifted[i]=net.phase[i];
-
-       if (newPosShifted[i]<=0)  { 
-           newPosShifted[i]+=TWO_PI;
-         }
-      }
   
      for (int i = 1; i < (networkSize-0); i++) {  
        net.phase[i]=net.oldPhase[i-1];       
@@ -451,15 +441,8 @@ textSize (100);
        formerFormerKey='U';
    } 
 
-    if ( formerFormerKey== 'U' ){
-       
-         for (int i = 0; i < (networkSize-0); i++) {          
-                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
-                net.phase[i]+=TWO_PI;
-               // rev[i]+=1;
-              }
-          }
-     }
+
+     
 
  
      
@@ -1162,7 +1145,7 @@ textSize (100);
 
     else if (keyCode == CONTROL) { 
 
-      formerKeyCode= CONTROL;
+   
 
      text ("INCREASE phases with special CONTROL   ",  200, 200); //P$ 
 
@@ -1186,32 +1169,50 @@ textSize (100);
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
 
       keyCode=BACKSPACE;
+      formerKeyCode= CONTROL;
  
 
     }
   }
 
-           if (formerKeyCode == CONTROL){  
+    if (formerKeyCode == CONTROL){  
            
-         for (int i = 0; i < (networkSize-0); i++) {  
+        for (int i = 0; i < (networkSize-0); i++) {  
+
+         oldOldPosShifted[i]=oldPosShifted[i];
+         oldPosShifted[i]=newPosShifted[i];
+         newPosShifted[i]=net.phase[i];
+
+        if (newPosShifted[i]<=0)  { 
+            newPosShifted[i]+=TWO_PI;
+         }
+      
+        if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
+            //net.phase[i]-=TWO_PI;
+            // rev[i]-=1;
+           rev[i]+=1;
+           }
+       }
+      }
+
+    if ( formerFormerKey== 'U' ){
+   
+       for (int i = 0; i < (networkSize-0); i++) { 
 
            oldOldPosShifted[i]=oldPosShifted[i];
            oldPosShifted[i]=newPosShifted[i];
            newPosShifted[i]=net.phase[i];
 
-       if (newPosShifted[i]<=0)  { 
-           newPosShifted[i]+=TWO_PI;
-         }
-      
+        if (newPosShifted[i]<=0)  { 
+            newPosShifted[i]+=TWO_PI;
+          }    
 
-
-                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
-                //net.phase[i]-=TWO_PI;
-                // rev[i]-=1;
-                 rev[i]+=1;
-              }
-          }
-    }
+        if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
+           // net.phase[i]+=TWO_PI;
+            rev[i]+=1;
+           }
+      }
+     }
 
 
     else if (key == 'P') { 
