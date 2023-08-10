@@ -1023,7 +1023,15 @@ textSize (100);
 
       printSummary(i);
     }
-  } else if (key == 'S') { 
+  }
+
+  // RECIPROQUE DE s ?
+  //   net.phase[i]+= (PI/8/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+  //   net.phase[i]%= TWO_PI;
+
+  
+  
+   else if (key == 'S') { 
   //  println(" S$: Reduce the gap between phases by f0  ");    
     for (int i = 0; i < networkSize; i++) {      
       //   net.phase[i] -=(networkSize-1-i)*0.1;
@@ -1144,11 +1152,7 @@ textSize (100);
     }
 
     else if (keyCode == CONTROL) { 
-
-   
-
      text ("INCREASE phases with special CONTROL   ",  200, 200); //P$ 
-
 
     for (int i = 0; i < networkSize; i++) {
 
@@ -1156,21 +1160,18 @@ textSize (100);
     //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
-     net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-     net.phase[i]%=TWO_PI;
+     net.phase[i]+= (PI/(networkSize-2))*(1/1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+     net.phase[i]%= TWO_PI;
 
      // net.phase[i]= net.phase[i]+ (TWO_PI/(networkSize-(i+1)));      //*(networkSize+0-i); // front 
-
-      //net.phase[i]= net.phase[i]+ (TWO_PI/(i+1));   // NO   
+     // net.phase[i]= net.phase[i]+ (TWO_PI/(i+1));   // NO   
 
 
       //  net.phase[i]+=   TWO_PI/(networkSize-2)*i; // behind
-
-      //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
+      //  net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
 
       keyCode=BACKSPACE;
       formerKeyCode= CONTROL;
- 
 
     }
   }
@@ -1216,21 +1217,21 @@ textSize (100);
 
 
     else if (key == 'P') { 
-    text ("INCREASE phases with special MODULO   ", 200, 200); //P$ 
+       text ("INCREASE phases with special MODULO   ", 200, 200); //P$ 
     for (int i = 0; i < networkSize; i++) {
 
       //     net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
 
       //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
 
-    //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+      //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
-      //  net.phase[i]+=   (TWO_PI/(networkSize-2));//*(1*(networkSize-1-i)); // 8 hit
+      //  net.phase[i]+=   TWO_PI/(networkSize*2)*(1*(networkSize-1-i)); // 20 hit? hit
 
         net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
-    //  net.phase[i]=  net.phase[i]%TWO_PI;
+     //  net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
       printSummary(i);
     }

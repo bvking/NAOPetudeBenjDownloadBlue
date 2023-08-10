@@ -17,7 +17,7 @@ void  displayModePendulaireModeCirculaire() {
     circularMov = false;
   }
 
-  println ( " cricular ......???????" + circularMov+ " speedDelta " + speedDelta);
+  println ( " cricular ......???????" + circularMov+ " speedDelta " + speedDelta + " oscBlo s d f g?  " + oscillatorBlocked );
 
   for (int i = 0; i <networkSize-0; i++) {
 
