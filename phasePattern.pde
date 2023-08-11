@@ -394,34 +394,19 @@ textSize (100);
         oldMemoryi=0;
      }
 
-     for (int i = 0; i < (networkSize-0); i++) { 
-
-           oldOldPosShifted[i]=oldPosShifted[i];
-           oldPosShifted[i]=newPosShifted[i];
-           newPosShifted[i]=net.phase[i];
-
-       if (newPosShifted[i]<=0)  { 
-           newPosShifted[i]+=TWO_PI;
-         }
-      }
+     
       net.phase[networkSize-1]=  net.oldPhase[0];
-      net.naturalFrequency[networkSize-1]= 0;
+      net.naturalFrequency[networkSize-1]= 0; // stop frequency one by one
+      
   
      for (int i = 1; i < (networkSize-0); i++) {  
        net.phase[i-1]= net.oldPhase[i];
        net.naturalFrequency[i-1]= 0;
      }
+
        formerFormerKey= 'I';
    }
 
-   if (formerFormerKey== 'I' ){     
-         for (int i = 0; i < (networkSize-0); i++) {  
-                if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
-                net.phase[i]-=TWO_PI;
-                // rev[i]-=1;
-              }
-          }
-    }
 
 
 
@@ -1151,6 +1136,40 @@ textSize (100);
     }
     }
 
+    else if (key == 'p') {
+    text ("DECREASE  phases with special modulo    ", 200, 200); //P$ // UTILISE SI ELLES ONT deja un ecart equidistant
+    for (int i = 0; i < networkSize; i++) {  
+
+      net.phase[i]-= ((TWO_PI/(networkSize-2))*(1*(networkSize-1-i)))%PI/6; // 
+    //  net.phase[i]=  net.phase[i]%TWO_PI;
+      key='#';
+      printSummary(i);
+    }
+  }
+
+    
+    else if (key == 'P') { 
+       text ("INCREASE phases with special MODULO   ", 200, 200); //P$ 
+    for (int i = 0; i < networkSize; i++) {
+
+      //     net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
+
+      //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
+
+      //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+
+      //  net.phase[i]+=   TWO_PI/(networkSize*2)*(1*(networkSize-1-i)); // 20 hit? hit
+
+        net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
+
+      //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
+     //  net.phase[i]=  net.phase[i]%TWO_PI;
+     formerKeyCode= CONTROL;
+      key='#';
+      printSummary(i);
+    }
+  }
+
     else if (keyCode == CONTROL) { 
      text ("INCREASE phases with special CONTROL   ",  200, 200); //P$ 
 
@@ -1160,7 +1179,7 @@ textSize (100);
     //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
-     net.phase[i]+= (PI/(networkSize-2))*(1/1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+     net.phase[i]+= (PI/(networkSize-0))*(1/1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
      net.phase[i]%= TWO_PI;
 
      // net.phase[i]= net.phase[i]+ (TWO_PI/(networkSize-(i+1)));      //*(networkSize+0-i); // front 
@@ -1177,6 +1196,8 @@ textSize (100);
   }
 
     if (formerKeyCode == CONTROL){  
+
+      modeCircular=true; 
            
         for (int i = 0; i < (networkSize-0); i++) {  
 
@@ -1197,8 +1218,10 @@ textSize (100);
       }
 
     if ( formerFormerKey== 'U' ){
+
+       modeCircular=true; 
    
-       for (int i = 0; i < (networkSize-0); i++) { 
+      for (int i = 0; i < (networkSize-0); i++) { 
 
            oldOldPosShifted[i]=oldPosShifted[i];
            oldPosShifted[i]=newPosShifted[i];
@@ -1211,31 +1234,35 @@ textSize (100);
         if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
            // net.phase[i]+=TWO_PI;
             rev[i]+=1;
-           }
+          }
       }
      }
 
+     
+   if (formerFormerKey== 'I' ){ 
 
-    else if (key == 'P') { 
-       text ("INCREASE phases with special MODULO   ", 200, 200); //P$ 
-    for (int i = 0; i < networkSize; i++) {
+      modeCircular=true; 
 
-      //     net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit and oscillator11 not affected thanks to -1 in second part of equation
+      for (int i = 0; i < (networkSize-0); i++) {  
 
-      //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
+           oldOldPosShifted[i]=oldPosShifted[i];
+           oldPosShifted[i]=newPosShifted[i];
+           newPosShifted[i]=net.phase[i];
 
-      //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3; // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+       if (newPosShifted[i]<=0)  { 
+           newPosShifted[i]+=TWO_PI;
+         }
+          
 
-      //  net.phase[i]+=   TWO_PI/(networkSize*2)*(1*(networkSize-1-i)); // 20 hit? hit
-
-        net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
-
-      //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
-     //  net.phase[i]=  net.phase[i]%TWO_PI;
-      key='#';
-      printSummary(i);
+         
+       if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
+           net.phase[i]-=TWO_PI;
+            // rev[i]-=1;
+        }
+      }
     }
-  }
+
+
   
   
    else if (key == 'M') { 
@@ -1249,16 +1276,11 @@ textSize (100);
       key='#';
       printSummary(i);
     }
-  } else if (key == 'p') {
-    println("DECREASE  phases with special modulo    "); // UTILISE SI ELLES ONT deja un ecart equidistant
-    for (int i = 0; i < networkSize; i++) {  
+  }
 
-      net.phase[i]-= ((TWO_PI/(networkSize-2))*(1*(networkSize-1-i)))%PI/6; // 
-    //  net.phase[i]=  net.phase[i]%TWO_PI;
-      key='#';
-      printSummary(i);
-    }
-  } else if (key == 'm') {
+
+  
+   else if (key == 'm') {
     println("DECREASE phases with 0.5   "); // UTILISE SI ELLES ONT deja un ecart equidistant
     for (int i = 0; i < networkSize; i++) { 
       //   net.phase[i] =net.oldPhase[i]+ (QUARTER_PI/8);
