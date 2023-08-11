@@ -195,24 +195,24 @@ void teensyPos(){
     }
     */
     
-       if ( keyMode == " propagationBallRotationBis " ) {
+       if (keyMode == " propagationBallRotationBis " ) {
          for (int i = 0; i < networkSize-0; i++) { // 
           // recordLastDataOfMotorPosition[i]+= lastActualPosition[i];
           //  actualisePositionDataFromCircular = false|| dol==true; //
           //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
           dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+recordLastDataOfMotorPosition[i]; // +readPositionEncoder[i]
           }  
-         }
+        }
 
 
        if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-          for (int i = 0; i < networkSize-0; i++) {
-           //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
-          } 
+         for (int i = 0; i < networkSize-0; i++) {
+         //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
+         } 
        }
 
-            print ("net "); showArrayF (net.phase);
-            print ("old "); showArrayF (net.oldPhase);
+            print ("net "); showArrayF (newPosShifted);
+            print ("old "); showArrayF (oldPosShifted);
 
             print ("net "); showArrayF (net.phase);
             print ("old "); showArrayF (net.oldPhase);
