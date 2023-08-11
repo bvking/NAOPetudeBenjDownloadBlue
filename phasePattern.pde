@@ -311,7 +311,7 @@ textSize (100);
    }
 
    
-  if (key=='t' && circularMov) {  
+  if (key=='t' && modeCircular) {  
     print (" stop previous frequency with memory t$"); // good with memory=9
       if ( net.naturalFrequency[memoryi]>0.25 ) 
     {
@@ -326,7 +326,7 @@ textSize (100);
     }
   } 
 
-   if (key=='t' && !circularMov) {  
+   if (key=='t' && !modeCircular) {  
     print (" stop previous frequency with memory t$"); // good with memory=9
       if ( net.naturalFrequency[memoryi]>0.25 ) 
     {
@@ -343,7 +343,7 @@ textSize (100);
 
 
 
-  if (key=='t' && !circularMov) {  
+  if (key=='t' && !modeCircular) {  
     print (" average t$");
                
     for (int i = 0; i < (networkSize-0); i++) {          
@@ -434,7 +434,7 @@ textSize (100);
 
 
   if (key == 'u'  ) { 
- text (" SHIFT PHASE  the previous oscillator", 200, 300); // && circularMov == false
+ text (" SHIFT PHASE  the previous oscillator", 200, 300); // && modeCircular == false
      oldMemoryi=memoryi;
       memoryi=(memoryi+1);
       memoryi%=networkSize;
@@ -471,7 +471,7 @@ textSize (100);
 */
  } 
 
-   if (key == 'U' && specialPropagationKey == '?' && circularMov) { 
+   if (key == 'U' && specialPropagationKey == '?' && modeCircular) { 
       net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
      net.phase[i]+=PI/20*(0+1);
@@ -480,7 +480,7 @@ textSize (100);
     }
 
   
-   if (key == 'U' && specialPropagationKey == '?' && !circularMov) { // 
+   if (key == 'U' && specialPropagationKey == '?' && !modeCircular) { // 
       text ( " key " + key,  0, 500 );
          for (int i = 1; i < (networkSize-0); i++) {  
 
@@ -545,7 +545,7 @@ textSize (100);
         //   lastActualPosition[0]+=netPhaseBase[0];
          lastActualPosition[0]+=netOldPhaseBase[0];
 
-           text ("U$<  add phase from the previous oscillator " + lastActualPosition[0] , 200, 200); // && circularMov == false
+           text ("U$<  add phase from the previous oscillator " + lastActualPosition[0] , 200, 200); // && modeCircular == false
 
        for (int i = 0; i < (networkSize-0); i++) { 
     // net.phase[i]+=PI/20*(i+1);
@@ -611,7 +611,7 @@ textSize (100);
         //   lastActualPosition[0]+=netPhaseBase[0];
          lastActualPosition[0]+=netOldPhaseBase[0];
 
-           text ("I$ >  add phase from the previous oscillator " + lastActualPosition[0] , 200, 200); // && circularMov == false
+           text ("I$ >  add phase from the previous oscillator " + lastActualPosition[0] , 200, 200); // && modeCircular == false
 
   }
        for (int i = 0; i < (networkSize-0); i++) { 
@@ -627,7 +627,7 @@ textSize (100);
          propagationTimeElapsed= millis();
         // key = 'U'; keyReleased();
 
-          text (propagationTimeElapsed + "U$ AGAIN " + " repeatU " + repeatU + " " + lastActualPosition[0] , 200, 400); // && circularMov == false
+          text (propagationTimeElapsed + "U$ AGAIN " + " repeatU " + repeatU + " " + lastActualPosition[0] , 200, 400); // && modeCircular == false
     }  
   
 
@@ -1196,7 +1196,7 @@ textSize (100);
   }
 
     if (formerKeyCode == CONTROL){  
-
+   
       modeCircular=true; 
            
         for (int i = 0; i < (networkSize-0); i++) {  
@@ -1290,7 +1290,7 @@ textSize (100);
   }   
   // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
 
-  else if (key == '9' )   //9$ //&& circularMov==true 
+  else if (key == '9' )   //9$ //&& modeCircular==true 
   { 
     println(" Align oscillator vertically to the top  ");
     for (int i = 0; i < networkSize; i++) {
@@ -1301,7 +1301,7 @@ textSize (100);
   } 
   
   else if (key == 'ç') {
-    if (circularMov==true) {
+    if (modeCircular==true) {
 
     float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
@@ -1311,7 +1311,7 @@ textSize (100);
       }
     }
 
-    if (circularMov==false) {
+    if (modeCircular==false) {
       println(" Align oscillator vertically to the down  ");
       //formerKey = 'o';
 

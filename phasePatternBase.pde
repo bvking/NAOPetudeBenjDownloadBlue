@@ -156,7 +156,7 @@ void phasePatternBase() { // trigged with $ or *
 }
   /*
   if (key == 'u'  ) { 
-    println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && circularMov == false
+    println ("U$=85  Shift frequencies <- one by one by keeping last position switched"); // && modeCircular == false
     oldMemoryi=memoryi;
     memoryi=(memoryi+1)%networkSize;
 
@@ -181,7 +181,7 @@ void phasePatternBase() { // trigged with $ or *
 
   if (key == 'U' && formerKeyMetro == '<') { 
 
-    println ("U$<  add phase from the previous oscillator"); // && circularMov == false
+    println ("U$<  add phase from the previous oscillator"); // && modeCircular == false
     print (" U$< oldActualVirtualPosition2 ");
     println (oldActualVirtualPosition[2]);
     print (" U$< ActualVirtualPosition2 ");
@@ -678,7 +678,7 @@ void phasePatternBase() { // trigged with $ or *
   }
 
  else if (key == 'ç') {
-    if (circularMov==true) {
+    if (modeCircular==true) {
       println(" Align oscillator vertically to the down  CIRCU" );
     float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
@@ -688,7 +688,7 @@ void phasePatternBase() { // trigged with $ or *
       }
     }
 
-    if (circularMov==false) {
+    if (modeCircular==false) {
       println(" Align oscillator vertically to the down PENDU  ");
       //formerKey = 'o';
 

@@ -503,7 +503,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int oscillatorBlocked;
             
             int pendular;  //actualise datas. 
-            boolean circularMov; //switch datas of positions in a pendular way
+            boolean modeCircular; //switch datas of positions in a pendular way
             boolean trigTest; // Trig data when oscillator is on the left
             
             // variable to manage graphics 
@@ -919,7 +919,7 @@ void setup() {
                 mouseX = width / 2;
                 // in order to have coupling=0;
                 formerKeyMetro = '$'; // to begin setting of phase with pendular phase in the menu $ ; 
-                circularMov = false;
+                modeCircular = false;
                 for (int i = 0; i < networkSize; i++) {
                     //   net.phase[i] = (i*PI/2);// position0 at the top
                     net.phase[i] = PI / 2;// position 0 at thetop
@@ -1012,15 +1012,15 @@ void setup() {
                 
                 // USED TO REPAIR
                 //***keyMode = " notNull "; 
-                //***modeStartKeyToFollow = " samplingModeInternal " ;
-                /*             
+                modeStartKeyToFollow = " samplingModeInternal " ;
+                             
                 music_from_ableton_live = " pleasureKraft ";
                 positionMov = " premierePartie "; 
-                */
+                
 
                 // doo = true; // oposite way is true 
                 doo = false; // to enable propagation
-                music_from_ableton_live = " madRush ";    
+                //music_from_ableton_live = " madRush ";    
                 k = 0; // phaseShifting
                 oscillatorBlocked = networkSize - 1;
                 memoryi = networkSize - 1;

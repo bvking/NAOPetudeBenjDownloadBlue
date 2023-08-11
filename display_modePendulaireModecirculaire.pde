@@ -11,19 +11,19 @@ void  displayModePendulaireModeCirculaire() {
   }
 
   if (formerKeyMetro == '*') {
-    circularMov = true;
+    modeCircular = true;
   }
   if (formerKeyMetro == '$') {
-    circularMov = false;
+    modeCircular = false;
   }
 
-  println ( " cricular ......???????" + circularMov+ " speedDelta " + speedDelta + " oscBlo s d f g?  " + oscillatorBlocked );
+  println ( " cricular ......???????" + modeCircular+ " speedDelta " + speedDelta + " oscBlo s d f g?  " + oscillatorBlocked );
 
   for (int i = 0; i <networkSize-0; i++) {
 
     pushMatrix();
-    if (!circularMov && ( specialPropagationKey == '>' || specialPropagationKey == '<')) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
-      text ( memoryi + " mapped GENERAL $ with > or < " + specialPropagationKey+ " "   +  circularMov, 300, -height+500);
+    if (!modeCircular && ( specialPropagationKey == '>' || specialPropagationKey == '<')) { // || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
+      text ( memoryi + " mapped GENERAL $ with > or < " + specialPropagationKey+ " "   +  modeCircular, 300, -height+500);
       //  println (" you are in $ et non x ");
       //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
 
@@ -54,11 +54,11 @@ void  displayModePendulaireModeCirculaire() {
     }
 
     //**************** TRANSFORM CIRCULAR PHASE INTO METRO PHASE ********* SET AMPLITUDE
-    if (!circularMov && specialPropagationKey != '<'  ) { //!circularMov  &&  || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
+    if (!modeCircular && specialPropagationKey != '<'  ) { //!modeCircular  &&  || trigFollowSampling == true//&& formerSartKey == 'x'//|| formerKeyMetro == 'J'
       if ( specialPropagationKey != '>'  ) {
         //  if ( key == '#'  ) {
 
-        text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL $ without < or >  " + specialPropagationKey+ " "  +  circularMov, 300, height+200);
+        text ( memoryi  + " metroPhase[i] "+ metroPhase[memoryi] + " mapped GENERAL $ without < or >  " + specialPropagationKey+ " "  +  modeCircular, 300, height+200);
         //  println (" you are in $ et non x ");
         //   net.phase[i]=net.phase[i]%TWO_PI;// usefull or not?
 
@@ -89,8 +89,8 @@ void  displayModePendulaireModeCirculaire() {
     }
 
 
-    if (circularMov ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
-      text ( " mapped to GENERAL CIRCULAR way 2 * " + circularMov, 400, 900);
+    if (modeCircular ) { //&& formerKeyMetro != 'à' && formerKeyMetro != '$'
+      text ( " mapped to GENERAL CIRCULAR way 2 * " + modeCircular, 400, 900);
       // net.phase[i]-=PI/2;
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
@@ -350,14 +350,14 @@ void  displayModePendulaireModeCirculaire() {
         fill (255 /(networkSize-i+1), 127, 255 /(25*(i+1)));
 
         if (
-          modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " && circularMov) {
+          modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " && modeCircular) {
 
           //    x = displacement*cos(phaseMapped[i]);
           //    y = displacement*sin(phaseMapped[i]);
         }
 
         if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternal "
-          || modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  && !circularMov) {
+          || modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  && !modeCircular) {
 
           //  x = displacement*cos(metroPhase[i]);
           //  y = displacement*sin(metroPhase[i]);

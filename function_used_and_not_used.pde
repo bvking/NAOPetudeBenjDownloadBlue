@@ -1057,9 +1057,9 @@ void formerx () {
   float k = 0.25;
   print ("char formerFormerKey x?  ");
   println (char (formerFormerKey));
-  print ("circularMov  ");
-  println (circularMov);
-  if (circularMov==true ) {
+  print ("modeCircular  ");
+  println (modeCircular);
+  if (modeCircular==true ) {
     for (int i = 0; i < (networkSize-1); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];

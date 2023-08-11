@@ -64,13 +64,13 @@ void setMovement(int k, boolean b) {//azeqsdwxcrty
   }
 }
 
-void handleKeyPressToChooseCircularMovementOrNot() {
+void handleKeyPressToChoosemodeCircularementOrNot() {
   if (key == '*') {
-    circularMov = true;
+    modeCircular = true;
   }
 
   if (key == '$') {
-    circularMov = false;
+    modeCircular = false;
   }
 
   String[] valueText = displayEventFromKeyReleased(keyEvent);
@@ -92,12 +92,12 @@ void displayArrays() {
 }
 
 void computePhaseSum() {
-  if (circularMov=true) {
+  if (modeCircular=true) {
     for (int i = 0; i < networkSize; i++) {
       addPhaseAllMode += net.phase[i];
     }
   }
-  if (circularMov=false) {
+  if (modeCircular=false) {
     for (int i = 0; i < networkSize; i++) {
       addPhaseAllMode += metroPhase[i];
     }
@@ -122,11 +122,17 @@ void setMeasureAndBeatPrecised() {
 }
 
 void checkKeyModeToFollowIfALTisJustReleased() {
-
+     
   //formerKeyCode= keyCode;
+if ( keyCode == ALT) {
+//  formerKeyCode = ALT;
+  }
+
+
   rotate (-HALF_PI); //to well display
   if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) //
   {
+
     if ( formerKeyCode == ALT) {
       modeStartKey = key;   // press l to change formerKeyMetro Mode
     }

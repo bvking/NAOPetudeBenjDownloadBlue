@@ -193,11 +193,11 @@ void metroPhaseMappedToBeUsedWithFunction_with_Starter() {
 
 
 void formerKeyo() {
-  print ("circularMov ");
-  println (circularMov);
+  print ("modeCircular ");
+  println (modeCircular);
   //print("inspired from u$ and v$.  funny  ");
 
-  if (circularMov==false) {
+  if (modeCircular==false) {
     memoryi=0;
     if (d>=0) {
       timeOffset=d/10;
@@ -220,7 +220,7 @@ void formerKeyo() {
     // for (int i = 2; i < (net.size()-1); i++) {//
     for (int i = 2; i < (3); i++) {//test only point 2 and 3
 
-      if (  circularMov==false  &&
+      if (  modeCircular==false  &&
         (
         (
         // deplacement point vers la droite
@@ -336,7 +336,7 @@ void formerKeyo() {
     // }
     //  OSCILLATOR 11 give his position to oscillator 2
     ///*
-    if ((  circularMov==false  &&
+    if ((  modeCircular==false  &&
       (PendularOldLeftVirtualPosition[11] <= PendularLeftVirtualPosition[2]+mapShiftPendular) && (PendularLeftVirtualPosition[11] >= PendularLeftVirtualPosition[2]+mapShiftPendular) &&
       (PendularOldLeftVirtualPosition[11]+800*0.01 < PendularLeftVirtualPosition[11]+800*0.01))
 
@@ -400,9 +400,9 @@ void formerKeyo() {
 
 
 
-  if (circularMov==true ) {
-    print ("Beginning circularMov ");
-    println (circularMov);
+  if (modeCircular==true ) {
+    print ("Beginning modeCircular ");
+    println (modeCircular);
     if (d>=0) {
       timeOffset=d; // timeOffset in millis (50,.. 1000 ms),  before changing phase i+1 with the phase from i
     }
@@ -419,7 +419,7 @@ void formerKeyo() {
 
     for (int j = 2; j < (4); j++) {
 
-      if ( circularMov==true  && //( // circularMov==true
+      if ( modeCircular==true  && //( // modeCircular==true
 
         ((CircularOldVirtualPosition[j] <= CircularOldVirtualPosition[j+1]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[j+1]+mapShiftCircular) &&
         (CircularOldVirtualPosition[j] < CircularVirtualPosition[j]))// space CW
@@ -547,7 +547,7 @@ void formerKeyo() {
 
     for (int j = 3; j < (5); j++) {
 
-      if ( circularMov==true  && //( // circularMov==true
+      if ( modeCircular==true  && //( // modeCircular==true
 
         ((CircularOldVirtualPosition[j] <= CircularOldVirtualPosition[j+1]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[j+1]+mapShiftCircular) &&
         (CircularOldVirtualPosition[j] < CircularVirtualPosition[j]))// space CW
@@ -674,7 +674,7 @@ void formerKeyo() {
 
     for (int j = 4; j < (5); j++) {
 
-      if ( circularMov==true  && //( // circularMov==true
+      if ( modeCircular==true  && //( // modeCircular==true
 
         ((CircularOldVirtualPosition[j] <= CircularOldVirtualPosition[j+1]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[j+1]+mapShiftCircular) &&
         (CircularOldVirtualPosition[j] < CircularVirtualPosition[j]))// space CW
@@ -800,7 +800,7 @@ void formerKeyo() {
     /*
       for (int j = 11; j < (12); j++) {
      
-     if ( circularMov==true  && //( // circularMov==true
+     if ( modeCircular==true  && //( // modeCircular==true
      
      ((CircularOldVirtualPosition[j] <= CircularVirtualPosition[2]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[2]+mapShiftCircular) &&
      (CircularOldVirtualPosition[j]+800*0.1 < CircularVirtualPosition[j]+800*0.1))
@@ -908,7 +908,7 @@ void formerKeyv(int oscillatorMoving, int OldoscillatorMoving, float phaseDecay)
   println ( clockWay[oldMemoryi]);
   // print ("  clockWaySuiv "); print (memoryi+1);  print (" "); println ( clockWay[memoryi+1]);
 
-  if (circularMov==true ) {
+  if (modeCircular==true ) {
     for (int i = 0; i < (net.size()-0); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];
@@ -922,7 +922,7 @@ void formerKeyv(int oscillatorMoving, int OldoscillatorMoving, float phaseDecay)
       println (CircularVirtualPosition[i]);
     }
   }
-  if (circularMov==false ) {
+  if (modeCircular==false ) {
     for (int i = 0; i < (net.size()-0); i++) {
       upstairOldVpos[i] = upstairVpos[i];
       upstairVpos[i]= (int) map (PendularLeftVirtualPosition[i], -800, 800, 0, 3200);
@@ -1186,7 +1186,7 @@ void formerKeyCopposite(int oscillatorMoving, int OldoscillatorMoving, float pha
   print (" BOOLOldoscillatorMoving ");
   println ( oldOscillatorMoving[oscillatorMoving] );
 
-  if (circularMov==false ) {
+  if (modeCircular==false ) {
     for (int j = 0; j < (networkSize-0); j++) {
       metroOldPhase[j]= (metroPhase[j]);
     }
@@ -1346,7 +1346,7 @@ void formerKeyC(int oscillatorMoving, int OldoscillatorMoving, float phaseDecay)
       print (" BOOLOldoscillatorMoving ");
       println ( oldOscillatorMoving[oscillatorMoving] );
 
-      if (circularMov==false ) {
+      if (modeCircular==false ) {
         for (int j = 0; j < (networkSize); j++) {
           metroOldPhase[j]= (metroPhase[j]);
         }
@@ -1501,7 +1501,7 @@ void formerKeyCu$(int oscillatorMoving, int OldoscillatorMoving, float phaseDeca
   print (" BOOLOldoscillatorMoving ");
   println ( oldOscillatorMoving[oscillatorMoving] );
 
-  if (circularMov==false ) {
+  if (modeCircular==false ) {
     for (int j = 0; j < (net.size()-0); j++) {
       metroOldPhase[j]= (metroPhase[j]);
     }
@@ -1551,9 +1551,9 @@ void formerKeyCTRUE(int oscillatorMoving, int OldoscillatorMoving, float phaseDe
   print ( oscillatorMoving );
   print ("  ");
   println ( oldOscillatorMoving[oscillatorMoving] ); //     print (" BeforeOscillatorMoving ");  print ( OldoscillatorMoving ); print (" BeginINToscillatorMoving ");  println ( oscillatorMoving ); print ("formerFormerKey c?  ");  println (char (formerFormerKey));
-  print ("circularMov  ");
-  println (circularMov);
-  if (circularMov==false) {
+  print ("modeCircular  ");
+  println (modeCircular);
+  if (modeCircular==false) {
     print ("PendularOldOldOldLeftVirtualPosition ");
     print ("mem ");
     print (memoryi);
@@ -1581,7 +1581,7 @@ void formerKeyCTRUE(int oscillatorMoving, int OldoscillatorMoving, float phaseDe
     println (PendularLeftVirtualPosition[oldMemoryi]);
   }
 
-  if (circularMov==true ) {
+  if (modeCircular==true ) {
     for (int i = 2; i < (net.size()-0); i++) {
       print ("PendularLeftVirtualPosition ");
       print (i);
@@ -1840,7 +1840,7 @@ void formerKeyCTRUE(int oscillatorMoving, int OldoscillatorMoving, float phaseDe
   }
 
 
-  if (circularMov==true ) {
+  if (modeCircular==true ) {
     for (int i = 0; i < (net.size()-0); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];
@@ -1903,9 +1903,9 @@ void formerKeyCoriginal(int oscillatorMoving, int OldoscillatorMoving, float pha
   println ( oscillatorMoving );
   print ("formerFormerKey c?  ");
   println (char (formerFormerKey));
-  print ("circularMov  ");
-  println (circularMov);
-  if (circularMov==true ) {
+  print ("modeCircular  ");
+  println (modeCircular);
+  if (modeCircular==true ) {
     for (int i = 0; i < (net.size()-1); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];
@@ -2019,7 +2019,7 @@ void formerKeyCoriginal(int oscillatorMoving, int OldoscillatorMoving, float pha
   print (" BOOLOldoscillatorMoving ");
   println ( oldOscillatorMoving[oscillatorMoving] );
 
-  if (circularMov==true ) {
+  if (modeCircular==true ) {
     for (int i = 0; i < (net.size()-1); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];
@@ -2049,9 +2049,9 @@ void formerKeyc(int oscillatorMoving, int OldoscillatorMoving) {
   println ( oscillatorMoving );
   print ("formerFormerKey c?  ");
   println (char (formerFormerKey));
-  print ("circularMov  ");
-  println (circularMov);
-  if (circularMov==true ) {
+  print ("modeCircular  ");
+  println (modeCircular);
+  if (modeCircular==true ) {
     for (int i = 2; i < (net.size()-0); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];
@@ -2173,9 +2173,9 @@ void formerKeyI() {
 
   print ("char formerFormerKey  ");
   println (char (formerFormerKey));
-  print ("circularMov  ");
-  println (circularMov);
-  if (circularMov==true ) {
+  print ("modeCircular  ");
+  println (modeCircular);
+  if (modeCircular==true ) {
     for (int i = 0; i < (net.size()-1); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];
@@ -2417,9 +2417,9 @@ void formerKeyV() { // inspired from  formerKey=='v' with two shift
   println (char (formerFormerKey));
   print ("char formerFormerKey v?  ");
   println (char (formerFormerKey));
-  print ("circularMov  ");
-  println (circularMov);
-  if (circularMov==true ) {
+  print ("modeCircular  ");
+  println (modeCircular);
+  if (modeCircular==true ) {
     for (int i = 0; i < (net.size()-1); i++) {
       PendularLeftVirtualPosition[i]= CircularVirtualPosition[i];
       PendularOldLeftVirtualPosition[i]= CircularOldVirtualPosition[i];

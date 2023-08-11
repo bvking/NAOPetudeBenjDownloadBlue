@@ -327,7 +327,7 @@ void keyReleased() {
     println (char(key));
   }
 
- // handleKeyPressToChooseCircularMovementOrNot();
+ // handleKeyPressToChoosemodeCircularementOrNot();
 
   if (formerKeyMetro == 'à') {  
     println ("Frequencie adatped to PENDULAR way WITH OTHER PATTERN trigged with à");

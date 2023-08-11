@@ -1,10 +1,10 @@
   void formerKeyoJo() {
   
-    print ("circularMov ");
-    println (circularMov);
+    print ("modeCircular ");
+    println (modeCircular);
     //print("inspired from u$ and v$.  funny  ");
   
-    if (circularMov==false) {
+    if (modeCircular==false) {
       memoryi=0;
       if (d>=0) {
         timeOffset=d/10;
@@ -69,9 +69,9 @@
   
   
   
-    if (circularMov==true ) {
-      print ("Beginning circularMov ");
-      println (circularMov);
+    if (modeCircular==true ) {
+      print ("Beginning modeCircular ");
+      println (modeCircular);
       if (d>=0) {
         timeOffset=d; // timeOffset in millis (50,.. 1000 ms),  before changing phase i+1 with the phase from i
       }
@@ -88,7 +88,7 @@
   
       for (int j = 2; j < (4); j++) {
   
-        if ( circularMov==true  && //( // circularMov==true
+        if ( modeCircular==true  && //( // modeCircular==true
   
           ((CircularOldVirtualPosition[j] <= CircularOldVirtualPosition[j+1]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[j+1]+mapShiftCircular) &&
           (CircularOldVirtualPosition[j] < CircularVirtualPosition[j]))// space CW
@@ -216,7 +216,7 @@
   
       for (int j = 3; j < (5); j++) {
   
-        if ( circularMov==true  && //( // circularMov==true
+        if ( modeCircular==true  && //( // modeCircular==true
   
           ((CircularOldVirtualPosition[j] <= CircularOldVirtualPosition[j+1]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[j+1]+mapShiftCircular) &&
           (CircularOldVirtualPosition[j] < CircularVirtualPosition[j]))// space CW
@@ -343,7 +343,7 @@
   
       for (int j = 4; j < (5); j++) {
   
-        if ( circularMov==true  && //( // circularMov==true
+        if ( modeCircular==true  && //( // modeCircular==true
   
           ((CircularOldVirtualPosition[j] <= CircularOldVirtualPosition[j+1]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[j+1]+mapShiftCircular) &&
           (CircularOldVirtualPosition[j] < CircularVirtualPosition[j]))// space CW
@@ -469,7 +469,7 @@
       /*
         for (int j = 11; j < (12); j++) {
        
-       if ( circularMov==true  && //( // circularMov==true
+       if ( modeCircular==true  && //( // modeCircular==true
        
        ((CircularOldVirtualPosition[j] <= CircularVirtualPosition[2]+mapShiftCircular) && (CircularVirtualPosition[j] >= CircularVirtualPosition[2]+mapShiftCircular) &&
        (CircularOldVirtualPosition[j]+800*0.1 < CircularVirtualPosition[j]+800*0.1))
@@ -517,7 +517,7 @@
     float PhaseDecay;
     PhaseDecay=d*QUARTER_PI/2;
     if // debug if oscillator are blocked to the left or the right in pendular mode
-      (circularMov==false && ( (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0 && PendularLeftVirtualPosition[oldMemoryi]>=700 ) ||
+      (modeCircular==false && ( (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0 && PendularLeftVirtualPosition[oldMemoryi]>=700 ) ||
       (revolution[memoryi]>=0 && revolution[memoryi]<=0 && PendularLeftVirtualPosition[oldMemoryi]<=-700) )
       ) {
       //  background (75, 25, 75);
@@ -625,7 +625,7 @@
     float PhaseDecay;
     PhaseDecay=d*QUARTER_PI/2;
     if // debug if oscillator are blocked to the left or the right in pendular mode
-      (circularMov==false && ( (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  ) ||
+      (modeCircular==false && ( (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  ) ||
       (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
       )) {
       //  background (75, 25, 75);
@@ -697,7 +697,7 @@
     float PhaseDecay;
     PhaseDecay=d*QUARTER_PI/2;
     if // debug if oscillator are blocked to the left or the right in pendular mode
-      (circularMov==false && ( (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  ) ||
+      (modeCircular==false && ( (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  ) ||
       (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
       )) {
   
@@ -761,7 +761,7 @@
     float PhaseDecay;
     PhaseDecay=d*QUARTER_PI/2;
     if // debug if oscillator are blocked to the left or the right in pendular mode
-      (circularMov==true &&  (  (revolution[memoryi]>=0 && revolution[memoryi]<=0 ) // (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  )
+      (modeCircular==true &&  (  (revolution[memoryi]>=0 && revolution[memoryi]<=0 ) // (TrigmodPos[memoryi]>=0 && TrigmodPos[memoryi]<=0  )
       // || ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])>= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] )
       ||  1<0 //   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
       )) {
@@ -841,7 +841,7 @@
     float PhaseDecay;
     PhaseDecay=d*QUARTER_PI/2;
     if // debug if oscillator are blocked to the left or the right in pendular mode
-      (circularMov==true &&(           (revolution[memoryi]>=0 && revolution[memoryi]<=0 ) //
+      (modeCircular==true &&(           (revolution[memoryi]>=0 && revolution[memoryi]<=0 ) //
       // || ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])>= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] )
       ||  1<0 //   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
       )) {
@@ -929,7 +929,7 @@
     print (" PhaseDecaydeblockCircularwi ");
     println (PhaseDecay);
     if // debug if oscillator are blocked to the left or the right in pendular mode
-      (circularMov==true &&(   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )  // (pseudoRevolutionTodeblock[memoryi]>=0 && pseudoRevolutionTodeblock[memoryi]<=0 )
+      (modeCircular==true &&(   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )  // (pseudoRevolutionTodeblock[memoryi]>=0 && pseudoRevolutionTodeblock[memoryi]<=0 )
       // || ((6400-dataMappedForMotorisedPosition[oldMemoryi]+dataMappedForMotorisedPosition[memoryi])>= dataMappedForMotorisedPosition[oldMemoryi]-dataMappedForMotorisedPosition[oldMemoryi-1] )
       ||  1<0 //   (revolution[memoryi]>=0 && revolution[memoryi]<=0 )
   

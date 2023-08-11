@@ -23,7 +23,7 @@ void starterCaseUsedorNot (){
 
   // STARTERV Ar
     if (formerSartKey =='v' && (formerKey=='e' || formerKey=='z' || formerKey=='d' || formerKey=='r' || formerKey=='v')) { //  formerstartKey =='v' && || formerKey=='x'
-     if (circularMov==false  ) {//|| circularMov==false
+     if (modeCircular==false  ) {//|| modeCircular==false
       for (int i = 2; i < (networkSize-0); i++) {
         PendularOldOldOldLeftVirtualPosition[i]=PendularOldOldLeftVirtualPosition[i];
         PendularOldOldLeftVirtualPosition[i]=PendularOldLeftVirtualPosition[i];
@@ -80,7 +80,7 @@ void starterCaseUsedorNot (){
   // triggerc
 
    if (formerSartKey =='c' && (formerKey=='&' || formerKey=='+')) { //  formerstartKey =='v' &&
-    if (circularMov==true ) {
+    if (modeCircular==true ) {
       for (int i = 0; i < (networkSize-0); i++) {
         PendularLeftVirtualPosition[i]=CircularVirtualPosition[i];
         PendularOldLeftVirtualPosition[i]=CircularOldVirtualPosition[i];
@@ -113,7 +113,7 @@ void starterCaseUsedorNot (){
         TimeUpstair=millis();
       }
     }
-    if (circularMov==false ) {
+    if (modeCircular==false ) {
       if (millis()>=TimeUpstair+d) {
         if  (PendularLeftVirtualPosition[memoryi]> 400 ||  PendularLeftVirtualPosition[memoryi]<-400 ) { //&&  oldOscillatorMoving[i]== true
           print ("PendularLeftVirtualPosition"); 
@@ -167,7 +167,7 @@ void starterCaseUsedorNot (){
   } 
   //   starterx
   if (formerSartKey =='x' && (formerKey=='e'  )  ) { //  formerstartKey =='v' && || formerKey=='X' || KeyCode== SHIFT
-    if (circularMov==true || circularMov==false ) {//|| circularMov==false
+    if (modeCircular==true || modeCircular==false ) {//|| modeCircular==false
 
       println ("STARTERxBIS DataToDueCircular ");
     
@@ -190,7 +190,7 @@ void starterCaseUsedorNot (){
   // END STARTERCASE with formerKey
   //   starterX
   if (formerSartKey =='X' && (formerKey=='e'  )  ) { //  formerstartKey =='v' && || formerKey=='x' || KeyCode== SHIFT
-    if (circularMov==true || circularMov==false ) {//|| circularMov==false
+    if (modeCircular==true || modeCircular==false ) {//|| modeCircular==false
 
       println ("STARTERXBIS DataToDueCircular ");
       //     print (" dataMappedForMotorisedPosition[oldMemoryi-1] " ) ;  println (dataMappedForMotorisedPosition[oldMemoryi-1]); BUG x is ased on u$
@@ -214,7 +214,7 @@ void starterCaseUsedorNot (){
    } //end starterX 
   //   starterw
    if (formerSartKey =='w'   )  { //  formerstartKey =='v' && || formerKey=='x' || KeyCode== SHIFT
-     if (circularMov==true || circularMov==false ) {//|| circularMov==false
+     if (modeCircular==true || modeCircular==false ) {//|| modeCircular==false
 //  printDataOnScreen();
  //     pendularPatternLFO();
 
@@ -240,7 +240,7 @@ void starterCaseUsedorNot (){
 
   // arduinoPos();
   //metroEND
-  if (circularMov==true || circularMov==false ) {
+  if (modeCircular==true || modeCircular==false ) {
     //     print (" END ");          
     for (int i = 2; i < (12); i++) {// pendular from -800 to 800
       /*

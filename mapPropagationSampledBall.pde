@@ -27,9 +27,9 @@ void mapPropagationSampledBall() {
              text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
        }
 
-     if (circularMov ) {  
+     if (modeCircular ) {  
      textSize( 20);
-     if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (circularMov==true) { doesn't work
+     if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
   
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   
       } 
@@ -68,7 +68,7 @@ void mapPropagationSampledBall() {
       } 
           print ( " propagationBallRotationBis in m  any difference with rev revLfo better?  "); showArray(revLfo);     
 
-    } // end circularMov 
+    } // end modeCircular 
 
      for (int i = 0; i <  networkSize-0; i+=1) { 
       

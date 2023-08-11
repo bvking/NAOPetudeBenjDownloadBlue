@@ -5,7 +5,7 @@ void teensyPos(){
   textSize (75);
   translate (0, -1000, 0);
   rotate(PI);
-  text ( " circularMov " + circularMov , 200, -300) ; //
+  text ( " modeCircular " + modeCircular , 200, -300) ; //
   rotate(-PI);
 
 
@@ -33,7 +33,7 @@ void teensyPos(){
      }
     }
 
-    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& circularMov    // || keyMode == " addSignalOneAndTwo "
+    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
         )   
         {  
       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
@@ -383,7 +383,7 @@ void teensyPos(){
 //-
 void teensyPosOri(){
   
-  text ( " circularMov " + !circularMov , 200, 100) ; //
+  text ( " modeCircular " + !modeCircular , 200, 100) ; //
  
  if ( measure < 635)  {  // to avoid machine blocked 
 
