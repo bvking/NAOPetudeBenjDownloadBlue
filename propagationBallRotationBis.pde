@@ -23,14 +23,17 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     modeStartKeyToFollow = " null ";
     formerKeyMetro = '*';
 
-    if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged==true && music_from_ableton_live == " pleasureKraft " ) { 
+    if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged==true && music_from_ableton_live == " pleasureKraft ") { 
     propagationSpeed = 30.0;
     modulePhaseAmountWithArrow=true;
     keyCode=LEFT; keyReleased();
     } 
-   //  keyCode=DOWN each measure; keyReleased();
+    
+    if (( measure == 60 || measure == 62 || measure == 64 || measure == 66 ) && beatPrecisedTrigged==true) { 
+    modulePhaseAmountWithArrow=true;
+    keyCode=RIGHT; keyReleased();
     } 
-
+  
     //---------- come back to trigEventWithAbletonSignal ------- 
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         //keyMode = " trigEventWithAbletonSignal ";
