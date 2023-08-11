@@ -1012,7 +1012,7 @@ void setup() {
                 
                 // USED TO REPAIR
                 //***keyMode = " notNull "; 
-                modeStartKeyToFollow = " samplingModeInternal " ;
+                // modeStartKeyToFollow = " samplingModeInternal " ;
                              
                 music_from_ableton_live = " pleasureKraft ";
                 positionMov = " premierePartie "; 

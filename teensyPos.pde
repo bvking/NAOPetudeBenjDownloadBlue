@@ -211,7 +211,8 @@ void teensyPos(){
           } 
        }
 
-
+            print ("net "); showArrayF (net.phase);
+            print ("old "); showArrayF (net.oldPhase);
 
             print ("net "); showArrayF (net.phase);
             print ("old "); showArrayF (net.oldPhase);

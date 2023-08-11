@@ -1232,8 +1232,8 @@ textSize (100);
           }    
 
         if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){
-           // net.phase[i]+=TWO_PI;
-            rev[i]+=1;
+            net.phase[i]+=TWO_PI;
+           // rev[i]+=1;
           }
       }
      }

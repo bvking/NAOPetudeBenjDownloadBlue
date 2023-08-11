@@ -1,5 +1,11 @@
 void keyReleased() {
 
+   recordFrame();  // record event only when they are released
+
+   if (keyCode == ALT){
+    moveKeys[8]=false;
+   }
+
    switch(keyCode) { // to modulate Knob
  
         //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
@@ -9,7 +15,6 @@ void keyReleased() {
    }
 
    if ( keyMode == " propagationBallRotationBis " ) {
-
     if (keyCode == UP ) {    
         propagationSpeed=propagationSpeed+5;
         propagationSpeed=propagationSpeed%205;
@@ -21,19 +26,14 @@ void keyReleased() {
      if (propagationSpeed==0){
          propagationSpeed=5;
      }    
-   // keyCode = TAB ;
    } 
 
-  if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
-    
+   if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
       levelFromArrow = levelFromArrow-0.1;
-        //  levelFromArrow -=0.1;
        if (levelFromArrow<=0) {
            levelFromArrow=1;
         }
-    // keyCode= TAB; // to trig once 
-  }
-
+   }
 
   if (keyCode == DOWN ) {  // && modulePhaseAmountWithArrow
          //  levelFromArrow = levelFromArrow+1;
@@ -41,30 +41,22 @@ void keyReleased() {
          //  levelFromArrow = levelFromArrow%(1+0.1);   
        
    //  keyCode= TAB; // to trig once 
-  }
+   }
 
-  textSize (100);
-   if (key == 'n') {
+
+    textSize (100);
+
+    if (key == 'n') {
     oldFaz=faz;
     faz+=1;
     getOldPositionOfActiveOscillator(faz);
     }
 
-     recordFrame();
-
-   if (keyCode == ALT){
-    moveKeys[8]=false;
-   }
-   
-   
-
     if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) { 
     
 
     if (networkSize ==6){
-  
-    
-      
+     
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-0);
  
@@ -93,8 +85,6 @@ void keyReleased() {
     
 
     for (int i = 0; i < 1; i++) {
-  
-    
       
       lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
       dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
@@ -155,11 +145,9 @@ void keyReleased() {
          }
       }
    
-
-
     if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {  
     println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
-     delayTimeToTrig= delayTimeToTrig-20;
+    delayTimeToTrig= delayTimeToTrig-20;
       if (delayTimeToTrig<=0) {
         delayTimeToTrig=200;
      }
@@ -175,14 +163,11 @@ void keyReleased() {
     key= '#'; // to trig once keyPressedLFO
   }
 
-
    //***** TIME and PHASE SHIFTING
 
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {  
-
-          if (keyCode == LEFT) {
-      
-  //   float timeReleased= (millis()/5)%1000;
+      if (keyCode == LEFT) {
+    //  float timeReleased= (millis()/5)%1000;
     println(" followSignal right INCREASE timeOffset ")  ; // Incremente together without changing phases
     delayTimeFollowPhase11=delayTimeFollowPhase11+1;
     delayTimeFollowPhase11=delayTimeFollowPhase11%65;  
@@ -244,13 +229,8 @@ void keyReleased() {
      // keyCode = SHIFT;
   }
 
-
-      //*******
-
-  
-  key= '#'; 
- } // usefuu?
-   
+  key= '#';  // usefuu?  
+  } 
  
  
 

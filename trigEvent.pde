@@ -239,12 +239,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       } // end premiere partie
 
       if (positionMov == " seconde " ){    // 58 to 68
-        
+            propagationSpeed = 50;
             keyMode = " propagationBallRotationBis ";
            //  switchFonctionDependingKeyMode();
-          // propagationBallRotationBis();
-   
-          // keyMode = " addSignalOneAndTwo ";
+           //  propagationBallRotationBis();
+           // keyMode = " addSignalOneAndTwo ";
          
   
                       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig

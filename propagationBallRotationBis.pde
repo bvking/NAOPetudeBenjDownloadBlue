@@ -18,16 +18,25 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
    // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
    // propagationSpeed =100.0;
+
+    keyMode = " propagationBallRotationBis ";
+    modeStartKeyToFollow = " null ";
+    formerKeyMetro = '*';
+
+    if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged==true && music_from_ableton_live == " pleasureKraft " ) { 
+    propagationSpeed = 30.0;
+    modulePhaseAmountWithArrow=true;
+    keyCode=LEFT; keyReleased();
+    } 
+   //  keyCode=DOWN each measure; keyReleased();
+    } 
+
     //---------- come back to trigEventWithAbletonSignal ------- 
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         //keyMode = " trigEventWithAbletonSignal ";
         textSize(1000);         
     } 
-     
-    modeStartKeyToFollow = " null ";
-   // keyMode = " propagationBallRotationBis ";
-    formerKeyMetro = '*';
-    
+      
     textSize(50);
     displayPropagationControl();
     
@@ -46,24 +55,22 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
         case'o' : // way of rotation
         doo = true;
-        key = '#';
-        
+  
         break;
         
         case'O' : // way of rotation
         doo = false;
-        key = '#';
-        
+
         break;
         
         case'c' : 
         doC = true;
-        key = '#';
+     
         break;
         
         case'C' : 
         doC = false;
-        key = '#';
+      
         break;
         
         
@@ -80,6 +87,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         doQ = true;
         doZ = false;
         break;
+
         case'b' : 
         doQ = false;
         doZ = false;
@@ -134,15 +142,11 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
                 phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
             }
 
-            if (doo)  { 
-             //   phaseMapped[i]=-phaseMapped[i];:
-            
+            if (doo)  {  // in propagation2wayRotationBis();
+             //   phaseMapped[i]=-phaseMapped[i];:            
              }
-            
-            //  newPosXaddSignal[i]=phaseMapped[i];  // realign Balls
-            
+            //  newPosXaddSignal[i]=phaseMapped[i];  // realign Balls        
         }
-        
     }
     //lockOscillatorToPositionFromPreviousProagedBall();
     //******** Lock last oscillator to the lastPhase
@@ -172,8 +176,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
                 phaseMappedFollow[i] = netPhaseBase[i];
             }
         }
-    }
-    
+    }    
     //propagationSpeed = 30.0; // useless if propagation comes from ableton Live
     
     signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
@@ -188,11 +191,13 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
    // mapNewPosX(); // counter actived
     mapPropagationSampledBall(); // mapPropagationTomanageCounter
     
-    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
+    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
         addSignalOneAndTwoTer();
         // positionMov = " troisieme " ;  
         textSize(500);         
     } 
+
+
     // MODULATION of phase and propagaation
 
      if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        

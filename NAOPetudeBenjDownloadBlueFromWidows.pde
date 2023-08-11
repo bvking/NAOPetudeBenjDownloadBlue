@@ -14,9 +14,10 @@ void mousePressed() {
 }
 
 void draw() {
+
     for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
-}
+    }
     
     println(" BEGIN OF MAIN " + "                                                               specialPropagationKey " +  specialPropagationKey);
     
@@ -44,10 +45,10 @@ void draw() {
     formerBeatOnMeasure = beatOnMeasure;
     //---
     
-    if(modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
+    if  (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
         {
-        setMeasureAndBeatPrecised();
-}
+         setMeasureAndBeatPrecised();
+        }
     
     
     trigBeatWithMeasure();
@@ -64,30 +65,30 @@ void draw() {
         {
             //switch (key) : different mode of speed, shift, propagation ....
         }
-}
+    }
     
     if(keyMode == " null ")
         {
         checkKeyModeToFollowIfALTisJustReleased();
-}
+    }
     
     
     if(beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { //
         measureRecordStart = measure;
         //  beginSample=millis();
         text(" START SAMPLING  ", 200, 200);
-}
+    }
     
     
     if(modeStartKeyToFollow == "samplingMode") {
         SamplingModeMayBeUsefull();
-}
+    }
     
     updateInternalClock();
     
     if(modeStartKeyToFollow == " samplingModeInternal ") { // || formerKeyMetro == 'J'
         handleInternalSamplingMode();
-}
+    }  
     
     //trigEffectToAbletonLive();  // add Size to Text
     //**************END MODE SETTING   *************************
@@ -120,7 +121,7 @@ void draw() {
     //if (modeCircular==true) { // why it doesn' t work?
     if(formerKeyMetro ==  '*') {
         countRevs(); // below modePendular to compute revolution
-}
+    }
     
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
@@ -137,7 +138,7 @@ void draw() {
     if(encoderTouched[5] ==  true) {
         
         //  keyMode = " samplingModeInternal ";
-}
+    }
     
     
     
@@ -165,10 +166,11 @@ void draw() {
         print("startStop from the beginning: ");
         println(startStop);
         key = '#'; // reset key to akey doing nothing
-} else
+    }   
+        else
         {
         startStop = 2;
-}
+        }
     
     
     //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left
@@ -180,7 +182,7 @@ void draw() {
         
         formerKey = '#'; //reset formerkey to not trigging LIVE
         formerSartKey = formerKey;
-}
+    }
     
     textSize(100);
     rotate( -HALF_PI - PI);
@@ -198,7 +200,7 @@ void draw() {
     if(formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
         //  countRevs();
         //  countRevsContinue();
-}
+    }
     
     //****** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     //STARTERCASE with formerKey
@@ -217,11 +219,11 @@ void draw() {
         if (key < 65535) { // if there is no SHIFT but the other key
             formerKey = key;
         }
-}
+    }
     if(keyCode != 0) {
         formerKeyCodeAzerty = keyCode;
         formerKeyCode = keyCode;
-}
+    }
     
     formerKeyMode = keyMode;
     printModeAndKey();

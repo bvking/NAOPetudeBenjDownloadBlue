@@ -123,10 +123,10 @@ void setMeasureAndBeatPrecised() {
 
 void checkKeyModeToFollowIfALTisJustReleased() {
      
-  //formerKeyCode= keyCode;
-if ( keyCode == ALT) {
-//  formerKeyCode = ALT;
-  }
+   //formerKeyCode= keyCode;
+   if ( keyCode == ALT) {
+   //  formerKeyCode = ALT;
+   }
 
 
   rotate (-HALF_PI); //to well display
