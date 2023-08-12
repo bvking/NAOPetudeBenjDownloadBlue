@@ -211,11 +211,11 @@ void teensyPos(){
          } 
        }
 
-            print ("net "); showArrayF (newPosShifted);
-            print ("old "); showArrayF (oldPosShifted);
+            print ("newPosShifted "); showArrayF (newPosShifted);
+            print ("oldPosShifted "); showArrayF (oldPosShifted);
 
-            print ("net "); showArrayF (net.phase);
-            print ("old "); showArrayF (net.oldPhase);
+            print ("net.phase "); showArrayF (net.phase);
+            print ("old.phase "); showArrayF (net.oldPhase);
 
           if (formerFormerKey=='I' ){
          for (int i = 0; i < (networkSize-0); i++) {  

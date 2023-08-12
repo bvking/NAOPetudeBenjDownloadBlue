@@ -5,7 +5,7 @@ void abletonPos () {
       for (int i = 0; i < networkSize; i++) {
         //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
-        Pos[i]= int (map (positionToMotor[i]%numberOfStep, 0, numberOfStep, 0, 127)); // to Oscsend
+        Pos[i]= int (map (dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, 127)); // to Oscsend
 
         if (!modeCircular ) Pos[i]=abs (Pos[i]);
       }

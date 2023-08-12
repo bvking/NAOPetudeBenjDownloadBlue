@@ -1244,7 +1244,6 @@ textSize (100);
       modeCircular=true; 
 
       for (int i = 0; i < (networkSize-0); i++) {  
-
            oldOldPosShifted[i]=oldPosShifted[i];
            oldPosShifted[i]=newPosShifted[i];
            newPosShifted[i]=net.phase[i];
@@ -1252,9 +1251,7 @@ textSize (100);
        if (newPosShifted[i]<=0)  { 
            newPosShifted[i]+=TWO_PI;
          }
-          
-
-         
+                
        if (oldPosShifted[i]%TWO_PI<newPosShifted[i]){ 
            net.phase[i]-=TWO_PI;
             // rev[i]-=1;

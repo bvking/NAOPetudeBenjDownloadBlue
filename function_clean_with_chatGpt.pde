@@ -133,9 +133,9 @@ void checkKeyModeToFollowIfALTisJustReleased() {
   if ( key =='a'||  key =='b' ||  key =='c' ||  key =='d' || key =='e' || key =='f' || key =='s' || key =='z' || key =='j'  ) //
   {
 
-    if ( formerKeyCode == ALT) {
+  //  if ( formerKeyCode == ALT) {
       modeStartKey = key;   // press l to change formerKeyMetro Mode
-    }
+  //  }
   }
 
 
