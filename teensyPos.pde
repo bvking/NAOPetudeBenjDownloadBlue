@@ -45,7 +45,7 @@ void teensyPos(){
     }
 
    if ( keyMode == " propagationBallRotationBisExperimental "  ) 
-        {    // actualise counter of normal mode from revLfo from method  not here
+   {    // actualise counter of normal mode from revLfo from method  not here
 
     for (int i = 0; i < networkSize; i++) {        
       //*******************************  ASSIGN MOTOR WITH POSITION
@@ -68,17 +68,10 @@ void teensyPos(){
        recordLastDataOfMotorPosition[i]= dataMappedForMotorisedPosition[i];
        dataMappedForMotorisedBigMachine[i]= dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
 
-    }
-  }
+     }
+   }
 
-
-
-
-
-
-           if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k
-         
-         
+           if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k      
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
 
@@ -90,13 +83,12 @@ void teensyPos(){
 
 
 
-    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " )
-    
+    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " )   
                                                      && formerKeyMetro =='*') { 
 
      if ( keyMode == " propagationBallRotationBisTest " ) { 
              // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
-              revLfo=rev;
+             //   revLfo=rev;
               text ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
           }
 

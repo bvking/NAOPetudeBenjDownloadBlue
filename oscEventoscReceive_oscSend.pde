@@ -494,13 +494,13 @@ void printMidiNoteVelocity() {
 
 void oscSend(){
  
-  for (int i = 1; i < networkSize-0; i++) { 
+   for (int i = 1; i < networkSize-0; i++) { 
     //    print (" upVelocity "); print (i); print ("  "); print ( upVelocity[i]);
     //    print (" dataToLive[i] "); println (dataToLive[0]);
-   // Pos[0]=0;   
-    oldPos[i]=Pos[i];
+    // Pos[0]=0;   
+     oldPos[i]=Pos[i];
    
-    //MIDDLE POINT == between 61 & 65
+     //MIDDLE POINT == between 61 & 65
     if ((oldPos[i]<= 65 && Pos[i] >=61) ||
         (oldPos[i]>= 61 && Pos[i] <=65)) {
 
@@ -508,23 +508,23 @@ void oscSend(){
           dataToLive[0]= (networkSize-1)*(i-0);  // you can send data with the step you want to one controler 
       
         upVelocity[i]= 1;   
-    }
+     }
     
        if ( Pos[i] >65 ||
             Pos[i] <61) {
        dataToLive[i]=0;
-      upVelocity[i]= -1;
+       upVelocity[i]= -1;
  
     }    
-}
+   }
 
     downVelocity[1]=  upVelocity[2]* upVelocity[3]* upVelocity[4]* upVelocity[5];//* upVelocity[6];
     
                //       upVelocity[7]* upVelocity[8] * upVelocity[9]* upVelocity[10]* upVelocity[11];
                     
      if ( downVelocity[1]>0){ // if one of oscillator is at middle point
-    Velocity=1;  
-    }
+       Velocity=1;  
+      }
      else  Velocity=-1; 
      
   OscMessage myMessage = new OscMessage("/test");
@@ -550,12 +550,13 @@ void oscSend(){
   OscMessage myMessage19= new OscMessage("/mouseY"); // oscillator behind
 
  
-    float j= LevelCohesionToSend*1.0;
+  float j= LevelCohesionToSend*1.0;
   myMessage.add((map ((j), 0, 1, 1, 127))); /* add an int to the osc message */
   myMessage1.add( trigLfo);
   float data10= dataMappedForMotorisedPosition[networkSize-1]*1.0;   
   myMessage2.add(Velocity);
   myMessage3.add(LevelCohesionToSend);
+
   /*
   myMessage4.add(upVelocity[11]);
   myMessage5.add(upVelocity[10]);
@@ -563,7 +564,8 @@ void oscSend(){
   myMessage7.add(upVelocity[8]);
   myMessage8.add(upVelocity[7]);
   myMessage9.add(upVelocity[6]);
-*/
+  */
+
   myMessage10.add(upVelocity[5]);
   myMessage11.add(upVelocity[4]);
   myMessage12.add(upVelocity[3]);
@@ -575,7 +577,6 @@ void oscSend(){
   myMessage17.add((map (addPhaseAllMode, -1, 1, 0, 127)));  
   myMessage18.add((float) map (mouseX, 0, 800, 0, 127));
   myMessage19.add((float) map (mouseY, 0, 800, 0, 127));
-
  
 /*
   OscMessage myMessage60= new OscMessage("/fromEncodeurToLive0"); // oscillator SEND 0 or 1
@@ -592,7 +593,6 @@ void oscSend(){
   myMessage64.add(fromEncodeurToLive[4]);
   myMessage65.add(fromEncodeurToLive[5]);
 */
-
 
 /*
   oldEncodeur[0]= encodeur[0];
@@ -689,9 +689,6 @@ void oscSend(){
   myMessage74.add(encoderTouched[4]);
   myMessage75.add(encoderTouched[5]);
 
-
-
-
   myMessage20.add(Pos[0]);
   myMessage21.add(Pos[1]);
   myMessage22.add(Pos[2]);
@@ -699,9 +696,7 @@ void oscSend(){
   myMessage24.add(Pos[4]);
   myMessage25.add(Pos[5]);
 
-
-
-/*  
+ /*  
   myMessage30.add(Pos[9]);
   myMessage31.add(Pos[8]);
   myMessage32.add(Pos[7]);
@@ -728,12 +723,12 @@ void oscSend(){
   myMessage37.add(revolution[4]);
   myMessage38.add(revolution[3]);
   myMessage39.add(revolution[2]);
- } 
+   } 
    */
- if (formerKeyMetro == '$'  ) {
+  if (formerKeyMetro == '$'  ) {
   
   
- /*
+  /*
   myMessage30.add(trigModPos[9]);
   myMessage31.add(trigModPos[8]);
   myMessage32.add(TrigmodPos[7]);
@@ -746,27 +741,27 @@ void oscSend(){
   myMessage37.add(TrigmodPos[2]);
   myMessage38.add(TrigmodPos[1]);
   myMessage39.add(TrigmodPos[0]);
-*/
+  */
 
-/*
+  /*  
   myMessage36.add(revolution[5]);
   myMessage37.add(revolution[4]);
   myMessage38.add(revolution[3]);
   myMessage39.add(revolution[2]);
-*/
-rotate (PI/2);
+  */
+  rotate (PI/2);
  textSize (100);
   // text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
   
 
   } 
-//  osctrignote   formerKeyMetro == '$'  ||
+  //  osctrignote   formerKeyMetro == '$'  ||
 
   if (formerKeyMetro == '£' || formerKeyMetro == '*' || formerKeyMetro == '$'  || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@' || formerKeyMetro == 'c' ) { // trig note if TrigmodPos[i]=0
   print ( " showTrig ") ; showArray(TrigmodPos);
   // These tests used a copy of the original array so that we can perform multiple
   // test using the same working array
-//  println("Convert multiple 0s to 1s (good)");
+  //  println("Convert multiple 0s to 1s (good)");
   result = multiMatchData(0, 1, TrigmodPos.clone());
   TrigmodPos=result;
   print ( " showResul ") ;showArray(result);
@@ -777,23 +772,23 @@ rotate (PI/2);
       print (" trigNoteOnlyOnceFollowSignalLfo "); 
       showArray(trigFollowSignalLfo);   
       result = multiMatchData(0, 1, trigFollowSignalLfo.clone());
-//  TrigmodPos=result;
+    //  TrigmodPos=result;
       showArray(result); 
    } 
-  /*
-  myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
-  myMessage31.add(TrigmodPos[1]);
-  myMessage32.add(TrigmodPos[2]);
-  myMessage33.add(TrigmodPos[3]);
-  myMessage34.add(TrigmodPos[4]);
-  myMessage35.add(TrigmodPos[5]);
+    /*
+     myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
+    myMessage31.add(TrigmodPos[1]);
+     myMessage32.add(TrigmodPos[2]);
+    myMessage33.add(TrigmodPos[3]);
+   myMessage34.add(TrigmodPos[4]);
+    myMessage35.add(TrigmodPos[5]);
   */
-  int trigMuteAll;
-  trigMuteAll=1;
+   int trigMuteAll;
+   trigMuteAll=1;
 
-if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0){
-trigMuteAll= 0;
-   }
+  if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0){
+    trigMuteAll= 0;
+    }
 
 
   OscMessage myMessage30= new OscMessage("/trigModPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
@@ -806,7 +801,6 @@ trigMuteAll= 0;
   OscMessage myMessage37= new OscMessage("/trigModPos7"); // oscillator 
   OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
   OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind 
-
 
      text ( " trigMuteAll " + trigMuteAll,  100, 1700);
   myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
@@ -822,8 +816,6 @@ trigMuteAll= 0;
   myMessage39.add(TrigmodPos[8]);
   */
 
-
-
  // text ( " TrigmodPos[2] " + TrigmodPos[2],  100, 100);
  // println (" NOTE TRIGGED FROM OSCSEND ");
   /*
@@ -835,7 +827,6 @@ trigMuteAll= 0;
   myMessage44.add(dataToLive[7]);
   myMessage45.add(dataToLive[6]);
   */
-
   myMessage46.add(dataToLive[5]);
   myMessage47.add(dataToLive[4]);
   myMessage48.add(dataToLive[3]);
@@ -918,7 +909,6 @@ trigMuteAll= 0;
   oscP5.send(myMessage39, myRemoteLocation);
   //*** */
   
-
   oscP5.send(myMessage40, myRemoteLocation);
   oscP5.send(myMessage41, myRemoteLocation);
   oscP5.send(myMessage42, myRemoteLocation);

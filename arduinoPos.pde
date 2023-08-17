@@ -249,7 +249,7 @@ void arduinoPos() {
         if (net.phase[i] >  0 ) {
           CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
           CircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));
-          Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, 127)); // to Oscsend
+        //**  Pos[i]= int (map (net.phase[i], 0, TWO_PI, 0, 127)); // to Oscsend
 
           if ((CircularVirtualPosition[i]%numberOfStep>3199 && CircularOldVirtualPosition[i]%numberOfStep<3200 && CircularOldVirtualPosition[i]%numberOfStep>201  )
             || (CircularVirtualPosition[i]%numberOfStep<3201 && CircularOldVirtualPosition[i]%numberOfStep>3200 && CircularVirtualPosition[i]%numberOfStep>201  )  ) {
@@ -260,7 +260,7 @@ void arduinoPos() {
         } else {
           CircularOldVirtualPosition[i]=CircularVirtualPosition[i]%numberOfStep;
           CircularVirtualPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));
-          Pos[i]= int (map (net.phase[i], 0, -TWO_PI, 127, 0))*-1;  // to Oscsend
+        //**  Pos[i]= int (map (net.phase[i], 0, -TWO_PI, 127, 0))*-1;  // to Oscsend
 
           if ((CircularVirtualPosition[i]%numberOfStep<3201 && CircularOldVirtualPosition[i]%numberOfStep>3200 )   ) {
             TrigmodPos[i]=0;
@@ -283,7 +283,7 @@ void arduinoPos() {
 
   // SWITCH MODE  *************************************TRIG and  MAP PENDULAR PHASE  for TEENSY and !ç (to manage sound)
 
-  if (formerKeyMetro == '$') {
+  if (formerKeyMetro == '^') {
     //  actualisePositionDataFromCircular=true;
     // ActualVirtualPosition[i]=lastActualPosition[i];
 

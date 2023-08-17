@@ -49,9 +49,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
        //     dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
        //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
 
-       
-         //  LFO[i]=LFO[i]+TWO_PI;
-            
+         //  LFO[i]=LFO[i]+TWO_PI;         
             phaseMapped [i] = LFO[i]; 
     }
         
@@ -61,8 +59,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
          //   phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
          //   newPosXaddSignal[i] = LFO[i]; 
 
-              phaseMapped [i] = LFO[i]; 
-            
+            phaseMapped [i] = LFO[i];    
         }
     }
     // end ---------- map all propaged Lfo  (angular incrementation from phase Amount)

@@ -189,14 +189,12 @@ void draw() {
     bpmAsPulsationFunction(); // function works only ont a period of 750 ms. under it bugs due to low resolution
     rotate(HALF_PI + PI);
     
-    
     cohesionTrig = int(map(LevelCohesionToSend, 0, 1, 0, 100));
     println(cohesionTrig);
     
     //***** automatise Oscillator Movingwith a former Key
     //*+*+* +* +* +*  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
-    
-    
+     
     if(formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
         //  countRevs();
         //  countRevsContinue();
@@ -208,13 +206,11 @@ void draw() {
     //ENDSTARTERCASE
     //end check
     
-    
     //****** * * * * * * arduinoPos(); // to control Pos of motor and Trigging note and computing pulsation
     //countPendularTrig();
     //frameStop();
     formerFormerKey = formerKey;
-    
-    
+      
     if(key!= ':') {
         if (key < 65535) { // if there is no SHIFT but the other key
             formerKey = key;

@@ -1,16 +1,17 @@
 void abletonPos () {
 
-  if (  keyMode == " null " || keyMode != " null "  ) { // trigEventWithAbletonSignal  // phasePattern
+//  if (  keyMode == " null " || keyMode != " null "  ) { // trigEventWithAbletonSignal  // phasePattern
     if ( modeCircular || !modeCircular ) {
       for (int i = 0; i < networkSize; i++) {
         //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
         Pos[i]= int (map (dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, 127)); // to Oscsend
-
+         
         if (!modeCircular ) Pos[i]=abs (Pos[i]);
+        text (Pos[i], 200, 200 + 50*i);
       }
     }
-  }
+//  }
 
   //*********** COMPUTE ACCELERATION
 
