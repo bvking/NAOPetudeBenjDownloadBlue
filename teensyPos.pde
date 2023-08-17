@@ -44,7 +44,7 @@ void teensyPos(){
 
     }
 
-   if ( keyMode == " propagationBallRotationBisExperimental "  ) 
+   if ( keyMode == " propagationBallRotationNOBisExperimental "  ) 
    {    // actualise counter of normal mode from revLfo from method  not here
 
     for (int i = 0; i < networkSize; i++) {        
@@ -71,7 +71,7 @@ void teensyPos(){
      }
    }
 
-           if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k      
+           if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationNOBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k      
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
 
@@ -83,10 +83,10 @@ void teensyPos(){
 
 
 
-    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationBisTest " )   
+    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationNOBisTest " )   
                                                      && formerKeyMetro =='*') { 
 
-     if ( keyMode == " propagationBallRotationBisTest " ) { 
+     if ( keyMode == " propagationBallRotationNOBisTest " ) { 
              // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
              //   revLfo=rev;
               text ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //

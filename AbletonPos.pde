@@ -6,10 +6,11 @@ void abletonPos () {
     
         //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
-        Pos[i]= int (map ((dataMappedForMotorisedPosition[i]/numberOfStep), 0, numberOfStep, 0, 127)); // to Oscsend
+        Pos[i]= int (map ((dataMappedForMotorisedPosition[i]), 0, numberOfStep, 0, 127)); // to Oscsend
+        Pos[i]%=128;
 
 
-        print (" datO " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);
+        print (" datM " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);
         println();
 
 
