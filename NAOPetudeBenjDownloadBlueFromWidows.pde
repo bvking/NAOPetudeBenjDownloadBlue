@@ -128,8 +128,10 @@ void draw() {
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
+    print(" dataM + keyMode " + keyMode);
+    showArray(dataMappedForMotorisedPosition);
     rotate(PI);
-    arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
+    //arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     abletonPos();
     print(" showPos ");
     showArray(Pos);
