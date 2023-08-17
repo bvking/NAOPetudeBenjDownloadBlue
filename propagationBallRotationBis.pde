@@ -15,13 +15,19 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 
 void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as addSignalOneAndTwoQuater() in NAOP 
-    
-   // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
-   // propagationSpeed =100.0;
-
     keyMode = " propagationBallRotationBis ";
     modeStartKeyToFollow = " null ";
     formerKeyMetro = '*';
+
+   // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
+   // propagationSpeed =100.0;
+
+      if (music_from_ableton_live == " pleasureKraft " && measure > 245 ) {
+       
+      propagationSpeed = speedOfPropagationFromLiveOrNot - 10; // in signal[2] goto line 191
+
+    }
+
 
     if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged==true && music_from_ableton_live == " pleasureKraft ") { 
     propagationSpeed = 30.0;
@@ -167,8 +173,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     for (int i = 0; i < networkSize-0; i+=1) { 
     phaseMappedFollow[i] = netPhaseBase[i];
     phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
-}
-}
+ }
+ }
     */  
     
     if (key != '#') {
@@ -179,15 +185,29 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
                 phaseMappedFollow[i] = netPhaseBase[i];
             }
         }
-    }    
+    } 
+
+
+
     //propagationSpeed = 30.0; // useless if propagation comes from ableton Live
-    
+    if (music_from_ableton_live == " pleasureKraft " && measure < 245 ) {
     signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
     splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
-    
+     } 
+
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
-    // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+
+      trigedSignFromAbleton[3]=0;
+
+    if (note1 == 55 && velocity1 == 96) {
+      trigedSignFromAbleton[3]=1;
+         }
+
+    splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+
+
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
+    modulePhaseAmountWithArrow=true; // in Trig Event
     propagation2wayRotationBis(); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'

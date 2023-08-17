@@ -16,10 +16,19 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig=120; //ms
                 delayTimeToTrig4=120;
 
-      if  (music_from_ableton_live == " madRush " ) { 
+       if  (music_from_ableton_live == " madRush " ) { 
                autmationWithMeasureAndNote();
                //mapPropagationSampledBall();
-            }
+         }
+
+      
+       if (music_from_ableton_live == " pleasureKraft ") {
+         if (measure > 245 ){        
+            keyMode = " propagationBallRotationBis ";
+            //float propagationFromNote;
+            //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
+              }
+        }
 
       if (music_from_ableton_live == " pleasureKraft ") {
           
