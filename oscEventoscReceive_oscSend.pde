@@ -798,7 +798,7 @@ void oscSend(){
   OscMessage myMessage34= new OscMessage("/trigModPos4"); // oscillator 
   OscMessage myMessage35= new OscMessage("/trigModPos5"); // oscillato
   OscMessage myMessage36= new OscMessage("/trigMuteAll"); // oscillator 
-  OscMessage myMessage37= new OscMessage("/trigModPos7"); // oscillator 
+  OscMessage myMessage37= new OscMessage("/posAverage"); // oscillator 
   OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
   OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind 
 
@@ -810,6 +810,7 @@ void oscSend(){
   myMessage34.add(TrigmodPos[4]);
   myMessage35.add(TrigmodPos[5]);
   myMessage36.add(trigMuteAll);
+  myMessage37.add(posAverage);
   /*
   myMessage37.add(TrigmodPos[6]);
   myMessage38.add(TrigmodPos[7]);

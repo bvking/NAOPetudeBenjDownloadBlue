@@ -18,6 +18,8 @@ public void settings() {
 int networkSize = 6;
 int nbBalls = networkSize;
 
+int posAverage = 0;
+
 int[] changeMotorisedPosition = new int [networkSize];
 
   int[] upDateMotorisedPosition (int[] newMotorPositions) { 

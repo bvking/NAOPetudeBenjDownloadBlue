@@ -39,9 +39,26 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
      rotate (-PI/2);
         accelerationRatio = speedDelta;
     
-    for (int i = 0; i < networkSize; i++) {
-        //  oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-     }
+    if ( networkSize == 6){
+    
+    dataFromMode = "<"
+    
+    // + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
+    // + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
+    
+    + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
+    + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
+   
+    +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
+    
+    //  +0+","+0+","+0+","+0+","+0+","+0+","
+    
+    + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
+    
+    + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
+ 
+    }
+     if ( networkSize == 10){
     
     dataFromMode = "<"
     
@@ -50,19 +67,17 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
     + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
-    
-    //    + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
-    //    + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
-    
    
-    
     +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
     
     //  +0+","+0+","+0+","+0+","+0+","+0+","
     
     + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
     
-    + 0 + "," + 0 + "," + 0 + "," + 0 + ">";  
+    + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
+ 
+    }
+
     
     if (computeData <-  1) {
         dataTransformed = " BigMachine  dataNotComputeInTeensy from mode ";

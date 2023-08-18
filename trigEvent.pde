@@ -23,7 +23,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
       
        if (music_from_ableton_live == " pleasureKraft ") {
-         if (measure > 245 ){        
+         if (measure == 248 ){        
              keyMode = " propagationBallRotationBis ";
             //float propagationFromNote;
             //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale

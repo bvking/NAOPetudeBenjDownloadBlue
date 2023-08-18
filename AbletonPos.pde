@@ -1,6 +1,6 @@
 void abletonPos () {
 
-     if (keyMode == " propagationBallRotationBis ") {
+     if (keyMode == " propagationSampledBall ") {
       //  dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
      }
 
@@ -12,6 +12,10 @@ void abletonPos () {
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
         Pos[i]= int (map ((dataMappedForMotorisedPosition[i]), 0, numberOfStep, 0, 127)); // to Oscsend
         Pos[i]%=127;
+
+       if (networkSize == 6 ) {
+        posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] ) / networkSize;
+         }
 
 
         print (" datM " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);
