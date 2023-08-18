@@ -30,7 +30,7 @@ void mapPropagationSampledBall() {
 
      if (modeCircular ) {  
      textSize( 50);
-     if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
+     if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
   
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   
       } 
