@@ -24,11 +24,12 @@ void mapPropagationSampledBall() {
              specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
 
              positionToMotor[i]= specialPhase[i]%numberOfStep;
-             text (oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
+             text (" positionToMotor " + oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
+             //dataMappedForMotorisedPosition[i] = positionToMotor[i];
        }
 
      if (modeCircular ) {  
-     textSize( 20);
+     textSize( 50);
      if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
   
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   
@@ -48,7 +49,7 @@ void mapPropagationSampledBall() {
             oldPosF[i]=newPosF[i];
             newPosF[i]=phaseMapped[i];
 
-           text (revLfo[i] + " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] + " oOOld " + oldOldOldPosF[i] ,200, -700+50*i );  // //degrees (signal[2])
+           text (" mapProp " + revLfo[i] + " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] + " oOOld " + oldOldOldPosF[i] ,1200, -700+50*i );  // //degrees (signal[2])
      
             if ( //(newPosF[i]>oldPosF[i]) && (oldPosF[i]>=oldOldPosF[i]) && (oldPosF[i]<= PI && newPosF[i]>PI) voir dans quel sens la retropropagation oriente  i et j
                 newPosF[i]>oldPosF[i] && doo==true && (oldPosF[i]<=oldOldPosF[i])

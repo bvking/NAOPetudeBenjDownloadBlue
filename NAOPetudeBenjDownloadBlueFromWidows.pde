@@ -109,9 +109,15 @@ void draw() {
     trigFollowSignalSampled();
     
     //rect(80,40,140,320);
+
+       print(" dataPMpret + keyMode " + keyMode);
+    showArray(positionToMotor);
     
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();
+
+       print(" dataPMpost + keyMode " + keyMode);
+    showArray(positionToMotor);
     
     
     net.step(); // actualise step in sync library ==> actualise net.phase[i]
@@ -128,13 +134,19 @@ void draw() {
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
-    print(" dataM + keyMode " + keyMode);
+    print(" dataMP + keyMode " + keyMode);
+    if (keyMode == " propagationBallRotationBis ") {
+       // dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
+     }
     showArray(dataMappedForMotorisedPosition);
+ 
     rotate(PI);
     //arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     abletonPos();
     print(" showPos ");
     showArray(Pos);
+
+
     
     
     if(encoderTouched[5] ==  true) {

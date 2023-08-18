@@ -17,35 +17,35 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as addSignalOneAndTwoQuater() in NAOP 
     keyMode = " propagationBallRotationBis ";
     modeStartKeyToFollow = " null ";
-    formerKeyMetro = '*';
-
-   // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
-   // propagationSpeed =100.0;
-
-      if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
-       
-      propagationSpeed = speedOfPropagationFromLiveOrNot - 10; // in signal[2] goto line 191
-
+    //formerKeyMetro = '*';
+    
+    // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
+    // propagationSpeed =100.0;
+    
+    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
+        
+        propagationSpeed = speedOfPropagationFromLiveOrNot - 10; // in signal[2] goto line 191
+        
     }
-
-
-    if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged==true && music_from_ableton_live == " pleasureKraft ") { 
-    propagationSpeed = 30.0;
-    modulePhaseAmountWithArrow=true;
-    keyCode=LEFT; keyReleased();
+    
+    
+    if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
+        propagationSpeed = 30.0;
+        modulePhaseAmountWithArrow = true;
+        keyCode = LEFT; keyReleased();
     } 
     
-    if (( measure == 60 || measure == 62 || measure == 64 || measure == 66 ) && beatPrecisedTrigged==true) { 
-    modulePhaseAmountWithArrow=true;
-    keyCode=RIGHT; keyReleased();
+    if ((measure == 60 || measure == 62 || measure == 64 || measure == 66) && beatPrecisedTrigged ==  true) { 
+        modulePhaseAmountWithArrow = true;
+        keyCode = RIGHT; keyReleased();
     } 
-  
+    
     //---------- come back to trigEventWithAbletonSignal ------- 
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         //keyMode = " trigEventWithAbletonSignal ";
         textSize(1000);         
     } 
-      
+    
     textSize(50);
     displayPropagationControl();
     
@@ -61,25 +61,25 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         case'R' : // way of rotation
         doRotation = false;
         key = '#';
-
+        
         case'o' : // way of rotation
         doo = true;
-  
+        
         break;
         
         case'O' : // way of rotation
         doo = false;
-
+        
         break;
         
         case'c' : 
         doC = true;
-     
+        
         break;
         
         case'C' : 
         doC = false;
-      
+        
         break;
         
         
@@ -96,11 +96,11 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         doQ = true;
         doZ = false;
         break;
-
+        
         case'b' : 
         doQ = false;
         doZ = false;
-        doB =doB;
+        doB = doB;
         key = '#';
         break;
         
@@ -132,8 +132,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (doRotation == true) {
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
-            // newPosFollowed[i]+=0.1;
-               // phaseAmount=-phaseAmount;
+                // newPosFollowed[i]+=0.1;
+                // phaseAmount=-phaseAmount;
             }
         }
         
@@ -150,10 +150,10 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
                 dataMappedForMotorisedPosition[i] = (int) map(phaseMapped[i], 0, TWO_PI, 0, numberOfStep); 
                 phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
             }
-
+            
             if (doo)  {  // in propagation2wayRotationBis();
-             //   phaseMapped[i]=-phaseMapped[i];:            
-             }
+                // phaseMapped[i]=-phaseMapped[i];:            
+            }
             //  newPosXaddSignal[i]=phaseMapped[i];  // realign Balls        
         }
     }
@@ -173,8 +173,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     for (int i = 0; i < networkSize-0; i+=1) { 
     phaseMappedFollow[i] = netPhaseBase[i];
     phaseMappedFollow[i] = phaseMappedFollow[i]%TWO_PI; 
- }
- }
+}
+}
     */  
     
     if (key != '#') {
@@ -186,82 +186,84 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             }
         }
     } 
-
+    
+    // modality of spltted time
+    
     if (measure == 635) {
-
-     propagationSpeed = 30.0; // useless if propagation comes from ableton Live
-     signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
-     splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
-
+        
+        propagationSpeed = 30.0; // useless if propagation comes from ableton Live
+        signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+        splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
+        
     }
-
-    if (music_from_ableton_live == " pleasureKraft " && measure < 245 ) {
-         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
-         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
-     } 
-
+    
+    if (music_from_ableton_live == " pleasureKraft " && measure < 245) {
+        signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+        splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
+    } 
+    
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
-
-
-    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635 ) {
-       trigedSignFromAbleton[3]=0;  
-     if (note1 == 55 && velocity1 == 96 && formerEvent[3]<=millis()+25 ) {
-       formerEvent[3]= millis();
-       trigedSignFromAbleton[3]=1;
-       splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-     }
+    
+    
+    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
+        trigedSignFromAbleton[3] = 0;  
+        if (note1 == 55 && velocity1 == 96 && formerEvent[3] <=  millis() + 25) {
+            formerEvent[3] = millis();
+            trigedSignFromAbleton[3] = 1;
+            splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
     }
-
-    modulePhaseAmountWithArrow=true; // in Trig Event
+    }
+    
+    modulePhaseAmountWithArrow = true; // in Trig Event
     propagation2wayRotationBis(); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-     // mapNewPosX(); // counter actived
+    // mapNewPosX(); // counter actived
     mapPropagationSampledBall(); // mapPropagationTomanageCounter
     
-
+    
     // COMEBACK to other function
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
         addSignalOneAndTwoTer();
         // positionMov = " troisieme " ;  
         textSize(500);         
     } 
-
+    
     // MODULATION of phase and propagaation
-
+    
     if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-      
-       levelFromArrow= (PI / (1 * networkSize - 1)); // set 
-      // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-       modulePhaseAmountWithArrow=true; // enable pahseAmout = levelFromArrow
+        
+        levelFromArrow = (PI / (1 * networkSize - 1)); // set 
+        //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+        modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
     }
-
+    
     if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-         keyCode = RIGHT; keyReleased ();
-         keyCode = DOWN; keyReleased ();
-       // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-         modulePhaseAmountWithArrow=true;
+        keyCode = RIGHT; keyReleased();
+        keyCode = DOWN; keyReleased();
+        // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+        modulePhaseAmountWithArrow = true;
     }
-
-
+    
+    
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-      
-       levelFromArrow= (PI / (1 * networkSize - 1)); // set 
-      // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-       modulePhaseAmountWithArrow=true;
+        
+        levelFromArrow = (PI / (1 * networkSize - 1)); // set 
+        //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+        modulePhaseAmountWithArrow = true;
     }
     if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-      // propagationSpeed= 90.0;
- 
+        //propagationSpeed= 90.0;
+        
     }
     if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-      // propagationSpeed= 60.0;
-    //   keyMode = " trigEventWithAbletonSignal ";
+        //propagationSpeed= 60.0;
+        //  keyMode = " trigEventWithAbletonSignal ";
     }
-
+    
     if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-    //  keyMode = " trigEventWithAbletonSignal ";
+        //  keyMode = " trigEventWithAbletonSignal ";
     }
 }
 
@@ -284,7 +286,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
         if (oscillatorChange <=  0) {
             oscillatorChange = 0;
             oldOscillatorChange = networkSize - 1;
-    } 
+        } 
     }
     
     
@@ -294,7 +296,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
         oldOscillatorChange = oscillatorChange;
         oscillatorChange = oscillatorChange - 1;
         
-        if (oscillatorChange <= - 1) {
+        if (oscillatorChange <= -1) {
             oldOscillatorChange = 0;
             oscillatorChange = networkSize - 1;
         }

@@ -1,5 +1,9 @@
 void abletonPos () {
 
+     if (keyMode == " propagationBallRotationBis ") {
+      //  dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
+     }
+
    // if ( modeCircular || !modeCircular ) {
       for (int i = 0; i < networkSize; i++) {
 
@@ -7,7 +11,7 @@ void abletonPos () {
         //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
         Pos[i]= int (map ((dataMappedForMotorisedPosition[i]), 0, numberOfStep, 0, 127)); // to Oscsend
-        Pos[i]%=128;
+        Pos[i]%=127;
 
 
         print (" datM " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);

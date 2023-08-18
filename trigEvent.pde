@@ -24,10 +24,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       
        if (music_from_ableton_live == " pleasureKraft ") {
          if (measure > 245 ){        
-            keyMode = " propagationBallRotationBis ";
+             keyMode = " propagationBallRotationBis ";
             //float propagationFromNote;
             //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
-              }
+           }
         }
 
       if (music_from_ableton_live == " pleasureKraft ") {
@@ -43,9 +43,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             }
 
             if (measure == 66 && beatPrecised == 4  ) { // comeBack from alt y
-        //      keyMode = " trigEventWithAbletonSignal ";
-          //   positionMov = " troisieme " ;
-           //   keyCode = ALT; key = 'v'; // key 
+             //      keyMode = " trigEventWithAbletonSignal ";
+             //   positionMov = " troisieme " ;
+              //   keyCode = ALT; key = 'v'; // key 
             }
       
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
