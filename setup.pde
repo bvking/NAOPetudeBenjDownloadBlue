@@ -15,7 +15,7 @@ public void settings() {
 
 
 
-int networkSize = 10;
+int networkSize = 6;
 int nbBalls = networkSize;
 
 int[] changeMotorisedPosition = new int [networkSize];

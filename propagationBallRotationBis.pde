@@ -205,14 +205,24 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
     
-    
+             trigedSignFromAbleton[3] = 0;  
     if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
-        trigedSignFromAbleton[3] = 0;  
-        if (note1 == 55 && velocity1 == 96 && formerEvent[3] <=  millis() + 25) {
-            formerEvent[3] = millis();
+
+        if ((note1 == 60 || note2 == 60 ) && (velocity1 !=0  || velocity2!= 0 ) &&  millis()>= formerEvent[3]) {  //note 60 = HI TOM
+            textSize(200);    
+            formerEvent[3] = millis()+25;
+            text ( " formerEvent[3] " + formerEvent[3] , 200, 200 );
             trigedSignFromAbleton[3] = 1;
             splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-    }
+        }
+           
+        if ((note1 == 42 || note2 == 42 ) && (velocity1 == 96 || velocity2 == 96 ) &&  millis()>= formerEvent[3]) {  //note 42 = HI TOM
+            textSize(200);    
+           // formerEvent[3] = millis()+25;
+           // text ( " formerEvent[3] " + formerEvent[3] , 200, 200 );
+          //  trigedSignFromAbleton[3] = 1;
+           // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+        }
     }
     
     modulePhaseAmountWithArrow = true; // in Trig Event
@@ -273,7 +283,12 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
     
     // signal[2] = (0*PI + (frameCount / propagationSpeed) * cos (1000 / 500.0)*-1); //%1 IF NO SIGNAL FROM ABLETON LIVE
     
-    propagationTrigged = false;;
+    propagationTrigged = false;
+    if (doZ ==  false && trigedSignFromAbleton[3] ==  1) { 
+    //   propagationTrigged = true; 
+     }
+
+
     
     if (doZ ==  false && trigedSignFromAbleton[3] ==  1) {  // propagationSpeedWithSquareSignal==1
         
@@ -300,6 +315,7 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
             oldOscillatorChange = 0;
             oscillatorChange = networkSize - 1;
         }
-    } 
+    }
+     
     
 }
