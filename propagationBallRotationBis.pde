@@ -22,7 +22,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
    // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
    // propagationSpeed =100.0;
 
-      if (music_from_ableton_live == " pleasureKraft " && measure > 245 ) {
+      if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
        
       propagationSpeed = speedOfPropagationFromLiveOrNot - 10; // in signal[2] goto line 191
 
@@ -187,43 +187,50 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         }
     } 
 
+    if (measure == 635) {
 
+     propagationSpeed = 30.0; // useless if propagation comes from ableton Live
+     signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+     splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
 
-    //propagationSpeed = 30.0; // useless if propagation comes from ableton Live
+    }
+
     if (music_from_ableton_live == " pleasureKraft " && measure < 245 ) {
-    signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
-    splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
+         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
      } 
 
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
-
-      trigedSignFromAbleton[3]=0;
-
-    if (note1 == 55 && velocity1 == 96) {
-      trigedSignFromAbleton[3]=1;
-         }
-
-    splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-
-
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
+
+
+    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635 ) {
+       trigedSignFromAbleton[3]=0;  
+     if (note1 == 55 && velocity1 == 96 && formerEvent[3]<=millis()+25 ) {
+       formerEvent[3]= millis();
+       trigedSignFromAbleton[3]=1;
+       splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+     }
+    }
+
     modulePhaseAmountWithArrow=true; // in Trig Event
     propagation2wayRotationBis(); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-   // mapNewPosX(); // counter actived
+     // mapNewPosX(); // counter actived
     mapPropagationSampledBall(); // mapPropagationTomanageCounter
     
+
+    // COMEBACK to other function
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
         addSignalOneAndTwoTer();
         // positionMov = " troisieme " ;  
         textSize(500);         
     } 
 
-
     // MODULATION of phase and propagaation
 
-     if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+    if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
       
        levelFromArrow= (PI / (1 * networkSize - 1)); // set 
       // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
@@ -231,10 +238,10 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     }
 
     if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-      keyCode = RIGHT; keyReleased ();
-      keyCode = DOWN; keyReleased ();
-      // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-       modulePhaseAmountWithArrow=true;
+         keyCode = RIGHT; keyReleased ();
+         keyCode = DOWN; keyReleased ();
+       // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+         modulePhaseAmountWithArrow=true;
     }
 
 
