@@ -31,7 +31,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
      }
 
      if ( doo && keyMode == " propagationSampleBall ")  { 
-        LFO[oscillatorChange] = movementInterpolated - (PI / (1 * networkSize - 1));
+        LFO[oscillatorChange] = movementInterpolated - (PI / (2 * networkSize - 1));
         text("  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
      }
 

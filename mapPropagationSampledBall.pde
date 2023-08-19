@@ -49,7 +49,7 @@ void mapPropagationSampledBall() {
             oldPosF[i]=newPosF[i];
             newPosF[i]=phaseMapped[i];
 
-           text ( keyMode + " mapProp " + revLfo[i] + " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] + " oOOld " + oldOldOldPosF[i] ,1200, -700+50*i );  // //degrees (signal[2])
+           text (" positionToMotor " + positionToMotor[i] + " " + keyMode + " mapProp " + revLfo[i] + " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] + " oOOld " + oldOldOldPosF[i] ,1200, -700+50*i );  // //degrees (signal[2])
      
             if ( //(newPosF[i]>oldPosF[i]) && (oldPosF[i]>=oldOldPosF[i]) && (oldPosF[i]<= PI && newPosF[i]>PI) voir dans quel sens la retropropagation oriente  i et j
                 newPosF[i]>oldPosF[i] && doo==true && (oldPosF[i]<=oldOldPosF[i])
