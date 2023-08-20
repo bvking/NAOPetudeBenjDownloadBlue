@@ -254,7 +254,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            //  propagationBallRotationBis();
            // keyMode = " addSignalOneAndTwo ";
          
-  
+          // useless. Later it 'll be able to to be used with audioSignal
                       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
      
                         oscillatorBlocked=0;
@@ -279,7 +279,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
      if ( positionMov == " troisieme "  ){ // à partir de 66.4   from   keyMode = " propaBis "; 
    
-           float valToRoot = networkSize*1.0;
+           float valToRoot = 10*1.0;// networkSize*1.0;
            float rootedFloat = squaredRootOccurrence(valToRoot, networkSize);
            text (  " rootFloat " + rootedFloat, -200, 200); 
 
@@ -318,6 +318,16 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               for (int i = 0; i < 1; i++) {      // DO NOT CHANGE THIS         
                    key = 'y'; keyReleased();
                    key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                   key = 'y'; keyReleased();
+                //   key = 'y'; keyReleased();
+                //   key = 'y'; keyReleased();
                 }
                    key = 'i'; keyReleased(); // switch frequencies and phase upside :  position and frequency from oscillator 0 go to 1, 1 to 2, and on 
         }
@@ -329,19 +339,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       } // end measure<82
      }// end troisieme
 
-
-       
-       
-       if (measure == 82 && beatPrecised == 4  && beatPrecisedTrigged==true ) {
  
+       if (measure == 82 && beatPrecised == 4  && beatPrecisedTrigged==true ) { 
           positionMov = " quatrieme " ;
           println ( " positionMov " + positionMov );  
           textSize(500);
-
-           }
+        }
     
-
-        if ( positionMov == " quatrieme "  ){ // 82.4
+       if ( positionMov == " quatrieme "  ){ // 82.4
 
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // 
                key = 'ç'; keyReleased();

@@ -1,4 +1,3 @@
-
 //import PNetwork.java.*; 
 // MANAGE NETWORK of OSCILLATOR
 // import java.util.Arrays;
@@ -12,8 +11,6 @@ public void settings() {
 // windowRatio(600, 600);
 } 
 */
-
-
 
 int networkSize = 6;
 int nbBalls = networkSize;
@@ -696,8 +693,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
 
 
 void setup() {
-
-            
+          
             frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 

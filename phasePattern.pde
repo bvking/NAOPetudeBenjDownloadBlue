@@ -380,8 +380,8 @@ textSize (100);
 
        net.phase[networkSize-1]=  net.oldPhase[0];
        //  netPhaseBase[networkSize-1]=  net.oldPhase[0];
-       net.naturalFrequency[networkSize-1]= OldFrequency[0];
-       //    net.naturalFrequency[networkSize-1]= net.naturalFrequency[0]; 
+      // net.naturalFrequency[networkSize-1]= OldFrequency[0]; // it stop former ball
+       net.naturalFrequency[networkSize-1]= net.naturalFrequency[0]; 
   }
 
   if (key == 'I') {  // memory == 0 is the ball "behind"  the screen

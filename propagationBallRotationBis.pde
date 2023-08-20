@@ -22,17 +22,22 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
     // propagationSpeed =100.0;
     
-    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
-        
+    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {       
         propagationSpeed = speedOfPropagationFromLiveOrNot - 10; // in signal[2] goto line 191
-        
     }
     
     
     if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
-        propagationSpeed = 30.0;
-        modulePhaseAmountWithArrow = true;
+        modeCircular = true;// doesn't work
+        formerKeyMetro = '*';
+    
+        propagationSpeed = 15.0; // 30.0;
+        modulePhaseAmountWithArrow = true; // to adjust phase in propa2way
         keyCode = LEFT; keyReleased();
+        keyCode = DOWN; keyReleased();
+        keyCode = LEFT; keyReleased();
+        keyCode = DOWN; keyReleased();
+        // propagation2wayRotationBis(); 
     } 
     
     if ((measure == 60 || measure == 62 || measure == 64 || measure == 66) && beatPrecisedTrigged ==  true) { 
@@ -205,23 +210,23 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // splitTimeSinusoidaleScale(trigedSignFromAbleton[3]);
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
     
-             trigedSignFromAbleton[3] = 0;  
+    
     if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
-
-        if ((note1 == 60 || note2 == 60 ) && (velocity1 !=0  || velocity2!= 0 ) &&  millis()>= formerEvent[3]) {  //note 60 = HI TOM
+        trigedSignFromAbleton[3] = 0;  
+        if ((note1 == 60 || note2 == 60) && (velocity1 != 0  || velocity2!= 0) &&  millis()>= formerEvent[3]) {  //note 60 = HI TOM
             textSize(200);    
-            formerEvent[3] = millis()+25;
-            text ( " formerEvent[3] " + formerEvent[3] , 200, 200 );
+            formerEvent[3] = millis() + 25;
+            text(" formerEvent[3] " + formerEvent[3] , 200, 200);
             trigedSignFromAbleton[3] = 1;
             splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
         }
-           
-        if ((note1 == 42 || note2 == 42 ) && (velocity1 == 96 || velocity2 == 96 ) &&  millis()>= formerEvent[3]) {  //note 42 = HI TOM
+        
+        if ((note1 == 42 || note2 == 42) && (velocity1 == 96 || velocity2 == 96) &&  millis()>= formerEvent[3]) {  //note 42 = HI TOM
             textSize(200);    
-           // formerEvent[3] = millis()+25;
-           // text ( " formerEvent[3] " + formerEvent[3] , 200, 200 );
-          //  trigedSignFromAbleton[3] = 1;
-           // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
+            // formerEvent[3] = millis()+25;
+            // text ( " formerEvent[3] " + formerEvent[3] , 200, 200 );
+            //trigedSignFromAbleton[3] = 1;
+            // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
         }
     }
     
@@ -240,41 +245,39 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         textSize(500);         
     } 
     
-    // MODULATION of phase and propagaation
-    
-    if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+    // MODULATION of phase and propagation in MadrusH
+    if (music_from_ableton_live == " madRush ") { 
         
-        levelFromArrow = (PI / (1 * networkSize - 1)); // set 
-        //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-        modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
-    }
-    
-    if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-        keyCode = RIGHT; keyReleased();
-        keyCode = DOWN; keyReleased();
-        // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-        modulePhaseAmountWithArrow = true;
-    }
-    
-    
-    if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+        if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42                 
+            levelFromArrow = (PI / (1 * networkSize - 1)); // set 
+            //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+            modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
+        }
         
-        levelFromArrow = (PI / (1 * networkSize - 1)); // set 
-        //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-        modulePhaseAmountWithArrow = true;
-    }
-    if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-        //propagationSpeed= 90.0;
+        if (measure ==  124 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
+            keyCode = RIGHT; keyReleased();
+            keyCode = DOWN; keyReleased();
+            // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+            modulePhaseAmountWithArrow = true;
+        }
         
-    }
-    if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-        //propagationSpeed= 60.0;
-        //  keyMode = " trigEventWithAbletonSignal ";
-    }
+        if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42            
+            levelFromArrow = (PI / (1 * networkSize - 1)); // set 
+            //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+            modulePhaseAmountWithArrow = true;
+        }
+        if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
+            //propagationSpeed= 90.0;
+        }
+        if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
+            //propagationSpeed= 60.0;
+            //  keyMode = " trigEventWithAbletonSignal ";
+        }      
+        if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            //  keyMode = " trigEventWithAbletonSignal ";
+        }
+    } // end madRush
     
-    if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-        //  keyMode = " trigEventWithAbletonSignal ";
-    }
 }
 
 
@@ -285,18 +288,13 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
     
     propagationTrigged = false;
     if (doZ ==  false && trigedSignFromAbleton[3] ==  1) { 
-    //   propagationTrigged = true; 
-     }
-
-
-    
-    if (doZ ==  false && trigedSignFromAbleton[3] ==  1) {  // propagationSpeedWithSquareSignal==1
-        
+        //  propagationTrigged = true; 
+    }
+     
+    if (doZ ==  false && trigedSignFromAbleton[3] ==  1) {  // propagationSpeedWithSquareSignal==1    
         propagationTrigged = true;
         oldOscillatorChange = oscillatorChange;
-        oscillatorChange = oscillatorChange + 1;
-        
-        
+        oscillatorChange = oscillatorChange + 1;     
         oscillatorChange = oscillatorChange % networkSize;
         if (oscillatorChange <=  0) {
             oscillatorChange = 0;
@@ -305,17 +303,13 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
     }
     
     
-    if (doZ ==  true  &&  trigedSignFromAbleton[3] ==  1) {  //     if (doZ==true  && propagationSpeedWithSquareSignal==1 ){ 
-        
+    if (doZ ==  true  &&  trigedSignFromAbleton[3] ==  1) {  //     if (doZ==true  && propagationSpeedWithSquareSignal==1 ){    
         propagationTrigged = true;
         oldOscillatorChange = oscillatorChange;
-        oscillatorChange = oscillatorChange - 1;
-        
+        oscillatorChange = oscillatorChange - 1;    
         if (oscillatorChange <= -1) {
             oldOscillatorChange = 0;
             oscillatorChange = networkSize - 1;
         }
     }
-     
-    
 }
