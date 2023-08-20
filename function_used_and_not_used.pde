@@ -666,7 +666,7 @@ void bpmAsPulsationFunction() {
       textSize (100);
     }
   }
-
+  textSize (200);
   text("Average time between two pulsation = " + pulsation + "ms", -2200, 500 );
 }
 
