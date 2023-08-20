@@ -667,7 +667,10 @@ void bpmAsPulsationFunction() {
     }
   }
   textSize (200);
-  text("Average time between two pulsation = " + pulsation + "ms", -2200, 500 );
+  text("Average time between two pulsation = " + pulsation + "ms", 500, 500 );
+  println("Average time between two pulsation = " + pulsation + "ms" );
+  println("Average time between two pulsation = " + pulsation + "ms" );
+  println("Average time between two pulsation = " + pulsation + "ms" );
 }
 
 void bpmAsfrequencyfunction () {
