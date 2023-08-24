@@ -654,12 +654,12 @@ void bpmAsPulsationFunction() {
 
   // in pendular way, revolution trig 0 on the right and rev trig 0 on left side
 
-  //   if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
-  if ( TrigmodPos[networkSize-1]==0) {
+  if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
+//  if ( TrigmodPos[networkSize-1]==0) {
     if (!ready) {
       ready = true;
       prev_time = millis();
-    } else if (TrigmodPos[0]>0 ||  revolution[0]>0 ) {
+    } else if ( revolution[networkSize-1]==1) { // TrigmodPos[networkSize-1]==1||  revolution[0]==1
       int curr_time = millis();
       pulsation = avgTimer.nextValue(curr_time - prev_time);
       prev_time = curr_time;

@@ -323,11 +323,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    key = 'y'; keyReleased();
                    key = 'y'; keyReleased();
                    key = 'y'; keyReleased();
-                   key = 'y'; keyReleased();
-                   key = 'y'; keyReleased();
-                   key = 'y'; keyReleased();
-                //   key = 'y'; keyReleased();
-                //   key = 'y'; keyReleased();
+                 
                 }
                    key = 'i'; keyReleased(); // switch frequencies and phase upside :  position and frequency from oscillator 0 go to 1, 1 to 2, and on 
         }
