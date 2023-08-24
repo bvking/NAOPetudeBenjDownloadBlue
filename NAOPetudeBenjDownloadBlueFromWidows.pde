@@ -122,13 +122,11 @@ void draw() {
     
     net.step(); // actualise step in sync library ==> actualise net.phase[i]
     netG.step(); //actualise step for chimera state, not use yet
-    
-    
+     
     //if (modeCircular==true) { // why it doesn' t work?
     if(formerKeyMetro ==  '*') {
         countRevs(); // below modePendular to compute revolution
     }
-    
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
@@ -141,21 +139,15 @@ void draw() {
     showArray(dataMappedForMotorisedPosition);
  
     rotate(PI);
-    //arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
+    arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     abletonPos();
     print(" showPos ");
     showArray(Pos);
-
-
-    
-    
+ 
     if(encoderTouched[5] ==  true) {
         
         //  keyMode = " samplingModeInternal ";
     }
-    
-    
-    
     
     //== = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     
