@@ -346,12 +346,13 @@ void teensyPos(){
     } 
   }
   
-  if ( (modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
-                 && keyMode == " trigEventWithAbletonSignal "  ) {
-    if (measure<=5 )
-     { 
-     // send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
-     }
+   if ( (modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
+                 && keyMode == " trigEventWithAbletonSignal "  )
+     {
+        if (measure<=5 )
+         { 
+           // send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+         }
     }
 
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall " ) {
@@ -364,9 +365,16 @@ void teensyPos(){
     }
 
     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ") {
-      if (measure>100 && measure<=124){
-       send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
+      if (measure>82 && measure<=124){
+       print (" to change Mode and still runing ");
+       send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -12, -1);
      }
+
+     if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {
+  
+           
+       send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+        }
          
     }    
     rotate(-PI/2);  
@@ -548,6 +556,7 @@ void teensyPosOri(){
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
+  /*
   if (keyMode == " trigEventWithAbletonSignal " && measure < 635) {
     if (modeStartKeyToFollow!= " samplingModeInternal "){
       if (modeStartKeyToFollow!= " followSignalSampledOppositeWay(frameRatio) "){
@@ -565,7 +574,7 @@ void teensyPosOri(){
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);
         }
         if (measure>67 && measure<=120){
-            send24DatasToTeensy6motorsToLittleMachine(3, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -4, -1);
         }
            if (measure>=635 ){
             send24DatasToTeensy6motorsToLittleMachine(635, 3, -4, -1);
@@ -573,7 +582,15 @@ void teensyPosOri(){
       }
     } 
   }
+  */
+
+  if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {
   
+            send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+        }
+        
+
+  /*
   if ( modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) "
                  || keyMode == " trigEventWithAbletonSignal "  ) {
     if (measure<=3 )
@@ -591,11 +608,11 @@ void teensyPosOri(){
     }
 
     if (keyMode == " trigEventWithAbletonSignal ") {
-      if (measure>100 && measure<=124){
+      if (measure>82 && measure<=124){
        send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
      }
     } 
-
+*/
     
          
   

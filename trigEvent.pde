@@ -42,6 +42,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             //   }
             }
 
+              if (measure == 66  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1      
+                 textSize (210); 
+                 positionMov = " troisieme " ;
+                 speedDelta=6;     
+            }
+
             if (measure == 66 && beatPrecised == 4  ) { // comeBack from alt y
              //      keyMode = " trigEventWithAbletonSignal ";
              //   positionMov = " troisieme " ;
@@ -79,11 +85,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  // disply specifics values: instrument, phase, frequency of  effect and ball
  
               if (measure>=52 && beatPrecised == 2 || beatPrecised == 6 && beatPrecisedTrigged==true  ){
-                  text ( " SNARE ", -800, -800)   ;  
-                  if ( positionMov == " premierePartie ") {
+                 if (measure<58){
+                   text ( " SNARE ", -800, -800)   ;  
+                   if ( positionMov == " premierePartie ") {
                           // key = 'F';
                          // key= 'k';  // motor only
-                 }
+                    }
+                  }
                }
 
                
@@ -310,7 +318,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         } 
 
         if (measure == 66  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1      
-         textSize (210);      
+         textSize (210); 
+         speedDelta=6;     
         }
 
         if (measure%2==0 && measure > 66 && measure <= 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
@@ -322,7 +331,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    key = 'y'; keyReleased();
                    key = 'y'; keyReleased();
                    key = 'y'; keyReleased();
-                   key = 'y'; keyReleased();
+                //   key = 'y'; keyReleased();
                  
                 }
                    key = 'i'; keyReleased(); // switch frequencies and phase upside :  position and frequency from oscillator 0 go to 1, 1 to 2, and on 
@@ -347,6 +356,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // 
                key = 'ç'; keyReleased();
                memoryi+=1;
+               memoryi%=networkSize;
                key='0'; keyReleased();
                key = 'p'; keyReleased();
                key = 'p'; keyReleased();
@@ -362,12 +372,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
           if (measure == 84 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
               key = 'ç'; keyReleased();
-      
           } 
 
           if (measure == 90 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
               key = 't'; keyReleased();
-      
           } 
 
           if (measure >= 90 && measure <= 100 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
@@ -383,16 +391,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
           if (measure >= 100 && beatPrecised !=0 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
                 key = 'r';  keyReleased(); 
-                 
           } 
 
            if (measure >= 100 && beatPrecised ==1 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
                 key = 'f';  keyReleased(); 
-                 
           } 
 
-     } // // end quatrieme
- } //  end of  pleasureKraft Arrangement
+        } // // end quatrieme
+      } //  end of  pleasureKraft Arrangement
 
             oldSplitTimeLfo = splitTimeLfo; // actualise oldSignal
   

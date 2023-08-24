@@ -143,6 +143,7 @@ void draw() {
     abletonPos();
     print(" showPos ");
     showArray(Pos);
+    println ( "memoryi " + memoryi);
  
     if(encoderTouched[5] ==  true) {
         
@@ -150,7 +151,6 @@ void draw() {
     }
     
     //== = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    
     
     //print(" before arduinoPos "); countRevs();
     println(frameCount + ": " + Arrays.toString(rev));
