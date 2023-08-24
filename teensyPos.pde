@@ -370,10 +370,8 @@ void teensyPos(){
        send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -12, -1);
      }
 
-     if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {
-  
-           
-       send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+     if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {         
+      send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
          
     }    

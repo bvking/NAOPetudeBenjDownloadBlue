@@ -623,12 +623,20 @@ void recordFrame() {
   if (key == '@' || keyCode == ESC) {
 
     keyMode = " phasePattern ";
-    key = '9'; // aligne les ballee
-    for (int i = 0; i < networkSize; i++) {
-      // dataMappedForMotorisedPosition[i]=0;
-      println ( " send24datasFromRecordFrameFuncrtion?? ");
-      send24DatasToTeensy6motorsToLittleMachine (10, 3, -3, 1); // 1 means erase data in Teensy
-    }
+    formerKeyMetro = '$';
+    modeCircular  = true;
+
+    key = '9'; keyPressed (); // aligne les ballee
+
+    formerEvent[2]= millis();
+    if (millis()>formerEvent[2]+2000) {
+
+      text ( " send24datasFromRecordFrameFuncrtion?? circularMov " + modeCircular , 200, 200);
+      send24DatasToTeensy6motorsToLittleMachine (10, 3, -3, 2); // 2 means erase data in Teensy
+      }
+    formerEvent[3]= millis();
+    if (millis()>formerEvent[2]+2500) {
+    
 
     //  key='j'; keyReleased();
     output.println("1999999:0:0:0:0");
@@ -637,6 +645,7 @@ void recordFrame() {
     output.close();
     // startStop= 3;
     exit();
+    }
   }
 
   // if (frameCount !=formerFrame && (key != '!' && key != ':')  ){// do not record ! && :   // (frameCount !=formerFrame && key != '!' && key != ':') do not record ! only
