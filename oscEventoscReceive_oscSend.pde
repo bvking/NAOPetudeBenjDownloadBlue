@@ -778,20 +778,21 @@ void oscSend(){
       showArray(result); 
    } 
     /*
-     myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
-    myMessage31.add(TrigmodPos[1]);
-     myMessage32.add(TrigmodPos[2]);
-    myMessage33.add(TrigmodPos[3]);
-   myMessage34.add(TrigmodPos[4]);
-    myMessage35.add(TrigmodPos[5]);
-  */
+        myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
+        myMessage31.add(TrigmodPos[1]);
+        myMessage32.add(TrigmodPos[2]);
+        myMessage33.add(TrigmodPos[3]);
+        myMessage34.add(TrigmodPos[4]);
+        myMessage35.add(TrigmodPos[5]);
+    */
+
    int trigMuteAll;
    trigMuteAll=1;
 
-  if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0){
+  if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0)
+  {
     trigMuteAll= 0;
-    }
-
+  }
 
   OscMessage myMessage30= new OscMessage("/trigModPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage31= new OscMessage("/trigModPos1"); // oscillator 
