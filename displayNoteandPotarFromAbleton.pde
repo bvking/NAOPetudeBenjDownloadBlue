@@ -1,6 +1,6 @@
 void displaySignalFromAbleton()
     {
-    rotate( - PI / 2);
+    rotate( -PI / 2);
     translate(800, -height * 2 + 200);
     string1.display(ver_move1);
     string2.display(ver_move2);
@@ -11,28 +11,28 @@ void displaySignalFromAbleton()
     string7.display(ver_move7);
     string8.display(ver_move8);
     
-    if(ver_move1 > 0) {
+    if (ver_move1 > 0) {
         ver_move1 = ver_move1 - duration1;
     }
-    if(ver_move2 > 0) {
+    if (ver_move2 > 0) {
         ver_move2 = ver_move2 - duration2;
     }
-    if(ver_move3 > 0) {
+    if (ver_move3 > 0) {
         ver_move3 = ver_move3 - duration3;
     }
-    if(ver_move4 > 0) {
+    if (ver_move4 > 0) {
         ver_move4 = ver_move4 - duration4;
     }   
-    if(ver_move5 > 0) {
+    if (ver_move5 > 0) {
         ver_move5 = ver_move5 - duration5;
     }
-    if(ver_move6 > 0) {
+    if (ver_move6 > 0) {
         ver_move6 = ver_move6 - duration6;
     }
-    if(ver_move7 > 0) {
+    if (ver_move7 > 0) {
         ver_move7 = ver_move7 - duration7;
     }
-    if(ver_move8 > 0) {
+    if (ver_move8 > 0) {
         ver_move8 = ver_move8 - duration8;
     }
     
@@ -81,6 +81,6 @@ void displaySignalFromAbleton()
     ellipse(ver_move, LFO2, XSize, YSize); // seeAutomationAreverbershaper
     
     noStroke();
-    translate ( - 800, height * 2 + 200);
+    translate( -800, height * 2 + 200);
     rotate(PI / 2);
 }
