@@ -133,7 +133,7 @@ void keyReleased() {
           speedDelta=4;
            }
        //  key='#'; // to trig only once
-/*
+     /*
       oscillatorBlocked--;
       if (oscillatorBlocked < 0) { 
       oscillatorBlocked=networkSize-1;    
@@ -146,10 +146,10 @@ void keyReleased() {
       }
    
     if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {  
-    println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
-    delayTimeToTrig= delayTimeToTrig-20;
+       //println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
+       delayTimeToTrig= delayTimeToTrig-20;
       if (delayTimeToTrig<=0) {
-        delayTimeToTrig=200;
+          delayTimeToTrig=200;
      }
   
     text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
@@ -163,9 +163,9 @@ void keyReleased() {
     key= '#'; // to trig once keyPressedLFO
   }
 
-   //***** TIME and PHASE SHIFTING
+   //***** TIME and PHASE SHIFTING of repetition_mouvement_mike
 
-  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " || keyMode == " samplingModeInternal ")
    {  
      if (keyCode == LEFT) 
       { // followSignal right INCREASE timeOffset
