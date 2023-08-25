@@ -35,8 +35,9 @@ void arduinoPos() {
     }
   }
 
-  if (formerKeyMetro == '>') {  // formerKeyMetro == '<' ||
-    for (int i = 0; i < networkSize; i++) {
+  if (formerKeyMetro == '>')
+   {  // formerKeyMetro == '<' ||
+     for (int i = 0; i < networkSize; i++) {
       // rev[i]=rev[0];
 
       //*******************************  ASSIGN MOTOR WITH POSITION
@@ -146,7 +147,8 @@ void arduinoPos() {
 
   // =============== MAP ACCORDING LFO, CIRCULAR, PENDULAR PHASE To ADAPT IT TO the stepper motor
   // ===============* CIRCULAR MODE TO TRIG DATA ACCORDING POSITION *
-  if (formerKeyMetro == '£'  || formerKeyMetro == '*' || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@' ) { //interPosition   || formerKeyMetro == 'c'
+  if (formerKeyMetro == '£'  || formerKeyMetro == '*' || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@' )
+   { //interPosition   || formerKeyMetro == 'c'
     if (   keyMode == " ableton " ) {
       for (int i = 0; i < networkSize; i++) {
         net.phase[i] = newPosF[i];
@@ -237,7 +239,7 @@ void arduinoPos() {
       }
     }
 
-    //****** CIRCULAR MODE
+     //****** CIRCULAR MODE
 
     if (  keyMode == " trigEventWithAbletonSignal " ) { // trigEventWithAbletonSignal  // phasePattern
       for (int i = 0; i < networkSize; i++) {
@@ -278,12 +280,12 @@ void arduinoPos() {
 
         //  text ( " TrigmodPos " + i + TrigmodPos[i] , 400, 400+100*i);
       }
-    }
+     }
   }
 
-  // SWITCH MODE  *************************************TRIG and  MAP PENDULAR PHASE  for TEENSY and !ç (to manage sound)
+       // SWITCH MODE  *************************************TRIG and  MAP PENDULAR PHASE  for TEENSY and !ç (to manage sound)
 
-  if (formerKeyMetro == '^') {
+   if (formerKeyMetro == '^') {
     //  actualisePositionDataFromCircular=true;
     // ActualVirtualPosition[i]=lastActualPosition[i];
 

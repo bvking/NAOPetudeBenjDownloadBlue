@@ -1,21 +1,37 @@
-void abletonPos () {
+void abletonPos () 
+{    
+  for (int i = 0; i < networkSize; i++) {
 
-     if (keyMode == " propagationSampledBall ") {
-      //  dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
-     }
+      if (revolution[i]==0)
+        {
+          TrigmodPos[i]=0;
+        // TrigModPos[i]=0;
+        }
+      else 
+           TrigmodPos[i]=1;
+       //  TrigModPos[i]=1;
+        }
 
-   // if ( modeCircular || !modeCircular ) {
+
+
+      if (keyMode == " propagationSampledBall ") 
+       {
+       //  dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
+      }
+
+       // if ( modeCircular || !modeCircular ) {
       for (int i = 0; i < networkSize; i++) {
 
     
         //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
-        Pos[i]= int (map ((net.phase[i]), 0, TWO_PI, 0, 127)); // to Oscsend
-      //  Pos[i]= int (map ((dataMappedForMotorisedPosition[i]), 0, numberOfStep, 0, 127)); // to Oscsend
-        Pos[i]%=127;
+         Pos[i]= int (map ((net.phase[i]), 0, TWO_PI, 0, 127)); // to Oscsend
+          //  Pos[i]= int (map ((dataMappedForMotorisedPosition[i]), 0, numberOfStep, 0, 127)); // to Oscsend
+         Pos[i]%=127;
 
-       if (networkSize == 6 ) {
-        posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] ) / networkSize;
+      if (networkSize == 6 )
+        {
+          posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] ) / networkSize;
          }
 
 

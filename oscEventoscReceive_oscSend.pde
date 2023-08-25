@@ -722,7 +722,7 @@ void oscSend(){
   myMessage36.add(revolution[5]);
   myMessage37.add(revolution[4]);
   myMessage38.add(revolution[3]);
-  myMessage39.add(revolution[2]);
+   myMessage39.add(revolution[2]);
    } 
    */
   if (formerKeyMetro == '$'  ) {
@@ -749,16 +749,17 @@ void oscSend(){
   myMessage38.add(revolution[3]);
   myMessage39.add(revolution[2]);
   */
-  rotate (PI/2);
- textSize (100);
+  //rotate (PI/2);
+  textSize (100);
   // text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
   
 
   } 
-  //  osctrignote   formerKeyMetro == '$'  ||
+ 
 
-  if (formerKeyMetro == '£' || formerKeyMetro == '*' || formerKeyMetro == '$'  || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@' || formerKeyMetro == 'c' ) { // trig note if TrigmodPos[i]=0
   print ( " showTrig ") ; showArray(TrigmodPos);
+  text ( " Trig0 " + TrigmodPos[0], 600, 200);
+  text ( " Trig5 " + TrigmodPos[5], 600, 400);
   // These tests used a copy of the original array so that we can perform multiple
   // test using the same working array
   //  println("Convert multiple 0s to 1s (good)");
@@ -766,8 +767,7 @@ void oscSend(){
   TrigmodPos=result;
   print ( " showResul ") ;showArray(result);
 
-    } 
-  
+   
  if ( keyMode ==  " followSignalLfo "){
       print (" trigNoteOnlyOnceFollowSignalLfo "); 
       showArray(trigFollowSignalLfo);   
