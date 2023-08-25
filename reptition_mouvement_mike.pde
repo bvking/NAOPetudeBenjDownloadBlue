@@ -7,7 +7,8 @@ float [] sampledModifiedChecking =  new float [100000];
 int numberOfSample;
 int numberOfrepetition;
 
-float speed = 0.5;
+// float speed = 0.5; in setup
+// speed = speedOfrepetition;
 
 //--------------------        coordinates of an angle in radians // no need here
 
@@ -91,6 +92,8 @@ class SamplerTheta {
 
   void draw() {
     stroke(255);
+
+    speed = speedOfrepetition; 
 
     float absspeed = abs(speed);
 

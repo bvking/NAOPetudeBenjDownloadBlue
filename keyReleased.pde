@@ -165,71 +165,67 @@ void keyReleased() {
 
    //***** TIME and PHASE SHIFTING
 
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {  
-      if (keyCode == LEFT) {
-    //  float timeReleased= (millis()/5)%1000;
-    println(" followSignal right INCREASE timeOffset ")  ; // Incremente together without changing phases
-    delayTimeFollowPhase11=delayTimeFollowPhase11+1;
-    delayTimeFollowPhase11=delayTimeFollowPhase11%65;  
-    print ("delayTimeFollowPhase11: ");
-    println (delayTimeFollowPhase11);
+  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+   {  
+     if (keyCode == LEFT) 
+      { // followSignal right INCREASE timeOffset
+         //  float timeReleased= (millis()/5)%1000;
+          delayTimeFollowPhase11=delayTimeFollowPhase11+1;
+          delayTimeFollowPhase11=delayTimeFollowPhase11%65;  
+      }
 
-    /*
-    if ( delayTimeFollowPhase11<=0 && delayTimeFollowPhase11>=0){
-      trigLfo=0;
+     if (keyCode == RIGHT) { // right INCREASE timeOffset
+         delayTimeFollowPhase11=delayTimeFollowPhase11-1;
+     if (delayTimeFollowPhase11<0) {
+         delayTimeFollowPhase11=60;
        }
-     else if (delayTimeFollowPhase11>0){   trigLfo=1;   }
-      keyCode = SHIFT;
-  }
-    */
-    }
-
-  if (keyCode == RIGHT) {
-    println(" right INCREASE timeOffset ")  ; // Incremente together without changing phases
-    delayTimeFollowPhase11=delayTimeFollowPhase11-1;
-    if (delayTimeFollowPhase11<0) {
-      delayTimeFollowPhase11=60;
-       }
-     //   delayTimeFollowPhase11=delayTimeFollowPhase11%61;
-    print ("delayTimeFollowPhase11: ");
-    println (delayTimeFollowPhase11);
-    /*
-      if ( delayTimeFollowPhase11<=0 && delayTimeFollowPhase11>=0){
-      trigLfo=0;
-       }
-     else if (delayTimeFollowPhase11>0){ trigLfo=1;  }    // 
-    keyCode = SHIFT;
      }
-     */
-  }
 
-  if (keyCode == UP) {
-     println(" left INCREASE phase shifting"); //
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
-    phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-  if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowPhase11));
-    keyCode = SHIFT;
-  }
+     if (keyCode == UP) 
+      {
+       speedOfrepetition+=0.2;
+       speedOfrepetition%=2.2;
+      }
+
   
-  if (keyCode == DOWN) {
-     println(" left INCREASE phase shifting"); //
-     phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
-     phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
+     if (keyCode == DOWN)
+     {
+      speedOfrepetition-=0.2;
+      speedOfrepetition%=(-2.2);
+  
+     }
+
+
+    /*
+   if (keyCode == UP) {
+       println(" left INCREASE phase shifting"); //
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
         
-   if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2) { 
+   if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
       phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
     }   
-    print ("phaseShiftingFollowPhase11 Ratio ");
-    println (degrees (phaseShiftingFollowPhase11));
-     // keyCode = SHIFT;
-  }
+       print ("phaseShiftingFollowPhase11 Ratio ");
+       println (degrees (phaseShiftingFollowPhase11));
+       keyCode = SHIFT;
+   }
+  
+   if (keyCode == DOWN)
+     {
+       println(" left INCREASE phase shifting"); //
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
+        
+       if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2)
+         { 
+           phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
+         }   
+          print ("phaseShiftingFollowPhase11 Ratio ");
+          println (degrees (phaseShiftingFollowPhase11));
+     }
+    */
 
-  key= '#';  // usefuu?  
+    key= '#';  // usefuu?  
   } 
  
  
@@ -283,7 +279,7 @@ void keyReleased() {
     println (char(key));
   }
 
-/*
+  /*
   if (key == '<') { 
     formerKeyMetro = key;
     print ("KEY CIRCULAR FOLLOW MODE "); 
@@ -292,7 +288,7 @@ void keyReleased() {
     print ("key"); 
     println (char(key));
   }
-*/
+  */
   
   // ***********************************************************************************************  
   // ***********************************************************************************************  

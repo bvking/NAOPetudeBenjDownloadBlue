@@ -16,6 +16,8 @@ int networkSize = 6;
 int nbBalls = networkSize;
 
 int posAverage = 0;
+float speed = 1;
+float speedOfrepetition = 0.5;
 
 int[] changeMotorisedPosition = new int [networkSize];
 
