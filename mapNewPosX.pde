@@ -23,9 +23,10 @@ void mapNewPosX() {
     }
     } 
     
-    if (formerKeyMetro == '*') { // //  if (modeCircular==true) { doesn't work
+    if (formerKeyMetro == '*') 
+    { // //  if (modeCircular==true) { doesn't work
         countRevsPhaseMappedPositiveOnly();
-}
+    }
     
     print(" cou+Only in mapNew "); showArray(rev);    
     

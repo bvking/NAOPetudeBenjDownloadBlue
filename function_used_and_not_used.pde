@@ -77,6 +77,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       //   revolution[i]=i+1;
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
+      TrigmodPos[i]=0;
       //**    memoryi=i;
 
 
@@ -96,13 +97,16 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       //   TrigmodPos[i]=0;
       rev[i]++;
       text (" YOUR HZRE???" + rev[i], 200, -900+(i*10));
-      //   revolution[i]=i+1;
-      revolution[i]=0;   // trig 0 to sent 0 in Max4Live
+      revolution[i]=0;
+      TrigmodPos[i]=0;   // trig 0 to sent 0 in Max4Live
+      
       decompte[i] = 0;  // RESET COUNTER AT 0
     } else {
 
       decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
       revolution[i]=1;
+      TrigmodPos[i]=1;
+
     }
   }
 }
