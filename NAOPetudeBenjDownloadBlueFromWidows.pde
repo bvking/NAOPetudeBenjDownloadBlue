@@ -116,7 +116,7 @@ void draw() {
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();
 
-       print(" dataPMpost + keyMode " + keyMode);
+    print(" dataPMpost + keyMode " + keyMode);
     showArray(positionToMotor);
     
     
@@ -124,8 +124,18 @@ void draw() {
     netG.step(); //actualise step for chimera state, not use yet
      
     //if (modeCircular==true) { // why it doesn' t work?
-    if(formerKeyMetro ==  '*') {
-        countRevs(); // below modePendular to compute revolution
+    if(formerKeyMetro ==  '*')  // case != to get trigModPos enabled
+    {
+      if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+       { 
+          if ( keyMode != " propagationSampleBall ")
+           {
+             if ( keyMode != " propagationBallRotationBis ")
+               {
+                  countRevs(); // below modePendular to compute revolution
+               }
+           }
+        }
     }
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
@@ -139,7 +149,7 @@ void draw() {
     showArray(dataMappedForMotorisedPosition);
  
     rotate(PI);
-    arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
+    // arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     abletonPos();
     print(" showPos ");
     showArray(Pos);
@@ -164,7 +174,8 @@ void draw() {
         // formerSartKey = formerKey;
 }
     
-    if(key ==  'j') {// senda trig to start record in Ableton live
+    if(key ==  'j')
+    {   // senda trig to start record in Ableton live
         background(255);
         startStop = 3;//
         key = '=';
@@ -172,7 +183,8 @@ void draw() {
         print("startStop from the beginning: ");
         println(startStop);
         key = '#'; // reset key to akey doing nothing
-    }   
+    } 
+
         else
         {
         startStop = 2;
@@ -180,7 +192,8 @@ void draw() {
     
     
     //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left
-    if(formerSartKey == '!' &&  TrigmodPos[networkSize - 1] ==  0) {
+    if(formerSartKey == '!' &&  TrigmodPos[networkSize - 1] ==  0)
+    {
         println("TRIG LIVE WITH oscillator 11 on LEFT"); //
         startStop = 1;
         print("MOVEMENT AND TIMER is already started, now START LIVE: ");
@@ -217,12 +230,15 @@ void draw() {
     //frameStop();
     formerFormerKey = formerKey;
       
-    if(key!= ':') {
-        if (key < 65535) { // if there is no SHIFT but the other key
+    if(key!= ':')
+    {
+      if (key < 65535) { // if there is no SHIFT but the other key
             formerKey = key;
         }
     }
-    if(keyCode != 0) {
+
+    if(keyCode != 0) 
+    {
         formerKeyCodeAzerty = keyCode;
         formerKeyCode = keyCode;
     }

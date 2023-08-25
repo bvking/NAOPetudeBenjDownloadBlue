@@ -494,10 +494,9 @@ void printMidiNoteVelocity() {
 
 void oscSend(){
  
-   for (int i = 1; i < networkSize-0; i++) { 
-    //    print (" upVelocity "); print (i); print ("  "); print ( upVelocity[i]);
-    //    print (" dataToLive[i] "); println (dataToLive[0]);
-    // Pos[0]=0;   
+   for (int i = 1; i < networkSize-0; i++)
+  { 
+    
      oldPos[i]=Pos[i];
    
      //MIDDLE POINT == between 61 & 65
@@ -515,17 +514,20 @@ void oscSend(){
        dataToLive[i]=0;
        upVelocity[i]= -1;
  
-    }    
+     }    
    }
 
-    downVelocity[1]=  upVelocity[2]* upVelocity[3]* upVelocity[4]* upVelocity[5];//* upVelocity[6];
+     downVelocity[1]=  upVelocity[2]* upVelocity[3]* upVelocity[4]* upVelocity[5];//* upVelocity[6];
     
                //       upVelocity[7]* upVelocity[8] * upVelocity[9]* upVelocity[10]* upVelocity[11];
                     
-     if ( downVelocity[1]>0){ // if one of oscillator is at middle point
+    if ( downVelocity[1]>0)
+     { // if one of oscillator is at middle point
        Velocity=1;  
-      }
-     else  Velocity=-1; 
+     }
+     else 
+     {  Velocity=-1;
+     } 
      
   OscMessage myMessage = new OscMessage("/test");
   OscMessage myMessage1 = new OscMessage("/trigLfo");
@@ -725,7 +727,8 @@ void oscSend(){
    myMessage39.add(revolution[2]);
    } 
    */
-  if (formerKeyMetro == '$'  ) {
+  if (formerKeyMetro == '$'  )
+  {
   
   
   /*
@@ -754,9 +757,8 @@ void oscSend(){
   // text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
   
 
-  } 
+ } 
  
-
   print ( " showTrig ") ; showArray(TrigmodPos);
   text ( " Trig0 " + TrigmodPos[0], 600, 200);
   text ( " Trig5 " + TrigmodPos[5], 600, 400);

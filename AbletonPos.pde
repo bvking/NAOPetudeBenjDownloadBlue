@@ -1,16 +1,21 @@
 void abletonPos () 
 {    
-  for (int i = 0; i < networkSize; i++) {
+  for (int i = 0; i < networkSize; i++)
+   {
 
       if (revolution[i]==0)
         {
           TrigmodPos[i]=0;
         // TrigModPos[i]=0;
         }
-      else 
+      else  
+        {
+
            TrigmodPos[i]=1;
-       //  TrigModPos[i]=1;
+          //  TrigModPos[i]=1;
         }
+
+   }
 
 
 
