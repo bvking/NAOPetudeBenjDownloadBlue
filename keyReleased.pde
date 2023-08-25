@@ -165,21 +165,24 @@ void keyReleased() {
 
    //***** TIME and PHASE SHIFTING of repetition_mouvement_mike
 
-  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " || keyMode == " samplingModeInternal ")
+  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow == " samplingModeInternal ")
    {  
      if (keyCode == LEFT) 
       { // followSignal right INCREASE timeOffset
          //  float timeReleased= (millis()/5)%1000;
-          delayTimeFollowPhase11=delayTimeFollowPhase11+1;
-          delayTimeFollowPhase11=delayTimeFollowPhase11%65;  
+          delayTimeFollowPhase11=delayTimeFollowPhase11+2;
+          delayTimeFollowPhase11=delayTimeFollowPhase11%66;  
       }
 
-     if (keyCode == RIGHT) { // right INCREASE timeOffset
-         delayTimeFollowPhase11=delayTimeFollowPhase11-1;
-     if (delayTimeFollowPhase11<0) {
-         delayTimeFollowPhase11=60;
-       }
-     }
+     if (keyCode == RIGHT)
+      { // right INCREASE timeOffset
+         delayTimeFollowPhase11=delayTimeFollowPhase11-2;
+        //  delayTimeFollowPhase11=delayTimeFollowPhase11%(-66);  
+      if (delayTimeFollowPhase11<0)
+        {
+          delayTimeFollowPhase11=60;
+        }
+      }
 
      if (keyCode == UP) 
       {
