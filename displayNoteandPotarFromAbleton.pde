@@ -1,4 +1,5 @@
-void displaySignalFromAbleton() {
+void displaySignalFromAbleton()
+ {
   rotate (-PI/2);
   translate (800, -height*2+200);
   string1.display(ver_move1);
