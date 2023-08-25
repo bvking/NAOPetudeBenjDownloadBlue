@@ -45,11 +45,8 @@ void displaySignalFromAbleton()
     ver_move7 = -ver_move7;
     ver_move8 = -ver_move8;
     
-    //potar data move the circle
-    
+    //potar data move the circle 
     //OSC RECEIVE
-    //print(" automation3 followMadTrack  ");
-    //print (automation3);
     incrementSpeed += 10;
     incrementSpeed = incrementSpeed % width;
     

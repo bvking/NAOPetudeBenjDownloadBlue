@@ -1,31 +1,31 @@
 import interfascia.*;
 
 // END SETUP
-void mouseXY() {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No effect
+void mouseXY()
+    {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No effect
     sigma = (map((float(mouseX) / width * 1), 0, 1, 0.0, 1.0));
     print("Sigma");
     println(sigma);
     Freq  = (map((float(mouseY) / width * 1), 0, 1, 0.0, 0.05));
 }
 
-void mousePressed() {
+void mousePressed()
+    {
     mouseRecorded = true;
     measure = 0;
 }
 
-void draw() {
-
+void draw()
+    { 
     for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
-    }
-    
+    }  
     println(" BEGIN OF MAIN " + "                                                               specialPropagationKey " +  specialPropagationKey);
-    
     //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
     background(0);
     
-    if(frameCount <=  1)  noLoop(); // check setPort()
+    if (frameCount <=  1)  noLoop(); // check setPort()
     //printDataOnScreen();
     
     setKeyModeByTappingKeyPadOnce();
@@ -45,21 +45,17 @@ void draw() {
     formerBeatOnMeasure = beatOnMeasure;
     //---
     
-    if  (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
+    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
         {
-         setMeasureAndBeatPrecised();
-        }
-    
-    
+        setMeasureAndBeatPrecised();
+    }   
     trigBeatWithMeasure();
     //printDataOnScreen();
-    
     //rotate( -HALF_PI);
     printMidiNoteVelocity();
     rotate(HALF_PI);
     
-    
-    if(keyMode != " phasePattern ")
+    if (keyMode != " phasePattern ")
         {
         if (key ==  'B' ||  key ==  'c' ||  key ==  '>' ||  key ==  '<' || key ==  'd' || key ==  'e') //
         {
@@ -67,74 +63,63 @@ void draw() {
         }
     }
     
-    if(keyMode == " null ")
+    if (keyMode == " null ")
         {
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
     
-    if(beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { //
+    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { //
         measureRecordStart = measure;
         //  beginSample=millis();
         text(" START SAMPLING  ", 200, 200);
     }
     
-    
-    if(modeStartKeyToFollow == "samplingMode") {
+    if (modeStartKeyToFollow == "samplingMode") {
         SamplingModeMayBeUsefull();
     }
     
     updateInternalClock();
     
-    if(modeStartKeyToFollow == " samplingModeInternal ") { // || formerKeyMetro == 'J'
+    if (modeStartKeyToFollow == " samplingModeInternal ") { // || formerKeyMetro == 'J'
         handleInternalSamplingMode();
     }  
-    
     //trigEffectToAbletonLive();  // add Size to Text
-    //**************END MODE SETTING   *************************
-    
+    //**************END MODE SETTING   *************************  
     formerAuto = frameCount - 1;
     //see storeinputexample to create sample
-    
     //Display with strings midi note (pitch and duration).  Display with  ellipse cyclicals and continues datas (potar, fader, lfo). from Ableton Live
     displaySignalFromAbleton();
-    
     computeAngularTimeSpeed();
     //**printDataOnScreen();
     differentFunction();
     displayOscillatorSpheres();
-    
     //****************************
-    
     trigFollowSignalSampled();
-    
     //rect(80,40,140,320);
-
-       print(" dataPMpret + keyMode " + keyMode);
+    print(" dataPMpret + keyMode " + keyMode);
     showArray(positionToMotor);
-    
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();
-
     print(" dataPMpost + keyMode " + keyMode);
     showArray(positionToMotor);
     
-    
     net.step(); // actualise step in sync library ==> actualise net.phase[i]
     netG.step(); //actualise step for chimera state, not use yet
-     
+    
     //if (modeCircular==true) { // why it doesn' t work?
-    if(formerKeyMetro ==  '*')  // case != to get trigModPos enabled
+    if (formerKeyMetro ==  '*')  // case != to get trigModPos enabled
+        
     {
-      if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
-       { 
-          if ( keyMode != " propagationSampleBall ")
-           {
-             if ( keyMode != " propagationBallRotationBis ")
-               {
-                  countRevs(); // below modePendular to compute revolution
-               }
-           }
+        if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+        {
+            if (keyMode != " propagationSampleBall ")
+            {
+                if (keyMode != " propagationBallRotationBis ")
+                {
+                    countRevs(); // below modePendular to compute revolution
+                }
+            }
         }
     }
     
@@ -143,19 +128,20 @@ void draw() {
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
     print(" dataMP + keyMode " + keyMode);
-    if (keyMode == " propagationBallRotationBis ") {
-       // dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
-     }
+    if (keyMode == " propagationBallRotationBis ") 
+    {
+        // dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
+    }
     showArray(dataMappedForMotorisedPosition);
- 
+    
     rotate(PI);
     // arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     abletonPos();
     print(" showPos ");
     showArray(Pos);
-    println ( "memoryi " + memoryi);
- 
-    if(encoderTouched[5] ==  true) {
+    println("memoryi " + memoryi);
+    
+    if (encoderTouched[5] ==  true) {
         
         //  keyMode = " samplingModeInternal ";
     }
@@ -170,11 +156,11 @@ void draw() {
     //mouseMovedPrinted();
     //SoundmouseMoved(); // to automatise sound with speed. In the setup uncomment the out1, out2 ...
     
-    if(formerKey == '!') {
+    if (formerKey == '!') {
         // formerSartKey = formerKey;
-}
+    }
     
-    if(key ==  'j')
+    if (key ==  'j')
     {   // senda trig to start record in Ableton live
         background(255);
         startStop = 3;//
@@ -184,15 +170,15 @@ void draw() {
         println(startStop);
         key = '#'; // reset key to akey doing nothing
     } 
-
-        else
+    
+    else
         {
         startStop = 2;
-        }
+    }
     
     
     //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left
-    if(formerSartKey == '!' &&  TrigmodPos[networkSize - 1] ==  0)
+    if (formerSartKey == '!' &&  TrigmodPos[networkSize - 1] ==  0)
     {
         println("TRIG LIVE WITH oscillator 11 on LEFT"); //
         startStop = 1;
@@ -213,8 +199,8 @@ void draw() {
     
     //***** automatise Oscillator Movingwith a former Key
     //*+*+* +* +* +*  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
-     
-    if(formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
+    
+    if (formerKeyMetro != 'J') { //countRevolutions when it is not the mode J
         //  countRevs();
         //  countRevsContinue();
     }
@@ -229,15 +215,15 @@ void draw() {
     //countPendularTrig();
     //frameStop();
     formerFormerKey = formerKey;
-      
-    if(key!= ':')
+    
+    if (key!= ':')
     {
-      if (key < 65535) { // if there is no SHIFT but the other key
+        if (key < 65535) { // if there is no SHIFT but the other key
             formerKey = key;
         }
     }
-
-    if(keyCode != 0) 
+    
+    if (keyCode != 0) 
     {
         formerKeyCodeAzerty = keyCode;
         formerKeyCode = keyCode;
