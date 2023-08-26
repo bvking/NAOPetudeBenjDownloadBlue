@@ -202,7 +202,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         
     }
     
-    if (music_from_ableton_live == " pleasureKraft " && measure < 245) {
+    if (music_from_ableton_live == " pleasureKraft " && measure < 635) { //measure < 245
         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
     } 
@@ -211,7 +211,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
     
     
-    if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {
+    if (music_from_ableton_live == " pleasureKraftNO " && measure > 245 && measure < 635) {
         trigedSignFromAbleton[3] = 0;  
         if ((note1 == 60 || note2 == 60) && (velocity1 != 0  || velocity2!= 0) &&  millis()>= formerEvent[3]) {  //note 60 = HI TOM
             textSize(200);    

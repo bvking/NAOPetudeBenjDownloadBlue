@@ -2,7 +2,7 @@ import interfascia.*;
 
 // END SETUP
 void mouseXY()
-    {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No effect
+{  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No effect
     sigma = (map((float(mouseX) / width * 1), 0, 1, 0.0, 1.0));
     print("Sigma");
     println(sigma);
@@ -10,7 +10,7 @@ void mouseXY()
 }
 
 void mousePressed()
-    {
+{
     mouseRecorded = true;
     measure = 0;
 }
@@ -32,7 +32,7 @@ void draw()
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-        " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+            " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
@@ -64,18 +64,20 @@ void draw()
     }
     
     if (keyMode == " null ")
-        {
+    {
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
     
-    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ") { //
-        measureRecordStart = measure;
+    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ")
+    { //
+        measureRecordStart = measure; // synchronise recording
         //  beginSample=millis();
         text(" START SAMPLING  ", 200, 200);
     }
     
-    if (modeStartKeyToFollow == "samplingMode") {
+    if (modeStartKeyToFollow == "samplingMode")
+    {
         SamplingModeMayBeUsefull();
     }
     
@@ -108,8 +110,7 @@ void draw()
     netG.step(); //actualise step for chimera state, not use yet
     
     //if (modeCircular==true) { // why it doesn' t work?
-    if (formerKeyMetro ==  '*')  // case != to get trigModPos enabled
-        
+    if (formerKeyMetro ==  '*')  // case != to get trigModPos enabled      
     {
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
         {
