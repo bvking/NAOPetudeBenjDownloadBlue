@@ -124,9 +124,9 @@ void draw()
     }
     translate (0, 0, -500);
     textSize(200);
-    //rotate (-HALF_PI);
+    rotate (-HALF_PI);
     text ( " speedOfrepetition " + speedOfrepetition , 0, 200 ); 
-    //rotate (-HALF_PI);
+    rotate (-HALF_PI);
     translate (0, 0, 500);
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
