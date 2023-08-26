@@ -122,6 +122,8 @@ void draw()
             }
         }
     }
+
+    text ( " speedOfrepetition " + speedOfrepetition , 0, 200 ); 
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
