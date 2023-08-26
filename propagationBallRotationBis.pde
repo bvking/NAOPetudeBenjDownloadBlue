@@ -195,11 +195,9 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // modality of spltted time
     
     if (measure == 635) {
-        
         propagationSpeed = 30.0; // useless if propagation comes from ableton Live
         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
-        splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
-        
+        splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation       
     }
     
     if (music_from_ableton_live == " pleasureKraft " && measure < 635) { //measure < 245
@@ -219,8 +217,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             text(" formerEvent[3] " + formerEvent[3] , 200, 200);
             trigedSignFromAbleton[3] = 1;
             splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
-        }
-        
+        }        
         if ((note1 == 42 || note2 == 42) && (velocity1 == 96 || velocity2 == 96) &&  millis()>= formerEvent[3]) {  //note 42 = HI TOM
             textSize(200);    
             // formerEvent[3] = millis()+25;
@@ -301,9 +298,8 @@ void  splitTimeWithTrigSignalFromAbletonSquare(float propagationSpeedWithSquareS
             oldOscillatorChange = networkSize - 1;
         } 
     }
-    
-    
-    if (doZ ==  true  &&  trigedSignFromAbleton[3] ==  1) {  //     if (doZ==true  && propagationSpeedWithSquareSignal==1 ){    
+       
+    if (doZ ==  true  &&  trigedSignFromAbleton[3] == 1) {  //     if (doZ==true  && propagationSpeedWithSquareSignal==1 ){    
         propagationTrigged = true;
         oldOscillatorChange = oscillatorChange;
         oscillatorChange = oscillatorChange - 1;    
