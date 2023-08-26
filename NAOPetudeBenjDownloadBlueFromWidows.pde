@@ -46,7 +46,7 @@ void draw()
     //---
     
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
-        {
+    {
         setMeasureAndBeatPrecised();
     }   
     trigBeatWithMeasure();
@@ -67,7 +67,6 @@ void draw()
     {
         checkKeyModeToFollowIfALTisJustReleased();
     }
-    
     
     if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ")
     { //
