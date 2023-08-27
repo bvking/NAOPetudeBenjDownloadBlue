@@ -88,7 +88,7 @@
     }
     
     if (moveKeys[8]==true && moveKeys[6]==true){ //ALT && w pressed
-    keyMode = " samplingMode " ;
+    keyMode = " samplingModeWithLive " ;
     
    // formerKeyMetro = '*';
     print (" keyMode ",  keyMode );

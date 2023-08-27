@@ -20,6 +20,64 @@ void samplingMovementPro() {
 
   }
 }
+void handleSamplingModeWithAbletonLive(){
+     if (mousePressed==true) {
+         mouseRecorded=true;
+         actualSec=0;
+     }
+     boolean synchroOnMeasure=false;
+     if ((formerMeasure != measure)) { 
+          synchroOnMeasure=true;
+         // (actualSec!=sec)=true;
+     }
+     beginSample=millis();
+     rotate (-HALF_PI);
+     textSize(50);
+     if (measure == 1 && formerMeasure != measure) // 
+     { textSize (300); 
+      mouseY = 200 ;
+     }  
+
+     text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
+            " mouseY " +  mouseY  + " measure "  +  measure + " actualSec ", -width/4, - height + 300);   
+
+     
+     if (measure>=0 && measure<=7 ){
+       int disableDriver=-4;
+        send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
+      }
+
+     //==================== sampling from ENCODER
+     // angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+     // newPosF[networkSize-1]= angleToInterpolate;
+
+     //==================== sampling from MOUSE_Y
+         
+        angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+        newPosF[networkSize-1]= angleToInterpolate;
+
+      sphere(side*3);
+      sphereDetail( 4*5); 
+      //==================== 
+
+      float rayon=displacement;
+      float polarToCartesionX= displacement*cos(newPosF[networkSize-1]);
+      float polarToCartesionY= displacement*sin(newPosF[networkSize-1]);
+
+    //  mouseX= (int) polarToCartesionX; // to draw circle with end
+    //  mouseY= (int) polarToCartesionY; // to draw circle with end
+     activeSamplingInternalClock(3);
+     //activeSamplingMeasure(1);
+     stopSamplingInternalClock(7);  //stop sampling
+     //stopSamplingMeasure(5);
+     samplingMovementPro(); 
+
+      rotate (HALF_PI);
+
+   }
+
+
+
 
 void handleInternalSamplingMode(){
      boolean synchroOnMeasure=false;
@@ -29,18 +87,21 @@ void handleInternalSamplingMode(){
      beginSample=millis();
      rotate (-HALF_PI);
      textSize(50);
-     if (measure == 1 && synchroOnMeasure)
+     if (measure == 1 && actualSec!=lastSec) // formerMeasure != measure
      { textSize (300); 
       mouseY = 200 ;
      }  
-     text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure +
+
+     text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
             " mouseY " +  mouseY  + " measure "  +  measure , -width/4, - height + 300);   
 
-     //==================== sampling from ENCODER
+     
      if (measure>=0 && measure<=7 ){
        int disableDriver=-4;
         send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
       }
+
+     //==================== sampling from ENCODER
      // angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
      // newPosF[networkSize-1]= angleToInterpolate;
 
@@ -61,7 +122,9 @@ void handleInternalSamplingMode(){
     //  mouseY= (int) polarToCartesionY; // to draw circle with end
 
      activeSamplingInternalClock(1); //start sampling
+     //activeSamplingMeasure(1);
      stopSamplingInternalClock(5);  //stop sampling
+     //stopSamplingMeasure(5);
      samplingMovementPro(); 
 
       rotate (HALF_PI);
@@ -94,7 +157,7 @@ void activeSamplingMeasure(int beginMeasure) {
 }
 void stopSamplingMeasure(int endMeasure) { 
     
-   if (measure<=endMeasure  && beatTrigged == true) { // && measure>=endMeasure
+   if (measure==endMeasure  && beatTrigged == true) { // && measure>=endMeasure
      println (" ENDTRACK ");     println (" ENDTRACK ");       println (" ENDTRACK ");
     //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
     //    newPosF[networkSize-0]= (float) map (mouseY, 0, height/2, 0, TWO_PI);
@@ -105,7 +168,7 @@ void stopSamplingMeasure(int endMeasure) {
   }
 }
 void activeSamplingInternalClock(int beginMeasure) { 
-   if (measure==beginMeasure  && actualSec!=lastSec && mouseRecorded == true) { // && measure>=beginMeasure
+   if (measure==beginMeasure  && formerMeasure != measure && mouseRecorded == true) { // && actualSec!=lastSec
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
         //  newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
@@ -115,14 +178,13 @@ void activeSamplingInternalClock(int beginMeasure) {
   }
 }
 void stopSamplingInternalClock(int endMeasure) { 
-   if (measure==endMeasure && actualSec!=lastSec) { // && measure>=endMeasure 
+   if (measure==endMeasure && formerMeasure != measure) { // && actualSec!=lastSec
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
       //    newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
 
   mouseRecorded = false;
   bRecording = false;
-
   sampler.beginPlaying();
   }
 }

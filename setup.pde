@@ -202,7 +202,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
                 IntList list = new IntList();
                 for (int i = 0; i <  theArray.length; i++)
                     if (theArray[i] == matchValue) list.append(i);
-                if (list.size() > 1)
+                if (list.size() > 4)
                     list.forEach(element -> { theArray[element] = newValue; });
                 return theArray;
             }

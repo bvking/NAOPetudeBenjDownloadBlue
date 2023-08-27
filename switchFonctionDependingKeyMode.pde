@@ -69,9 +69,9 @@ void switchFonctionDependingKeyMode() {
 
         }
     
-    if (keyMode == " samplingMode " || keyModeRed == " samplingMode ") { //drive ball with lfo
+    if (keyMode ==  " samplingModeWithLive " || keyModeRed == " samplingModeWithLive ") { //drive ball with lfo
 
-        text(" Alt w not used " + keyMode, -width * 2, -height * 3+100);
+        text(" Alt w  " + keyMode, -width * 2, -height * 3+100);
         }
     
     

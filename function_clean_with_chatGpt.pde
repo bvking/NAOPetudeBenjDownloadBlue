@@ -229,7 +229,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
   rotate (HALF_PI);
 }
 
-void SamplingModeMayBeUsefull() {
+void samplingModeWithLive() {
 
   beginSample=millis();
   text (keyMode + " samplingMode LFOdecay ", width/4, - height - 100);
@@ -267,6 +267,20 @@ void SamplingModeMayBeUsefull() {
   //      stopSamplingInternalClock(8);  //do not work
   //   samplingMovement(2);
   //***** */     samplingMovementPro();
+}
+
+void updateAbletonLiveClock() {
+   print( " LIVE CLOCK lastSec " ) ; print( " actualPseudoSec " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
+
+
+   if (formerBeatOnMeasure==measure) {
+    actualSec+=1;
+   }
+    if ( keyMode == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
+      measure=actualSec;
+    }
+   
+  
 }
 
 void updateInternalClock() {
@@ -384,8 +398,8 @@ void displayOscillatorSpheres() {
 }
 void trigFollowSignalSampled() {
 
-  if (actualSec==lastSec) {  // trigged on internal clock
-    trigRatio = true;
+  if (actualSec!=lastSec) {  // trigged on internal clock
+   // trigRatio = true;
     //  background(127, 40, 60);
   } else trigRatio = false;
 
@@ -403,8 +417,10 @@ void trigFollowSignalSampled() {
     trigFollowSampling=false;
   }
 
-  if (trigFollowSampling == true || trigFollowSampling==false  ) {  // CHECK from old
+  if (trigFollowSampling == true || trigFollowSampling==false  )
 
+  //if ( beatTrigged== true)
+  { 
     print (" trigFollowSampling ");
     println (trigFollowSampling);
     if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {

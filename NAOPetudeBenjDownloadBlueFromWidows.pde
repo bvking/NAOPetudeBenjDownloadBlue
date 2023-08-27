@@ -32,7 +32,7 @@ void draw()
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-            " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+        " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
@@ -75,14 +75,21 @@ void draw()
         text(" START SAMPLING  ", 200, 200);
     }
     
-    if (modeStartKeyToFollow == "samplingMode")
-    {
-        SamplingModeMayBeUsefull();
+    //if (modeStartKeyToFollow == " samplingMode ")
+    if (keyMode == " samplingModeWithLive ")
+
+    {    modeStartKeyToFollow = " null ";
+         updateAbletonLiveClock();
+         handleSamplingModeWithAbletonLive();
+      //  samplingModeWithLive();
     }
     
-    updateInternalClock();
+   
     
     if (modeStartKeyToFollow == " samplingModeInternal ") { // || formerKeyMetro == 'J'
+        updateInternalClock();
+
+
         handleInternalSamplingMode();
     }  
     //trigEffectToAbletonLive();  // add Size to Text
@@ -195,7 +202,7 @@ void draw()
     textSize(100);
     rotate( -HALF_PI - PI);
     bpmAsPulsationFunction(); // function works only ont a period of 750 ms. under it bugs due to low resolution
-    rotate(  HALF_PI + PI);
+    rotate( HALF_PI + PI);
     
     cohesionTrig = int(map(LevelCohesionToSend, 0, 1, 0, 100));
     println(cohesionTrig);

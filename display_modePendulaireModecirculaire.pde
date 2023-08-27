@@ -221,6 +221,16 @@ void  displayModePendulaireModeCirculaire() {
       sphere(side*3);
       sphereDetail( 4*5);
     }
+    if (keyMode == " samplingModeWithLive "  ) { //drive ball with lfo
+      fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
+      fill (100, 110, 225);
+      // samplingMovementPro();
+      x = displacement*cos(net.phase[i]); //);
+      y = displacement*sin(net.phase[i]);      // display ball in blue lagub
+      print (" keyMode ", i, " ", newPosXaddSignal[i] );
+      sphere(side*3);
+      sphereDetail( 4*5);
+    }
 
     if (keyMode == " samplingMode "  ) { //drive ball with lfo
       fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
