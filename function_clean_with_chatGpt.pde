@@ -271,16 +271,14 @@ void samplingModeWithLive() {
 
 void updateAbletonLiveClock() {
    print( " LIVE CLOCK lastSec " ) ; print( " actualPseudoSec " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
-
-
+   
    if (formerBeatOnMeasure==measure) {
     actualSec+=1;
    }
-    if ( keyMode == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
+
+   if ( keyMode == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
       measure=actualSec;
-    }
-   
-  
+    } 
 }
 
 void updateInternalClock() {

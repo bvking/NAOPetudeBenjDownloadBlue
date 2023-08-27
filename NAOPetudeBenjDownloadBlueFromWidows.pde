@@ -78,7 +78,11 @@ void draw()
     //if (modeStartKeyToFollow == " samplingMode ")
     if (keyMode == " samplingModeWithLive ")
 
-    {    modeStartKeyToFollow = " null ";
+    {    modeStartKeyToFollow = " truc ";
+          if (mousePressed==true) { // in keyMode samplingModeWithLive
+         mouseRecorded=true;
+         actualSec=0;
+     }
          updateAbletonLiveClock();
          handleSamplingModeWithAbletonLive();
       //  samplingModeWithLive();

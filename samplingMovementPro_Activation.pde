@@ -21,10 +21,12 @@ void samplingMovementPro() {
   }
 }
 void handleSamplingModeWithAbletonLive(){
-     if (mousePressed==true) {
-         mouseRecorded=true;
-         actualSec=0;
+     if (mousePressed==true) { // in keyMode samplingModeWithLive
+   //      mouseRecorded=true;
+   //      actualSec=0;
      }
+
+
      boolean synchroOnMeasure=false;
      if ((formerMeasure != measure)) { 
           synchroOnMeasure=true;

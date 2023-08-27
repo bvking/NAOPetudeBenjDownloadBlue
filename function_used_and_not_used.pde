@@ -1636,7 +1636,7 @@ void samplingMovement(float timeSec) {
     background(255);
   }
   if (mousePressed==true) {
-    mouseRecorded=true;
+      mouseRecorded=true;
   }
 
   if (mouseRecorded==true  && frameSampling%(2*num*timeSec+0)<=0
