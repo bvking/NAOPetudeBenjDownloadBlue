@@ -24,7 +24,7 @@ void samplingMovementPro() {
 void handleInternalSamplingMode(){
      boolean synchroOnMeasure=false;
      if ((formerMeasure != measure)) { 
-      synchroOnMeasure=true;
+          synchroOnMeasure=true;
      }
      beginSample=millis();
      rotate (-HALF_PI);
@@ -32,10 +32,7 @@ void handleInternalSamplingMode(){
      if (measure == 1 && synchroOnMeasure)
      { textSize (300); 
       mouseY = 200 ;
-     }
-
-     
-     
+     }  
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure +
             " mouseY " +  mouseY  + " measure "  +  measure , -width/4, - height + 300);   
 
@@ -63,10 +60,9 @@ void handleInternalSamplingMode(){
     //  mouseX= (int) polarToCartesionX; // to draw circle with end
     //  mouseY= (int) polarToCartesionY; // to draw circle with end
 
-  
-         activeSamplingInternalClock(1); //start sampling
-         stopSamplingInternalClock(5);  //stop sampling
-         samplingMovementPro(); 
+     activeSamplingInternalClock(1); //start sampling
+     stopSamplingInternalClock(5);  //stop sampling
+     samplingMovementPro(); 
 
       rotate (HALF_PI);
 
