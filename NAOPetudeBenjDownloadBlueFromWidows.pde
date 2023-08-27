@@ -122,12 +122,9 @@ void draw()
             }
         }
     }
-    translate (0, 0, -500);
+    
     textSize(200);
-    rotate (-HALF_PI);
-    text ( " speedOfrepetition " + speedOfrepetition , 0, 200 ); 
-    rotate (-HALF_PI);
-    translate (0, 0, 500);
+    
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
@@ -140,7 +137,7 @@ void draw()
     }
     showArray(dataMappedForMotorisedPosition);
     
-    rotate(PI);
+    // rotate(PI);
     // arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     abletonPos();
     print(" showPos ");
@@ -198,7 +195,7 @@ void draw()
     textSize(100);
     rotate( -HALF_PI - PI);
     bpmAsPulsationFunction(); // function works only ont a period of 750 ms. under it bugs due to low resolution
-    rotate(HALF_PI + PI);
+    rotate(  HALF_PI + PI);
     
     cohesionTrig = int(map(LevelCohesionToSend, 0, 1, 0, 100));
     println(cohesionTrig);

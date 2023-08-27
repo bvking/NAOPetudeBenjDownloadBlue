@@ -31,7 +31,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     
     for (int i = 1; i < networkSize; i += 1) { // 1 follow phase 0
         //  follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
-        followOppositeWay(i - 1, i + 0, delayTimeFollowPhase11,(phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
+        followOppositeWay(i - 1, i + 0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
 }
     
     samplingMovementPro();

@@ -1,6 +1,6 @@
 void mapPropagationSampledBall() {
 
-        textSize(20);
+        textSize(100);
       for (int i = 0; i <  networkSize-0; i+=1) { 
           //   net.phase[i]=newPosXaddSignal[i]; // use to display  ?
 
@@ -29,7 +29,7 @@ void mapPropagationSampledBall() {
        }
 
      if (modeCircular ) {  
-     textSize( 50);
+     textSize( 100);
      if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
   
           countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   
@@ -39,6 +39,8 @@ void mapPropagationSampledBall() {
         } 
           print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev); 
           text (rev[0] + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
+          text (" modeStartKeyToFollow " +  modeStartKeyToFollow  + " speedOfRepetition " + speedOfrepetition + " delay f/s " +  delayTimeFollowPhase11 , 0, -900 );  // //degrees (signal[2])
+
      
       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis "  ) {// || keyMode == " propagationBallRotationBis " 
            //|| modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// 
@@ -49,7 +51,7 @@ void mapPropagationSampledBall() {
             oldPosF[i]=newPosF[i];
             newPosF[i]=phaseMapped[i];
 
-           text (" positionToMotor " + positionToMotor[i] + " " + keyMode + " mapProp " + revLfo[i] + " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] + " oOOld " + oldOldOldPosF[i] ,1200, -700+50*i );  // //degrees (signal[2])
+          // text (" positionToMotor " + positionToMotor[i] + " " + keyMode + " mapProp " + revLfo[i] + " newPosF " + newPosF[i] + " oldPosF[i] " + oldPosF[i] + " oldOld " + oldOldPosF[i] + " oOOld " + oldOldOldPosF[i] ,1200, -700+50*i );  // //degrees (signal[2])
      
             if ( //(newPosF[i]>oldPosF[i]) && (oldPosF[i]>=oldOldPosF[i]) && (oldPosF[i]<= PI && newPosF[i]>PI) voir dans quel sens la retropropagation oriente  i et j
                 newPosF[i]>oldPosF[i] && doo==true && (oldPosF[i]<=oldOldPosF[i])

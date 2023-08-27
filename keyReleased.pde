@@ -187,15 +187,19 @@ void keyReleased() {
      if (keyCode == UP) 
       {
        speedOfrepetition+=0.2;
-       speedOfrepetition%=2.2;
+       speedOfrepetition%=6.4;
       }
 
   
      if (keyCode == DOWN)
      {
       speedOfrepetition-=0.2;
-      speedOfrepetition%=(-2.2);
-  
+      speedOfrepetition%=(-6.4);
+      if (speedOfrepetition==(-6.2))
+      {
+          speedOfrepetition=0;
+      }
+
      }
 
 
