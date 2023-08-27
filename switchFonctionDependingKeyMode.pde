@@ -10,7 +10,7 @@ void switchFonctionDependingKeyMode() {
            lastKey = char(key); 
     
     translate(0, 0, 1000);
-    text(" Acc " + speedDelta + " key " + lastKey + " beatP " + beatPrecised + " Ball " + memoryi +  " mode " + keyMode , -width, -height+200); 
+    text(" Acc " + speedDelta + " key " + lastKey + " beatP " + beatPrecised + " Ball " + memoryi +  " mode " + keyMode , -width, -height+200, 500); 
 
 
     if (keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal ") {
