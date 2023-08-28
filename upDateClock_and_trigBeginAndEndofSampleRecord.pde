@@ -1,7 +1,6 @@
 void updateAbletonLiveClock() {
    print( " LIVE CLOCK lastSec " ) ; print( " actualPseudoSec " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ; print( " actualSec " ) ; println( actualSec ) ;
-   
-   
+    
   // if (formerMeasure==measure) {
    if ( formerMeasure != measure) {
     actualSec+=1; 
@@ -15,8 +14,6 @@ void updateAbletonLiveClock() {
 
 void updateInternalClock() {
   // print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
-
-
   if (actualSec!=lastSec) {
     lastSec=actualSec;
     if (modeStartKeyToFollow == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
