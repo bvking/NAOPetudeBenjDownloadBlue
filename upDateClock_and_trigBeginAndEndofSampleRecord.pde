@@ -3,11 +3,11 @@ void updateAbletonLiveClock() {
     
   // if (formerMeasure==measure) {
    if ( formerMeasure != measure) {
-    actualSec+=1; 
+   // actualSec+=1; 
    }
 
    if ( keyMode == " samplingModeWithLive "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
-      actualSec;
+    //  actualSec;
       println ( measure + " in " + keyMode);
     } 
 }
@@ -15,7 +15,7 @@ void updateAbletonLiveClock() {
 void updateInternalClock() {
   // print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
   if (actualSec!=lastSec) {
-    lastSec=actualSec;
+      lastSec=actualSec;
     if (modeStartKeyToFollow == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
       measure ++;
     }

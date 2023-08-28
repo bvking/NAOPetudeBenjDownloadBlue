@@ -39,7 +39,7 @@ void draw()
     switchFonctionDependingKeyMode();
     computePhaseSum(); // to improve
 
-
+/*
       if (keyMode == " samplingModeWithLive ")
 
      {    modeStartKeyToFollow = " truc ";
@@ -52,9 +52,9 @@ void draw()
      }
          updateAbletonLiveClock(); // trigged if
          handleSamplingModeWithAbletonLive();
-      //  samplingModeWithLive();
+      
     }
-
+*/
  
 
     
@@ -97,16 +97,30 @@ void draw()
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
-    if (beatTrigged ==  true && modeStartKeyToFollow == " samplingModeInternal ")
-    { //
-        measureRecordStart = measure; // synchronise recording
-        //  beginSample=millis();
-        text(" START SAMPLING  ", 200, 200);
-    }
-    
-   
   
-    
+    if (keyMode == " samplingModeWithLive ")
+     { 
+           modeStartKeyToFollow = " truc ";
+
+       if (mousePressed==true)
+        {
+           readyToRecord = true; 
+           text(" PRESTART SAMPLING  ", 200, 200);
+        }
+
+        if (readyToRecord==true &&  beatTrigged== true) // synchronise recording 
+        {           
+            measureRecordStart = measure; //   
+            text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
+            readyToRecord=false;
+        }
+
+        // updateAbletonLiveClock(); // trigged if
+
+          handleSamplingModeWithAbletonLive();         
+
+     }
+
     
     if (modeStartKeyToFollow == " samplingModeInternal ")
     { 
@@ -114,6 +128,8 @@ void draw()
         handleInternalSamplingMode();
     }  
     //trigEffectToAbletonLive();  // add Size to Text
+
+
     //**************END MODE SETTING   *************************  
     formerAuto = frameCount - 1;
     //see storeinputexample to create sample
@@ -150,10 +166,8 @@ void draw()
             }
         }
     }
-    
     textSize(200);
-    
-    
+     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     

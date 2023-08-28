@@ -150,6 +150,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int currTime;
             boolean bRecording = true;
             boolean mouseRecorded = true;
+            boolean readyToRecord;
             float movementInterpolatedContinue;
             
             int Movement;

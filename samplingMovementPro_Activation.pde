@@ -36,6 +36,8 @@ void handleSamplingModeWithAbletonLive(){
      beginSample=millis();
      rotate (-HALF_PI);
      textSize(50);
+
+
      if (actualSec == 1 && formerMeasure != measure) // 
      { textSize (300); 
       mouseY = 200 ;
@@ -45,7 +47,9 @@ void handleSamplingModeWithAbletonLive(){
             " mouseY " +  mouseY  + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);   
 
      
-     if (actualSec>=0 && actualSec<=7 ){
+    // if (actualSec>=0 && actualSec<=7 ){
+    if (measureRecordStart==(measure-4) && beatTrigged == true){
+    
        int disableDriver=-4;
         send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
       }
@@ -69,9 +73,9 @@ void handleSamplingModeWithAbletonLive(){
 
     //  mouseX= (int) polarToCartesionX; // to draw circle with end
     //  mouseY= (int) polarToCartesionY; // to draw circle with end
-     activeSamplingInternalClock(3);
+     activeSamplingInternalClock(measureRecordStart);
      //activeSamplingMeasure(1);
-     stopSamplingInternalClock(7);  //stop sampling
+     stopSamplingInternalClock(measureRecordStart+4);  //stop sampling
      //stopSamplingMeasure(5);
      samplingMovementPro(); 
 
