@@ -38,17 +38,46 @@ void draw()
     
     switchFonctionDependingKeyMode();
     computePhaseSum(); // to improve
+
+
+      if (keyMode == " samplingModeWithLive ")
+
+     {    modeStartKeyToFollow = " truc ";
+          if (mousePressed==true) { // in keyMode samplingModeWithLive
+        textSize(500);
+        //  mouseRecorded=true;
+         //measure=0;
+         actualSec=0;
+
+     }
+         updateAbletonLiveClock(); // trigged if
+         handleSamplingModeWithAbletonLive();
+      //  samplingModeWithLive();
+    }
+
+ 
+
     
     //--- discriminate position from time line of Ableton
     formerBeatPrecised = beatPrecised;
     formerMeasure = measure;
     formerBeatOnMeasure = beatOnMeasure;
     //---
+
+
     
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
     {
-        setMeasureAndBeatPrecised();
-    }   
+         //if (keyMode != " samplingModeWithLive ")
+         //{
+             setMeasureAndBeatPrecised();
+         //}
+    }
+
+  
+
+
+
     trigBeatWithMeasure();
     //printDataOnScreen();
     //rotate( -HALF_PI);
@@ -75,25 +104,13 @@ void draw()
         text(" START SAMPLING  ", 200, 200);
     }
     
-    //if (modeStartKeyToFollow == " samplingMode ")
-    if (keyMode == " samplingModeWithLive ")
-
-    {    modeStartKeyToFollow = " truc ";
-          if (mousePressed==true) { // in keyMode samplingModeWithLive
-         mouseRecorded=true;
-         actualSec=0;
-     }
-         updateAbletonLiveClock();
-         handleSamplingModeWithAbletonLive();
-      //  samplingModeWithLive();
-    }
-    
    
+  
     
-    if (modeStartKeyToFollow == " samplingModeInternal ") { // || formerKeyMetro == 'J'
+    
+    if (modeStartKeyToFollow == " samplingModeInternal ")
+    { 
         updateInternalClock();
-
-
         handleInternalSamplingMode();
     }  
     //trigEffectToAbletonLive();  // add Size to Text

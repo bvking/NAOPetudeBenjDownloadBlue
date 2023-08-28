@@ -20,6 +20,7 @@ void samplingMovementPro() {
 
   }
 }
+
 void handleSamplingModeWithAbletonLive(){
      if (mousePressed==true) { // in keyMode samplingModeWithLive
    //      mouseRecorded=true;
@@ -35,16 +36,16 @@ void handleSamplingModeWithAbletonLive(){
      beginSample=millis();
      rotate (-HALF_PI);
      textSize(50);
-     if (measure == 1 && formerMeasure != measure) // 
+     if (actualSec == 1 && formerMeasure != measure) // 
      { textSize (300); 
       mouseY = 200 ;
      }  
 
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
-            " mouseY " +  mouseY  + " measure "  +  measure + " actualSec ", -width/4, - height + 300);   
+            " mouseY " +  mouseY  + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);   
 
      
-     if (measure>=0 && measure<=7 ){
+     if (actualSec>=0 && actualSec<=7 ){
        int disableDriver=-4;
         send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
       }
@@ -169,7 +170,10 @@ void stopSamplingMeasure(int endMeasure) {
   sampler.beginPlaying();
   }
 }
-void activeSamplingInternalClock(int beginMeasure) { 
+
+
+void activeSamplingInternalClock(int beginMeasure)
+{ 
    if (measure==beginMeasure  && formerMeasure != measure && mouseRecorded == true) { // && actualSec!=lastSec
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
@@ -179,8 +183,35 @@ void activeSamplingInternalClock(int beginMeasure) {
   sampler.beginRecording();
   }
 }
-void stopSamplingInternalClock(int endMeasure) { 
+
+void stopSamplingInternalClock(int endMeasure)
+ { 
    if (measure==endMeasure && formerMeasure != measure) { // && actualSec!=lastSec
+
+      //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+      //    newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+
+  mouseRecorded = false;
+  bRecording = false;
+  sampler.beginPlaying();
+  }
+}
+
+void activeSamplingAbletonLiveClock(int beginMeasure)
+{ 
+   if (actualSec==beginMeasure  && formerMeasure != measure && mouseRecorded == true) { // && actualSec!=lastSec
+
+      //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+        //  newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+
+  bRecording = true;
+  sampler.beginRecording();
+  }
+}
+
+void stopSamplingAbletonLiveClock(int endMeasure)
+ { 
+   if (actualSec==endMeasure && formerMeasure != measure) { // && actualSec!=lastSec
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
       //    newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);

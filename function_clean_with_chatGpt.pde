@@ -115,8 +115,9 @@ void setMeasureAndBeatPrecised() {
     measure = (int) map(automation4 * 10, 0, 7.874016, 1, 1000);
     print("measure ");
     print(measure);
-    print("AUTOMATION 5 = beatPrecised ");
+    
     beatPrecised = (int) map(automation5 * 10, 0, 7.874016, 1, 1000);
+    print(" beatPrecised ");
     println(beatPrecised);
   }
 }
@@ -269,30 +270,7 @@ void samplingModeWithLive() {
   //***** */     samplingMovementPro();
 }
 
-void updateAbletonLiveClock() {
-   print( " LIVE CLOCK lastSec " ) ; print( " actualPseudoSec " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
-   
-   if (formerBeatOnMeasure==measure) {
-    actualSec+=1;
-   }
 
-   if ( keyMode == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
-      measure=actualSec;
-    } 
-}
-
-void updateInternalClock() {
-  // print( " INTERNAL CLOCK lastSec " ) ; print( lastSec ) ; print( " actual " ) ; print( actualSec ) ; print( " measure " ) ; println( measure ) ;
-
-
-  if (actualSec!=lastSec) {
-    lastSec=actualSec;
-    if (modeStartKeyToFollow == " samplingModeInternal "  || modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "  ) {
-      measure ++;
-    }
-  }
-  actualSec =(int) (millis()*0.001);
-}
 
 
 void computeAngularTimeSpeed() {

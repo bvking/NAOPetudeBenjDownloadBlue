@@ -178,7 +178,7 @@ void reBoot() {
     
     
     if (onlyLitteMachineWithSecondSerialPort)  {   // // If not null, then a match was found    
-        teensyport.write(dataFromMode);
+      //  teensyport.write(dataFromMode);
          
         if (frameCount <=  200)  { 
             text("Data port USB connected to port2" + portsUSBfrom2 + " ending with -0001 ", 0, 700); 

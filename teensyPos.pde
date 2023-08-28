@@ -371,7 +371,7 @@ void teensyPos(){
      }
 
      if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {         
-      send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+     // send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
          
     }    
