@@ -1,6 +1,6 @@
 void keyPressed() {
   
-   reBoot();
+  // reBoot();
   // to modulate Knob with control controlIP5knob
   switch(keyCode) {
     case(DOWN):
@@ -113,6 +113,7 @@ void keyPressed() {
     //  song.rewind();
   }
 }
+
 void reBoot() {
 
     if (formerFormerKey == '@' || keyCode == ESC) {
