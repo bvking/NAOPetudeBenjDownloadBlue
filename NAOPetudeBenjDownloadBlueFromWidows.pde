@@ -74,6 +74,10 @@ void draw()
          //}
     }
 
+    println ( " MEASURE " + measure );
+     println ( " MEASURE " + measure );
+      println ( " MEASURE " + measure );
+
   
 
 
@@ -208,7 +212,7 @@ void draw()
     if (key ==  'j')
     {   // senda trig to start record in Ableton live
         background(255);
-        startStop = 3;//
+       // startStop = 3;//
         key = '=';
         keyPressed();
         print("startStop from the beginning: ");

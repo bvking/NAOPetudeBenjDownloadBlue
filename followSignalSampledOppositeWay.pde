@@ -1,4 +1,5 @@
 void followSignalSampledOppositeWay(int ratioTimeFrame) {
+    //setMeasureAndBeatPrecised();
     rotate( - PI / 2);
     
     if(key == '*' || key == '$') {

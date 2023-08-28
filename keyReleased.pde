@@ -186,16 +186,16 @@ void keyReleased() {
 
      if (keyCode == UP) 
       {
-       speedOfrepetition+=0.2;
-       speedOfrepetition%=6.4;
+       speedOfrepetition+=0.5;
+       speedOfrepetition%=6.5;
       }
 
   
      if (keyCode == DOWN)
      {
-      speedOfrepetition-=0.2;
-      speedOfrepetition%=(-6.4);
-      if (speedOfrepetition==(-6.2))
+      speedOfrepetition-=0.5;
+      speedOfrepetition%=(-6.5);
+      if (speedOfrepetition==(-6.0))
       {
           speedOfrepetition=0;
       }

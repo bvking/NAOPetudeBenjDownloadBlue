@@ -199,6 +199,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
   case 'j':
 
     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+    setMeasureAndBeatPrecised();
 
 
     // text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4);
