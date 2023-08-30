@@ -67,11 +67,12 @@ void draw()
 
     
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
+      
     {
-         //if (keyMode != " samplingModeWithLive ")
-         //{
+         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+      {
              setMeasureAndBeatPrecised();
-         //}
+      }
     }
 
     println ( " MEASURE " + measure );

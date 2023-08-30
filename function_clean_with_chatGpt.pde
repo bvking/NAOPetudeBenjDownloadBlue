@@ -397,11 +397,17 @@ void trigFollowSignalSampled() {
   if (trigFollowSampling == true || trigFollowSampling==false  )
 
   //if ( beatTrigged== true)
-  { 
-    print (" trigFollowSampling ");
-    println (trigFollowSampling);
+  {  
+     setMeasureAndBeatPrecised();
+    print (" trigFollowSampling + MEASURE");
+    println (trigFollowSampling + " " + measure);
     if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {
       // followSignalSampled(frameRatio); // not well
+    
+      setMeasureAndBeatPrecised();
+      //    formerBeatPrecised = beatPrecised;
+     // formerMeasure = measure;
+    //formerBeatOnMeasure = beatOnMeasure;
       followSignalSampledOppositeWay(frameRatio);// with millis()
 
 

@@ -12,8 +12,11 @@ public void settings() {
 } 
 */
 
-int networkSize = 6;
+int networkSize = 10;
 int nbBalls = networkSize;
+
+int numberOfStep = 3200;
+int speedDelta = 4; // ratio of speed and acceleration in Arduino
 
 int posAverage = 0;
 float speed = 1;
@@ -435,8 +438,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int[] TimeEllapsedBall = new int[networkSize];
             
             float[] automationLFO;
-            int numberOfStep = 6400;
-            int speedDelta = 4; // ratio of speed and acceleration in Arduino
+            
             float averageDeltaPhase;
             boolean twoTree = false;
             boolean treeFour = false;

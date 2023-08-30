@@ -49,19 +49,21 @@ void setPort() {
     //do something if nothing connected
 
         
-        
+     if (portConnectedToBigMachineOnly==false) { 
+         println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
         if (onlyLitteMachineWithSecondSerialPort) {
             
              println(" Port 1 CONNECTED to programming port of Teensy 3.5 "); //  + portsUSBfrom2 + " "
              println(" portConnectedOfBigMachine " + portConnectedOfBigMachine); //  + portsUSBfrom2 + " "
             
-            teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+           // teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
             encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
             
             // Read bytes into a buffer until you get a linefeed (ASCII 10):
             encoderReceiveUSBport101.bufferUntil('\n');
             
         }
+    }
         
         
         if (allMachineConnected)  { 
@@ -69,7 +71,7 @@ void setPort() {
             
         }
         
-        if (portsUSBfrom2 != "NC") {
+      //  if (portsUSBfrom2 != "NC") {
             if (portConnectedToBigMachineOnly) { // 101  teensy 3.5    
                 println(" Port 1 CONNECTED to programming port of Teensy 4.1 ");
                 //*************** WITH TEENSY connected
@@ -77,7 +79,7 @@ void setPort() {
                 teensy4port = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
                 //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
             }
-        }
+     //   }
         
         //*************** WITHOUT ENODEER connected
         if (allMachineConnected)  { 

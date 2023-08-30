@@ -83,7 +83,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
         dataTransformed = " BigMachine  dataNotComputeInTeensy from mode ";
         println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);
         
-}
+    }
     
     else if (computeData >-  1) {
         dataTransformed = " BigMachine dataComputeInTeensy from mode ";
@@ -92,52 +92,50 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
     // display if port are well connected when big machine is connected
 
-    if (portConnectedOfBigMachine || portConnectedToBigMachineOnly)  {   // // If not null, then a match was found
-           if (frameCount <=  0)  { 
-              }
-          // teensy4port.write(dataFromMode);
-        if (frameCount >=  0)  { 
+   // if (portConnectedOfBigMachine || portConnectedToBigMachineOnly)
+   //  {    If not null, then a match was found
+       
+      if (frameCount >=  0)
+        { 
             text(" BigMachine port USB connected " + portsUSBfrom3 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1100); 
 
-            println(" BigMachine port USB connected " + portsUSBfrom3 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
 
               String[] matchPort1B = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
 
              if ( matchPort1B!= null ){ 
                 allMachineConnected=false;
-               text(" only BIG Machine  ENDING with 201 on port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
+              println(" BigMachine port USB connected " + portsUSBfrom3 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
+              text(" only BIG Machine  ENDING with 201 on port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
               // portConnectedToBigMachineOnly=true;
-               teensy4port.write(dataFromMode);
+              teensy4port.write(dataFromMode);
+            }
 
-                 }
-
-
-              String[] matchPort = match(portsUSBfrom3, "/dev/tty.Bluetooth-Incoming-Port");
+            String[] matchPort = match(portsUSBfrom3, "/dev/cu.usbserial-0001");
               
-
-            if ( matchPort!= null ){ 
-                allMachineConnected=false;
-               text(" only Little Machine  ENDING with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
-
-                 }
-            else  println(" BigMachine CONNECTED to " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
-                 if (frameCount <=  200)  { 
-                        text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
-              }
+            if ( matchPort!= null )
+            { 
                 allMachineConnected=true;
+                text(" ALL Machine CONNECTED  port 2 is teensy 3.5 ending with 101 " + portsUSBfrom2 + " allMachineConnected " + allMachineConnected, 0, 1000); 
+            }
+            else
+            {    println(" BigMachine CONNECTED to port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);
+            }
 
-        }
-    }
+            if (frameCount <=  200)  
+            {    text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
+            }
+             //  allMachineConnected=true;
+      }
+   //}
 
-     if (!portConnectedOfBigMachine)  {  
-
-       if (frameCount <=  200) { 
+     if (portConnectedToBigMachineOnly) 
+      {  
+       if (frameCount <=  200)
+        { 
                text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
                println(" BigMachine port  USB NOT connected " + portsUSBfrom3);   
-    }
-        
+        }    
      //   if(frameCount ==  1) noLoop();
-        
-   }
+      }
   rotate (PI/2);
 } 
