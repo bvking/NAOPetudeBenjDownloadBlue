@@ -11,7 +11,7 @@ void autmationWithMeasureAndNote()
 
 
   if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged==true   ) { // && beatTrigged==true
-    speedDelta = 5;
+    speedDelta = 2;
     keyCode = CONTROL;
   }
 
@@ -147,7 +147,7 @@ void autmationWithMeasureAndNote()
     // key=CONTROL;
     // keyReleased();
     // oscillatorBlocked=networkSize-1;
-    speedDelta=4;
+    speedDelta=2;
   }
 
   if  ((measure==43 || measure==45 || measure==47 || measure==50 ) && ( beatPrecised>=16 && beatPrecisedTrigged==true ) ) {//77  //&& beatTrigged==true

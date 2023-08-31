@@ -16,7 +16,7 @@ int networkSize = 10;
 int nbBalls = networkSize;
 
 int numberOfStep = 3200;
-int speedDelta = 4; // ratio of speed and acceleration in Arduino
+int speedDelta = 2; // ratio of speed and acceleration in Arduino
 
 int posAverage = 0;
 float speed = 1;

@@ -48,7 +48,7 @@ void autmationWithMeasureAndNoteOriginal()
 
 
   if (measure==5 && beatTrigged==true) {
-    speedDelta=4 ;
+    speedDelta=2 ;
     key = '9';
     keyReleased();
     key = 'A';
@@ -57,7 +57,7 @@ void autmationWithMeasureAndNoteOriginal()
   }
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-    speedDelta=4 ;
+    speedDelta=2 ;
 
     key = '°';
     keyReleased();
@@ -216,25 +216,25 @@ void autmationWithMeasureAndNoteOriginal()
 
   if  (measure==83 && beatPrecisedTrigged==true && beatPrecised < 15) {  //  &&  beatPrecised <=8
     text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-    speedDelta= 6;
+    speedDelta= 4;
     //  key='y';keyReleased(); // uprise speed
   }
 
   if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8
     text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
-    speedDelta= 6;
+    speedDelta= 4;
     keyCode=CONTROL;
     keyReleased();
   }
 
   if ( (measure==89 || measure==92 || measure==94) && beatTrigged==true) {
-    speedDelta= 6;
+    speedDelta= 4;
     key='P';
     keyReleased();
   }
 
   if ( (measure==96 || measure==99 || measure==101) && beatTrigged==true) {
-    speedDelta= 6;
+    speedDelta= 4;
     key='p';
     keyReleased();
     key='p';

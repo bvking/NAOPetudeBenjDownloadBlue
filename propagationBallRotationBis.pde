@@ -31,18 +31,18 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         modeCircular = true;// doesn't work
         formerKeyMetro = '*';
     
-        propagationSpeed = 15.0; // 30.0;
+        propagationSpeed = 00.0; // 30.0;
         modulePhaseAmountWithArrow = true; // to adjust phase in propa2way
-        keyCode = LEFT; keyReleased();
         keyCode = DOWN; keyReleased();
-        keyCode = LEFT; keyReleased();
+      //  keyCode = DOWN; keyReleased();
         keyCode = DOWN; keyReleased();
+      //  keyCode = DOWN; keyReleased();
         // propagation2wayRotationBis(); 
     } 
     
     if ((measure == 60 || measure == 62 || measure == 64 || measure == 66) && beatPrecisedTrigged ==  true) { 
         modulePhaseAmountWithArrow = true;
-        keyCode = RIGHT; keyReleased();
+        keyCode = DOWN; keyReleased();
     } 
     
     //---------- come back to trigEventWithAbletonSignal ------- 
@@ -195,7 +195,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // modality of spltted time
     
     if (measure == 635) {
-        propagationSpeed = 30.0; // useless if propagation comes from ableton Live
+        propagationSpeed = 60.0; // useless if propagation comes from ableton Live
         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation       
     }
