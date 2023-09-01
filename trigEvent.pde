@@ -248,8 +248,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               key = '9'; keyReleased();
               formerKeyMetro='$';
               speedDelta=4;
-               key = 'F'; keyReleased();
-               key = 'F'; keyReleased();  // patterrn of begining
+                 key = 'e'; keyReleased();
+             //  key = 'F'; keyReleased();  // patterrn of begining
+             //  key = 'F'; keyReleased(); 
 
               
                 for (int i = 0; i < networkSize-0; i++) {  
@@ -266,15 +267,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                if  (measure%1==0 && measure>=42  &&  (beatPrecised+3)%4==0 && beatPrecisedTrigged==true) {
                   oscillatorBlocked=0;   text ( " oscillatoBlocked=0" , -800, -700);
                   key = 's'; keyReleased(); 
-                  key = 's'; keyReleased();   
-                  key = 's'; keyReleased();             
+                   key = 's'; keyReleased();    
+                  //  key = 's'; keyReleased();           
                  }
 
                if  ((measure+0)%1==0 && measure>=42 &&  (beatPrecised+1)%4==0  && beatPrecisedTrigged==true){
                   oscillatorBlocked=0;   text ( " oscillatoBlocked=5" ,  -800, -700);
                    key = 'g'; keyReleased();      // g0 s0
                    key = 'g'; keyReleased(); 
-                   key = 'g'; keyReleased();                         
+                 //  key = 'g'; keyReleased();                         
                 }
 
                if (measure==50){ 
@@ -354,7 +355,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
         if (measure == 67  && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1      
          textSize (210); 
-         speedDelta=3;     
+         speedDelta=4;     
         }
 
         if (measure%2==0 && measure > 66 && measure <= 84 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // &measure%2==0 each two measure
@@ -406,12 +407,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            }  
 
           if (measure == 84 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
-              key = 'ç'; keyReleased();
+               key = '9'; keyReleased();
+               key = 'e'; keyReleased();
           } 
 
           if (measure == 90 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
-              key = 't'; keyReleased();
+            //  key = 't'; keyReleased();
+             key = '9'; keyReleased();
+             key = 'E'; keyReleased();
+
           } 
+           
 
           if (measure >= 90 && measure <= 100 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
               key = 'h'; keyReleased(); 
