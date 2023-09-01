@@ -105,7 +105,8 @@ void autmationWithMeasureAndNote()
     net.naturalFrequency[memoryi]=1;
     key = 'a';  // frequency  [0]= 1
     keyReleased();
-    key = 't';  // align
+    
+    key = '9';  // align
     keyReleased();
     key = '0';  // same speed
     keyReleased();

@@ -103,25 +103,19 @@ void switchFonctionDependingKeyMode() {
         propagationSampleBall();
         text(" Alt j " + keyMode, -width * 2, -height * 3+100);     
         }
-    
-    
-    
+      
     if (keyMode == " null " || keyModeRed == " null ") { //drive ball with lfo
-        text(" Alt x " + keyMode, -width * 2, -height * 3+100);
-        
+        text(" Alt x " + keyMode, -width * 2, -height * 3+100);    
         }
     
     if (keyMode == " phasePattern ") { //drive ball with lfo
         text(keyMode + " " + signal[5] ,(width / 2),height / 2); 
-        
-        
         }
     
     if (keyMode == " abletonPattern ") { //driveball with lfo
         abletonPattern();
         text(keyMode,(width / 2), height / 2);         
         }
-    
     
     if (keyMode == " signal ") { // || formerKeyMetro == 'J'
         text(keyMode, -width, -height); 
@@ -134,11 +128,9 @@ void switchFonctionDependingKeyMode() {
                 dataMappedForMotorisedPosition[i] = int(map(net.phase[i], TWO_PI, 0, numberOfStep, 0)); 
                 net.oldPhase[i] = net.phase[i];            
                 }
-            
             else
             dataMappedForMotorisedPosition[i] = (int) map(net.phase[i], 0, TWO_PI, 0, numberOfStep); 
             net.oldPhase[i] = net.phase[i];
-
             }
         }
     lastKey = '#';

@@ -1,26 +1,24 @@
 String portsUSBfrom3;
 
-void sendPositionToBigMachine(){
+void sendPositionToBigMachine()
+  {
         rotate (-PI/2);
        int numberOfEncodeur = 6;
        int encoderMapped [] = new int [numberOfEncodeur];
 
-   if (formerKeyMetro == '*') {
+     if (formerKeyMetro == '*') {
           for (int i =0; i<numberOfEncodeur; i++){       
                 encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
-    } 
+     } 
 
-   if (formerKeyMetro == '$') {
+     if (formerKeyMetro == '$') {
           for (int i =0; i<numberOfEncodeur; i++){       
                 encodeur[i] =(int) map (encodeur[i], 0, 4000, 0, numberOfStep/1)%numberOfStep/1;
          }
-    }
+      }
 
-
-
-
-     for (int i = 0; i < 6; i++) { 
+       for (int i = 0; i < 6; i++) { 
              if ( encoderTouched[i]==true){ 
                 println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);          
            //     readPositionEncoder[i] = encodeur[i];
@@ -33,56 +31,58 @@ void sendPositionToBigMachine(){
              } 
         } 
       rotate (PI/2);
-     } 
+   } 
 
-void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir
-     rotate (-PI/2);
-        accelerationRatio = speedDelta;
+void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) 
+ {   // dataMarkedToTeensyArevoir
+       rotate (-PI/2);
+       accelerationRatio = speedDelta;
     
-    if ( networkSize == 6){
+    if ( networkSize == 6)
+    {
     
-    dataFromMode = "<"
+     dataFromMode = "<"
     
-    // + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
-    // + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
+     // + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
+      // + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
     
-    + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
-    + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
+     + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
+     + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
    
-    +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
+     +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
     
-    //  +0+","+0+","+0+","+0+","+0+","+0+","
+     //  +0+","+0+","+0+","+0+","+0+","+0+","
     
-    + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
-    
-    + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
- 
+     + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
+
+     + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
     }
-     if ( networkSize == 10){
+
+    if ( networkSize == 10)
+    {
     
-    dataFromMode = "<"
+     dataFromMode = "<"
     
-     + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
-     + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
-    
-    + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
-    + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
+      + dataMappedForMotorisedBigMachine[9]+ ","+ dataMappedForMotorisedBigMachine[8]+ ","
+      + dataMappedForMotorisedBigMachine[7]+ ","+ dataMappedForMotorisedBigMachine[6]+ ","
+
+      + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + ","
+      + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
+      + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
    
-    +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
+       +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
     
-    //  +0+","+0+","+0+","+0+","+0+","+0+","
+        //  +0+","+0+","+0+","+0+","+0+","+0+","
     
-    + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
+      + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
     
-    + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
- 
+      + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
     }
 
     
     if (computeData <-  1) {
         dataTransformed = " BigMachine  dataNotComputeInTeensy from mode ";
-        println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);
-        
+        println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);      
     }
     
     else if (computeData >-  1) {
@@ -90,27 +90,29 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
         println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);
     }
     
-    // display if port are well connected when big machine is connected
-
-   // if (portConnectedOfBigMachine || portConnectedToBigMachineOnly)
-   //  {    If not null, then a match was found
+     // display if port are well connected when big machine is connected
+     // if (portConnectedOfBigMachine || portConnectedToBigMachineOnly)
+     //  {    If not null, then a match was found
        
       if (frameCount >=  0)
         { 
             text(" BigMachine port USB connected " + portsUSBfrom3 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1100); 
-
-
-              String[] matchPort1B = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
-
-             if ( matchPort1B!= null ){ 
+          //    String[] matchPort1USBfrom1 = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
+         /*
+             if ( matchPort1USBfrom1 != null ){ 
                 allMachineConnected=false;
               println(" BigMachine port USB connected " + portsUSBfrom3 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
               text(" only BIG Machine  ENDING with 201 on port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
               // portConnectedToBigMachineOnly=true;
               teensy4port.write(dataFromMode);
             }
+         */
 
-            String[] matchPort = match(portsUSBfrom3, "/dev/cu.usbserial-0001");
+
+
+
+         /*
+              String[] matchPort = match(portsUSBfrom3, "/dev/cu.usbserial-0001");
               
             if ( matchPort!= null )
             { 
@@ -124,9 +126,10 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
             if (frameCount <=  200)  
             {    text(" BigMachine port USB connected " + portsUSBfrom1 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1000); 
             }
-             //  allMachineConnected=true;
+         */  `
+          
       }
-   //}
+     
 
      if (portConnectedToBigMachineOnly) 
       {  
@@ -135,7 +138,6 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
                text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
                println(" BigMachine port  USB NOT connected " + portsUSBfrom3);   
         }    
-     //   if(frameCount ==  1) noLoop();
       }
-  rotate (PI/2);
+   rotate (PI/2);
 } 

@@ -942,17 +942,19 @@ textSize (100);
    */
   if (key == 'r') {
     println ("Soubstract PI/6 PENDULAR $"); // R$ +1.5*HALF_PI; 
+    text ("Soubstract PI/6 PENDULAR $", 0,200); // R$ +1.5*HALF_PI; 
 
 
     for (int i = 0; i < networkSize; i++) {
       //   net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit
 
-
       //    net.phase[i] +=  -(i+2)%PI/6; // mieux
     
-     // net.phase[i] += (i*TWO_PI/5)%PI/(networkSize); // pas en mode circular ? 
-     net.phase[i] += (i*TWO_PI/networkSize)%PI/(networkSize*3); // pas en mode circular ? 
-     //net.phase[i] += (i*TWO_PI/10/5); //  en mode circular?
+      // net.phase[i] += (i*TWO_PI/5)%PI/(networkSize); // pas en mode circular ? 
+
+     // net.phase[i] += (i*TWO_PI/networkSize)%PI/(networkSize*4); // pas en mode circular ? 
+
+     net.phase[i] += (i*TWO_PI/10/5); //  en mode circular?
 
       //    net.phase[i] -=  +(i+1)%PI/6;
 
