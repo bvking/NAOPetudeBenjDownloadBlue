@@ -1016,14 +1016,15 @@ void setup() {
                 // USED TO REPAIR
                 //***keyMode = " notNull "; 
                 // modeStartKeyToFollow = " samplingModeInternal " ;
-                             
+
+               /*              
                 music_from_ableton_live = " pleasureKraft ";
                 positionMov = " premierePartie "; 
-                
+                */
 
                 // doo = true; // oposite way is true 
                 doo = false; // to enable propagation
-                //music_from_ableton_live = " madRush ";    
+                music_from_ableton_live = " madRush ";    
                 k = 0; // phaseShifting
                 oscillatorBlocked = networkSize - 1;
                 memoryi = networkSize - 1;

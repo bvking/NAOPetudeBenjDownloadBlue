@@ -200,6 +200,8 @@ void autmationWithMeasureAndNote()
 
     net.naturalFrequency[memoryi]= 2;
     //   key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
+   // key='y';
+   // keyReleased(); // uprise speed
   }
 
 
@@ -208,7 +210,7 @@ void autmationWithMeasureAndNote()
     text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
     key='T'; // speed is propaged to  next oscilltor
     keyReleased();
-    // key='y';keyReleased(); // uprise speed
+    
   }
 
   if  (measure==82 && beatPrecisedTrigged==true && beatPrecised > networkSize+1 ) {
@@ -230,6 +232,8 @@ void autmationWithMeasureAndNote()
 
   if  (measure==84 && beatPrecisedTrigged==true && (beatPrecised+1)%6==0  ) {  //  &&  beatPrecised <=8
     text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
+    key='y';
+    keyReleased(); // uprise speed
     key='y';
     keyReleased(); // uprise speed
   }
@@ -350,7 +354,7 @@ void autmationWithMeasureAndNote()
 
   if  (measure==122 && beatTrigged==true) {// 124 basse
     propagationSpeed= 60.0;
-    keyCode = LEFT; // to do in propa
+    keyCode = LEFT; keyReleased() // to do in propa
     keyMode = " propagationBallRotationBis ";
 
     //  key='w';

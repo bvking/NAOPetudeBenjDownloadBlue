@@ -245,7 +245,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // MODULATION of phase and propagation in MadrusH
     if (music_from_ableton_live == " madRush ") { 
         
-        if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42                 
+        if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged= true) {// measure>=41 && measure<=42                 
             levelFromArrow = (PI / (1 * networkSize - 1)); // set 
             //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
             modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
