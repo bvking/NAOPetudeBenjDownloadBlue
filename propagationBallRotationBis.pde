@@ -209,7 +209,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     // splitTimeWithTrigSignalFromAudioAbleton(trigedSignFromAbleton[0]); // wit z false need triangular if not need signal == 1
     
     
-    if (music_from_ableton_live == " pleasureKraftNO " && measure > 245 && measure < 635) {
+    if (music_from_ableton_live == " pleasureKraftNO " && measure > 245 && measure < 635)
+     {
         trigedSignFromAbleton[3] = 0;  
         if ((note1 == 60 || note2 == 60) && (velocity1 != 0  || velocity2!= 0) &&  millis()>= formerEvent[3]) {  //note 60 = HI TOM
             textSize(200);    
@@ -226,28 +227,14 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             // splitTimeWithTrigSignalFromAbletonSquare(trigedSignFromAbleton[3]);// with signal ==1
         }
     }
-    
-    modulePhaseAmountWithArrow = true; // in Trig Event
-    propagation2wayRotationBis(); 
-    
-    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
-    // mapNewPosX(); // counter actived
-    mapPropagationSampledBall(); // mapPropagationTomanageCounter
-    
-    
-    // COMEBACK to other function
-    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
-        addSignalOneAndTwoTer();
-        // positionMov = " troisieme " ;  
-        textSize(500);         
-    } 
-    
-    // MODULATION of phase and propagation in MadrusH
-    if (music_from_ableton_live == " madRush ") { 
+
+      // MODULATION of phase and propagation in MadrusH
+    if (music_from_ableton_live == " madRush ")
+     { 
         
-        if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged= true) {// measure>=41 && measure<=42                 
+        if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
             levelFromArrow = (PI / (1 * networkSize - 1)); // set 
-            //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+            phaseAmount=  (PI / (1 * networkSize - 1)); // set 
             modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
         }
         
@@ -273,7 +260,24 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
             //  keyMode = " trigEventWithAbletonSignal ";
         }
-    } // end madRush
+     } // end madRush
+    
+    modulePhaseAmountWithArrow = true; // in Trig Event
+    propagation2wayRotationBis(); 
+    
+    actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
+    // mapNewPosX(); // counter actived
+    mapPropagationSampledBall(); // mapPropagationTomanageCounter
+    
+    
+    // COMEBACK to other function
+    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
+        addSignalOneAndTwoTer();
+        // positionMov = " troisieme " ;  
+        textSize(500);         
+    } 
+    
+  
     
 }
 

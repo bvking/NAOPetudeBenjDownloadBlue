@@ -257,7 +257,7 @@ void autmationWithMeasureAndNote()
 
   if ( (measure==96 || measure==99 || measure==101) && beatTrigged==true) {
 
-    key='p';
+    key='P';
     keyReleased();
     key='p';
     keyReleased();
@@ -293,6 +293,10 @@ void autmationWithMeasureAndNote()
 
   if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
     key='r';
+    keyReleased();
+     key='r';
+    keyReleased();
+     key='r';
     keyReleased();
   }
 
@@ -354,7 +358,7 @@ void autmationWithMeasureAndNote()
 
   if  (measure==122 && beatTrigged==true) {// 124 basse
     propagationSpeed= 60.0;
-    keyCode = LEFT; keyReleased() // to do in propa
+    keyCode = LEFT; keyReleased(); // to do in propa
     keyMode = " propagationBallRotationBis ";
 
     //  key='w';
