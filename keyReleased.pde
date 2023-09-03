@@ -14,33 +14,35 @@ void keyReleased() {
       case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
    }
 
-   if ( keyMode == " propagationBallRotationBis " ) {
-    if (keyCode == UP ) {    
+  if ( keyMode == " propagationBallRotationBis " )
+    {
+      if (keyCode == UP ) {    
         propagationSpeed=propagationSpeed+5;
         propagationSpeed=propagationSpeed%205;
-     }
-     if (keyCode == DOWN ) {    
-        propagationSpeed=propagationSpeed-5;       
-     } 
+       }
+       if (keyCode == DOWN ) {    
+         propagationSpeed=propagationSpeed-5;       
+       } 
 
-     if (propagationSpeed==0){
+       if (propagationSpeed==0){
          propagationSpeed=5;
-     }    
-   } 
+      }    
+    
 
-   if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
-      levelFromArrow = levelFromArrow-0.1;
-       if (levelFromArrow<=0) {
+       if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
+       levelFromArrow = levelFromArrow-0.1;
+         if (levelFromArrow<=0) {
            levelFromArrow=1;
         }
-   }
+       }
 
-  if (keyCode == DOWN ) {  // && modulePhaseAmountWithArrow
+      if (keyCode == DOWN ) {  // && modulePhaseAmountWithArrow
          //  levelFromArrow = levelFromArrow+1;
             levelFromArrow +=0.1;
          //  levelFromArrow = levelFromArrow%(1+0.1);   
        
-   //  keyCode= TAB; // to trig once 
+       //  keyCode= TAB; // to trig once 
+     }
    }
 
 
@@ -102,26 +104,27 @@ void keyReleased() {
   }
 
 
-     if (keyCode == UP) {  
-         if (key!='#') { 
-     if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
-       || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
-      ){
-         speedDelta++;
-         speedDelta%=12;
-       //   key='#'; // to trig only once
-        /*
-      oscillatorBlocked++;
-      oscillatorBlocked%=networkSize;
-
-    
-      key='#'; // to trig only once
-       
-   */
+  if (keyCode == UP)
+  {  
+    if (key!='#')
+     { 
+        if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
+             || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
+            )
+        {
+          speedDelta++;
+          speedDelta%=12;
+         //   key='#'; // to trig only once
+         /*
+         oscillatorBlocked++;
+         oscillatorBlocked%=networkSize; 
+          key='#'; // to trig only once  
+          */
+       }
+     }
    }
-      }
-   }
-     if (keyCode == DOWN) {  
+  if (keyCode == DOWN)
+  {  
         if (key!='#') {  
 
       if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
@@ -141,9 +144,9 @@ void keyReleased() {
 
       key='#'; // to trig only once
     */
-     }
+       }
          }
-      }
+   }
    
     if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {  
        //println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
@@ -154,14 +157,14 @@ void keyReleased() {
   
     text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
     key= '#'; // to trig once keyPressedLFO
-  }
+   }
 
-     if (keyCode == RIGHT && keyMode == " addSignalOneAndTwoQuater ") { 
+    if (keyCode == RIGHT && keyMode == " addSignalOneAndTwoQuater ") { 
     delayTimeToTrig= delayTimeToTrig+20;
     delayTimeToTrig=delayTimeToTrig%200;
     text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
     key= '#'; // to trig once keyPressedLFO
-  }
+   }
 
    //***** TIME and PHASE SHIFTING of repetition_mouvement_mike
 
@@ -201,37 +204,6 @@ void keyReleased() {
       }
 
      }
-
-
-    /*
-   if (keyCode == UP) {
-       println(" left INCREASE phase shifting"); //
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-   if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-       print ("phaseShiftingFollowPhase11 Ratio ");
-       println (degrees (phaseShiftingFollowPhase11));
-       keyCode = SHIFT;
-   }
-  
-   if (keyCode == DOWN)
-     {
-       println(" left INCREASE phase shifting"); //
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-       if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2)
-         { 
-           phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-         }   
-          print ("phaseShiftingFollowPhase11 Ratio ");
-          println (degrees (phaseShiftingFollowPhase11));
-     }
-    */
-
     key= '#';  // usefuu?  
   } 
  
@@ -354,20 +326,51 @@ void keyReleased() {
    } 
 
 
-  else if ( keyMode == " trigEventWithAbletonSignal " && measure < 635 )  {  
-  if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
+    else if ( keyMode == " trigEventWithAbletonSignal " && measure < 635 )  // USELESS
+   {  
+     if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
           text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);
 
-        for (int i = 0; i < 3; i++)  {  
-     //  String valueText[] =  displayEventFromKeyReleased (keyEvent);
+          for (int i = 0; i < 3; i++)  {  
+        //  String valueText[] =  displayEventFromKeyReleased (keyEvent);
          
-    } 
-   //  phasePattern(); //same as $
-   } 
-  }
+     } 
+       //  phasePattern(); //same as $
+     } 
+   }
 
-  keyCode = TAB; // to stop speedDelta
- //key= '#'; 
+     keyCode = TAB; // to stop speedDelta
+    //key= '#'; 
 
-}
+ }
+
+
+    /*
+   if (keyCode == UP) {
+       println(" left INCREASE phase shifting"); //
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
+        
+   if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
+      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
+    }   
+       print ("phaseShiftingFollowPhase11 Ratio ");
+       println (degrees (phaseShiftingFollowPhase11));
+       keyCode = SHIFT;
+   }
+  
+   if (keyCode == DOWN)
+     {
+       println(" left INCREASE phase shifting"); //
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
+       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
+        
+       if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2)
+         { 
+           phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
+         }   
+          print ("phaseShiftingFollowPhase11 Ratio ");
+          println (degrees (phaseShiftingFollowPhase11));
+     }
+    */

@@ -105,7 +105,7 @@ void autmationWithMeasureAndNote()
     net.naturalFrequency[memoryi]=1;
     key = 'a';  // frequency  [0]= 1
     keyReleased();
-    
+
     key = '9';  // align
     keyReleased();
     key = '0';  // same speed
@@ -324,7 +324,7 @@ void autmationWithMeasureAndNote()
 
   if ( measure==122 && beatTrigged==true) {
     speedDelta=4;
-    key='$';
+    key='*';
     keyReleased();
     key='H';
     keyReleased();
@@ -358,7 +358,7 @@ void autmationWithMeasureAndNote()
 
 
   if  (measure==122 && beatTrigged==true) {// 124 basse
-    propagationSpeed= 60.0;
+    propagationSpeed= 77.0;
     keyCode = LEFT; keyReleased(); // to do in propa
     keyMode = " propagationBallRotationBis ";
 

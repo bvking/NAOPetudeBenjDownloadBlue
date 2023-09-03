@@ -21,34 +21,43 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
     // propagationSpeed =100.0;
+    if (music_from_ableton_live == " madRush " && measure ==122 ) {       
+        //propagationSpeed = speedOfPropagationFromLiveOrNot - 8; // in signal[2] goto line 191
+        propagationSpeed = 30.0; // 30.0;
+        modulePhaseAmountWithArrow = true; // to adjust phase in propa2way
+        keyCode = DOWN; keyReleased();
+         
+    }
     
     if (music_from_ableton_live == " pleasureKraft " && measure > 245 && measure < 635) {       
         propagationSpeed = speedOfPropagationFromLiveOrNot - 10; // in signal[2] goto line 191
     }
     
-    
-    if (measure == 58 && beatPrecised == 2 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
+    if ( music_from_ableton_live == " pleasureKraft " )
+    { 
+        if ( measure == 58 && beatPrecised == 2 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
         modeCircular = true;// doesn't work
         formerKeyMetro = '*';
     
-        propagationSpeed = 00.0; // 30.0;
+        propagationSpeed = 30.0; // 30.0;
         modulePhaseAmountWithArrow = true; // to adjust phase in propa2way
         keyCode = DOWN; keyReleased();
       //  keyCode = DOWN; keyReleased();
         keyCode = DOWN; keyReleased();
       //  keyCode = DOWN; keyReleased();
         // propagation2wayRotationBis(); 
-    } 
+      } 
     
-    if ((measure == 60 || measure == 62 || measure == 64 || measure == 66) && beatPrecisedTrigged ==  true) { 
+     if ((measure == 60 || measure == 62 || measure == 64 || measure == 66) && beatPrecisedTrigged ==  true) { 
         modulePhaseAmountWithArrow = true;
         keyCode = DOWN; keyReleased();
-    } 
+     } 
     
-    //---------- come back to trigEventWithAbletonSignal ------- 
-    if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
+     //---------- come back to trigEventWithAbletonSignal ------- 
+     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true) { 
         //keyMode = " trigEventWithAbletonSignal ";
         textSize(1000);         
+        } 
     } 
     
     textSize(50);
@@ -230,11 +239,19 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
       // MODULATION of phase and propagation in MadrusH
     if (music_from_ableton_live == " madRush ")
-     { 
+     {    
+
+          splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
+
+
         
         if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
-            levelFromArrow = (PI / (1 * networkSize - 1)); // set 
-            phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+          //  levelFromArrow = (PI / (1 * networkSize - 1)); // set 
+            levelFromArrow=-0.5;
+           // levelFromArrow=0.1;
+          //  phaseAmount=  (PI / (1 * networkSize - 1)); // set 
+            phaseAmount=0.56;
+           //   phaseAmount=-0.26;
             modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
         }
         
@@ -263,6 +280,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
      } // end madRush
     
     modulePhaseAmountWithArrow = true; // in Trig Event
+
     propagation2wayRotationBis(); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'

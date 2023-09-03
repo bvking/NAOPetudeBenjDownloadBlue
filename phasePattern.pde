@@ -974,7 +974,7 @@ textSize (100);
       
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
    //   net.phase[i] -= (i*TWO_PI/5)%PI/5;
-          net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // pas en mode circular ? 
+          net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
 
 
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
