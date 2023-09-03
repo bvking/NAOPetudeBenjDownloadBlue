@@ -81,6 +81,8 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
    // */
 
     // end ---------- map all propaged Lfo  (angular incrementation from phase Amount)
+
+    // TRANSFORM DOL en DOROATION
     
     
     if (dol ==  true  && propagationTrigged ==  true) {  //AMPLITUDE  negative way : ccw
