@@ -777,8 +777,8 @@ textSize (100);
     //  net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
     }
-    memoryi=0; // to start well with 'T'
-    memoryi=networkSize-1; // to start well with 'T'
+    //**memoryi=0; // to start well with 'T'
+    //**memoryi=networkSize-1; // to start well with 'T'
     net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
   }
 
@@ -1178,8 +1178,9 @@ textSize (100);
     //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
-     net.phase[i]+= (PI/(networkSize-0))*(1/1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+     net.phase[i]+= (PI/(networkSize-0))*(1/1*(networkSize+1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
      net.phase[i]%= TWO_PI;
+
 
      // net.phase[i]= net.phase[i]+ (TWO_PI/(networkSize-(i+1)));      //*(networkSize+0-i); // front 
      // net.phase[i]= net.phase[i]+ (TWO_PI/(i+1));   // NO   

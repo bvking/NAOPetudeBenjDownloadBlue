@@ -114,6 +114,8 @@ void keyReleased() {
         {
           speedDelta++;
           speedDelta%=12;
+          speedDelta+=1;
+
          //   key='#'; // to trig only once
          /*
          oscillatorBlocked++;

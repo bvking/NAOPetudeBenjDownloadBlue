@@ -441,8 +441,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         } // // end quatrieme
    } //  end of  pleasureKraft Arrangement
 
-            oldSplitTimeLfo = splitTimeLfo; // actualise oldSignal
+            oldSplitTimeLfo = splitTimeLfo; // in function beginning by splitTimeScale...         // actualise oldSignal
   
+
+
         //  displayData----------------------------
 
                textSize (50);

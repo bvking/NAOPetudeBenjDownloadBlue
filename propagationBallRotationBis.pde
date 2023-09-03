@@ -21,6 +21,11 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
     // propagationSpeed =100.0;
+
+    if (music_from_ableton_live == " madRush " && measure >=122 ) {  
+        }     
+
+
     if (music_from_ableton_live == " madRush " && measure ==122 ) {       
         //propagationSpeed = speedOfPropagationFromLiveOrNot - 8; // in signal[2] goto line 191
         propagationSpeed = 30.0; // 30.0;
@@ -62,6 +67,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     textSize(50);
     displayPropagationControl();
+    text ( " newPosFollowed " + newPosFollowed[0], 100, 100);
+    println (" newPosFollowed " + newPosFollowed[0]);
     
     letter = key;   
     
@@ -146,13 +153,16 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (doRotation == true) {
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
-                // newPosFollowed[i]+=0.1;
+               //  newPosFollowed[i]+=0.1;
                 // phaseAmount=-phaseAmount;
+             // newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
+            //LFO[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
+            //newPosFollowed[i]=LFO[i]+map (signal[2], 0, 1, 0, TWO_PI);
+            //newPosFollowed[i]=LFO[i];
             }
         }
         
         for (int i = 0; i < networkSize - 0; i += 1) {             
-            //   newPosFollowed[i]=map (signal[2], 0, 1, 0, TWO_PI); // signals to follow
             //    newPosFollowed[i]=newPosFollowed[i]%TWO_PI;  // signals to follow
             phaseMapped[i] = newPosFollowed[i] + phaseMappedFollow[i]; // new signal is a composition 
             
@@ -196,18 +206,19 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             phasePatternBase();
             
             for (int i = 0; i < networkSize - 0; i += 1) {
-                phaseMappedFollow[i] = netPhaseBase[i];
+             //   phaseMappedFollow[i] = netPhaseBase[i];
             }
         }
     } 
     
-    // modality of spltted time
+    // modality of splitted time
     
     if (measure == 635) {
         propagationSpeed = 60.0; // useless if propagation comes from ableton Live
         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation       
     }
+
     
     if (music_from_ableton_live == " pleasureKraft " && measure < 635) { //measure < 245
         signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
@@ -240,8 +251,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
       // MODULATION of phase and propagation in MadrusH
     if (music_from_ableton_live == " madRush ")
      {    
-        if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
-
+        if (measure >=  122 ) {// 
           splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
          }
 
@@ -269,8 +279,11 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             modulePhaseAmountWithArrow = true;
         }
         if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
+            //  keyCode = RIGHT; keyReleased();
+            keyCode = DOWN; keyReleased();
             //propagationSpeed= 90.0;
         }
+
         if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
             //propagationSpeed= 60.0;
             //  keyMode = " trigEventWithAbletonSignal ";

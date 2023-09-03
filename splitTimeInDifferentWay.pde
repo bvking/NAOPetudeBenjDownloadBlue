@@ -116,12 +116,15 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
     
     }
 
-void splitTimeScaleRotation(float propagationSpeed) {
-    if (doo) {
+void splitTimeScaleRotation(float propagationSpeed)
+ {
+    if (doo)
+    {
         signal[2] = -signal[2];
-        }
+    }
     
-    if (doZ) { // option à mettre à l'ecran
+    if (doZ)
+     { // option à mettre à l'ecran
         propagationTrigged = false;
         if (oldSplitTimeLfo > splitTimeLfo) {
             oldOscillatorChange = oscillatorChange;
@@ -149,7 +152,8 @@ void splitTimeScaleRotation(float propagationSpeed) {
             }
         
         
-        }
+    }
+    
     
     if (!doZ) {
         propagationTrigged = false;
@@ -181,18 +185,19 @@ void splitTimeScaleRotation(float propagationSpeed) {
                 oscillatorChange = networkSize - 1;
                 }
             }
-        }
+    }
     
     timeLfo = int(map(signal[2], 0, 1, 0, networkSize * 100));
+
     if (doo) {
         timeLfo = -timeLfo;
         }
     
-    text("oldSplit " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo, -width - 200, + height);
+    text("oldSplitIn splitTimeScaleRotation " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo + " propagationTrigged " + propagationTrigged, -width - 200, + height);
     
     oldSplitTimeLfo = splitTimeLfo;
     splitTimeLfo = int((timeLfo) % 100) + 0;
-    }
+ }
 
 void lockOscillatorToPositionFromPreviousProagedBall() { // revoir lock
     if (propagationTrigged) {

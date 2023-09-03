@@ -40,28 +40,46 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
         text("  LFO[oscillatorChange] " +   LFO[oscillatorChange], 500, 1100);
      }
     }
+
+
+       // /*
+   // else if ( propagationTrigged ==  false && doRotation == true )
+   // {
  
    
-    //---------- map all propaged Lfo  (angular incrementation from phase Amount)
-    for (int i = 0; i < networkSize; i++) {
+         //---------- map all propaged Lfo  (angular incrementation from phase Amount)
+     for (int i = 0; i < networkSize; i++)
+     {
         
-        if(LFO[i] < 0) {
-       //     dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
-       //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+        if(LFO[i] < 0) 
+        {
+            //     dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
+            //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
 
-         //  LFO[i]=LFO[i]+TWO_PI;         
-            phaseMapped [i] = LFO[i]; 
-    }
+            //LFO[i]= LFO[i]- newPosFollowed[i];//  LFO[i]+TWO_PI;   
+            //LFO[i] = newPosFollowed[i];  
+
+           phaseMapped [i] = LFO[i]; 
+         }
         
-        else {
+        else
+        {
             
          //   dataMappedForMotorisedPosition[i] = (int) map(LFO[i], 0, TWO_PI, 0, numberOfStep); 
          //   phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
          //   newPosXaddSignal[i] = LFO[i]; 
+     
+         //   LFO[i]= LFO[i]+ newPosFollowed[i];//  LFO[i]+TWO_PI;  
+           // LFO[i] = newPosFollowed[i];       
 
-            phaseMapped [i] = LFO[i];    
+            phaseMapped [i] =newPosFollowed[i]; //LFO[i];    
         }
-    }
+     }
+
+   // } // with else if
+
+   // */
+
     // end ---------- map all propaged Lfo  (angular incrementation from phase Amount)
     
     

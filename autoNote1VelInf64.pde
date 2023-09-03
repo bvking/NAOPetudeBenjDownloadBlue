@@ -4,10 +4,10 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
   char lastKey = key;
   text(" memoryi" +memoryi + " oscBloc" + oscillatorBlocked, 500, -100);
 
-  if (key!='#') {
-    lastKey = key;
+  if (formerKey!='#') {
+    lastKey = formerKey;
   }
-  text("<=64 lastKey " + lastKey + " event " + formerEvent[note1], 500, -50);
+  text("<=64 formerlastKey " + lastKey , 500, -50);  // + " event " + formerEvent[note1]
 
 
   if (measure <= 15 && millis() > formerEvent[64] + 950 + d &&
@@ -202,8 +202,11 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
     (note6 == 69 && velocity6 >= 1 && velocity6 <= 64))) {
 
     oscillatorBlocked = 0;
-    key = 'D';
-    keyReleased();
+   //** key = 'D';
+   // keyReleased();
+
+   
+
     // key = 'd';
     // keyReleased();
 
@@ -238,7 +241,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
     formerEvent[72] = millis();
   }
 
-  if (measure > 61 && measure < 78&& millis() > formerEvent[74] + 200 &&
+  if (measure > 61 && measure < 78 && millis() > formerEvent[74] + 200 &&
     ((note1 == 74 && velocity1 >= 1 && velocity1 <= 64) ||
     (note2 == 74 && velocity2 >= 1 && velocity2 <= 64) ||
     (note3 == 74 && velocity3 >= 1 && velocity3 <= 64) ||
