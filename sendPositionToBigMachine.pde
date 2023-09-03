@@ -97,8 +97,8 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
       if (frameCount >=  0)
         { 
             text(" BigMachine port USB connected " + portsUSBfrom3 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1100); 
-          //    String[] matchPort1USBfrom1 = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
-         /*
+              String[] matchPort1USBfrom1 = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
+         
              if ( matchPort1USBfrom1 != null ){ 
                 allMachineConnected=false;
               println(" BigMachine port USB connected " + portsUSBfrom3 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
@@ -106,7 +106,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
               // portConnectedToBigMachineOnly=true;
               teensy4port.write(dataFromMode);
             }
-         */
+         
 
 
 

@@ -240,9 +240,10 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
       // MODULATION of phase and propagation in MadrusH
     if (music_from_ableton_live == " madRush ")
      {    
+        if (measure ==  122 && beatPrecised ==  1 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
 
           splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
-
+         }
 
         
         if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
