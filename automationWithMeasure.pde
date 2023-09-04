@@ -1,21 +1,23 @@
 void autmationWithMeasureAndNote()
 {
   char lastKey = key;
-  // if (key!='#'){
+   if (formerKey!='#'){
   lastKey=key;
-  //   }
-  text( (beatPrecised-1) %4 + " autmationWith " + lastKey, 500, -800);
+     }
+ 
+  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKey , 500, -800);  // + " event " + formerEvent[note1]
 
-  //autoNote1VelInf64();
-  //autoNote1();
-
-
-  if (measure ==1  && beatPrecised == 1 && beatPrecisedTrigged==true   ) { // && beatTrigged==true
-    speedDelta = 4;
-    keyCode = CONTROL;
+  if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged )  //startStop = 3;
+   { 
+    speedDelta = 2;
+    //keyCode = CONTROL;
+    modeCircular=false;
+    key = 'F';keyReleased();
+    key = 'F';keyReleased();
+    key = 'F';keyReleased();
   }
 
-  if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4) == 0  )) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
+  if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4)==0  )) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
     //((note1 == 72  || note2 == 72 || note3 == 72 )))
     //((note1 == 69  || note2 == 69 || note3 == 69 ))
   {
@@ -37,7 +39,8 @@ void autmationWithMeasureAndNote()
 
   if (measure<5 ) { // && beatTrigged==true
     //  speedDelta=3;
-    autoNote2();
+
+   // autoNote2();// too much event
   }
 
 
@@ -58,9 +61,12 @@ void autmationWithMeasureAndNote()
     keyReleased();
     key = '9'; //Alig
     keyReleased();
-    key = 'P'; 
+    //key = 'P'; 
+    key = 'F';keyReleased();
+    key = 'F';keyReleased();
+    key = 'F';keyReleased();
     //keyCode = CONTROL;
-    keyReleased();
+
 
   }
 
@@ -69,15 +75,15 @@ void autmationWithMeasureAndNote()
     autoNote1VelInf64();  // declaer avec A . arrete A puis faire des i ou u
   }
 
-  if ( measure==1 && beatTrigged==true ) {
+  if ( measure==2 && beatTrigged==true ) {
     key='$';
     keyReleased();
   }
 
   if ( measure==7 && beatTrigged==true) {
-    key='9';
-    keyReleased();
-    key='F';
+   // key='9';
+   // keyReleased();
+    key='D';
     keyReleased();
   }
 
@@ -159,7 +165,7 @@ void autmationWithMeasureAndNote()
     // key=CONTROL;
     // keyReleased();
     // oscillatorBlocked=networkSize-1;
-    speedDelta=6;
+    speedDelta=3;
   }
 
   if  ((measure==43 || measure==45 || measure==47 || measure==50 ) && ( beatPrecised>=16 && beatPrecisedTrigged==true ) ) {//77  //&& beatTrigged==true

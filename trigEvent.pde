@@ -5,8 +5,8 @@ String positionMov;  // Original?
 void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
      splitTimeLfo= int  (timeLfo%1000); 
-              //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
-             textSize (100);
+
+                textSize (100);
                 text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
                 text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 500-1000);
 
@@ -50,28 +50,28 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             }
 
             if (measure == 66 && beatPrecised == 4  ) { // comeBack from alt y
-             //      keyMode = " trigEventWithAbletonSignal ";
-             //   positionMov = " troisieme " ;
-              //   keyCode = ALT; key = 'v'; // key 
+                //      keyMode = " trigEventWithAbletonSignal ";
+                //   positionMov = " troisieme " ;
+                //   keyCode = ALT; key = 'v'; // key 
             }
       
              if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
-            positionMov = " quatrieme " ;
-            textSize(500);
+               positionMov = " quatrieme " ;
+               textSize(500);
             }
               //------ end distribution of measure to specific movement -------------------- 
 
          
              if (measure==1 && beatTrigged==true){
-             delayTimeToTrig4=120;    
+               delayTimeToTrig4=120;    
              }
 
              if (measure==1 && beatPrecised==1  && beatPrecisedTrigged==false){
                formerKeyMetro = '$';
                key='°';
-              }
+             }
      
-              if (beatPrecised==1 && measure==1 && beatPrecisedTrigged==true){ // propagationTrigged
+             if (beatPrecised==1 && measure==1 && beatPrecisedTrigged==true){ // propagationTrigged
                   keyCode=CONTROL;
                  //  key= 'p'; keyReleased();
                    key= '°'; keyReleased();

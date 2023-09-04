@@ -127,15 +127,19 @@ void keyReleased() {
    }
   if (keyCode == DOWN)
   {  
-        if (key!='#') {  
+     if (key!='#')
+      {  
 
-      if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
-       || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
-      ){
+       if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
+           || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
+        )
+       
+       {
 
         speedDelta--;
+
         if (speedDelta <= 1) { 
-          speedDelta=4;
+          speedDelta=1;
            }
        //  key='#'; // to trig only once
      /*
