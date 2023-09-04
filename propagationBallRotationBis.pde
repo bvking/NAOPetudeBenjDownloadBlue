@@ -69,19 +69,19 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     textSize(50);
     displayPropagationControl();
-    text ( " newPosFollowed " + newPosFollowed[0], 100, 100);
-    println (" newPosFollowed " + newPosFollowed[0]);
+    text ( " signal[2] " + signal[2], 100, -100);
+    
     
     letter = key;   
     
     switch(letter) {
 
         case 'p' :
-         doRotationWithoutPropagation = true;
+        doRotationWithoutPropagation = true;
          doRotation=false;
          break;
 
-         case 'P' :
+        case 'P' :
          doRotationWithoutPropagation = false;
          break;
 

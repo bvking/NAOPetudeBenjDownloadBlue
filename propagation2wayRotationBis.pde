@@ -56,7 +56,7 @@ void propagation2wayRotationBis()
     //  if (  doRotation == false )  // propagationTrigged ==  false &&
     // {
 
-    if (doRotationWithoutPropagation ==  false) {
+    if (doRotationWithoutPropagation ==  false || doRotationWithoutPropagation ==  true) {
 
 
       for (int i = 0; i < networkSize; i++)
@@ -104,7 +104,7 @@ void propagation2wayRotationBis()
              //   LFO[i]=signal[2];
               //   LFO[i]%=TWO_PI;
         // phaseMapped [i] =LFO[i]-signal[2];  //LFO[i];   
-         phaseMapped [oscillatorChange] -= signal[2]; 
+         phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, TWO_PI, 0); 
 
 
          } // with else if
@@ -113,7 +113,7 @@ void propagation2wayRotationBis()
         {
           // signal[2] = int(map(signal[2], 0, 0.5, 0, TWO_PI));
           // phaseMapped [i] =LFO[i]+signal[2]; 
-           phaseMapped [oscillatorChange] += signal[2]; 
+           phaseMapped [oscillatorChange] += map (signal[2], 0, 1, 0, TWO_PI); 
 
         }
 
@@ -123,11 +123,15 @@ void propagation2wayRotationBis()
 
      if ( doRotationWithoutPropagation  ) 
      {                                                                           // propagationTrigged ==  false &&
+      if (signalUpRise)
+      {
        phaseMapped [memoryi] += signal[2]; 
-     }
+      }
+     else
+       phaseMapped [memoryi] -= signal[2]; 
 
 
-   // }
+    }
 
   
 

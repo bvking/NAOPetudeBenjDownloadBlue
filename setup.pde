@@ -34,6 +34,8 @@ int[] changeMotorisedPosition = new int [networkSize];
 String  portsUSBfrom2;
 boolean portOfBigMachineConnected; 
 String  portsUSBfrom1;
+boolean signalUpRise;
+
 
 boolean allMachineConnected, onlyLitteMachineWithSecondSerialPort,portConnectedOfBigMachine,portConnectedToBigMachineOnly;
 
