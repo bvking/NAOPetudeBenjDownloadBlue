@@ -308,12 +308,25 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
      } // end madRush
     
     modulePhaseAmountWithArrow = true; // in Trig Event
-
     propagation2wayRotationBis(); 
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
     // mapNewPosX(); // counter actived
-    mapPropagationSampledBall(); // mapPropagationTomanageCounter
+    if ( doRotationWithoutPropagation == false ) 
+    {
+    mapPropagationSampledBall();   // to actualise counter with this proagationMode
+    } 
+
+       for (int i = 0; i <  networkSize-0; i+=1) { 
+      
+           oldOldPhaseMapped[i]=oldPhaseMapped[i];
+           oldPhaseMapped[i]=phaseMapped[i];
+           net.phase[i]=phaseMapped[i];
+           // net.phase[i]=specialPhase[i];
+       }
+
+
+     // mapPropagationTomanageCounter
     
     
     // COMEBACK to other function
