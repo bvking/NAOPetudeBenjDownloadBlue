@@ -1,5 +1,4 @@
-boolean portOfBigMachineConnected; 
-String portsUSBfrom1;
+
 
 
 void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir

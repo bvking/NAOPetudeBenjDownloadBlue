@@ -96,15 +96,20 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
        
       if (frameCount >=  0)
         { 
-            text(" BigMachine port USB connected " + portsUSBfrom3 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1100); 
-              String[] matchPort1USBfrom1 = match(portsUSBfrom1, "/dev/cu.usbmodem116574201");
-         
-             if ( matchPort1USBfrom1 != null ){ 
-                allMachineConnected=false;
+             text(" BigMachine port USB connected " + portsUSBfrom3 + " serialEncoderPort3 " + portsUSBfrom3 , 0, 1100); 
+             println ( " test_port_bigMachine " + portsUSBfrom1);
+
+            if ( portConnectedToBigMachineOnly==true )
+             {       
+              allMachineConnected=false;
               println(" BigMachine port USB connected " + portsUSBfrom3 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
               text(" only BIG Machine  ENDING with 201 on port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
               // portConnectedToBigMachineOnly=true;
               teensy4port.write(dataFromMode);
+            }
+
+            else {
+              println(" nothing connected ");
             }
          
 
@@ -136,7 +141,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
        if (frameCount <=  200)
         { 
                text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
-               println(" BigMachine port  USB NOT connected " + portsUSBfrom3);   
+               println(" BigMachine port  IS connected " + portsUSBfrom1);   
         }    
       }
    rotate (PI/2);

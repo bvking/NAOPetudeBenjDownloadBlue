@@ -6,7 +6,8 @@ float newPosFollowed  [] =  new float  [networkSize];
 float phaseMappedFollow  [] =  new float  [networkSize]; 
 */
 
-void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP 
+void propagationBallRotation()
+{ // as addSignalOneAndTwoQuater() in NAOP 
 
   if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
         
@@ -145,7 +146,7 @@ void propagationBallRotation(){ // as addSignalOneAndTwoQuater() in NAOP
 
 
    for (int i = 0; i <  networkSize-0; i+=1) { 
- //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
+   //   net.phase[i]=newPosXaddSignal[i]; // to display to screen
   //  net.phase[i]%=TWO_PI;
     }
  formerFormerKey= formerKey;   

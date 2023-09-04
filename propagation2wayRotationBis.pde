@@ -1,4 +1,5 @@
-void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
+void propagation2wayRotationBis()
+ {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
     textSize (50);
     modulePhaseAmountWithArrow=true;
     phaseAmount = trigedSignFromAbleton[1];
@@ -15,9 +16,19 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
           phaseAmount=-phaseAmount;  // change Way of phaseAmount
     }
 
+      if ( propagationTrigged ==  false && doRotation == true )
+    {
+       for (int i = 0; i < networkSize; i++)
+     {
+     //   LFO[i]=signal[2];
+     //   LFO[i]%=TWO_PI;
+
+      } // with else if
+    }
+
   
    
-    text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow +  ( (PI / (1 * networkSize - 1))) + "  phaseAmount  " + (  phaseAmount  ), 500, -1000);
+    text(" LFO[i]" + LFO[0] + " levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow +  ( (PI / (1 * networkSize - 1))) + "  phaseAmount  " + (  phaseAmount  ), 500, -1000);
     
     
     if (propagationTrigged ==  true) { // propaga fixe   doo ==  false && 
@@ -41,44 +52,74 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
      }
     }
 
-
-       // /*
-   // else if ( propagationTrigged ==  false && doRotation == true )
-   // {
- 
-   
          //---------- map all propaged Lfo  (angular incrementation from phase Amount)
-     for (int i = 0; i < networkSize; i++)
-     {
-        
-        if(LFO[i] < 0) 
-        {
+    //  if (  doRotation == false )  // propagationTrigged ==  false &&
+    // {
+
+
+      for (int i = 0; i < networkSize; i++)
+      {  
+         if(LFO[i] < 0) 
+          {
             //     dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
             //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
 
             //LFO[i]= LFO[i]- newPosFollowed[i];//  LFO[i]+TWO_PI;   
             //LFO[i] = newPosFollowed[i];  
 
-           phaseMapped [i] = LFO[i]; 
+               text ( " LFO[0] neg " + LFO[0], 200, 100);
+
+               phaseMapped [i] = LFO[i];//+signal[2]; 
          }
         
-        else
-        {
+         else
+         {
             
-         //   dataMappedForMotorisedPosition[i] = (int) map(LFO[i], 0, TWO_PI, 0, numberOfStep); 
-         //   phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-         //   newPosXaddSignal[i] = LFO[i]; 
+             //   dataMappedForMotorisedPosition[i] = (int) map(LFO[i], 0, TWO_PI, 0, numberOfStep); 
+             //   phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
+             //   newPosXaddSignal[i] = LFO[i]; 
      
-         //   LFO[i]= LFO[i]+ newPosFollowed[i];//  LFO[i]+TWO_PI;  
-           // LFO[i] = newPosFollowed[i];       
+              //   LFO[i]= LFO[i]+ newPosFollowed[i];//  LFO[i]+TWO_PI;  
+           // LFO[i] = newPosFollowed[i];  
 
-            phaseMapped [i] =newPosFollowed[i]; //LFO[i];    
+             text ( " LFO[1] pos " + LFO[1], 300, 100);     
+
+            phaseMapped [i] =LFO[i];//+signal[2];  //LFO[i];    
+         }
+      }
+    // }
+
+    if ( doRotation == true && propagationTrigged ==  true)  // propagationTrigged ==  false &&
+    {
+     //   for (int i = 0; i < networkSize; i++)
+     // {
+        if(signal[2] < 0.5) 
+        {
+           //   signal[2] = int(map(LFO[i], 0, -PI, numberOfStep/2, 0)); 
+          // signal[2] = int(map(signal[2], 0.5, 0, 0, -TWO_PI));
+
+            //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
+             //   LFO[i]=signal[2];
+              //   LFO[i]%=TWO_PI;
+        // phaseMapped [i] =LFO[i]-signal[2];  //LFO[i];   
+         phaseMapped [memoryi] -= signal[2]; 
+
+
+         } // with else if
+
+        if(signal[2] >=0.5) 
+        {
+          // signal[2] = int(map(signal[2], 0, 0.5, 0, TWO_PI));
+          // phaseMapped [i] =LFO[i]+signal[2]; 
+           phaseMapped [memoryi] += signal[2]; 
+
+
         }
-     }
 
-   // } // with else if
+      }
+   // }
 
-   // */
+  
 
     // end ---------- map all propaged Lfo  (angular incrementation from phase Amount)
 
@@ -113,7 +154,8 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
            m = networkSize - 1;
         }
 
-      if (dol ==  true)  { 
+      if (dol ==  true)
+        { 
             
           if (newPosXaddSignal[j] < 0) { 
                 
@@ -140,7 +182,7 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
                   if (LFO[z] <0) {
                             dataMappedForMotorisedPosition[z] = int(map(LFO[z], 0, -TWO_PI, numberOfStep, 0)); 
                             phaseMapped[z] = map(dataMappedForMotorisedPosition[z], numberOfStep, 0, 0, -TWO_PI); 
-                        newPosXaddSignal[z] = phaseMapped[z]; 
+                            newPosXaddSignal[z] = phaseMapped[z]; 
                   }
                     
                   else {
@@ -153,5 +195,37 @@ void propagation2wayRotationBis() {   // FAIRE CONDITION QUAND SIGNAL NEGATIF fu
             }
                 // end ---------- map all propaged Lfo (angular incrementation from phase Amount) 
        } // end dol
-    } // end dol
+    } // end dol && propa=true
+
+
+    /*
+     if (doRotation == true)
+       {
+
+         for (int z = 0; z < networkSize; z++) {  // track actual Position by tracking dataMappedForMotorisedPosition[z]
+                        
+                  if (dataMappedForMotorisedPosition[z] <0) {
+
+                            track_actual_Position[z] = int(map(dataMappedForMotorisedPosition[z], 0, -TWO_PI, numberOfStep, 0)); 
+                            track_actual_Position[z] = map(track_actual_Position[z], numberOfStep, 0, 0, -TWO_PI); 
+
+                          //  newPosXaddSignal[z] = phaseMapped[z]; 
+                  }
+                    
+                  else {
+                        
+                        track_actual_Position[z] = (int) map(dataMappedForMotorisedPosition[z], 0, TWO_PI, 0, numberOfStep); 
+                        track_actual_Position[z] = map(track_actual_Position[z], 0, numberOfStep, 0, TWO_PI);
+                        //newPosXaddSignal[z] = phaseMapped[z]; 
+                        
+                }
+            }
+
+
+
+
+
+        }
+  */
+
 }

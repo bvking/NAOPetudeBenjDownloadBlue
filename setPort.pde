@@ -9,10 +9,23 @@ void setPort() {
     arrayCopy(ports, portsUSB); // rename portsUSB with real ports names
     printArray(portsUSB);
     
+    String[] matchPort1Nothing = match(portsUSB[1],"/dev/tty.Bluetooth-Incoming-Port");
     String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
     String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
     String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
+
+
+     if (matchPort1Nothing!= null) { 
+        allMachineConnected = false;
+        portsUSBfrom1=portsUSB[1];
+        portsUSBfrom2=portsUSB[2];
+        portsUSBfrom3=portsUSB[3];
+        println(" serial port 1 connected to bluetooth " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
+        portConnectedToBigMachineOnly=false;      
+    }
+
+
 
      if (matchPort1B!= null) { 
         allMachineConnected = false;
@@ -36,6 +49,8 @@ void setPort() {
         portsUSBfrom3=portsUSB[3];
         println(" serial port 2 as data port        ending with 001 " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = true;
+        portConnectedToBigMachineOnly=false;      
+
     }
 
     if (matchPort3!= null) { 
@@ -44,6 +59,8 @@ void setPort() {
         portsUSBfrom3=portsUSB[3];
         println(" serial port 2 of little mahine " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = false;
+        portConnectedToBigMachineOnly=false;      
+
     }
     
     //do something if nothing connected

@@ -150,7 +150,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     if (formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
         
         println(" modeStartKeyToFollow " + modeStartKeyToFollow);
-        if (doRotation == true) {
+        if (doRotation == true) {  // see at the end in propa2wayBis
             //signal[2]=- signal[2] ;
             for (int i = 0; i < networkSize - 0; i += 1) { 
                //  newPosFollowed[i]+=0.1;

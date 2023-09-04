@@ -1,4 +1,5 @@
-void printModeAndKey()  {
+void printModeAndKey()
+{
     /*
   print (" KEY  ");    
   print  (key); 
@@ -40,4 +41,4 @@ void printModeAndKey()  {
   print ( " mouseRec ");  print (  mouseRecorded );
   println ( "positionMov ");  println (  positionMov );
   
-   }
+}
