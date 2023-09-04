@@ -290,8 +290,12 @@ textSize (100);
     if ( memoryi<0) {
       memoryi=networkSize-1;
     } 
+
+      if ( oldMemoryi-1<0) {
+      oldMemoryi=networkSize-2;
+      } 
    //  net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi];// placé avavnt les phases elles s'alignent // commenté ça les balles suivantes s'alignent à la balle 9 (la premiere qui tourne)
-     net.phase[memoryi]=net.phase[oldMemoryi];
+     net.phase[memoryi]=net.phase[oldMemoryi-1];
      net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi];
 
    }
@@ -311,16 +315,15 @@ textSize (100);
    }
 
    
-  if (key=='t' && modeCircular) {  
+  if (key=='t' && modeCircular)
+   {  
     print (" stop previous frequency with memory t$"); // good with memory=9
       if ( net.naturalFrequency[memoryi]>0.25 ) 
     {
      net.naturalFrequency[memoryi]=0; // oldMemoryi
     }
-
      oldMemoryi=memoryi;   
      memoryi-=1;
-  
     if ( memoryi<0) {
       memoryi=networkSize-1;
     }
