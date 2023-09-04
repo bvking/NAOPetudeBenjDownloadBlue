@@ -2,7 +2,7 @@ void autmationWithMeasureAndNote()
 {
   char lastKeyAuto = key;
    if (formerKey!='#'){
-  lastKeyAuto=key;
+  lastKeyAuto=formerKey;
      }
 
  
@@ -16,6 +16,8 @@ void autmationWithMeasureAndNote()
     key = 'F';keyReleased();
     key = 'F';keyReleased();
     key = 'F';keyReleased();
+    key = 'k';keyReleased();
+    key = 'k';keyReleased();
   }
 
   if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4)==0  )) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
@@ -58,8 +60,8 @@ void autmationWithMeasureAndNote()
   }
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-    key = '°'; // stop frequency
-    keyReleased();
+   // key = '°'; // stop frequency
+   // keyReleased();
     key = '9'; //Alig
     keyReleased();
     //key = 'P'; 
@@ -80,41 +82,66 @@ void autmationWithMeasureAndNote()
     key='$';
     keyReleased();
   }
-
+  /*
   if ( measure==7 && beatTrigged==true) {
    // key='9';
    // keyReleased();
-    key='D';
-    keyReleased();
+     key='D';
+     keyReleased();
+     key='D';
+     keyReleased();
+     key='D';
+     keyReleased();
   }
 
-     /*
-
-  if ( measure==9 && beatTrigged==true) {
-    key='D';
-    keyReleased();
-  }
+     
 
   if ( measure==11 && beatTrigged==true) {
     key='F';
     keyReleased();
-  }
-
-  if ( measure==13 && beatTrigged==true) {
-    key='D';
+     key='F';
     keyReleased();
-  }
-
-  if ( measure==14 && beatTrigged==true) {
-    key='D';
+     key='F';
     keyReleased();
   }
 
   if ( measure==15 && beatTrigged==true) {
-    key='D';
+     key='D';
+     keyReleased();
+     key='D';
+     keyReleased();
+     key='D';
+     keyReleased();
+  }
+
+  if ( measure==19 && beatTrigged==true) {
+     key='F';
+    keyReleased();
+     key='F';
+    keyReleased();
+     key='F';
+    keyReleased();
+ 
+  }
+
+  if ( measure==23 && beatTrigged==true) {
+       key='D';
+     keyReleased();
+     key='D';
+     keyReleased();
+     key='D';
+     keyReleased();
+  }
+
+  if ( measure==27 && beatTrigged==true) {
+   key='F';
+    keyReleased();
+     key='F';
+    keyReleased();
+     key='F';
     keyReleased();
   }
-    */
+   */ 
 
   if (measure ==  36 && beatTrigged ==  true ) {// measure>=41 && measure<=42
     // for (int i = 0; i < networkSize; i++) {
@@ -210,11 +237,11 @@ void autmationWithMeasureAndNote()
   }
 
   if  (measure>=71 && measure<78 ) {
-    autoNote2();
+  //  autoNote2();
   }
 
   if  (measure==80 && beatTrigged) {
-    autoNote2();
+   // autoNote2();
     speedDelta=7;
   }
 
@@ -309,7 +336,7 @@ void autmationWithMeasureAndNote()
 
   if ( measure==104 && beatTrigged==true) {
     key='R';
-    keyReleased();:::
+    keyReleased();
   }
 
   if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {

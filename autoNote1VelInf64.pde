@@ -103,8 +103,8 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
     (note5 == 76 && velocity5 >= 1 && velocity5 <= 127) ||
     (note6 == 76 && velocity6 >= 1 && velocity6 <= 127))) {
     textSize (100);
-    key = '9';
-    keyReleased();
+    //key = '9';
+    //keyReleased();
     /*
             key = 'P';
      keyReleased();
@@ -126,8 +126,8 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
     (note6 == 76 && velocity6 >= 1 && velocity6 <= 127))) {
 
     textSize (100);
-    key = '9';
-    keyReleased();
+    //key = '9';
+    //keyReleased();
     /*
      key = 'P';
      keyReleased();
@@ -152,7 +152,8 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
     (note5 == 70 && velocity5 >= 1 && velocity5 <= 64) ||
     (note6 == 70 && velocity6 >= 1 && velocity6 <= 64))) {
     // oscillatorBlocked = 10;
-    key = 'R';
+    //key = 'R';
+    key = 'r';
     keyReleased();
     // key = 'f';
     // keyReleased();

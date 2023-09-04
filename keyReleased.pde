@@ -26,8 +26,11 @@ void keyReleased() {
 
        if (propagationSpeed==0){
          propagationSpeed=5;
-      }    
+      } 
+    }   
     
+    if ( keyMode == " propagationBallRotationBis " )
+    {
 
        if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
        levelFromArrow = levelFromArrow-0.1;
@@ -36,9 +39,16 @@ void keyReleased() {
         }
        }
 
+       if (keyCode == RIGHT && modulePhaseAmountWithArrow) {  
+       levelFromArrow = levelFromArrow+0.1;
+         if (levelFromArrow<=0) {
+           levelFromArrow=1;
+        }
+       }
+
       if (keyCode == DOWN ) {  // && modulePhaseAmountWithArrow
          //  levelFromArrow = levelFromArrow+1;
-            levelFromArrow +=0.1;
+         //   levelFromArrow +=0.1;
          //  levelFromArrow = levelFromArrow%(1+0.1);   
        
        //  keyCode= TAB; // to trig once 

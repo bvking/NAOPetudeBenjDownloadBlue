@@ -126,7 +126,9 @@ void splitTimeScaleRotation(float propagationSpeed)
     if (doZ)
      { // option à mettre à l'ecran
         propagationTrigged = false;
-        if (oldSplitTimeLfo > splitTimeLfo) {
+        if (oldSplitTimeLfo > splitTimeLfo+25) {
+            text(" signal monte propaOpp ", 200, 200);
+            signalUpRise=true;
             oldOscillatorChange = oscillatorChange;
             oscillatorChange++;
             propagationTrigged = true;
@@ -140,7 +142,9 @@ void splitTimeScaleRotation(float propagationSpeed)
         
         // propagtion opposite way
         
-        if (splitTimeLfo > oldSplitTimeLfo) {
+        if (splitTimeLfo > oldSplitTimeLfo + 25) {
+            text(" signal descend ", 200, 200);
+            signalUpRise=false;
             oldOscillatorChange = oscillatorChange;
             oscillatorChange--;
             propagationTrigged = true;
