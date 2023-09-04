@@ -56,15 +56,25 @@ void mapPropagationSampledBall() {
             if ( //(newPosF[i]>oldPosF[i]) && (oldPosF[i]>=oldOldPosF[i]) && (oldPosF[i]<= PI && newPosF[i]>PI) voir dans quel sens la retropropagation oriente  i et j
                 newPosF[i]>oldPosF[i] && doo==true && (oldPosF[i]<=oldOldPosF[i])
               ){
-                revLfo[i]--;TrigmodPos[i]=0;
+                  if ( doRotationWithoutPropagation == false )   // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
+                    {
+                    revLfo[i]--;TrigmodPos[i]=0;
+                    } 
                 text (i + " " + revLfo[i], 0, -700+50*i);
               } 
 
-            if ( //((newPosF[i]<oldPosF[i]) && (oldPosF[i]<=oldOldPosF[i]) && (oldPosF[i]>= PI && newPosF[i]<PI))
+            if (
                newPosF[i]<oldPosF[i] && doo==false && (oldPosF[i]>=oldOldPosF[i])// doo false CW newPos uprise
             
-             ) { //  && (oldPosF[i]>=oldOldPosF[i]) 
-              revLfo[i]++;TrigmodPos[i]=0;   
+             ) { 
+
+                 if ( doRotationWithoutPropagation == false )   // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
+                    {
+                    revLfo[i]++;TrigmodPos[i]=0;
+                    } 
+
+             
+
               text (i + " " + revLfo[i], 0, -700+50*i); 
             }
         }

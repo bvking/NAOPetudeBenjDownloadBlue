@@ -312,11 +312,12 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     actualisePositionDataFromCircular = false; //    lastRecordData of motors positiond were stocked when the circular Mode was true as formerKeyMetro == '#'
     // mapNewPosX(); // counter actived
-    if ( doRotationWithoutPropagation == false ) 
-    {
-    mapPropagationSampledBall();   // to actualise counter with this proagationMode
-    } 
 
+   // if ( doRotationWithoutPropagation == false )   // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
+   // {
+    mapPropagationSampledBall();   // to actualise counter with this proagationMode
+  //  } 
+   /*
        for (int i = 0; i <  networkSize-0; i+=1) { 
       
            oldOldPhaseMapped[i]=oldPhaseMapped[i];
@@ -325,8 +326,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
            // net.phase[i]=specialPhase[i];
        }
 
-
-     // mapPropagationTomanageCounter
+  */
+     
     
     
     // COMEBACK to other function
