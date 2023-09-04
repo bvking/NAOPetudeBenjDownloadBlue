@@ -309,7 +309,7 @@ void autmationWithMeasureAndNote()
 
   if ( measure==104 && beatTrigged==true) {
     key='R';
-    keyReleased();
+    keyReleased();:::
   }
 
   if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
