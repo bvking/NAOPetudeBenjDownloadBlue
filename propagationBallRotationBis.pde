@@ -5,6 +5,8 @@ boolean doo = false;
 boolean dol = false;
 boolean doC = false;
 boolean doRotation = false;
+boolean doRotationWithoutPropagation = false;
+
 /*
 String modeStartKeyToFollow, keyMode;
 
@@ -73,6 +75,16 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     letter = key;   
     
     switch(letter) {
+
+        case 'p' :
+         doRotationWithoutPropagation = true;
+         doRotation=false;
+         break;
+
+         case 'P' :
+         doRotationWithoutPropagation = false;
+         break;
+
         case'r' : // way of rotation
         doRotation = true;
         key = '#';
