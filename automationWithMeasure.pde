@@ -1,13 +1,14 @@
 void autmationWithMeasureAndNote()
 {
-  char lastKey = key;
+  char lastKeyAuto = key;
    if (formerKey!='#'){
-  lastKey=key;
+  lastKeyAuto=key;
      }
- 
-  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKey , 500, -800);  // + " event " + formerEvent[note1]
 
-  if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged )  //startStop = 3;
+ 
+  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKeyAuto , 500, -200);  // + " event " + formerEvent[note1]
+
+  if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged == true )  //startStop = 3;
    { 
     speedDelta = 2;
     //keyCode = CONTROL;
@@ -49,9 +50,9 @@ void autmationWithMeasureAndNote()
     key = '9'; //Alig
     keyReleased();
     memoryi=networkSize-1;
-    key = 'A';
+    key = 'A'; // net.naturalFrequency[memoryi]= 0.25
     keyReleased(); // decale une à une et revient dans l'alignement
-    net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
+    // net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
 
    // net.naturalFrequency[9]= 5;
   }
@@ -121,7 +122,6 @@ void autmationWithMeasureAndNote()
     net.naturalFrequency[memoryi]=1;
     key = 'a';  // frequency  [0]= 1
     keyReleased();
-
     key = '9';  // align
     keyReleased();
     key = '0';  // same speed
@@ -140,37 +140,55 @@ void autmationWithMeasureAndNote()
   }
 
   if  (measure==37 && beatTrigged==true  ) {
-    key='P';
+    key='p';
     keyReleased();
+    key='p';
+    keyReleased();
+    
   }
 
-  if  (measure==40 && beatTrigged==true  ) {
-    key='p';
+  if  (measure==40 && beatTrigged==true  )
+   {
+    key='9'; // align
     keyReleased();
-    key='p';
+    key='r';
     keyReleased();
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
+    /*
+ 
+    */
   }
 
   if  (measure==41 && beatTrigged==true ) {//77  //&& beatTrigged==true
     //    key='o';
     //    keyReleased();
-    key='9';
-    keyReleased();
-    key='1';
-    keyReleased();
+    specialPropagationKey = ':';
+  
+    //**key='1';
+    //**keyReleased();
     //key='à';// normalize frquency to net.natural(frequency[0] or networksize-1)
-    key='0';// // normalize frquency to net.natural(frequency[0] or networksize-1)
-    keyReleased();
+    //**key='0';// // normalize frquency to net.natural(frequency[0] or networksize-1)
+    //**keyReleased();
 
-    // key=CONTROL;
+     //key=CONTROL;
     // keyReleased();
     // oscillatorBlocked=networkSize-1;
-    speedDelta=3;
+    speedDelta=1;
+  }
+    if  (measure==51 && beatTrigged==true ) {//77  //&& beatTrigged==true
+
+    specialPropagationKey = ':';
+  
+ 
+    speedDelta=1;
   }
 
   if  ((measure==43 || measure==45 || measure==47 || measure==50 ) && ( beatPrecised>=16 && beatPrecisedTrigged==true ) ) {//77  //&& beatTrigged==true
-    key='o';
-    keyReleased();
+   // key='o';
+  //  keyReleased();
   }
 
   if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
@@ -188,7 +206,7 @@ void autmationWithMeasureAndNote()
 
 
   if  (measure==71 && beatTrigged==true  ) {
-    speedDelta=6;
+    speedDelta=4;
   }
 
   if  (measure>=71 && measure<78 ) {

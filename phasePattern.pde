@@ -291,11 +291,11 @@ textSize (100);
       memoryi=networkSize-1;
     } 
 
-      if ( oldMemoryi-1<0) {
-      oldMemoryi=networkSize-2;
+         if ( oldMemoryi-2<0) {
+    //  oldMemoryi=networkSize-2;
       } 
    //  net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi];// placé avavnt les phases elles s'alignent // commenté ça les balles suivantes s'alignent à la balle 9 (la premiere qui tourne)
-     net.phase[memoryi]=net.phase[oldMemoryi-1];
+     net.phase[memoryi]=net.phase[oldMemoryi-0];
      net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi];
 
    }
@@ -307,11 +307,11 @@ textSize (100);
     }
      oldMemoryi=memoryi;  
      memoryi-=1;
-  
+
     if ( memoryi<0) {
       memoryi=networkSize-1;
     } 
-     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi]; // oldMemoryi
+     net.naturalFrequency[memoryi]=net.naturalFrequency[oldMemoryi-0]; // oldMemoryi
    }
 
    
@@ -479,7 +479,7 @@ textSize (100);
 
   
    if (key == 'U' && specialPropagationKey == '?' && !modeCircular) { // 
-      text ( " key " + key,  0, 500 );
+      text ( " key " + key + " " + specialPropagationKey,  0, 500 );
          for (int i = 1; i < (networkSize-0); i++) {  
 
        metroPhase[i]= metroOldPhase[i-1];
@@ -508,6 +508,8 @@ textSize (100);
 
 
   if (key == 'U' && specialPropagationKey == '<') { 
+          text ( " key " + key + " " + specialPropagationKey,  0, 500 );
+
       net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
      net.phase[i]+=PI/20*(0+1);
