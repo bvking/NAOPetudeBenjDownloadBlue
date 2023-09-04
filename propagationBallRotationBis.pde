@@ -77,8 +77,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     switch(letter) {
 
         case 'p' :
-        doRotationWithoutPropagation = true;
-         doRotation=false;
+         doRotationWithoutPropagation = true;
+         doRotation = true;
          break;
 
         case 'P' :

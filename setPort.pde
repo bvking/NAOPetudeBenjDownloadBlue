@@ -1,5 +1,3 @@
-
-
 void setPort() {
     // rotate (-PI/2);
     portOfBigMachineConnected = false;
@@ -15,7 +13,6 @@ void setPort() {
     String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
 
-
      if (matchPort1Nothing!= null) { 
         allMachineConnected = false;
         portsUSBfrom1=portsUSB[1];
@@ -24,8 +21,6 @@ void setPort() {
         println(" serial port 1 connected to bluetooth " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=false;      
     }
-
-
 
      if (matchPort1B!= null) { 
         allMachineConnected = false;
@@ -110,4 +105,4 @@ void setPort() {
         //rotate (PI/2);
         
      
-    }
+}

@@ -31,9 +31,8 @@ int[] changeMotorisedPosition = new int [networkSize];
   return newMotorPositions;  // Returns an array of 3 ints: 20, 40, 60 
 }
 
-String  portsUSBfrom2;
 boolean portOfBigMachineConnected; 
-String  portsUSBfrom1;
+String  portsUSBfrom1,portsUSBfrom2,portsUSBfrom3;
 boolean signalUpRise;
 
 

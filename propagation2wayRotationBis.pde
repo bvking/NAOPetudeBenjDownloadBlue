@@ -134,10 +134,10 @@ void propagation2wayRotationBis()
                                                                                  // propagationTrigged ==  false &&
       if (signalUpRise)
       {
-       phaseMapped [memoryi] += map (signal[2], 0, 1, 0, TWO_PI); 
+       phaseMapped [memoryi] = map (signal[2], 0, 1, 0, TWO_PI); 
       }
      else
-       phaseMapped [memoryi] -= map (signal[2], 0, 1, -TWO_PI, 0); 
+       phaseMapped [memoryi] = map (signal[2], 0, 1, -TWO_PI, 0); 
 
     }
     }
