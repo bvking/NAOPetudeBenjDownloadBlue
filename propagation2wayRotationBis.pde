@@ -31,7 +31,7 @@ void propagation2wayRotationBis()
     text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow +  ( (PI / (1 * networkSize - 1))) + "  phaseAmount  " + (  phaseAmount  ), 500, -1000);
     text(" LFO[i]" + LFO[0] +  " doRotationWithoutPropagation "+ doRotationWithoutPropagation, 500, -1100); 
     
-    if (propagationTrigged ==  true) { // propaga fixe   doo ==  false && 
+    if (propagationTrigged ==  true && doRotationWithoutPropagation ==  false) { // propaga fixe   doo ==  false && 
         LFO[oscillatorChange] = LFO[oldOscillatorChange];//
      if ( keyMode == " propagationBallRotationBis " && modulePhaseAmountWithArrow)  { 
         LFO[oscillatorChange] = LFO[oscillatorChange] + phaseAmount ;
@@ -93,9 +93,9 @@ void propagation2wayRotationBis()
 
     if ( doRotation == true)  // propagationTrigged ==  false &&
     {
-     //   for (int i = 0; i < networkSize; i++)
-     // {
-        if(signal[2] < 0.5) 
+     
+       // if(signal[2] < 0.5) 
+        if (!signalUpRise)
         {
            //   signal[2] = int(map(LFO[i], 0, -PI, numberOfStep/2, 0)); 
           // signal[2] = int(map(signal[2], 0.5, 0, 0, -TWO_PI));
@@ -104,12 +104,14 @@ void propagation2wayRotationBis()
              //   LFO[i]=signal[2];
               //   LFO[i]%=TWO_PI;
         // phaseMapped [i] =LFO[i]-signal[2];  //LFO[i];   
-         phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, TWO_PI, 0); 
+         phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, -TWO_PI, 0); 
 
 
          } // with else if
 
-        if(signal[2] >=0.5) 
+        //if(signal[2] >=0.5)
+        if (signalUpRise)
+
         {
           // signal[2] = int(map(signal[2], 0, 0.5, 0, TWO_PI));
           // phaseMapped [i] =LFO[i]+signal[2]; 
@@ -122,15 +124,22 @@ void propagation2wayRotationBis()
     }
 
      if ( doRotationWithoutPropagation  ) 
-     {                                                                           // propagationTrigged ==  false &&
+     {  
+     if (propagationTrigged ==  false){
+        for (int i = 0; i < networkSize; i++)
+       {
+         phaseMapped [i] = LFO[i];
+
+       }
+                                                                                 // propagationTrigged ==  false &&
       if (signalUpRise)
       {
-       phaseMapped [memoryi] += signal[2]; 
+       phaseMapped [memoryi] += map (signal[2], 0, 1, 0, TWO_PI); 
       }
      else
-       phaseMapped [memoryi] -= signal[2]; 
+       phaseMapped [memoryi] -= map (signal[2], 0, 1, -TWO_PI, 0); 
 
-
+    }
     }
 
   
