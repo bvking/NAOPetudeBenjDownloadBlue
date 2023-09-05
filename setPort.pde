@@ -1,4 +1,4 @@
-boolean bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1;
+
 void setPort() 
 {
    
@@ -104,6 +104,13 @@ void setPort()
             // Read bytes into a buffer until you get a linefeed (ASCII 10):
             // encoderReceiveUSBport101.bufferUntil('\n');
             DueSerialNativeUSBport101.bufferUntil('\n');
+
+            String myString = DueSerialNativeUSBport101.readStringUntil('\n');
+
+                // if you got any bytes other than the linefeed:
+                 myString = trim(myString);
+
+                 println ( " myString " + myString);
             
         
     }

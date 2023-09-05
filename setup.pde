@@ -31,7 +31,7 @@ int[] dataFromArduinoDue= new int [networkSize];
   } 
   return newMotorPositions;  // Returns an array of 3 ints: 20, 40, 60 
 }
-
+boolean bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1;
 boolean portOfBigMachineConnected; 
 String  portsUSBfrom1,portsUSBfrom2,portsUSBfrom3;
 boolean signalUpRise;
