@@ -351,6 +351,8 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
         }
     //  }
     }
+   }
+
      
     if (modeStartKeyToFollow == " samplingModeInternal ")
     {
@@ -390,7 +392,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
        // send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       }
        rotate(-PI/2);   
-  }
+ 
 }
 
      

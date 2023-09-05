@@ -169,19 +169,21 @@ void draw()
     netG.step(); //actualise step for chimera state, not use yet
     
     //if (modeCircular==true) { // why it doesn' t work?
-    if (formerKeyMetro ==  '*')  // case != to get trigModPos enabled      
+    if (formerKeyMetro ==  '*' || formerKeyMetro ==  '$' )  // case != to get trigModPos enabled      
     {
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
         {
             if (keyMode != " propagationSampleBall ")
             {
                 if (keyMode != " propagationBallRotationBis ")
-                {
-                    countRevs(); // below modePendular to compute revolution
+                { 
+                       if (keyMode != " samplingModeWithMLive ")
+                          {
+                            countRevs(); // below modePendular to compute revolution
+                           }
                 }
-            }
-        }
-    }
+           }
+    }   }
     textSize(200);
      
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
