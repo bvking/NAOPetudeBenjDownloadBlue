@@ -118,26 +118,19 @@ void serialEventfromArduinoDue(Serial DueSerialNativeUSBport101) { // receive 2 
   // if you got any bytes other than the linefeed:
   myString = trim(myString);
 
+  println ( " myString " + myString);
+
   // split the string at the commas
   // and convert the sections into integers:
-  int values[] = int(split(myString, ','));
+  int valuesFromDue[] = int(split(myString, ','));
 
   int numberOfDataSplitedWithComa=2;
 
-  if (values.length == numberOfDataSplitedWithComa) {// v1 de 0 a 4000
+  if (valuesFromDue.length == numberOfDataSplitedWithComa) {// v1 de 0 a 4000
 
-    dataFromArduinoDue[0] = (int) map (values[0], 0, 4000, 0, 400);
-    dataFromArduinoDue[1] = (int) map (values[1], 0, 4000, 0, 400);
-
-    println ( "  data0  " +  dataFromArduinoDue[0] );
-    println ( "  data1  " +  dataFromArduinoDue[1] );
-       
- //***   print (" mouseY ");   print (mouseY);   print (" v1 ");   println (v1);  
-
- //   v2 = values[1]/10;
-         
-  //      print ( " 12320        v2 ");   println (v2);    
-
-       
+    dataFromArduinoDue[0] = (int) map (valuesFromDue[0], 0, 4000, 0, 400);
+    dataFromArduinoDue[1] = (int) map (valuesFromDue[1], 0, 4000, 0, 400);
+    
   }
 }
+

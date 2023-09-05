@@ -198,6 +198,8 @@ void draw()
     print(" showPos ");
     showArray(Pos);
     println("memoryi " + memoryi);
+    print(" encoder_due ");
+    showArray(dataFromArduinoDue);
     
     if (encoderTouched[5] ==  true) {
         

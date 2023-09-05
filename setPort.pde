@@ -1,5 +1,8 @@
-void setPort() {
-    // rotate (-PI/2);
+boolean bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1;
+void setPort() 
+{
+   
+    bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1 = false;
     portOfBigMachineConnected = false;
     
     String[] ports = Serial.list();
@@ -9,39 +12,46 @@ void setPort() {
     
     String[] matchPort1Nothing = match(portsUSB[1],"/dev/tty.Bluetooth-Incoming-Port");
     String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
+    String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201");
+
     String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
     String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
 
-     if (matchPort1Nothing!= null) { 
-        allMachineConnected = false;
         portsUSBfrom1=portsUSB[1];
         portsUSBfrom2=portsUSB[2];
         portsUSBfrom3=portsUSB[3];
+
+     if (matchPort1Nothing!= null) { 
+        allMachineConnected = false;    
         println(" serial port 1 connected to bluetooth " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=false;      
     }
 
      if (matchPort1B!= null) { 
         allMachineConnected = false;
-        portsUSBfrom1=portsUSB[1];
-        portsUSBfrom2=portsUSB[2];
-        portsUSBfrom3=portsUSB[3];
         println(" serial port 1 as programming port ending with 201 " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=true;      
     }
-    
+
+
+     if (matchPort1B2!= null) { 
+        allMachineConnected = false;
+        println(" serial port 1 is NATIVE ARDUINO DUE  with 401 " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
+        println(" serial port 2 Teensy 4.1 " + portsUSB[2] + " " + portsUSBfrom2 +  " allMachineConnected " + allMachineConnected); 
+       // portConnectedToBigMachineOnly = true;
+        bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1=true;      
+    }
+   
     if (matchPort1!= null) { 
         allMachineConnected = false;
-        portsUSBfrom2=portsUSB[2];
-        portsUSBfrom3=portsUSB[3];
+      
         println(" serial port 1 as programming port ending with 101 " + portsUSB[1] + " allMachineConnected " + allMachineConnected);       
     }
 
     if (matchPort2!= null) { 
         allMachineConnected = false;
-        portsUSBfrom2=portsUSB[2];
-        portsUSBfrom3=portsUSB[3];
+  
         println(" serial port 2 as data port        ending with 001 " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = true;
         portConnectedToBigMachineOnly=false;      
@@ -50,8 +60,7 @@ void setPort() {
 
     if (matchPort3!= null) { 
         allMachineConnected = true;
-        portsUSBfrom2=portsUSB[2];
-        portsUSBfrom3=portsUSB[3];
+      
         println(" serial port 2 of little mahine " + portsUSB[2] + " allMachineConnected " + allMachineConnected); 
         onlyLitteMachineWithSecondSerialPort = false;
         portConnectedToBigMachineOnly=false;      
@@ -61,7 +70,7 @@ void setPort() {
     //do something if nothing connected
 
         
-     if (portConnectedToBigMachineOnly==false)
+     if (bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1==false)
       { 
          println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
         if (onlyLitteMachineWithSecondSerialPort) {
@@ -70,7 +79,7 @@ void setPort() {
              println(" portConnectedOfBigMachine " + portConnectedOfBigMachine); //  + portsUSBfrom2 + " "
             
            // teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
-            encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
+              encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
          
            // DueSerialNativeUSBport101 =  new Serial(this,ports[2], 115200); 
 
@@ -81,16 +90,16 @@ void setPort() {
         }
     }
 
-    if (portConnectedToBigMachineOnly==true)
+    if (bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1==true)
      { 
-         println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
+             println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly +  " due to ENCODER plugged on port 1 " + portsUSBfrom1 );
        
-             println(" Port 1 or 2 CONNECTED to programming port of Teensy 4.1 " ); //  + portsUSBfrom2 + " "
+             println(" Port 2  CONNECTED to programming port of Teensy 4.1 named" + portsUSBfrom2  ); //  + portsUSBfrom2 + " "
             
-           // teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+            teensy4port = new Serial(this, ports[2],115200); // si port connecté Monterey
            // encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
          
-            DueSerialNativeUSBport101 =  new Serial(this,ports[2], 115200); 
+            DueSerialNativeUSBport101 =  new Serial(this,ports[1], 115200); 
 
             // Read bytes into a buffer until you get a linefeed (ASCII 10):
             // encoderReceiveUSBport101.bufferUntil('\n');
@@ -105,15 +114,18 @@ void setPort() {
             
         }
         
-      //  if (portsUSBfrom2 != "NC") {
-            if (portConnectedToBigMachineOnly) { // 101  teensy 3.5    
-                println(" Port 1 CONNECTED to programming port of Teensy 4.1 ");
+      
+        if (portConnectedToBigMachineOnly && bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1==false)
+        { 
+            
+         
+                println(" Port 1 CONNECTED to programming port of Teensy 4.1 withOut encoder");
                 //*************** WITH TEENSY connected
                 //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
                 teensy4port = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
                 //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
-            }
-     //   }
+        }
+    
         
         //*************** WITHOUT ENODEER connected
         if (allMachineConnected)  { 
