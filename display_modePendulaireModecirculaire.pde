@@ -79,7 +79,7 @@ void  displayModePendulaireModeCirculaire() {
           // metroPhase[i]= map( net.phase[i], 0, -TWO_PI, -0.5*PI/2, PI/2 );
         }
 
-          metroPhase[i]=  metroPhase[i]-PI/2;
+           metroPhase[i]=  metroPhase[i]-PI/2;
            metroPhase[i]%=TWO_PI;
         x = displacement*cos(metroPhase[i]);
         y = displacement*sin(metroPhase[i]);
@@ -225,6 +225,7 @@ void  displayModePendulaireModeCirculaire() {
       fill( mapAccelerationinversed[i], 255, 255 ); // Sepheres are all modulated with the same color. depending of acceleration
       fill (100, 110, 225);
       // samplingMovementPro();
+      net.phase[i]=newPosF[i];
       x = displacement*cos(net.phase[i]); //);
       y = displacement*sin(net.phase[i]);      // display ball in blue lagub
       print (" keyMode ", i, " ", newPosXaddSignal[i] );

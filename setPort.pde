@@ -61,7 +61,8 @@ void setPort() {
     //do something if nothing connected
 
         
-     if (portConnectedToBigMachineOnly==false) { 
+     if (portConnectedToBigMachineOnly==false)
+      { 
          println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
         if (onlyLitteMachineWithSecondSerialPort) {
             
@@ -80,7 +81,8 @@ void setPort() {
         }
     }
 
-    if (portConnectedToBigMachineOnly==true) { 
+    if (portConnectedToBigMachineOnly==true)
+     { 
          println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
        
              println(" Port 1 or 2 CONNECTED to programming port of Teensy 4.1 " ); //  + portsUSBfrom2 + " "
@@ -94,7 +96,7 @@ void setPort() {
             // encoderReceiveUSBport101.bufferUntil('\n');
             DueSerialNativeUSBport101.bufferUntil('\n');
             
-        }
+        
     }
         
         

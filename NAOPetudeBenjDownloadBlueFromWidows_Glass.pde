@@ -74,11 +74,11 @@ void draw()
              setMeasureAndBeatPrecised();
       }
     }
-
+            /*
     println ( " MEASURE " + measure );
      println ( " MEASURE " + measure );
       println ( " MEASURE " + measure );
-
+            */
   
 
 

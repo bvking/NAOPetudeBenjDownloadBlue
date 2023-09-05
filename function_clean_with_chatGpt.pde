@@ -236,25 +236,21 @@ void samplingModeWithLive() {
   beginSample=millis();
   text (keyMode + " samplingMode LFOdecay ", width/4, - height - 100);
 
-  //    mouseY=(int) map (automationLFO[1], 0, 1, 0, 400);  // position from Ableton LFOdecay
+        //    mouseY=(int) map (automationLFO[1], 0, 1, 0, 400);  // position from Ableton LFOdecay
 
 
-  //  mouseY=mouseY+10;
-  mouseX=mouseX+20;
-  /*
+        //  mouseY=mouseY+10;
+       mouseX=mouseX+20;
+        /*
       oldMov = movementRecording;
-   
-   movementRecording= mouseY;
-   
-   
-   if (oldMov>=  movementRecording){
-   
-   movementRecording= map (y, 0, 400, 0 , TWO_PI);
-   }
-   else
-   movementRecording= map (y, 400, 0, TWO_PI, 0);
-   
-   */
+      movementRecording= mouseY;
+      if (oldMov>=  movementRecording)
+      { 
+       movementRecording= map (y, 0, 400, 0 , TWO_PI);
+       }
+       else
+       movementRecording= map (y, 400, 0, TWO_PI, 0);
+       */
 
 
 
