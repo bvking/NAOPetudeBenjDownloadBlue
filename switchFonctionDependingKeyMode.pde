@@ -105,7 +105,8 @@ void switchFonctionDependingKeyMode() {
         }
       
     if (keyMode == " null " || keyModeRed == " null ") { //drive ball with lfo
-        text(" Alt x " + keyMode, -width * 2, -height * 3+100);    
+        text(" Alt x " + keyMode, -width * 2, -height * 3+100);   
+        modeStartKeyToFollow = " null "; 
         }
     
     if (keyMode == " phasePattern ") { //drive ball with lfo

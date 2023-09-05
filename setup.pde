@@ -348,7 +348,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             int formerBeatPrecised, beatPrecised, formerMeasure, formerBeatOnMeasure; // autmationWithMeasureAndNote
             int beginTrigEffect, stopTrigEffect, beginMeasure, stopMeasure;
-            int lastMeasureRecordStart, measureRecordStart, beginSample, endSample;
+            int lastMeasureRecordStart, measureRecordStart , measureRecordStop, beginSample, endSample;
             boolean beatPrecisedTrigged;
             int timeFrameOffsetFollowing;
             

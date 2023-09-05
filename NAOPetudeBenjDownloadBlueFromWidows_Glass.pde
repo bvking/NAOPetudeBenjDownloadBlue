@@ -95,12 +95,12 @@ void draw()
     }
 
 
-  if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true ) {// return in main
+  if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
+    {// prepare record
     keyMode = " samplingModeWithLive ";
-  
-   // mousePressed=true;
-   mouseRecorded = true;
-  }
+     // mousePressed=true;
+     mouseRecorded = true;
+   }
     
     if (keyMode == " null ")
     {
@@ -120,20 +120,21 @@ void draw()
         }
 
         int specialMeasureToStartRecording = 41;
+        measureRecordStop = specialMeasureToStartRecording+4;
 
-        if (readyToRecord==true &&  beatTrigged== true && specialMeasureToStartRecording == measure) // synchronise recording 
+        if (readyToRecord == true &&  specialMeasureToStartRecording == measure) // synchronise recording with beatTrigged == true &&
         {           
-            measureRecordStart = measure; //   
-            text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
+            measureRecordStart = measure; //            
             readyToRecord=false;
         }
-
-        // updateAbletonLiveClock(); // trigged if
-
-          handleSamplingModeWithAbletonLive(); 
-          int disableDriver= -5;
-         // send24DatasToTeensy10motorsToBigMachine(5, -3, disableDriver, -1); //         
-
+        if (readyToRecord==false)
+        {
+        text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
+        }
+        
+        int disableDriver= -5;
+        handleSamplingModeWithAbletonLive(); 
+   
      }
 
     
@@ -141,9 +142,9 @@ void draw()
     { 
         updateInternalClock();
         handleInternalSamplingMode();
-    }  
-    //trigEffectToAbletonLive();  // add Size to Text
+    } 
 
+    //trigEffectToAbletonLive();  // add Size to Text
 
     //**************END MODE SETTING   *************************  
     formerAuto = frameCount - 1;
@@ -157,7 +158,7 @@ void draw()
     //****************************
     trigFollowSignalSampled();
     //rect(80,40,140,320);
-    print(" dataPMpret + keyMode " + keyMode);
+    print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
     showArray(positionToMotor);
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();

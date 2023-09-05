@@ -11,7 +11,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     if(formerKeyMetro == '$') {
         modeCircular = false;
     }
-    println(" cricular in followSOWay(frameRatio) ..... ??" + modeCircular);
+    text (" measureRecordStop " + measureRecordStop + " cricular in followSOWay(frameRatio) ..... ??" + modeCircular, 0, 800);
     
     //above to  avoid bug
     
@@ -92,7 +92,13 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     
     //if (modeCircular) {
     mapPropagationSampledBall(); // COUNT REVOLUTION
-//   }
+    //   }
+
+ if (measure==measureRecordStop+8){
+    keyMode = " trigEventWithAbletonLive ";
+    draw();
+
+    }
     
     rotate(PI / 2);
 }

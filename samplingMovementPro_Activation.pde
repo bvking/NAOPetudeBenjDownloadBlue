@@ -22,12 +22,7 @@ void samplingMovementPro() {
 }
 
 void handleSamplingModeWithAbletonLive(){
-     if (mousePressed==true) { // in keyMode samplingModeWithLive
-   //      mouseRecorded=true;
-   //      actualSec=0;
-     }
-
-
+ 
      boolean synchroOnMeasure=false;
      if ((formerMeasure != measure)) { 
           synchroOnMeasure=true;
@@ -37,37 +32,34 @@ void handleSamplingModeWithAbletonLive(){
      rotate (-HALF_PI);
      textSize(50);
 
-
      if (actualSec == 1 && formerMeasure != measure) // 
      { textSize (300); 
-     // mouseY = 200 ;
+     // mouseY = 200 ; 
      }  
 
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
-            " mouseY " +  mouseY  + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);   
+            " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);   
 
-     
-    // if (actualSec>=0 && actualSec<=7 ){
-    //if (measureRecordStart==(measure-4) && beatTrigged == true){
-      if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) {
-    
-       int disableDriver=-4;
-      //  send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
-      send24DatasToTeensy10motorsToBigMachine(5, -3, disableDriver, -1); // 
+     // if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) { 
+
+       if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
+          int disableDriver=-5;
+         //  send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
+             send24DatasToTeensy10motorsToBigMachine(5, -3, disableDriver, -1); // 
       }
 
      //==================== sampling from ENCODER_due
-      angleToInterpolate =  map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+      angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
       newPosF[networkSize-1]= angleToInterpolate;
 
      //==================== sampling from ENCODER_teensy
-     // angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+     // angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
      // newPosF[networkSize-1]= angleToInterpolate;
 
      //==================== sampling from MOUSE_Y
          
-     //   angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-     //   newPosF[networkSize-1]= angleToInterpolate;
+       // angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+       // newPosF[networkSize-1]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
@@ -79,18 +71,18 @@ void handleSamplingModeWithAbletonLive(){
 
     //  mouseX= (int) polarToCartesionX; // to draw circle with end
     //  mouseY= (int) polarToCartesionY; // to draw circle with end
-     activeSamplingInternalClock(measureRecordStart);
-     //activeSamplingMeasure(1);
-     stopSamplingInternalClock(measureRecordStart+4);  //stop sampling
-     //stopSamplingMeasure(5);
+     activeSamplingInternalClock(measureRecordStart);  //start
+     stopSamplingInternalClock(measureRecordStop);  //stop sampling  
      samplingMovementPro(); 
 
+     if (measure==measureRecordStop ) // && beatTrigged
+     {
+      //keyMode = " null ";
+      modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+     }
+
       rotate (HALF_PI);
-
    }
-
-
-
 
 void handleInternalSamplingMode(){
      boolean synchroOnMeasure=false;
@@ -139,8 +131,11 @@ void handleInternalSamplingMode(){
      stopSamplingInternalClock(5);  //stop sampling
      //stopSamplingMeasure(5);
      samplingMovementPro(); 
+      
+
 
       rotate (HALF_PI);
+
 
    }
 
@@ -184,10 +179,8 @@ void stopSamplingMeasure(int endMeasure) {
 
 void activeSamplingInternalClock(int beginMeasure)
 { 
-   if (measure==beginMeasure  && formerMeasure != measure && mouseRecorded == true) { // && actualSec!=lastSec
-
-      //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
-        //  newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+   if (measure==beginMeasure  && formerMeasure != measure && mouseRecorded == true)
+    { 
 
   bRecording = true;
   sampler.beginRecording();
@@ -197,6 +190,7 @@ void activeSamplingInternalClock(int beginMeasure)
 void stopSamplingInternalClock(int endMeasure)
  { 
    if (measure==endMeasure && formerMeasure != measure) { // && actualSec!=lastSec
+   text(" END SAMPLING  AT "  + measure, 200, 300);
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
       //    newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);

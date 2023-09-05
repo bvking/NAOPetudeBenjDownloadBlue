@@ -92,8 +92,8 @@ void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited 
     if(valuesFromDue.length == numberOfDataSplitedWithComa) {// //     if(valuesFromDue.length >0 ) {// v1 de 0 a 4000
  
         
-        dataFromArduinoDue[0] = (int) map(valuesFromDue[0], 0, 4000, 0, 400);
-        dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 400);
+        dataFromArduinoDue[0] = (int) map(valuesFromDue[0], 0, 4000, 0, 4000);
+        dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 4000);
 
         
 }
