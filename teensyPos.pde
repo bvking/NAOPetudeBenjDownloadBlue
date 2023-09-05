@@ -1,6 +1,7 @@
 
 
-void teensyPos(){
+void teensyPos()
+{
   rotate(PI/2);
   textSize (75);
   translate (0, -1000, 0);
@@ -11,7 +12,10 @@ void teensyPos(){
 
     //  oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition; 
 
-   
+    if  ((keyMode == " samplingModeWithLive " ) && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+    }
+    
 
     if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
@@ -21,7 +25,8 @@ void teensyPos(){
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
     }
 
- if ( measure <= 635)  {  // to avoid machine blocked 
+
+  if ( measure <= 635)  {  // to avoid machine blocked 
     if ( keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  " )  // || keyMode == " addSignalOneAndTwo "
          
     {  
@@ -316,13 +321,15 @@ void teensyPos(){
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-  if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " ) {
+if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
+  { 
     if (modeStartKeyToFollow!= " samplingModeInternal "){
      // if (modeStartKeyToFollow= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){
          if (measure<105 ){
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
           }
+
          if (positionMov != " troisieme " && measure<17) {
             send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
           }
@@ -343,8 +350,16 @@ void teensyPos(){
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
     //  }
-    } 
-  }
+    }
+     
+    if (modeStartKeyToFollow == " samplingModeInternal ")
+    {
+      if (measure>=45 )
+         {
+        send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+         }
+       
+    }
   
    if ( (modeStartKeyToFollow== " samplingModeInternal " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) ")
                  && keyMode == " trigEventWithAbletonSignal "  )
@@ -368,15 +383,18 @@ void teensyPos(){
       if (measure>82 && measure<=124){
        print (" to change Mode and still runing ");
        send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -12, -1);
+      }
      }
 
      if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {         
-     // send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
-        }
-         
-    }    
-    rotate(-PI/2);  
+       // send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+      }
+       rotate(-PI/2);   
+  }
 }
+
+     
+
 
 
 //-

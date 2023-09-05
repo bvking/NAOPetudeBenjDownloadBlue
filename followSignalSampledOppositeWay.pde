@@ -95,7 +95,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     //   }
 
  if (measure==measureRecordStop+8){
-    keyMode = " trigEventWithAbletonLive ";
+  //  keyMode = " trigEventWithAbletonLive ";
     draw();
 
     }
