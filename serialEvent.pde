@@ -75,7 +75,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
 */
 
 
-void serialEventfromArduinoDue(Serial DueSerialNativeUSBport101) { // receive 2 datas splited with , and the last is send with println
+void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited with , and the last is send with println
     
     //read the serial buffer:
     String myString = DueSerialNativeUSBport101.readStringUntil('\n');
@@ -91,12 +91,16 @@ void serialEventfromArduinoDue(Serial DueSerialNativeUSBport101) { // receive 2 
     
     int numberOfDataSplitedWithComa = 2;
     
-    if(valuesFromDue.length == numberOfDataSplitedWithComa) {// v1 de 0 a 4000
+    if(valuesFromDue.length == numberOfDataSplitedWithComa) {// //     if(valuesFromDue.length >0 ) {// v1 de 0 a 4000
+ 
         
         dataFromArduinoDue[0] = (int) map(valuesFromDue[0], 0, 4000, 0, 400);
         dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 400);
+
         
 }
+  
+
 }
 
 
