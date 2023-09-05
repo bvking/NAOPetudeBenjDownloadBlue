@@ -83,8 +83,6 @@ void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited 
     //if you got any bytes other than the linefeed:
     myString = trim(myString);
     
-    println(" myString " + myString);
-    
     //split the string at the commas
     //and convert the sections into integers:
     int valuesFromDue[] = int(split(myString, ','));

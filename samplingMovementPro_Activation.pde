@@ -48,20 +48,26 @@ void handleSamplingModeWithAbletonLive(){
 
      
     // if (actualSec>=0 && actualSec<=7 ){
-    if (measureRecordStart==(measure-4) && beatTrigged == true){
+    //if (measureRecordStart==(measure-4) && beatTrigged == true){
+      if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) {
     
        int disableDriver=-4;
-        send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
+      //  send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
+      send24DatasToTeensy10motorsToBigMachine(5, -3, disableDriver, -1); // 
       }
 
-     //==================== sampling from ENCODER
+     //==================== sampling from ENCODER_due
+      angleToInterpolate =  map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+      newPosF[networkSize-1]= angleToInterpolate;
+
+     //==================== sampling from ENCODER_teensy
      // angleToInterpolate =  map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
      // newPosF[networkSize-1]= angleToInterpolate;
 
      //==================== sampling from MOUSE_Y
          
-        angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-        newPosF[networkSize-1]= angleToInterpolate;
+     //   angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+     //   newPosF[networkSize-1]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
@@ -103,7 +109,7 @@ void handleInternalSamplingMode(){
             " mouseY " +  mouseY  + " measure "  +  measure , -width/4, - height + 300);   
 
      
-     if (measure>=0 && measure<=7 ){
+     if (measure>=measureRecordStart && measure<=(measureRecordStart+4)) {
        int disableDriver=-4;
         send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
       }

@@ -130,7 +130,9 @@ void draw()
 
         // updateAbletonLiveClock(); // trigged if
 
-          handleSamplingModeWithAbletonLive();         
+          handleSamplingModeWithAbletonLive(); 
+          int disableDriver= -5;
+         // send24DatasToTeensy10motorsToBigMachine(5, -3, disableDriver, -1); //         
 
      }
 
