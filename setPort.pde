@@ -70,9 +70,29 @@ void setPort() {
             
            // teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
             encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
-            
+         
+           // DueSerialNativeUSBport101 =  new Serial(this,ports[2], 115200); 
+
             // Read bytes into a buffer until you get a linefeed (ASCII 10):
-            encoderReceiveUSBport101.bufferUntil('\n');
+             encoderReceiveUSBport101.bufferUntil('\n');
+           // DueSerialNativeUSBport101.bufferUntil('\n');
+            
+        }
+    }
+
+    if (portConnectedToBigMachineOnly==true) { 
+         println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
+       
+             println(" Port 1 or 2 CONNECTED to programming port of Teensy 4.1 " ); //  + portsUSBfrom2 + " "
+            
+           // teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+           // encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
+         
+            DueSerialNativeUSBport101 =  new Serial(this,ports[2], 115200); 
+
+            // Read bytes into a buffer until you get a linefeed (ASCII 10):
+            // encoderReceiveUSBport101.bufferUntil('\n');
+            DueSerialNativeUSBport101.bufferUntil('\n');
             
         }
     }

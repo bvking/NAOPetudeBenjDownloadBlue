@@ -23,6 +23,7 @@ float speed = 1;
 float speedOfrepetition = 1;
 
 int[] changeMotorisedPosition = new int [networkSize];
+int[] dataFromArduinoDue= new int [networkSize];
 
   int[] upDateMotorisedPosition (int[] newMotorPositions) { 
   for (int i = 0; i < newMotorPositions.length; i++) { 
@@ -167,9 +168,10 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             
             //END INTERPOLaTION
             
-            // MANAGE ARDUINO && TENNSY
+            // MANAGE ARDUINO && TEENSY
             import processing.serial.*;
-            Serial encoderReceiveUSBport101; // The native serial port of the DUE fibish with 101
+            Serial encoderReceiveUSBport101; // The Teensy serial port giving position :  finish with 101
+            Serial DueSerialNativeUSBport101; // The ArduinoDue serial port giving position :  finish with 101
             Serial teensyport;
             Serial teensy4port;
             
