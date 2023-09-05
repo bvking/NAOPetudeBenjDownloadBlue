@@ -189,7 +189,14 @@ void autmationWithMeasureAndNote()
     */
   }
 
-  if  (measure==41 && beatTrigged==true ) {//77  //&& beatTrigged==true
+
+  if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {// return in main
+    keyMode = " null ";
+    draw();
+  }
+
+
+  if  (measure==410 && beatTrigged==true ) {//77  //&& beatTrigged==true
     //    key='o';
     //    keyReleased();
     specialPropagationKey = ':';
@@ -205,6 +212,8 @@ void autmationWithMeasureAndNote()
     // oscillatorBlocked=networkSize-1;
     speedDelta=1;
   }
+
+
     if  (measure==51 && beatTrigged==true ) {//77  //&& beatTrigged==true
 
     specialPropagationKey = ':';

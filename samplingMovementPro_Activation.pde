@@ -40,7 +40,7 @@ void handleSamplingModeWithAbletonLive(){
 
      if (actualSec == 1 && formerMeasure != measure) // 
      { textSize (300); 
-      mouseY = 200 ;
+     // mouseY = 200 ;
      }  
 
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +

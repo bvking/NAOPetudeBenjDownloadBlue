@@ -55,9 +55,7 @@ void draw()
       
     }
 */
- 
-
-    
+   
     //--- discriminate position from time line of Ableton
     formerBeatPrecised = beatPrecised;
     formerMeasure = measure;
@@ -66,8 +64,7 @@ void draw()
 
 
     
-    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live
-      
+    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
     {
          if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
       {
@@ -96,6 +93,14 @@ void draw()
             //switch (key) : different mode of speed, shift, propagation ....
         }
     }
+
+
+  if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true ) {// return in main
+    keyMode = " samplingModeWithLive ";
+  
+   // mousePressed=true;
+   mouseRecorded = true;
+  }
     
     if (keyMode == " null ")
     {
@@ -107,13 +112,16 @@ void draw()
      { 
            modeStartKeyToFollow = " truc ";
 
-       if (mousePressed==true)
+       if (mousePressed==true || mousePressed!=true)
         {
+           mouseRecorded = true;  // add to trig record 
            readyToRecord = true; 
            text(" PRESTART SAMPLING  ", 200, 200);
         }
 
-        if (readyToRecord==true &&  beatTrigged== true) // synchronise recording 
+        int specialMeasureToStartRecording = 41;
+
+        if (readyToRecord==true &&  beatTrigged== true && specialMeasureToStartRecording == measure) // synchronise recording 
         {           
             measureRecordStart = measure; //   
             text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
