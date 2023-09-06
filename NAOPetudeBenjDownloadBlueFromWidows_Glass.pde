@@ -155,7 +155,7 @@ void draw()
     if  (measure==(measureRecordStop) && beatPrecised == 1 && beatPrecisedTrigged==true)
     {// repetition and trigging
    // keyCode = ALT; keyReleased(); key = 'v'; keyReleased();
-    moveKeys[8]=true; moveKeys[12]=true;
+     moveKeys[8]=true; moveKeys[12]=true; //go to trigEvent
     // keyMode = " trigEventWithAbletonLive ";
     // trigEventWithAbletonSignal();
      modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";

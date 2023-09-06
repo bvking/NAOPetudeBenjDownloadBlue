@@ -446,7 +446,9 @@ void autmationWithMeasureAndNote()
   if  (measure==122 && beatTrigged==true) {// 124 basse
     propagationSpeed= 77.0;
     keyCode = LEFT; keyReleased(); // to do in propa
-    keyMode = " propagationBallRotationBis ";
+    moveKeys[8]=true;
+    moveKeys[16]=true;
+    //keyMode = " propagationBallRotationBis ";
 
     //  key='w';
     //  keyReleased();

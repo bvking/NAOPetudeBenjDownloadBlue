@@ -17,6 +17,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120;
 
        if  (music_from_ableton_live == " madRush " ) { 
+                 if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true)
+                 {
+                  keyCode = LEFT; keyReleased();
+                 }
+                  if  (measure==measureRecordStop && beatPrecised == 2 && beatPrecisedTrigged==true)
+                 {
+                  keyCode = RIGHT; keyReleased();
+                 }
+
+
+
+
+
+                
+                 if  (measure==61 && beatPrecised == 4 && beatPrecisedTrigged==true)
+
+                  {
+                  keyCode = 'p'; keyReleased();
+                   }
+
+
                autmationWithMeasureAndNote();
                //mapPropagationSampledBall();
          }
