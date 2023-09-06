@@ -75,12 +75,6 @@ void handleSamplingModeWithAbletonLive(){
      stopSamplingInternalClock(measureRecordStop);  //stop sampling  
      samplingMovementPro(); 
 
-     if (measure==measureRecordStop ) // && beatTrigged
-     {
-     // keyMode = " null ";
-      modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-     }
-
       rotate (HALF_PI);
    }
 

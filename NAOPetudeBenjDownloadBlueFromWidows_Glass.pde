@@ -66,7 +66,7 @@ void draw()
     
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
     {
-         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ")
       {
              setMeasureAndBeatPrecised();
       }
@@ -97,44 +97,47 @@ void draw()
 
    if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
     {// prepare record
-    keyMode = " samplingModeWithLive ";
-     // mousePressed=true;
+     keyMode = " samplingModeWithLive ";
+     // mousePressed(); 
      mouseRecorded = true;
    }
-
+   /*
     if  (measure==45 && beatPrecised == 1 && beatPrecisedTrigged==true )
-    {// prepare record
+    {// prepare repetition
+     keyMode = " null ";
+     //key = 'j'; keyReleased();
      //keyMode = " samplingModeWithLive ";
+    // keyMode = " trigEventWithAbletonLive "; NO
      modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+    followSignalSampledOppositeWay(frameRatio);
     }
 
-    if  (measure==45+16 && beatPrecised == 1 && beatPrecisedTrigged==true )
+    if  (measure==(45+16) && beatPrecised == 1 && beatPrecisedTrigged==true )
     {// prepare record
      keyMode = " trigEventWithAbletonLive ";
      modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-     // mousePressed=true;
-     mouseRecorded = true;
+     
+  
     }
+    */
 
 
     
-    if (keyMode == " null ")
+    if (keyMode == " null0 ")
     {
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
   
-    if (keyMode == " samplingModeWithLive ")
+    if (keyMode == " samplingModeWithLive " || keyMode == " null ")
      { 
-           modeStartKeyToFollow = " truc ";
-
+        //   modeStartKeyToFollow = " truc ";
        if (mousePressed==true || mousePressed!=true)
         {
            mouseRecorded = true;  // add to trig record 
            readyToRecord = true; 
            text(" PRESTART SAMPLING  ", 200, 200);
         }
-
         int specialMeasureToStartRecording = 41;
         measureRecordStop = specialMeasureToStartRecording+4;
 
@@ -147,11 +150,27 @@ void draw()
         {
         text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
         }
-        
         int disableDriver= -5;
         handleSamplingModeWithAbletonLive(); 
-   
-     }
+
+        if (measure==measureRecordStop && beatTrigged) // && beatTrigged
+             {
+          // keyMode = " null ";
+          modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+          //draw();
+         }
+    }
+  
+
+    if  (measure==(45+8) && beatPrecised == 1 && beatPrecisedTrigged==true)
+    {// repetition and trigging
+   // keyCode = ALT; keyReleased(); key = 'v'; keyReleased();
+    moveKeys[8]=true; moveKeys[12]=true;
+    // keyMode = " trigEventWithAbletonLive ";
+    // trigEventWithAbletonSignal();
+     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+     
+    }
 
     
     if (modeStartKeyToFollow == " samplingModeInternal ")
@@ -172,7 +191,12 @@ void draw()
     differentFunction();
     displayOscillatorSpheres();
     //****************************
-    trigFollowSignalSampled();
+    //trigFollowSignalSampled();
+     if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " )
+    {
+      followSignalSampledOppositeWay(frameRatio);// with millis()
+    }
+
     //rect(80,40,140,320);
     print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
     showArray(positionToMotor);

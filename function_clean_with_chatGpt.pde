@@ -111,7 +111,7 @@ void computePhaseSum() {
 }
 
 void setMeasureAndBeatPrecised() {
-  if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ") {
+  if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ") {
     measure = (int) map(automation4 * 10, 0, 7.874016, 1, 1000);
     print("measure ");
     print(measure);
@@ -199,9 +199,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
   case 'j':
 
     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-    setMeasureAndBeatPrecised();
-
-
+   
     // text ( modeStartKeyToFollow + " not good ? " , width/4, -height/4);
     text ( keyMode, width/4, -height/4);
     // samplingMovementPro();
@@ -394,13 +392,13 @@ void trigFollowSignalSampled() {
 
   //if ( beatTrigged== true)
   {  
-     setMeasureAndBeatPrecised();
+    
     print (" trigFollowSampling + MEASURE");
     println (trigFollowSampling + " " + measure);
     if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " ) {
       // followSignalSampled(frameRatio); // not well
     
-      setMeasureAndBeatPrecised();
+      
       //    formerBeatPrecised = beatPrecised;
      // formerMeasure = measure;
     //formerBeatOnMeasure = beatOnMeasure;

@@ -94,9 +94,10 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     mapPropagationSampledBall(); // COUNT REVOLUTION
     //   }
 
- if (measure==measureRecordStop+8){
+ if (measure==measureRecordStop+8 && beatTrigged == true){
   //  keyMode = " trigEventWithAbletonLive ";
-    draw();
+    textSize(500);
+   // draw();
 
     }
     
