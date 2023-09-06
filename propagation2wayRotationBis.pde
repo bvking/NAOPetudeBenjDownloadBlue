@@ -104,7 +104,11 @@ void propagation2wayRotationBis()
              //   LFO[i]=signal[2];
               //   LFO[i]%=TWO_PI;
         // phaseMapped [i] =LFO[i]-signal[2];  //LFO[i];   
-         phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, -TWO_PI, 0); 
+        //  phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, -TWO_PI, 0); 
+
+         phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, TWO_PI, 0); 
+
+
 
 
          } // with else if
