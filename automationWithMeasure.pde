@@ -362,8 +362,8 @@ void autmationWithMeasureAndNote()
   if ( measure==107 && beatTrigged==true) {
     //  speedDelta= 4;
     //     key='e'; keyReleased();
-    key = '9';
-    keyReleased();
+    //key = '9';
+    //keyReleased();
     key='f';
     keyReleased();
     key='f';

@@ -17,7 +17,7 @@ void teensyPos()
 
     if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive "  ) 
     { 
-       revLfo=rev;
+    //   revLfo=rev;
      }
 
     if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  )

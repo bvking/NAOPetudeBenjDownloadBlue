@@ -66,19 +66,9 @@ void draw()
     
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
     {
-         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ")
-      {
+ 
              setMeasureAndBeatPrecised();
-      }
     }
-            /*
-    println ( " MEASURE " + measure );
-     println ( " MEASURE " + measure );
-      println ( " MEASURE " + measure );
-            */
-  
-
-
 
     trigBeatWithMeasure();
     //printDataOnScreen();
@@ -123,13 +113,13 @@ void draw()
 
 
     
-    if (keyMode == " null0 ")
+    if (keyMode == " null ")
     {
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
   
-    if (keyMode == " samplingModeWithLive " || keyMode == " null ")
+    if (keyMode == " samplingModeWithLive " ) // || keyMode == " null "
      { 
         //   modeStartKeyToFollow = " truc ";
        if (mousePressed==true || mousePressed!=true)
@@ -150,7 +140,7 @@ void draw()
         {
         text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
         }
-        int disableDriver= -5;
+        //int disableDriver= -5;
         handleSamplingModeWithAbletonLive(); 
 
         if (measure==measureRecordStop && beatTrigged) // && beatTrigged
@@ -162,7 +152,7 @@ void draw()
     }
   
 
-    if  (measure==(45+8) && beatPrecised == 1 && beatPrecisedTrigged==true)
+    if  (measure==(measureRecordStop) && beatPrecised == 1 && beatPrecisedTrigged==true)
     {// repetition and trigging
    // keyCode = ALT; keyReleased(); key = 'v'; keyReleased();
     moveKeys[8]=true; moveKeys[12]=true;
