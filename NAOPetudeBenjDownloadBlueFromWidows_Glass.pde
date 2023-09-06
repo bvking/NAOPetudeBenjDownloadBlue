@@ -32,41 +32,21 @@ void draw()
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-        " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+            " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
     switchFonctionDependingKeyMode();
     computePhaseSum(); // to improve
 
-/*
-      if (keyMode == " samplingModeWithLive ")
-
-     {    modeStartKeyToFollow = " truc ";
-          if (mousePressed==true) { // in keyMode samplingModeWithLive
-        textSize(500);
-        //  mouseRecorded=true;
-         //measure=0;
-         actualSec=0;
-
-     }
-         updateAbletonLiveClock(); // trigged if
-         handleSamplingModeWithAbletonLive();
-      
-    }
-*/
-   
     //--- discriminate position from time line of Ableton
     formerBeatPrecised = beatPrecised;
     formerMeasure = measure;
     formerBeatOnMeasure = beatOnMeasure;
     //---
-
-
-    
-    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
-    {
  
+    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
+    { 
              setMeasureAndBeatPrecised();
     }
 
@@ -84,33 +64,12 @@ void draw()
         }
     }
 
-
    if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
     {// prepare record
      keyMode = " samplingModeWithLive ";
      // mousePressed(); 
      mouseRecorded = true;
    }
-   /*
-    if  (measure==45 && beatPrecised == 1 && beatPrecisedTrigged==true )
-    {// prepare repetition
-     keyMode = " null ";
-     //key = 'j'; keyReleased();
-     //keyMode = " samplingModeWithLive ";
-    // keyMode = " trigEventWithAbletonLive "; NO
-     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-    followSignalSampledOppositeWay(frameRatio);
-    }
-
-    if  (measure==(45+16) && beatPrecised == 1 && beatPrecisedTrigged==true )
-    {// prepare record
-     keyMode = " trigEventWithAbletonLive ";
-     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-     
-  
-    }
-    */
-
 
     
     if (keyMode == " null ")
@@ -140,7 +99,6 @@ void draw()
         {
         text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
         }
-        //int disableDriver= -5;
         handleSamplingModeWithAbletonLive(); 
 
         if (measure==measureRecordStop && beatTrigged) // && beatTrigged
@@ -151,17 +109,12 @@ void draw()
          }
     }
   
-
     if  (measure==(measureRecordStop) && beatPrecised == 1 && beatPrecisedTrigged==true)
     {// repetition and trigging
-  
          keyMode = " trigEventWithAbletonSignal ";
-         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-     
+         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
     }
-
-
-    
+  
     if (modeStartKeyToFollow == " samplingModeInternal ")
     { 
         updateInternalClock();
