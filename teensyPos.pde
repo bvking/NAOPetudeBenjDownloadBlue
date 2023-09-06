@@ -1,23 +1,27 @@
-
-
 void teensyPos()
 {
-  rotate(PI/2);
-  textSize (75);
-  translate (0, -1000, 0);
-  rotate(PI);
-  text ( " modeCircular " + modeCircular , 200, -300) ; //
-  rotate(-PI);
+   rotate(PI/2);
+   textSize (75);
+   translate (0, -1000, 0);
+   rotate(PI);
+   text ( " modeCircular " + modeCircular , 200, -300) ; //
+   rotate(-PI);
 
 
     //  oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition; 
 
-    if  ((keyMode == " samplingModeWithLive " ) && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
-       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-    }
-    
+    if  (keyMode == " samplingModeWithLive " && formerKeyMode == " trigEventWithAbletonSignal "  )
+     { 
+     //  revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+     }
 
-    if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+    if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive "  ) 
+    { 
+       revLfo=rev;
+     }
+
+    if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  )
+     { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
     }
 
@@ -26,7 +30,9 @@ void teensyPos()
     }
 
 
-  if ( measure <= 635)  {  // to avoid machine blocked 
+  if ( measure <= 635) // to avoid machine blocked 
+  {
+      
     if ( keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  " )  // || keyMode == " addSignalOneAndTwo "
          
     {  
@@ -214,6 +220,8 @@ void teensyPos()
             print ("net.phase "); showArrayF (net.phase);
             print ("old.phase "); showArrayF (net.oldPhase);
 
+            print (" dataMappedForMotorisedBigMachine "); showArray (dataMappedForMotorisedBigMachine);
+
           if (formerFormerKey=='I' ){
          for (int i = 0; i < (networkSize-0); i++) {  
 
@@ -349,8 +357,8 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
 
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
-    //  }
-    }
+       //  }
+     }
    }
 
      
@@ -372,16 +380,19 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
          }
     }
 
-   if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall " ) {
+   if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall " )
+    {
        send24DatasToTeensy6motorsToLittleMachine(5, -11, -3, -1);  
        send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
      }
 
-    if (keyMode == " addSignalOneAndTwo ") {
+    if (keyMode == " addSignalOneAndTwo ")
+     {
        send24DatasToTeensy6motorsToLittleMachine(5, -10, -3, -1); 
     }
 
-    if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ") {
+    if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
+     {
       if (measure>82 && measure<=124){
        print (" to change Mode and still runing ");
        send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -12, -1);

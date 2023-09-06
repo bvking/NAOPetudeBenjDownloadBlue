@@ -95,12 +95,28 @@ void draw()
     }
 
 
-  if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
+   if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
     {// prepare record
     keyMode = " samplingModeWithLive ";
      // mousePressed=true;
      mouseRecorded = true;
    }
+
+    if  (measure==45 && beatPrecised == 1 && beatPrecisedTrigged==true )
+    {// prepare record
+     //keyMode = " samplingModeWithLive ";
+     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+    }
+
+    if  (measure==45+16 && beatPrecised == 1 && beatPrecisedTrigged==true )
+    {// prepare record
+     keyMode = " trigEventWithAbletonLive ";
+     modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+     // mousePressed=true;
+     mouseRecorded = true;
+    }
+
+
     
     if (keyMode == " null ")
     {
@@ -171,13 +187,13 @@ void draw()
     //if (modeCircular==true) { // why it doesn' t work?
     if (formerKeyMetro ==  '*' || formerKeyMetro ==  '$' )  // case != to get trigModPos enabled      
     {
-        if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+        if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ")
         {
             if (keyMode != " propagationSampleBall ")
             {
                 if (keyMode != " propagationBallRotationBis ")
                 { 
-                       if (keyMode != " samplingModeWithMLive ")
+                       if (keyMode != " samplingModeWithLiveNO ")
                           {
                             countRevs(); // below modePendular to compute revolution
                            }

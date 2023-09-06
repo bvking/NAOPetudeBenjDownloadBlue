@@ -2,25 +2,23 @@ void switchFonctionDependingKeyMode() {
        // boolean truc = true;
       // setMovement( key, truc);
     
-    char lastKey;
+    char lastKey = ' ';
     if (key!= '#') {
-       // lastKey = char(key); 
-    
+        lastKey = char(key);   
         }
-           lastKey = char(key); 
-    
+         //  lastKey = char(key); 
     translate(0, 0, 1000);
-    text(" Acc " + speedDelta + " key " + lastKey + " beatP " + beatPrecised + " Ball " + memoryi +  " mode " + keyMode , -width, -height+200, 500); 
+    text(" Acc " + speedDelta + " key " + lastKey + " beatP " + beatPrecised + " Ball " + memoryi +  " mode " + keyMode +
+         " sta " + modeStartKeyToFollow,  -width, -height+200, 500); 
 
-
-    if (keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal ") {
-        
+    if (keyMode == " trigEventWithAbletonSignal " || keyModeRed == " trigEventWithAbletonSignal ")
+     {  
         trigEventWithAbletonSignal();
-    text(" Alt v " + keyMode, -width * 2, -height * 3+100);
-
+        text(" Alt v " + keyMode, -width * 2, -height * 3+100);
     }
     
-    if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater ") { //drive ball with lfo      
+    if (keyMode == " addSignalOneAndTwoQuater " || keyModeRed == " addSignalOneAndQuater ")
+     { //drive ball with lfo      
         propagationMode();
     }
     
@@ -64,14 +62,13 @@ void switchFonctionDependingKeyMode() {
     
     if (keyMode == " followDistribueAddLfoPatternBis " || keyModeRed == " followDistribueAddLfoPatternBis ") { //drive ball with lfo
         followDistribueAddLfoPattern();
-
-       text(" Alt d? not used " + keyMode, -width * 2, -height * 3+100);
+        text(" Alt d? not used " + keyMode, -width * 2, -height * 3+100);
 
         }
     
     if (keyMode ==  " samplingModeWithLive " || keyModeRed == " samplingModeWithLive ") { //drive ball with lfo
 
-        text(" Alt w  " + keyMode, -width * 2, -height * 3+100);
+        text(" Alt w  " + keyMode + " modeStartKeyToFollow " + modeStartKeyToFollow , -width * 2, -height * 3+100);
         }
     
     

@@ -351,8 +351,9 @@ void  displayModePendulaireModeCirculaire() {
       }
 
 
-      if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  || modeStartKeyToFollow  == " samplingModeInternal "
-        || modeStartKeyToFollow  == " followSignalSampled " ) {
+     if(    modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) "  || modeStartKeyToFollow  == " samplingModeInternal " || 
+            modeStartKeyToFollow  == " followSignalSampled " )
+      {
 
         // rotate (PI/2)/(networkSize); // to rotate only once
         //   println ( " display modeStartKeyToFollow " + modeStartKeyToFollow + " " + newPosF[i] + " " + i + " check " +  sampledModifiedChecking[i] );
@@ -360,7 +361,8 @@ void  displayModePendulaireModeCirculaire() {
         text ( char (formerKeyMetro), 200, 100);
         fill (255 /(networkSize-i+1), 127, 255 /(25*(i+1)));
 
-        if (
+        if
+        (
           modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " && modeCircular) {
 
           //    x = displacement*cos(phaseMapped[i]);

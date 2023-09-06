@@ -1,8 +1,10 @@
-void starterCaseUsedorNot (){ 
+void starterCaseUsedorNot()
+{ 
 
- if ( keyMode != " null "  ) {  
+ if ( keyMode != " null "  )
+  {  
     if ( keyMode == " phasePattern "  ) { 
- //       pendularPatternLFO();
+      //       pendularPatternLFO();
       text ( " phase offset " + k + " delay " + d, - width-400, - height+400);
        
     if (formerKey=='o' || key=='ç'|| keyCode==SHIFT || key=='*' || key=='ç' || key==',' || key==';' || key=='A'
@@ -18,10 +20,10 @@ void starterCaseUsedorNot (){
     if (formerSartKey=='L') { // like V and shift two frequencies and phases at the same time
     formerKeyL();
     }
-  // oscillator moving
-  // upstairauto
+      // oscillator moving
+      // upstairauto
 
-  // STARTERV Ar
+       // STARTERV Ar
     if (formerSartKey =='v' && (formerKey=='e' || formerKey=='z' || formerKey=='d' || formerKey=='r' || formerKey=='v')) { //  formerstartKey =='v' && || formerKey=='x'
      if (modeCircular==false  ) {//|| modeCircular==false
       for (int i = 2; i < (networkSize-0); i++) {
@@ -66,18 +68,18 @@ void starterCaseUsedorNot (){
         }
       }
     }
-  }
-  // ***** automatise Oscillator Moving with a former Key
-
-  // triggerv
-   if (formerKey=='v') {
-    formerKeyv(memoryi, oldMemoryi, k);
-    formerSartKey ='v';
    }
+   // ***** automatise Oscillator Moving with a former Key
 
- //*** arduinoPos();
+   // triggerv
+   if (formerKey=='v') {
+      formerKeyv(memoryi, oldMemoryi, k);
+      formerSartKey ='v';
+    }
 
-  // triggerc
+      //*** arduinoPos();
+
+        // triggerc
 
    if (formerSartKey =='c' && (formerKey=='&' || formerKey=='+')) { //  formerstartKey =='v' &&
     if (modeCircular==true ) {
@@ -127,29 +129,30 @@ void starterCaseUsedorNot (){
         TimeUpstair=millis();
       }
     }
-  }
+   }
   
    if (formerKey=='c' ) {
-  //  formerKeyc(memoryi, oldMemoryi);
+   //  formerKeyc(memoryi, oldMemoryi);
     println (" FORMER formerKeyc ");
     String debug;
     debug = " FORMER formerKeyc string ";
     println (debug); 
     
     formerSartKey ='c';
-   } 
+  } 
   
-  //************************************************************ //************************************************************   
-  //************************************************************ //************************************************************ 
-  //   begin of upstairAuto function 
-  //    trigw = trigx
-   if (formerKey=='w') {
+    //************************************************************ //************************************************************   
+   //************************************************************ //************************************************************ 
+   //   begin of upstairAuto function 
+   //    trigw = trigx
+  if (formerKey=='w')
+  {
     print (" formerKeyx? "); 
     print (formerKey );
- //   formerKeyCopposite(memoryi, oldMemoryi, k);
-    formerSartKey ='w';
-   }  
-  //    trigX
+      //   formerKeyCopposite(memoryi, oldMemoryi, k);
+     formerSartKey ='w';
+    }  
+        //    trigX
    if (formerKey=='X') {
     print (" formerKeyx? "); 
     print (formerKey );
@@ -215,8 +218,8 @@ void starterCaseUsedorNot (){
   //   starterw
    if (formerSartKey =='w'   )  { //  formerstartKey =='v' && || formerKey=='x' || KeyCode== SHIFT
      if (modeCircular==true || modeCircular==false ) {//|| modeCircular==false
-//  printDataOnScreen();
- //     pendularPatternLFO();
+     //  printDataOnScreen();
+      //     pendularPatternLFO();
 
    
      //   if  (millis()>TimeUpstair+d) {
@@ -268,9 +271,10 @@ void starterCaseUsedorNot (){
    //  key ='#';
    } 
    */
-  if (formerKey=='V') { // like V and shift two frequencies and phases at the same time
-    formerKeyV();
-    //  key ='#';
+  if (formerKey=='V')
+   { // like V and shift two frequencies and phases at the same time
+      formerKeyV();
+     //  key ='#';
      }
    } 
 } 
