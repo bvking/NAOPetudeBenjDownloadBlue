@@ -254,10 +254,14 @@ void autmationWithMeasureAndNote()
     speedDelta=7;
   }
 
-  if  (measure==81 && beatTrigged) {
+  if  (measure==81 &&   beatPrecised%1==0  && beatPrecisedTrigged==true) {
 
     speedDelta=8;
-    modeStartKeyToFollow =  " truc ";
+    modeStartKeyToFollow =  " truc "; // tres important pour sortir du mode follow sample
+    moveKeys[8]=true;
+    moveKeys[11]=true;  // keyMode TrigEvent
+    setKeyModeByTappingKeyPadOnce();
+    key = 'f'; keyReleased();
   }
 
   if  (measure==82 &&   beatPrecised == 1 && beatPrecisedTrigged==true) {
@@ -443,10 +447,11 @@ void autmationWithMeasureAndNote()
   if  (measure==122 && beatPrecised==1 && beatPrecisedTrigged == true) {// 124 basse
     propagationSpeed= 77.0;
    // keyCode = LEFT; keyReleased(); // to do in propa
-    keyMode = " propagationBallRotationBis ";
+    //keyMode = " propagationBallRotationBis ";
     moveKeys[8]=true;
     moveKeys[16]=true;
-    //keyMode = " propagationBallRotationBis ";
+    setKeyModeByTappingKeyPadOnce();
+    //propagationBallRotationBis(propagationSpeed);
 
     //  key='w';
     //  keyReleased();

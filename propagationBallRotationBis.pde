@@ -18,7 +18,7 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 
 void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as addSignalOneAndTwoQuater() in NAOP 
     keyMode = " propagationBallRotationBis ";
-    modeStartKeyToFollow = " null ";
+   // modeStartKeyToFollow = " null ";
     //formerKeyMetro = '*';
     
     // propagationSpeed = speedOfPropagationFromLiveOrNot - 10;
@@ -159,7 +159,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     }
     
     
-    if (formerFormerKey == '#' || modeStartKeyToFollow == " null ") { // formerFormerKey == '#' || 
+    if (formerFormerKey == '#' ) { // formerFormerKey == '#' || 
         
         println(" modeStartKeyToFollow " + modeStartKeyToFollow);
         if (doRotation == true) {  // see at the end in propa2wayBis
@@ -214,13 +214,13 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     */  
     
     if (key != '#') {
-        if (modeStartKeyToFollow == " null ") {
+       
             phasePatternBase();
             
             for (int i = 0; i < networkSize - 0; i += 1) {
              //   phaseMappedFollow[i] = netPhaseBase[i];
             }
-        }
+        
     } 
     
     // modality of splitted time

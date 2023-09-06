@@ -121,7 +121,7 @@ void draw()
   
     if (keyMode == " samplingModeWithLive " ) // || keyMode == " null "
      { 
-        //   modeStartKeyToFollow = " truc ";
+           modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
        if (mousePressed==true || mousePressed!=true)
         {
            mouseRecorded = true;  // add to trig record 
@@ -199,7 +199,7 @@ void draw()
     netG.step(); //actualise step for chimera state, not use yet
     
     //if (modeCircular==true) { // why it doesn' t work?
-    if (formerKeyMetro ==  '*' || formerKeyMetro ==  '$' )  // case != to get trigModPos enabled      
+    if (formerKeyMetro ==  '*' || formerKeyMetro ==  '$' )  // case != to get trigModPos enabled         formerKeyMetro ==  '*' ||
     {
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ")
         {

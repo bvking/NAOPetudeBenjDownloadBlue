@@ -24,6 +24,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   if  (measure==measureRecordStop && beatPrecised == 2 && beatPrecisedTrigged==true)
                  {
                   keyCode = RIGHT; keyReleased();
+                  keyCode = LEFT; keyReleased();
                  }
 
 
