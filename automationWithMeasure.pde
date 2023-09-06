@@ -313,7 +313,8 @@ void autmationWithMeasureAndNote()
   }
 
   if  (measure==85 && beatTrigged ) {
-   // speedDelta=12;
+    key='y';
+    keyReleased(); // uprise speed
   }
 
   if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8
@@ -371,7 +372,7 @@ void autmationWithMeasureAndNote()
     key='f';
   }
   if ( measure==108 && beatTrigged==true) {
-      speedDelta= 5;
+    
     key='p';
     keyReleased();
     key='p';
@@ -401,14 +402,15 @@ void autmationWithMeasureAndNote()
     keyReleased();
   }
 
-  if  (((measure==121)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16 || beatPrecised == 21 ) ) {
+  if  (((measure==121)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16  ) ) {
     key='t';
     keyReleased();
   }
 
 
 
-  if ( measure==122 && beatTrigged==true) {
+   if  (measure==121 && beatPrecised==18 && beatPrecisedTrigged==true)
+  {// 124 basse
     speedDelta=4;
     key='*';
     keyReleased();
@@ -429,11 +431,6 @@ void autmationWithMeasureAndNote()
     keyReleased();
     key='H';
     keyReleased();
-
-    //  key='O';
-    ///   keyReleased();
-
-    //   key='°';keyReleased(); // speed=0
     key='0';
     keyReleased(); // speed=0
     key='q';
@@ -443,9 +440,10 @@ void autmationWithMeasureAndNote()
   }
 
 
-  if  (measure==122 && beatTrigged==true) {// 124 basse
+  if  (measure==122 && beatPrecised==1 && beatPrecisedTrigged == true) {// 124 basse
     propagationSpeed= 77.0;
-    keyCode = LEFT; keyReleased(); // to do in propa
+   // keyCode = LEFT; keyReleased(); // to do in propa
+    keyMode = " propagationBallRotationBis ";
     moveKeys[8]=true;
     moveKeys[16]=true;
     //keyMode = " propagationBallRotationBis ";
@@ -454,7 +452,7 @@ void autmationWithMeasureAndNote()
     //  keyReleased();
   }
 
-  if  (measure==126 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
+  if  (measure==126 && beatPrecised==1 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42
 
     // keyCode = ALT;  keyPressed ();
     key= 'P';
