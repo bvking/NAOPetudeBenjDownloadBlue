@@ -37,8 +37,10 @@ void oscEvent(OscMessage theMsg) {
     automationLFO[4] = theMsg.get(0).floatValue();
   }  
 
-  if (theMsg.checkAddrPattern("/LFO5")==true) {
+ // if (theMsg.checkAddrPattern("/LFO5")==true) {
+  if (theMsg.checkAddrPattern("/pongo")==true) {
     automationLFO[5] = theMsg.get(0).floatValue();
+    text ( " receive ", 200, 200);
   }  
 /*
   if (theMsg.checkAddrPattern("/LFO6")==true) {
@@ -529,7 +531,10 @@ void oscSend(){
      {  Velocity=-1;
      } 
      
-  OscMessage myMessage = new OscMessage("/test");
+//  OscMessage myMessage = new OscMessage("/test");
+  OscMessage myMessage = new OscMessage("msg");
+  myMessage.add(0); /* add an int to the osc message */
+  oscP5.send(myMessage, myRemoteLocationII);
   OscMessage myMessage1 = new OscMessage("/trigLfo");
   OscMessage myMessage2 = new OscMessage("/Velocity");
   OscMessage myMessage3 = new OscMessage("/cohesion");
@@ -553,8 +558,11 @@ void oscSend(){
 
  
   float j= LevelCohesionToSend*1.0;
-  myMessage.add((map ((j), 0, 1, 1, 127))); /* add an int to the osc message */
+
+  //myMessage.add((map ((j), 0, 1, 1, 127))); /* add an int to the osc message */
+ 
   myMessage1.add( trigLfo);
+
   float data10= dataMappedForMotorisedPosition[networkSize-1]*1.0;   
   myMessage2.add(Velocity);
   myMessage3.add(LevelCohesionToSend);
