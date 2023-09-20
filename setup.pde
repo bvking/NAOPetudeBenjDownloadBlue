@@ -481,6 +481,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             OscP5 oscP5bis;//send data
             NetAddress myRemoteLocation;// send data  to Live
             NetAddress myRemoteLocationII; // send data  to Live
+            NetAddress myRemoteLocation8002; // send data  to Live
             
             float[] dataToLive; 
             int[] upVelocity = new int[networkSize]; 
@@ -767,9 +768,9 @@ void setup() {
 
                 myRemoteLocation = new NetAddress("192.168.1.77", 8000); // send data to port 8000 
                // myRemoteLocation = new NetAddress("127.0.0.1", 8000); // rsend data to live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
-               
-                myRemoteLocationII = new NetAddress("127.0.0.1", 8001); // receive data fto live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
-                
+               // myRemoteLocationII = new NetAddress("127.0.0.1", 8001); // receive data fto live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
+                 myRemoteLocationII = new NetAddress("192.168.1.77", 8001); 
+                 myRemoteLocation8002 = new NetAddress("192.168.1.77", 8002);
                 dataToLive = new float[networkSize];
                 upVelocity = new int[networkSize];
                 
