@@ -1,4 +1,5 @@
 int dataLFO, lastDataLfo;
+int formerFramePulsation;
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
 void oscEvent(OscMessage theMsg) {
@@ -547,7 +548,11 @@ void oscSend(){
 
  if (lastDataLfo!=dataLFO){
     lastDataLfo=dataLFO;
+    
+    if (frameCount>=formerFramePulsation+3){
     lfoTosend=1.0;
+    formerFramePulsation=frameCount;
+    }
    }
  //dataLFO = int( millis()*0.001); // sec
  // dataLFO = int( millis()*0.01); // 1/10sec

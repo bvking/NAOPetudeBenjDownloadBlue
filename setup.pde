@@ -770,7 +770,8 @@ void setup() {
                // myRemoteLocation = new NetAddress("127.0.0.1", 8000); // rsend data to live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
                // myRemoteLocationII = new NetAddress("127.0.0.1", 8001); // receive data fto live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
                  myRemoteLocationII = new NetAddress("192.168.1.77", 8001); 
-                 myRemoteLocation8002 = new NetAddress("192.168.1.77", 8002);
+                // myRemoteLocation8002 = new NetAddress("192.168.1.77", 8002);
+                myRemoteLocation8002 = new NetAddress("192.168.1.41", 8002);// to node32s
                 dataToLive = new float[networkSize];
                 upVelocity = new int[networkSize];
                 
