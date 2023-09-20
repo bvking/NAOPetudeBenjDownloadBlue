@@ -1,3 +1,4 @@
+int dataLFO, lastDataLfo;
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
 void oscEvent(OscMessage theMsg) {
@@ -535,7 +536,8 @@ void oscSend(){
   OscMessage myMessage = new OscMessage("msg");
   myMessage.add(0); /* add an int to the osc message */
   oscP5.send(myMessage, myRemoteLocationII);
-  OscMessage myMessage1 = new OscMessage("/trigLfo");
+  //OscMessage myMessage1 = new OscMessage("/trigLfo");
+   OscMessage myMessage1 = new OscMessage("/led");
   OscMessage myMessage2 = new OscMessage("/Velocity");
   OscMessage myMessage3 = new OscMessage("/cohesion");
   OscMessage myMessage4 = new OscMessage("/upVelocity11");
@@ -561,7 +563,38 @@ void oscSend(){
 
   //myMessage.add((map ((j), 0, 1, 1, 127))); /* add an int to the osc message */
  
+ float lfoTosend;
+ int ellapsedTime;
+
+    lfoTosend=0.0;
+
+ if (lastDataLfo!=dataLFO){
+    lastDataLfo=dataLFO;
+    lfoTosend=1.0;
+ }
+ 
+
+ //dataLFO = int( millis()*0.001); // sec
+ // dataLFO = int( millis()*0.01); // 1/10sec
+    dataLFO = int( millis()*0.005); // 1/10sec
+
+  text ( dataLFO , -1000, -400, 1000);
+ 
+ 
+  text (  lfoTosend, -1000, -200, 1000);
+ 
+/*
+ if (dataLFO==1){
+  lfoTosend=1.0;
+ }
+ else {
+   lfoTosend=0.0;
+ }
+ */
+
+  trigLfo=lfoTosend;
   myMessage1.add( trigLfo);
+  text ( dataLFO + " lfoTosend " +lfoTosend, -1000, -500, 1000);
 
   float data10= dataMappedForMotorisedPosition[networkSize-1]*1.0;   
   myMessage2.add(Velocity);
