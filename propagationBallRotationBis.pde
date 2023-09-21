@@ -302,8 +302,19 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             //propagationSpeed= 60.0;
             //  keyMode = " trigEventWithAbletonSignal ";
         }      
-        if (measure ==  134 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-            //  keyMode = " trigEventWithAbletonSignal ";
+        if (measure ==  134 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'O';
+        }
+         if (measure == 135 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'o';
+        }
+
+        if (measure ==  138 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'O';
+        }
+
+        if (measure == 139 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'o';
         }
      } // end madRush
     
