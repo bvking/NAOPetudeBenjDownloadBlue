@@ -540,6 +540,7 @@ void oscSend(){
     // oscP5.send(myMessage1, myRemoteLocationII);
     
     OscMessage myMessage1 = new OscMessage("/led");
+      OscMessage myMessage2 = new OscMessage("/led");
 
     
    float lfoTosend; 
@@ -556,9 +557,12 @@ void oscSend(){
   text (  lfoTosend, -1000, -200, 1000);
   trigLfo=lfoTosend;
   myMessage1.add(trigLfo); // called led
-   oscP5.send(myMessage1, myRemoteLocation8002);
-   oscP5.send(myMessage1, myRemoteLocation8003);
-  OscMessage myMessage2 = new OscMessage("/Velocity");
+  myMessage2.add(1.0-trigLfo); // called led
+
+  // oscP5.send(myMessage1, myRemoteLocation8002);
+  // oscP5.send(myMessage2, myRemoteLocation8003);
+
+  //OscMessage myMessage2 = new OscMessage("/Velocity");
   OscMessage myMessage3 = new OscMessage("/cohesion");
   OscMessage myMessage4 = new OscMessage("/upVelocity11");
   OscMessage myMessage5 = new OscMessage("/upVelocity10");

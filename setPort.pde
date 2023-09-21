@@ -16,6 +16,7 @@ void setPort()
 
     String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
     String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
+    String[] matchPort2B = match(portsUSB[2], "/dev/cu.usbserial-0001"); // only serial connected
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
 
         portsUSBfrom1=portsUSB[1];
@@ -44,9 +45,10 @@ void setPort()
     }
    
     if (matchPort1!= null) { 
-        allMachineConnected = false;
-      
-        println(" serial port 1 as programming port ending with 101 " + portsUSB[1] + " allMachineConnected " + allMachineConnected);       
+        allMachineConnected = false;    
+        println(" serial port 1 as programming port ending with 101 " + portsUSB[1] + " allMachineConnected " + allMachineConnected);   
+       println(" connect port of position data");
+       // onlyLitteMachineWithSecondSerialPort = true;    
     }
 
     if (matchPort2!= null) { 
@@ -78,7 +80,7 @@ void setPort()
              println(" Port 1 CONNECTED to programming port of Teensy 3.5 "); //  + portsUSBfrom2 + " "
              println(" portConnectedOfBigMachine " + portConnectedOfBigMachine); //  + portsUSBfrom2 + " "
             
-           // teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+              teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
               encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
          
            // DueSerialNativeUSBport101 =  new Serial(this,ports[2], 115200); 
