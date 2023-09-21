@@ -960,6 +960,9 @@ textSize (100);
      // net.phase[i] += (i*TWO_PI/networkSize)%PI/(networkSize*4); // pas en mode circular ? 
 
       net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+         if (formerKeyMetro=='$'){
+        net.phase[i]%=TWO_PI;
+      }
 
     // net.phase[i] += (i*TWO_PI/10/5); //  en mode circular?
 
@@ -980,6 +983,9 @@ textSize (100);
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
    //   net.phase[i] -= (i*TWO_PI/5)%PI/5;
           net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
+             if (formerKeyMetro=='$'){
+        net.phase[i]%=TWO_PI;
+      }
 
 
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
@@ -1145,6 +1151,9 @@ textSize (100);
     for (int i = 0; i < networkSize; i++) {  
 
       net.phase[i]-= ((TWO_PI/(networkSize-2))*(1*(networkSize-1-i)))%PI/6; // 
+      if (formerKeyMetro=='$'){
+        net.phase[i]%=TWO_PI;
+      }
     //  net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
       printSummary(i);
@@ -1165,6 +1174,9 @@ textSize (100);
       //  net.phase[i]+=   TWO_PI/(networkSize*2)*(1*(networkSize-1-i)); // 20 hit? hit
 
         net.phase[i]+=   (TWO_PI/(networkSize-0))*(1*(networkSize-1-i)); //  10 hit but problem with counter
+           if (formerKeyMetro=='$'){
+        net.phase[i]%=TWO_PI;
+      }
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
      //  net.phase[i]=  net.phase[i]%TWO_PI;

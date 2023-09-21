@@ -770,6 +770,9 @@ void setup() {
                 oII = new OscP5(this, 2350);//receive datapiano partitionII
                 
                 oscP5 = new OscP5(this, 7999);//receive data to himself
+
+                //192.168.1.50
+
                 //  oscP5bis = new OscP5(this, 8002);//receive data to himself
                 
                 // myRemoteLocation = new OscP5(this, 8000); // rsend data to live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)

@@ -274,7 +274,7 @@ void autmationWithMeasureAndNote()
     keyReleased();
     speedDelta=9;
 
-    memoryi = 9;
+    memoryi = networkSize-1;
 
     net.naturalFrequency[memoryi]= 2;
     //   key = 't' ;  keyReleased(); // aligné à la moyenne de l'ensemble
@@ -398,7 +398,7 @@ void autmationWithMeasureAndNote()
   }
 
   if  (((measure==120)  && beatTrigged==true)  ) {
-    memoryi=9;// set Memoryi to 9 to start stop frequency at 0 by tapping 't'
+    memoryi=networkSize-1;// set Memoryi to 9 to start stop frequency at 0 by tapping 't'
   }
 
   if  (((measure==120)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16 || beatPrecised == 21 ) ) {

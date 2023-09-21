@@ -55,7 +55,7 @@ void displaySignalFromAbleton()
     float hor_move = map(automation3, 0, 1, -300, 300);  // //followMad
     
     float RColour = map(automation7, 0, 1, 0, 255);
-    //float GColour = map(automation4, 0, 1, 0, 255);
+    float GColour = map(automation4%10, 0, 10, 0, 255);
     float LFO1 = map(automation6, 0, 1, 0, 255);
     float LFO2 = map(automation7, 0, 1, 0, 255);
     
@@ -64,7 +64,7 @@ void displaySignalFromAbleton()
     float XSize = map(automation1, 0, 1, 10, 80);
     float YSize = map(automation3, 0, 1, 0, 320);
     
-    float LFOphase1 = map(automation6, 0, 1, -300, 300);
+    float LFOphase1 = map(automation4%10, 0, 10, -300, 300);
     float LFOphase2 = map(automation7, 0, 1, -300, 300);
     //fill(RColour, GColour, BColour);
     ellipse(ver_move, hor_move, 50, 50);
