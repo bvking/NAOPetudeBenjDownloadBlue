@@ -1,10 +1,6 @@
-/*
 void serialEvent(Serial encoderReceiveUSBport101)
-    { 
-    
-    String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');
-   
-    
+{  
+    String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');  
     String[] m0 = match(myEncodeur, "encodeur0");
     String[] m1 = match(myEncodeur, "encodeur1");
     String[] m2 = match(myEncodeur, "encodeur2");
@@ -14,22 +10,22 @@ void serialEvent(Serial encoderReceiveUSBport101)
     
     if (m0 != null) {  // If not null, then a match was found
         encoderTouched[0] = true;
-}
+    }
     else encoderTouched[0] = false;
     
     if (m1 != null) {  // If not null, then a match was found
         encoderTouched[1] = true;
-}
+    }
     else  encoderTouched[1] = false;
     
     if (m2 != null) {  // If not null, then a match was found
         encoderTouched[2] = true;
-}
+    }
     else  encoderTouched[2] = false;
     
     if (m3 != null) {  // If not null, then a match was found
         encoderTouched[3] = true;
-}
+    }
     else  encoderTouched[3] = false;
     
     if (m4 != null) {  // If not null, then a match was found
@@ -39,9 +35,8 @@ void serialEvent(Serial encoderReceiveUSBport101)
     
     if (m5 != null) {  // If not null, then a match was found
         encoderTouched[5] = true;
-}
+    }
     else  encoderTouched[5] = false;
-    
     
     //  String myString = encoderReceiveUSBport14101.readStringUntil('\n');
     // read the serial buffer:
@@ -54,27 +49,21 @@ void serialEvent(Serial encoderReceiveUSBport101)
     int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
     
     int numberOfEncodeur = 6;
-    
-  
-} 
-    
+      
     if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
         for (int i = 0; i < networkSize; i++) {
            //  encodeur[i] = values[i];  DON'T WORK
-        }
-        
+        }   
         encodeur[0] = values[0];
         encodeur[1] = values[1];
         encodeur[2] = values[2];
         encodeur[3] = values[3];
         encodeur[4] = values[4];
-        encodeur[5] = values[5];
-           
+        encodeur[5] = values[5];         
     }   
 }
-*/
 
-
+/*
 void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited with , and the last is send with println
     
     //read the serial buffer:
@@ -93,13 +82,10 @@ void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited 
  
         
         dataFromArduinoDue[0] = (int) map(valuesFromDue[0], 0, 4000, 0, 4000);
-        dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 4000);
-
-        
+        dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 4000);        
+ } 
 }
-  
-
-}
+*/
 
 
 
