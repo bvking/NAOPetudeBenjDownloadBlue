@@ -552,10 +552,12 @@ void oscSend(){
  //dataLFO = int( millis()*0.001); // sec
  // dataLFO = int( millis()*0.01); // 1/10sec
     dataLFO = int( millis()*0.005); // 1/10sec
+    rotate(-PI/2);
   text (  lfoTosend, -1000, -200, 1000);
   trigLfo=lfoTosend;
   myMessage1.add(trigLfo); // called led
    oscP5.send(myMessage1, myRemoteLocation8002);
+   oscP5.send(myMessage1, myRemoteLocation8003);
   OscMessage myMessage2 = new OscMessage("/Velocity");
   OscMessage myMessage3 = new OscMessage("/cohesion");
   OscMessage myMessage4 = new OscMessage("/upVelocity11");
