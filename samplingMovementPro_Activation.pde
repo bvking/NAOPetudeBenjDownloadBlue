@@ -44,14 +44,15 @@ void handleSamplingModeWithAbletonLive(){
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
           int disableDriver=-5;
-          int dataNoComputed;
-             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, -3, -1); // 
+          int dataNoComputed=-4;
+             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
            //  send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
        }
 
        if ( measure>=measureRecordStop ) { 
           int disableDriver=15;
-          send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, -3, -1); // 
+          int dataNoComputed=-4;
+          send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
           //   send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
        }
 
