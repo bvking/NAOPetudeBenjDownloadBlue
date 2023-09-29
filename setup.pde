@@ -12,10 +12,10 @@ public void settings() {
 } 
 */
 
-int networkSize = 6;
+int networkSize = 10;
 int nbBalls = networkSize;
 
-int numberOfStep = 6400;
+int numberOfStep = 3200;
 int speedDelta = 2; // ratio of speed and acceleration in Arduino
 
 int posAverage = 0;

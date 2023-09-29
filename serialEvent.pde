@@ -1,3 +1,4 @@
+/*
 void serialEvent(Serial encoderReceiveUSBport101)
 {  
     String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');  
@@ -62,8 +63,9 @@ void serialEvent(Serial encoderReceiveUSBport101)
         encodeur[5] = values[5];         
     }   
 }
+*/
 
-/*
+
 void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited with , and the last is send with println
     
     //read the serial buffer:
@@ -85,7 +87,7 @@ void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited 
         dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 4000);        
  } 
 }
-*/
+
 
 
 
