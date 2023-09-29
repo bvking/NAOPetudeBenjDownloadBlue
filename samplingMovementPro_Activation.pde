@@ -46,23 +46,23 @@ void handleSamplingModeWithAbletonLive(){
           int disableDriver=-5;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
-           //  send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
+             send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
        }
 
        if ( measure>=measureRecordStop ) { 
           int disableDriver=15;
           int dataNoComputed=-4;
           send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
-          //   send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
+          send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
        }
 
      //==================== sampling from ENCODER_due
-      //angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
-      //newPosF[networkSize-1]= angleToInterpolate;
+      angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
+      newPosF[networkSize-1]= angleToInterpolate;
 
      //==================== sampling from ENCODER_teensy
-      angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
-      newPosF[networkSize-1]= angleToInterpolate;
+     // angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
+     // newPosF[networkSize-1]= angleToInterpolate;
 
      //==================== sampling from MOUSE_Y
          
