@@ -1,12 +1,12 @@
 void autmationWithMeasureAndNote()
 {
+  textSize(100);
   char lastKeyAuto = key;
    if (formerKey!='#'){
   lastKeyAuto=formerKey;
      }
 
- 
-  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKeyAuto , 500, -200);  // + " event " + formerEvent[note1]
+  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKeyAuto , 1200, -200);  // + " event " + formerEvent[note1]
 
   if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged == true )  //startStop = 3;
    { 

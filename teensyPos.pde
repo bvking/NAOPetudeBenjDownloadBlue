@@ -6,6 +6,16 @@ void teensyPos()
    rotate(PI);
    text ( " modeCircular " + modeCircular , 200, -300) ; //
    rotate(-PI);
+   int j=1;
+    text  (
+                  
+                   " MotorisedP " + j + " "  +  dataMappedForMotorisedPosition[j]+
+                   " deltaOld  " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
+                   " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
+                   " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]
+                                    
+                   , -300 , -height, -500);
+    
 
 
     //  oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition; 

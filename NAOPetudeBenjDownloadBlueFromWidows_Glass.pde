@@ -64,8 +64,13 @@ void draw()
         }
     }
 
+
+
    if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
     {// prepare record
+    modeCircular=true; // not work
+    formerKeyMetro ='*'; // not work
+
      keyMode = " samplingModeWithLive ";
      // mousePressed(); 
      mouseRecorded = true;
@@ -77,7 +82,7 @@ void draw()
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
-  
+   // startSamplingWithLive -  trigged from draw()  ---------------------------
     if (keyMode == " samplingModeWithLive " ) // || keyMode == " null "
      { 
            modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
@@ -100,8 +105,10 @@ void draw()
         text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
         }
         handleSamplingModeWithAbletonLive(); 
+   // endSamplingWithLive -  trigged from draw()  ---------------------------
 
-        if (measure==measureRecordStop && beatTrigged) // && beatTrigged
+
+        if (measure==measureRecordStop && beatTrigged ) // && beatTrigged
              {
           // keyMode = " null ";
           modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";

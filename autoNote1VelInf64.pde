@@ -1,7 +1,7 @@
 void autoNote1VelInf64() {  // 64 69 70 72 74 76
-  textSize(100);
+  
   char lastKey = key;
-  text(" specialPropagationKey " + specialPropagationKey + " memoryi" +memoryi + " oscBloc" + oscillatorBlocked, 500, -100);
+  text(" specialPropagationKey " + specialPropagationKey + " memoryi" +memoryi + " oscBloc" + oscillatorBlocked, 1200, 0);
 
   if (formerKey!='#') {
     lastKey = formerKey;

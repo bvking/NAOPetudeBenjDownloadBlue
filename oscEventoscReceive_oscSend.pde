@@ -838,7 +838,8 @@ void oscSend(){
   OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
   OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind 
 
-     text ( " trigMuteAll " + trigMuteAll,  100, 1700);
+     text ( " trigMuteAll " + trigMuteAll + " dataMappedForMotorisedBigMachine " + dataMappedForMotorisedBigMachine[0] ,  100, 1700);
+     
   myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
   myMessage31.add(TrigmodPos[1]);
   myMessage32.add(TrigmodPos[2]);
