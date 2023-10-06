@@ -66,12 +66,11 @@ void draw()
 
 
 
-   if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true )
+   if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true)
     {// prepare record
     modeCircular=true; // not work
-    formerKeyMetro ='*'; // not work
-
-     keyMode = " samplingModeWithLive ";
+    formerKeyMetro = '*'; // not work
+    keyMode = " samplingModeWithLive ";
      // mousePressed(); 
      mouseRecorded = true;
    }
@@ -82,7 +81,7 @@ void draw()
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
-   // startSamplingWithLive -  trigged from draw()  ---------------------------
+        //  ------------- startSamplingWithLive -  trigged from draw()  ---------------------------
     if (keyMode == " samplingModeWithLive " ) // || keyMode == " null "
      { 
            modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
@@ -92,6 +91,7 @@ void draw()
            readyToRecord = true; 
            text(" PRESTART SAMPLING  ", 200, 200);
         }
+
         int specialMeasureToStartRecording = 41;
         measureRecordStop = specialMeasureToStartRecording+4;
 
@@ -103,9 +103,9 @@ void draw()
         if (readyToRecord==false)
         {
         text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
-        }
+        }   
         handleSamplingModeWithAbletonLive(); 
-   // endSamplingWithLive -  trigged from draw()  ---------------------------
+        //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
 
 
         if (measure==measureRecordStop && beatTrigged ) // && beatTrigged
@@ -114,9 +114,9 @@ void draw()
           modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
           //draw();
          }
-    }
+     }
   
-    if  (measure==(measureRecordStop) && beatPrecised == 1 && beatPrecisedTrigged==true)
+    if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true)
     {// repetition and trigging
          keyMode = " trigEventWithAbletonSignal ";
          modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   

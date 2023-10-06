@@ -192,7 +192,7 @@ void autmationWithMeasureAndNote()
 
   if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {// return in main
     keyMode = " null ";
-    draw();
+    draw(); //go to main --> goOut from trigEvent
   }
 
 
