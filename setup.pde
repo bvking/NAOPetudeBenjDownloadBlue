@@ -12,13 +12,15 @@ public void settings() {
 } 
 */
 
-//int networkSize = 10;
-int networkSize = 6;
+int networkSize = 10;
+//int networkSize = 6;
 int nbBalls = networkSize;
 
-//int numberOfStep = 3200;
-int numberOfStep = 6400;
+int numberOfStep = 3200;
+//int numberOfStep = 6400;
 int speedDelta = 2; // ratio of speed and acceleration in Arduino
+
+// set music at the end of the setup
 
 int posAverage = 0;
 float speed = 1;
@@ -1028,6 +1030,21 @@ void setup() {
                 rectMode(CENTER);
                 
                 //***************************************** END 3D CAM  
+                /*
+                music_from_ableton_live = " pleasureKraft ";
+                positionMov = " premierePartie "; 
+                */
+
+                doo = true; // oposite way is true 
+               // doo = false; // to enable propagation
+                
+                music_from_ableton_live = " madRush ";    
+                
+
+                k = 0; // phaseShifting
+                oscillatorBlocked = networkSize - 1;
+                memoryi = networkSize - 1;
+                oscillatorFollowing[0] = 3.14;
                 
                 
                 //keyMode = " addSignalOneAndTwoBis ";  
@@ -1041,25 +1058,10 @@ void setup() {
                 //***keyMode = " notNull "; 
                 // modeStartKeyToFollow = " samplingModeInternal " ;
 
-                /*            
-                music_from_ableton_live = " pleasureKraft ";
-                positionMov = " premierePartie "; 
-                */
-
-                doo = true; // oposite way is true 
-               // doo = false; // to enable propagation
-
-                music_from_ableton_live = " madRush ";    
-
-                k = 0; // phaseShifting
-                oscillatorBlocked = networkSize - 1;
-                memoryi = networkSize - 1;
-                oscillatorFollowing[0] = 3.14;
-
+               
                 size(600, 600, P3D);
-               //  windowRatio(600, 600);
-                
-                 
+
+               //  windowRatio(600, 600); 
               //  translate(0, -800,1000);
                 
                 

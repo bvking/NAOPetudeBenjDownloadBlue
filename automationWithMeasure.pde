@@ -256,7 +256,7 @@ void autmationWithMeasureAndNote()
 
   if  (measure==81 &&   beatPrecised%1==0  && beatPrecisedTrigged==true) {
 
-    speedDelta=8;
+    speedDelta=7;
     modeStartKeyToFollow =  " truc "; // tres important pour sortir du mode follow sample
     moveKeys[8]=true;
     moveKeys[11]=true;  // keyMode TrigEvent
@@ -272,7 +272,7 @@ void autmationWithMeasureAndNote()
 
     key='9'; // aligné  à une position
     keyReleased();
-    speedDelta=9;
+    speedDelta=7;
 
     memoryi = networkSize-1;
 
