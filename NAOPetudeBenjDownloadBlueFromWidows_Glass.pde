@@ -118,7 +118,7 @@ void draw()
   
     if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true)
     {// repetition and trigging
-         keyMode = " trigEventWithAbletonSignal ";
+         keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
          modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
     }
   

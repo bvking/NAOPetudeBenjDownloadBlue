@@ -48,16 +48,42 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
                  if  (measure==50 && beatPrecised == 2 && beatPrecisedTrigged==true)
                  {
+                   keyCode = UP; keyReleased(); // 
+                   /*
                   key = 'P'; keyReleased();
+                  phasePattern();
                   keyMode = " trigEvent ";
-                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
+                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";  
+                  */ 
                  }
-
-         
-                 if  (measure==61 && beatPrecised == 4 && beatPrecisedTrigged==true)
+                  if  (measure==57 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
-                  key = 'P'; keyReleased();
+                     keyCode = LEFT; keyReleased(); //            
                    }
+
+                 if  (measure==61 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                  {
+                     keyCode = UP; keyReleased(); // 
+                     keyCode = UP; keyReleased(); // 
+                     keyCode = UP; keyReleased(); // 
+                     keyCode = UP; keyReleased(); // 
+                   }
+
+                 if  (measure==65 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                  {
+                         keyCode = LEFT; keyReleased(); //   
+                         keyCode = LEFT; keyReleased(); //   
+                   }
+
+                if  (measure==74 && beatPrecised == 2 && beatPrecisedTrigged==true)
+                  {
+                     keyCode = DOWN; keyReleased(); // 
+                     keyCode = DOWN; keyReleased(); // 
+                     keyCode = DOWN; keyReleased(); // 
+                     keyCode = DOWN; keyReleased(); // 
+                     keyCode = DOWN; keyReleased(); // 
+                   } 
+                   
 
                autmationWithMeasureAndNote();
                //mapPropagationSampledBall();

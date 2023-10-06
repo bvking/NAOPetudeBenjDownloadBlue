@@ -227,17 +227,25 @@ void autmationWithMeasureAndNote()
   //  keyReleased();
   }
 
-  if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
-    ((note1 == 74 && velocity1 >= 1 && velocity1 <= 64) ||
-    (note2 == 74 && velocity2 >= 1 && velocity2 <= 64) ||
-    (note3 == 74 && velocity3 >= 1 && velocity3 <= 64) ||
-    (note4 == 74 && velocity4 >= 1 && velocity4 <= 64) ||
+ // if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
+ if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 200 &&
+    ((note1 == 74 && velocity1 >= 1 && velocity1 <= 130) ||
+    (note2 == 74 && velocity2 >= 1 && velocity2 <= 130) ||
+    (note3 == 74 && velocity3 >= 1 && velocity3 <= 130) ||
+    (note4 == 74 && velocity4 >= 1 && velocity4 <= 130) ||
     (note5 == 74 && velocity5 >= 1 && velocity5 <= 64) ||
     (note6 == 74 && velocity6 >= 1 && velocity6 <= 64))) {
     //     key='9'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
     // key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
-    // keyReleased();
+     key='e'; 
+     keyReleased();
     formerEvent[74]=millis();
+  }
+
+  if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 200)
+  {
+   // autoNote1VelInf64();
+    autoNote2();
   }
 
 
