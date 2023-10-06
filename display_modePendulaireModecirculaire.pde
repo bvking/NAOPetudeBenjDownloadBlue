@@ -365,8 +365,10 @@ void  displayModePendulaireModeCirculaire() {
         (
           modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " && modeCircular) {
 
-          //    x = displacement*cos(phaseMapped[i]);
-          //    y = displacement*sin(phaseMapped[i]);
+           //  x = displacement*cos(phaseMapped[i]);
+           //  y = displacement*sin(phaseMapped[i]);
+           x = displacement*cos(net.phase[i]);
+           y = displacement*sin(net.phase[i]);
         }
 
         if (modeStartKeyToFollow  == " followSignalSampled " || modeStartKeyToFollow  == " samplingModeInternal "

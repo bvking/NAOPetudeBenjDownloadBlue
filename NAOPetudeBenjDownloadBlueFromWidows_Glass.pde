@@ -81,9 +81,9 @@ void draw()
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
-        //  ------------- startSamplingWithLive -  trigged from draw()  ---------------------------
+        //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive " ) // || keyMode == " null "
-     { 
+    { 
            modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
        if (mousePressed==true || mousePressed!=true)
         {
@@ -104,7 +104,7 @@ void draw()
         {
         text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
         }   
-        handleSamplingModeWithAbletonLive(); 
+        handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
 
 
@@ -114,7 +114,7 @@ void draw()
           modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
           //draw();
          }
-     }
+    }
   
     if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true)
     {// repetition and trigging

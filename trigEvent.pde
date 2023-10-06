@@ -30,21 +30,33 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120;
 
        if  (music_from_ableton_live == " madRush " ) { 
-                // shift phaseOffset in followSampling 
+                // shift phaseOffset with modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "
                  if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true)
                  {
-                  keyCode = LEFT; keyReleased();
+                  keyCode = LEFT; keyReleased(); // 
                  }
-                  if  (measure==measureRecordStop && beatPrecised == 2 && beatPrecisedTrigged==true)
+          
+                  if  (measure==50 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  {
-                  keyCode = RIGHT; keyReleased();
-                  keyCode = LEFT; keyReleased();
+                  // keyMode = " trigEvent ";
+                  // moveKeys[8]==true && moveKeys[11]==true
+                  moveKeys[8]=true;
+                  moveKeys[11]=true;
+                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+                  setKeyModeByTappingKeyPadOnce();        
+                 }
+
+                 if  (measure==50 && beatPrecised == 2 && beatPrecisedTrigged==true)
+                 {
+                  key = 'P'; keyReleased();
+                  keyMode = " trigEvent ";
+                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
                  }
 
          
                  if  (measure==61 && beatPrecised == 4 && beatPrecisedTrigged==true)
                   {
-                  keyCode = 'P'; keyReleased();
+                  key = 'P'; keyReleased();
                    }
 
                autmationWithMeasureAndNote();

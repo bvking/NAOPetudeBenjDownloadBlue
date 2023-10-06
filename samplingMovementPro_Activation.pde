@@ -40,25 +40,25 @@ void handleSamplingModeWithAbletonLive(){
      text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
             " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);   
 
-     // if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) { 
+       // if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) { 
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
           int disableDriver=-5;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
-             send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
+             send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
        if ( measure>=measureRecordStop ) { 
           int disableDriver=15;
           int dataNoComputed=-4;
           send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
-          send24DatasToTeensy10motorsToBigMachine(5, disableDriver, disableDriver, -1); // 
+          send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
      //==================== sampling from ENCODER_due
-      angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
-      newPosF[networkSize-1]= angleToInterpolate;
+     // angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
+     // newPosF[networkSize-1]= angleToInterpolate;
 
      //==================== sampling from ENCODER_teensy
      // angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
@@ -66,8 +66,8 @@ void handleSamplingModeWithAbletonLive(){
 
      //==================== sampling from MOUSE_Y
          
-     //  angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-     //  newPosF[networkSize-1]= angleToInterpolate;
+       angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+       newPosF[networkSize-1]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
