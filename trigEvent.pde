@@ -40,22 +40,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  {
                   // keyMode = " trigEvent ";
                   // moveKeys[8]==true && moveKeys[11]==true
+                  /*
                   moveKeys[8]=true;
                   moveKeys[11]=true;
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-                  setKeyModeByTappingKeyPadOnce();        
+                  setKeyModeByTappingKeyPadOnce();    
+                  */    
                  }
 
                  if  (measure==50 && beatPrecised == 2 && beatPrecisedTrigged==true)
                  {
-                   keyCode = UP; keyReleased(); // 
-                   /*
-                  key = 'P'; keyReleased();
-                  phasePattern();
-                  keyMode = " trigEvent ";
-                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";  
-                  */ 
+                   keyCode = ALT; keyReleased(); //  to set ALT (moveKeys[8) as false
+                  setKeyModeByTappingKeyPadOnce();    
+
+                  // keyCode = UP; keyReleased(); // to time shift ball's following ball[networkSize-1] 
+                    key = 'P';// keyReleased();
+      
+
+                   
+        
                  }
+                 
                   if  (measure==57 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                      keyCode = LEFT; keyReleased(); //            
@@ -65,13 +70,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   {
                      keyCode = UP; keyReleased(); // 
                      keyCode = UP; keyReleased(); // 
-                     keyCode = UP; keyReleased(); // 
-                     keyCode = UP; keyReleased(); // 
+                    // keyCode = UP; keyReleased(); // 
+                   //  keyCode = UP; keyReleased(); // 
                    }
 
                  if  (measure==65 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
-                         keyCode = LEFT; keyReleased(); //   
+                         keyCode = LEFT; keyReleased(); //   // delay between ball
                          keyCode = LEFT; keyReleased(); //   
                    }
 
@@ -83,8 +88,6 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                      keyCode = DOWN; keyReleased(); // 
                      keyCode = DOWN; keyReleased(); // 
                    } 
-                   
-
                autmationWithMeasureAndNote();
                //mapPropagationSampledBall();
          }

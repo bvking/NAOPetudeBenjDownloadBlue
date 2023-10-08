@@ -1,5 +1,6 @@
-void phasePattern() { // need standard mode to be trigged
-textSize (100);
+void phasePattern()
+ { // need standard mode to be trigged
+  textSize (100);
 
    // use with i, u, T
      if (key == '?' ) {
@@ -44,39 +45,38 @@ textSize (100);
      }
   }
 
-//  if  (   formerKeyMetro != 'c') {  // VERY IMPORTANT with CASE c
- if  (   keyMode != " truc "  ) {
-      if  (   keyMode == " trigEventWithAbletonSignal " ) {
 
-   //     text ( " YOU RELEASE IN PHASE PATTERN or PRESSED ", -200, -200);
-
+ if  (   keyMode != " truc "  )
+  {
+  // if  (   keyMode == " trigEventWithAbletonSignal " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio")
+  // {
+    //     text ( " YOU RELEASE IN PHASE PATTERN or PRESSED ", -200, -200);
     //     splitIncomingSignal();
          /*
          if (oscillatorChangingPropagation==true)  {key = 'f';}
-
          if (oscillatorChangingPropagation==false) {key = 'd';}
         */
     //     text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
       
-  for (int i = 0; i < (networkSize); i++) { 
+     for (int i = 0; i < (networkSize); i++) { 
     {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
 
       metroOldPhase[i]= metroPhase[i];
     //  OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
     }
-  }
-  //if  (   formerSartKey!= 'J')  
-  if (key == 'W') { // follow mode. What is w?  (formerKey=='w')
+   }
+    //if  (   formerSartKey!= 'J')  
+   if (key == 'W') { // follow mode. What is w?  (formerKey=='w')
     formerW();
     key ='#';
     //  pendular=5;
-  }
+   }
                                                                                                                                                                                                                                                                                                                                                                                                                           
 
-  //********** ********** ********** ********** ********** ********** ********** INCREASE FREQUENCIES in $ mode PENDULAR PATTERN
-  //********** ********** ********** ********** ********** ********** ********** TRIG PATTERN SHIFTING IN KEYREASED
+   //********** ********** ********** ********** ********** ********** ********** INCREASE FREQUENCIES in $ mode PENDULAR PATTERN
+   //********** ********** ********** ********** ********** ********** ********** TRIG PATTERN SHIFTING IN KEYREASED
 
-  if (keyCode == LEFT) {  
+   if (keyCode == LEFT) {  
        k--;
          if (k<-8) { 
         k=8;
@@ -97,14 +97,14 @@ textSize (100);
     }
   
 
-  if (keyCode == RIGHT) { 
+   if (keyCode == RIGHT) { 
        println("pendularPattern left INCREASE phase shifting"); // Incremente together without changing phases  
       k++;
       k=k%8;
     
     if (k>8) { 
       k=-8;
-    }
+     }
      oldMemoryi=memoryi;
      memoryi++;
      memoryi%=networkSize; 
@@ -113,23 +113,23 @@ textSize (100);
      oscillatorBlocked%=networkSize; 
 
     text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
-  } 
+    } 
 
 
-  if (key == '1') { 
+   if (key == '1') { 
     println("Set Frequencies to 1+ harmonic distance with maxim different between them "); // boost l'effet du case é 
     for (int i = 0; i < networkSize; i++) {
       net.naturalFrequency[i] =    1.2-((i+0)*(1.0*0.03));
       printSummary(i);
     }
-  }
-  if (key == '&') {
+    }
+    if (key == '&') {
     println ("Opoosite of 1");
     for (int i = 0; i < networkSize; i++) {
       net.naturalFrequency[i]= ((i+1)*0.10);   // equivalent à     net.naturalFrequency[i] =1.2- (((networkSize-1)-i)*0.1 );
       printSummary(i);
-    }
-  } 
+      }
+    } 
   
    else if (key == '2') { 
     println("2$ Set Frequencies to 2+ harmonic distance from F0 "); 
@@ -1128,17 +1128,17 @@ textSize (100);
    //   net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
       printSummary(i);
-    }
-    }
+     }
+     }
 
     else if (key == 'F') { 
     println(" F: Increase the gap between phases by f9 ");    
     for (int i = 0; i < networkSize; i++) {
 
-   //   net.phase[i] +=(i+1)*0.1;
+     //   net.phase[i] +=(i+1)*0.1;
     //  net.phase[i] +=TWO_PI/8/(networkSize-1)*i; // 8 is the step, if 16 little step
      net.phase[i] +=TWO_PI/12/(networkSize-1)*i; // 8 is the step, if 16 little step  //BEHIND
-  //        net.phase[i]+=   TWO_PI/(networkSize)/(networkSize+0)*(networkSize-1-i); // front 
+    //        net.phase[i]+=   TWO_PI/(networkSize)/(networkSize+0)*(networkSize-1-i); // front 
 
    //   net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
@@ -1158,7 +1158,7 @@ textSize (100);
       key='#';
       printSummary(i);
     }
-  }
+   }
 
     
     else if (key == 'P') { 
@@ -1184,7 +1184,7 @@ textSize (100);
       key='#';
       printSummary(i);
     }
-  }
+   }
 
     else if (keyCode == CONTROL) { 
      text ("INCREASE phases with special CONTROL   ",  200, 200); //P$ 
@@ -1210,7 +1210,7 @@ textSize (100);
       formerKeyCode= CONTROL;
 
     }
-  }
+    }
 
     if (formerKeyCode == CONTROL){  
    
@@ -1290,7 +1290,7 @@ textSize (100);
       key='#';
       printSummary(i);
     }
-  }
+   }
 
 
   
@@ -1301,20 +1301,20 @@ textSize (100);
       net.phase[i] += (QUARTER_PI/8)*(1+i);
     
     } 
-  }   
-  // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
+    }   
+    // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
 
-  else if (key == '9' )   //9$ //&& modeCircular==true 
-  { 
+    else if (key == '9' )   //9$ //&& modeCircular==true 
+   { 
     println(" Align oscillator vertically to the top  ");
     for (int i = 0; i < networkSize; i++) {
       net.phase[i]= 0-PI/2; 
       //      net.phase[i]= 0; 
       printSummary(i);
     }
-  } 
+   } 
   
-  else if (key == 'ç') {
+    else if (key == 'ç') {
     if (modeCircular==true) {
 
     float [] realign = new float [networkSize];
@@ -1339,23 +1339,23 @@ textSize (100);
         printSummary(i);
       }
     }
-  } 
-  ///******************************==================================================== MODULATE SPEED of ALL FREQUENCIE MORE OR LESS FASTLY in PENDULAR $
-  /// ****************************  How could i modulate the couple?
+   } 
+   ///******************************==================================================== MODULATE SPEED of ALL FREQUENCIE MORE OR LESS FASTLY in PENDULAR $
+   /// ****************************  How could i modulate the couple?
 
-  else if (key == 'y') { 
+   else if (key == 'y') { 
     println("y= Increase last frequencies + 0.05*i ");
     for (int i = 0; i < networkSize; i++) {   
       net.naturalFrequency[i] = net.naturalFrequency[i]*sqrt(sqrt(sqrt((sqrt(2)))));      // 4,42% more at each y pressed
       printSummary(i);
     }
-  } else if (key == 'h') { 
+   } else if (key == 'h') { 
     println(" Decrease last frequencies - 0.05*i"); 
     for (int i = 0; i < networkSize; i++) { 
       net.naturalFrequency[i] = net.naturalFrequency[i]/sqrt(sqrt(sqrt((sqrt(2)))));          
       printSummary(i);
     }
-  } else if (key == 'Y') { 
+    } else if (key == 'Y') { 
     println("y= Increase last frequencies + 0.05*i ");
        println("y= Increase last frequencies + 0.05*i ");
 
@@ -1366,17 +1366,17 @@ textSize (100);
       key='#';
       printSummary(i);
     }
-  } else if (key == 'H') { 
+    } else if (key == 'H') { 
     println(" Decrease last frequencies - 0.05*i"); 
     for (int i = 0; i < networkSize; i++) { 
       net.naturalFrequency[i] = net.naturalFrequency[i]*(.90);   
       key='#';
       printSummary(i);
-    }
-  } 
+     }
+   } 
 
-  //************************** CHANGE THE WAY OF ROTATION O$
-  else if (key == 'o') { 
+    //************************** CHANGE THE WAY OF ROTATION O$
+    else if (key == 'o') { 
         //  text("<=64 lastKey " + lastKey + " event " + formerEvent[note1] + " event " + formerEvent[73] + " vel " + velocity1, 500, 50);
 
     if ( keyMode != " phasePattern "){
@@ -1392,15 +1392,15 @@ textSize (100);
       printSummary(i);
       
     }
-  }
-/*
+   }
+    /*
     else if (key == 'a'   && keyCode == LEFT) {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize-0; i++) {   
       text (" memoryi " + memoryi, 500, 500);
       net.naturalFrequency[i]=net.naturalFrequency[memoryi];
     } 
-  }
-*/
+    }
+    */
 
     else if (key == 'à') {  print (" from EXPERIMENTAL T$");   
     for(int i = 0; i < (networkSize); i++) { 
@@ -1460,8 +1460,8 @@ textSize (100);
 
 
   
-//  phasePatternBase();
-//  key ='#';
+  //  phasePatternBase();
+  //  key ='#';
     //  teensyPos();
     /*
               key=formerKey;
@@ -1474,6 +1474,6 @@ textSize (100);
   //************************************ ENDPENDULARPATTERN  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
   //************************************ DONT TOUCH  //************************************ END OF PENDULARRRRRRR  $
-  }
  }
+ //}
 }

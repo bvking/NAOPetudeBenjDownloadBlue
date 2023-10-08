@@ -37,8 +37,11 @@ void handleSamplingModeWithAbletonLive(){
      // mouseY = 200 ; 
      }  
 
-     text ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
-            " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);   
+     text 
+     ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
+       " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
+
+
 
        // if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) { 
 

@@ -27,11 +27,7 @@ void keyReleased() {
        if (propagationSpeed==0){
          propagationSpeed=5;
       } 
-    }   
-    
-    if ( keyMode == " propagationBallRotationBis " )
-    {
-
+     
        if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
        levelFromArrow = levelFromArrow-0.1;
          if (levelFromArrow<=0) {
@@ -45,14 +41,6 @@ void keyReleased() {
            levelFromArrow=1;
         }
        }
-
-      if (keyCode == DOWN ) {  // && modulePhaseAmountWithArrow
-         //  levelFromArrow = levelFromArrow+1;
-         //   levelFromArrow +=0.1;
-         //  levelFromArrow = levelFromArrow%(1+0.1);   
-       
-       //  keyCode= TAB; // to trig once 
-     }
    }
 
 
@@ -64,10 +52,8 @@ void keyReleased() {
     getOldPositionOfActiveOscillator(faz);
     }
 
-    if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) { 
-    
-
-    if (networkSize ==6){
+    if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) {  // realignement
+     if (networkSize ==6){
      
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-0);
@@ -91,30 +77,37 @@ void keyReleased() {
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];
        } 
     
-      }
+    } // end realignement
 
-   if (key == ';' && networkSize == 6 ) {  //  && formerKeyMetro == '$'
-    
+   if (key == ';') {  
 
-    for (int i = 0; i < 1; i++) {
-      
+    if (networkSize ==6){ 
+    for (int i = 0; i < 1; i++) {      
       lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
       dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
+      text ( lastActualPosition[i], 100, 100*i); 
+     }
+    }
 
-      text ( lastActualPosition[i], 100, 100*i);
-  
+
+    if (networkSize ==10){ 
+    for (int i = 0; i < 1; i++) {      
+      lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                             dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
+                             dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+      text ( lastActualPosition[i], 100, 100*i); 
+     }
     }
 
      for (int i = 0; i < networkSize; i++) {
          CircularVirtualPosition[i]=0;
          ActualVirtualPosition[i]=lastActualPosition[0];
-        lastActualPosition[i]= lastActualPosition[0];
+         lastActualPosition[i]= lastActualPosition[0];
     } 
     
   }
 
-
-  if (keyCode == UP)
+  if (keyCode == UP && formerKey == 's' )
   {  
     if (key!='#')
      { 
@@ -124,7 +117,9 @@ void keyReleased() {
         {
           speedDelta++;
           speedDelta%=12;
-          speedDelta+=1;
+          if (speedDelta==0)
+          { speedDelta+=1;}
+         
 
          //   key='#'; // to trig only once
          /*
@@ -134,20 +129,17 @@ void keyReleased() {
           */
        }
      }
-   }
-  if (keyCode == DOWN)
+  }
+
+  if (keyCode == DOWN && formerKey == 's' )
   {  
      if (key!='#')
       {  
-
        if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
            || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
         )
-       
        {
-
         speedDelta--;
-
         if (speedDelta <= 1) { 
           speedDelta=1;
            }
@@ -164,8 +156,8 @@ void keyReleased() {
          }
    }
    
-    if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {  
-       //println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
+    if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {   //println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
+       
        delayTimeToTrig= delayTimeToTrig-20;
       if (delayTimeToTrig<=0) {
           delayTimeToTrig=200;
@@ -220,7 +212,10 @@ void keyReleased() {
       }
 
      }
-    key= '#';  // usefuu?  
+
+     phasePattern();//
+
+   // key= '#';  // usefuu?  
   } 
  
  

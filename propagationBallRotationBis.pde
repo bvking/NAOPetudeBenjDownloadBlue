@@ -77,12 +77,12 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     switch(letter) {
 
         case 'p' :
-         doRotationWithoutPropagation = true;
-         doRotation = true;
+        // doRotationWithoutPropagation = true;
+        // doRotation = true;
          break;
 
         case 'P' :
-         doRotationWithoutPropagation = false;
+        // doRotationWithoutPropagation = false;
          break;
 
         case'r' : // way of rotation
@@ -218,7 +218,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             phasePatternBase();
             
             for (int i = 0; i < networkSize - 0; i += 1) {
-             //   phaseMappedFollow[i] = netPhaseBase[i];
+               phaseMappedFollow[i] = netPhaseBase[i];
             }
         
     } 

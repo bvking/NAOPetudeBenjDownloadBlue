@@ -191,6 +191,7 @@ void autmationWithMeasureAndNote()
 
 
   if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {// return in main
+    formerKeyMetro = '*';
     keyMode = " null ";
     draw(); //go to main --> goOut from trigEvent
   }
@@ -228,7 +229,7 @@ void autmationWithMeasureAndNote()
   }
 
  // if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
- if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 200 &&
+ if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 500 &&
     ((note1 == 74 && velocity1 >= 1 && velocity1 <= 130) ||
     (note2 == 74 && velocity2 >= 1 && velocity2 <= 130) ||
     (note3 == 74 && velocity3 >= 1 && velocity3 <= 130) ||
@@ -237,6 +238,7 @@ void autmationWithMeasureAndNote()
     (note6 == 74 && velocity6 >= 1 && velocity6 <= 64))) {
     //     key='9'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
     // key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
+
      key='e'; 
      keyReleased();
     formerEvent[74]=millis();
@@ -245,7 +247,7 @@ void autmationWithMeasureAndNote()
   if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 200)
   {
    // autoNote1VelInf64();
-    autoNote2();
+   //** autoNote2();
   }
 
 
