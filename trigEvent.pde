@@ -50,15 +50,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
                  if  (measure==50 && beatPrecised == 2 && beatPrecisedTrigged==true)
                  {
-                   keyCode = ALT; keyReleased(); //  to set ALT (moveKeys[8) as false
-                  setKeyModeByTappingKeyPadOnce();    
+                  // keyCode = ALT; keyReleased(); //  to set ALT (moveKeys[8) as false
+                 // setKeyModeByTappingKeyPadOnce();    
 
                   // keyCode = UP; keyReleased(); // to time shift ball's following ball[networkSize-1] 
                     key = 'P';// keyReleased();
-      
-
-                   
-        
+            
                  }
                  
                   if  (measure==57 && beatPrecised == 1 && beatPrecisedTrigged==true)
@@ -94,6 +91,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
       
        if (music_from_ableton_live == " pleasureKraft ") {
+        if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+            keyMode = " samplingModeWithLive ";
+   
+        }
+
          if (measure == 248 ){        
              keyMode = " propagationBallRotationBis ";
             //float propagationFromNote;

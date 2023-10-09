@@ -12,12 +12,14 @@ public void settings() {
 } 
 */
 
-//int networkSize = 10;
-int networkSize = 6;
+int networkSize = 10;
+//int networkSize = 6;
 int nbBalls = networkSize;
 
-//int numberOfStep = 3200;
-int numberOfStep = 6400;
+int specialMeasureToStartRecording;
+
+int numberOfStep = 3200;
+//int numberOfStep = 6400;
 int speedDelta = 2; // ratio of speed and acceleration in Arduino
 
 // set music at the end of the setup
@@ -1030,10 +1032,10 @@ void setup() {
                 rectMode(CENTER);
                 
                 //***************************************** END 3D CAM  
-                /*
-                music_from_ableton_live = " pleasureKraft ";
-                positionMov = " premierePartie "; 
-                */
+                
+                //music_from_ableton_live = " pleasureKraft ";
+                //positionMov = " premierePartie "; 
+                
 
                 doo = true; // oposite way is true 
                // doo = false; // to enable propagation

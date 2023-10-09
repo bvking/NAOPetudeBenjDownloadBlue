@@ -1,4 +1,4 @@
-/*
+
 void serialEvent(Serial encoderReceiveUSBport101)
 {  
     String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');  
@@ -63,7 +63,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
         encodeur[5] = values[5];         
     }   
 }
-*/
+
 
 
 

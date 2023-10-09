@@ -196,7 +196,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     //lockOscillatorToPositionFromPreviousProagedBall();
     //******** Lock last oscillator to the lastPhase
     
-    if (dol) {
+    if (dol)
+    {
         //  lockOscillatorToPositionFromPreviousProagedBallTest();
         for (int i = 0; i < networkSize - 0; i += 1) { 
             //  phaseMappedFollow[i] = netPhaseBase[i];
@@ -213,7 +214,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 }
     */  
     
-    if (key != '#') {
+    if (key != '#')
+    {
        
             phasePatternBase();
             
@@ -231,9 +233,19 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation       
     }
 
+    if (measure == 58 && beatPrecised != 0 && beatPrecisedTrigged==true )
+     {
+        keyCode = RIGHT; keyReleased();
+    }
+    if (measure == 65 && measure == 66 && beatPrecised != 0 && beatPrecisedTrigged==true )
+     {
+        keyCode = RIGHT; keyReleased();
+    }
+
+
     
     if (music_from_ableton_live == " pleasureKraft " && measure < 635) { //measure < 245
-        signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
+     //   signal[2] = map((((cos(frameCount / propagationSpeed)) *-  1) % 1), -1, 1, -1, 1);  // COMMENT if Ableton gives signal2
         splitTimeScaleRotation(signal[2]);  // ascendant vs descendant => changement de sens de propagation
     } 
     

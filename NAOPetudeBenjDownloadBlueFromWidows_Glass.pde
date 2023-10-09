@@ -32,24 +32,24 @@ void draw()
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-            " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+        " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
     switchFonctionDependingKeyMode();
     computePhaseSum(); // to improve
-
+    
     //--- discriminate position from time line of Ableton
     formerBeatPrecised = beatPrecised;
     formerMeasure = measure;
     formerBeatOnMeasure = beatOnMeasure;
     //---
- 
+    
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
     { 
-             setMeasureAndBeatPrecised();
+        setMeasureAndBeatPrecised();
     }
-
+    
     trigBeatWithMeasure();
     //printDataOnScreen();
     //rotate( -HALF_PI);
@@ -63,73 +63,88 @@ void draw()
             //switch (key) : different mode of speed, shift, propagation ....
         }
     }
-
-
-
-   if  (measure==40 && beatPrecised == 16 && beatPrecisedTrigged==true)
+    
+    
+    
+    if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
     {// prepare record
-    modeCircular=true; // not work
-    formerKeyMetro = '*'; // not work
-    keyMode = " samplingModeWithLive ";
-     // mousePressed(); 
-     mouseRecorded = true;
-   }
-
+        modeCircular = true; // not work
+        formerKeyMetro = '*'; // not work
+        keyMode = " samplingModeWithLive ";
+        // mousePressed(); 
+        mouseRecorded = true;
+}
+    
     
     if (keyMode == " null ")
     {
         checkKeyModeToFollowIfALTisJustReleased();
     }
     
-        //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
-    if (keyMode == " samplingModeWithLive " ) // || keyMode == " null "
+    //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
+    if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
     { 
-           modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
-       if (mousePressed==true || mousePressed!=true)
+        modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
+        if (mousePressed ==  true || mousePressed!= true)
         {
-           mouseRecorded = true;  // add to trig record 
-           readyToRecord = true; 
-           text(" PRESTART SAMPLING  ", 200, 200);
+            mouseRecorded = true;  // add to trig record 
+            readyToRecord = true; 
+            text(" PRESTART SAMPLING  ", 200, 200);
         }
-
-        int specialMeasureToStartRecording = 41;
-        measureRecordStop = specialMeasureToStartRecording+4;
-
+        
+        if (music_from_ableton_live == " madRush ")
+        {
+            specialMeasureToStartRecording = 41;
+        }
+        
+        if (music_from_ableton_live == " pleasureKraft ")
+        {
+            specialMeasureToStartRecording = 241;
+        }
+        
+        measureRecordStop = specialMeasureToStartRecording + 4;
+        
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure) // synchronise recording with beatTrigged == true &&
-        {           
+        { 
+            formerKeyMetro = '*';          
             measureRecordStart = measure; //            
-            readyToRecord=false;
+            readyToRecord = false;
         }
-        if (readyToRecord==false)
+        if (readyToRecord ==  false)
         {
-        text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
+            text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
         }   
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
-
-
-        if (measure==measureRecordStop && beatTrigged ) // && beatTrigged
-             {
-          // keyMode = " null ";
-          modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-          //draw();
-         }
+        
+        
+        if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
+            {
+            //keyMode = " null ";
+            modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+            //draw();
+        }
     }
-  
-    if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true)
+    
+    if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// repetition and trigging
-         keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
-         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
+        keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
+        modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
+        keyCode = LEFT; keyReleased(); // shift delay of following ball
     }
-  
+    
+    // end measure & repetiton
+    
+    
+    
     if (modeStartKeyToFollow == " samplingModeInternal ")
     { 
         updateInternalClock();
         handleInternalSamplingMode();
     } 
-
+    
     //trigEffectToAbletonLive();  // add Size to Text
-
+    
     //**************END MODE SETTING   *************************  
     formerAuto = frameCount - 1;
     //see storeinputexample to create sample
@@ -141,11 +156,11 @@ void draw()
     displayOscillatorSpheres();
     //****************************
     //trigFollowSignalSampled();
-     if ( modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) " )
+    if (modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) ")
     {
-      followSignalSampledOppositeWay(frameRatio);// with millis()
+        followSignalSampledOppositeWay(frameRatio);// with millis()
     }
-
+    
     //rect(80,40,140,320);
     print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
     showArray(positionToMotor);
@@ -158,7 +173,7 @@ void draw()
     netG.step(); //actualise step for chimera state, not use yet
     
     //if (modeCircular==true) { // why it doesn' t work?
-    if (formerKeyMetro ==  '*' || formerKeyMetro ==  '$' )  // case != to get trigModPos enabled         formerKeyMetro ==  '*' ||
+    if (formerKeyMetro ==  '*' || formerKeyMetro ==  '$')  // case != to get trigModPos enabled         formerKeyMetro ==  '*' ||
     {
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ")
         {
@@ -166,15 +181,15 @@ void draw()
             {
                 if (keyMode != " propagationBallRotationBis ")
                 { 
-                       if (keyMode != " samplingModeWithLiveNO ")
-                          {
-                            countRevs(); // below modePendular to compute revolution
-                           }
+                    if (keyMode != " samplingModeWithLiveNO ")
+                        {
+                        countRevs(); // below modePendular to compute revolution
+                    }
                 }
-           }
+        }
     }   }
     textSize(200);
-     
+    
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
@@ -217,7 +232,7 @@ void draw()
     if (key ==  'j')
     {   // senda trig to start record in Ableton live
         background(255);
-       // startStop = 3;//
+        // startStop = 3;//
         key = '=';
         keyPressed();
         print("startStop from the beginning: ");
@@ -246,7 +261,7 @@ void draw()
     textSize(100);
     rotate( -HALF_PI - PI);
     bpmAsPulsationFunction(); // function works only ont a period of 750 ms. under it bugs due to low resolution
-    rotate( HALF_PI + PI);
+    rotate(HALF_PI + PI);
     
     cohesionTrig = int(map(LevelCohesionToSend, 0, 1, 0, 100));
     println(cohesionTrig);
