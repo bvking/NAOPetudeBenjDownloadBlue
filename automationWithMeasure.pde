@@ -220,7 +220,7 @@ void autmationWithMeasureAndNote()
     specialPropagationKey = ':';
   
  
-    speedDelta=1;
+    speedDelta=3;
   }
 
   if  ((measure==43 || measure==45 || measure==47 || measure==50 ) && ( beatPrecised>=16 && beatPrecisedTrigged==true ) ) {//77  //&& beatTrigged==true
@@ -229,7 +229,7 @@ void autmationWithMeasureAndNote()
   }
 
  // if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
- if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 500 &&
+ if (measure >= 41 && measure <= 80 && millis() > formerEvent[74] + 500 &&
     ((note1 == 74 && velocity1 >= 1 && velocity1 <= 130) ||
     (note2 == 74 && velocity2 >= 1 && velocity2 <= 130) ||
     (note3 == 74 && velocity3 >= 1 && velocity3 <= 130) ||
@@ -239,7 +239,7 @@ void autmationWithMeasureAndNote()
     //     key='9'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
     // key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
 
-     key='e'; 
+   //  key='p'; 
      keyReleased();
     formerEvent[74]=millis();
   }
@@ -261,7 +261,7 @@ void autmationWithMeasureAndNote()
 
   if  (measure==80 && beatTrigged) {
    // autoNote2();
-    speedDelta=7;
+    speedDelta=4;
   }
 
   if  (measure==81 &&   beatPrecised%1==0  && beatPrecisedTrigged==true) {
@@ -369,7 +369,7 @@ void autmationWithMeasureAndNote()
   }
 
   if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
-    key='r';
+   // key='r';
     keyReleased();
    
   }
@@ -394,12 +394,14 @@ void autmationWithMeasureAndNote()
   }
 
   if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
+   /*
     key='r';
     keyReleased();
      key='r';
     keyReleased();
      key='r';
     keyReleased();
+    */
   }
 
   if  (((measure==119)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16|| beatPrecised == 21 ) ) {
@@ -477,69 +479,7 @@ void autmationWithMeasureAndNote()
     // keyMode = " propagationBallRotationBis ";
   }
 
-  if  (measure==126 && beatPrecised==2 && beatPrecisedTrigged) {// measure>=41 && measure<=42
-
-    // keyCode = ALT;  keyPressed ();
-    //  key= 'P'; keyReleased ();
-    // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-    //  propagationSpeed= 90.0;
-    keyMode = " propagationBallRotationBis ";
-  }
-
-  if  (measure==130 && beatPrecised==1 && beatPrecisedTrigged) {// measure>=41 && measure<=42
-
-    // key= 'M'; keyReleased ();
-    // keyMode = " trigEventWithAbletonSignal ";  // to do in keyMode above. So in functon propagationBallRotationBis();
-    // propagationSpeed= 30.0;
-  }
-
-  if  (measure==128 && beatTrigged==true) {// measure>=41 && measure<=42
-    keyMode = " propagationBallRotationBis ";
-
-    //  key='w';
-    //  keyReleased();
-  }
-
-  if  (measure==129 && beatTrigged==true) {// measure>=41 && measure<=42
-    // propagationSpeed= 280.0;
-
-    //  key='w';
-    //  keyReleased();
-  }
-
-  if  (measure==130 && beatTrigged==true) {// measure>=41 && measure<=42
-    keyMode = " propagationBallRotationBis ";
-    // propagationSpeed= 120.0;
-  }
-  if  (measure>=129 ) {// measure>=41 && measure<=42
-    //  autoNote1();
-  }
-
-
-
-
-  if  (measure>=137 && measure<=137 && beatTrigged==true) {// measure>=41 && measure<=42
-
-    //  key='o';    keyReleased();
-    key='*';
-    keyReleased();
-  }
-  if  (measure>=166 && beatTrigged==true) {// measure>=41 && measure<=42
-    key='°';
-    keyReleased();
-    key='o';
-    keyReleased();
-    key='*';
-    keyReleased();
-  }
-
-  if (formerEvent[99] > millis() + 100) {
-    key = '#';
-    formerEvent[99]=millis();
-  }
-
-  // autoNote1Original(); // !=0
-  // autoNote2();
+  
 }
 
 String[] displayEventFromKeyReleased(String[] keyEvent) {

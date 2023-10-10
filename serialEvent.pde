@@ -1,6 +1,8 @@
+//if  (!systemForBigMachine){
 
-void serialEvent(Serial encoderReceiveUSBport101)
-{  
+/*
+  void serialEvent(Serial encoderReceiveUSBport101)
+  {  
     String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');  
     String[] m0 = match(myEncodeur, "encodeur0");
     String[] m1 = match(myEncodeur, "encodeur1");
@@ -62,7 +64,9 @@ void serialEvent(Serial encoderReceiveUSBport101)
         encodeur[4] = values[4];
         encodeur[5] = values[5];         
     }   
-}
+  }
+*/
+
 
 
 
@@ -86,8 +90,9 @@ void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited 
         
         dataFromArduinoDue[0] = (int) map(valuesFromDue[0], 0, 4000, 0, 4000);
         dataFromArduinoDue[1] = (int) map(valuesFromDue[1], 0, 4000, 0, 4000);        
- } 
-}
+  } 
+ }
+
 
 
 

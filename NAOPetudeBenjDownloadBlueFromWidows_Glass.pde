@@ -27,8 +27,12 @@ void draw()
     
     if (frameCount <=  1)  noLoop(); // check setPort()
     //printDataOnScreen();
-    
+
+     if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=120)
+    {
     setKeyModeByTappingKeyPadOnce();
+    }
+
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
@@ -73,12 +77,12 @@ void draw()
         keyMode = " samplingModeWithLive ";
         // mousePressed(); 
         mouseRecorded = true;
-}
+    }
     
     
-    if (keyMode == " null ")
+    if (keyMode == " null " )
     {
-        checkKeyModeToFollowIfALTisJustReleased();
+        checkKeyModeToFollowIfALTisJustReleased(); // ->  function disable
     }
     
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
@@ -116,8 +120,7 @@ void draw()
         }   
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
-        
-        
+           
         if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
             {
             //keyMode = " null ";

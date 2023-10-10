@@ -11,9 +11,11 @@ public void settings() {
 // windowRatio(600, 600);
 } 
 */
+boolean systemForBigMachine=true;
 
 int networkSize = 10;
 //int networkSize = 6;
+
 int nbBalls = networkSize;
 
 int specialMeasureToStartRecording;

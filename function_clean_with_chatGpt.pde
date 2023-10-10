@@ -135,7 +135,7 @@ void checkKeyModeToFollowIfALTisJustReleased() {
   {
 
   //  if ( formerKeyCode == ALT) {
-      modeStartKey = key;   // press l to change formerKeyMetro Mode
+    //****  modeStartKey = key;   // press l to change formerKeyMetro Mode
   //  }
   }
 

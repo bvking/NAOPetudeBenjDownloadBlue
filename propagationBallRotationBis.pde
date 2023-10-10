@@ -220,7 +220,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             phasePatternBase();
             
             for (int i = 0; i < networkSize - 0; i += 1) {
-               phaseMappedFollow[i] = netPhaseBase[i];
+               phaseMappedFollow[i] += netPhaseBase[i];
             }
         
     } 
@@ -295,7 +295,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
          
             // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
             modulePhaseAmountWithArrow = true;
-            keyCode = RIGHT; keyReleased();  // phaseAmountdecre
+            keyCode = RIGHT; keyReleased();  // phaseAmountIncre
         }
         
         if (measure ==  130 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42            
@@ -314,20 +314,62 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             //propagationSpeed= 60.0;
             //  keyMode = " trigEventWithAbletonSignal ";
         }      
-        if (measure ==  134 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-            key = 'O';
+        if (measure ==  134 && beatPrecised == 5 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+          //**  key = 'O';
+          //  keyCode = RIGHT; keyReleased();
         }
-         if (measure == 135 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-            key = 'o';
+         if (measure == 13 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+           // key = 'o';
         }
 
         if (measure ==  138 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-            key = 'O';
+        //**    key = 'o';
         }
 
-        if (measure == 139 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-            key = 'o';
+        if (measure == 142 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+         //   key = 'O';
         }
+
+        if (measure == 146 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+        //***    key = 'Z';
+        }
+
+        if (measure == 150 && beatPrecised ==  8 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+          
+          //  keyCode = LEFT; keyReleased();
+          //  keyCode = LEFT; keyReleased();
+        }
+
+        if (measure == 178 && beatPrecised ==  1 && beatPrecisedTrigged) {// Beware in live i slow down lfo of propzgation
+         keyCode = LEFT; keyReleased();
+         keyCode = LEFT; keyReleased(); 
+        }
+
+        if (measure == 187 && beatPrecised ==  1 && beatPrecisedTrigged)
+        {// Beware in live i slow down lfo of propzgation
+        doRotationWithoutPropagation=true;
+        }
+
+         if (measure == 188 && beatPrecised ==  1 && beatPrecisedTrigged)
+        {
+        doRotationWithoutPropagation=false;
+        }
+
+        if (measure == 189 && beatPrecised ==  1 && beatPrecisedTrigged)
+        {
+        doRotationWithoutPropagation=true;
+        }
+
+        if (measure == 190 && beatPrecised ==  1 && beatPrecisedTrigged)
+        {
+        doRotationWithoutPropagation=true;
+        }
+        
+        if (measure == 193 && beatPrecised ==  1 && beatPrecisedTrigged)
+         {
+         doRotationWithoutPropagation=false;
+        }
+
      } // end madRush
     
     modulePhaseAmountWithArrow = true; // in Trig Event
