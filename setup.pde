@@ -12,6 +12,7 @@ public void settings() {
 } 
 */
 boolean systemForBigMachine=true;
+boolean samplingWithMouse = true;
 
 int networkSize = 10;
 //int networkSize = 6;

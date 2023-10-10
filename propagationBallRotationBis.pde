@@ -285,37 +285,19 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
           //  levelFromArrow = (PI / (1 * networkSize - 1)); // set 
             levelFromArrow=0.2;
-           // levelFromArrow=0.1;
            // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-          //  phaseAmount=0.56;
-           //   phaseAmount=-0.26;
             modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
         }
-        
-        if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42        
-          
-         
-            // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-            modulePhaseAmountWithArrow = true;
-            keyCode = RIGHT; keyReleased();  // phaseAmountIncre
-        }
-        
-        if (measure ==  130 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42            
-           // levelFromArrow = (PI / (1 * networkSize - 1)); // set      
-            //phaseAmount=  (PI / (1 * networkSize - 1)); // set 
-            modulePhaseAmountWithArrow = true;
-             keyCode = RIGHT; keyReleased();
-        }
+            
         if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-            //  keyCode = RIGHT; keyReleased();
-         //   keyCode = DOWN; keyReleased();
+        keyCode = RIGHT; keyReleased();
             //propagationSpeed= 90.0;
         }
 
-        if (measure ==  130 && beatPrecised == 1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
-            //propagationSpeed= 60.0;
-            //  keyMode = " trigEventWithAbletonSignal ";
-        }      
+        if (measure ==  130 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42            
+             keyCode = RIGHT; keyReleased();
+        }
+    
         if (measure ==  134 && beatPrecised == 5 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
           //**  key = 'O';
           //  keyCode = RIGHT; keyReleased();

@@ -30,35 +30,38 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120;
 
        if  (music_from_ableton_live == " madRush " ) { 
-                // shift phaseOffset with modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) "
-                 if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal
+                
+                 if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
                  {
-                  keyCode = LEFT; keyReleased(); // 
+                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+                  keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
                  }
 
                  if  (measure==45 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  { speedDelta=3;
-                  // keyMode = " trigEvent ";
-                  // moveKeys[8]==true && moveKeys[11]==true
-                  /*
-                  moveKeys[8]=true;
-                  moveKeys[11]=true;
-                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-                  setKeyModeByTappingKeyPadOnce();    
-                  */    
                  }
 
-                 if  (measure==50 && beatPrecised == 2 && beatPrecisedTrigged==true)
+                 if  (measure==49 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  {
-                  // keyCode = ALT; keyReleased(); //  to set ALT (moveKeys[8) as false
-                 // setKeyModeByTappingKeyPadOnce();    
-
-                  // keyCode = UP; keyReleased(); // to time shift ball's following ball[networkSize-1] 
-                    key = 'P';// keyReleased();
+                   textSize(500);
+                  key = 'P';
             
                  }
+
+                 if  (measure==55 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                  {
+                     textSize(500);
+                    key = 'p';           
+                   }
+
+                   if  (measure==55 && beatPrecised == 2 && beatPrecisedTrigged==true)
+                  {
+                     textSize(500);
+                    key = 'p';           
+                   }
+
                  
-                  if  (measure==57 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                  if  ((measure==51 ||measure== 59) && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                      keyCode = LEFT; keyReleased(); //            
                    }
@@ -66,7 +69,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  if  (measure==61 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                      keyCode = UP; keyReleased(); // 
-                     keyCode = UP; keyReleased(); // 
+                   //  keyCode = UP; keyReleased(); // 
                     // keyCode = UP; keyReleased(); // 
                    //  keyCode = UP; keyReleased(); // 
                    }
@@ -74,7 +77,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  if  (measure==65 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                          keyCode = LEFT; keyReleased(); //   // delay between ball
-                         keyCode = LEFT; keyReleased(); //   
+                     //**    keyCode = LEFT; keyReleased(); //   
                    }
 
                 if  (measure==74 && beatPrecised == 2 && beatPrecisedTrigged==true)
@@ -82,8 +85,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                      keyCode = DOWN; keyReleased(); // 
                      keyCode = DOWN; keyReleased(); // 
                      keyCode = DOWN; keyReleased(); // 
-                  //   keyCode = DOWN; keyReleased(); // 
-                  //   keyCode = DOWN; keyReleased(); // 
+
+                     keyCode = DOWN; keyReleased(); // sample go in  opposite way
+                     keyCode = DOWN; keyReleased(); // 
+                     keyCode = DOWN; keyReleased(); // 
+                     
                    } 
 
                 if  (measure==150 && beatPrecised == 1 && beatPrecisedTrigged==true)
@@ -96,18 +102,20 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          }
 
       
-       if (music_from_ableton_live == " pleasureKraft ") {
-        if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
-            keyMode = " samplingModeWithLive ";
+           if (music_from_ableton_live == " pleasureKraft ") 
+           {
+             if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+             keyMode = " samplingModeWithLive ";
    
-        }
+           }
 
-         if (measure == 248 ){        
+           if (measure == 248 )
+           {        
              keyMode = " propagationBallRotationBis ";
             //float propagationFromNote;
             //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
+            }
            }
-        }
 
     if (music_from_ableton_live == " pleasureKraft ")
      {
@@ -159,14 +167,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   //   key= 'F';
                }
 
-              
-          
-                 //------------end intro
+           //------------end intro
 
                   
                
 
-                 // disply specifics values: instrument, phase, frequency of  effect and ball
+          // disply specifics values: instrument, phase, frequency of  effect and ball
  
               if (measure>=52 && beatPrecised == 2 || beatPrecised == 6 && beatPrecisedTrigged==true  ){
                  if (measure<58){

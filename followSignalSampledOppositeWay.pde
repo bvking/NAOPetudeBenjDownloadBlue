@@ -2,22 +2,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     //setMeasureAndBeatPrecised();
     rotate( - PI / 2);
                 
-                  if  (measure==50 && beatPrecised == 1 && beatPrecisedTrigged==true)
-                 { 
-                    
-                  //  keyCode = ALT; keyReleased(); //  to set ALT (moveKeys[8) as false
-                      key = 'P'; keyReleased();
-        
-                 }
-
-                 if  (measure==50 && beatPrecised == 2 && beatPrecisedTrigged==true)
-                 {
-                     textSize(500);
-                   keyCode = UP; keyReleased(); // to time shift ball's following ball[networkSize-1] 
-                    key = 'P'; keyReleased();
-                   phasePattern();
-                 // key = 'P'; keyReleased();      
-                 }
+          
                  
     
     if(key == '*' || key == '$') {
@@ -58,11 +43,10 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
             for (int i = 0; i < networkSize; i += 1)
              {
                 phasePatternFollow[i] += netPhaseBase[i]; //
-             //   phasePatternFollow[i] += net.phase[i];
+               //   phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
-             }
-       
-        key = '#';
+             }     
+         key = '#';
         }
      }
     

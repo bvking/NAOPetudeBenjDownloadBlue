@@ -6,7 +6,7 @@ void autoNote1VelInf64() {  // 64 69 70 72 74 76
   if (formerKey!='#') {
     lastKey = formerKey;
   }
-  text("<=64 formerlastKey " + lastKey , 500, -50);  // + " event " + formerEvent[note1]
+  text("<=64 formerlastKey " + lastKey , 800, -50);  // + " event " + formerEvent[note1]
 
   if (measure <= 15 && millis() > formerEvent[64] + 950 + d &&
 

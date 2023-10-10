@@ -60,7 +60,8 @@ void handleSamplingModeWithAbletonLive(){
        }
 
      //==================== sampling from ENCODER_due
-     if (systemForBigMachine){
+     if (systemForBigMachine && !samplingWithMouse)
+     {
       angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
      }
 
@@ -69,9 +70,11 @@ void handleSamplingModeWithAbletonLive(){
      
 
      //==================== sampling from MOUSE_Y
-         
-     //  angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
-     newPosF[networkSize-1]= angleToInterpolate;
+    if (samplingWithMouse==true)
+    {   
+       angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+    }
+       newPosF[networkSize-1]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
@@ -81,8 +84,8 @@ void handleSamplingModeWithAbletonLive(){
       float polarToCartesionX= displacement*cos(newPosF[networkSize-1]);
       float polarToCartesionY= displacement*sin(newPosF[networkSize-1]);
 
-    //  mouseX= (int) polarToCartesionX; // to draw circle with end
-    //  mouseY= (int) polarToCartesionY; // to draw circle with end
+      //  mouseX= (int) polarToCartesionX; // to draw circle with end
+      //  mouseY= (int) polarToCartesionY; // to draw circle with end
      activeSamplingInternalClock(measureRecordStart);  //start
      stopSamplingInternalClock(measureRecordStop);  //stop sampling  
      samplingMovementPro(); 

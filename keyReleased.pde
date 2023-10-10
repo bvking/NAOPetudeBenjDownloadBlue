@@ -213,7 +213,7 @@ void keyReleased() {
 
      }
 
-     phasePattern();//
+    // phasePattern();//
 
    // key= '#';  // usefuu?  
   } 

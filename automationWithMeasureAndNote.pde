@@ -6,7 +6,7 @@ void autmationWithMeasureAndNote()
   lastKeyAuto=formerKey;
      }
 
-  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKeyAuto , 1200, -200);  // + " event " + formerEvent[note1]
+  text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKeyAuto , 1000, -200);  // + " event " + formerEvent[note1]
 
   if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged == true )  //startStop = 3;
    { 
@@ -69,11 +69,9 @@ void autmationWithMeasureAndNote()
     key = 'F';keyReleased();
     key = 'F';keyReleased();
     //keyCode = CONTROL;
-
-
   }
 
-  if (measure>4  ) {
+  if (measure>4 && measure<=41 ) {
     //autoNote1();
     autoNote1VelInf64();  // declaer avec A . arrete A puis faire des i ou u
   }
@@ -82,67 +80,7 @@ void autmationWithMeasureAndNote()
     key='$';
     keyReleased();
   }
-  /*
-  if ( measure==7 && beatTrigged==true) {
-   // key='9';
-   // keyReleased();
-     key='D';
-     keyReleased();
-     key='D';
-     keyReleased();
-     key='D';
-     keyReleased();
-  }
-
-     
-
-  if ( measure==11 && beatTrigged==true) {
-    key='F';
-    keyReleased();
-     key='F';
-    keyReleased();
-     key='F';
-    keyReleased();
-  }
-
-  if ( measure==15 && beatTrigged==true) {
-     key='D';
-     keyReleased();
-     key='D';
-     keyReleased();
-     key='D';
-     keyReleased();
-  }
-
-  if ( measure==19 && beatTrigged==true) {
-     key='F';
-    keyReleased();
-     key='F';
-    keyReleased();
-     key='F';
-    keyReleased();
- 
-  }
-
-  if ( measure==23 && beatTrigged==true) {
-       key='D';
-     keyReleased();
-     key='D';
-     keyReleased();
-     key='D';
-     keyReleased();
-  }
-
-  if ( measure==27 && beatTrigged==true) {
-   key='F';
-    keyReleased();
-     key='F';
-    keyReleased();
-     key='F';
-    keyReleased();
-  }
-   */ 
-
+  
   if (measure ==  36 && beatTrigged ==  true ) {// measure>=41 && measure<=42
     // for (int i = 0; i < networkSize; i++) {
     memoryi=0;
@@ -219,7 +157,6 @@ void autmationWithMeasureAndNote()
 
     specialPropagationKey = ':';
   
- 
     speedDelta=3;
   }
 
@@ -240,33 +177,17 @@ void autmationWithMeasureAndNote()
     // key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
 
    //  key='p'; 
-     keyReleased();
+    // keyReleased();
     formerEvent[74]=millis();
   }
-
-  if (measure >= 41 && measure <= 77 && millis() > formerEvent[74] + 200)
-  {
-   // autoNote1VelInf64();
-   //** autoNote2();
-  }
-
 
   if  (measure==71 && beatTrigged==true  ) {
     speedDelta=4;
   }
 
-  if  (measure>=71 && measure<78 ) {
-  //  autoNote2();
-  }
-
-  if  (measure==80 && beatTrigged) {
-   // autoNote2();
-    speedDelta=4;
-  }
-
   if  (measure==81 &&   beatPrecised%1==0  && beatPrecisedTrigged==true) {
 
-    speedDelta=7;
+    speedDelta=4;
     modeStartKeyToFollow =  " truc "; // tres important pour sortir du mode follow sample
     moveKeys[8]=true;
     moveKeys[11]=true;  // keyMode TrigEvent
@@ -340,16 +261,16 @@ void autmationWithMeasureAndNote()
 
   if ( (measure==89 || measure==92 || measure==94) && beatTrigged==true) {
 
-    key='p';
+    key='P';
     keyReleased();
   }
 
   if ( (measure==96 || measure==99 || measure==101) && beatTrigged==true) {
 
-    key='p';
+    key='P';
     keyReleased();
-    key='p';
-    keyReleased();
+   // key='P';
+   // keyReleased();
   }
 
   if ( (measure==89 || measure==92 || measure==94) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
@@ -361,15 +282,19 @@ void autmationWithMeasureAndNote()
     keyReleased();
     key='r';
     keyReleased();
+    key='r';
+    keyReleased();
   }
 
   if ( measure==104 && beatTrigged==true) {
     key='P';
     keyReleased();
+    key='r';
+    keyReleased();
   }
 
   if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
-   // key='r';
+    key='r';
     keyReleased();
    
   }
@@ -387,21 +312,17 @@ void autmationWithMeasureAndNote()
   }
   if ( measure==108 && beatTrigged==true) {
     
-    key='p';
-    keyReleased();
-    key='p';
-    keyReleased();
+   // key='p';
+  //  keyReleased();
+  //  key='p';
+  //  keyReleased();
   }
 
   if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
-   /*
-    key='r';
+   
+    key='g'; // not good way
     keyReleased();
-     key='r';
-    keyReleased();
-     key='r';
-    keyReleased();
-    */
+ 
   }
 
   if  (((measure==119)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 16|| beatPrecised == 21 ) ) {
