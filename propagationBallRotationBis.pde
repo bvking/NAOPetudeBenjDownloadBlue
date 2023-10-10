@@ -220,8 +220,10 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             phasePatternBase();
             
             for (int i = 0; i < networkSize - 0; i += 1) {
-               phaseMappedFollow[i] += netPhaseBase[i];
+          //     phaseMappedFollow[i] += netPhaseBase[i];
             }
+    
+    key = '#';
         
     } 
     
@@ -318,7 +320,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
           //**  key = 'O';
           //  keyCode = RIGHT; keyReleased();
         }
-         if (measure == 13 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+         if (measure == 134 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
            // key = 'o';
         }
 
