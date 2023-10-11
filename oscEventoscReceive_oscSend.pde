@@ -744,53 +744,8 @@ void oscSend(){
   myMessage39.add(Pos[0]);
  */
 
- /*
- if (formerKeyMetro == 'à'  ) { // à la base *
-  
-  myMessage30.add(revolution[11]);  //  Trig on the left bug when playing sample in negative way. problem with net_oldphase? or and countrevs
-  myMessage31.add(revolution[10]);
-  myMessage32.add(revolution[9]);
-  myMessage33.add(revolution[8]);
-  myMessage34.add(revolution[7]);
-  myMessage35.add(revolution[6]);
- 
-  myMessage36.add(revolution[5]);
-  myMessage37.add(revolution[4]);
-  myMessage38.add(revolution[3]);
-   myMessage39.add(revolution[2]);
-   } 
-   */
-  if (formerKeyMetro == '$'  )
-  {
-  
-  
-  /*
-  myMessage30.add(trigModPos[9]);
-  myMessage31.add(trigModPos[8]);
-  myMessage32.add(TrigmodPos[7]);
-  myMessage33.add(TrigmodPos[6]);
-  */
-  /*
-  myMessage34.add(TrigmodPos[5]);
-  myMessage35.add(TrigmodPos[4]);
-  myMessage36.add(TrigmodPos[3]);
-  myMessage37.add(TrigmodPos[2]);
-  myMessage38.add(TrigmodPos[1]);
-  myMessage39.add(TrigmodPos[0]);
-  */
 
-  /*  
-  myMessage36.add(revolution[5]);
-  myMessage37.add(revolution[4]);
-  myMessage38.add(revolution[3]);
-  myMessage39.add(revolution[2]);
-  */
-  //rotate (PI/2);
-  textSize (100);
-  // text ( " Pos in osc " + 0 + " " + Pos[0], -500, 0+100*1);
-  
 
- } 
  
   //print ( " showTrig ") ; showArray(TrigmodPos);
   //text ( " Trig0 " + TrigmodPos[0], 600, 200);
@@ -836,7 +791,6 @@ void oscSend(){
   {
     trigMuteAll= 0;
   }
-
   OscMessage myMessage30= new OscMessage("/trigModPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage31= new OscMessage("/trigModPos1"); // oscillator 
   OscMessage myMessage32= new OscMessage("/trigModPos2"); // oscillator 
@@ -848,7 +802,7 @@ void oscSend(){
   OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
   OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind 
 
-     text ( " trigMuteAll " + trigMuteAll + " dataMappedForMotorisedBigMachine " + dataMappedForMotorisedBigMachine[0] ,  100, 1700);
+  text ( " trigMuteAll " + trigMuteAll + " dataMappedBigMachine[0] " + dataMappedForMotorisedBigMachine[0] ,  600, -1100);
      
   myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
   myMessage31.add(TrigmodPos[1]);
