@@ -41,7 +41,7 @@ void oscEvent(OscMessage theMsg) {
  // if (theMsg.checkAddrPattern("/LFO5")==true) {
   if (theMsg.checkAddrPattern("/pongo")==true) {
     automationLFO[5] = theMsg.get(0).floatValue();
-    text ( " receive ", 200, 200);
+  //  text ( " receive ", 200, 200);
   }  
 /*
   if (theMsg.checkAddrPattern("/LFO6")==true) {
@@ -792,15 +792,25 @@ void oscSend(){
 
  } 
  
-  print ( " showTrig ") ; showArray(TrigmodPos);
-  text ( " Trig0 " + TrigmodPos[0], 600, 200);
-  text ( " Trig5 " + TrigmodPos[5], 600, 400);
+  //print ( " showTrig ") ; showArray(TrigmodPos);
+  //text ( " Trig0 " + TrigmodPos[0], 600, 200);
+  //text ( " Trig5 " + TrigmodPos[5], 600, 400);
   // These tests used a copy of the original array so that we can perform multiple
   // test using the same working array
   //  println("Convert multiple 0s to 1s (good)");
   result = multiMatchData(0, 1, TrigmodPos.clone());
   TrigmodPos=result;
   print ( " showResul ") ;showArray(result);
+  textSize (200);
+  char resultString;
+    resultString='A';
+  if (result[0]==0){
+    resultString='B';
+  }
+  char data[] = {resultString, 'A', 'A', 'A'};
+  String str2 = new String(data);
+  text  ( " showResul " + str2, 600, -1200);
+  textSize (100);
 
    
  if ( keyMode ==  " followSignalLfo "){

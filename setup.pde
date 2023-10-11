@@ -11,11 +11,21 @@ public void settings() {
 // windowRatio(600, 600);
 } 
 */
+
 boolean systemForBigMachine=true;
 boolean samplingWithMouse = true;
+boolean abletonLFO =        true;
 
-int networkSize = 10;
-//int networkSize = 6;
+String music_from_ableton_live;
+String positionMov;  
+
+
+
+    
+
+
+//int networkSize = 10;
+int networkSize = 6;
 
 int nbBalls = networkSize;
 
@@ -48,7 +58,7 @@ boolean signalUpRise;
 
 boolean allMachineConnected, onlyLitteMachineWithSecondSerialPort,portConnectedOfBigMachine,portConnectedToBigMachineOnly;
 
-String music_from_ableton_live;
+
 String[] eventToTrig = {"0","0","0","0"};
 String[] keyEvent = {" bla "," bli ","0","0"};
 char specialPropagationKey;
@@ -1035,15 +1045,17 @@ void setup() {
                 rectMode(CENTER);
                 
                 //***************************************** END 3D CAM  
-                
-                //music_from_ableton_live = " pleasureKraft ";
-                //positionMov = " premierePartie "; 
+
+                  music_from_ableton_live = " pleasureKraft ";
+                  positionMov = " premierePartie "; 
+                //  music_from_ableton_live = " madRush ";  
+            
                 
 
-                doo = true; // oposite way is true 
+                  doo = true; // oposite way is true 
                // doo = false; // to enable propagation
                 
-                music_from_ableton_live = " madRush ";    
+                  
                 
 
                 k = 0; // phaseShifting

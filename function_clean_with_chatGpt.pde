@@ -95,15 +95,16 @@ void computePhaseSum() {
   if (modeCircular=true) {
     for (int i = 0; i < networkSize; i++) {
       addPhaseAllMode += net.phase[i];
+      print ("CIRCULAR average phase is with order " + i);
     }
   }
   if (modeCircular=false) {
     for (int i = 0; i < networkSize; i++) {
       addPhaseAllMode += metroPhase[i];
+      print ("PENDULAR average phase is with order " + i);
     }
   }
   addPhaseAllMode/=networkSize;
-  print("average phase is with order ");
   print (addPhaseAllMode);
   addPhaseAllMode = map(addPhaseAllMode, -(networkSize - 1) * TWO_PI, (networkSize - 1) * TWO_PI, 0, 1);
   print(" averagemapped ");

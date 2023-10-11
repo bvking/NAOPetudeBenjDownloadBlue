@@ -1,6 +1,6 @@
 int delayTimeToTrig4; //ms
 float signalToSplit4;
-String positionMov;  // Original?
+
 
 void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
@@ -111,7 +111,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
            if (measure == 248 )
            {        
-             keyMode = " propagationBallRotationBis ";
+            // keyMode = " propagationBallRotationBis ";
+            
             //float propagationFromNote;
             //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
             }

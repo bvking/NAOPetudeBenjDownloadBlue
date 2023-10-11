@@ -38,7 +38,7 @@ void handleSamplingModeWithAbletonLive(){
      }  
 
      text 
-     ( " encodeur[0] " + encodeur[0] +  " newPosF[networkSize-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
+     ( " enc[0] " + encodeur[0] +  " newPosF[ne-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
        " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
 
 
@@ -70,11 +70,18 @@ void handleSamplingModeWithAbletonLive(){
      
 
      //==================== sampling from MOUSE_Y
-    if (samplingWithMouse==true)
+    if (samplingWithMouse==true && !abletonLFO)
     {   
        angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
     }
-       newPosF[networkSize-1]= angleToInterpolate;
+     //==================== sampling with automationLFO[1]
+
+    if (samplingWithMouse==true &&  abletonLFO)
+    {   
+       angleToInterpolate = (float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+    }
+
+      newPosF[networkSize-1]= angleToInterpolate;
 
       sphere(side*3);
       sphereDetail( 4*5); 
