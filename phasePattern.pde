@@ -59,7 +59,8 @@ void phasePattern()
     //     text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
       
      for (int i = 0; i < (networkSize); i++) { 
-    {println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
+    {
+     // println (" metroOldPhase[i] " + metroOldPhase[i]+ " metroPhase " + metroPhase[i] );
 
       metroOldPhase[i]= metroPhase[i];
     //  OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES

@@ -7,7 +7,7 @@ void teensyPos()
    text ( " modeCircular " + modeCircular , 200, -300) ; //
    rotate(-PI);
    int j=1;
-    text  (
+   text  (
                   
                    " MotorisedP " + j + " "  +  dataMappedForMotorisedPosition[j]+
                    " deltaOld  " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
@@ -139,8 +139,7 @@ void teensyPos()
 
               //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               //  print ( " record * " + recordLastDataOfMotorPosition[i] );
-            println();
-
+           
          }
       
      }
@@ -223,7 +222,7 @@ void teensyPos()
          //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
          } 
        }
-
+          /*
             print ("newPosShifted "); showArrayF (newPosShifted);
             print ("oldPosShifted "); showArrayF (oldPosShifted);
 
@@ -231,7 +230,7 @@ void teensyPos()
             print ("old.phase "); showArrayF (net.oldPhase);
 
             print (" dataMappedForMotorisedBigMachine "); showArray (dataMappedForMotorisedBigMachine);
-
+          */
           if (formerFormerKey=='I' ){
          for (int i = 0; i < (networkSize-0); i++) {  
 

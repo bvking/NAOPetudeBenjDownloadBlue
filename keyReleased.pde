@@ -195,17 +195,24 @@ void keyReleased() {
         }
       }
 
-     if (keyCode == UP) 
+     if (formerKeyCode == UP) 
       {
+        if (beatTrigged) {
        speedOfrepetition+=0.5;
        speedOfrepetition%=6.5;
+       }
+      //formerKeyCode= ALT;
       }
 
   
-     if (keyCode == DOWN)
+     if (formerKeyCode == DOWN)
      {
+       if (beatTrigged) {
       speedOfrepetition-=0.5;
       speedOfrepetition%=(-6.5);
+      }
+
+      //formerKeyCode= ALT;
       if (speedOfrepetition==(-6.0))
       {
           speedOfrepetition=0;

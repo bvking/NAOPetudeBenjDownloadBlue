@@ -229,8 +229,8 @@ void bpmAsPulsationFunction() {
 
   // in pendular way, revolution trig 0 on the right and rev trig 0 on left side
 
-  if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
-//  if ( TrigmodPos[networkSize-1]==0) {
+ /// if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
+  if ( TrigmodPos[networkSize-1]==0) {
     if (!ready) {
       ready = true;
       prev_time = millis();
@@ -242,8 +242,5 @@ void bpmAsPulsationFunction() {
     }
   }
   textSize (200);
-  text("Average time between two pulsation = " + pulsation + "ms", 500, 500 );
-  println("Average time between two pulsation = " + pulsation + "ms" );
-  println("Average time between two pulsation = " + pulsation + "ms" );
-  println("Average time between two pulsation = " + pulsation + "ms" );
+ 
 }

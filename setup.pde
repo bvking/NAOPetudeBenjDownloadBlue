@@ -20,19 +20,15 @@ String music_from_ableton_live;
 String positionMov;  
 
 
-
-    
-
-
-//int networkSize = 10;
-int networkSize = 6;
-
-int nbBalls = networkSize;
-
-int specialMeasureToStartRecording;
+int networkSize = 10;
+//int networkSize = 6;
 
 int numberOfStep = 3200;
 //int numberOfStep = 6400;
+
+
+int nbBalls = networkSize;
+int specialMeasureToStartRecording;
 int speedDelta = 2; // ratio of speed and acceleration in Arduino
 
 // set music at the end of the setup
@@ -44,20 +40,19 @@ float speedOfrepetition = 1;
 int[] changeMotorisedPosition = new int [networkSize];
 int[] dataFromArduinoDue= new int [networkSize];
 
-  int[] upDateMotorisedPosition (int[] newMotorPositions) { 
+int[] upDateMotorisedPosition (int[] newMotorPositions) { 
   for (int i = 0; i < newMotorPositions.length; i++) { 
     newMotorPositions[i] = newMotorPositions[i] + numberOfStep; 
   } 
   return newMotorPositions;  // Returns an array of 3 ints: 20, 40, 60 
 }
+
 boolean bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1;
 boolean portOfBigMachineConnected; 
 String  portsUSBfrom1,portsUSBfrom2,portsUSBfrom3;
 boolean signalUpRise;
 
-
 boolean allMachineConnected, onlyLitteMachineWithSecondSerialPort,portConnectedOfBigMachine,portConnectedToBigMachineOnly;
-
 
 String[] eventToTrig = {"0","0","0","0"};
 String[] keyEvent = {" bla "," bli ","0","0"};
@@ -76,7 +71,6 @@ float[] deltaOldPhaseActualPhase = new float[networkSize];
 
 float levelFromArrow, phaseAmount;
 boolean modulePhaseAmountWithArrow;
-
 
 boolean[] encoderTouched = new boolean[networkSize];
 int[] RevsContinue = new int[networkSize];
@@ -238,12 +232,13 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             void showArray(int[] array) {
                 for (int i = 0; i < array.length; i++)
                     print(array[i] + "   ");
-                println();
+                print(" ");
             }
-             void showArrayF(float[] array) {
+
+            void showArrayF(float[] array) {
                 for (int i = 0; i < array.length; i++)
                     print(array[i] + "   ");
-                println();
+                print(" ");
             }
             
             //
@@ -1046,8 +1041,8 @@ void setup() {
                 
                 //***************************************** END 3D CAM  
 
-                  music_from_ableton_live = " pleasureKraft ";
-                  positionMov = " premierePartie "; 
+                //  music_from_ableton_live = " pleasureKraft ";
+                //  positionMov = " premierePartie "; 
                 //  music_from_ableton_live = " madRush ";  
             
                 

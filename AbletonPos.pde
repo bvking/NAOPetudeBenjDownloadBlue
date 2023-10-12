@@ -40,12 +40,12 @@ void abletonPos ()
          }
 
 
-        print (" datM " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);
-        println();
+       // print (" datM " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);
+       // println();
 
 
-        print (" dat/ " + dataMappedForMotorisedPosition[i]/numberOfStep + " abletonPos " + Pos[i]);
-        println();
+       // print (" dat/ " + dataMappedForMotorisedPosition[i]/numberOfStep + " abletonPos " + Pos[i]);
+       // println();
          
        // if (modeCircular==false) { Pos[i]=abs (Pos[i]) };
         

@@ -22,6 +22,9 @@ void samplingMovementPro() {
 }
 
 void handleSamplingModeWithAbletonLive(){
+
+  frameRate =120;
+  frameRatio =120;
  
      boolean synchroOnMeasure=false;
      if ((formerMeasure != measure)) { 
@@ -197,6 +200,8 @@ void activeSamplingInternalClock(int beginMeasure)
 { 
    if (measure==beginMeasure  && formerMeasure != measure && mouseRecorded == true)
     { 
+      textSize(200);
+  text(" BEGIN SAMPLING  AT " + measure, 200, 300);
 
   bRecording = true;
   sampler.beginRecording();
@@ -206,6 +211,7 @@ void activeSamplingInternalClock(int beginMeasure)
 void stopSamplingInternalClock(int endMeasure)
  { 
    if (measure==endMeasure && formerMeasure != measure) { // && actualSec!=lastSec
+     textSize(200);
    text(" END SAMPLING  AT "  + measure, 200, 300);
 
       //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);

@@ -19,14 +19,15 @@ void mapEncodeurToNumberOfStepsMotor(){
 
      for (int i = 0; i < 6; i++) { 
              if ( encoderTouched[i]==true){ 
-                println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);          
+            //    println(" True encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);          
            //     readPositionEncoder[i] = encodeur[i];
              } 
 
              if ( encoderTouched[i]==false){ 
-                println(" False encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
+           //     println(" False encodeur to BigMachine" + i + " " + encoderTouched[i] + " " + encodeur[i]);  
            //     readPositionEncoder[i] = 0;           
              } 
         } 
+           println(" True of False encodeur to BigMachine" + 0 + " " + encoderTouched[0] + " " + encodeur[0]);
       rotate (PI/2);
 } 

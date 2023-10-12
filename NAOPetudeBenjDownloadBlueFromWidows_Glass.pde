@@ -124,7 +124,7 @@ void draw()
         if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
             {
             //keyMode = " null ";
-            modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+          //  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
             //draw();
         }
     }
@@ -162,7 +162,10 @@ void draw()
     //trigFollowSignalSampled();
     if (modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) ")
     {
+        println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
+
         followSignalSampledOppositeWay(frameRatio);// with millis()
+
     }
     
     //rect(80,40,140,320);
@@ -198,7 +201,7 @@ void draw()
     mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
-    print(" dataMP + keyMode " + keyMode);
+    //print(" dataMP + keyMode " + keyMode);
     if (keyMode == " propagationBallRotationBis ") 
     {
         // dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
