@@ -26,6 +26,10 @@ int networkSize = 10;
 int numberOfStep = 3200;
 //int numberOfStep = 6400;
 
+ int oldSimpleSignal2,simpleSignal2;  // 0 to 1
+ int directionOfsignal;
+    
+
 
 int nbBalls = networkSize;
 int specialMeasureToStartRecording;
@@ -1043,7 +1047,8 @@ void setup() {
 
                 //  music_from_ableton_live = " pleasureKraft ";
                 //  positionMov = " premierePartie "; 
-                //  music_from_ableton_live = " madRush ";  
+                //
+                 music_from_ableton_live = " madRush ";  
             
                 
 

@@ -6,7 +6,9 @@ void propagation2wayRotationBis()
     phaseAmount = map(phaseAmount, 0, 1, 1, 0);     
     phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
     
-    if (modulePhaseAmountWithArrow)  { 
+
+    if (modulePhaseAmountWithArrow)
+      { 
           phaseAmount= levelFromArrow;
           phaseAmount = map(phaseAmount, 0, 1, 0, TWO_PI / networkSize);
      }
@@ -129,21 +131,32 @@ void propagation2wayRotationBis()
 
      if ( doRotationWithoutPropagation  ) 
      {  
-     if (propagationTrigged ==  false){
+      textSize(100);
+     if (propagationTrigged ==  false ){
         for (int i = 0; i < networkSize; i++)
        {
-         phaseMapped [i] = LFO[i];
+       //  phaseMapped [i] = LFO[i];
 
        }
                                                                                  // propagationTrigged ==  false &&
-      if (signalUpRise)
+      if (directionOfsignal==6)//(signalUpRise)
       {
-       phaseMapped [memoryi] = map (signal[2], 0, 1, 0, TWO_PI); 
+       phaseMapped [memoryi] = map (signal[2], 0, 1, 0, TWO_PI);
+        text ( " UP phaseMapped [memoryi] " + phaseMapped [memoryi], width/2, height/2-500);
+       
       }
-     else
-       phaseMapped [memoryi] = map (signal[2], 0, 1, -TWO_PI, 0); 
+      if (directionOfsignal==2)
+      {
+       phaseMapped [memoryi] = map (signal[2], 1, 1, TWO_PI, 0); 
+        phaseMapped [memoryi]+=TWO_PI;
+      text ( " DO phaseMapped [memoryi] " + phaseMapped [memoryi], width/2, height/2 -600);
 
+      }
     }
+
+   
+
+
     }
 
   

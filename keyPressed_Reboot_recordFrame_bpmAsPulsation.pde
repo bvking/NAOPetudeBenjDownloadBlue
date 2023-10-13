@@ -27,6 +27,7 @@ void keyPressed() {
     OscMessage myMessage15= new OscMessage("/startStop");
     myMessage15.add(startStop);
     oscP5.send(myMessage15, myRemoteLocation);
+    reBoot();
   }
 
   frameratio();
@@ -129,24 +130,30 @@ void reBoot() {
     }
    }
 
-  if (key == '@' || keyCode == ESC) {
+   if (key == '@' || keyCode == ESC) {
 
     formerKeyMetro = '$';
     modeCircular  = true;
     key = '°'; keyPressed(); // stop ball
 
     for (int i = 0; i < networkSize; i++) {
-       //  dataMappedForMotorisedPosition[i]=0;
+         dataMappedForMotorisedPosition[i]=0;
     }
       // formerEvent[2]= millis();
     //if (millis()>formerEvent[2]+2000) {
        key = '9'; keyPressed (); // aligne les ballee
 
       text ( " send24datasFromRecordFrameFuncrtion?? circularMov " + modeCircular , 200, 200);
+      send24DatasToTeensy10motorsToBigMachine(3,-3,3,-1); // 3,-3,3,°-3
+    }
+}
+/*
+      if (networkSize==10){
 
       dataFromMode = "<"
-    
-    //  + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
+
+     + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
+     + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
     
     + dataMappedForMotorisedPosition[5] + "," + dataMappedForMotorisedPosition[4] + "," + dataMappedForMotorisedPosition[3] + "," + dataMappedForMotorisedPosition[2] + ","
     + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","      // 
@@ -162,7 +169,9 @@ void reBoot() {
     
     + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
     
-    + 0 + "," + 0 + "," + 0 + "," + 0 + ">";  
+    + 0 + "," + 0 + "," + 0 + "," + 0 + ">";
+
+    }  
     
     int computeData = -2;
     if (computeData <-  1) {
@@ -212,7 +221,7 @@ void reBoot() {
     
   }
  }
-
+*/
 void recordFrame() {
   // if (frameCount !=formerFrame && (key != '!' && key != ':')  ){// do not record ! && :   // (frameCount !=formerFrame && key != '!' && key != ':') do not record ! only
   //if (frameCount !=formerFrame || key != key || key != '!' || key != ':' || key != ',' || key != ';'|| key != '=') {// do not record ! && :   // (frameCount !=formerFrame && key != '!' && key != ':') do not record ! only

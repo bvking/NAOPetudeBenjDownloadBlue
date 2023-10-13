@@ -117,7 +117,11 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
     }
 
 void splitTimeScaleRotation(float propagationSpeed)
- {
+
+ {  
+
+
+
     if (doo)
     {
         signal[2] = -signal[2];
@@ -154,14 +158,57 @@ void splitTimeScaleRotation(float propagationSpeed)
             oscillatorChange = networkSize - 1;
             }        
     }
+
+    directionOfsignal=4;
+    boolean equal;
+    simpleSignal2 =abs ((int) map(signal[2], 0, 1, 0, 100000));
+
+     text(" signa " + simpleSignal2 + " " + oldSimpleSignal2 , 200, 300);
+
+    if (!doZ) {
+        propagationTrigged = false;
+
+
+         if (oldSimpleSignal2 > simpleSignal2 && directionOfsignal>=4 ) 
+         {
+            directionOfsignal=6;
+            text(" signalUp " + directionOfsignal, 200, 400);
+            
+         }
+
+         if (oldSimpleSignal2 < simpleSignal2   ) 
+         {
+            directionOfsignal=2;
+            text(" signalDo " + directionOfsignal, 200, 450);
+
+         }
+
+
+          if (oldSimpleSignal2 == simpleSignal2 ) 
+         { 
+            equal=true;
+            directionOfsignal=4;
+            text(" signalNo " + directionOfsignal, 200, 350);
+
+         }
+
+
+        
+      }
+
+
+
+
+    oldSimpleSignal2=simpleSignal2;
+
     
     
     if (!doZ) {
         propagationTrigged = false;
        
-        if (oldSplitTimeLfo > splitTimeLfo + 50) { // only whe spliTimeLfois sliced timeLfo by 100
+        if (oldSplitTimeLfo > splitTimeLfo + 50) {//+50 // only whe spliTimeLfois sliced timeLfo by 100
             text(" signal monte ", 200, 200);
-            signalUpRise=true;
+           // signalUpRise=true;
             
             oldOscillatorChange = oscillatorChange;
             oscillatorChange--;
@@ -173,7 +220,7 @@ void splitTimeScaleRotation(float propagationSpeed)
                 }
             }
         
-        if (splitTimeLfo > oldSplitTimeLfo + 50) {
+        if (splitTimeLfo > oldSplitTimeLfo + 50) { //+50
             text(" signal descend ", 200, 200);
             signalUpRise=false;
             
@@ -188,6 +235,8 @@ void splitTimeScaleRotation(float propagationSpeed)
                 }
             }
     }
+
+
     
     timeLfo = int(map(signal[2], 0, 1, 0, networkSize * 100));
 

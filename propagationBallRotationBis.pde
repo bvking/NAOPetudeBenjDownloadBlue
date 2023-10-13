@@ -69,7 +69,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     
     textSize(50);
     displayPropagationControl();
-    text ( " signal[2] " + signal[2], 100, -100);
+    text ( " signal[2] " +nf (signal[2],0, 1) , 100, -100);
     
     
     letter = key;   
@@ -284,7 +284,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         
         if (measure ==  122 && beatPrecised ==  2 && beatPrecisedTrigged == true) {// measure>=41 && measure<=42                 
           //  levelFromArrow = (PI / (1 * networkSize - 1)); // set 
-            levelFromArrow=0.2;
+            levelFromArrow=0.4;
            // phaseAmount=  (PI / (1 * networkSize - 1)); // set 
             modulePhaseAmountWithArrow = true; // enable pahseAmout = levelFromArrow
         }
@@ -319,13 +319,18 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         }
 
         if (measure == 150 && beatPrecised ==  8 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-          
+            key = 'O';
+          //  keyCode = LEFT; keyReleased();
+          //  keyCode = LEFT; keyReleased();
+        }
+          if (measure == 163 && beatPrecised ==  3 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'o';
           //  keyCode = LEFT; keyReleased();
           //  keyCode = LEFT; keyReleased();
         }
 
         if (measure == 178 && beatPrecised ==  1 && beatPrecisedTrigged) {// Beware in live i slow down lfo of propzgation
-         keyCode = LEFT; keyReleased();
+         keyCode = LEFT; keyReleased(); // rise amount of phase?
          keyCode = LEFT; keyReleased(); 
         }
 
@@ -352,6 +357,13 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         if (measure == 193 && beatPrecised ==  1 && beatPrecisedTrigged)
          {
          doRotationWithoutPropagation=false;
+        }
+         if (measure == 198 && beatPrecised ==  3 && beatPrecisedTrigged)
+         {
+            //noFrame();
+         key = '!';
+         keyReleased();
+         phasePattern();
         }
 
      } // end madRush

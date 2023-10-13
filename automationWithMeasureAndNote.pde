@@ -182,12 +182,12 @@ void autmationWithMeasureAndNote()
   }
 
   if  (measure==71 && beatTrigged==true  ) {
-    speedDelta=4;
+    speedDelta=3;
   }
 
   if  (measure==81 &&   beatPrecised%1==0  && beatPrecisedTrigged==true) {
 
-    speedDelta=4;
+    speedDelta=3;
     modeStartKeyToFollow =  " truc "; // tres important pour sortir du mode follow sample
     moveKeys[8]=true;
     moveKeys[11]=true;  // keyMode TrigEvent
@@ -274,10 +274,25 @@ void autmationWithMeasureAndNote()
   }
 
   if ( (measure==89 || measure==92 || measure==94) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-    //    speedDelta= 5;
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
   }
 
   if ( (measure==97 || measure==100 || measure==102) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
+    key='r';
+    keyReleased();
+    key='r';
+    keyReleased();
     key='r';
     keyReleased();
     key='r';
@@ -289,38 +304,40 @@ void autmationWithMeasureAndNote()
   if ( measure==104 && beatTrigged==true) {
     key='P';
     keyReleased();
-    key='r';
-    keyReleased();
+  
   }
 
-  if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
-    key='r';
+  if ( measure==104 && beatPrecisedTrigged==true  && ( beatPrecised == 1 || beatPrecised == 5   || beatPrecised == 9 || beatPrecised == 13 || beatPrecised == 17 || beatPrecised == 21  )) {
+     key='r';
     keyReleased();
+    }
+
+  if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6   || beatPrecised == 11  || beatPrecised == 17 || beatPrecised == 23 ) ) { //|| beatPrecised == 6 || beatPrecised == 17
+   //key='r';
+   //keyReleased();
+   //  key='R';
+  //  keyReleased();
    
   }
 
-  if ( measure==107 && beatTrigged==true) {
-    //  speedDelta= 4;
-    //     key='e'; keyReleased();
-    //key = '9';
-    //keyReleased();
-    key='f';
+  if ( measure==107 && beatPrecisedTrigged==true && ( beatPrecised == 1 || beatPrecised == 13 )) {
+
+    key='F';
     keyReleased();
-    key='f';
-    keyReleased();
-    key='f';
+ 
   }
   if ( measure==108 && beatTrigged==true) {
+    key='F';
+    keyReleased();
     
-   // key='p';
-  //  keyReleased();
-  //  key='p';
-  //  keyReleased();
+  
   }
 
-  if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11 || beatPrecised == 17 || beatPrecised == 23 ) ) {
-   
-    key='g'; // not good way
+  if  (((measure==111 || measure==113 || measure== 117)  && beatPrecisedTrigged==true && // ( beatPrecised == 1 || beatPrecised == 2 || beatPrecised == 3|| beatPrecised == 4 || beatPrecised == 5 ||
+            beatPrecised %4==0 ))  {                                                                            //    beatPrecised == 7|| beatPrecised == 9 || beatPrecised == 11 || beatPrecised == 13 || beatPrecised == 15 ||
+                                                                                         //     beatPrecised == 17 || beatPrecised == 19 || beatPrecised == 21 || beatPrecised == 23   ) ) { 
+                                                                                             
+    key='f'; // good way
     keyReleased();
  
   }
