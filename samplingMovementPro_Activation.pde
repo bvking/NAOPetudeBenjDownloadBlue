@@ -79,7 +79,7 @@ void handleSamplingModeWithAbletonLive(){
     }
      //==================== sampling with automationLFO[1]
 
-    if (samplingWithMouse==true &&  abletonLFO)
+    if (samplingWithMouse==true &&  abletonLFO && music_from_ableton_live == " pleasureKraft ")
     {   
        angleToInterpolate = (float)map(ableton[0], 0, 1 , 0, TWO_PI); 
     }

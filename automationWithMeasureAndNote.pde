@@ -185,7 +185,7 @@ void autmationWithMeasureAndNote()
     speedDelta=3;
   }
 
-  if  (measure==81 &&   beatPrecised%1==0  && beatPrecisedTrigged==true) {
+  if  (measure==81 &&   beatPrecised%4==0  && beatPrecisedTrigged==true) {
 
     speedDelta=3;
     modeStartKeyToFollow =  " truc "; // tres important pour sortir du mode follow sample

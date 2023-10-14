@@ -358,6 +358,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
          {
          doRotationWithoutPropagation=false;
         }
+        
          if (measure == 198 && beatPrecised ==  3 && beatPrecisedTrigged)
          {
             //noFrame();

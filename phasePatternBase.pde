@@ -609,7 +609,7 @@ void phasePatternBase() { // trigged with $ or *
       // if networkSize-networkSize-i))%PI/3; --> oscillator 0 not affected 
 
       
-      netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i));//%PI/3;    // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected  
+      netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3;//%PI/3;    // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected  
       netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
       key='#';
       printSummary(i);
@@ -623,9 +623,9 @@ void phasePatternBase() { // trigged with $ or *
      // netPhaseBase[i]-=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i));//%PI/3; 
      // netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
 
-      netPhaseBase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i));//%PI/3;    // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected  
+      netPhaseBase[i]-=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i))%PI/3;//%PI/3;    // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected  
       netPhaseBase[i]=  netPhaseBase[i]%TWO_PI;
-      netPhaseBase[i]-=  netPhaseBase[i];
+     // netPhaseBase[i]-=  netPhaseBase[i];
       key='#';
       printSummary(i);
     }

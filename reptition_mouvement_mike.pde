@@ -81,7 +81,9 @@ class SamplerTheta {
       float dist = 0;
       for (int i = 0; i < samples.size() - 1; i++) {
         dist += abs(scaleTheta((samples.get(i).theta - samples.get(i + 1).theta)));
-        samplesModified.add(new SampleTheta(samples.get(i + 1).t, (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
+       // samplesModified.add(new SampleTheta(samples.get(i + 1).t, (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
+        samplesModified.add(new SampleTheta (int(samples.get(i + 1).t*8000/fullTime()), (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
+
         print(samples.get(i).theta);
         print(",");
         print(" good data x " + samplesModified.get(i).theta);
