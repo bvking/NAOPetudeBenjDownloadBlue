@@ -153,9 +153,6 @@ class SamplerTheta {
   
 }
 
-
-
-
 SamplerTheta sampler;
 
 
