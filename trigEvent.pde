@@ -28,6 +28,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
                 delayTimeToTrig=120; //ms
                 delayTimeToTrig4=120;
+        
+           if (music_from_ableton_live == " pleasureKraft ") 
+           {
+            // newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+             net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+             if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+             keyMode = " samplingModeWithLive ";
+           }
+
+           net.phase[networkSize-1]= movementInterpolated;
+
+
+
+           if (measure == 248 )
+           {        
+            // keyMode = " propagationBallRotationBis ";
+            
+            //float propagationFromNote;
+            //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
+            }
+           }
 
        if  (music_from_ableton_live == " madRush " ) { 
                 
@@ -102,24 +123,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                //mapPropagationSampledBall();
          }
 
-      
-           if (music_from_ableton_live == " pleasureKraft ") 
-           {
-             if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
-             keyMode = " samplingModeWithLive ";
-   
-           }
+    
 
-           if (measure == 248 )
-           {        
-            // keyMode = " propagationBallRotationBis ";
-            
-            //float propagationFromNote;
-            //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
-            }
-           }
-
-    if (music_from_ableton_live == " pleasureKraft ")
+    if (music_from_ableton_live == " pleasureKraftNO ")
      {
           
             if (measure < 58 ){

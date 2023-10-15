@@ -20,8 +20,8 @@ String music_from_ableton_live;
 String positionMov;  
 
 
-int networkSize = 10;
-//int networkSize = 6;
+//int networkSize = 10;
+int networkSize = 6;
 
 int numberOfStep = 3200;
 //int numberOfStep = 6400;
@@ -1045,10 +1045,10 @@ void setup() {
                 
                 //***************************************** END 3D CAM  
 
-                //  music_from_ableton_live = " pleasureKraft ";
-                //  positionMov = " premierePartie "; 
+                  music_from_ableton_live = " pleasureKraft ";
+                  positionMov = " premierePartie "; 
                 //
-                 music_from_ableton_live = " madRush ";  
+                // music_from_ableton_live = " madRush ";  
             
                 
 

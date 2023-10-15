@@ -106,7 +106,7 @@ void draw()
             specialMeasureToStartRecording = 241;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 4;
+        measureRecordStop = specialMeasureToStartRecording + 1;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure) // synchronise recording with beatTrigged == true &&
         { 
@@ -131,7 +131,7 @@ void draw()
     
     if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// repetition and trigging
-        net.phase[0]+=PI/2;
+       // net.phase[0]+=PI/2;
         keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
         keyCode = LEFT; keyReleased(); // shift delay of following ball

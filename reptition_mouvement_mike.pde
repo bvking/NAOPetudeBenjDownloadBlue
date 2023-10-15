@@ -20,6 +20,8 @@ float mlerp(float x0, float x1, float t, float M) {
  }
  */
 
+
+
 float scaleTheta(float theta) {
   while (theta < -PI ) {
     theta += TWO_PI;
@@ -64,14 +66,20 @@ class SamplerTheta {
   int fullTime() {
     return (samples.size() > 1) ? samples.get(samples.size() - 1).t : 0;
   }
+
+
+
   void beginPlaying() {
     startTime = millis();
     playbackFrame = 0;
-    println(samples.size(), "samples over", fullTime(), "milliseconds");
+
+
     if (samples.size() > 0) {
       numberOfSample = samples.size();
 
-      float deltaTheta = scaleTheta(samples.get(0).theta - samples.get(samples.size() - 1).theta);
+      println(numberOfSample, "samples over", fullTime(), "milliseconds");
+
+      float deltaTheta = scaleTheta(samples.get(0).theta - samples.get(numberOfSample - 1).theta);
       float sumdist = 0;
 
       for (int i = 0; i < samples.size() - 1; i++) {
@@ -79,34 +87,50 @@ class SamplerTheta {
       }
       samplesModified.add(new SampleTheta(samples.get(0).t, samples.get(0).theta));
       float dist = 0;
+
+
+      println( "sample size = " + samples.size());
       for (int i = 0; i < samples.size() - 1; i++) {
         dist += abs(scaleTheta((samples.get(i).theta - samples.get(i + 1).theta)));
-       // samplesModified.add(new SampleTheta(samples.get(i + 1).t, (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
-        samplesModified.add(new SampleTheta (int(samples.get(i + 1).t*8000/fullTime()), (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
+        samplesModified.add(new SampleTheta(int(samples.get(i + 1).t * 2000 / fullTime()), (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
 
+        print(i);
+        print("  ");
         print(samples.get(i).theta);
-        print(",");
-        print(" good data x " + samplesModified.get(i).theta);
+        print(" t =  " + samples.get(i).t);
         println("");
       }
+
+      println(samplesModified.size(), "samples over", samplesModified.get(samples.size() - 1).t, "milliseconds");
+      for (int i = 0; i < samplesModified.size(); i++) {
+        print(i);
+        print(",");
+        print(" good data x " + samplesModified.get(i).theta);
+        print(" t =  " + samplesModified.get(i).t);
+        println("");
+      }
+      println( "Modifier sample size = " + samplesModified.size());
     }
   }
 
-  void draw() {
+    boolean draw() {
+    boolean result = false;
     stroke(255);
 
-    speed = speedOfrepetition; 
-
     float absspeed = abs(speed);
-
-    int now = int((((millis() - startTime)) % (int)(fullTime() / absspeed)) );
+    int now = millis() - startTime; 
+    if( now > (int)(2000/ absspeed)) {
+      startTime += (int)(2000/ absspeed);
+      result = true;
+    }
+    now = int(((now) % (int)(2000/ absspeed)));
     if (speed < 0) {
-      now = (int)(fullTime() / absspeed) - now;
+      now = (int)(2000 / absspeed) - now;
     }
 
     playbackFrame = 0;
     while (samplesModified.get(playbackFrame + 1).t / absspeed < now)
-      playbackFrame = (playbackFrame + 1) % (samples.size() - 1);
+      playbackFrame = (playbackFrame + 1) % (samplesModified.size() - 1);
 
     SampleTheta s0 = samplesModified.get(playbackFrame);
     SampleTheta s1 = samplesModified.get(playbackFrame + 1);
@@ -124,114 +148,16 @@ class SamplerTheta {
     fill(255, 255, 255);
     circle(100 * cos(movementInterpolated) + 200, 100 * sin(movementInterpolated) + 200, 20);
     stroke(255);
+    return result;
   }
+  
 }
 
 
 
-class Sample {
-  int t;
-  float x, y;
-  Sample(int t, float x, float y) {
-    this.t = t;
-    this.x = x;
-    this.y = y;
-  }
-}
-
-class Sampler {
-
-  ArrayList<Sample> samples;
-  ArrayList<Sample> samplesModified;
-  int startTime;
-  int playbackFrame;
-
-  Sampler() {
-    samples = new ArrayList<Sample>();
-    samplesModified = new ArrayList<Sample>();
-    startTime = 0;
-  }
-  void beginRecording() {
-    samples = new ArrayList<Sample>();
-    samplesModified = new ArrayList<Sample>();
-    playbackFrame = 0;
-  }
-  void addSample(float x, float y) {  // add sample when bRecording
-    int now = millis();
-    if (samples.size() == 0) startTime = now;
-    samples.add(new Sample(now - startTime, x, y));
-  }
-  int fullTime() {
-    return (samples.size() > 1) ? samples.get(samples.size() - 1).t : 0;
-  }
-  void beginPlaying() {
-    startTime = millis();
-    playbackFrame = 0;
-    println(samples.size(), "samples over", fullTime(), "milliseconds");
-    if (samples.size() > 0) {
-      numberOfSample = samples.size();
-
-      float deltax = samples.get(0).x - samples.get(samples.size() - 1).x;
-      float deltay = samples.get(0).y - samples.get(samples.size() - 1).y;
-      float sumdist = 0;
-
-      for (int i = 0; i < samples.size() - 1; i++) {
-        sumdist += sqrt((samples.get(i).x - samples.get(i + 1).x) * (samples.get(i).x - samples.get(i + 1).x) + (samples.get(i).y - samples.get(i + 1).y) * (samples.get(i).y - samples.get(i + 1).y));
-      }
-      samplesModified.add(new Sample(samples.get(0).t, samples.get(0).x, samples.get(0).y));
-      float dist = 0;
-      for (int i = 0; i < samples.size() - 1; i++) {
-        dist += sqrt((samples.get(i).x - samples.get(i + 1).x) * (samples.get(i).x - samples.get(i + 1).x) + (samples.get(i).y - samples.get(i + 1).y) * (samples.get(i).y - samples.get(i + 1).y));
-        samplesModified.add(new Sample(samples.get(i + 1).t, (float)(samples.get(i + 1).x + (dist * deltax) / sumdist), (float)(samples.get(i + 1).y + (dist * deltay) / sumdist)));
-        print(samples.get(i).x);
-        print(",");
-        print(samples.get(i).y);
-        print(",");
-        print(" good data x " + samplesModified.get(i).x);
-        print(",");
-        print(" good data y " + samplesModified.get(i).y);
-        println("");
-      }
-    }
-  }
-
-  void draw() {
-    stroke(255);
-    //**RECORD
-    beginShape(LINES);
-    for (int i = 1; i < samples.size(); i++) {
-      vertex(samplesModified.get(i - 1).x, samplesModified.get(i - 1).y);  // replace vertex with Pvector
-      vertex(samplesModified.get(i).x, samplesModified.get(i).y);
-    }
-    endShape();
-    //**ENDRECORD
-
-    //**REPEAT
-    int now = (millis() - startTime) % fullTime();
-    if (now < samplesModified.get(playbackFrame).t) playbackFrame = 0;
-    while (samplesModified.get(playbackFrame + 1).t < now)
-      playbackFrame = (playbackFrame + 1) % (samples.size() - 1);
-    Sample s0 = samplesModified.get(playbackFrame);
-    Sample s1 = samplesModified.get(playbackFrame + 1);
-    float t0 = s0.t;
-    float t1 = s1.t;
-    float dt = (now - t0) / (t1 - t0);
-
-    //float x =lerp( s0.x, s1.x, dt );  // interpolation without modulo
-    //float y =lerp( s0.y, s1.y, dt ); //
-
-    float x = mlerp(s0.x, s1.x, dt, TWO_PI);  // interpolation with modulo, it's better
-    float y = mlerp(s0.x, s1.x, dt, TWO_PI);
-
-    movementInterpolated = y;
-    text(" mov " + (movementInterpolated), 100, 500);
-    fill(255, 255, 255);
-    circle(100 * cos(movementInterpolated) + 200, 100 * sin(movementInterpolated) + 200, 20);
-    stroke(255);
-  }
-}
 
 SamplerTheta sampler;
+
 
 //___________ former One
 /*
