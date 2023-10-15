@@ -4,6 +4,7 @@
 //float movementInterpolated, angleToInterpolate;
 float [] sampledModifiedChecking =  new float [100000];
 
+int timeRecording = 8000;
 int numberOfSample;
 int numberOfrepetition;
 
@@ -92,7 +93,7 @@ class SamplerTheta {
       println( "sample size = " + samples.size());
       for (int i = 0; i < samples.size() - 1; i++) {
         dist += abs(scaleTheta((samples.get(i).theta - samples.get(i + 1).theta)));
-        samplesModified.add(new SampleTheta(int(samples.get(i + 1).t * 2000 / fullTime()), (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
+        samplesModified.add(new SampleTheta(int(samples.get(i + 1).t * timeRecording / fullTime()), (float)(samples.get(i + 1).theta + (dist * deltaTheta) / sumdist)));
 
         print(i);
         print("  ");
@@ -119,13 +120,13 @@ class SamplerTheta {
 
     float absspeed = abs(speed);
     int now = millis() - startTime; 
-    if( now > (int)(2000/ absspeed)) {
-      startTime += (int)(2000/ absspeed);
+    if( now > (int)(timeRecording/ absspeed)) {
+      startTime += (int)(timeRecording/ absspeed);
       result = true;
     }
-    now = int(((now) % (int)(2000/ absspeed)));
+    now = int(((now) % (int)(timeRecording/ absspeed)));
     if (speed < 0) {
-      now = (int)(2000 / absspeed) - now;
+      now = (int)(timeRecording / absspeed) - now;
     }
 
     playbackFrame = 0;

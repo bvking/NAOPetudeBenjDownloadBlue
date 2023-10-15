@@ -16,6 +16,8 @@ void keyReleased() {
       case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
    }
 
+   
+
   if ( keyMode == " propagationBallRotationBis " )
     {
       if (keyCode == UP ) {    
@@ -312,37 +314,18 @@ void keyReleased() {
   //*********************************************CIRCULAR
 
 
-  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )  {  
-
-   if (formerKeyMetro == '$' || formerKeyMetro == '*' ) {  
-        println ("  Frequencies adatped to PENDULAR way trigged with $  > 54 ");
-  
-             phasePattern(); // enable to change configuration, but program go away
-             // formerKey= char (key);
-             for ( int i=0; i< networkSize; i++) {
-              //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-               }
-
-            //   all below inside phasePattern
-            
-            // teensyPos();
-            //  key=formerKey;
-            // phasePatternBase(); // only with * ?
-
-             for ( int i=0; i< networkSize; i++) {
-               //    oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
-              }
-
-            
-             rotate (HALF_PI);
-
-            //  text (" NO trigEventWithAbletonSignal ", 0, -500 );
-              textSize (200);
-
-           
-
-              rotate (-HALF_PI);
+  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )
+    {  
+    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+     {
+           phasePattern(); // enable to change configuration, but program go away
      } 
+    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+     {
+           phasePatternBase(); // enable to change configuration, but program go away
+     }
+     key= '#'; 
+
    } 
 
 

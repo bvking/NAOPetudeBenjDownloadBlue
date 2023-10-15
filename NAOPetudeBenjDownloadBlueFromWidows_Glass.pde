@@ -72,6 +72,8 @@ void draw()
     
     if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
     {// prepare record
+        key='9'; // align
+        keyReleased();
         modeCircular = true; // not work
         formerKeyMetro = '*'; // not work
         keyMode = " samplingModeWithLive ";

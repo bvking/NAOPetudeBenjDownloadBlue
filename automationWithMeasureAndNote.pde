@@ -122,13 +122,17 @@ void autmationWithMeasureAndNote()
     keyReleased();
     key='r';
     keyReleased();
-    /*
- 
-    */
+   
   }
+  
+  if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {
+    key='9'; // align
+    keyReleased();
+    }
 
 
   if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {// return in main
+  
     formerKeyMetro = '*';
     keyMode = " null ";
     draw(); //go to main --> goOut from trigEvent

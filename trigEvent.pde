@@ -54,7 +54,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 
                  if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
                  {
-                  frameRate(120);
+                  frameRate(30);
                   formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
                   keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
@@ -71,19 +71,18 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             
                  }
 
+                 if  (measure==61 && ( beatPrecised == 1 || beatPrecised == 2) && beatPrecisedTrigged==true)
+                 {
+                    textSize(500);
+                    key = 'p';           
+                 }
+
                  if  (measure==55 && beatPrecised == 1 && beatPrecisedTrigged==true)
                 {
                     textSize(500);
                   // key = 'p';           
                    }
 
-                if  (measure==55 && beatPrecised == 2 && beatPrecisedTrigged==true)
-                {
-                    textSize(500);
-                    key = 'p';           
-                }
-
-                 
                 if  ((measure==51 ||measure== 59) && beatPrecised == 1 && beatPrecisedTrigged==true)
                 {
                      keyCode = LEFT; keyReleased(); //            
@@ -114,6 +113,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                      keyCode = DOWN; keyReleased(); // 
                      
                    } 
+
+                if  (measure==79 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                  {
+                   frameRate(30);
+                     
+                   }
 
                 if  (measure==150 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  { 
