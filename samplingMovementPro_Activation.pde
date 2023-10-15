@@ -14,17 +14,13 @@ void samplingMovementPro() {
 
   else {
     if (sampler.fullTime() > 0){
-     // sampler.draw();
+    
      if (sampler.draw()){
-      TrigmodPos[networkSize-1]=0;
-      
+      TrigmodPos[networkSize-1]=0;     
         textSize(50);
         text ( " do the sample " , 100, 400);
-
       }
      }
-
-
   }
 }
 
