@@ -107,6 +107,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 
             else {
               samplingWithMouse=true;
+              
               println(" nothing connected ");
             }
          

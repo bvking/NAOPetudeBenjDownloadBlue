@@ -106,7 +106,7 @@ void draw()
             specialMeasureToStartRecording = 241;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 1;
+        measureRecordStop = specialMeasureToStartRecording + 4;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure) // synchronise recording with beatTrigged == true &&
         { 
