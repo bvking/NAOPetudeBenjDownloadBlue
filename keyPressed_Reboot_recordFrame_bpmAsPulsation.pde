@@ -30,7 +30,7 @@ void keyPressed() {
     reBoot();
   }
 
-  frameratio();
+  frameResolution();
 
   if ((key == '!'  ) ) {
     text ("STOP MOVEMENT AND TIMER: and BPM ;) when restart slowly", 400, -400); //     // Toggle between sketch paused - running_Timer

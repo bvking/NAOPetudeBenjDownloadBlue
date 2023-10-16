@@ -55,6 +55,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
                  {
                   frameRate(30);
+                  frameRatio();
                   formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
                   keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
@@ -117,6 +118,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 if  (measure==79 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                    frameRate(30);
+                   draw();
                      
                    }
 

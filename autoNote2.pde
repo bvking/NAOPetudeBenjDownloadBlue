@@ -59,9 +59,9 @@ void autoNote2() {//1 67 69 72
     for (int i = 0; i < networkSize; i++) {
       // ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
       // ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
-      // key=';';keyPressed(); print ("rise up frameratio +5 ");
-      // key=';';keyPressed(); print ("rise up frameratio +5 ");
-      // key=';';keyPressed(); print ("rise up frameratio +5 ");
+      // key=';';keyPressed(); print ("rise up frameResolution +5 ");
+      // key=';';keyPressed(); print ("rise up frameResolution +5 ");
+      // key=';';keyPressed(); print ("rise up frameResolution +5 ");
     }
   }
 
@@ -102,9 +102,9 @@ void autoNote2() {//1 67 69 72
 
       //    ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
       //     ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/3*i;
-      //    key=';';keyPressed(); print ("rise up frameratio +5 ");
-      //    key=';';keyPressed(); print ("rise up frameratio +5 ");
-      //    key=';';keyPressed(); print ("rise up frameratio +5 ");
+      //    key=';';keyPressed(); print ("rise up frameResolution +5 ");
+      //    key=';';keyPressed(); print ("rise up frameResolution +5 ");
+      //    key=';';keyPressed(); print ("rise up frameResolution +5 ");
     }
   }
 }

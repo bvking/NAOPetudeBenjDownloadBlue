@@ -452,7 +452,7 @@ private class MovingAverage {
 }
 
 
-void frameratio() {
+void frameResolution() {
   //**************************FRAME RATE    ***********CONTROL FRAME RATIO SPEED
 
   if ((key == ',')) {
