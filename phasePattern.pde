@@ -906,12 +906,12 @@ void phasePattern()
    // formerKeyCode = CONTROL;
     for (int i = 0; i < networkSize; i++) {    
       //    net.phase[i] -= (QUARTER_PI/(networkSize-0))*(i+1); // TRES BIEN
-
-      net.phase[i] += ((TWO_PI/(networkSize/1))*(i+1)); // TRES BIEN  ==     net.phase[i] += (i+1)*TWO_PI/4; //4hit  ==   net.phase[i] +=  (i+1)*3.5*PI; 
+     net.phase[i] += (TWO_PI*(i+1)/networkSize);
+    //  net.phase[i] += ((TWO_PI/(networkSize))*(i+1)); // TRES BIEN  ==     net.phase[i] += (i+1)*TWO_PI/4; //4hit  ==   net.phase[i] +=  (i+1)*3.5*PI; 
       net.phase[i] = net.phase[i] % TWO_PI; // TRES BIEN
 
       printSummary(i);
-      key ='#'; keyReleased();
+      key ='#';// keyReleased();
     }
   }  
 

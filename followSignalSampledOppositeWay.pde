@@ -42,12 +42,12 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     if(key != '#') {
         if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
         {
-           phasePatternBase(); //
-          // phasePattern();
+          // phasePatternBase(); //
+           phasePattern();
             for (int i = 0; i < networkSize; i += 1)
              {
-                phasePatternFollow[i] += netPhaseBase[i]; //
-               //   phasePatternFollow[i] += net.phase[i];
+              //  phasePatternFollow[i] += netPhaseBase[i]; //
+                phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
              }     
          key = '#';

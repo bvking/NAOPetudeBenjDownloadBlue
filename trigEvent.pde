@@ -33,20 +33,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            {
             // newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
              net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
-             if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+            if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
              keyMode = " samplingModeWithLive ";
            }
-
-          // net.phase[networkSize-1]= movementInterpolated;
-
-
-
-           if (measure == 248 )
-           {        
-            // keyMode = " propagationBallRotationBis ";
-            
-            //float propagationFromNote;
-            //propagationBallRotationBis(propagationFromNote) propaged with signal2 with splitTimeScale
+           if (measure == 243 && beatTrigged )
+            {        
+              key = 'e';
             }
            }
 
