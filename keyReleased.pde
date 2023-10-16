@@ -113,8 +113,8 @@ void keyReleased() {
 
   if (keyCode == UP && formerKey == 's' )
   {  
-    if (key!='#')
-     { 
+   // if (key!='#')
+   //  { 
         if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
              || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
             )
@@ -132,13 +132,13 @@ void keyReleased() {
           key='#'; // to trig only once  
           */
        }
-     }
+  //   }
   }
 
   if (keyCode == DOWN && formerKey == 's' )
   {  
-     if (key!='#')
-      {  
+    // if (key!='#')
+    //  {  
        if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
            || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
         )
@@ -157,26 +157,9 @@ void keyReleased() {
       key='#'; // to trig only once
     */
        }
-         }
+    // }
    }
    
-    if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {   //println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
-       
-       delayTimeToTrig= delayTimeToTrig-20;
-      if (delayTimeToTrig<=0) {
-          delayTimeToTrig=200;
-     }
-  
-    text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
-    key= '#'; // to trig once keyPressedLFO
-   }
-
-    if (keyCode == RIGHT && keyMode == " addSignalOneAndTwoQuater ") { 
-    delayTimeToTrig= delayTimeToTrig+20;
-    delayTimeToTrig=delayTimeToTrig%200;
-    text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
-    key= '#'; // to trig once keyPressedLFO
-   }
 
    //***** TIME and PHASE SHIFTING of repetition_mouvement_mike
 
@@ -318,11 +301,11 @@ void keyReleased() {
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
-           phasePattern(); // enable to change configuration, but program go away
+        //   phasePattern(); // enable to change configuration, but program go away
      } 
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
      {
-           phasePatternBase(); // enable to change configuration, but program go away
+         //  phasePatternBase(); // enable to change configuration, but program go away
      }
      key= '#'; 
 
@@ -343,7 +326,7 @@ void keyReleased() {
      } 
    }
 
-     keyCode = TAB; // to stop speedDelta
+    // keyCode = TAB; // to stop speedDelta
     //key= '#'; 
 
  }

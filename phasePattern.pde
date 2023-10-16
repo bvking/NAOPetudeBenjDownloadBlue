@@ -432,8 +432,9 @@ void phasePattern()
      
 
 
-  if (key == 'u'  ) { 
- text (" SHIFT PHASE  the previous oscillator", 200, 300); // && modeCircular == false
+if (key == 'u'  )
+ { 
+   text (" SHIFT PHASE  the previous oscillator", 200, 300); // && modeCircular == false
      oldMemoryi=memoryi;
       memoryi=(memoryi+1);
       memoryi%=networkSize;
@@ -443,7 +444,7 @@ void phasePattern()
     net.shiftPhases(1); 
     net.shiftFrequencies(1); 
 
- /*     
+   /*     
     oldMemoryi=memoryi;
     memoryi=(memoryi+1)%networkSize;
 
@@ -466,11 +467,12 @@ void phasePattern()
     netPhaseBase[networkSize-1]=  netOldPhaseBase[networkSize-1-1]; // useless
      net.phase[networkSize-1]= net.oldPhase[networkSize-1-1];
     net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
-  } 
-*/
+   } 
+   */
  } 
 
-   if (key == 'U' && specialPropagationKey == '?' && modeCircular) { 
+   if (key == 'U' && specialPropagationKey == '?' && modeCircular)
+    { 
       net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
      net.phase[i]+=PI/20*(0+1);
@@ -479,7 +481,8 @@ void phasePattern()
     }
 
   
-   if (key == 'U' && specialPropagationKey == '?' && !modeCircular) { // 
+   if (key == 'U' && specialPropagationKey == '?' && !modeCircular)
+    { // 
       text ( " key " + key + " " + specialPropagationKey,  0, 500 );
          for (int i = 1; i < (networkSize-0); i++) {  
 
@@ -498,7 +501,7 @@ void phasePattern()
        net.naturalFrequency[networkSize-1]= OldFrequency[0];
        //    net.naturalFrequency[networkSize-1]= net.naturalFrequency[0]; 
      
-    //  net.shiftPhases(1);
+     //  net.shiftPhases(1);
       for (int i = 0; i < (networkSize-0); i++) { 
       metroPhase[i]+=PI/20*(0+1);
       }
@@ -508,7 +511,8 @@ void phasePattern()
 
 
 
-  if (key == 'U' && specialPropagationKey == '<') { 
+  if (key == 'U' && specialPropagationKey == '<')
+   { 
           text ( " key " + key + " " + specialPropagationKey,  0, 500 );
 
       net.shiftPhases(1);
@@ -553,84 +557,57 @@ void phasePattern()
     // net.phase[i]%=TWO_PI;
       netPhaseBase[i]=net.phase[i];
     }
-  }
+   }
 
      boolean repeatU = true;
 
-
-     if (millis() > propagationTimeElapsed+200 && specialPropagationKey == '>') {
-     if (formerKey == 'I' )  {  //|| repeatU
-    
-      // net.shiftPhases(1);
-         for (int i = 0; i < (networkSize-0); i++) { 
-     //  netOldPhaseBase[i]=netPhaseBase[i]-0/8;
-     //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
-      
-     //  net.phase[i]=netPhaseBase[i];
-
-         net.phase[i]=net.oldPhase[i];
-         netPhaseBase[i]=net.oldPhase[i];
+ /*
+  if (millis() > propagationTimeElapsed+200 && specialPropagationKey == '>')
+  {
+     if (formerKey == 'I' )
+     {  
+          for (int i = 0; i < (networkSize-0); i++) { 
+  
+             net.phase[i]=net.oldPhase[i];
+             netPhaseBase[i]=net.oldPhase[i];
    
     }
  
            oldMemoryi=memoryi;
            memoryi=(memoryi+1)%networkSize;
 
-    if ( memoryi<=0) {
-        memoryi=0;
+       if ( memoryi<=0) {
+          memoryi=0;
     }
         netOldPhaseBase[networkSize-1]=netPhaseBase[0];
      
     for (int i = 0; i < (networkSize-1); i++) {
 
        netOldPhaseBase[i+1]=netPhaseBase[i];
-    //   netPhaseBase[i]= map (netPhaseBase[i], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[i]
-      // net.phase[i]=map (netPhaseBase[i], 0, 6400, 0, TWO_PI ); // just to display
-      // net.phase[i]%=TWO_PI;
-     // net.naturalFrequency[i+1]= net.naturalFrequency[i];
-      //**   net.naturalFrequency[2]= OldFrequency[networkSize-1];
-      //  VirtualPosition[i]=VirtualPosition[i+1];
+ 
       lastActualPosition[i]+=netOldPhaseBase[i+1];
-     //lastActualPosition[i]+=netPhaseBase[i];
+    
 
-     
-      // ActualVirtualPosition[i+1]= ActualVirtualPosition[i+1]+1600;U
-      //  
-
-      printSummary(i);
+        printSummary(i);
     }
 
-    //   ActualVirtualPosition[2]= ActualVirtualPosition[networkSize-1];
-    //   net.naturalFrequency[2]= net.naturalFrequency[networkSize-1];
-
-      //**     netOldPhaseBase[networkSize-1]=netPhaseBase[0];
-       //   netPhaseBase[0]= map (net.phase[0], 0, TWO_PI, 0, 6400 ); //+ lastActualPosition[0] +dataMappedForMotorisedBigMachine[0]
-       //   netPhaseBase[0]= map (netPhaseBase[0], 0, TWO_PI, 0, 6400 ); // +dataMappedForMotorisedBigMachine[0]
-       //   net.phase[0]=map (netPhaseBase[0], 0, 6400, 0, TWO_PI ); // just to display
-       //   net.phase[0]%=TWO_PI;
-         
-        //   lastActualPosition[0]+=netPhaseBase[0];
+  
          lastActualPosition[0]+=netOldPhaseBase[0];
 
            text ("I$ >  add phase from the previous oscillator " + lastActualPosition[0] , 200, 200); // && modeCircular == false
 
-  }
-       for (int i = 0; i < (networkSize-0); i++) { 
-     // netOldPhaseBase[i]=netPhaseBase[i]-0/8;
-    //  netPhaseBase[i]+=netPhaseBase[i]+PI/8;
-      
-    //  net.phase[i]=netPhaseBase[i];
-    //  net.phase[i]+=netOldPhaseBase[i];
+    }
+    for (int i = 0; i < (networkSize-0); i++)
+    { 
 
       net.phase[i]=netOldPhaseBase[i];
    
     }
          propagationTimeElapsed= millis();
-        // key = 'U'; keyReleased();
-
-          text (propagationTimeElapsed + "U$ AGAIN " + " repeatU " + repeatU + " " + lastActualPosition[0] , 200, 400); // && modeCircular == false
-    }  
   
+          text (propagationTimeElapsed + "U$ AGAIN " + " repeatU " + repeatU + " " + lastActualPosition[0] , 200, 400); // && modeCircular == false
+  }  
+ */ 
 
   if (key == 'J') { 
     println ("J$  Shift frequencies -> one by one by keeping last position switched and divide /2");// based on i
@@ -1124,7 +1101,8 @@ void phasePattern()
       //  net.phase[i] += (oscillatorBlocked+i)*0.05;  // l'oscillateur ne se bloque pas
    //   net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.05;
 
-       net.phase[i] +=(i+1)*0.05;
+     //  net.phase[i] +=(i+1)*0.05;
+       net.phase[i] +=TWO_PI/(networkSize-0)*i; // networkSize =6 so 6 arrangement. //BEHIND
 
    //   net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';

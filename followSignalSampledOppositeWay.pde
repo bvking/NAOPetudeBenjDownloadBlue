@@ -24,13 +24,14 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     
     phases[0][frameCount % nbMaxDelais] = movementInterpolated;
 
-    //**phases[networkSize-1][frameCount % nbMaxDelais] = movementInterpolated;
-    //**newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
+  //**  phases[networkSize-1][frameCount % nbMaxDelais] = movementInterpolated;
+    newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
+   //*** newPosFollowed[0] = phases[networkSize-1][frameCount % nbMaxDelais];
 
     //if (newPosFollowed[0]<0) newPosFollowed[0]=TWO_PI+newPosFollowed[0];
-    //newPosFollowed[0] %=  TWO_PI;
+    newPosFollowed[0] %=  TWO_PI;
 
-    net.phase[networkSize-1]=  movementInterpolated;
+    // net.phase[networkSize-1]=  movementInterpolated;
     
     for (int i = 1; i < networkSize; i += 1) { // 1 follow phase 0
         //  follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
@@ -42,17 +43,19 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     if(key != '#') {
         if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
         {
-           phasePatternBase(); //
-          // phasePattern();
+         //  phasePatternBase(); //
+           phasePattern();
             for (int i = 0; i < networkSize; i += 1)
              {
-                phasePatternFollow[i] += netPhaseBase[i]; //
-               //   phasePatternFollow[i] += net.phase[i];
+             //   phasePatternFollow[i] += netPhaseBase[i]; //
+                phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
              }     
          key = '#';
         }
      }
+
+
     
     if(modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#'
         for (int i = 0; i < networkSize - 0; i += 1) {

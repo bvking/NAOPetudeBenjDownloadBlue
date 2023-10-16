@@ -44,15 +44,28 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
              if  (measure==242 && beatPrecised == 1 && beatPrecisedTrigged==true )
             {
              key= 'e';
-             key= 'e';
-             key= 'e';
-             }
-
-           
+             }        
             if  (measure==243 && beatPrecised == 1 && beatPrecisedTrigged==true )
             {
-             key= 'e';
-             
+             key= 'e';           
+             }
+
+            if  (measure==244 && beatPrecised == 1 && beatPrecisedTrigged==true )
+            {
+             key= 'e'; 
+             }
+            if  (measure==245 && beatPrecised == 1 && beatPrecisedTrigged==true )
+            {
+           //  key= 'f';
+             }      
+            if  (measure==246 && beatPrecised == 1 && beatPrecisedTrigged==true )
+            {
+           //  key= 'f';           
+             }
+
+            if  (measure==247 && beatPrecised == 1 && beatPrecisedTrigged==true )
+            {
+           //  key= 'f'; 
              }
 
            }
