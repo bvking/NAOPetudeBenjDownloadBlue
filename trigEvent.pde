@@ -37,6 +37,26 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
              keyMode = " samplingModeWithLive ";
            }
 
+            if (music_from_ableton_live == " pleasureKraft ") 
+           {
+            // newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+             net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+             if  (measure==242 && beatPrecised == 1 && beatPrecisedTrigged==true )
+            {
+             key= 'e';
+             key= 'e';
+             key= 'e';
+             }
+
+           
+            if  (measure==243 && beatPrecised == 1 && beatPrecisedTrigged==true )
+            {
+             key= 'e';
+             
+             }
+
+           }
+
           // net.phase[networkSize-1]= movementInterpolated;
 
 
