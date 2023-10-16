@@ -2,32 +2,22 @@ void abletonPos ()
 {    
   for (int i = 0; i < networkSize; i++)
    {
-
-      if (revolution[i]==0)
+    if (revolution[i]==0)
         {
           TrigmodPos[i]=0;
-        // TrigModPos[i]=0;
         }
       else  
         {
-
            TrigmodPos[i]=1;
-          //  TrigModPos[i]=1;
         }
-
    }
-
-
 
       if (keyMode == " propagationSampledBall ") 
        {
        //  dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
       }
-
-       // if ( modeCircular || !modeCircular ) {
-      for (int i = 0; i < networkSize; i++) {
-
-    
+      for (int i = 0; i < networkSize; i++)
+       {  
         //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
         //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
          Pos[i]= int (map ((net.phase[i]), 0, TWO_PI, 0, 127)); // to Oscsend
@@ -36,25 +26,15 @@ void abletonPos ()
 
       if (networkSize == 6 )
         {
-          posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] ) / networkSize;
+          posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] )
+                                                             / networkSize;
          }
-
-
-       // print (" datM " + dataMappedForMotorisedPosition[i] + " abletonPos " + Pos[i]);
-       // println();
-
-
-       // print (" dat/ " + dataMappedForMotorisedPosition[i]/numberOfStep + " abletonPos " + Pos[i]);
-       // println();
-         
-       // if (modeCircular==false) { Pos[i]=abs (Pos[i]) };
-        
-      
-    
+      if (networkSize == 10 )
+        {
+          posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] + 
+                         Pos[6] + Pos[7] + Pos[8] + Pos[9] ) / networkSize;
+         }
        }
-   // }
-
-
   //*********** COMPUTE ACCELERATION
 
   if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "
@@ -69,14 +49,13 @@ void abletonPos ()
       velocityBis[i] = (phaseAcceleration[i] - oldPhaseAcceleration[i]) / 1;
 
       accelerationBis[i] = (velocityBis[i] - oldVelocityBis[i]) / 1;
-
       mapAcceleration[i]= constrain ((int (map (abs(accelerationBis[i] *100), -100, 100, 0, 127))), 0, 127);
     }
-    rotate (HALF_PI);
-    text ( "vel[0] " + velocityBis[0], -700, 1500 );
-    text ( "Acc[0]" + mapAcceleration[0], -700, 1600 );
-    rotate (-HALF_PI);
-  }
 
+    rotate (-HALF_PI);
+    text ( "vel[0] " + int (velocityBis[0])  +   "vel[networkSize-1] " + int (velocityBis[networkSize-1]) , -500, -3400, 500 );
+    text ( "Acc[0]" +  int (mapAcceleration[0]) + "Acc[networkSize-1]" + int (mapAcceleration[networkSize-1]), -500, -3300, 500 );
+    rotate (HALF_PI);
+  }
   //*********** END COMPUTE ACCELERATION
 }
