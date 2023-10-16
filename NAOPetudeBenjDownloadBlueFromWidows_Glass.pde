@@ -91,6 +91,8 @@ void draw()
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
     { 
+        frameRatio= 60;
+       // frameRate (frameRatio);
         modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
         if (mousePressed ==  true || mousePressed!= true)
         {
@@ -109,7 +111,7 @@ void draw()
             specialMeasureToStartRecording = 241;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 4;
+        measureRecordStop = specialMeasureToStartRecording + 1;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure) // synchronise recording with beatTrigged == true &&
         { 
@@ -126,7 +128,7 @@ void draw()
            
         if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
             {
-            //keyMode = " null ";
+           // keyMode = " null ";
           //  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
             //draw();
         }
@@ -165,8 +167,9 @@ void draw()
     //trigFollowSignalSampled();
     if (modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) ")
     {
-        println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
-
+      //  println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
+        // frameRatio= 60;
+        //frameRate (frameRatio);
         followSignalSampledOppositeWay(frameRatio);// with millis()
 
     }

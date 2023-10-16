@@ -22,15 +22,21 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     float deltaFollow = TWO_PI; // not used
     //here in a previous function we could change the ball followed if the space of phase between phases[0] and phase 9 is more than 360° for example
     
-    phases[0][frameCount % nbMaxDelais] = movementInterpolated;
+  
 
     //**phases[networkSize-1][frameCount % nbMaxDelais] = movementInterpolated;
     //**newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
 
     //if (newPosFollowed[0]<0) newPosFollowed[0]=TWO_PI+newPosFollowed[0];
-    //newPosFollowed[0] %=  TWO_PI;
-
+  
     net.phase[networkSize-1]=  movementInterpolated;
+
+    phases[0][frameCount % nbMaxDelais] = net.phase[networkSize-1];
+
+    newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
+
+    newPosFollowed[0] %=  TWO_PI;
+
     
     for (int i = 1; i < networkSize; i += 1) { // 1 follow phase 0
         //  follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
