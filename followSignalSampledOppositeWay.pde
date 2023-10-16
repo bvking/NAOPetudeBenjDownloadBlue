@@ -29,11 +29,24 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
 
     //if (newPosFollowed[0]<0) newPosFollowed[0]=TWO_PI+newPosFollowed[0];
   
-    net.phase[networkSize-1]=  movementInterpolated;
+   //** net.phase[networkSize-1]=  movementInterpolated;
 
-    phases[0][frameCount % nbMaxDelais] = net.phase[networkSize-1];
+   //** phases[0][frameCount % nbMaxDelais] = net.phase[networkSize-1];
 
-    newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
+ //  text ( " delayTime " + delayTime + " " + movementInterpolated, 200, 200 );
+
+ //  if (millis() > delayTime+935){
+  // 
+  //  delayTime=millis();
+   
+ //  text ( " delayTime " + delayTime + " " + movementInterpolated, 200, 300 );
+
+   // movementInterpolated+=3/4*TWO_PI;
+   // movementInterpolated=movementInterpolated+7/8*TWO_PI;
+
+   phases[0][frameCount % nbMaxDelais]=  movementInterpolated;
+    
+    //newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
 
     newPosFollowed[0] %=  TWO_PI;
 
@@ -53,7 +66,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
             for (int i = 0; i < networkSize; i += 1)
              {
                 phasePatternFollow[i] += netPhaseBase[i]; //
-               //   phasePatternFollow[i] += net.phase[i];
+             //  phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
              }     
          key = '#';
@@ -89,12 +102,17 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     phaseMappedFollow[i]= phaseMappedFollow[i]%TWO_PI;
     }
     */
+    if (keyCode ==  TAB)
+    {
+        textSize( 500);
+    }
     
     if(keyCode == BACKSPACE) {
         for (int i = 0; i < networkSize - 0; i += 1) {
             println(" ALIGN MTF ");
             phaseMapped[i] = phases[i - 0][frameCountBis % nbMaxDelais] + 0; // to aligin ball with the followed one
             phasePatternFollow[i] = 0;
+            newPosFollowed[i] = 0;
         }
         keyCode = TAB;
     }

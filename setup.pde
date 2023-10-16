@@ -16,6 +16,12 @@ boolean systemForBigMachine=true;
 boolean samplingWithMouse = true;
 boolean abletonLFO =        true;
 
+int numberOfMeasureToRecord;
+
+float delayTime;
+int factorSynchro=14;
+//int timeRecording;
+
 String music_from_ableton_live;
 String positionMov;  
 
@@ -728,7 +734,8 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
 
 
 void setup() {
-          
+
+            numberOfMeasureToRecord=4;      
             frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 

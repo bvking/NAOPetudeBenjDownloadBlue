@@ -70,8 +70,8 @@ void draw()
     
     
     
-  //  if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
-   if (measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
+    if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
+   // if (measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// prepare record
         key='9'; // align
         keyReleased();
@@ -111,9 +111,11 @@ void draw()
             specialMeasureToStartRecording = 241;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 1;
+        //measureRecordStop = specialMeasureToStartRecording + 1;
+         measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
-        if (readyToRecord == true &&  specialMeasureToStartRecording == measure) // synchronise recording with beatTrigged == true &&
+        
+        if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&
         { 
             formerKeyMetro = '*';          
             measureRecordStart = measure; //            

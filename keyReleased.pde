@@ -83,7 +83,8 @@ void keyReleased() {
     
     } // end realignement
 
-   if (key == ';') {  
+  if (key == ';')
+  {  
 
     if (networkSize ==6){ 
     for (int i = 0; i < 1; i++) {      
@@ -107,7 +108,7 @@ void keyReleased() {
          CircularVirtualPosition[i]=0;
          ActualVirtualPosition[i]=lastActualPosition[0];
          lastActualPosition[i]= lastActualPosition[0];
-    } 
+     } 
     
   }
 
@@ -160,23 +161,7 @@ void keyReleased() {
          }
    }
    
-    if (keyCode == LEFT && keyMode == " addSignalOneAndTwoQuater ") {   //println( " LEFT INCREASE decay to splitIncomingSignal ")  ; 
-       
-       delayTimeToTrig= delayTimeToTrig-20;
-      if (delayTimeToTrig<=0) {
-          delayTimeToTrig=200;
-     }
-  
-    text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
-    key= '#'; // to trig once keyPressedLFO
-   }
-
-    if (keyCode == RIGHT && keyMode == " addSignalOneAndTwoQuater ") { 
-    delayTimeToTrig= delayTimeToTrig+20;
-    delayTimeToTrig=delayTimeToTrig%200;
-    text ( " delayTimeToTrig " + delayTimeToTrig, width/8, height-800 );
-    key= '#'; // to trig once keyPressedLFO
-   }
+   
 
    //***** TIME and PHASE SHIFTING of repetition_mouvement_mike
 
@@ -199,7 +184,7 @@ void keyReleased() {
         }
       }
 
-     if (formerKeyCode == UP) 
+     if (keyCode == UP) 
       {
         if (beatTrigged) {
        speedOfrepetition+=0.5;
@@ -207,27 +192,33 @@ void keyReleased() {
        }
       //formerKeyCode= ALT;
       }
+    }
+
+
+  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+  {
+   if (keyCode == DOWN)
+     
+     factorSynchro%=17;
+     factorSynchro+=1;
+  }
 
   
-     if (formerKeyCode == DOWN)
-     {
-       if (beatTrigged) {
+     
+     /*
+     {   
       speedOfrepetition-=0.5;
-      speedOfrepetition%=(-6.5);
-      }
-
-      //formerKeyCode= ALT;
+      speedOfrepetition%=(-6.5);  
       if (speedOfrepetition==(-6.0))
       {
           speedOfrepetition=0;
       }
+       }
+       */
 
-     }
-
-    // phasePattern();//
-
-   // key= '#';  // usefuu?  
-  } 
+      
+    
+   
  
  
 
@@ -318,11 +309,11 @@ void keyReleased() {
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
-           phasePattern(); // enable to change configuration, but program go away
+        //   phasePattern(); // enable to change configuration, but program go away
      } 
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
      {
-           phasePatternBase(); // enable to change configuration, but program go away
+        //   phasePatternBase(); // enable to change configuration, but program go away
      }
      key= '#'; 
 
@@ -343,7 +334,7 @@ void keyReleased() {
      } 
    }
 
-     keyCode = TAB; // to stop speedDelta
+    // keyCode = TAB; // to stop speedDelta
     //key= '#'; 
 
  }

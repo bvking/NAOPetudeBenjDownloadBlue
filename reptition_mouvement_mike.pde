@@ -4,7 +4,8 @@
 //float movementInterpolated, angleToInterpolate;
 float [] sampledModifiedChecking =  new float [100000];
 
-int timeRecording = 2000;
+//timeRecording = 2000*numberOfMeasureToRecord;
+int timeRecording = 8000;
 int numberOfSample;
 int numberOfrepetition;
 
@@ -145,6 +146,10 @@ class SamplerTheta {
     float t1 = s1.t / absspeed;
     float dt = (now - t0) / (t1 - t0);
     movementInterpolated = theta0 + dt * (theta1 - theta0);
+   // movementInterpolated+=15/16*TWO_PI;
+     movementInterpolated+=TWO_PI/factorSynchro;
+    //  movementInterpolated-=TWO_PI*15/16;
+
     text(" mov " + (movementInterpolated), 100, 500);
     fill(255, 255, 255);
     circle(100 * cos(movementInterpolated) + 200, 100 * sin(movementInterpolated) + 200, 20);
