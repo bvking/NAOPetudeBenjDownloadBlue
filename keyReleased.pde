@@ -12,6 +12,8 @@ void keyReleased() {
  
         //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
         //  case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
+
+
       case('5'):myKnobB.setConstrained(false).hideTickMarks().snapToTickMarks(false);break;
       case('6'):myKnobA.shuffle();myKnobB.shuffle();break;
    }
@@ -56,7 +58,8 @@ void keyReleased() {
     getOldPositionOfActiveOscillator(faz);
     }
 
-    if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') ) {  // realignement
+    if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') )
+     {  // realignement
      if (networkSize ==6){
      
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
@@ -148,7 +151,7 @@ void keyReleased() {
         if (speedDelta <= 1) { 
           speedDelta=1;
            }
-       //  key='#'; // to trig only once
+         key='#'; // to trig only once
      /*
       oscillatorBlocked--;
       if (oscillatorBlocked < 0) { 
@@ -184,37 +187,55 @@ void keyReleased() {
         }
       }
 
-     if (keyCode == UP) 
+     if (formerKeyCode == UP && key == 'q') 
       {
-        if (beatTrigged) {
+        preStartSpeedOfRepetition=true;
+        if (beatTrigged && preStartSpeedOfRepetition) {
        speedOfrepetition+=0.5;
        speedOfrepetition%=6.5;
+       preStartSpeedOfRepetition=false;
        }
-      //formerKeyCode= ALT;
+      
       }
+
+      if (formerKeyCode  == 40 && key == 'q') 
+      {
+         preStartSpeedOfRepetition=true;
+        if (beatTrigged==true && preStartSpeedOfRepetition)
+      {   
+
+        speedOfrepetition-=0.5;
+        speedOfrepetition%=(-6.5);  
+        if (speedOfrepetition==(-6.0))
+      {
+          speedOfrepetition=0;
+      }
+      preStartSpeedOfRepetition=false;
+      }
+     }
     }
 
 
-  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && keyCode == DOWN)
   {
-   if (keyCode == DOWN)
+   if (keyCode == DOWN){
      
-     factorSynchro%=17;
+     factorSynchro%=33;
      factorSynchro+=1;
+  }
+     
+      
+   if (keyCode == DOWN){
+     
+     factorSynchro%=-33;
+     factorSynchro-=1;
+  }
+
   }
 
   
      
-     /*
-     {   
-      speedOfrepetition-=0.5;
-      speedOfrepetition%=(-6.5);  
-      if (speedOfrepetition==(-6.0))
-      {
-          speedOfrepetition=0;
-      }
-       }
-       */
+  
 
       
     

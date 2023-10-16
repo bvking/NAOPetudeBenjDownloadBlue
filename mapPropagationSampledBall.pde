@@ -30,17 +30,16 @@ void mapPropagationSampledBall() {
 
      if (modeCircular ) {  
      textSize( 75);
-     if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) { // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
-  
-          countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   
+     if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
+       {    countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   //  print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev); 
       } 
         for (int i = 0; i <  networkSize-0; i+=1) {
            oldPositionToMotor[i]=  positionToMotor[i];
         } 
-        //  print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev); 
 
         //  text (rev[0] + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
-          text (" modeStart " +  modeStartKeyToFollow + "frame/s " + frameRatio + " speedOfR " + speedOfrepetition + " f/s " +  delayTimeFollowPhase11 + "fSync "+ factorSynchro + " forKey " + formerKeyCode + " f "+ keyCode , -600, -800 );  // //degrees (signal[2])
+          text (" key " + key + " fKey " + formerKey + " fKeyC " + formerKeyCode + " KeyC "+ keyCode + " startSpeed " + preStartSpeedOfRepetition, -600, -900 ); 
+          text (" modeStart " +  modeStartKeyToFollow + "frame/s " + frameRatio + " speedOfR " + speedOfrepetition + " f/s " +  delayTimeFollowPhase11 + "fSync "+ factorSynchro  , -600, -800 );  // //degrees (signal[2])
 
      
       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis "  ) {// || keyMode == " propagationBallRotationBis " 

@@ -59,18 +59,29 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     samplingMovementPro();
     //formerKey= key;
     if(key != '#') {
-        if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
-        {
-           phasePatternBase(); //
-          // phasePattern();
-            for (int i = 0; i < networkSize; i += 1)
+     if(key != 'q')
+      {
+
+        if(formerKeyCode == 9 || formerKeyCode == 1)
+         {
+             if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
              {
-                phasePatternFollow[i] += netPhaseBase[i]; //
-             //  phasePatternFollow[i] += net.phase[i];
+                 // phasePatternBase(); //
+                     phasePattern();
+               for (int i = 0; i < networkSize; i += 1)
+                {
+               // phasePatternFollow[i] += netPhaseBase[i]; //
+                     phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
-             }     
-         key = '#';
+             }
+         }
+
+       key = '#';
+       }
+       if (keyCode==0){
+        formerKeyCode=1;
         }
+      }
      }
     
     if(modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#'
