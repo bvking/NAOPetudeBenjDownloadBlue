@@ -189,13 +189,13 @@ void keyReleased() {
 
      if (formerKeyCode == UP && key == 'q') 
       {
-        preStartSpeedOfRepetition=true;
+        preStartSpeedOfRepetitionUP=true;
       }
        
 
      if (formerKeyCode  == DOWN && key == 'q') 
       {
-         preStartSpeedOfRepetition=true;
+         preStartSpeedOfRepetitionDOWN=true;
      
      }
     }

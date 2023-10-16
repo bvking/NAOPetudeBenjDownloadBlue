@@ -10,7 +10,7 @@ int numberOfSample;
 int numberOfrepetition;
 
 // float speed = 0.5; in setup
-// speed = speedOfrepetition;
+  
 
 //--------------------        coordinates of an angle in radians // no need here
 
@@ -118,8 +118,10 @@ class SamplerTheta {
     boolean draw() {
     boolean result = false;
     stroke(255);
+    speed = speedOfrepetition;
 
     float absspeed = abs(speed);
+   // float absspeed = speed;
     int now = millis() - startTime; 
     if( now > (int)(timeRecording/ absspeed)) {
       startTime += (int)(timeRecording/ absspeed);

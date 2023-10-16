@@ -170,13 +170,14 @@ void countRevs() { // ============================================= Ter NE PAS T
     // decrement caused by negative angular velocity
     // both positive angles || both negative angles || positive-to-negative angle
     //   if (//(net.oldPhase[i] < 0.25 * PI && net.phase[i] > 1.75 * PI) ||//
+      TrigmodPos[i]=1;
     if (
       ((net.oldPhase[i] < 0.25 *PI && net.oldPhase[i]>0)  && (net.phase[i] > -0.25* PI && net.phase[i] <0))  ||
       (net.oldPhase[i] < -1.75 * PI && net.phase[i] > -0.25 * PI)// ||
       // (net.oldPhase[i] < 0.25 * PI && net.phase[i] > -0.25 * PI)
       ) {
       onOFF = 1;
-      //    TrigmodPos[i]=0;
+      TrigmodPos[i]=0;
       rev[i]--;
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       //   revolution[i]=i+1;

@@ -38,7 +38,7 @@ void mapPropagationSampledBall() {
         } 
 
         //  text (rev[0] + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
-          text (" key " + key + " fKey " + formerKey + " fKeyC " + formerKeyCode + " KeyC "+ keyCode + " startSpeed " + preStartSpeedOfRepetition + " beat "  + beatTrigged, -600, -900 ); 
+          text (" key " + key + " fKey " + formerKey + " fKeyC " + formerKeyCode + " KeyC "+ keyCode +  " beat "  + beatTrigged, -600, -900 ); 
           text (" modeStart " +  modeStartKeyToFollow + "frame/s " + frameRatio + " speedOfR " + speedOfrepetition + " f/s " +  delayTimeFollowPhase11 + "fSync "+ factorSynchro  , -600, -800 );  // //degrees (signal[2])
 
      

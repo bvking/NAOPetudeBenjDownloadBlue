@@ -2,14 +2,14 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     //setMeasureAndBeatPrecised();
     rotate( - PI / 2);
 
-     if (beatTrigged==true && preStartSpeedOfRepetition==true)
+     if (beatTrigged==true && preStartSpeedOfRepetitionUP==true)
       {
        speedOfrepetition+=0.5;
        speedOfrepetition%=6.5;
-       preStartSpeedOfRepetition=false;
+       preStartSpeedOfRepetitionUP=false;
        }
     
-     if (beatTrigged==true && preStartSpeedOfRepetition)
+     if (beatTrigged==true && preStartSpeedOfRepetitionDOWN==true)
       {   
         speedOfrepetition-=0.5;
         speedOfrepetition%=(-6.5);  
@@ -17,7 +17,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
       {
           speedOfrepetition=0;
       }
-      preStartSpeedOfRepetition=false;
+      preStartSpeedOfRepetitionDOWN=false;
       }
                 
           
@@ -62,11 +62,11 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
    // movementInterpolated+=3/4*TWO_PI;
    // movementInterpolated=movementInterpolated+7/8*TWO_PI;
 
-   phases[0][frameCount % nbMaxDelais]=  movementInterpolated;
+    phases[0][frameCount % nbMaxDelais]=  movementInterpolated;
     
     //newPosFollowed[0] = (phases[0][frameCount % nbMaxDelais]);
 
-    newPosFollowed[0] %=  TWO_PI;
+    newPosFollowed[0] %=  TWO_PI; // useless
 
     
     for (int i = 1; i < networkSize; i += 1) { // 1 follow phase 0
@@ -77,7 +77,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     samplingMovementPro();
     //formerKey= key;
     if(key != '#') {
-     if(key != 'q')
+     if(key != 'q') // q is used to preStart speed of repetio
       {
 
         if(formerKeyCode == 9 || formerKeyCode == 1)
@@ -89,7 +89,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
                for (int i = 0; i < networkSize; i += 1)
                 {
                // phasePatternFollow[i] += netPhaseBase[i]; //
-                     phasePatternFollow[i] += net.phase[i];
+                phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
              }
          }
@@ -105,22 +105,26 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     if(modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#'
         for (int i = 0; i < networkSize - 0; i += 1) {
             
-           if ((phases[i][frameCount % nbMaxDelais])<0) {
+           if ((phases[i][frameCount % nbMaxDelais])<0)
+            {
                 newPosFollowed[i] = (phases[i][frameCount % nbMaxDelais]) + TWO_PI; // easier
                 newPosFollowed[i] %=  TWO_PI;
-        } else if ((phases[i][frameCount % nbMaxDelais])>= 0) {
+           } 
+           else if ((phases[i][frameCount % nbMaxDelais])>= 0) {
                 newPosFollowed[i] = phases[i][frameCount % nbMaxDelais];
-        }
+           }
             phaseMapped[i] = newPosFollowed[i] + phasePatternFollow[i];
             
            // phaseMapped always > 0 with below to be well use in the counter
             
-           if ((phaseMapped[i])<0) {
+           if ((phaseMapped[i])<0)
+            {
                 phaseMapped[i] = (phaseMapped[i]) + TWO_PI; // easier
                 phaseMapped[i] %=  TWO_PI;
-        } else if (phaseMapped[i] >=  0) {
+           } 
+           else if (phaseMapped[i] >=  0) {
                 phaseMapped[i] %=  TWO_PI;
-        }
+            }
             net.phase[i] = phaseMapped[i]; // to be used in !modeCircular
         }
     }

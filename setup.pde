@@ -20,7 +20,7 @@ int numberOfMeasureToRecord;
 
 float delayTime;
 int factorSynchro=14;
-boolean preStartSpeedOfRepetition;
+boolean preStartSpeedOfRepetitionUP, preStartSpeedOfRepetitionDOWN ;
 //int timeRecording;
 
 String music_from_ableton_live;
