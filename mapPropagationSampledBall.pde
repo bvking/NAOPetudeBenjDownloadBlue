@@ -38,8 +38,9 @@ void mapPropagationSampledBall() {
            oldPositionToMotor[i]=  positionToMotor[i];
         } 
           print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev); 
-          text (rev[0] + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
-          text (" modeStartKeyToFollow " +  modeStartKeyToFollow  + " speedOfRepetition " + speedOfrepetition + " delay f/s " +  delayTimeFollowPhase11 , 0, -900 );  // //degrees (signal[2])
+
+        //  text (rev[0] + " specialPhase " + specialPhase[0] + " propagationSpeed " + propagationSpeed + " or signal[2] " + signal[2], 0, -800 );  // //degrees (signal[2])
+          text (" modeStartKey " +  modeStartKeyToFollow + "frame/s " + frameRatio + " speedOfR " + speedOfrepetition + " delay f/s " +  delayTimeFollowPhase11 , -600, -700 );  // //degrees (signal[2])
 
      
       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis "  ) {// || keyMode == " propagationBallRotationBis " 
