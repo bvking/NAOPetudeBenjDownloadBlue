@@ -4,7 +4,17 @@
 //float movementInterpolated, angleToInterpolate;
 float [] sampledModifiedChecking =  new float [100000];
 
-int timeRecording = 8000;
+
+//
+//numberOfmeasureToRecord=1;
+
+
+//timeRecording = numberOfmeasureToRecord*2000;  // works only bpm=120;
+
+//timeRecording = 2000;
+
+int timeRecording =2000;
+
 int numberOfSample;
 int numberOfrepetition;
 

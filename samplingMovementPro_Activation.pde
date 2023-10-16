@@ -27,7 +27,7 @@ void samplingMovementPro() {
 void handleSamplingModeWithAbletonLive(){
 
  // frameRate =120;
-  frameRatio =120;
+    frameRatio =60;
  
      boolean synchroOnMeasure=false;
      if ((formerMeasure != measure)) { 

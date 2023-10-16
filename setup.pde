@@ -12,6 +12,8 @@ public void settings() {
 } 
 */
 
+boolean machine6ball = true;
+
 boolean systemForBigMachine=true;
 boolean samplingWithMouse = true;
 boolean abletonLFO =        true;
@@ -19,11 +21,14 @@ boolean abletonLFO =        true;
 String music_from_ableton_live;
 String positionMov;  
 
+//int timeRecording;
+int numberOfmeasureToRecord=1;
+
 int networkSize = 10;
 //int networkSize = 6;
 
-//int numberOfStep = 3200;
-int numberOfStep = 6400;
+int numberOfStep = 3200;
+//int numberOfStep = 6400;
 
 int oldSimpleSignal2,simpleSignal2;  // 0 to 1
 int directionOfsignal;
@@ -728,6 +733,18 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
 
 
 void setup() {
+
+            if (machine6ball==true)
+            {
+                networkSize=6;
+                numberOfStep=6400;
+            }
+            else
+            {
+                networkSize=10;
+                numberOfStep=3200;
+            }
+            
           
             frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
@@ -1042,11 +1059,11 @@ void setup() {
                 
                 //***************************************** END 3D CAM  
 
-                //  music_from_ableton_live = " pleasureKraft ";
-                //  positionMov = " premierePartie "; 
+                  music_from_ableton_live = " pleasureKraft ";
+                  positionMov = " premierePartie "; 
                 //
 
-                  music_from_ableton_live = " madRush ";  
+                //  music_from_ableton_live = " madRush ";  
             
                 
 
