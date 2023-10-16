@@ -1,6 +1,24 @@
 void followSignalSampledOppositeWay(int ratioTimeFrame) {
     //setMeasureAndBeatPrecised();
     rotate( - PI / 2);
+
+     if (beatTrigged==true && preStartSpeedOfRepetition==true)
+      {
+       speedOfrepetition+=0.5;
+       speedOfrepetition%=6.5;
+       preStartSpeedOfRepetition=false;
+       }
+    
+     if (beatTrigged==true && preStartSpeedOfRepetition)
+      {   
+        speedOfrepetition-=0.5;
+        speedOfrepetition%=(-6.5);  
+        if (speedOfrepetition==(-6.0))
+      {
+          speedOfrepetition=0;
+      }
+      preStartSpeedOfRepetition=false;
+      }
                 
           
                  

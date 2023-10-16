@@ -190,35 +190,20 @@ void keyReleased() {
      if (formerKeyCode == UP && key == 'q') 
       {
         preStartSpeedOfRepetition=true;
-        if (beatTrigged && preStartSpeedOfRepetition) {
-       speedOfrepetition+=0.5;
-       speedOfrepetition%=6.5;
-       preStartSpeedOfRepetition=false;
-       }
-      
       }
+       
 
-      if (formerKeyCode  == 40 && key == 'q') 
+     if (formerKeyCode  == DOWN && key == 'q') 
       {
          preStartSpeedOfRepetition=true;
-        if (beatTrigged==true && preStartSpeedOfRepetition)
-      {   
-
-        speedOfrepetition-=0.5;
-        speedOfrepetition%=(-6.5);  
-        if (speedOfrepetition==(-6.0))
-      {
-          speedOfrepetition=0;
-      }
-      preStartSpeedOfRepetition=false;
-      }
+     
      }
     }
 
 
-  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && keyCode == DOWN)
+  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
   {
-   if (keyCode == DOWN){
+   if (keyCode == UP){
      
      factorSynchro%=33;
      factorSynchro+=1;
