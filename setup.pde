@@ -17,6 +17,7 @@ boolean samplingWithMouse = true;
 boolean abletonLFO =        true;
 
 int numberOfMeasureToRecord;
+int measureToStartRecording;
 
 float delayTime;
 int factorSynchro=14;

@@ -29,9 +29,36 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig=120; //ms
                 delayTimeToTrig4=120;
         
-           if (music_from_ableton_live == " pleasureKraft ") 
-           {
-            // newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+           if (music_from_ableton_live == " pleasureKraft ") {
+
+            if  (measure<=241 ) {// return in main
+                  net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+                
+              }
+            
+             if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+                  measureToStartRecording=241;
+                  keyMode = " samplingModeWithLive ";
+              }
+
+             if  (measure==245 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
+                frameRate(120);
+               
+              }
+
+             if  (measure==260 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+                  measureToStartRecording=261;
+                  systemForBigMachine = false;
+                  samplingWithMouse = false;
+                  keyMode = " samplingModeWithLive ";
+              }
+            
+            if  (measure==265 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
+                frameRate(120);
+               
+              }
+       /*
+           {  
               if  (measure<=241 ) {// return in main
                   net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
                 //  newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
@@ -46,6 +73,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           //  key = 'e';      
       
             }
+        */    
            }
 
        if  (music_from_ableton_live == " madRush " ) { 
