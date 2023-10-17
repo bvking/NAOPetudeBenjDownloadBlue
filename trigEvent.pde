@@ -33,8 +33,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            {
             // newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
               if  (measure<=241 ) {// return in main
-                //  net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
-                  newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+                  net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+                //  newPosF[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
               }
             
              if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
