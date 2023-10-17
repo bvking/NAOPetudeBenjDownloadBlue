@@ -59,7 +59,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
   onOFF=0;
 
   for (int i = 0; i < networkSize; i++) {
-
+      TrigmodPos[i]=1;
 
     if (
       // (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
@@ -105,8 +105,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
       decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
       revolution[i]=1;
-      TrigmodPos[i]=1;
-
+      
     }
   }
 }
