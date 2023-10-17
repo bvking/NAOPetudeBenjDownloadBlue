@@ -320,9 +320,9 @@ void keyReleased() {
 
   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )
     {  
-    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " &&  measure<=240)
      {
-        //   phasePattern(); // enable to change configuration, but program go away
+          phasePattern(); // enable to change configuration, but program go away
      } 
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
      {
