@@ -2,13 +2,15 @@ void keyReleased() {
 
    recordFrame();  // record event only when they are released
 
-   if (keyCode == ALT){
+   if (keyCode == ALT)
+   {
     moveKeys[8]=false;
    }
 
   
 
-   switch(keyCode) { // to modulate Knob
+   switch(keyCode) 
+   { // to modulate Knob
  
         //  case(DOWN): valueOfKnobA-=1; myKnobA.setValue( valueOfKnobA);break;
         //  case(UP):   valueOfKnobA+=1; myKnobA.setValue( valueOfKnobA);break;
@@ -22,26 +24,31 @@ void keyReleased() {
 
   if ( keyMode == " propagationBallRotationBis " )
     {
-      if (keyCode == UP ) {    
+      if (keyCode == UP )
+       {    
         propagationSpeed=propagationSpeed+5;
         propagationSpeed=propagationSpeed%205;
        }
-       if (keyCode == DOWN ) {    
+       if (keyCode == DOWN )
+        {    
          propagationSpeed=propagationSpeed-5;       
        } 
 
-       if (propagationSpeed==0){
+       if (propagationSpeed==0)
+       {
          propagationSpeed=5;
       } 
      
-       if (keyCode == LEFT && modulePhaseAmountWithArrow) {  
+       if (keyCode == LEFT && modulePhaseAmountWithArrow) 
+       {  
        levelFromArrow = levelFromArrow-0.1;
          if (levelFromArrow<=0) {
            levelFromArrow=1;
         }
        }
 
-       if (keyCode == RIGHT && modulePhaseAmountWithArrow) {  
+       if (keyCode == RIGHT && modulePhaseAmountWithArrow) 
+       {  
        levelFromArrow = levelFromArrow+0.1;
          if (levelFromArrow<=0) {
            levelFromArrow=1;
@@ -115,8 +122,8 @@ void keyReleased() {
     
   }
 
-  if (keyCode == UP && formerKey == 's' )
-  {  
+   if (keyCode == UP && formerKey == 's' )
+    {  
     if (key!='#')
      { 
         if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
@@ -207,14 +214,14 @@ void keyReleased() {
      
      factorSynchro%=33;
      factorSynchro+=1;
-  }
+   }
      
       
    if (keyCode == DOWN){
      
      factorSynchro%=-33;
      factorSynchro-=1;
-  }
+   }
 
   }
 
