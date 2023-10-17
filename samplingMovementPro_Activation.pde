@@ -86,7 +86,8 @@ void handleSamplingModeWithAbletonLive(){
     {   
        angleToInterpolate = (float)map(ableton[0], 0, 1 , 0, TWO_PI); 
     }
-      if (samplingWithMouse==true &&  abletonLFO && music_from_ableton_live == " pleasureKraft " && measure >260)
+
+    if (samplingWithMouse==false &&  abletonLFO && music_from_ableton_live == " pleasureKraft " && measure >260)
     {   
        angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW 
     }

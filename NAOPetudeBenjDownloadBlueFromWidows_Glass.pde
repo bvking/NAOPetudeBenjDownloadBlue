@@ -20,7 +20,7 @@ void draw()
     for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
     }  
-    println(" BEGIN OF MAIN " + "                                                               specialPropagationKey " +  specialPropagationKey);
+    println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
     //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
     background(0);
@@ -35,8 +35,7 @@ void draw()
 
     setMovement(key, false);  // to reset function just above
     
-    println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
-        " keyMode " + keyMode + " formerKeyMetro " + formerKeyMetro + " controlTrigLfoPattern " + controlTrigLfoPattern);
+    println( " modeStartKey " +  modeStartKeyToFollow + " keyMode " + keyMode + " kMRed" +  keyModeRed + " fKeyMetro " + formerKeyMetro + " cTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
@@ -177,11 +176,11 @@ void draw()
     }
     
     //rect(80,40,140,320);
-    print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
+    //print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
     showArray(positionToMotor);
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();
-    print(" dataPMpost + keyMode " + keyMode);
+    //print(" dataPMpost + keyMode " + keyMode);
     showArray(positionToMotor);
     
     net.step(); // actualise step in sync library ==> actualise net.phase[i]

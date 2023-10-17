@@ -315,7 +315,7 @@ void keyReleased() {
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
-           phasePattern(); // enable to change configuration, but program go away
+           phasePattern(); // enable to change configuration, but program go away:
      } 
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
      {

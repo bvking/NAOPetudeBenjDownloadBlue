@@ -200,7 +200,7 @@ void countRevs() { // ============================================= Ter NE PAS T
       (net.oldPhase[i] > 1.75 * PI && net.phase[i] < 0.25*PI)
       ) {
       onOFF = 1;
-      //   TrigmodPos[i]=0;
+      TrigmodPos[i]=0;
       rev[i]++;
       //   revolution[i]=i+1;
       revolution[i]=0;   // trig 0 to sent 0 in Max4Live
