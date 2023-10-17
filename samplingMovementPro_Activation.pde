@@ -71,7 +71,6 @@ void handleSamplingModeWithAbletonLive(){
       angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
      }
     
-     
      //==================== sampling from MOUSE_Y
     if (samplingWithMouse==true && music_from_ableton_live == " madRush ")
     {   
@@ -83,12 +82,11 @@ void handleSamplingModeWithAbletonLive(){
     {   
        angleToInterpolate = (float)map(ableton[0], 0, 1 , 0, TWO_PI); 
     }
-
-       //==================== sampling from ENCODER_teensy
-     if (systemForBigMachine ==false && samplingWithMouse == false)
-     {
+    //==================== sampling from ENCODER_teensy
+    if (systemForBigMachine ==false && samplingWithMouse == false)
+    {
       angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW
-     }
+    }
 
       newPosF[networkSize-1]= angleToInterpolate;
 
