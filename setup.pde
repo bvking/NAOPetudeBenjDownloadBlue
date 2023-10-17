@@ -15,6 +15,7 @@ public void settings() {
 boolean systemForBigMachine=true;
 boolean samplingWithMouse = true;
 boolean abletonLFO =        true;
+boolean samplingWithTeensy3_5 = false;
 
 int numberOfMeasureToRecord;
 int measureToStartRecording;

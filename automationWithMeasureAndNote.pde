@@ -448,7 +448,7 @@ void trigBeatWithMeasure()
   if (formerMeasure!=measure) {
     beatTrigged=true;
     beatOnMeasure=(measure%4)+1;
-    println(" MEASURE " + measure);
+   
     formerFrameBeat=frameCount;
   } else beatTrigged=false;
 

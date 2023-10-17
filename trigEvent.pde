@@ -42,19 +42,20 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               }
 
              if  (measure==245 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
-                frameRate(120);
+                frameRate(60);
                
               }
 
              if  (measure==260 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
                   measureToStartRecording=261;
-                  systemForBigMachine = false;
+                 // systemForBigMachine = false;
                   samplingWithMouse = false;
+                  samplingWithTeensy3_5 = true;
                   keyMode = " samplingModeWithLive ";
               }
             
             if  (measure==265 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
-                frameRate(120);
+                //frameRate(120);
                
               }
        /*

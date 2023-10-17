@@ -82,14 +82,14 @@ void handleSamplingModeWithAbletonLive(){
     }
      //==================== sampling with automationLFO[1]
 
-    if (samplingWithMouse==true &&  abletonLFO && music_from_ableton_live == " pleasureKraft " && measure <=260)
+    if (samplingWithMouse==true &&  abletonLFO==true && music_from_ableton_live == " pleasureKraft " && measure <=260)
     {   
-       angleToInterpolate = (float)map(ableton[0], 0, 1 , 0, TWO_PI); 
+       angleToInterpolate = (float) map(ableton[0], 0, 1 , 0, TWO_PI); 
     }
 
-    if (samplingWithMouse==false &&  abletonLFO && music_from_ableton_live == " pleasureKraft " && measure >260)
+    if (samplingWithTeensy3_5  &&  abletonLFO && music_from_ableton_live == " pleasureKraft " && measure >260)
     {   
-       angleToInterpolate = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW 
+       angleToInterpolate = (float) map (abs(encodeur[0]), 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW 
     }
 
       newPosF[networkSize-1]= angleToInterpolate;

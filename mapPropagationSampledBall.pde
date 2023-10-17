@@ -45,9 +45,10 @@ void mapPropagationSampledBall() {
           text (" modeStart " +  modeStartKeyToFollow + "frame/s " + frameRatio + " speedOfR " + speedOfrepetition + " f/s " +  delayTimeFollowPhase11 + "fSync "+ factorSynchro  , -600, -800 );  // //degrees (signal[2])
 
      
-       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis "  )
-       {
-           //|| modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {// 
+       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " )
+                                              //   || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) 
+       { 
+       
          for (int i = 0; i <  networkSize-0; i+=1)
           { 
 

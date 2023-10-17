@@ -365,8 +365,9 @@ class B_String {
 void printMidiNoteVelocity() {
    translate (0, -height);
 
-  if  (note1>0) {
-
+  if  (note1>0)
+   {
+    /*
     print ("note "); 
     print (1); 
     print (" "); 
@@ -395,11 +396,15 @@ void printMidiNoteVelocity() {
     print (7); 
     print (" "); 
     println (note7);
-  } else {
+  */
+  } 
+
+  else {
     //   println (" ");
   }
 
   if  (velocity1>0) {
+    /*
 
     print ("velo "); 
     print (1); 
@@ -429,6 +434,7 @@ void printMidiNoteVelocity() {
     print (7); 
     print (" "); 
     println (velocity7);
+    */
   }
 
    textSize (50);
@@ -767,14 +773,7 @@ void oscSend(){
   text  ( " showResul " + str2, 600, -1200);
   textSize (100);
 
-   
- if ( keyMode ==  " followSignalLfo "){
-      print (" trigNoteOnlyOnceFollowSignalLfo "); 
-      showArray(trigFollowSignalLfo);   
-      result = multiMatchData(0, 1, trigFollowSignalLfo.clone());
-    //  TrigmodPos=result;
-      showArray(result); 
-   } 
+
     /*
         myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
         myMessage31.add(TrigmodPos[1]);

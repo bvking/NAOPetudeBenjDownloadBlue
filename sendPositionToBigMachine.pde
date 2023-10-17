@@ -106,9 +106,9 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
             }
 
             else {
-              samplingWithMouse=true;
+             samplingWithMouse=true;
               
-              println(" nothing connected ");
+              println(" something Connected ");
             }
          
         if (portConnectedToBigMachineOnly) 
