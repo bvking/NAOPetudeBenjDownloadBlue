@@ -36,7 +36,9 @@ int oldSimpleSignal2,simpleSignal2;  // 0 to 1
 int directionOfsignal;
     
 int nbBalls = networkSize;
-int specialMeasureToStartRecording;
+
+int measureToStartRecording;
+int actualMeasureToStartRecording;
 int speedDelta = 2; // ratio of speed and acceleration in Arduino
 
 // set music at the end of the setup

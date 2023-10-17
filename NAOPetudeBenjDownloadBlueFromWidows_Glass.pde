@@ -27,12 +27,12 @@ void draw()
     
     if (frameCount <=  1)  noLoop(); // check setPort()
     //printDataOnScreen();
-
-     if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=120)
+    
+    if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
     {
-    setKeyModeByTappingKeyPadOnce();
+        setKeyModeByTappingKeyPadOnce();
     }
-
+    
     setMovement(key, false);  // to reset function just above
     
     println(" music_from_ableton_live " + music_from_ableton_live + " modeStartKeyToFollow " +  modeStartKeyToFollow + " keyModeRed" +  keyModeRed +
@@ -71,9 +71,9 @@ void draw()
     
     
     if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
-   // if (measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
+        // if(measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// prepare record
-        key='9'; // align
+        key = '9'; // align
         keyReleased();
         modeCircular = true; // not work
         formerKeyMetro = '*'; // not work
@@ -83,7 +83,7 @@ void draw()
     }
     
     
-    if (keyMode == " null " )
+    if (keyMode == " null ")
     {
         checkKeyModeToFollowIfALTisJustReleased(); // ->  function disable
     }
@@ -91,8 +91,8 @@ void draw()
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
     { 
-        frameRatio= 60;
-       // frameRate (frameRatio);
+        frameRatio = 60;
+        // frameRate (frameRatio);
         modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
         if (mousePressed ==  true || mousePressed!= true)
         {
@@ -103,19 +103,19 @@ void draw()
         
         if (music_from_ableton_live == " madRush ")
         {
-            specialMeasureToStartRecording = 41;
+            actualMeasureToStartRecording = 41;
         }
         
         if (music_from_ableton_live == " pleasureKraft ")
         {
-            specialMeasureToStartRecording = 241;
+            actualMeasureToStartRecording = measureToStartRecording;
         }
         
-        //measureRecordStop = specialMeasureToStartRecording + 1;
-         measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
+        //measureRecordStop = actualMeasureToStartRecording + 1;
+        measureRecordStop = actualMeasureToStartRecording + numberOfMeasureToRecord;
         
         
-        if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&
+        if (readyToRecord == true &&  actualMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&
         { 
             formerKeyMetro = '*';          
             measureRecordStart = measure; //            
@@ -127,21 +127,21 @@ void draw()
         }   
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
-           
+        
         if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
             {
-           // keyMode = " null ";
-          //  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+            // keyMode = " null ";
+            //modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
             //draw();
         }
     }
     
     if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// repetition and trigging
-       // net.phase[0]+=PI/2;
+        // net.phase[0]+=PI/2;
         keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
-      //  keyCode = LEFT; keyReleased(); // shift delay of following ball
+        //keyCode = LEFT; keyReleased(); // shift delay of following ball
     }
     
     // end measure & repetiton
@@ -169,11 +169,11 @@ void draw()
     //trigFollowSignalSampled();
     if (modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) ")
     {
-      //  println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
+        //println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
         // frameRatio= 60;
         //frameRate (frameRatio);
         followSignalSampledOppositeWay(frameRatio);// with millis()
-
+        
     }
     
     //rect(80,40,140,320);
@@ -201,7 +201,7 @@ void draw()
                         countRevs(); // below modePendular to compute revolution
                     }
                 }
-        }
+            }
     }   }
     textSize(200);
     
