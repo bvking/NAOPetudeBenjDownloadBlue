@@ -89,7 +89,7 @@ void arduinoPos() {
     
     //=============== MAP ACCORDING LFO, CIRCULAR, PENDULAR PHASE To ADAPT IT TO the stepper motor
     //===============* CIRCULAR MODE TO TRIG DATA ACCORDING POSITION *
-    if(formerKeyMetro == '£'  || formerKeyMetro == '*' || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@')
+    if(formerKeyMetro == '$'  || formerKeyMetro == '*' || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@')
        { //interPosition   || formerKeyMetro == 'c'
         
         
@@ -102,7 +102,7 @@ void arduinoPos() {
         }
         
         
-        
+       
         for (int i = 0; i < networkSize; i++) {
             print(" Pos ");
             print(i);
@@ -113,7 +113,7 @@ void arduinoPos() {
 }
     
     
-    if(formerKeyMetro == '$' && (formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w')) {
+    if(formerKeyMetro == '$' ) { // && (formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w')
         
         for (int i = 0; i < networkSize; i++) {
            // VirtualPosition[i]= (int) map ( VirtualPosition[i], 1600, 4800, -800, 800); // mapped at the scale in Max 4 live
@@ -181,9 +181,9 @@ void arduinoPos() {
                 print("Actual PENDULAR ");
                 println(  modPos[i]);
                 */
-               //** TrigmodPos[i] = 0;
+                TrigmodPos[i] = 0;
         } else {
-              //***  TrigmodPos[i] = 1;
+                TrigmodPos[i] = 1;
         }
         }
 }

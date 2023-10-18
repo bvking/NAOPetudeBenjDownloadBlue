@@ -1,16 +1,5 @@
 void abletonPos () 
-{    
-  for (int i = 0; i < networkSize; i++)
-   {
-    if (revolution[i]==0)
-        {
-       //   TrigmodPos[i]=0;
-        }
-      else  
-        {
-       //    TrigmodPos[i]=1;
-        }
-   }
+{
 
       if (keyMode == " propagationSampledBall ") 
        {
