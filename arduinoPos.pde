@@ -181,9 +181,9 @@ void arduinoPos() {
                 print("Actual PENDULAR ");
                 println(  modPos[i]);
                 */
-                TrigmodPos[i] = 0;
+               //** TrigmodPos[i] = 0;
         } else {
-                TrigmodPos[i] = 1;
+              //***  TrigmodPos[i] = 1;
         }
         }
 }

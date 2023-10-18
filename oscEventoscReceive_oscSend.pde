@@ -546,7 +546,7 @@ void oscSend(){
     // oscP5.send(myMessage1, myRemoteLocationII);
     
     OscMessage myMessage1 = new OscMessage("/led");
-      OscMessage myMessage2 = new OscMessage("/led");
+    OscMessage myMessage2 = new OscMessage("/led");
 
     
    float lfoTosend; 
@@ -759,18 +759,22 @@ void oscSend(){
   // These tests used a copy of the original array so that we can perform multiple
   // test using the same working array
   //  println("Convert multiple 0s to 1s (good)");
+
+
   result = multiMatchData(0, 1, TrigmodPos.clone());
   TrigmodPos=result;
   print ( " showResul ") ;showArray(result);
   textSize (200);
-  char resultString;
-    resultString='A';
-  if (result[0]==0){
-    resultString='B';
+  char resultString [] = {'A', 'A', 'A', 'A', 'A', 'A'};
+   // resultString='A';
+  for (int i=0; i<networkSize; i++){
+  if (result[i]==0){
+    resultString[i]='B';
   }
-  char data[] = {resultString, 'A', 'A', 'A'};
+  }
+  char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
   String str2 = new String(data);
-  text  ( " showResul " + str2, 600, -1200);
+  text  ( " showResul " + str2, 300, -1200);
   textSize (100);
 
 

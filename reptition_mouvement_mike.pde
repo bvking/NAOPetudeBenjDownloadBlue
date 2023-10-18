@@ -149,8 +149,8 @@ class SamplerTheta {
     float dt = (now - t0) / (t1 - t0);
     movementInterpolated = theta0 + dt * (theta1 - theta0);
    // movementInterpolated+=15/16*TWO_PI;
-     movementInterpolated+=TWO_PI/factorSynchro;
-     movementInterpolated+=PI;
+     movementInterpolated+=(factorSynchro/16)*TWO_PI;
+     movementInterpolated+=TWO_PI;
     //  movementInterpolated-=TWO_PI*15/16;
 
     text(" mov " + (movementInterpolated), 100, 500);
