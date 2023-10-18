@@ -1,4 +1,5 @@
-void samplingMovementPro() {
+void samplingMovementPro()
+{
    // currTime = millis() * 0.001;  // seconds since app started
   //  float polarToCartesionX= displacement*cos(newPosF[0]);
   //  float polarToCartesionY= displacement*sin(newPosF[0]);
@@ -24,7 +25,8 @@ void samplingMovementPro() {
   }
 }
 
-void handleSamplingModeWithAbletonLive(){
+void handleSamplingModeWithAbletonLive()
+{
 
  // frameRate =120;
  // frameRatio =120;
@@ -47,22 +49,24 @@ void handleSamplingModeWithAbletonLive(){
      ( " enc[0] " + encodeur[0] +  " newPosF[ne-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
        " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
 
-
-
        // if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) { 
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
           int disableDriver=-5;
+          int driverNetWorkSizeOnOff=-5;
+          int timeElapsedBackingPosition = 1000;
           int dataNoComputed=-4;
-             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
+             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
        if ( measure>=measureRecordStop ) { 
           int disableDriver=15;
+          int driverNetWorkSizeOnOff=15;
+          int timeElapsedBackingPosition = 1000;
           int dataNoComputed=-4;
-          send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1); // 
-          send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
+             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
+             send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
      //==================== sampling from ENCODER_due
@@ -109,7 +113,7 @@ void handleSamplingModeWithAbletonLive(){
      samplingMovementPro(); 
 
       rotate (HALF_PI);
-   }
+  }
 
 void handleInternalSamplingMode(){
      boolean synchroOnMeasure=false;

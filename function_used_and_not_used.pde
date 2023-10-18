@@ -59,7 +59,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
   onOFF=0;
 
   for (int i = 0; i < networkSize; i++) {
-      TrigmodPos[i]=1;
+    //  TrigmodPos[i]=1;
 
     if (
       // (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
@@ -77,7 +77,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       //   revolution[i]=i+1;
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
-      TrigmodPos[i]=0;
+     // TrigmodPos[i]=0;
       //**    memoryi=i;
 
 
@@ -98,7 +98,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       rev[i]++;
       text (" YOUR HZRE???" + rev[i], 200, -900+(i*10));
       revolution[i]=0;
-      TrigmodPos[i]=0;   // trig 0 to sent 0 in Max4Live
+     // TrigmodPos[i]=0;   // trig 0 to sent 0 in Max4Live
       
       decompte[i] = 0;  // RESET COUNTER AT 0
     } else {

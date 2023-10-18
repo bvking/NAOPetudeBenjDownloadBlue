@@ -1,33 +1,27 @@
 
 
-
-void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData) {  // dataMarkedToTeensyArevoir
+void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData, int driverNetWorkSizeOnOff, int timeElapsedBackingPosition ) {  // dataMarkedToTeensyArevoir
     rotate( -PI / 2);
     for (int i = 0; i < networkSize; i++) {
        //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
+       //  + dataMappedForMotorisedPosition[i]%6400+ 
     }
     
     dataFromMode = "<"
     
-    //  + dataMappedForMotorisedPosition[7]+ ","+ dataMappedForMotorisedPosition[6]+ ","
-    
     + dataMappedForMotorisedPosition[5] + "," + dataMappedForMotorisedPosition[4] + "," + dataMappedForMotorisedPosition[3] + "," + dataMappedForMotorisedPosition[2] + ","
     + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","      // 
     
-    //  + dataMappedForMotorisedPosition[5]%6400+ ","+ dataMappedForMotorisedPosition[4]%6400+ ","+ dataMappedForMotorisedPosition[3]%6400+","+ dataMappedForMotorisedPosition[2]%6400+ ","
-    //  + dataMappedForMotorisedPosition[1]%6400+ ","+ dataMappedForMotorisedPosition[0]%6400 + ","      // 
-    
-    
     + 0 + "," + 0 + ","
     + 0 + "," + 0 + ","
     
-    +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
+    +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + "," + driverNetWorkSizeOnOff + "," + timeElapsedBackingPosition + "," 
     
     //  +0+","+0+","+0+","+0+","+0+","+0+","
     
-    + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
+    + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to see trigging according position note
     
-    + 0 + "," + 0 + "," + 0 + "," + 0 + ">";  
+    + "," + 0 + "," + 0 + ">";  
     
     if (computeData <-  1) {
         dataTransformed = " dataNotComputeInTeensy from mode ";
