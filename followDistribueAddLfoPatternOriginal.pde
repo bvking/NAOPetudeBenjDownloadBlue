@@ -114,7 +114,8 @@ void followDistribueAddLfoPattern() {
 
 
   key='#';
-  send24DatasToTeensy6motorsToLittleMachine(10, 3, -3, -1);
+
+  send24DatasToTeensy6motorsToLittleMachine( 3, -3, 3, 3, -3, -1);
 }
 
 
@@ -169,7 +170,7 @@ void followDistribueAddLfoPatternBase() {
   }
 
   key='#';
-  send24DatasToTeensy6motorsToLittleMachine(10, 3, -3, -1);
+  send24DatasToTeensy6motorsToLittleMachine( 3, -3, 3 , 3, -3, -1);
 }
 
 void followDistribueAddLfoPatternControl() {
@@ -287,5 +288,5 @@ void followDistribueAddLfoPatternControl() {
     // net.phase[i]=phaseMapped[i];
   }
   //key = '#';
-  send24DatasToTeensy6motorsToLittleMachine(10, 3, -3, -1);
+  send24DatasToTeensy6motorsToLittleMachine( 3, -3, 3, 3, -3, -1);
 }

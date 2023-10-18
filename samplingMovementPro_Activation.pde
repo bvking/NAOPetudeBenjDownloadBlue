@@ -56,7 +56,7 @@ void handleSamplingModeWithAbletonLive()
           int driverNetWorkSizeOnOff=-5;
           int timeElapsedBackingPosition = 1000;
           int dataNoComputed=-4;
-             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
+             send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
@@ -65,7 +65,7 @@ void handleSamplingModeWithAbletonLive()
           int driverNetWorkSizeOnOff=15;
           int timeElapsedBackingPosition = 1000;
           int dataNoComputed=-4;
-             send24DatasToTeensy6motorsToLittleMachine(5, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
+             send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
@@ -134,7 +134,7 @@ void handleInternalSamplingMode(){
      
      if (measure>=measureRecordStart && measure<=(measureRecordStart+4)) {
        int disableDriver=-4;
-        send24DatasToTeensy6motorsToLittleMachine(5, -3, disableDriver, -1); // 
+        send24DatasToTeensy6motorsToLittleMachine( 5, -3, 5, -3, disableDriver, -1); // 
       }
 
      //==================== sampling from ENCODER

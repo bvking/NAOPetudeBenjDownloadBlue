@@ -348,25 +348,25 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
           }
 
          if (positionMov != " troisieme " && measure<17) {
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
           }
 
          if (measure>=17 && measure<=41){
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
          }
          if (measure>41 && measure<=67){
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);
-         }
-         if (measure>67 && measure<=90){
-            send24DatasToTeensy6motorsToLittleMachine(3, 3, -4, -1);
-         }
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
 
+         if (measure>67 && measure<=90){
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+         }
          if (measure>=105 ){
-            send24DatasToTeensy6motorsToLittleMachine(6, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+
 
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
-       //  }
+         }
      }
    }
 
@@ -385,30 +385,32 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
      {
         if (measure<=5 )
          { 
-           // send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+           //             send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+
          }
     }
 
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall " )
     {
-       send24DatasToTeensy6motorsToLittleMachine(5, -11, -3, -1);  
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
        send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
      }
 
     if (keyMode == " addSignalOneAndTwo ")
      {
-       send24DatasToTeensy6motorsToLittleMachine(5, -10, -3, -1); 
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
     }
 
     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
      {
       if (measure>82 && measure<=124){
        print (" to change Mode and still runing ");
-       send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -12, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
       }
      }
 
-     if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") {         
+     if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") 
+     {         
        // send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       }
        rotate(-PI/2);   
@@ -602,20 +604,20 @@ void teensyPosOri(){
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       //    }
         if (positionMov != " troisieme " && measure<17) {
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 34, 3, -3, -1);
          }
 
         if (measure>=17 && measure<=41){
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -3, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 34, 3, -3, -1);
         }
         if (measure>41 && measure<=67){
-            send24DatasToTeensy6motorsToLittleMachine(4, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 34, 3, -4, -1);
         }
         if (measure>67 && measure<=120){
-            send24DatasToTeensy6motorsToLittleMachine(speedDelta, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 3speedDelta, 3, -4, -1);
         }
            if (measure>=635 ){
-            send24DatasToTeensy6motorsToLittleMachine(635, 3, -4, -1);
+            send24DatasToTeensy6motorsToLittleMachine( 3, 3635, 3, -4, -1);
         }
       }
     } 
@@ -633,21 +635,21 @@ void teensyPosOri(){
                  || keyMode == " trigEventWithAbletonSignal "  ) {
     if (measure<=3 )
      { 
-      send24DatasToTeensy6motorsToLittleMachine(5, -3, -3, -1);
+      send24DatasToTeensy6motorsToLittleMachine( 3, 35, -3, -3, -1);
      }
     }
 
    if (keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " || modeStartKeyToFollow== " followSignalSampledOppositeWay(frameRatio) " ) {
-       send24DatasToTeensy6motorsToLittleMachine(5, -11, -3, -1);  
+       send24DatasToTeensy6motorsToLittleMachine( 3, 35, -11, -3, -1);  
      }
 
     if (keyMode == " addSignalOneAndTwo ") {
-       send24DatasToTeensy6motorsToLittleMachine(5, -10, -3, -1); 
+       send24DatasToTeensy6motorsToLittleMachine( 3, 35, -10, -3, -1); 
     }
 
     if (keyMode == " trigEventWithAbletonSignal ") {
       if (measure>82 && measure<=124){
-       send24DatasToTeensy6motorsToLittleMachine(4, 3, -12, -1);
+       send24DatasToTeensy6motorsToLittleMachine( 3, 34, 3, -12, -1);
      }
     } 
 */
