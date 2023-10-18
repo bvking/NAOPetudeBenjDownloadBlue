@@ -14,7 +14,7 @@ void teensyPos()
                    " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
                    " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]
                                     
-                   , -300 , -height, -500);
+                   , -300 , -height-300, -500);
     
 
 
@@ -96,7 +96,7 @@ void teensyPos()
             for (int i = 0; i < networkSize; i++) {
                   // oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
 
-                dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + rev[i]*numberOfStep;
+                dataMappedForMotorisedPosition[i] = (int) map ( metroPhase[i], -PI/2, PI/2, 0, numberOfStep/2) + 1*rev[i]*numberOfStep;
                 dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i]; // put it lower in the program
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
@@ -393,6 +393,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall " )
     {
             send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+
        send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
      }
 
@@ -403,10 +404,16 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
 
     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
      {
-      if (measure>82 && measure<=124){
+      if (measure>82 ){
        print (" to change Mode and still runing ");
             send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
       }
+      /*
+         if (measure>261+4 ){
+       print (" to change Mode and still runing ");
+            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+      }
+      */
      }
 
      if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") 

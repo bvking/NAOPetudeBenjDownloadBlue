@@ -31,7 +31,7 @@ void mapPropagationSampledBall() {
     if (modeCircular )
       {  
          textSize( 75);
-       if (keyMode == " trigEventWithAbletonSignal "  || keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution "
+       if ( keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || keyMode == " trigEventWithAbletonSignal "  
                                                       || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )                       // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
        { 
         countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   //  print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev); 
@@ -45,8 +45,8 @@ void mapPropagationSampledBall() {
           text (" modeStart " +  modeStartKeyToFollow + "frame/s " + frameRatio + " speedOfR " + speedOfrepetition + " f/s " +  delayTimeFollowPhase11 + "fSync "+ factorSynchro  , -600, -800 );  // //degrees (signal[2])
 
      
-       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " )
-                                              //   || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) 
+       if ( keyMode == " propagationSampleBall " || keyMode == " propagationBallRotationBis " 
+                                                 || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) 
        { 
        
          for (int i = 0; i <  networkSize-0; i+=1)
@@ -62,7 +62,8 @@ void mapPropagationSampledBall() {
               {
                   if ( doRotationWithoutPropagation == false )   // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
                     {
-                    revLfo[i]--;TrigmodPos[i]=0;
+                    revLfo[i]--;
+                    //TrigmodPos[i]=0;
                     } 
                 text (i + " " + revLfo[i], 0, -700+50*i);
               } 
@@ -73,7 +74,8 @@ void mapPropagationSampledBall() {
 
                   if ( doRotationWithoutPropagation == false )   // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
                     {
-                    revLfo[i]++;TrigmodPos[i]=0;
+                    revLfo[i]++;
+                    //TrigmodPos[i]=0;
                     } 
                text (i + " " + revLfo[i], 0, -700+50*i); 
              }

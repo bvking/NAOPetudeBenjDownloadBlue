@@ -45,7 +45,7 @@ void switchFonctionDependingKeyMode() {
     }
     
     if (keyMode == " methodAbleton " || keyModeRed == " methodAbleton ") { //drive ball with lfo
-        methodAbleton();
+      //  methodAbleton();
         text(keyMode, -width, -height); 
         
     }

@@ -21,9 +21,7 @@ void printModeAndKey()
   print (char(formerSartKey));
   print (" formerKeyMetro ");  
   println (char(formerKeyMetro));
-
-  print (" KEYCODE  ");    
-  print  (keyCode);   
+ 
   print (" char KEYCODE  ");    
   print  (char (keyCode));
   print (" former KEYCODE  ");    
@@ -36,9 +34,10 @@ void printModeAndKey()
   print (char (formerKeyCodeAzerty)); 
   print (" keyMode ");  
   print (keyMode);
-  print (" beatTrigged ");  
-  print (beatTrigged);
-  print ( " mouseRec ");  print (  mouseRecorded );
-  println ( "positionMov ");  println (  positionMov );
+  print (" formerKeyMode ");  
+  println (formerKeyMode);
+
+  //print ( " mouseRec ");  print (  mouseRecorded );
+  //println ( "positionMov ");  println (  positionMov );
   
 }

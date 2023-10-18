@@ -57,27 +57,26 @@ void devant_derriere() {
 void countRevsPhaseMappedPositiveOnly() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
 
   onOFF=0;
+  
 
   for (int i = 0; i < networkSize; i++) {
-    //  TrigmodPos[i]=1;
+      TrigmodPos[i]=1; ///no beacuse TrigmodPos is allready in countRevs
 
     if (
-      // (oldOldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0 && (phaseMapped[i] > 1.75* PI )) ||
-
-      //  (oldPhaseMapped[i] < 0.25 *PI && oldPhaseMapped[i]>0)  && (phaseMapped[i] > 1.75* PI ))
-
+  
       (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) ))
 
     {
 
       onOFF = 1;
-      //    TrigmodPos[i]=0;
+     
       rev[i]--;
-      text (" YOUR HZRE???" + rev[i], 200, -900+(i*10));
+      text (" YOUR HERE???" + rev[i], 200, -900+(i*10));
       //      print (" revultion negative  "); println (revolution[i]=i+1);
-      //   revolution[i]=i+1;
+      
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
-     // TrigmodPos[i]=0;
+       TrigmodPos[i]=0;
+
       //**    memoryi=i;
 
 
@@ -94,12 +93,12 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
     {
       onOFF = 1;
-      //   TrigmodPos[i]=0;
+    
       rev[i]++;
-      text (" YOUR HZRE???" + rev[i], 200, -900+(i*10));
+      text (" YOUR HERE???" + rev[i], 200, -900+(i*10));
       revolution[i]=0;
-     // TrigmodPos[i]=0;   // trig 0 to sent 0 in Max4Live
-      
+      TrigmodPos[i]=0;
+        
       decompte[i] = 0;  // RESET COUNTER AT 0
     } else {
 
@@ -169,14 +168,18 @@ void countRevs() { // ============================================= Ter NE PAS T
     // decrement caused by negative angular velocity
     // both positive angles || both negative angles || positive-to-negative angle
     //   if (//(net.oldPhase[i] < 0.25 * PI && net.phase[i] > 1.75 * PI) ||//
+    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
       TrigmodPos[i]=1;
+      }
     if (
       ((net.oldPhase[i] < 0.25 *PI && net.oldPhase[i]>0)  && (net.phase[i] > -0.25* PI && net.phase[i] <0))  ||
       (net.oldPhase[i] < -1.75 * PI && net.phase[i] > -0.25 * PI)// ||
       // (net.oldPhase[i] < 0.25 * PI && net.phase[i] > -0.25 * PI)
       ) {
       onOFF = 1;
+       if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
       TrigmodPos[i]=0;
+       }
       rev[i]--;
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       //   revolution[i]=i+1;
@@ -199,7 +202,12 @@ void countRevs() { // ============================================= Ter NE PAS T
       (net.oldPhase[i] > 1.75 * PI && net.phase[i] < 0.25*PI)
       ) {
       onOFF = 1;
+             if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " ) {
+
       TrigmodPos[i]=0;
+       }
+      
+
       rev[i]++;
       //   revolution[i]=i+1;
       revolution[i]=0;   // trig 0 to sent 0 in Max4Live

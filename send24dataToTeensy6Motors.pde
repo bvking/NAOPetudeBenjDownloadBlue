@@ -23,7 +23,7 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     
     + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to see trigging according position note
     
-    + "," + 0 + "," + 0 + ">";  
+    + 0 + "," + 0 + ">";  
     
     if (computeData <-  1) {
         dataTransformed = " dataNotComputeInTeensy from mode ";
