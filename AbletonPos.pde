@@ -1,17 +1,25 @@
 void abletonPos () 
 {
+     if (formerKeyMetro == '$') 
+         {     
+            for (int i = 0; i < networkSize; i++)
+              {  
+                Pos[i]= int (map (metroPhase[i], -PI, PI, 0, 256)); // to Oscsend
+              }
+         }
 
-      if (keyMode == " propagationSampledBall ") 
+      if (formerKeyMetro == '*') 
        {
-       //  dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
-      }
+      
       for (int i = 0; i < networkSize; i++)
        {  
-        //  CircularOldVirtualPosition[i]=CircularVirtualPosition[i];
-        //  CircularVirtualPosition[i]= int (map (positionToMotor[i], 0, numberOfStep , 0, numberOfStep));
+
          Pos[i]= int (map ((net.phase[i]), 0, TWO_PI, 0, 127)); // to Oscsend
-          //  Pos[i]= int (map ((dataMappedForMotorisedPosition[i]), 0, numberOfStep, 0, 127)); // to Oscsend
+          //  Pos[i]= int (map ((encodeur[i]), 0, numberOfStep, 0, 127)); // to Oscsend
          Pos[i]%=127;
+
+      }
+      }
 
       if (networkSize == 6 )
         {
@@ -23,7 +31,8 @@ void abletonPos ()
           posAverage = ( Pos[0] + Pos[1] + Pos[1] + Pos[2] + Pos[3] + Pos[4] + Pos[5] + 
                          Pos[6] + Pos[7] + Pos[8] + Pos[9] ) / networkSize;
          }
-       }
+       
+      
   //*********** COMPUTE ACCELERATION
 
   if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "

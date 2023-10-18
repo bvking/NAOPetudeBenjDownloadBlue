@@ -520,7 +520,7 @@ void oscSend(){
           dataToLive[i]= (networkSize-1)*(i-0);  // because there i beac you can send data with the step you want to separate controller depending oscillator --> here it is 11.
           dataToLive[0]= (networkSize-1)*(i-0);  // you can send data with the step you want to one controler 
       
-        upVelocity[i]= 1;  
+         upVelocity[i]= 1;  
          TrigmodPos[i]=0; 
      }
     
