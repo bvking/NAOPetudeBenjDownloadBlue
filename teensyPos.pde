@@ -406,7 +406,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
      {
       if (measure>82 ){
        print (" to change Mode and still runing ");
-            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+           // send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
       }
       /*
          if (measure>261+4 ){

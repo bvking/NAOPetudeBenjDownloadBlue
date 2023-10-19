@@ -762,7 +762,7 @@ void oscSend(){
   result = multiMatchData(0, 1, TrigmodPos.clone());
   TrigmodPos=result;
   print ( " showResul ") ;showArray(result);
-  textSize (200);
+  textSize (150);
   char resultString [] = {'A', 'A', 'A', 'A', 'A', 'A'};
    // resultString='A';
   for (int i=0; i<networkSize; i++){
@@ -772,20 +772,24 @@ void oscSend(){
   }
   char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
   String str2 = new String(data);
-  text  ( " showTrig " + str2, 300, -1200);
+  text  ( " showTrig " + str2, 300, -850);
 
   //---------------- middle pos sent
 
-  char midPosString [] = {'I', 'I', 'I', 'I', 'I', 'I'};
+  char midPosString [] = {'F', 'F', 'F', 'F', 'F', 'F'};
    // resultString='A';
   for (int i=0; i<networkSize; i++){
   if (midPos[i]==true){
-      midPosString[i]='O';
+      midPosString[i]='T';
+      sendMiddle[i]=0;  // to trig something in M4Live
+  }
+  else {
+      sendMiddle[i]=1; 
   }
   }
   char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
   String strMiddle = new String(middlePos);
-  text  ( " showMidd " + strMiddle, 300, -1400);
+  text  ( " showMid " + strMiddle, 300, -1000);
 
   textSize (100);
 
@@ -834,12 +838,12 @@ void oscSend(){
   */
 
 
-  OscMessage myMessage40= new OscMessage("/midPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
-  OscMessage myMessage41= new OscMessage("/midPos1"); // oscillator 
-  OscMessage myMessage42= new OscMessage("/midPos2"); // oscillator 
-  OscMessage myMessage43= new OscMessage("/midPos3"); // oscillator 
-  OscMessage myMessage44= new OscMessage("/midPos4"); // oscillator 
-  OscMessage myMessage45= new OscMessage("/midPos5"); // oscillato
+  OscMessage myMessage40= new OscMessage("/midPos0"); // SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage41= new OscMessage("/midPos1"); // SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage42= new OscMessage("/midPos2"); // SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage43= new OscMessage("/midPos3"); // SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage44= new OscMessage("/midPos4"); // SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage45= new OscMessage("/midPos5"); // SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage46= new OscMessage("/dataToLive6"); // oscillator 
   OscMessage myMessage47= new OscMessage("/dataToLive7"); // oscillator 
   OscMessage myMessage48= new OscMessage("/dataToLive8"); // oscillator 
@@ -848,12 +852,12 @@ void oscSend(){
  
   // MIDDLE POS
 
-  myMessage40.add(midPos[0]);  // Trig on the right but there are bugs in pendular way
-  myMessage41.add(midPos[1]);
-  myMessage42.add(midPos[2]);
-  myMessage43.add(midPos[3]);
-  myMessage44.add(midPos[4]);
-  myMessage45.add(midPos[5]);
+  myMessage40.add(sendMiddle[0]);  // Trig on the right but there are bugs in pendular way
+  myMessage41.add(sendMiddle[1]);
+  myMessage42.add(sendMiddle[2]);
+  myMessage43.add(sendMiddle[3]);
+  myMessage44.add(sendMiddle[4]);
+  myMessage45.add(sendMiddle[5]);
 
  /*
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
