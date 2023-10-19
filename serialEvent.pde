@@ -10,6 +10,13 @@
     String[] m3 = match(myEncodeur, "encodeur3");
     String[] m4 = match(myEncodeur, "encodeur4");
     String[] m5 = match(myEncodeur, "encodeur5");
+
+    String[] p0 = match(myEncodeur, "midPos0");
+    String[] p1 = match(myEncodeur, "midPos1");
+    String[] p2 = match(myEncodeur, "midPos2");
+    String[] p3 = match(myEncodeur, "midPos3");
+    String[] p4 = match(myEncodeur, "midPos4");
+    String[] p5 = match(myEncodeur, "midPos5");
     
     if (m0 != null) {  // If not null, then a match was found
         encoderTouched[0] = true;
@@ -35,11 +42,45 @@
         encoderTouched[4] = true;
     }
     else  encoderTouched[4] = false;
+
     
     if (m5 != null) {  // If not null, then a match was found
         encoderTouched[5] = true;
     }
     else  encoderTouched[5] = false;
+
+    // trigMiddlepositionFromProcessing
+    
+
+    if (p0 != null) {  // If not null, then a match was found
+        midPos[0] = true;
+    }
+    else midPos[0] = false;
+    
+    if (p1 != null) {  // If not null, then a match was found
+        midPos[1] = true;
+    }
+    else  midPos[1] = false;
+    
+    if (p2 != null) {  // If not null, then a match was found
+        midPos[2] = true;
+    }
+    else  midPos[2] = false;
+    
+    if (p3 != null) {  // If not null, then a match was found
+        midPos[3] = true;
+    }
+    else  midPos[3] = false;
+    
+    if (p4 != null) {  // If not null, then a match was found
+        midPos[4] = true;
+    }
+    else  midPos[4] = false;
+    
+    if (p5 != null) {  // If not null, then a match was found
+        midPos[5] = true;
+    }
+    else  midPos[5] = false;
     
     //  String myString = encoderReceiveUSBport14101.readStringUntil('\n');
     // read the serial buffer:

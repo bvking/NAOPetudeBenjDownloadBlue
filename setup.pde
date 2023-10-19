@@ -82,7 +82,8 @@ float[] deltaOldPhaseActualPhase = new float[networkSize];
 float levelFromArrow, phaseAmount;
 boolean modulePhaseAmountWithArrow;
 
-boolean[] encoderTouched = new boolean[networkSize];
+boolean[] encoderTouched = new boolean[networkSize]; // data from Teensy's serial
+boolean[] midPos = new boolean[networkSize]; // data from Teensy's serial
 int[] RevsContinue = new int[networkSize];
 
 int[] positionFromShiftedOscillator  = new int[networkSize];

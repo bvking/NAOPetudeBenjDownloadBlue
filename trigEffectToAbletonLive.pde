@@ -5,16 +5,16 @@ int[] timeTriggedFromEncodeur = new int[networkSize];
 int[] startMeasureFromEncodeur = new int[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
-    
-    for (int i = 0; i < networkSize; i++) 
-        
+       for (int i = 0; i < networkSize; i++) { 
         if (encoderTouched[i] ==  true) { 
             
-            println("Main Found encodeur A MATCH in " + i + " " + encoderTouched[i] + " " + encodeur[i]);  
+            println("Main Found encodeur A MATCH in " + i + " " + encoderTouched[i] + " " + encodeur[i]); 
+
             Pos[i] = (int) map(encodeur[i], 0, 800, 0, 127);
-               println(" sendPositionToLive " + encoderTouched[i] + " " + Pos[i]);  
-     //   textSize(300);
-        // background(50);
+
+            println(" sendPositionToLive " + encoderTouched[i] + " " + Pos[i]);  
+ 
+         }
     } 
 } 
 
