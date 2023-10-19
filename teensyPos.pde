@@ -70,9 +70,9 @@ void teensyPos()
     }
 
    if ( keyMode == " propagationBallRotationNOBisExperimental "  ) 
-        {    // actualise counter of normal mode from revLfo from method  not here
+    {    // actualise counter of normal mode from revLfo from method  not here
 
-    for (int i = 0; i < networkSize; i++) {        
+      for (int i = 0; i < networkSize; i++) {        
       //*******************************  ASSIGN MOTOR WITH POSITION
 
       if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
@@ -105,7 +105,8 @@ void teensyPos()
 
 
     if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
-                                                     && formerKeyMetro =='*') { 
+                                                     && formerKeyMetro =='*')
+    { 
 
      if ( keyMode == " propagationBallRotationNOBisTest " ) { 
              // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
@@ -144,7 +145,7 @@ void teensyPos()
       
      }
 
-     //******************* ADD POSITION FROM  SWITCHED MODE 
+      //******************* ADD POSITION FROM  SWITCHED MODE 
 
        if (formerKeyMetro == '$') {
          for (int i = 0; i < networkSize; i++) {
@@ -340,8 +341,11 @@ void teensyPos()
 
 if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
   { 
-    if (modeStartKeyToFollow!= " samplingModeInternal "){
-     // if (modeStartKeyToFollow= " followSignalSampledOppositeWay(frameRatio) "){
+    if (keyMode != " samplingModeWithLive " )
+     {
+    
+     if (modeStartKeyToFollow!= " samplingModeInternal "){
+       // if (modeStartKeyToFollow= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){
          if (measure<105 ){
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
@@ -366,8 +370,9 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
 
             send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
-         }
+      }
      }
+    }
    }
 
      
@@ -404,16 +409,13 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
 
     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
      {
-      if (measure>82 ){
-       print (" to change Mode and still runing ");
-           // send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+      if (modeStartKeyToFollow != " samplingModeWithLive ")
+      {
+      if (measure>0 ){
+        print (" to change Mode and still runing ");
+        //send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
       }
-      /*
-         if (measure>261+4 ){
-       print (" to change Mode and still runing ");
-            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
-      }
-      */
+     }
      }
 
      if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") 
