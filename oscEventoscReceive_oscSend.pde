@@ -701,16 +701,6 @@ void oscSend(){
   */
 
 
-  OscMessage myMessage40= new OscMessage("/dataToLive0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
-  OscMessage myMessage41= new OscMessage("/dataToLive1"); // oscillator 
-  OscMessage myMessage42= new OscMessage("/dataToLive2"); // oscillator 
-  OscMessage myMessage43= new OscMessage("/dataToLive3"); // oscillator 
-  OscMessage myMessage44= new OscMessage("/dataToLive4"); // oscillator 
-  OscMessage myMessage45= new OscMessage("/dataToLive5"); // oscillato
-  OscMessage myMessage46= new OscMessage("/dataToLive6"); // oscillator 
-  OscMessage myMessage47= new OscMessage("/dataToLive7"); // oscillator 
-  OscMessage myMessage48= new OscMessage("/dataToLive8"); // oscillator 
-  OscMessage myMessage49= new OscMessage("/dataToLive9"); // oscillator behind
  
   OscMessage myMessage50= new OscMessage("/acceleration0"); // oscillator SEND ACCELERATION
   OscMessage myMessage51= new OscMessage("/acceleration1"); // oscillator 
@@ -782,7 +772,7 @@ void oscSend(){
   }
   char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
   String str2 = new String(data);
-  text  ( " showResul " + str2, 300, -1200);
+  text  ( " showTrig " + str2, 300, -1200);
 
   //---------------- middle pos sent
 
@@ -795,10 +785,7 @@ void oscSend(){
   }
   char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
   String strMiddle = new String(middlePos);
-  text  ( " showMiddl " + strMiddle, 300, -900);
-
-
-
+  text  ( " showMidd " + strMiddle, 300, -1400);
 
   textSize (100);
 
@@ -846,23 +833,45 @@ void oscSend(){
   myMessage39.add(TrigmodPos[8]);
   */
 
- // text ( " TrigmodPos[2] " + TrigmodPos[2],  100, 100);
- // println (" NOTE TRIGGED FROM OSCSEND ");
-  /*
 
+  OscMessage myMessage40= new OscMessage("/midPos0"); // oscillator SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage41= new OscMessage("/midPos1"); // oscillator 
+  OscMessage myMessage42= new OscMessage("/midPos2"); // oscillator 
+  OscMessage myMessage43= new OscMessage("/midPos3"); // oscillator 
+  OscMessage myMessage44= new OscMessage("/midPos4"); // oscillator 
+  OscMessage myMessage45= new OscMessage("/midPos5"); // oscillato
+  OscMessage myMessage46= new OscMessage("/dataToLive6"); // oscillator 
+  OscMessage myMessage47= new OscMessage("/dataToLive7"); // oscillator 
+  OscMessage myMessage48= new OscMessage("/dataToLive8"); // oscillator 
+  OscMessage myMessage49= new OscMessage("/dataToLive9"); // oscillator behind
+
+ 
+  // MIDDLE POS
+
+  myMessage40.add(midPos[0]);  // Trig on the right but there are bugs in pendular way
+  myMessage41.add(midPos[1]);
+  myMessage42.add(midPos[2]);
+  myMessage43.add(midPos[3]);
+  myMessage44.add(midPos[4]);
+  myMessage45.add(midPos[5]);
+
+ /*
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
   myMessage41.add(dataToLive[10]);
   myMessage42.add(dataToLive[9]);
   myMessage43.add(dataToLive[8]);
   myMessage44.add(dataToLive[7]);
   myMessage45.add(dataToLive[6]);
+
   */
+  
   myMessage46.add(dataToLive[5]);
   myMessage47.add(dataToLive[4]);
   myMessage48.add(dataToLive[3]);
   myMessage49.add(dataToLive[2]);
 //  myMessage50.add(dataToLive[0]);
-/*
+
+ /*
   myMessage50.add(mapAcceleration[11]);  // Trig on the right but there are bugs in pendular way
   myMessage51.add(mapAcceleration[10]);
   myMessage52.add(mapAcceleration[9]);
