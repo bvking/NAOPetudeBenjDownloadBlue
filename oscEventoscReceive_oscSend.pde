@@ -783,6 +783,23 @@ void oscSend(){
   char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
   String str2 = new String(data);
   text  ( " showResul " + str2, 300, -1200);
+
+  //---------------- middle pos sent
+
+  char midPosString [] = {'I', 'I', 'I', 'I', 'I', 'I'};
+   // resultString='A';
+  for (int i=0; i<networkSize; i++){
+  if (midPos[i]==true){
+      midPosString[i]='O';
+  }
+  }
+  char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
+  String strMiddle = new String(middlePos);
+  text  ( " showMiddl " + strMiddle, 300, -900);
+
+
+
+
   textSize (100);
 
 

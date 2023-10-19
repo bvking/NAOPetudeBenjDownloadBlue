@@ -6,15 +6,22 @@ int[] startMeasureFromEncodeur = new int[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
        for (int i = 0; i < networkSize; i++) { 
-        if (encoderTouched[i] ==  true) { 
+        if (encoderTouched[i] ==  true)
+         { 
             
             println("Main Found encodeur A MATCH in " + i + " " + encoderTouched[i] + " " + encodeur[i]); 
 
-            Pos[i] = (int) map(encodeur[i], 0, 800, 0, 127);
+            //Pos[i] = (int) map(encodeur[i], 0, 800, 0, 127);
 
-            println(" sendPositionToLive " + encoderTouched[i] + " " + Pos[i]);  
+          //  println(" sendPositionToLive " + encoderTouched[i] + " " + Pos[i]);  
  
          }
+          println("MIDDLE POSITION A MATCH in " + i + " " + midPos[i] + " " + midPos[i]); 
+        if (midPos[i] ==  true)
+         { 
+          println("MIDDLE POSITION A MATCH in " + i + " " + midPos[i] + " " + midPos[i]);  
+         }
+
     } 
 } 
 

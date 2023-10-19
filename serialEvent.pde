@@ -51,16 +51,16 @@
 
     // trigMiddlepositionFromProcessing
     
+    midPos[0] = false;
 
     if (p0 != null) {  // If not null, then a match was found
         midPos[0] = true;
     }
-    else midPos[0] = false;
-    
+     midPos[1] = false;
+
     if (p1 != null) {  // If not null, then a match was found
         midPos[1] = true;
     }
-    else  midPos[1] = false;
     
     if (p2 != null) {  // If not null, then a match was found
         midPos[2] = true;
@@ -76,11 +76,12 @@
         midPos[4] = true;
     }
     else  midPos[4] = false;
+
+    midPos[5] = false;
     
     if (p5 != null) {  // If not null, then a match was found
         midPos[5] = true;
     }
-    else  midPos[5] = false;
     
     //  String myString = encoderReceiveUSBport14101.readStringUntil('\n');
     // read the serial buffer:
