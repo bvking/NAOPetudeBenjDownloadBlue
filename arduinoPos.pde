@@ -244,7 +244,7 @@ void arduinoPos() {
         //    dataMappedForMotorisedPosition[i]= (int) map  (netPhaseBase[i], 0, TWO_PI, 0, numberOfStep);
          //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
         }
-        // send24DatasToTeensy6motorsToLittleMachine( 3, 38, -3, 3,-1);
+        // ( 3, 38, -3, 3,-1);
 }
     
     if(rev[networkSize - 1] % 8 ==  0 && decompte[networkSize - 1] >= -  0 && decompte[networkSize - 1] < 1) {// send a trig to change scene in Ableton live (if oscillator 11 makes 8 round an djust when it pass trought its position 0 -->trig next scene in Live)

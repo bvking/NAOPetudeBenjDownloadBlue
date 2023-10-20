@@ -411,9 +411,9 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
      {
       if (modeStartKeyToFollow != " samplingModeWithLive ")
       {
-      if (measure>0 ){
+      if (measure>241 ){
         print (" to change Mode and still runing ");
-        //send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+        send24DatasToTeensy6motorsToLittleMachine( 6, 2, -3, -1, 2, 1000);
       }
      }
      }

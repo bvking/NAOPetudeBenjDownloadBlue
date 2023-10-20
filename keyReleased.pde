@@ -200,7 +200,7 @@ void keyReleased() {
      }
     }
 
-
+/*
   if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
   {
    if (keyCode == UP){
@@ -218,7 +218,7 @@ void keyReleased() {
 
   }
 
-  
+ */ 
      
   
 

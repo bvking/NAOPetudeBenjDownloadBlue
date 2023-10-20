@@ -776,7 +776,7 @@ void oscSend(){
 
   //---------------- middle pos sent
 
- // trigMiddlePositionFromEncodeur();
+  trigMiddlePositionFromEncodeur();
 
   char midPosString [] = {'F', 'F', 'F', 'F', 'F', 'F'};
    // resultString='A';
