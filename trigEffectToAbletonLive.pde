@@ -30,16 +30,17 @@ void trigMiddlePositionFromEncodeur()
  textSize(200);
     for (int i = 0; i < networkSize; i++) { 
          midPos[i] =  false;
-        oldEncodeur[i]=encodeur[i];
-        encodeur[i]=(int) abs (map (encodeur[i], 0, 6400, 0, 4000)%4000);
+         oldEncodeurPosition[i]=encodeurPosition[i];
+      
+        encodeurPosition[i]=(int) abs (map (encodeur[i], 0, 6400, 0, 4000)%4000);
 
     
-        if ((oldEncodeur[i]<3200 && oldEncodeur[i]>2000) || (oldEncodeur[i]>3200 && oldEncodeur[i]<2000)) 
+        if ((oldEncodeurPosition[i]<2000 && oldEncodeur[i]>2000) || (oldEncodeurPosition[i]>2000 && oldEncodeur[i]<2000)) 
     {
        midPos[i] =  true;
      }
 
-      text (oldEncodeur[i] + " " + encodeur[i] + " " +  midPos[i], 100, 100+100*i);
+      text (oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 100+100*i);
 
 
     }
