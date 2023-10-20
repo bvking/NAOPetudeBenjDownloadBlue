@@ -352,7 +352,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
           }
 
          if (positionMov != " troisieme " && measure<17) {
-            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+            send24DatasToTeensy6motorsToLittleMachine( speedDelta, 2, -3, -1, 2, 1000);
           }
 
          if (measure>=17 && measure<=41){

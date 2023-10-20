@@ -4,7 +4,8 @@
   void serialEvent(Serial encoderReceiveUSBport101)
   {  
     String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');  
-
+  
+ /// println (myEncodeur);
 
     String[] m0 = match(myEncodeur, "e0");
     String[] m1 = match(myEncodeur, "e1");
@@ -12,14 +13,14 @@
     String[] m3 = match(myEncodeur, "e3");
     String[] m4 = match(myEncodeur, "e4");
     String[] m5 = match(myEncodeur, "e5");
-
+/*
     String[] Nm0 = match(myEncodeur, "n0");
     String[] Nm1 = match(myEncodeur, "n1");
     String[] Nm2 = match(myEncodeur, "n2");
     String[] Nm3 = match(myEncodeur, "n3");
     String[] Nm4 = match(myEncodeur, "n4");
     String[] Nm5 = match(myEncodeur, "n5");
-  
+  */
 
 
 
@@ -39,6 +40,7 @@
     String[] Np5 = match(myEncodeur, "no5");
 
 
+/*
     if (Nm0 != null) {  // If not null, then a match was found
         encoderTouched[0] = false;
     }
@@ -97,12 +99,12 @@
     if (m5 != null) {  // If not null, then a match was found
         encoderTouched[5] = true;
     }
-
+*/
 
 
 
     // trigMiddlepositionFromProcessing
-    
+/*
 
     if (Np0 != null) {  // If not null, then a match was found
         midPos[0] = false;
@@ -110,8 +112,9 @@
 
     if (p0 != null) {  // If not null, then a match was found
         midPos[0] = true;
+      
     }
-
+     
     if (Np1 != null) {  // If not null, then a match was found
         midPos[1] = false;
     } 
@@ -152,7 +155,7 @@
         midPos[5] = true;
     }
 
-
+ */ 
 
     
     //  String myString = encoderReceiveUSBport14101.readStringUntil('\n');
@@ -161,7 +164,7 @@
     
     //if you got any bytes other than the linefeed:
     // myString = trim(myString);
-    myEncodeur = trim(myEncodeur);
+    //myEncodeur = trim(myEncodeur);
     
     int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
     
@@ -171,12 +174,22 @@
         for (int i = 0; i < networkSize; i++) {
            //  encodeur[i] = values[i];  DON'T WORK
         }   
+        /*
         encodeur[0] = values[0];
         encodeur[1] = values[1];
         encodeur[2] = values[2];
         encodeur[3] = values[3];
         encodeur[4] = values[4];
-        encodeur[5] = values[5];         
+        encodeur[5] = values[5];      
+*/
+
+        encodeur[0]= (int)map (abs( values[0]), 0, 6400, 0, 4000)%4000;  
+        encodeur[1] =(int)map (abs( values[1]), 0, 6400, 0, 4000)%4000;  
+        encodeur[2] =(int)map (abs( values[2]), 0, 6400, 0, 4000)%4000; 
+        encodeur[3]= (int)map (abs( values[3]), 0, 6400, 0, 4000)%4000;  
+        encodeur[4] =(int)map (abs( values[4]), 0, 6400, 0, 4000)%4000;  
+        encodeur[5] =(int)map (abs( values[5]), 0, 6400, 0, 4000)%4000; 
+
     }   
   }
 

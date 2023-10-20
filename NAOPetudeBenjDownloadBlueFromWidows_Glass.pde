@@ -314,7 +314,47 @@ void draw()
     
     formerKeyMode = keyMode;
     printModeAndKey();
-    //trigMiddlePositionFromEncodeur();
+    trigMiddlePositionFromEncodeur();
+
+// from OSC_send
+
+    result = multiMatchData(0, 1, TrigmodPos.clone());
+  TrigmodPos=result;
+  print ( " showResul ") ;showArray(result);
+  textSize (150);
+  char resultString [] = {'A', 'A', 'A', 'A', 'A', 'A'};
+   // resultString='A';
+  for (int i=0; i<networkSize; i++){
+  if (result[i]==0){
+    resultString[i]='B';
+  }
+  }
+  char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
+  String str2 = new String(data);
+  text  ( " showTrig " + str2, 300, -850);
+
+  //---------------- middle pos sent
+
+  //trigMiddlePositionFromEncodeur();
+  text  ( " midPos[0] " + midPos[0], 300, -450);
+  char midPosString [] = {'F', 'F', 'F', 'F', 'F', 'F'};
+   // resultString='A';
+  for (int i=0; i<networkSize; i++){
+  if (midPos[i]==true){
+      midPosString[i]='T';
+      sendMiddle[i]=0;  // to trig something in M4Live
+  }
+  else {
+      sendMiddle[i]=1; 
+  }
+  }
+  char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
+  String strMiddle = new String(middlePos);
+  text  ( " showMid " + strMiddle, 300, -1000);
+
+  textSize (100);
+ //----
+
     oscSend();
     //====== = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
 }
