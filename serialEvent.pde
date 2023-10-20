@@ -42,18 +42,15 @@
     if (Nm0 != null) {  // If not null, then a match was found
         encoderTouched[0] = false;
     }
-   
-    
+     
     if (Nm1 != null) {  // If not null, then a match was found
         encoderTouched[1] = false;
     }
- 
     
     if (Nm2 != null) {  // If not null, then a match was found
         encoderTouched[2] = false;
     }
-    
-    
+        
     if (Nm3 != null) {  // If not null, then a match was found
         encoderTouched[3] = false;
     }

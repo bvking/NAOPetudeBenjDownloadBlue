@@ -314,7 +314,7 @@ void draw()
     
     formerKeyMode = keyMode;
     printModeAndKey();
-    
+    trigMiddlePositionFromEncodeur();
     oscSend();
     //====== = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
 }

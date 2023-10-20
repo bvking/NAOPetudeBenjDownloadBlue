@@ -776,6 +776,8 @@ void oscSend(){
 
   //---------------- middle pos sent
 
+ // trigMiddlePositionFromEncodeur();
+
   char midPosString [] = {'F', 'F', 'F', 'F', 'F', 'F'};
    // resultString='A';
   for (int i=0; i<networkSize; i++){
