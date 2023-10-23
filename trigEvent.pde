@@ -6,7 +6,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
      splitTimeLfo= int  (timeLfo%1000); 
 
-                textSize (100);
+                textSize (50);
                 text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
                 text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height+100, -500);
 
@@ -14,14 +14,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
                text  (
                       // " oscB " + oscillatorBlocked + " memi " + memoryi + " freq " + i + " "  + net.naturalFrequency[i]+     
-                      //   " oldMotorisedP " + oldDataMappedForMotorisedPosition[i] +
-                   " MotorisedP " + j + " "  +  dataMappedForMotorisedPosition[j]+
-                     //     " net.pha " +  net.phase[j] + " net.old[j] " +  net.oldPhase [j] + " netPha[j] " +  netPhaseBase[j]+ " netOld " +  netOldPhaseBase[j] + 
-                   " deltaOld  " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
-                   " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
-                   " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]
-                                    
+                   " MotoP " + j + " "  +  dataMappedForMotorisedPosition[j]+
+                   " deltaOld  " + deltaOldPhaseActualPhase[j] +  " readPosEnco " + readPositionEncoder[j]+
+                   " MotorBig " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
                    , -300 , -height, -500);
+              
+               text  (
+        
+                   " net.pha " +nf (net.phase[j], 0, 2) + " metro " + nf (metroPhase[j], 0, 2) + " recordFromCir " + recordLastDataOfMotorPosition[j] + "nB " + numberOfStep                               
+                   , -300 , -height, -650);
 
                 signalToSplit = map ( signal[5], 0, 1, 0, 1);
                 signalToSplit4 = map ( signal[4], 0, 1, 0, 1);

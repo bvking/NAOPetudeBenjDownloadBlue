@@ -1,6 +1,4 @@
-//if  (!systemForBigMachine){
-
-
+/*
   void serialEvent(Serial encoderReceiveUSBport101)
   {  
     String myEncodeur = encoderReceiveUSBport101.readStringUntil('\n');  
@@ -192,12 +190,8 @@
 
     }   
   }
+*/
 
-
-
-
-
-/*
 void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited with , and the last is send with println
     
     //read the serial buffer:
@@ -220,7 +214,7 @@ void serialEvent(Serial DueSerialNativeUSBport101) { // receive 2 datas splited 
   } 
  }
 
-*/
+
 
 
 
