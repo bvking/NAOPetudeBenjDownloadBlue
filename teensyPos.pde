@@ -9,6 +9,7 @@ void teensyPos()
    int j=1;
    text  (
                   
+                  
                    " MotorisedP " + j + " "  +  dataMappedForMotorisedPosition[j]+
                    " deltaOld  " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
                    " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +

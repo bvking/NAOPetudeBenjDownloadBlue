@@ -21,7 +21,7 @@
   */
 
 
-
+/*
 
     String[] p0 = match(myEncodeur, "mi0");
     String[] p1 = match(myEncodeur, "mi1");
@@ -36,7 +36,7 @@
     String[] Np3 = match(myEncodeur, "no3");
     String[] Np4 = match(myEncodeur, "no4");
     String[] Np5 = match(myEncodeur, "no5");
-
+*/
 
 /*
     if (Nm0 != null) {  // If not null, then a match was found
@@ -163,7 +163,7 @@
     //if you got any bytes other than the linefeed:
     // myString = trim(myString);
     //myEncodeur = trim(myEncodeur);
-    
+ /*   
     int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
     
     int numberOfEncodeur = 6;
@@ -171,7 +171,8 @@
     if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
         for (int i = 0; i < networkSize; i++) {
            //  encodeur[i] = values[i];  DON'T WORK
-        }   
+        } 
+*/  
         /*
         encodeur[0] = values[0];
         encodeur[1] = values[1];
@@ -179,8 +180,8 @@
         encodeur[3] = values[3];
         encodeur[4] = values[4];
         encodeur[5] = values[5];      
-*/
-
+        */
+/*
         encodeur[0]= (int)map (abs( values[0]), 0, 6400, 0, 4000)%4000;  
         encodeur[1] =(int)map (abs( values[1]), 0, 6400, 0, 4000)%4000;  
         encodeur[2] =(int)map (abs( values[2]), 0, 6400, 0, 4000)%4000; 

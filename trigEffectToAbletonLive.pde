@@ -16,7 +16,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
           //  println(" sendPositionToLive " + encoderTouched[i] + " " + Pos[i]);  
  
          }
+         
           println("MIDDLE POSITION A MATCH in " + i + " " + midPos[i] + " " + midPos[i]); 
+
         if (midPos[i] ==  true)
          { 
           println("MIDDLE POSITION A MATCH in " + i + " " + midPos[i] + " " + midPos[i]);  

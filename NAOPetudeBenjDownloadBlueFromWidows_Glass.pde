@@ -27,15 +27,15 @@ void draw()
     
     if (frameCount <=  1)  noLoop(); // check setPort()
     //printDataOnScreen();
-
-     if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=120)
+    
+    if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
     {
-    setKeyModeByTappingKeyPadOnce();
+        setKeyModeByTappingKeyPadOnce();
     }
-
+    
     setMovement(key, false);  // to reset function just above
     
-    println( " modeStartKey " +  modeStartKeyToFollow + " keyMode " + keyMode + " kMRed" +  keyModeRed + " fKeyMetro " + formerKeyMetro + " cTrigLfoPattern " + controlTrigLfoPattern);
+    println(" modeStartKey " +  modeStartKeyToFollow + " keyMode " + keyMode + " kMRed" +  keyModeRed + " fKeyMetro " + formerKeyMetro + " cTrigLfoPattern " + controlTrigLfoPattern);
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
@@ -70,9 +70,9 @@ void draw()
     
     
     if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
-   // if (measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
+        // if(measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// prepare record
-        key='9'; // align
+        key = '9'; // align
         keyReleased();
         modeCircular = true; // not work
         formerKeyMetro = '*'; // not work
@@ -82,7 +82,7 @@ void draw()
     }
     
     
-    if (keyMode == " null " )
+    if (keyMode == " null ")
     {
         checkKeyModeToFollowIfALTisJustReleased(); // ->  function disable
     }
@@ -90,8 +90,8 @@ void draw()
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
     { 
-        frameRatio= 60;
-       // frameRate (frameRatio);
+        frameRatio = 60;
+        // frameRate (frameRatio);
         modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
         if (mousePressed ==  true || mousePressed!= true)
         {
@@ -111,7 +111,7 @@ void draw()
         }
         
         //measureRecordStop = specialMeasureToStartRecording + 1;
-         measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
+        measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&
@@ -126,21 +126,21 @@ void draw()
         }   
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
-           
+        
         if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
             {
-           // keyMode = " null ";
-          //  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+            // keyMode = " null ";
+            //modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
             //draw();
         }
     }
     
     if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// repetition and trigging
-       // net.phase[0]+=PI/2;
+        // net.phase[0]+=PI/2;
         keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
-      //  keyCode = LEFT; keyReleased(); // shift delay of following ball
+        //keyCode = LEFT; keyReleased(); // shift delay of following ball
     }
     
     // end measure & repetiton
@@ -168,11 +168,11 @@ void draw()
     //trigFollowSignalSampled();
     if (modeStartKeyToFollow ==  " followSignalSampledOppositeWay(frameRatio) ")
     {
-      //  println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
+        //println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
         // frameRatio= 60;
         //frameRate (frameRatio);
         followSignalSampledOppositeWay(frameRatio);// with millis()
-
+        
     }
     
     //rect(80,40,140,320);
@@ -187,7 +187,7 @@ void draw()
     netG.step(); //actualise step for chimera state, not use yet
     
     //if (modeCircular==true) { // why it doesn' t work?
-    if (formerKeyMetro ==  '*' )  // case != to get trigModPos enabled         formerKeyMetro ==  '*' ||
+    if (formerKeyMetro ==  '*')  // case != to get trigModPos enabled         formerKeyMetro ==  '*' ||
     {
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio)NO ")
         {
@@ -200,7 +200,7 @@ void draw()
                         countRevs(); // below modePendular to compute revolution
                     }
                 }
-        }
+            }
     }   }
     textSize(200);
     
@@ -315,46 +315,56 @@ void draw()
     formerKeyMode = keyMode;
     printModeAndKey();
     trigMiddlePositionFromEncodeur();
-
-// from OSC_send
-
+    
+    // from OSC_send
+    
     result = multiMatchData(0, 1, TrigmodPos.clone());
-  TrigmodPos=result;
-  print ( " showResul ") ;showArray(result);
-  textSize (150);
-  char resultString [] = {'A', 'A', 'A', 'A', 'A', 'A'};
-   // resultString='A';
-  for (int i=0; i<networkSize; i++){
-  if (result[i]==0){
-    resultString[i]='B';
-  }
-  }
-  char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
-  String str2 = new String(data);
-  text  ( " showTrig " + str2, 300, -850);
-
-  //---------------- middle pos sent
-
-  //trigMiddlePositionFromEncodeur();
-  text  ( " midPos[0] " + midPos[0], 300, -450);
-  char midPosString [] = {'F', 'F', 'F', 'F', 'F', 'F'};
-   // resultString='A';
-  for (int i=0; i<networkSize; i++){
-  if (midPos[i]==true){
-      midPosString[i]='T';
-      sendMiddle[i]=0;  // to trig something in M4Live
-  }
-  else {
-      sendMiddle[i]=1; 
-  }
-  }
-  char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
-  String strMiddle = new String(middlePos);
-  text  ( " showMid " + strMiddle, 300, -1000);
-
-  textSize (100);
- //----
-
+    TrigmodPos = result;
+    print(" showResul ");showArray(result);
+    textSize(150);
+    
+    if (networkSize ==  6) 
+    {
+        char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
+        
+        
+        
+        for (int i = 0; i < networkSize; i++) {
+            if (result[i] ==  0) {
+                resultString[i] = 'B';
+            }
+        }
+        char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
+        String str2 = new String(data);
+        text(" showTrig " + str2, 300, -850);
+        
+        //- --------------- middle pos sent
+        
+        // trigMiddlePositionFromEncodeur();
+        text(" midPos[0] " + midPos[0], 300, -450);
+        char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
+        
+        // resultString='A';
+        for (int i = 0; i < networkSize; i++) {
+            if (midPos[i] ==  true) {
+                midPosString[i] = 'T';
+                sendMiddle[i] = 0;  // to trig something in M4Live
+                }
+            else {
+                sendMiddle[i] = 1; 
+                }
+            }
+        char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
+        String strMiddle = new String(middlePos);
+        text(" showMid " + strMiddle, 300, -1000);
+        }
+    
+    
+    
+    
+    textSize(100);
+    //----
+    
     oscSend();
-    //====== = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
-}
+    //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
+    }

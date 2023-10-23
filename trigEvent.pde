@@ -16,12 +16,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                       // " oscB " + oscillatorBlocked + " memi " + memoryi + " freq " + i + " "  + net.naturalFrequency[i]+     
                    " MotoP " + j + " "  +  dataMappedForMotorisedPosition[j]+
                    " deltaOld  " + deltaOldPhaseActualPhase[j] +  " readPosEnco " + readPositionEncoder[j]+
-                   " MotorBig " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
+                   " MotorBig " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi
                    , -300 , -height, -500);
               
                text  (
         
-                   " net.pha " +nf (net.phase[j], 0, 2) + " metro " + nf (metroPhase[j], 0, 2) + " recordFromCir " + recordLastDataOfMotorPosition[j] + "nB " + numberOfStep                               
+                   " net.pha " + nf (net.phase[j], 0, 2) + " metro " + nf (metroPhase[j], 0, 2) + " recordFromCir " + recordLastDataOfMotorPosition[j] + "nB " + numberOfStep                               
                    , -300 , -height, -650);
 
                 signalToSplit = map ( signal[5], 0, 1, 0, 1);

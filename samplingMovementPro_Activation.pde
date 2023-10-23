@@ -49,8 +49,6 @@ void handleSamplingModeWithAbletonLive()
      ( " enc[0] " + encodeur[0] +  " newPosF[ne-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
        " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
 
-       // if (measure>=measureRecordStart && measure<=(measureRecordStart+4) ) { 
-
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
           int disableDriver=-5;
           int driverNetWorkSizeOnOff=-5;
