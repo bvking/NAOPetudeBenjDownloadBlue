@@ -325,15 +325,13 @@ void draw()
     
     if (networkSize ==  6) 
     {
-        char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
-        
-        
-        
-        for (int i = 0; i < networkSize; i++) {
-            if (result[i] ==  0) {
-                resultString[i] = 'B';
-            }
+    char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
+            
+    for (int i = 0; i < networkSize; i++) {
+      if (result[i] ==  0) {
+      resultString[i] = 'B';
         }
+      }
         char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
         String str2 = new String(data);
         text(" showTrig " + str2, 300, -850);

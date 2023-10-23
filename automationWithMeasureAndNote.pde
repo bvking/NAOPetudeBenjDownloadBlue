@@ -278,6 +278,11 @@ void autmationWithMeasureAndNote()
   }
 
   if ( (measure==89 || measure==92 || measure==94) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
+    key='f';
+    keyReleased();
+    key='f';
+    keyReleased();
+    /*
     key='r';
     keyReleased();
     key='r';
@@ -286,23 +291,15 @@ void autmationWithMeasureAndNote()
     keyReleased();
     key='r';
     keyReleased();
-    key='r';
-    keyReleased();
-    key='r';
-    keyReleased();
+    */
   }
 
   if ( (measure==97 || measure==100 || measure==102) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-    key='r';
+    key='f';
     keyReleased();
-    key='r';
+    key='f';
     keyReleased();
-    key='r';
-    keyReleased();
-    key='r';
-    keyReleased();
-    key='r';
-    keyReleased();
+ 
   }
 
   if ( measure==104 && beatTrigged==true) {
@@ -312,7 +309,7 @@ void autmationWithMeasureAndNote()
   }
 
   if ( measure==104 && beatPrecisedTrigged==true  && ( beatPrecised == 1 || beatPrecised == 5   || beatPrecised == 9 || beatPrecised == 13 || beatPrecised == 17 || beatPrecised == 21  )) {
-     key='r';
+     key='d';
     keyReleased();
     }
 
