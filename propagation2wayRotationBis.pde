@@ -33,7 +33,7 @@ void propagation2wayRotationBis()
     text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow + ((PI / (1 * networkSize - 1))) + "  phaseAmount  " + (phaseAmount), 500, -1000);
     text(" LFO[i]" + LFO[0] +  " doRotationWithoutPropagation " + doRotationWithoutPropagation + " doRotation " + doRotation, 500, -1100); 
     
-    if (propagationTrigged ==  true  && doRotationWithoutPropagation == false) // && doRotationWithoutPropagation ==  false
+    if (propagationTrigged ==  true  ) // && doRotationWithoutPropagation ==  false
         { //propaga fixe   doo ==  false && 
         
         LFO[oscillatorChange] = LFO[oldOscillatorChange];//
@@ -72,41 +72,25 @@ void propagation2wayRotationBis()
     //  if (  doRotation == false )  // propagationTrigged ==  false &&
     // {
     
-    if (doRotationWithoutPropagation ==  false) {
+    if (doRotationWithoutPropagation ==  false || doRotationWithoutPropagation == true ) {
         
         
         for (int i = 0; i < networkSize; i++)
            { 
             if (LFO[i] < 0) 
-          //  if (LFO[oscillatorChange]<0)
             {
-                //  dataMappedForMotorisedPosition[i] = int(map(LFO[i], 0, -TWO_PI, numberOfStep, 0)); 
-                //  phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
-                
-                //LFO[i]= LFO[i]- newPosFollowed[i];//  LFO[i]+TWO_PI;   
-                //LFO[i] = newPosFollowed[i];  
-                
-                //text(" LFO[0] neg " + LFO[oscillatorChange], 400, 100*oscillatorChange);
-                
                 phaseMapped[i] = LFO[i];//+signal[2]; 
+                phaseMapped[i] = LFO[i]- newPosFollowed[i];
             }
             
             else
-                {
-                
-                // dataMappedForMotorisedPosition[i] = (int) map(LFO[i], 0, TWO_PI, 0, numberOfStep); 
-                // phaseMapped[i] = map(dataMappedForMotorisedPosition[i], 0, numberOfStep, 0, TWO_PI);
-                // newPosXaddSignal[i] = LFO[i]; 
-                
-                //LFO[i]= LFO[i]+ newPosFollowed[i];//  LFO[i]+TWO_PI;  
-                // LFO[i] = newPosFollowed[i];  
-                
-                
-                 phaseMapped[i] = LFO[i];//+signal[2];  //LFO[i];    
+            {
+   
+                 phaseMapped[i] = LFO[i];//+signal[2];  //LFO[i];
+                 phaseMapped[i] = LFO[i] + newPosFollowed[i];    
             }
         }
                     //    text(" LFO[] pos ou neg" + LFO[oscillatorChange], 400, 100*oscillatorChange);    
-
     }
     
     if (doRotation == true)  // propagationTrigged ==  false &&
@@ -115,20 +99,7 @@ void propagation2wayRotationBis()
         // if(signal[2] < 0.5) 
         if (!signalUpRise)
          {
-            //   signal[2] = int(map(LFO[i], 0, -PI, numberOfStep/2, 0)); 
-            //signal[2] = int(map(signal[2], 0.5, 0, 0, -TWO_PI));
-            
-            //     phaseMapped[i] = map(dataMappedForMotorisedPosition[i], numberOfStep, 0, 0, -TWO_PI); 
-            //   LFO[i]=signal[2];
-            //   LFO[i]%=TWO_PI;
-            // phaseMapped [i] =LFO[i]-signal[2];  //LFO[i];   
-            //  phaseMapped [oscillatorChange] -= map (signal[2], 0, 1, -TWO_PI, 0); 
-            
-            phaseMapped[oscillatorChange] -= map(signal[2], 0, 1, TWO_PI, 0); 
-            
-            
-            
-            
+            phaseMapped[oscillatorChange] -= map(signal[2], 0, 1, TWO_PI, 0);   
         } // with else if
         
         //if(signal[2] >=0.5)
@@ -137,14 +108,13 @@ void propagation2wayRotationBis()
          {
             //signal[2] = int(map(signal[2], 0, 0.5, 0, TWO_PI));
             //phaseMapped [i] =LFO[i]+signal[2]; 
-            phaseMapped[oscillatorChange] += map(signal[2], 0, 1, 0, TWO_PI); 
-            
+            phaseMapped[oscillatorChange] += map(signal[2], 0, 1, 0, TWO_PI);        
         }
 
          memoryi = oscillatorChange;
          phaseMapped[memoryi] = phaseMapped[oscillatorChange];
 
-         text(" doRotation  " + memoryi + " " + phaseMapped[memoryi], width , height / 2 - 700);
+         text(" doRotation  " + memoryi + " " + phaseMapped[memoryi] + " signalUpRise " + signalUpRise , width , height / 2 - 700);
 
         
        // memoryi = oscillatorChange;
@@ -153,7 +123,7 @@ void propagation2wayRotationBis()
     
     if (doRotationWithoutPropagation) 
       {  
-      // memoryi = oscillatorChange;
+        memoryi = oscillatorChange;
         textSize(100);
         if (propagationTrigged ==  false || propagationTrigged ==  false  ) {
             for (int i = 0; i < networkSize; i++)
@@ -163,15 +133,18 @@ void propagation2wayRotationBis()
             }
             // propagationTrigged ==  false &&
             if (directionOfsignal ==  6)//(signalUpRise)
-            {
-                phaseMapped[memoryi] += map(signal[2], 0, 1, 0, TWO_PI);
+
+            {  
+                newPosFollowed[memoryi]= map(signal[2], 0, 1, 0, TWO_PI);
+
+                phaseMapped[memoryi] =LFO[memoryi]+ newPosFollowed[memoryi];
                 phaseMapped[memoryi] %=TWO_PI;
                 text(" UP WITH phaseMapped " + memoryi + " " + phaseMapped[memoryi], width , height / 2 - 500);
                 
             }
             if (directionOfsignal ==  2)
                 {
-                phaseMapped[memoryi] -= phaseMapped[memoryi]- map(signal[2], 1, 0, TWO_PI, 0); 
+                phaseMapped[memoryi] = LFO[memoryi] + map(signal[2], 1, 0, TWO_PI, 0); 
                 phaseMapped[memoryi] -= TWO_PI;
                 text(" DO withOUT phaseMapped " + memoryi + " " + phaseMapped[memoryi], width , height / 2 - 600);
                 

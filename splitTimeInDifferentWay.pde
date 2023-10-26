@@ -118,6 +118,8 @@ void  splitTimeLfoScaleBis() {  // change de sens de propagagtion.   ATTENTION d
 
 void splitTimeScaleRotation(float propagationSpeed)  
   { 
+   if (doRotationWithoutPropagation==false)
+    {
     if (doo)
     {
         signal[2] = -signal[2];
@@ -125,9 +127,9 @@ void splitTimeScaleRotation(float propagationSpeed)
     
     if (doZ)
     { // option à mettre à l'ecran
-        propagationTrigged = false;
+           propagationTrigged = false;
         if (oldSplitTimeLfo > splitTimeLfo + 25) {
-            text(" signal monte Z ", 200, 200);
+         //   text(" signal monte Z ", 200, 200);
             signalUpRise = true;
             oldOscillatorChange = oscillatorChange;
             oscillatorChange++;
@@ -143,7 +145,7 @@ void splitTimeScaleRotation(float propagationSpeed)
         // propagtion opposite way
         
         if (splitTimeLfo > oldSplitTimeLfo + 25) {
-            text(" signal descend Z ", 200, 200);
+         //   text(" signal descend Z ", 200, 200);
             signalUpRise = false;
             oldOscillatorChange = oscillatorChange;
             oscillatorChange--;
@@ -154,15 +156,58 @@ void splitTimeScaleRotation(float propagationSpeed)
             oscillatorChange = networkSize - 1;
         }        
     }
+   
+  
     
+       
+    if (!doZ) {
+        propagationTrigged = false;
+        
+        if (oldSplitTimeLfo > splitTimeLfo + 50) {//+50 // only whe spliTimeLfois sliced timeLfo by 100
+          //  text(" signal monte !z", 200, 200);
+            signalUpRise = true;
+ 
+            oldOscillatorChange = oscillatorChange;
+            oscillatorChange--;
+            propagationTrigged = true;
+            
+            if (oscillatorChange <= -1) {
+                oldOscillatorChange = 0;
+                oscillatorChange = networkSize - 1;
+            }
+        }
+        
+        if (splitTimeLfo > oldSplitTimeLfo + 50) { //+50
+          //  text(" signal descend !z", 200, 200);
+            signalUpRise = false;
+            
+            oldOscillatorChange = oscillatorChange;
+            oscillatorChange--;
+            propagationTrigged = true;
+                    
+            if (oscillatorChange <= -1) {
+                oldOscillatorChange = 0;
+                oscillatorChange = networkSize - 1;
+            }
+        }
+    }
+        
+    timeLfo = int(map(signal[2], 0, 1, 0, 1000));
+    
+    if (doo) {
+        timeLfo = -timeLfo;
+    }
+    
+     //   text("oldSplitIn splitTimeScaleRotation " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo + " propagationTrigged " + propagationTrigged, -width - 200, + height);
+    
+    oldSplitTimeLfo = splitTimeLfo;
+    splitTimeLfo = int((timeLfo) % 100) + 0;
+
+    }
+
     directionOfsignal = 4;
     boolean equal;
     simpleSignal2 = abs((int) map(signal[2], 0, 1, 0, 100000));
-    
-   // text(" signa " + simpleSignal2 + " " + oldSimpleSignal2 , 200, 300);
-    
-    if (!doZ) {
-        propagationTrigged = false;
              
         if (oldSimpleSignal2 > simpleSignal2 && directionOfsignal >=  4) 
         {
@@ -183,53 +228,9 @@ void splitTimeScaleRotation(float propagationSpeed)
             directionOfsignal = 4;
             text(" signalEQUAL " + directionOfsignal +  " m " + memoryi, 200, 350);   
         }    
-    }
+    
     oldSimpleSignal2 = simpleSignal2;
-    
-       
-    if (!doZ) {
-        propagationTrigged = false;
-        
-        if (oldSplitTimeLfo > splitTimeLfo + 50) {//+50 // only whe spliTimeLfois sliced timeLfo by 100
-            text(" signal monte !z", 200, 200);
- 
-            oldOscillatorChange = oscillatorChange;
-            oscillatorChange--;
-            propagationTrigged = true;
-            
-            if (oscillatorChange <= -1) {
-                oldOscillatorChange = 0;
-                oscillatorChange = networkSize - 1;
-            }
-        }
-        
-        if (splitTimeLfo > oldSplitTimeLfo + 50) { //+50
-            text(" signal descend !z", 200, 200);
-            signalUpRise = false;
-            
-            oldOscillatorChange = oscillatorChange;
-            oscillatorChange--;
-            propagationTrigged = true;
-                    
-            if (oscillatorChange <= -1) {
-                oldOscillatorChange = 0;
-                oscillatorChange = networkSize - 1;
-            }
-        }
-    }
-        
-    timeLfo = int(map(signal[2], 0, 1, 0, 1000));
-    
-    if (doo) {
-        timeLfo = -timeLfo;
-    }
-    
- //   text("oldSplitIn splitTimeScaleRotation " + oldSplitTimeLfo + " split "  + splitTimeLfo + " timeLFO " + timeLfo + " propagationTrigged " + propagationTrigged, -width - 200, + height);
-    
-    oldSplitTimeLfo = splitTimeLfo;
-    splitTimeLfo = int((timeLfo) % 100) + 0;
-    
-}
+  }
 
 void lockOscillatorToPositionFromPreviousProagedBall() { // revoir lock
     if (propagationTrigged) {
