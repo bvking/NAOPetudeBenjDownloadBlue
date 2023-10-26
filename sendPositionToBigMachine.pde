@@ -38,13 +38,16 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
        rotate (-PI/2);
        accelerationRatio = speedDelta;
     
-    if ( networkSize == 6)
+    if ( networkSize == 6)  // always 24 datas
     {
     
      dataFromMode = "<"
- 
-     + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + "," + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
+
+     
+     + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + ","
+     + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
      + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
+     + 0 + "," + 0 + "," + 0 + "," + 0 + ","
    
      +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
     

@@ -77,12 +77,14 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
     switch(letter) {
 
         case 'p' :
-        // doRotationWithoutPropagation = true;
-        // doRotation = true;
+         doRotationWithoutPropagation = true;
+         doRotation = false;
          break;
 
         case 'P' :
-        // doRotationWithoutPropagation = false;
+       
+          doRotationWithoutPropagation = false;
+          doRotation = true;
          break;
 
         case'r' : // way of rotation
@@ -341,7 +343,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
          if (measure == 188 && beatPrecised ==  1 && beatPrecisedTrigged)
         {
-        doRotationWithoutPropagation=false;
+       // doRotationWithoutPropagation=false;
         }
 
         if (measure == 189 && beatPrecised ==  1 && beatPrecisedTrigged)
@@ -351,7 +353,9 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
         if (measure == 190 && beatPrecised ==  1 && beatPrecisedTrigged)
         {
-        doRotationWithoutPropagation=true;
+       // doRotationWithoutPropagation=true;
+          doRotationWithoutPropagation=false;
+
         }
         
         if (measure == 193 && beatPrecised ==  1 && beatPrecisedTrigged)
@@ -379,28 +383,13 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
    // {
     mapPropagationSampledBall();   // to actualise counter with this proagationMode
   //  } 
-   /*
-       for (int i = 0; i <  networkSize-0; i+=1) { 
-      
-           oldOldPhaseMapped[i]=oldPhaseMapped[i];
-           oldPhaseMapped[i]=phaseMapped[i];
-           net.phase[i]=phaseMapped[i];
-           // net.phase[i]=specialPhase[i];
-       }
-
-  */
-     
-    
-    
+ 
     // COMEBACK to other function
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft ") { 
         addSignalOneAndTwoTer();
         // positionMov = " troisieme " ;  
         textSize(500);         
-    } 
-    
-  
-    
+    }    
 }
 
 
