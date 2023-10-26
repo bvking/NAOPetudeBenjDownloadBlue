@@ -60,7 +60,7 @@ void mapPropagationSampledBall() {
      
             if (               newPosF[i]>oldPosF[i] && doo==true && (oldPosF[i]<=oldOldPosF[i])           )
               {
-                  if ( doRotationWithoutPropagation == false )  // || doRotationWithoutPropagation == true // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
+                  if ( doRotationWithoutPropagation == false || doRotationWithoutPropagation == true )  // || doRotationWithoutPropagation == true // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
                     {
                     revLfo[i]--;
                     //TrigmodPos[i]=0;
@@ -72,7 +72,7 @@ void mapPropagationSampledBall() {
             if (               newPosF[i]<oldPosF[i] && doo==false && (oldPosF[i]>=oldOldPosF[i]))// doo false CW newPos uprise
               { 
 
-                  if ( doRotationWithoutPropagation == false )  // || doRotationWithoutPropagation == true  // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
+                  if ( doRotationWithoutPropagation == false || doRotationWithoutPropagation == true  )  // || doRotationWithoutPropagation == true  // inside  mapPropagationSampledBall()  to rename // mapPropagationTomanageCounter
                     {
                     revLfo[i]++;
                     //TrigmodPos[i]=0;
