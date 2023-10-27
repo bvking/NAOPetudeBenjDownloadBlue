@@ -1,5 +1,5 @@
 void propagation2wayRotationBis()
-    {  // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
+ {  // FAIRE CONDITION QUAND SIGNAL NEGATIF fu style
     textSize(100);
     modulePhaseAmountWithArrow = true;
     phaseAmount = trigedSignFromAbleton[1];
@@ -69,24 +69,26 @@ void propagation2wayRotationBis()
     }
     
     if (doRotation == true)  // propagationTrigged ==  false &&
-      {
+    {
          memoryi = oscillatorChange;
          doRotationWithoutPropagation=false;   
-        if (!signalUpRise)
+        //  if (!signalUpRise)
+          if (directionOfsignal ==  2)
+               
          {
             newPosFollowedWithoutPropagation[memoryi] = map(signal[2], 1, 0, 0, TWO_PI);   
          } 
    
-        if (signalUpRise)         
+          //if (signalUpRise) 
+          if (directionOfsignal ==  6)//(signalUpRise)        
          {
             newPosFollowedWithoutPropagation[memoryi] = map(signal[2], 0, 1, 0, TWO_PI);   
          }
        
          phaseMapped[memoryi] += newPosFollowedWithoutPropagation[memoryi];
       
-         text(" doRotation  " + memoryi + " " + phaseMapped[memoryi] + " signalUpRise " + signalUpRise , width , height / 2 - 700);
-        
-    }
+         text(" doRotation  " + memoryi + " " + phaseMapped[memoryi] + " signalUpRise " + signalUpRise , width , height / 2 - 700);     
+     }
     
     if (doRotationWithoutPropagation) 
       {  
