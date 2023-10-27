@@ -60,28 +60,22 @@ void propagation2wayRotationBis()
         }
     }
 
-    
-    
     //---------- map all propaged Lfo  (angular incrementation from phase Amount)
     //  if (  doRotation == false )  // propagationTrigged ==  false &&
     // {
     
     if (doRotationWithoutPropagation ==  false || doRotationWithoutPropagation == true ) {
-        
-        
+             
         for (int i = 0; i < networkSize; i++)
            { 
             if (LFO[i] < 0) 
             {
-                phaseMapped[i] = LFO[i];//+signal[2]; 
-              //  phaseMapped[i] = LFO[i]- newPosFollowed[i];
+                phaseMapped[i] = LFO[i];
             }
             
             else
             {
-   
-                 phaseMapped[i] = LFO[i];//+signal[2];  //LFO[i];
-              //  phaseMapped[i] = LFO[i] + newPosFollowed[i];    
+                 phaseMapped[i] = LFO[i];//+signal[2];  //LFO[i];   
             }
         }
                     //    text(" LFO[] pos ou neg" + LFO[oscillatorChange], 400, 100*oscillatorChange);    
@@ -89,34 +83,31 @@ void propagation2wayRotationBis()
     
     if (doRotation == true)  // propagationTrigged ==  false &&
         {
+         doRotationWithoutPropagation=false;
         
         // if(signal[2] < 0.5) 
         if (!signalUpRise)
          {
-            phaseMapped[oscillatorChange] -= map(signal[2], 0, 1, TWO_PI, 0);   
+            phaseMapped[oscillatorChange] = map(signal[2], 1, 0, TWO_PI, 0);   
         } // with else if
         
-        //if(signal[2] >=0.5)
+
         if (signalUpRise)
             
          {
-            //signal[2] = int(map(signal[2], 0, 0.5, 0, TWO_PI));
-            //phaseMapped [i] =LFO[i]+signal[2]; 
-            phaseMapped[oscillatorChange] += map(signal[2], 0, 1, 0, TWO_PI);        
-        }
+            phaseMapped[oscillatorChange] = map(signal[2], 0, 1, 0, TWO_PI);        
+         }
 
          memoryi = oscillatorChange;
-         phaseMapped[memoryi] = phaseMapped[oscillatorChange];
+         phaseMapped[memoryi] += phaseMapped[oscillatorChange];
 
          text(" doRotation  " + memoryi + " " + phaseMapped[memoryi] + " signalUpRise " + signalUpRise , width , height / 2 - 700);
-
-        
-       // memoryi = oscillatorChange;
         
     }
     
     if (doRotationWithoutPropagation) 
       {  
+          doRotation=false;
         memoryi = oscillatorChange;
         textSize(100);
         if (propagationTrigged ==  false || propagationTrigged ==  false  ) {
