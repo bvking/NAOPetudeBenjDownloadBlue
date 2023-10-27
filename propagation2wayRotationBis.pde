@@ -18,18 +18,6 @@ void propagation2wayRotationBis()
         phaseAmount =-  phaseAmount;  // change Way of phaseAmount
     }
     
-    if (propagationTrigged ==  false && doRotation == true)
-        {
-        for (int i = 0; i < networkSize; i++)
-            {
-            //   LFO[i]=signal[2];
-            //   LFO[i]%=TWO_PI;
-            
-        } // with else if
-    }
-    
-    
-    
     text(" levelFromArrow " + levelFromArrow + " modulePhaseAmountWithArrow " + modulePhaseAmountWithArrow + ((PI / (1 * networkSize - 1))) + "  phaseAmount  " + (phaseAmount), 500, -1000);
     text(" LFO[i]" + LFO[0] +  " doRotationWithoutPropagation " + doRotationWithoutPropagation + " doRotation " + doRotation, 500, -1100); 
     
@@ -78,76 +66,52 @@ void propagation2wayRotationBis()
                  phaseMapped[i] = LFO[i];//+signal[2];  //LFO[i];   
             }
         }
-                    //    text(" LFO[] pos ou neg" + LFO[oscillatorChange], 400, 100*oscillatorChange);    
     }
     
     if (doRotation == true)  // propagationTrigged ==  false &&
-        {
-         doRotationWithoutPropagation=false;
-        
-        // if(signal[2] < 0.5) 
+      {
+         memoryi = oscillatorChange;
+         doRotationWithoutPropagation=false;   
         if (!signalUpRise)
          {
-            phaseMapped[oscillatorChange] = map(signal[2], 1, 0, TWO_PI, 0);   
-        } // with else if
-        
-
-        if (signalUpRise)
-            
+            newPosFollowedWithoutPropagation[memoryi] = map(signal[2], 1, 0, 0, TWO_PI);   
+         } 
+   
+        if (signalUpRise)         
          {
-            phaseMapped[oscillatorChange] = map(signal[2], 0, 1, 0, TWO_PI);        
+            newPosFollowedWithoutPropagation[memoryi] = map(signal[2], 0, 1, 0, TWO_PI);   
          }
-
-         memoryi = oscillatorChange;
-         phaseMapped[memoryi] += phaseMapped[oscillatorChange];
-
+       
+         phaseMapped[memoryi] += newPosFollowedWithoutPropagation[memoryi];
+      
          text(" doRotation  " + memoryi + " " + phaseMapped[memoryi] + " signalUpRise " + signalUpRise , width , height / 2 - 700);
         
     }
     
     if (doRotationWithoutPropagation) 
       {  
-          doRotation=false;
+        doRotation=false;
         memoryi = oscillatorChange;
         textSize(100);
         if (propagationTrigged ==  false || propagationTrigged ==  false  ) {
-            for (int i = 0; i < networkSize; i++)
-            {
-                //  phaseMapped [i] = LFO[i];
-                
-            }
             // propagationTrigged ==  false &&
             if (directionOfsignal ==  6)//(signalUpRise)
-
             {  
                 newPosFollowed[memoryi]= map(signal[2], 0, 1, 0, TWO_PI);
-
-   
                 text(" UP WITH phaseMapped " + memoryi + " " + phaseMapped[memoryi], width , height / 2 - 500);
                 
             }
             if (directionOfsignal ==  2)
                 {
-               newPosFollowed[memoryi]= map(signal[2], 1, 0 , 0, TWO_PI);
-              
-                newPosFollowed[memoryi] = newPosFollowed[memoryi];
-                text(" DO withOUT phaseMapped " + memoryi + " " + phaseMapped[memoryi], width , height / 2 - 600);
-                
+                newPosFollowed[memoryi]= map(signal[2], 1, 0 , 0, TWO_PI);              
+                text(" DO withOUT phaseMapped " + memoryi + " " + phaseMapped[memoryi], width , height / 2 - 600);              
             }
-        }       
-      }
-          if (doRotationWithoutPropagation )  {
-      //    for (int i = 0; i < networkSize; i++)
-      //     { 
+         }         
                 phaseMapped[memoryi] += newPosFollowed[memoryi];
-             //   phaseMapped[i] = LFO[i]; 
-       //     }
-         }
+      }
      
-    // end ---------- map all propaged Lfo  (angular incrementation from phase Amount)
-    // TRANSFORM DOL en DOROATION
-    
-    
+    // TRANSFORM DOL en DOROATION as lock and rewind the old phase
+    /*
     if (dol ==  true  && propagationTrigged ==  true) {  //AMPLITUDE  negative way : ccw
         int i;  
         i = (oscillatorChange);
@@ -223,7 +187,7 @@ void propagation2wayRotationBis()
             // end ---------- map all propaged Lfo (angular incrementation from phase Amount) 
         } // end dol
     } // enddol && propa=true
-    
+    */
     
     /*
     if (doRotation == true)

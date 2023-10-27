@@ -89,12 +89,14 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
         case'r' : // way of rotation
         doRotation = true;
+         doRotationWithoutPropagation = false;
         key = '#';
         
         break;
         
         case'R' : // way of rotation
         doRotation = false;
+        doRotationWithoutPropagation = false;
         key = '#';
         
         case'o' : // way of rotation
@@ -338,6 +340,8 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
 
         if (measure == 187 && beatPrecised ==  1 && beatPrecisedTrigged)
         {// Beware in live i slow down lfo of propzgation
+     
+        doRotation=false;
         doRotationWithoutPropagation=true;
         }
 
@@ -367,7 +371,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
          {
             //noFrame();
          key = '!';
-         keyReleased();
+        // keyReleased();
          phasePattern();
         }
 

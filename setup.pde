@@ -172,6 +172,7 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             int[] encodeur = new int[networkSize];
             int[] readPositionEncoder = new int[networkSize];
             float[] newPosFollowed = new float[networkSize]; // followOppositeWay
+            float[] newPosFollowedWithoutPropagation = new float[networkSize]; // followOppositeWay
             
             
             int oldOscillatorChangePropagation, oscillatorChangePropagation; // splitIncoming
