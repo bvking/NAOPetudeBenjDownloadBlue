@@ -125,14 +125,15 @@ void autmationWithMeasureAndNote()
    
   }
   
-  if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {
+  if  (measure==40 && beatPrecised == 14 && beatPrecisedTrigged==true ) {
     key='9'; // align
     keyReleased();
     }
 
 
   if  (measure==40 && beatPrecised == 15 && beatPrecisedTrigged==true ) {// return in main
-  
+    key='9'; // align
+    keyReleased();
     formerKeyMetro = '*';
     keyMode = " null ";
     draw(); //go to main --> goOut from trigEvent
@@ -207,7 +208,7 @@ void autmationWithMeasureAndNote()
 
     key='9'; // aligné  à une position
     keyReleased();
-    speedDelta=7;
+    speedDelta=6;
 
     memoryi = networkSize-1;
 
@@ -308,12 +309,12 @@ void autmationWithMeasureAndNote()
   
   }
 
-  if ( measure==104 && beatPrecisedTrigged==true  && ( beatPrecised == 1 || beatPrecised == 5   || beatPrecised == 9 || beatPrecised == 13 || beatPrecised == 17 || beatPrecised == 21  )) {
+  if ( measure==104 && beatPrecisedTrigged==true  && ( beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13 || beatPrecised == 17 || beatPrecised == 21  )) {
      key='d';
     keyReleased();
     }
 
-  if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6   || beatPrecised == 11  || beatPrecised == 17 || beatPrecised == 23 ) ) { //|| beatPrecised == 6 || beatPrecised == 17
+  if ( (measure==106  && beatPrecisedTrigged==true) && ( beatPrecised == 1 || beatPrecised == 6 || beatPrecised == 11  || beatPrecised == 17 || beatPrecised == 23 ) ) { //|| beatPrecised == 6 || beatPrecised == 17
    //key='r';
    //keyReleased();
    //  key='R';
