@@ -82,8 +82,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 
                  if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
                  {
-                  frameRate(30);
-                  frameResolution();
+                //  frameRate(30);
+                //  key = '=';
+                //  frameResolution();
                   formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
                   keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
@@ -96,30 +97,34 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  if  (measure==49 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  {
                    textSize(500);
-                  key = 'P';
-            
-                 }
+                   formerKeyCode = 1;
+                 //  key = 'P';
+                   key = 'e';
+                   key = 'e';
+                  }
+                 if  (measure==55 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                 {
+                   textSize(500);
+                   formerKeyCode = 1;
+                   key = 'E';           
+                   }
 
-                 if  (measure==61 && ( beatPrecised == 1 || beatPrecised == 2) && beatPrecisedTrigged==true)
+                 if  (measure==61 && beatPrecised == 1  && beatPrecisedTrigged==true) // || beatPrecised == 2
                  {
                     textSize(500);
-                    key = 'p';           
+                    formerKeyCode = 1;
+                    key = 'E';
+                    key = 'E';
                  }
-
-                 if  (measure==55 && beatPrecised == 1 && beatPrecisedTrigged==true)
-                {
-                    textSize(500);
-                  // key = 'p';           
-                   }
 
                 if  ((measure==51 ||measure== 59) && beatPrecised == 1 && beatPrecisedTrigged==true)
                 {
-                     keyCode = LEFT; keyReleased(); //            
+                  //   keyCode = LEFT; keyReleased(); //            
                 }
 
-                if  (measure==61 && beatPrecised == 1 && beatPrecisedTrigged==true)
+                if  (measure==61 && beatPrecised == 2 && beatPrecisedTrigged==true)
                  {
-                     keyCode = UP; keyReleased(); // 
+                     keyCode = UP; keyReleased(); // keyReleased() disable former condition at measure 61
                    //  keyCode = UP; keyReleased(); // 
                     // keyCode = UP; keyReleased(); // 
                    //  keyCode = UP; keyReleased(); // 

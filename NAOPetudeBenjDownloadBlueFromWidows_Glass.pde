@@ -92,7 +92,9 @@ void draw()
     { 
        // key = '9';
       //  phasePattern();
-        frameRatio = 60;
+
+      //  frameRatio = 60;
+
         // frameRate (frameRatio);
         modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
         if (mousePressed ==  true || mousePressed!= true)

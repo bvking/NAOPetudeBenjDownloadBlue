@@ -97,7 +97,6 @@ void keyReleased() {
      }
     }
 
-
     if (networkSize ==10){ 
     for (int i = 0; i < 1; i++) {      
       lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
@@ -111,8 +110,7 @@ void keyReleased() {
          CircularVirtualPosition[i]=0;
          ActualVirtualPosition[i]=lastActualPosition[0];
          lastActualPosition[i]= lastActualPosition[0];
-     } 
-    
+     }    
   }
 
   if (keyCode == UP && formerKey == 's' )
@@ -161,7 +159,7 @@ void keyReleased() {
       key='#'; // to trig only once
     */
        }
-         }
+      }
    }
    
    
@@ -198,6 +196,7 @@ void keyReleased() {
          preStartSpeedOfRepetitionDOWN=true;
      
      }
+     keyCode = 0;
     }
 
 /*
