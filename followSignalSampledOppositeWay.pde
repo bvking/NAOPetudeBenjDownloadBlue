@@ -80,16 +80,16 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
      if(key != 'q') // q is used to preStart speed of repetio
       {
 
-        if(formerKeyCode == 9 || formerKeyCode == 1)
-         {
+      //  if(formerKeyCode == 9 || formerKeyCode == 1)
+      //   {
              if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
              {
-                 // phasePatternBase(); //
-                     phasePattern();
+                  phasePatternBase(); //
+                 //    phasePattern();
                for (int i = 0; i < networkSize; i += 1)
                 {
-               // phasePatternFollow[i] += netPhaseBase[i]; //
-                phasePatternFollow[i] += net.phase[i];
+                phasePatternFollow[i] += netPhaseBase[i]; //
+               // phasePatternFollow[i] += net.phase[i];
                 phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
              }
          }
@@ -99,7 +99,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
        if (keyCode==0){
         formerKeyCode=1;
         }
-      }
+     // }
      }
     
     if(modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#'

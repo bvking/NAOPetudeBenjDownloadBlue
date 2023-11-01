@@ -172,6 +172,7 @@ void autmationWithMeasureAndNote()
 
  // if (measure >= 41 && measure <= 57 && millis() > formerEvent[74] + 200 &&
  // HERE IT'S followSignalSampledOppsoitveWay function
+ /*
  if (measure >= 41 && measure <= 80 && millis() > formerEvent[74] + 500 &&
     ((note1 == 74 && velocity1 >= 1 && velocity1 <= 130) ||
     (note2 == 74 && velocity2 >= 1 && velocity2 <= 130) ||
@@ -186,6 +187,7 @@ void autmationWithMeasureAndNote()
     // keyReleased();
     formerEvent[74]=millis();
   }
+  */
 
   if  (measure==71 && beatTrigged==true  ) {
     speedDelta=3;

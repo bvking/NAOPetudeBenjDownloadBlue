@@ -98,23 +98,25 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  {
                    textSize(500);
                    formerKeyCode = 1;
-                 //  key = 'P';
-                   key = 'e';
-                   key = 'e';
+                   key = 'P';
+                 //  key = 'e';
+                 //  key = 'e';
                   }
                  if  (measure==55 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  {
                    textSize(500);
                    formerKeyCode = 1;
-                   key = 'E';           
+                 //  key = 'E';           
                    }
 
                  if  (measure==61 && beatPrecised == 1  && beatPrecisedTrigged==true) // || beatPrecised == 2
-                 {
+                 { speedDelta=3;
                     textSize(500);
                     formerKeyCode = 1;
-                    key = 'E';
-                    key = 'E';
+                   //  key = 'p';
+                     keyCode = BACKSPACE;
+                 //   key = 'E';
+                 //   key = 'E';
                  }
 
                 if  ((measure==51 ||measure== 59) && beatPrecised == 1 && beatPrecisedTrigged==true)
@@ -122,7 +124,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   //   keyCode = LEFT; keyReleased(); //            
                 }
 
-                if  (measure==61 && beatPrecised == 2 && beatPrecisedTrigged==true)
+                if  (measure==61 && beatPrecised == 3 && beatPrecisedTrigged==true)
                  {
                      keyCode = UP; keyReleased(); // keyReleased() disable former condition at measure 61
                    //  keyCode = UP; keyReleased(); // 
@@ -133,7 +135,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  if  (measure==65 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                          keyCode = LEFT; keyReleased(); //   // delay between ball
-                     //**    keyCode = LEFT; keyReleased(); //   
+                         keyCode = LEFT; keyReleased(); //   
                    }
 
                 if  (measure==74 && beatPrecised == 2 && beatPrecisedTrigged==true)
