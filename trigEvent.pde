@@ -79,6 +79,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            }
 
        if  (music_from_ableton_live == " madRush " ) { 
+                 if  (measure==measureRecordStop-1 && beatPrecised == 16 && beatPrecisedTrigged==true) // we are in followSignal            
+                 {
+                  systemForBigMachine=false;
+                  samplingWithMouse = false;
+                 }
                 
                  if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
                  {
@@ -88,6 +93,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
                   keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
+                  systemForBigMachine=false;
+                  samplingWithMouse = false;
                  }
 
                  if  (measure==45 && beatPrecised == 1 && beatPrecisedTrigged==true)
@@ -135,7 +142,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  if  (measure==65 && beatPrecised == 1 && beatPrecisedTrigged==true)
                   {
                          keyCode = LEFT; keyReleased(); //   // delay between ball
-                         keyCode = LEFT; keyReleased(); //   
+                         keyCode = LEFT; keyReleased(); //  
+                         keyCode = LEFT; keyReleased(); //   // delay between ball
+                         keyCode = LEFT; keyReleased(); // 
+                         keyCode = LEFT; keyReleased(); //   // delay between ball
+                         keyCode = LEFT; keyReleased(); //  
                    }
 
                 if  (measure==74 && beatPrecised == 2 && beatPrecisedTrigged==true)

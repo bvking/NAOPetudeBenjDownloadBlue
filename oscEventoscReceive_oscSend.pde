@@ -502,11 +502,12 @@ void printMidiNoteVelocity() {
 
 
 void oscSend(){
- 
+     rotate (-HALF_PI);  
    for (int i = 0; i < networkSize-0; i++)
   {  
    
-     if (formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) "){
+    if  (1==1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+    {
      TrigmodPos[i]=1;
      oldPos[i]=Pos[i];
    
@@ -515,7 +516,7 @@ void oscSend(){
         (oldPos[i]>= 64 && Pos[i] <=63))
         
     {
-       
+   
        text ( " POS " + i , 500, 500);
           dataToLive[i]= (networkSize-1)*(i-0);  // because there i beac you can send data with the step you want to separate controller depending oscillator --> here it is 11.
           dataToLive[0]= (networkSize-1)*(i-0);  // you can send data with the step you want to one controler 
@@ -533,6 +534,7 @@ void oscSend(){
       } 
      }   
    }
+     rotate (HALF_PI);  
 
      downVelocity[1]=  upVelocity[2]* upVelocity[3]* upVelocity[4]* upVelocity[5];//* upVelocity[6];
     

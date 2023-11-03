@@ -126,8 +126,10 @@ void draw()
         }
         if (readyToRecord ==  false)
         {
-            text(" START SAMPLING  AT "  + measureRecordStart, 200, 300);
-        }   
+            text(" START SAMPLING with MOUSE ?  " + samplingWithMouse + " at "  + measureRecordStart, 200, 300);
+        } 
+
+
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
         

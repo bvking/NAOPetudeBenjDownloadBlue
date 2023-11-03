@@ -43,11 +43,13 @@ void handleSamplingModeWithAbletonLive()
      if (actualSec == 1 && formerMeasure != measure) // 
      { textSize (300); 
      // mouseY = 200 ; 
-     }  
+     } 
+
+    textSize (200); 
 
      text 
-     ( " enc[0] " + encodeur[0] +  " newPosF[ne-1] " + newPosF[networkSize-1] + " " + synchroOnMeasure + " " + (formerMeasure != measure) + " " +
-       " mouseY " +  mouseY  + " formerMeasure "  +  formerMeasure + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
+     ( " enc[0] " + encodeur[0] + " ableton[5] " + ableton[5] + " newPosF[ne-1] " + newPosF[networkSize-1] + " " + // synchroOnMeasure + " " + (formerMeasure != measure) + " " +
+       "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
           int disableDriver=-5;
@@ -82,6 +84,14 @@ void handleSamplingModeWithAbletonLive()
     {   
        angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
     }
+
+     //==================== sampling with ableton[5] && madRush
+
+     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush ")
+    {   
+       angleToInterpolate = (float) map(ableton[5], 0, 1 , 0, TWO_PI); 
+    }
+
      //==================== sampling with ableton[1]
 
     if (samplingWithMouse==true &&  abletonLFO==true && music_from_ableton_live == " pleasureKraft " && measure <=260)

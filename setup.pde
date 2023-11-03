@@ -13,7 +13,7 @@ public void settings() {
 */
 
 boolean systemForBigMachine=true;
-boolean samplingWithMouse = true;
+boolean samplingWithMouse = false;
 boolean abletonLFO =        true;
 boolean samplingWithTeensy3_5 = false;
 

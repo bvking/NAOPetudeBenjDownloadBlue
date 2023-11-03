@@ -79,7 +79,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 
     
     if (computeData <-  1) {
-        dataTransformed = " BigMachine  dataNotComputeInTeensy from mode ";
+        dataTransformed = " BigMachine SpeedDelta  dataNotComputeInTeensy from mode ";
         println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode);      
     }
     
@@ -109,9 +109,11 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
             }
 
             else {
-             samplingWithMouse=true;
+            // samplingWithMouse=true;
               
-              println(" something Connected ");
+              println(" something Connected but only WIFI. That's mean nothing for the moment ");
+               text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
+
             }
          
         if (portConnectedToBigMachineOnly) 
