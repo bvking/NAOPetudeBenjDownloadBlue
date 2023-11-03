@@ -40,9 +40,7 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     if (onlyLitteMachineWithSecondSerialPort)  {   // // If not null, then a match was found
         
         teensyport.write(dataFromMode);
-        
-        
-        
+               
         if (frameCount <=  200)  { 
             text("Data port USB connected to port2" + portsUSBfrom2 + " ending with -0001 ", 0, 700); 
             println("Data port USB connected to port2" + portsUSBfrom2 + " ending with -0001 ");  

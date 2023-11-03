@@ -211,7 +211,7 @@ void autmationWithMeasureAndNote()
 
     key='9'; // aligné  à une position
     keyReleased();
-    speedDelta=6;
+    speedDelta=5;
 
     memoryi = networkSize-1;
 

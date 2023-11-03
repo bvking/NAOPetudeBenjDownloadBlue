@@ -13,6 +13,13 @@ public void settings() {
 */
 
 boolean systemForBigMachine=false;
+
+//int networkSize = 10;
+int networkSize = 6;
+
+//int numberOfStep = 3200;
+int numberOfStep = 6400;
+
 boolean samplingWithMouse = false;
 boolean abletonLFO =        true;
 boolean samplingWithTeensy3_5 = false;
@@ -28,11 +35,7 @@ boolean preStartSpeedOfRepetitionUP, preStartSpeedOfRepetitionDOWN ;
 String music_from_ableton_live;
 String positionMov;  
 
-int networkSize = 10;
-//int networkSize = 6;
 
-int numberOfStep = 3200;
-//int numberOfStep = 6400;
 
 int oldSimpleSignal2,simpleSignal2;  // 0 to 1
 int directionOfsignal;

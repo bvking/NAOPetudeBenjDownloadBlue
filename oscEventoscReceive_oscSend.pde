@@ -645,6 +645,8 @@ void oscSend(){
   myMessage65.add(fromEncodeurToLive[5]);
 */
 
+oldEncodeur[0]= encodeur[0];
+
 /*
   oldEncodeur[0]= encodeur[0];
   encodeur[0]=mouseY*2;
@@ -827,6 +829,10 @@ void oscSend(){
   myMessage43.add(sendMiddle[3]);
   myMessage44.add(sendMiddle[4]);
   myMessage45.add(sendMiddle[5]);
+
+         text ( " sendMiddle[0] " + sendMiddle[0] , 700, 600);
+         text ( " sendMiddle[5] " + sendMiddle[5] , 700, 700);
+
 
  /*
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
