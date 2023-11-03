@@ -1458,6 +1458,13 @@ void phasePattern()
     net.setCoupling(coupling);
   } 
 
+  if (formerKeyMetro == '$'  || modeCircular ==false)
+  { 
+     for ( int i=0; i< networkSize; i++) {
+                   net.phase[i]%=TWO_PI;
+      }
+    }
+
 
 
   

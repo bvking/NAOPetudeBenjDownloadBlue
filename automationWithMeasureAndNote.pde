@@ -7,9 +7,11 @@ void autmationWithMeasureAndNote()
      }
 
   text(" speedD " + speedDelta + " beat%4 " + ((beatPrecised-1)%4==0) + " lastK "  + lastKeyAuto , 1000, -200);  // + " event " + formerEvent[note1]
+   
 
   if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged == true )  //startStop = 3;
    { 
+    formerKeyMetro='$';
     speedDelta = 2;
     //keyCode = CONTROL;
     modeCircular=false;
@@ -43,7 +45,7 @@ void autmationWithMeasureAndNote()
   if (measure<5 ) { // && beatTrigged==true
     //  speedDelta=3;
 
-   // autoNote2();// too much event
+   // autoNote2();// too much event 
   }
 
 
@@ -64,10 +66,11 @@ void autmationWithMeasureAndNote()
    // keyReleased();
     key = '9'; //Alig
     keyReleased();
-    //key = 'P'; 
-    key = 'F';keyReleased();
-    key = 'F';keyReleased();
-    key = 'F';keyReleased();
+    key = 'P'; 
+     keyReleased();
+   // key = 'F';keyReleased();
+   // key = 'F';keyReleased();
+   // key = 'F';keyReleased();
     //keyCode = CONTROL;
   }
 
@@ -76,10 +79,7 @@ void autmationWithMeasureAndNote()
     autoNote1VelInf64();  // declaer avec A . arrete A puis faire des i ou u
   }
 
-  if ( measure==2 && beatTrigged==true ) {
-    key='$';
-    keyReleased();
-  }
+
   
   if (measure ==  36 && beatTrigged ==  true ) {// measure>=41 && measure<=42
     // for (int i = 0; i < networkSize; i++) {

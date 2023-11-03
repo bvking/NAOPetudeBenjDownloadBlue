@@ -43,7 +43,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               }
 
              if  (measure==245 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
-                frameRate(60);
+               // frameRate(60);
                
               }
 

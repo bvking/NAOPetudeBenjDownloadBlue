@@ -82,7 +82,7 @@ void handleSamplingModeWithAbletonLive()
      //==================== sampling from MOUSE_Y
     if (samplingWithMouse==true && music_from_ableton_live == " madRush ")
     {   
-       angleToInterpolate = (float)map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+       angleToInterpolate = (float) map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
     }
 
      //==================== sampling with ableton[5] && madRush
