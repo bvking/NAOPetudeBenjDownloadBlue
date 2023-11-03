@@ -54,30 +54,37 @@ void autmationWithMeasureAndNote()
     key = '9'; //Alig
     keyReleased();
     memoryi=networkSize-1;
-    key = 'A'; // net.naturalFrequency[memoryi]= 0.25
+    //key = 'A'; //memory=? net.naturalFrequency[memoryi]= 0.25
+    key = 'P'; 
     keyReleased(); // decale une à une et revient dans l'alignement
     // net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
-
-   // net.naturalFrequency[9]= 5;
   }
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
    // key = '°'; // stop frequency
    // keyReleased();
-    key = '9'; //Alig
-    keyReleased();
-    key = 'P'; 
-     keyReleased();
+   // key = '9'; //Alig
+   // keyReleased();
+    
    // key = 'F';keyReleased();
    // key = 'F';keyReleased();
    // key = 'F';keyReleased();
     //keyCode = CONTROL;
+  }
+  if ((measure==9 ||measure==13 || measure== 17 || measure ==25)  && beatTrigged==true) {
+      key = 'k';keyReleased();
+  }
+
+   if (measure ==26  && beatTrigged==true) {
+      key = 'k';keyReleased();
+       key = 'k';keyReleased();
   }
 
   if (measure>4 && measure<=41 ) {
     //autoNote1();
     autoNote1VelInf64();  // declaer avec A . arrete A puis faire des i ou u
   }
+
 
 
   

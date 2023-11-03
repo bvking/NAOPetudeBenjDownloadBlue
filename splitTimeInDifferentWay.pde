@@ -125,36 +125,29 @@ void splitTimeScaleRotation(float propagationSpeed)
         signal[2] = -signal[2];
     }
     
-    if (doZ)
-    { // option à mettre à l'ecran
-           propagationTrigged = false;
-        if (oldSplitTimeLfo > splitTimeLfo + 25) {
-         //   text(" signal monte Z ", 200, 200);
-            signalUpRise = true;
+     if (doZ) {
+        propagationTrigged = false;
+        
+        if (oldSplitTimeLfo > splitTimeLfo + 50) {//+50 // only whe spliTimeLfois sliced timeLfo by 100
+          //  text(" signal descend !z", 200, 200);
+            signalUpRise = false;
+            
             oldOscillatorChange = oscillatorChange;
             oscillatorChange++;
+            oscillatorChange%=networkSize;
             propagationTrigged = true;
+        
         }
         
-        oscillatorChange %= networkSize;
-        if (oscillatorChange <= 0) {
-            oscillatorChange = 0;
-            oldOscillatorChange = networkSize - 1;
-        }
-        
-        // propagtion opposite way
-        
-        if (splitTimeLfo > oldSplitTimeLfo + 25) {
-         //   text(" signal descend Z ", 200, 200);
+        if (splitTimeLfo > oldSplitTimeLfo + 50) { //+50
+          //  text(" signal descend !z", 200, 200);
             signalUpRise = false;
+            
             oldOscillatorChange = oscillatorChange;
-            oscillatorChange--;
+            oscillatorChange++;
+             oscillatorChange%=networkSize;
             propagationTrigged = true;
-        }       
-        if (oscillatorChange <= -1) {
-            oldOscillatorChange = 0;
-            oscillatorChange = networkSize - 1;
-        }        
+        }
     }
    
   

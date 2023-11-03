@@ -95,6 +95,7 @@ void propagation2wayRotationBis()
         doRotation=false;
         memoryi = oscillatorChange;
         textSize(100);
+         text(" doRotation = false " + memoryi + " " + dataMappedForMotorisedBigMachine[memoryi], width , height / 2 - 600);  
         if (propagationTrigged ==  false || propagationTrigged ==  false  ) {
             // propagationTrigged ==  false &&
             if (directionOfsignal ==  6)//(signalUpRise)

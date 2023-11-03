@@ -295,10 +295,12 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
             
         if (measure ==  126 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42     
         keyCode = RIGHT; keyReleased();
+        keyCode = RIGHT; keyReleased();
             //propagationSpeed= 90.0;
         }
 
         if (measure ==  130 && beatPrecised ==  1 && beatPrecisedTrigged) {// measure>=41 && measure<=42            
+             keyCode = RIGHT; keyReleased();
              keyCode = RIGHT; keyReleased();
         }
     
@@ -307,7 +309,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
           //  keyCode = RIGHT; keyReleased();
         }
          if (measure == 134 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-           // key = 'o';
+            key = 'O';
         }
 
         if (measure ==  138 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
@@ -315,11 +317,12 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         }
 
         if (measure == 142 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-         //   key = 'O';
+            key = 'o';
         }
 
-        if (measure == 146 && beatPrecised ==  4 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-        //***    key = 'Z';
+        if (measure == 144 && beatPrecised ==  11 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+           key = 'z';
+          //  keyCode = RIGHT; keyReleased();
         }
 
         if (measure == 150 && beatPrecised ==  8 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
@@ -327,13 +330,18 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
           //  keyCode = LEFT; keyReleased();
           //  keyCode = LEFT; keyReleased();
         }
-          if (measure == 163 && beatPrecised ==  3 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
-            key = 'o';
+          if (measure == 159 && beatPrecised ==  8 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'Z';
           //  keyCode = LEFT; keyReleased();
           //  keyCode = LEFT; keyReleased();
         }
 
-        if (measure == 178 && beatPrecised ==  1 && beatPrecisedTrigged) {// Beware in live i slow down lfo of propzgation
+           if (measure == 167 && beatPrecised ==  14 && beatPrecisedTrigged) {// measure>=41 && measure<=42      
+            key = 'o';
+          
+        }
+
+        if (measure == 175 && beatPrecised ==  6 && beatPrecisedTrigged) {// Beware in live i slow down lfo of propzgation
          keyCode = LEFT; keyReleased(); // rise amount of phase?
          keyCode = LEFT; keyReleased(); 
         }
@@ -367,7 +375,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
          doRotationWithoutPropagation=false;
         }
         
-         if (measure == 198 && beatPrecised ==  3 && beatPrecisedTrigged)
+        if (measure == 198 && beatPrecised ==  3 && beatPrecisedTrigged)
          {
             //noFrame();
          key = '!';

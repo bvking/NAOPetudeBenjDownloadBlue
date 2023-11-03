@@ -32,7 +32,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     if(formerKeyMetro == '$') {
         modeCircular = false;
     }
-    text (" measureRecordStop " + measureRecordStop + " cricular in followSOWay(frameRatio) ..... ??" + modeCircular, 0, 800);
+    text (" measureRecordStop " + measureRecordStop + " cricular in followSOWay(frameRatio) ..... ??" + modeCircular + " speed " + speedOfrepetition, 0, 800);
     
     //above to  avoid bug
     

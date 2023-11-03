@@ -185,17 +185,16 @@ void keyReleased() {
         }
       }
 
-     if (formerKeyCode == UP && key == 'q') 
+     if (keyCode == UP ) //&& key == 'q'
       {
         preStartSpeedOfRepetitionUP=true;
       }
        
 
-     if (formerKeyCode  == DOWN && key == 'q') 
+     if (keyCode == DOWN ) //&& key == 'q'
       {
-         preStartSpeedOfRepetitionDOWN=true;
-     
-     }
+        preStartSpeedOfRepetitionDOWN=true;
+      }
      keyCode = 0;
     }
 
