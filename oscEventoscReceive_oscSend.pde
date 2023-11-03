@@ -534,7 +534,7 @@ void oscSend(){
       } 
      }   
    }
-     rotate (HALF_PI);  
+   //  rotate (HALF_PI);  
 
      downVelocity[1]=  upVelocity[2]* upVelocity[3]* upVelocity[4]* upVelocity[5];//* upVelocity[6];
     
@@ -650,8 +650,8 @@ void oscSend(){
   encodeur[0]=mouseY*2;
   myMessage60.add(abs (map (encodeur[0], 0, 800, 0, 127)));  // send encodeur
 */
-  oldEncodeur[0]= encodeur[0];
-// if ( oldEncodeur[0]<0 && = encodeur[0];)
+
+//*******    if ( oldEncodeur[0]<0 && = encodeur[0];)
 
   OscMessage myMessage60= new OscMessage("/encodeur0"); // oscillator SEND 0 or 1
   OscMessage myMessage61= new OscMessage("/encodeur1"); // oscillator 

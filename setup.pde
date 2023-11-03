@@ -86,7 +86,7 @@ int [] oldEncodeurPosition = new int[networkSize];
 int [] encodeurPosition = new int[networkSize];
 boolean[] encoderTouched = new boolean[networkSize]; // data from Teensy's serial
 boolean[] midPos = new boolean[networkSize]; // data from Teensy's serial
-int [] sendMiddle = new int[networkSize];
+float [] sendMiddle = new float[networkSize]; // only float send with OSC
 int[] RevsContinue = new int[networkSize];
 
 int[] positionFromShiftedOscillator  = new int[networkSize];
@@ -1062,6 +1062,7 @@ void setup() {
                 //
                  if (systemForBigMachine == true)
                  {
+                  samplingWithTeensy3_5 = false;
                   music_from_ableton_live = " madRush ";               
                   keyMode = " trigEventWithAbletonSignal "; 
                   doo = true; // oposite way is true 
