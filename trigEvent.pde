@@ -116,7 +116,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                  //  key = 'E';           
                    }
 
-                 if  (measure==61 && beatPrecised == 1  && beatPrecisedTrigged==true) // || beatPrecised == 2
+                 if  (measure==61 && beatPrecised == 2  && beatPrecisedTrigged==true) // || beatPrecised == 2
                  { speedDelta=3;
                     textSize(500);
                     formerKeyCode = 1;
@@ -131,12 +131,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   //   keyCode = LEFT; keyReleased(); //            
                 }
 
-                if  (measure==61 && beatPrecised == 3 && beatPrecisedTrigged==true)
+                if  (measure==61 && beatPrecised == 1 && beatPrecisedTrigged==true)
                  {
-                     keyCode = DOWN; keyReleased(); // preStart speedOfRepetion  keyReleased() disable former condition at measure 61
+                   //  keyCode = DOWN; keyReleased(); // preStart speedOfRepetion  keyReleased() disable former condition at measure 61
                    
-                    // keyCode = UP; keyReleased(); // 
                    //  keyCode = UP; keyReleased(); // 
+                         keyCode = LEFT; keyReleased(); //   // delay between ball
+                         keyCode = LEFT; keyReleased(); //  
+                         keyCode = LEFT; keyReleased(); // 
                    }
 
                  if  (measure==64 && beatPrecised == 1 && beatPrecisedTrigged==true)
