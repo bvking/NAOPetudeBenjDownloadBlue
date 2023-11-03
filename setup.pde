@@ -12,7 +12,7 @@ public void settings() {
 } 
 */
 
-boolean systemForBigMachine=true;
+boolean systemForBigMachine=false;
 boolean samplingWithMouse = false;
 boolean abletonLFO =        true;
 boolean samplingWithTeensy3_5 = false;
@@ -1060,13 +1060,28 @@ void setup() {
                 // music_from_ableton_live = " pleasureKraft ";
                 //  positionMov = " premierePartie "; 
                 //
-
-                  music_from_ableton_live = " madRush ";  
-            
-                
-
+                 if (systemForBigMachine == true)
+                 {
+                  music_from_ableton_live = " madRush ";               
+                  keyMode = " trigEventWithAbletonSignal "; 
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
+
+                 networkSize = 10;
+                 numberOfStep = 3200;
+                  }
+
+                 if (systemForBigMachine == false)
+                 {
+                  samplingWithTeensy3_5 = true;
+                  music_from_ableton_live = " pleasureKraft ";               
+                  keyMode = " trigEventWithAbletonSignal "; 
+                  doo = true; // oposite way is true 
+               // doo = false; // to enable propagation
+
+                 networkSize = 6;
+                 numberOfStep = 6400;
+                  }
                 
                   
                 
@@ -1079,10 +1094,11 @@ void setup() {
                 
                 //keyMode = " addSignalOneAndTwoBis ";  
                 formerKeyMetro = '$';
+
                 //--keyMode = " phasePattern ";
                 //--phasePattern();
                 
-                keyMode = " trigEventWithAbletonSignal "; 
+              
                 
                 // USED TO REPAIR
                 //***keyMode = " notNull "; 

@@ -37,12 +37,12 @@ void trigMiddlePositionFromEncodeur()
          encodeurPosition[i]=encodeur[i];
 
     
-        if ((oldEncodeurPosition[i]<3200 && encodeurPosition[i]>3200)) 
+        if ((oldEncodeurPosition[i]<2000 && encodeurPosition[i]>2000)) 
     {
-    //   midPos[i] =  true;
+       midPos[i] =  true;
      }
 
-      if ((oldEncodeurPosition[i]>3200 && encodeurPosition[i]<3200)) 
+      if ((oldEncodeurPosition[i]>2000 && encodeurPosition[i]<2000)) 
        {
        midPos[i] =  true;
      }
