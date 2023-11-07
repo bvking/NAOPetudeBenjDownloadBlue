@@ -21,13 +21,13 @@ void teensyPos()
 
     //  oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition; 
 
-    if  (keyMode == " samplingModeWithLive " && formerKeyMode == " trigEventWithAbletonSignal "  )
+    if  (keyMode == " samplingModeWithLive "   )  //
      { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-    if ( keyMode == " samplingModeWithLiveNO "  ) 
+    if ( keyMode == " samplingModeWithLive "  ) 
     {    // actualise counter of normal mode from revLfo from method  not here
            ableton[5]= map (ableton[5], 0, 1, 0, TWO_PI) ;  
-      for (int i = 0; i < networkSize; i++) {  
+      for (int i = 0; i < 1; i++) {  
 
       
         net.phase[i] = ableton[5];  
@@ -369,7 +369,7 @@ void teensyPos()
 
 if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
   { 
-    if (keyMode != " samplingModeWithLive " )
+    if (keyMode != " samplingModeWithLiveNO " )
      {
     
      if (modeStartKeyToFollow!= " samplingModeInternal "){
