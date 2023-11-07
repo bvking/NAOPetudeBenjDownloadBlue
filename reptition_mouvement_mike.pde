@@ -163,3 +163,4 @@ class SamplerTheta {
 }
 
 SamplerTheta sampler;
+SamplerTheta samplerBis;
