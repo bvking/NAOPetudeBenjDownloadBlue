@@ -23,10 +23,10 @@ void teensyPos()
 
     if  (keyMode == " samplingModeWithLive " && formerKeyMode == " trigEventWithAbletonSignal "  )
      { 
-     //  revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-    if ( keyMode == " samplingModeWithLive "  ) 
+       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+    if ( keyMode == " samplingModeWithLiveNO "  ) 
     {    // actualise counter of normal mode from revLfo from method  not here
-           ableton[5]= map (0, 1, 0, TWO_PI) ;  
+           ableton[5]= map (ableton[5], 0, 1, 0, TWO_PI) ;  
       for (int i = 0; i < networkSize; i++) {  
 
       
@@ -54,7 +54,8 @@ void teensyPos()
 
     if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive "  ) 
     { 
-    //   revLfo=rev;
+     //  revLfo=rev;
+    // rev+=revLfo;
      }
 
     if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  )
@@ -375,7 +376,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
        // if (modeStartKeyToFollow= " followSignalSampledOppositeWay(frameRatio) "){
        //     if (allMachineConnected){
          if (measure<=203 ){
-         //***   send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+           send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
           }
 
          if (positionMov != " troisieme " && measure<17) {
@@ -407,7 +408,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
     {
       if (measure>=45 )
          {
-     //***   send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+        send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
          }
        
     }
@@ -426,12 +427,12 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
     {
          send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
 
-      // send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
+       send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
      }
 
     if (keyMode == " addSignalOneAndTwo ")
      {
-            send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+        send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
     }
 
     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
@@ -452,7 +453,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
     
       if (music_from_ableton_live == " madRush ") 
      {         
-        send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+      //  send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       }
        rotate(-PI/2);   
  

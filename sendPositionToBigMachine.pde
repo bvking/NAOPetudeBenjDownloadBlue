@@ -68,7 +68,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
       + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
       + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
    
-      +  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
+      +  speedDelta + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
     
         //  +0+","+0+","+0+","+0+","+0+","+0+","
     

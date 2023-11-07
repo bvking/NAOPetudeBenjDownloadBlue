@@ -407,8 +407,6 @@ void phasePattern()
    }
 
 
-
-
    if (key == 'U') {  // memory == 0 is the ball "behind"  the screen
 
       oldMemoryi=memoryi;
@@ -418,18 +416,12 @@ void phasePattern()
   
      for (int i = 1; i < (networkSize-0); i++) {  
        net.phase[i]=net.oldPhase[i-1];       
-       net.naturalFrequency[i]= 0;
+      // net.naturalFrequency[i]= 0;
      }
        net.phase[0]= net.oldPhase[networkSize-1];
-       net.naturalFrequency[0]= 0;
+     //  net.naturalFrequency[0]= 0;
        formerFormerKey='U';
    } 
-
-
-     
-
- 
-     
 
 
   if (key == 'u'  ) { 
@@ -782,10 +774,11 @@ void phasePattern()
     for (int i = 0; i < networkSize; i++) {
     //  net.naturalFrequency[i]=OldFrequency[i]; 
       printSummary(i);
-    }
+    
     //**memoryi=0; // to start well with 'T'
     //**memoryi=networkSize-1; // to start well with 'T'
     net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
+    }
   }
 
   if (key == 'a') { //A$  Shift frequencies one by one. 
@@ -1422,7 +1415,7 @@ void phasePattern()
     else if (key == '°') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize; i++) {   
       //  net.naturalFrequency[i]=2.0; 
-      net.naturalFrequency[i]=0;
+      net.naturalFrequency[i]=0.5;
      }
     }
 

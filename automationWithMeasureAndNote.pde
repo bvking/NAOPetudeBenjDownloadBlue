@@ -18,8 +18,8 @@ void autmationWithMeasureAndNote()
     key = 'F';keyReleased();
     key = 'F';keyReleased();
     key = 'F';keyReleased();
-    key = 'k';keyReleased();
-    key = 'k';keyReleased();
+  //  key = 'k';keyReleased();
+  //  key = 'k';keyReleased();
   }
 
   if ((measure >= 1 && measure<5 && beatPrecisedTrigged == true && ((beatPrecised-1)%4)==0  )) // 1 5 9 13   0 4 8 12 //&& millis() > formerEvent[172] + 150 &&
@@ -37,8 +37,9 @@ void autmationWithMeasureAndNote()
   }
 
   if (measure ==2 && beatPrecised == 12 && beatPrecisedTrigged==true  ) { // && beatTrigged==true
-    key = '°';
-    keyReleased();
+   speedDelta = 2;
+  //  key = '°';
+  //  keyReleased();
   }
 
 
@@ -54,19 +55,20 @@ void autmationWithMeasureAndNote()
     key = '9'; //Alig
     keyReleased();
     memoryi=networkSize-1;
-    //key = 'A'; //memory=? net.naturalFrequency[memoryi]= 0.25
+   
     key = 'P'; 
     keyReleased(); // decale une à une et revient dans l'alignement
-    // net.naturalFrequency[memoryi]= 0.25;//4.68/2; // 124 bpm
+     key = 'A'; //memory=? net.naturalFrequency[memoryi]= 0.25
+     net.naturalFrequency[memoryi]= 0.5;//4.68/2; // 124 bpm
   }
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-   // key = '°'; // stop frequency
-   // keyReleased();
+    key = '°'; // start frequency
+    keyReleased();
    // key = '9'; //Alig
    // keyReleased();
     
-   // key = 'F';keyReleased();
+    key = 'F';keyReleased();
    // key = 'F';keyReleased();
    // key = 'F';keyReleased();
     //keyCode = CONTROL;
@@ -329,6 +331,8 @@ void autmationWithMeasureAndNote()
    //keyReleased();
    //  key='R';
   //  keyReleased();
+    key='d';
+    keyReleased();
    
   }
 

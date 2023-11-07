@@ -69,38 +69,38 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
     newPosFollowed[0] %=  TWO_PI; // useless
 
     
-    for (int i = 1; i < networkSize; i += 1) { // 1 follow phase 0
+     for (int i = 1; i < networkSize; i += 1) { // 1 follow phase 0
         //  follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
         followOppositeWay(i - 1, i + 0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
-    }
+     }
     
-    samplingMovementPro();
-    //formerKey= key;
-    if(key != '#') {
+         samplingMovementPro();
+         //formerKey= key;
+         if(key != '#') {
      if(key != 'q') // q is used to preStart speed of repetio
-      {
+     {
 
-      //  if(formerKeyCode == 9 || formerKeyCode == 1)
-      //   {
+        //  if(formerKeyCode == 9 || formerKeyCode == 1)
+         //   {
              if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
-             {
+                 {
                   phasePatternBase(); //
                  //    phasePattern();
-               for (int i = 0; i < networkSize; i += 1)
-                {
-                phasePatternFollow[i] += netPhaseBase[i]; //
-               // phasePatternFollow[i] += net.phase[i];
-                phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
-             }
-         }
+                    for (int i = 0; i < networkSize; i += 1)
+                      {
+                         phasePatternFollow[i] += netPhaseBase[i]; //
+                        // phasePatternFollow[i] += net.phase[i];
+                        phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
+                      }
+                 }
 
-       key = '#';
-       }
+         // key = '#';
+      }
        if (keyCode==0){
         formerKeyCode=1;
         }
-     // }
-     }
+      }
+   // }
     
     if(modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { //||formerFormerKey == '#'
         for (int i = 0; i < networkSize - 0; i += 1) {
