@@ -52,7 +52,9 @@ void handleSamplingModeWithAbletonLive()
        "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
-          int disableDriver=-5;
+        // int disableDriver=-5;
+          int disableDriver=15;
+
           int driverNetWorkSizeOnOff=-5;
           int timeElapsedBackingPosition = 8000;
           int dataNoComputed=-4;
@@ -92,7 +94,7 @@ void handleSamplingModeWithAbletonLive()
        angleToInterpolate = (float) map(ableton[5], 0, 1 , 0, TWO_PI); 
     }
 
-     //==================== sampling with ableton[1]
+     //==================== sampling with ableton[0]
 
     if (samplingWithMouse==true &&  abletonLFO==true && music_from_ableton_live == " pleasureKraft " && measure <=260)
     {   
