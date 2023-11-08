@@ -29,35 +29,32 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
 
 void trigMiddlePositionFromEncodeur()
 {
+ int mapRatio= 400;
  textSize(200);
+ rotate(-HALF_PI);
     for (int i = 0; i < networkSize; i++) { 
          midPos[i] =  false;
-         oldEncodeurPosition[i]=encodeurPosition[i];
-      
-         encodeurPosition[i]=encodeur[i];
-
-    
-        if ((oldEncodeurPosition[i]<2000 && encodeurPosition[i]>2000)) 
-    {
-       midPos[i] =  true;
-     }
-
-      if ((oldEncodeurPosition[i]>2000 && encodeurPosition[i]<2000)) 
+         oldEncodeurPosition[i]=encodeurPosition[i];      
+         encodeurPosition[i]=(int) map(encodeur[i], 0, 4000, 0, mapRatio);
+  
+        if ((oldEncodeurPosition[i]<mapRatio/2 && encodeurPosition[i]>mapRatio/2)) 
        {
-       midPos[i] =  true;
-     }
+         midPos[i] =  true;
+       }
 
-      text (oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 200*i);
+        if ((oldEncodeurPosition[i]>mapRatio/2 && encodeurPosition[i]<mapRatio/2)) 
+       {
+         midPos[i] =  true;
+       }
 
-
+         text (oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 200*i);
     }
+    rotate(HALF_PI);
 }
 
 void trigEffectToAbletonLive() {
 
-
-    
-    
+  
     if (oldEncodeur[0] != encodeur[0]) {   
         trigEffectTo[0] = true;
         textSize(150);

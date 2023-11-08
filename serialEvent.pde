@@ -305,7 +305,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
 
     // trigMiddlepositionFromProcessing
 
-
+/*
     if (Np0 != null) {  // If not null, then a match was found
         midPos[0] = false;
     }
@@ -354,7 +354,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
     if (p5 != null) {  // If not null, then a match was found
         midPos[5] = true;
     }
-    
+ */   
     int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
     
     int numberOfEncodeur = 6;
@@ -373,12 +373,12 @@ void serialEvent(Serial encoderReceiveUSBport101)
         encodeur[5] = values[5];      
         */
 
-        encodeur[0]= (int)map (abs( values[0]), 0, 6400, 0, 4000)%4000;  
-        encodeur[1] =(int)map (abs( values[1]), 0, 6400, 0, 4000)%4000;  
-        encodeur[2] =(int)map (abs( values[2]), 0, 6400, 0, 4000)%4000; 
-        encodeur[3]= (int)map (abs( values[3]), 0, 6400, 0, 4000)%4000;  
-        encodeur[4] =(int)map (abs( values[4]), 0, 6400, 0, 4000)%4000;  
-        encodeur[5] =(int)map (abs( values[5]), 0, 6400, 0, 4000)%4000; 
+        encodeur[0]= (int)map (abs( values[0]), 0, 4000, 0, 4000)%4000;  
+        encodeur[1] =(int)map (abs( values[1]), 0, 4000, 0, 4000)%4000;  
+        encodeur[2] =(int)map (abs( values[2]), 0, 4000, 0, 4000)%4000; 
+        encodeur[3]= (int)map (abs( values[3]), 0, 4000, 0, 4000)%4000;  
+        encodeur[4] =(int)map (abs( values[4]), 0, 4000, 0, 4000)%4000;  
+        encodeur[5] =(int)map (abs( values[5]), 0, 4000, 0, 4000)%4000; 
 
     }   
   }

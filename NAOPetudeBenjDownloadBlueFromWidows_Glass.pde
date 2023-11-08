@@ -211,7 +211,7 @@ void draw()
     textSize(200);
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
-    mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
+    //mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
     teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
     //print(" dataMP + keyMode " + keyMode);
