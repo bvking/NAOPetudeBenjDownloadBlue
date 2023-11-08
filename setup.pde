@@ -12,7 +12,7 @@ public void settings() {
 } 
 */
 
-boolean systemForBigMachine=true;
+boolean systemForBigMachine=false;
 
 int networkSize = 10;
 //int networkSize = 6;

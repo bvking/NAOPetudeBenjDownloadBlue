@@ -1415,7 +1415,7 @@ void phasePattern()
     else if (key == '°') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize; i++) {   
       //  net.naturalFrequency[i]=2.0; 
-      net.naturalFrequency[i]=0.5;
+     // net.naturalFrequency[i]=0;
      }
     }
 

@@ -63,8 +63,13 @@ void autmationWithMeasureAndNote()
   }
 
   if (measure==5 && beatPrecised == 4 && beatPrecisedTrigged==true) {
-    key = '°'; // start frequency
-    keyReleased();
+   // key = '°'; // STOP frequency
+   // keyReleased();
+    for (int i = 0; i < networkSize; i++) {    
+      net.naturalFrequency[i]=0.5;
+    }
+
+
    // key = '9'; //Alig
    // keyReleased();
     
