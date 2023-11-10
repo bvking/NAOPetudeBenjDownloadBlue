@@ -205,7 +205,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
     
     //split the string at the commas
     //and convert the sections into integers:
-    if ( systemForBigMachine == true)
+    if ( systemForBigMachine == true && abletonLFO == false)
     {
 
      int valuesFromDue[] = int(split(myEncodeur, ','));   // receive 2 datas splited with , and the last is send with println

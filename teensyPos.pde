@@ -24,7 +24,7 @@ void teensyPos()
     if  (keyMode == " samplingModeWithLive "   )  //
      { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-    if ( keyMode == " samplingModeWithLive "  ) 
+    if ( keyMode == " samplingModeWithLiveNo "  ) 
     {    // actualise counter of normal mode from revLfo from method  not here
            ableton[5]= map (ableton[5], 0, 1, 0, TWO_PI) ;  
       for (int i = 0; i < 1; i++) {  
