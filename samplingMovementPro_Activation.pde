@@ -36,7 +36,7 @@ void handleSamplingModeWithAbletonLive()
           synchroOnMeasure=true;
          // (actualSec!=sec)=true;
      }
-     beginSample=millis();
+     // beginSample=millis();
      rotate (-HALF_PI);
      textSize(50);
 
@@ -89,7 +89,7 @@ void handleSamplingModeWithAbletonLive()
 
      //==================== sampling with ableton[5] && madRush
 
-     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overdub == false)
+     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overDub == false)
     {   
        angleToInterpolate = (float) map(ableton[5], 0, 1 , 0, TWO_PI); 
     }
@@ -130,7 +130,7 @@ void handleInternalSamplingMode(){
      if ((formerMeasure != measure)) { 
           synchroOnMeasure=true;
      }
-     beginSample=millis();
+     //beginSample=millis();
      rotate (-HALF_PI);
      textSize(50);
      if (measure == 1 && actualSec!=lastSec) // formerMeasure != measure

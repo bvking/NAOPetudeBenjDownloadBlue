@@ -380,7 +380,7 @@ if (oscillatorMaster > 0) {
 
             // activation - control sampling - oversampling <=> overdub
 
-            boolean overdub = false; 
+            boolean overDub = false; 
          
             int formerBeatPrecised, beatPrecised, formerMeasure, formerBeatOnMeasure; // autmationWithMeasureAndNote
             int beginTrigEffect, stopTrigEffect, beginMeasure, stopMeasure;

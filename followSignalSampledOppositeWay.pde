@@ -73,14 +73,21 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
         //  follow( i-1, i, 20 * i, 0);  // Modifier les deux derniers paramètres : délais et phase
         followOppositeWay(i - 1, i + 0, delayTimeFollowPhase11, (phaseShiftingFollowPhase11));  // ici, le temps que les points attendent pour se suivre est de 5 frames, et il faut un espace entre eux de QUARTER_PI/6
      }
-    
-         samplingMovementPro();
+       if (overDub==true)
+       {
+        samplingMovementProBis();
+       }
+         if (overDub==false)
+       {
+        samplingMovementPro();
+       }
+       
          //formerKey= key;
          if(key != '#') {
      if(key != 'q') // q is used to preStart speed of repetio
      {
 
-        //  if(formerKeyCode == 9 || formerKeyCode == 1)
+        //  if(formerKeyCode == 9 || formerKeyCode == 1) // to avoid bug when tapping with shift
          //   {
              if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
                  {

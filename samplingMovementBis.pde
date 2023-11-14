@@ -1,6 +1,5 @@
 void samplingMovementProBis()
 {
-  
    if (bRecordingBis) {  // draw circle
                      //   circle( mouseX, mouseY, 10 );
                      //   sampler.addSample( mouseX, mouseY );
@@ -8,7 +7,7 @@ void samplingMovementProBis()
     fill(0, 255, 0);
     text(measure, 200, 100);
     samplerBis.addSample(angleToInterpolateBis);
-    text ( " angleToInterpolate " + angleToInterpolateBis + " mov " + movementInterpolatedBis, 200, 200+100);
+    text ( " angleToInterpolateBis " + angleToInterpolateBis + " movBis " + movementInterpolatedBis, 200, 200+100);
   }
 
   else {
@@ -28,7 +27,7 @@ void samplingMovementProBis()
 void handleSamplingModeWithAbletonLiveBis()
 {
  
-     beginSample=millis();
+     beginSampleBis=millis();
     //     rotate (-HALF_PI);
 
     textSize (200); 
@@ -58,11 +57,10 @@ void handleSamplingModeWithAbletonLiveBis()
        }
      //==================== OVERDUBBING
 
-     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overdub == true)
+     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overDub == true)
     {   
-       angleToInterpolateBis = (float) map(angleToInterpolate, 0, TWO_PI , 0, TWO_PI); 
+       angleToInterpolateBis = (float) map(movementInterpolated, 0, TWO_PI , TWO_PI, 0); 
     }
-
 
       newPosF[networkSize-1]= angleToInterpolateBis;
 
@@ -76,8 +74,8 @@ void handleSamplingModeWithAbletonLiveBis()
 
       //  mouseX= (int) polarToCartesionX; // to draw circle with end
       //  mouseY= (int) polarToCartesionY; // to draw circle with end
-     activeSamplingInternalClock(measureRecordStartBis);  //start
-     stopSamplingInternalClock(measureRecordStopBis);  //stop sampling  
+     activeSamplingInternalClockBis(measureRecordStartBis);  //start
+     stopSamplingInternalClockBis(measureRecordStopBis);  //stop sampling  
      samplingMovementProBis(); 
 
      // rotate (HALF_PI);
