@@ -274,7 +274,7 @@ void autmationWithMeasureAndNote()
     keyReleased(); // uprise speed
   }
 
-  if  (measure==87 && beatTrigged==true) {  //  &&  beatPrecised <=8
+  if  (measure==86 && beatPrecised==17 && beatPrecisedTrigged==true ) {  //  &&  beatPrecised <=8
     text(" beatPrecisedTrigged " + beatPrecisedTrigged, 1500, -1000);
 
     keyCode=CONTROL;

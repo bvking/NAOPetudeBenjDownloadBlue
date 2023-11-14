@@ -66,10 +66,14 @@ void draw()
             //switch (key) : different mode of speed, shift, propagation ....
         }
     }
+
+        if (keyMode == " null ")
+    {
+        checkKeyModeToFollowIfALTisJustReleased(); // ->  To change Mode of speed, shift, propagation with internal or from Live datas is DISABLE inside this function....
+        }  
     
     
-    
-    if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true)
+    if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " )
         // if(measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
     {// prepare record
         key = '9'; // align
@@ -81,12 +85,7 @@ void draw()
         mouseRecorded = true;
     }
     
-    
-    if (keyMode == " null ")
-    {
-        checkKeyModeToFollowIfALTisJustReleased(); // ->  function disable
-    }
-    
+     
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
     { 
@@ -108,7 +107,7 @@ void draw()
             specialMeasureToStartRecording = measureToStartRecording;
         }
         
-        //measureRecordStop = specialMeasureToStartRecording + 1;
+        //measureRecordStop = specialMeasureToStartRecording + 4;
         measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
         
@@ -123,25 +122,19 @@ void draw()
             text(" START SAMPLING with MOUSE ?  " + samplingWithMouse + " at "  + measureRecordStart, 200, 300);
         } 
 
-
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
         
-        if (measure ==  measureRecordStop && beatTrigged) // && beatTrigged
-            {
-            // keyMode = " null ";
-            //modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-            //draw();
-        }
-    }
-    
-    if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
-    {// repetition and trigging
+        if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
+         {// repetition and trigging
         // net.phase[0]+=PI/2;
         keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
         //keyCode = LEFT; keyReleased(); // shift delay of following ball
     }
+    }
+    
+
     
     // end measure & repetiton
     

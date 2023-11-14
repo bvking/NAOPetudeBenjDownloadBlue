@@ -194,7 +194,8 @@ if (oscillatorMaster > 0) {
             
             int Movement;
             
-            float oldMovementInterpolated, movementInterpolated, angleToInterpolate;;
+            float oldMovementInterpolated; // not used
+            float movementInterpolated, angleToInterpolate, movementInterpolatedBis, angleToInterpolateBis;
             float formerInterpolatedY;
             float interpolatedX, interpolatedY;
             
@@ -380,8 +381,7 @@ if (oscillatorMaster > 0) {
             // activation - control sampling - oversampling <=> overdub
 
             boolean overdub = false; 
-            
-            float angleToInterpolateBis;
+         
             int formerBeatPrecised, beatPrecised, formerMeasure, formerBeatOnMeasure; // autmationWithMeasureAndNote
             int beginTrigEffect, stopTrigEffect, beginMeasure, stopMeasure;
             int lastMeasureRecordStart, measureRecordStart , measureRecordStop, beginSample, endSample;
