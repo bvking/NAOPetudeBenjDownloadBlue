@@ -96,7 +96,7 @@ void handleSamplingModeWithAbletonLive()
 
      //==================== sampling with ableton[0]
 
-    if (samplingWithMouse==true &&  abletonLFO==true && music_from_ableton_live == " pleasureKraft " && measure <=260)
+    if (samplingWithMouse==false && samplingWithTeensy3_5 == false && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && measure <=260)
     {   
        angleToInterpolate = (float) map(ableton[0], 0, 1 , 0, TWO_PI); 
     }

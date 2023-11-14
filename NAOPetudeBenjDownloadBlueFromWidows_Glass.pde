@@ -104,6 +104,7 @@ void draw()
         if (music_from_ableton_live == " pleasureKraft ")
         {
             specialMeasureToStartRecording = measureToStartRecording;
+            samplingWithMouse=false;
         }
         
         //measureRecordStop = specialMeasureToStartRecording + 4;

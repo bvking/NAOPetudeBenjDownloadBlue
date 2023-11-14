@@ -12,13 +12,15 @@ public void settings() {
 } 
 */
 
-boolean systemForBigMachine=true;
 
-int networkSize = 10;
-//int networkSize = 6;
 
-int numberOfStep = 3200;
-//int numberOfStep = 6400;
+boolean systemForBigMachine=false;
+
+//int networkSize = 10;
+int networkSize = 6;
+
+//int numberOfStep = 3200;
+int numberOfStep = 6400;
 
 boolean samplingWithMouse = false;
 boolean abletonLFO =        true;
@@ -1084,7 +1086,7 @@ void setup() {
 
                  if (systemForBigMachine == false)
                  {
-                  samplingWithTeensy3_5 = true;
+                 // samplingWithTeensy3_5 = true;
                   music_from_ableton_live = " pleasureKraft ";               
                   keyMode = " trigEventWithAbletonSignal "; 
                   doo = true; // oposite way is true 
