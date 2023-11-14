@@ -60,7 +60,7 @@ void draw()
     rotate(HALF_PI);
     
     if (keyMode != " phasePattern ")
-        {
+    {
         if (key ==  'B' ||  key ==  'c' ||  key ==  '>' ||  key ==  '<' || key ==  'd' || key ==  'e') //
         {
             //switch (key) : different mode of speed, shift, propagation ....
@@ -68,7 +68,7 @@ void draw()
     }
 
         if (keyMode == " null ")
-    {
+        {
         checkKeyModeToFollowIfALTisJustReleased(); // ->  To change Mode of speed, shift, propagation with internal or from Live datas is DISABLE inside this function....
         }  
     
@@ -84,8 +84,7 @@ void draw()
         // mousePressed(); 
         mouseRecorded = true;
     }
-    
-     
+        
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
     { 
@@ -132,11 +131,13 @@ void draw()
         modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
         //keyCode = LEFT; keyReleased(); // shift delay of following ball
     }
-    }
+    } //  // end measure & repetiton
+
+    overDub();
     
 
     
-    // end measure & repetiton
+   
     
     
     

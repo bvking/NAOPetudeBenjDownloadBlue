@@ -41,7 +41,7 @@ int oldSimpleSignal2,simpleSignal2;  // 0 to 1
 int directionOfsignal;
     
 int nbBalls = networkSize;
-int specialMeasureToStartRecording;
+int specialMeasureToStartRecording,specialMeasureToStartRecordingBis;
 int speedDelta = 2; // ratio of speed and acceleration in Arduino
 
 // set music at the end of the setup
@@ -187,7 +187,7 @@ if (oscillatorMaster > 0) {
             int actualSec,lastSec, lastLastSec, measure;  // trig internal clock each seconde as a measure  (period of 1 seconde)
             
             int currTime;
-            boolean bRecording = true;
+            boolean bRecording,bRecordingBis = true;
             boolean mouseRecorded = true;
             boolean readyToRecord;
             float movementInterpolatedContinue;
@@ -741,7 +741,7 @@ if (oscillatorMaster > 0) {
             void frameStop() { 
                 if (frameCount % framecount ==  0) { /// choose the in the   frame where you want to stop
                     stoploop = 10; // incrmente the stepto the next frame
-                    framecount = framecount  + stoploop;
+                    framecount = framecount + stoploop;
                     noLoop();
                     //       print(" last or : ");   println(orderframe);
                     orderframe  = framecount;
@@ -757,8 +757,9 @@ void setup() {
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
                 
-                //sampler = new Sampler();
+                //sampler = new Sampler();// old version to sample with mouseX and mouse Y " with polar coordonation
                 sampler = new SamplerTheta();
+                samplerBis = new SamplerTheta();
                 
                 
                 //  noStroke();

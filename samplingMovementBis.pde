@@ -1,7 +1,7 @@
 void samplingMovementProBis()
 {
   
-   if (bRecording) {  // draw circle
+   if (bRecordingBis) {  // draw circle
                      //   circle( mouseX, mouseY, 10 );
                      //   sampler.addSample( mouseX, mouseY );
     textSize(100);
@@ -29,7 +29,7 @@ void handleSamplingModeWithAbletonLiveBis()
 {
  
      beginSample=millis();
-//     rotate (-HALF_PI);
+    //     rotate (-HALF_PI);
 
     textSize (200); 
 
@@ -48,7 +48,7 @@ void handleSamplingModeWithAbletonLiveBis()
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
 
-       if ( measure>=measureRecordStop ) { 
+       if ( measure>=measureRecordStopBis ) { 
           int disableDriver=15;
           int driverNetWorkSizeOnOff=15;
           int timeElapsedBackingPosition = 1000;
@@ -80,5 +80,5 @@ void handleSamplingModeWithAbletonLiveBis()
      stopSamplingInternalClock(measureRecordStopBis);  //stop sampling  
      samplingMovementProBis(); 
 
-      rotate (HALF_PI);
-  }
+     // rotate (HALF_PI);
+}

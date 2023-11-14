@@ -245,6 +245,37 @@ void stopSamplingInternalClock(int endMeasure)
   }
 }
 
+void activeSamplingInternalClockBis(int beginMeasure)
+{ 
+   if (measure==beginMeasure  && formerMeasure != measure && mouseRecorded == true)
+    { 
+      textSize(200);
+  text(" BEGIN SAMPLING OVERDUB  AT " + measure, 200, 300);
+
+  bRecordingBis = true;
+  samplerBis.beginRecording();
+  }
+}
+
+void stopSamplingInternalClockBis(int endMeasure)
+ { 
+   if (measure==endMeasure && formerMeasure != measure) { // && actualSec!=lastSec
+     textSize(200);
+   text(" END SAMPLING  OVERDUBAT "  + measure, 200, 300);
+
+      //  net.phase[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+      //    newPosF[networkSize-1]= (float) map (mouseY, 0, 400, 0, TWO_PI);
+
+  mouseRecorded = false;
+  bRecordingBis = false;
+  samplerBis.beginPlaying();
+  }
+}
+
+
+
+
+
 void activeSamplingAbletonLiveClock(int beginMeasure)
 { 
    if (actualSec==beginMeasure  && formerMeasure != measure && mouseRecorded == true) { // && actualSec!=lastSec
