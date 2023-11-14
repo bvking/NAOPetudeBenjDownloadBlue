@@ -108,17 +108,18 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
     }
         return dVal;  // 
 }
-        float oldFaz;
-        float faz = 3;
-        int oscillatorMaster = 0;
+
+float oldFaz;
+float faz = 3;
+int oscillatorMaster = 0;
         
-        float getOldPositionOfActiveOscillator(float phaseOfOscillator0) { // return former value of actual oscillator
+float getOldPositionOfActiveOscillator(float phaseOfOscillator0) { // return former value of actual oscillator
             // as many number of oscillator
-            oscillatorMaster += 1;
-            oscillatorMaster %=  networkSize;
+oscillatorMaster += 1;
+oscillatorMaster %=  networkSize;
             //textSize (250);
             
-            if (oscillatorMaster > 0) { 
+if (oscillatorMaster > 0) { 
                 
                 for (int i = oscillatorMaster - 1; i <=  oscillatorMaster; i++) { 
                     println(" oscillatorFollowi " + (oscillatorMaster - i) + " " + oscillatorFollowing[oscillatorMaster - i] + " " + oscillatorMaster + " " +  oscillatorFollowing[oscillatorMaster] , -300, 250 * i);
@@ -374,13 +375,18 @@ float squaredRootOccurrence(float dVal, int numberOfoccurrence) { // return the 
             float mlerp(float x0, float x1, float t, float M) {
                 float dx = (x1 - x0 + 1.5 * M) % M - 0.5 * M;
                 return(x0 + t * dx + M) % M;
-                }
+            }
+
+            // activation - control sampling - oversampling <=> overdub
+
+            boolean overdub = false; 
             
-            
-            
+            float angleToInterpolateBis;
             int formerBeatPrecised, beatPrecised, formerMeasure, formerBeatOnMeasure; // autmationWithMeasureAndNote
             int beginTrigEffect, stopTrigEffect, beginMeasure, stopMeasure;
             int lastMeasureRecordStart, measureRecordStart , measureRecordStop, beginSample, endSample;
+            int lastMeasureRecordStartBis, measureRecordStartBis , measureRecordStopBis, beginSampleBis, endSampleBis;
+
             boolean beatPrecisedTrigged;
             int timeFrameOffsetFollowing;
             
@@ -1109,7 +1115,7 @@ void setup() {
                 // modeStartKeyToFollow = " samplingModeInternal " ;
 
                
-                size(600, 600, P3D);
+     size(600, 600, P3D);
 
                //  windowRatio(600, 600); 
               //  translate(0, -800,1000);

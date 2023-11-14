@@ -89,7 +89,7 @@ void handleSamplingModeWithAbletonLive()
 
      //==================== sampling with ableton[5] && madRush
 
-     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush ")
+     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overdub == false)
     {   
        angleToInterpolate = (float) map(ableton[5], 0, 1 , 0, TWO_PI); 
     }
