@@ -437,7 +437,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
 
     if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
      {
-      if (modeStartKeyToFollow != " samplingModeWithLive ")
+      if (modeStartKeyToFollow != " samplingModeWithLive " || modeStartKeyToFollow == " samplingModeWithLive " )
       {
       if (measure>241 ){
         print (" to change Mode and still runing ");
@@ -447,7 +447,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
      }
 
      if (keyMode == " trigEventWithAbletonSignal " && measure < 635 && music_from_ableton_live == " pleasureKraft ") 
-     {         
+      {         
         send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       }
     
