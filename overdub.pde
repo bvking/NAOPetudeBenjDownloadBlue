@@ -4,7 +4,7 @@ void overDub()
 {
 
     //if (measure ==  40+addNumberOfMesureToStartOverDub && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " )
-     if(measure ==  measureToStartRecording+addNumberOfMesureToStartOverDub && beatPrecised == 1 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " )
+     if(measure ==  measureToStartRecording-1+addNumberOfMesureToStartOverDub && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " )
     {// prepare record
         overDub=true;
         key = '9'; // align
@@ -52,7 +52,7 @@ void overDub()
             text(" START SAMPLING OVERDUB ?  " + samplingWithMouse + " at "  + measureRecordStartBis, 200, 300);
         } 
 
-        samplingMovementPro(); // followPreviousSample/ 
+        samplingMovementPro(); // followPreviousSample called movementInterpolated/ 
         handleSamplingModeWithAbletonLiveBis(); //  CAREFULL with pleasureKraft add encoder 0 to angleToInterpolate //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
         
