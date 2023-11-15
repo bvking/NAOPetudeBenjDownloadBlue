@@ -4,7 +4,7 @@ void overDub()
 {
 
     //if (measure ==  40+addNumberOfMesureToStartOverDub && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " )
-     if(measure ==  measureToStartRecording-1+addNumberOfMesureToStartOverDub && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " )
+     if(measure ==  measureToStartRecording-1+addNumberOfMesureToStartOverDub && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " )
     {// prepare record
         overDub=true;
         key = '9'; // align

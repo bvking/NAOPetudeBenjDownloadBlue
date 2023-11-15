@@ -40,7 +40,8 @@ void handleSamplingModeWithAbletonLiveBis()
         // int disableDriver=-5;
           int disableDriver=15;
 
-          int driverNetWorkSizeOnOff=-5;
+         // int driverNetWorkSizeOnOff=-5; // disable
+          int driverNetWorkSizeOnOff=15; // notdisable
           int timeElapsedBackingPosition = 8000;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
@@ -66,9 +67,10 @@ void handleSamplingModeWithAbletonLiveBis()
 
       if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true)
     {    
-       float angleFromTeensy = (float) map (encodeur[0], 0, 4000, 0, 4000)%4000;  // encoder[0] normaly follow movementInterpolated /
+       
+       float angleFromTeensy = (float) map (abs(encodeur[0]), 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW  // encoder[0] normaly follow movementInterpolated /
        // find a solution in teensyPos and may mapPropagation :    angleFromTeensy is a perfect circular at this point
-       angleToInterpolateBis = (float) map(angleFromTeensy, 0, 4000 , 0, TWO_PI); 
+       angleToInterpolateBis = (float) map(angleFromTeensy, 0, TWO_PI , 0, TWO_PI); 
     }
 
       newPosF[networkSize-1]= angleToInterpolateBis;

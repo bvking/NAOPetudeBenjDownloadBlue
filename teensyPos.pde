@@ -23,14 +23,12 @@ void teensyPos()
 
     if  (keyMode == " samplingModeWithLive "   )  //
      { 
-       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+    //   revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
     if ( keyMode == " samplingModeWithLive "  ) 
     {    // actualise counter of normal mode from revLfo from method  not here
         //***   ableton[5]= map (ableton[5], 0, 1, 0, TWO_PI) ;  
-      for (int i = 0; i < networkSize; i++) {  
-
-      
-        net.phase[i] = newPosF[networkSize-1];  
+          net.phase[0] = newPosF[networkSize-1];  
+      for (int i = 0; i < networkSize; i++) {   
       //*******************************  ASSIGN MOTOR WITH POSITION
 
       if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
