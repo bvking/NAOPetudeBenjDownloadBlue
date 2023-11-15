@@ -55,15 +55,22 @@ void handleSamplingModeWithAbletonLiveBis()
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
        }
-     //==================== OVERDUBBING
+     //====================DIFFERENT  OVERDUBBING
 
-     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overDub == true)
+      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overDub == true)
     {   
-       angleToInterpolateBis = (float) map(movementInterpolated, 0, TWO_PI , TWO_PI, 0); 
+         angleToInterpolateBis = (float) map(movementInterpolated, 0, TWO_PI , TWO_PI, 0); 
+    }
+ 
+     //======================
+
+      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true)
+    {    
+       float angleFromTeensy = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // angleFromTeensy is a perfect circular at this point
+       angleToInterpolateBis = (float) map(angleFromTeensy, 0, TWO_PI , 0, TWO_PI); 
     }
 
       newPosF[networkSize-1]= angleToInterpolateBis;
-
       sphere(side*3);
       sphereDetail( 4*5); 
       //==================== 
