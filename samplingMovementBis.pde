@@ -66,7 +66,8 @@ void handleSamplingModeWithAbletonLiveBis()
 
       if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true)
     {    
-       float angleFromTeensy = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // angleFromTeensy is a perfect circular at this point
+       float angleFromTeensy = (float) map (encodeur[0], 0, 4000, 0, TWO_PI)%TWO_PI;  // encoder[0] normaly follow movementInterpolated /
+       // find a solution in teensyPos and may mapPropagation :    angleFromTeensy is a perfect circular at this point
        angleToInterpolateBis = (float) map(angleFromTeensy, 0, TWO_PI , 0, TWO_PI); 
     }
 

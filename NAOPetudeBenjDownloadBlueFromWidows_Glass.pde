@@ -101,7 +101,7 @@ void draw()
             specialMeasureToStartRecording = 41;
         }
         
-        if (music_from_ableton_live == " pleasureKraft ")
+        if (music_from_ableton_live == " pleasureKraft " && overDub == false)
         {
             specialMeasureToStartRecording = measureToStartRecording;
             samplingWithMouse=false;

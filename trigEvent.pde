@@ -38,6 +38,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               }
             
              if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+                  
                   measureToStartRecording=241;
                   keyMode = " samplingModeWithLive ";
               }
@@ -47,14 +48,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                
               }
 
-             if  (measure==264 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
-                //  measureToStartRecording=261;
+             if  (measure==256 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
+                 overDub = true; // do not record from ableton Live
+                 measureToStartRecording=241+16-8;
                  // systemForBigMachine = false;
                  /*
                   samplingWithMouse = false;
                   samplingWithTeensy3_5 = true;
                   */
-                  overDub=true
+                 
                   keyMode = " samplingModeWithLive ";
               }
             
