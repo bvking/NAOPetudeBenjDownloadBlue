@@ -39,7 +39,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             
              if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
                   
-                  measureToStartRecording=241;
+                  measureToStartRecording=240;
                   keyMode = " samplingModeWithLive ";
               }
 
@@ -50,7 +50,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
              if  (measure==256 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
                  overDub = true; // do not record from ableton Live
-                 measureToStartRecording=241+16-8;
+                 measureToStartRecording=240+16;
                  // systemForBigMachine = false;
                  /*
                   samplingWithMouse = false;

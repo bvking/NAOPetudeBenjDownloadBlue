@@ -435,12 +435,13 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
         send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
     }
 
-    if (keyMode == " trigEventWithAbletonSignal " || keyMode == " followSignalSampledOppositeWay(frameRatio) ")
+    if (keyMode == " samplingModewithLive " || keyMode == " trigEventWithAbletonSignal ")
      {
-      if (modeStartKeyToFollow != " samplingModeWithLive " || modeStartKeyToFollow == " samplingModeWithLive " )
+      if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
       {
       if (measure>241 ){
         print (" to change Mode and still runing ");
+        // int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData, int driverNetWorkSizeOnOff, int timeElapsedBackingPosition
         send24DatasToTeensy6motorsToLittleMachine( 6, 2, -3, -1, 2, 1000);
       }
      }

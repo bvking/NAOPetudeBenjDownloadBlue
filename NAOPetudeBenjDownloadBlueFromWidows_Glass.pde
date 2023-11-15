@@ -101,9 +101,9 @@ void draw()
             specialMeasureToStartRecording = 41;
         }
         
-        if (music_from_ableton_live == " pleasureKraft " && overDub == false)
+        if (music_from_ableton_live == " pleasureKraft " ) // resultMidPosWithEncoder
         {
-            specialMeasureToStartRecording = measureToStartRecording;
+            specialMeasureToStartRecording = 241;
             samplingWithMouse=false;
         }
         
@@ -333,7 +333,8 @@ void draw()
         
         //- --------------- middle pos sent
         
-        // trigMiddlePositionFromEncodeur();
+      
+      
         text(" midPos[0] " + midPos[0], 300, -450);
         char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
         
@@ -350,6 +351,33 @@ void draw()
         char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
         String strMiddle = new String(middlePos);
         text(" showMid " + strMiddle, 300, -1000);
+
+      //midPos  but not aligned  covertir en int puis float
+
+        for (int i = 0; i < networkSize; i++) {
+           sendMiddleInt[i]= (int)  sendMiddle[i];
+            
+                }
+
+         resultMidPosWithEncoderInt = multiMatchData(1, 0, sendMiddleInt.clone());
+
+           for (int i = 0; i < networkSize; i++) {
+           
+             sendMiddle[i]= (float) resultMidPosWithEncoderInt[i];
+                }
+
+        
+        println(" sendMiddle ");showArrayF(sendMiddle);
+        println(" sendMiddle ");showArrayF(sendMiddle);
+
+        /*
+        resultMidPosWithEncoderF = multiMatchDataF(1, 0, sendMiddle.clone());
+        sendMiddle = resultMidPosWithEncoder;
+        println(" sendMiddle ");showArrayF(sendMiddle);
+        println(" sendMiddle ");showArrayF(sendMiddle);
+        */
+
+
         }
     
     

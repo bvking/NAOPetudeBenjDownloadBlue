@@ -92,6 +92,7 @@ int [] encodeurPosition = new int[networkSize];
 boolean[] encoderTouched = new boolean[networkSize]; // data from Teensy's serial
 boolean[] midPos = new boolean[networkSize]; // data from Teensy's serial
 float [] sendMiddle = new float[networkSize]; // only float send with OSC
+int [] sendMiddleInt = new int[networkSize]; // only float send with OSC
 int[] RevsContinue = new int[networkSize];
 
 int[] positionFromShiftedOscillator  = new int[networkSize];
@@ -240,6 +241,8 @@ if (oscillatorMaster > 0) {
             
             // ALIGNEMENT Trig 0
             int[] result;
+            float[] resultMidPosWithEncoderF;
+            int[] resultMidPosWithEncoderInt;
             
             
             int[] multiMatchData(int matchValue, int newValue, int[] theArray) {
@@ -250,6 +253,18 @@ if (oscillatorMaster > 0) {
                     list.forEach(element -> { theArray[element] = newValue; });
                 return theArray;
             }
+            /*
+             float[] multiMatchDataF(float matchValue, float newValue, int[] theArray) {
+                FloatList list = new FloatList();
+                for ( int i= 0; i <  theArray.length; i++)
+
+                    if (theArray[i] == matchValue) list.append(i);
+                if (list.size() > 4)
+
+                    list.forEach(element -> { theArray[element] = newValue; });
+                return theArray;
+            }
+            */
             
             void showArray(int[] array) {
                 for (int i = 0; i < array.length; i++)
@@ -342,6 +357,7 @@ if (oscillatorMaster > 0) {
             float[] newPosShifted = new float[networkSize]; //
 
             float[] oldLfoPhase =  new float[networkSize]; //
+
             float[] lfoPhase =  new float[networkSize]; //
             int[] dataMappedForMotor =  new int[networkSize]; //
             int[] positionToMotor =  new int[networkSize];
