@@ -46,7 +46,7 @@ void handleSamplingModeWithAbletonLive()
         // int disableDriver=-5;
           int disableDriver=15;
 
-          int driverNetWorkSizeOnOff=-5;
+          int driverNetWorkSizeOnOff=-5; // DISABLE ALL expect firsty
           int timeElapsedBackingPosition = 8000;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 

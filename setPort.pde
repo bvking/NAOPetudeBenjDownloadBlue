@@ -16,12 +16,21 @@ void setPort()
 
     String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
     String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
+    String[] matchPort2BlueTooth = match(portsUSB[2], "/dev/tty.Bluetooth-Incoming-Port");
     String[] matchPort2B = match(portsUSB[2], "/dev/cu.usbserial-0001"); // only serial connected
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
 
         portsUSBfrom1=portsUSB[1];
         portsUSBfrom2=portsUSB[2];
         portsUSBfrom3=portsUSB[3];
+
+
+      if (matchPort2BlueTooth!= null) { 
+        allMachineConnected = false;    
+        println(" serial port 2 as DATA serial port is NOT connceted to " + portsUSBfrom2 );   
+        println(" NO port Connected of position data");
+       // onlyLitteMachineWithSecondSerialPort = true;    
+    }
 
      if (matchPort1Nothing!= null) { 
         allMachineConnected = false;    
@@ -38,7 +47,7 @@ void setPort()
 
      if (matchPort1B2!= null) { 
         allMachineConnected = false;
-        println(" serial port 1 is NATIVE ARDUINO DUE  with 401 " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
+        println(" serial port 1 is NATIVE ARDUINO DUE  with 401 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected); 
         println(" serial port 2 Teensy 4.1 " + portsUSB[2] + " " + portsUSBfrom2 +  " allMachineConnected " + allMachineConnected); 
        // portConnectedToBigMachineOnly = true;
         bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1=true;      
@@ -46,8 +55,8 @@ void setPort()
    
     if (matchPort1!= null) { 
         allMachineConnected = false;    
-        println(" serial port 1 as programming port ending with 101 " + portsUSB[1] + " allMachineConnected " + allMachineConnected);   
-       println(" connect port of position data");
+        println(" serial port 1 as programming port ending with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);   
+       
        // onlyLitteMachineWithSecondSerialPort = true;    
     }
 
