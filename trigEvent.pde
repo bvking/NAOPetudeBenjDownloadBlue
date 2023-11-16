@@ -45,6 +45,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
 
               if  (measure<=45 ) {// return in main
+                  formerKeyMetro =  '*';
                   net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI);           
               }
 
@@ -75,7 +76,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    formerKeyMetro = '*'; // not work
                    keyMode = " samplingModeWithLive ";
        
-                  //  mouseRecorded = true;
+                  mouseRecorded = true;
                   overDub = true;
                }
 

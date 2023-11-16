@@ -53,14 +53,14 @@ void handleSamplingModeWithAbletonLiveBis()
        }
      //====================DIFFERENT  OVERDUBBING
 
-      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true) //madRush
+      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraftNo " && overDub == true) //madRush
     {   
          angleToInterpolateBis = (float) map(movementInterpolated, 0, TWO_PI , TWO_PI, 0); 
     }
  
      //======================
 
-      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraftNo " && overDub == true)
+      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true)
     {    
        
        float angleFromTeensy = (float) map (abs(encodeur[0]), 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW  // encoder[0] normaly follow movementInterpolated /

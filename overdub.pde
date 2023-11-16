@@ -22,9 +22,9 @@ void overDub()
     if (keyMode == " samplingModeWithLive " && overDub==true) // || keyMode == " null "
     { 
         modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
-        if (mousePressed ==  true || mousePressed!= true)
+        if (mouseRecorded == true ) //|| mousePressed!= true)if (mousePressed ==  true || mousePressed!= true)
         {
-            mouseRecorded = true;  // add to trig record 
+            
             readyToRecord = true; 
             text(" PRESTART SAMPLING  ", 200, 200);
         }
@@ -48,6 +48,7 @@ void overDub()
             formerKeyMetro = '*';          
             measureRecordStartBis = measure; //            
             readyToRecord = false;
+            mouseRecorded = false;  // preStart disappear
         }
         if (readyToRecord ==  false)
         {
