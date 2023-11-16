@@ -71,10 +71,10 @@ void draw()
         {
         checkKeyModeToFollowIfALTisJustReleased(); // ->  To change Mode of speed, shift, propagation with internal or from Live datas is DISABLE inside this function....
         }  
-       /*
+       
             //---------------  ARM " samplingModeWithLive "
-             //if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush
-       if(measure ==  40 && beatPrecised == 3 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush)
+      if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " ) // madRush
+      // if(measure ==  40 && beatPrecised == 3 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush)
         {    // prepare record
          key = '9'; // align
          keyReleased();
@@ -85,9 +85,9 @@ void draw()
          mouseRecorded = true;
          overDub = false;
         }
-      */  
+        
           //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
-       if (overDub == false && keyMode == " samplingModeWithLive " && ( music_from_ableton_live == " pleasureKraft " || music_from_ableton_live == " madRush " ) // madRush
+       if (overDub == false && keyMode == " samplingModeWithLive " && ( music_from_ableton_live == " pleasureKraft " || music_from_ableton_live == " madRush ") ) // madRush
        { 
              modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
             if (mousePressed ==  true || mousePressed!= true) // if (mouseRecorded == true )     //                  
@@ -127,7 +127,7 @@ void draw()
            handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
            //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
         
-          if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true)
+          if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true) // go to follow made in Trigevent
            { // repetition and trigging
              // net.phase[0]+=PI/2;
         

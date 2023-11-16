@@ -58,6 +58,12 @@ void autmationWithMeasureAndNote()
    
     key = 'P'; 
     keyReleased(); // decale une à une et revient dans l'alignement
+    
+    //key = 'F';keyReleased();
+    //key = 'F';keyReleased();
+
+
+
      key = 'A'; //memory=? net.naturalFrequency[memoryi]= 0.25
      net.naturalFrequency[memoryi]= 0.5;//4.68/2; // 124 bpm
   }

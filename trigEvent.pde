@@ -125,11 +125,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               }
 
        if  (music_from_ableton_live == " madRush " ) { 
-                 if  (measure==measureRecordStop-1 && beatPrecised == 16 && beatPrecisedTrigged==true) // we are in followSignal            
+               /* 
+                specialMeasureToStartRecording= 41;
+
+                 if  (measure==specialMeasureToStartRecording-1 && (beatPrecised == 15 || beatPrecised == 16) && beatPrecisedTrigged==true) // we are in followSignal            
                  {
+                  overDub = false;
+                  keyMode = " samplingModeWithLive ";
                   systemForBigMachine=false;
                   samplingWithMouse = false;
                  }
+                 */
                 
                  if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
                  {
