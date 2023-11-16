@@ -413,12 +413,15 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
 
      if  (keyMode == " samplingModeWithLive "   )  //
      { 
-         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+       //  revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
        if ( keyMode == " samplingModeWithLive "  ) 
        {    // actualise counter of normal mode from revLfo from method  not here
         //***   ableton[5]= map (ableton[5], 0, 1, 0, TWO_PI) ;  
 
-        //  net.phase[0] = newPosF[networkSize-1];  
+        net.phase[0] = newPosF[networkSize-1]; 
+        mapPropagationSampledBall(); // usefull?
+        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+        
         for (int i = 0; i < networkSize; i++) {   
         //*******************************  ASSIGN MOTOR WITH POSITION
 

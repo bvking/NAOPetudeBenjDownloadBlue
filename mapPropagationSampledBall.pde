@@ -11,6 +11,11 @@ void mapPropagationSampledBall() {
           if ( keyMode == " propagationBallRotationBis ") { 
             //  phaseMapped[i]=newPosXaddSignal[i];
             }
+          
+          if ( keyMode == " samplingModeWithLive ") { 
+              phaseMapped[i]=net.phase[i];
+          
+            }
 
                if ((phaseMapped[i])<0){
                   phaseMapped[i]= abs ((phaseMapped[i])+TWO_PI); // easier
@@ -31,7 +36,7 @@ void mapPropagationSampledBall() {
     if (modeCircular )
       {  
          textSize( 75);
-       if ( keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || keyMode == " trigEventWithAbletonSignal "  
+       if ( keyMode == " propagationBallRotationBisLessBetterWayToCountRevolution " || keyMode == " trigEventWithAbletonSignal "  || keyMode == " samplingModeWithLive "  
                                                       || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )                       // || formerKeyMetro == '$'//  if (modeCircular==true) { doesn't work
        { 
         countRevsPhaseMappedPositiveOnly(); // with motor Positive Only, counter is rev   //  print ( " counter made with position Motor godd with Prop and follow and trigEvent?  "); showArray(rev); 
