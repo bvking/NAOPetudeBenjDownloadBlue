@@ -17,55 +17,55 @@ void mousePressed()
 
 void draw()
     { 
-    for (int i = 0; i < networkSize; i++) {
+     for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
-    }  
-    println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
-    //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
-    displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
-    background(0);
+     }  
+        println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
+        //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
+     displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
+     background(0);
     
-    if (frameCount <=  1)  noLoop(); // check setPort()
-    //printDataOnScreen();
+     if (frameCount <=  1)  noLoop(); // check setPort()
+     //printDataOnScreen();
     
-    if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
-    {
+     if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
+     {
         setKeyModeByTappingKeyPadOnce();
-    }
+     }
     
-    setMovement(key, false);  // to reset function just above
+     setMovement(key, false);  // to reset function just above
     
-    println(" modeStartKey " +  modeStartKeyToFollow + " keyMode " + keyMode + " kMRed" +  keyModeRed + " fKeyMetro " + formerKeyMetro + " cTrigLfoPattern " + controlTrigLfoPattern);
+     println(" modeStartKey " +  modeStartKeyToFollow + " keyMode " + keyMode + " kMRed" +  keyModeRed + " fKeyMetro " + formerKeyMetro + " cTrigLfoPattern " + controlTrigLfoPattern);
     
-    keyModeRed = keyMode; // don't read keyMode in file.txt
+     keyModeRed = keyMode; // don't read keyMode in file.txt
     
-    switchFonctionDependingKeyMode();
-    computePhaseSum(); // to improve
+     switchFonctionDependingKeyMode();
+     computePhaseSum(); // to improve
     
-    //--- discriminate position from time line of Ableton
-    formerBeatPrecised = beatPrecised;
-    formerMeasure = measure;
-    formerBeatOnMeasure = beatOnMeasure;
-    //---
+     //--- discriminate position from time line of Ableton
+     formerBeatPrecised = beatPrecised;
+     formerMeasure = measure;
+     formerBeatOnMeasure = beatOnMeasure;
+     //---
     
-    if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
-    { 
+     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
+     { 
         setMeasureAndBeatPrecised();
-    }
+     }
     
-    trigBeatWithMeasure();
-    //printDataOnScreen();
-    //rotate( -HALF_PI);
-    printMidiNoteVelocity();
-    rotate(HALF_PI);
+     trigBeatWithMeasure();
+     //printDataOnScreen();
+     //rotate( -HALF_PI);
+     printMidiNoteVelocity();
+     rotate(HALF_PI);
     
-    if (keyMode != " phasePattern ")
-    {
+       if (keyMode != " phasePattern ")
+       {
         if (key ==  'B' ||  key ==  'c' ||  key ==  '>' ||  key ==  '<' || key ==  'd' || key ==  'e') //
         {
             //switch (key) : different mode of speed, shift, propagation ....
         }
-    }
+       }
 
         if (keyMode == " null ")
         {
@@ -73,35 +73,35 @@ void draw()
         }  
     
     
-    if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " )
-        // if(measure ==  41 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
-    {// prepare record
-        key = '9'; // align
-        keyReleased();
-        modeCircular = true; // not work
-        formerKeyMetro = '*'; // not work
-        keyMode = " samplingModeWithLive ";
-        // mousePressed(); 
-        mouseRecorded = true;
-    }
+     //if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush
+       if(measure ==  40 && beatPrecised == 3 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush)
+        {    // prepare record
+         key = '9'; // align
+         keyReleased();
+         modeCircular = true; // not work
+         formerKeyMetro = '*'; // not work
+         keyMode = " samplingModeWithLive ";
+         // mousePressed(); 
+         mouseRecorded = true;
+        }
         
-    //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
-    if (keyMode == " samplingModeWithLive ") // || keyMode == " null "
-    { 
-        modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
-        if (mousePressed ==  true || mousePressed!= true)
-        {
+     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
+       if (keyMode == " samplingModeWithLive " && music_from_ableton_live == " pleasureKraft " ) // madRush
+       { 
+         modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
+         if (mousePressed ==  true || mousePressed!= true)
+         {
             mouseRecorded = true;  // add to trig record 
             readyToRecord = true; 
             text(" PRESTART SAMPLING  ", 200, 200);
-        }
+       }
         
-        if (music_from_ableton_live == " madRush ")
+        if (music_from_ableton_live == " pleasureKraft ") // madRush
         {
             specialMeasureToStartRecording = 41;
         }
         
-        if (music_from_ableton_live == " pleasureKraft " ) // resultMidPosWithEncoder
+        if (music_from_ableton_live == " pleasureKraftNo " ) // resultMidPosWithEncoder
         {
             specialMeasureToStartRecording = 241;
             samplingWithMouse=false;
@@ -134,7 +134,7 @@ void draw()
     }
     } //  // end measure & repetiton
 
-    overDub();
+       overDub();
     
 
     
@@ -196,7 +196,8 @@ void draw()
                     }
                 }
             }
-    }   }
+         }   
+    }
     textSize(200);
     
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
@@ -309,9 +310,10 @@ void draw()
     
     formerKeyMode = keyMode;
     printModeAndKey();
-    trigMiddlePositionFromEncodeur();
     
-    // from OSC_send
+    // data From serial computed to trig middle position and trig just touched 
+
+    trigMiddlePositionFromEncodeur();
     
     result = multiMatchData(0, 1, TrigmodPos.clone());
     TrigmodPos = result;
@@ -320,23 +322,23 @@ void draw()
     
     if (networkSize ==  6) 
     {
-    char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
+      char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
             
-    for (int i = 0; i < networkSize; i++) {
-      if (result[i] ==  0) {
-      resultString[i] = 'B';
+     for (int i = 0; i < networkSize; i++)
+      {
+       if (result[i] ==  0) {
+       resultString[i] = 'B';
         }
-      }
-        char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
-        String str2 = new String(data);
-        text(" showTrig " + str2, 300, -850);
+       }
+
+     char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
+     String str2 = new String(data);
+     text(" showTrig " + str2, 300, -850);
         
         //- --------------- middle pos sent
         
-      
-      
-        text(" midPos[0] " + midPos[0], 300, -450);
-        char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
+     text(" midPos[0] " + midPos[0], 300, -450);
+     char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
         
         // resultString='A';
         for (int i = 0; i < networkSize; i++) {
@@ -378,14 +380,14 @@ void draw()
         */
 
 
-        }
+     }
     
     
     
     
-    textSize(100);
-    //----
+     textSize(100);
+     //----
     
-    oscSend();
-    //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
-    }
+      oscSend();
+      //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
+ }

@@ -31,25 +31,16 @@ void handleSamplingModeWithAbletonLive()
  // frameRate =120;
  // frameRatio =120;
  
-     boolean synchroOnMeasure=false;
-     if ((formerMeasure != measure)) { 
-          synchroOnMeasure=true;
-         // (actualSec!=sec)=true;
-     }
+   
      // beginSample=millis();
      rotate (-HALF_PI);
-     textSize(50);
+     
 
-     if (actualSec == 1 && formerMeasure != measure) // 
-     { textSize (300); 
-     // mouseY = 200 ; 
-     } 
-
-    textSize (200); 
+    textSize (100); 
 
      text 
-     ( " enc[0] " + encodeur[0] + " ableton[5] " + ableton[5] + " newPosF[ne-1] " + newPosF[networkSize-1] + " " + // synchroOnMeasure + " " + (formerMeasure != measure) + " " +
-       "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300);
+     ( "FIRST enc[0] " + encodeur[0] + " ableton[5] " + ableton[5] + " newPosF[ne-1] " + newPosF[networkSize-1] + " " + // synchroOnMeasure + " " + (formerMeasure != measure) + " " +
+       "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height - 300);
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
         // int disableDriver=-5;

@@ -27,14 +27,12 @@ void samplingMovementProBis()
 void handleSamplingModeWithAbletonLiveBis()
 {
  
-     beginSampleBis=millis();
-    //     rotate (-HALF_PI);
 
-    textSize (200); 
+    textSize (100); 
 
      text 
-     ( " enc[0] " + encodeur[0] + " ableton[5] " + ableton[5] + " newPosF[ne-1] " + newPosF[networkSize-1] + " " + // synchroOnMeasure + " " + (formerMeasure != measure) + " " +
-       "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height + 300+100);
+     ( "OVERDUB enc[0] " + encodeur[0] + " ableton[5] " + ableton[5] + " newPosF[ne-1] " + newPosF[networkSize-1] + " " + // synchroOnMeasure + " " + (formerMeasure != measure) + " " +
+       "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height-300 );
 
        if (measure>=measureRecordStartBis && measure<=measureRecordStopBis ) { 
         // int disableDriver=-5;
@@ -58,14 +56,14 @@ void handleSamplingModeWithAbletonLiveBis()
        }
      //====================DIFFERENT  OVERDUBBING
 
-      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " madRush " && overDub == true)
+      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true) //madRush
     {   
          angleToInterpolateBis = (float) map(movementInterpolated, 0, TWO_PI , TWO_PI, 0); 
     }
  
      //======================
 
-      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraft " && overDub == true)
+      if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " pleasureKraftNo " && overDub == true)
     {    
        
        float angleFromTeensy = (float) map (abs(encodeur[0]), 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW  // encoder[0] normaly follow movementInterpolated /

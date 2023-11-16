@@ -1,4 +1,4 @@
-//import PNetwork.java.*; 
+// import PNetwork.java.*; 
 // MANAGE NETWORK of OSCILLATOR
 // import java.util.Arrays;
 import sync.*;
@@ -11,8 +11,6 @@ public void settings() {
 // windowRatio(600, 600);
 } 
 */
-
-
 
 boolean systemForBigMachine=false;
 

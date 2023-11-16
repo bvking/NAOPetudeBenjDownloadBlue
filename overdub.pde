@@ -27,12 +27,12 @@ void overDub()
             text(" PRESTART SAMPLING  ", 200, 200);
         }
         
-        if (music_from_ableton_live == " madRush ")
+        if (music_from_ableton_live == " pleasureKraft ")  //madRush
         {
             specialMeasureToStartRecordingBis = 41+addNumberOfMesureToStartOverDub;
         }
         
-        if (music_from_ableton_live == " pleasureKraft ")
+        if (music_from_ableton_live == " pleasureKraftNo ")
         {
             specialMeasureToStartRecordingBis = measureToStartRecording+addNumberOfMesureToStartOverDub;
         }
