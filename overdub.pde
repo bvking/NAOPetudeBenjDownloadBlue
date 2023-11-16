@@ -4,6 +4,7 @@ void overDub()
 {
 
     //if (measure ==  40+addNumberOfMesureToStartOverDub && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " )
+    /*
      if(measure ==  measureToStartRecording-1+addNumberOfMesureToStartOverDub && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " )
     {// prepare record
         overDub=true;
@@ -15,6 +16,7 @@ void overDub()
         // mousePressed(); 
         mouseRecorded = true;
     }
+    */
         
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive " && overDub==true) // || keyMode == " null "
@@ -29,7 +31,7 @@ void overDub()
         
         if (music_from_ableton_live == " pleasureKraft ")  //madRush
         {
-            specialMeasureToStartRecordingBis = 41+addNumberOfMesureToStartOverDub;
+          //  specialMeasureToStartRecordingBis = 41+addNumberOfMesureToStartOverDub;
         }
         
         if (music_from_ableton_live == " pleasureKraftNo ")

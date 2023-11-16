@@ -31,10 +31,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120;
         
            if (music_from_ableton_live == " pleasureKraft ") {
-
+            /*
             if  (measure<=241 ) {// return in main
-                  net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI); 
-                
+                  net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI);           
               }
             
              if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
@@ -42,15 +41,69 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   measureToStartRecording=240;
                   keyMode = " samplingModeWithLive ";
               }
+            */
+
+
+              if  (measure<=45 ) {// return in main
+                  net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI);           
+              }
+
+              
+              // ARM sampling with angleTointerpolate
+              if  (measure==40 && beatPrecised == 3 && beatPrecisedTrigged==true )
+               {// return in main
+                   overDub = false; // tot takeOfff
+                   specialMeasureToStartRecording=41;
+                   key = '9'; // align
+                   keyReleased();
+                   modeCircular = true; // not work
+                   formerKeyMetro = '*'; // not work
+                   keyMode = " samplingModeWithLive ";
+       
+                  mouseRecorded = true;
+                  overDub = false;
+               }
+
+                      // ARM overDub with movemenetInterpolated
+              if  (measure==52 && beatPrecised == 3 && beatPrecisedTrigged==true )
+               {// return in main
+                   overDub = true; // tot takeOfff
+                   specialMeasureToStartRecordingBis=53;
+                   key = '9'; // align
+                   keyReleased();
+                   modeCircular = true; // not work
+                   formerKeyMetro = '*'; // not work
+                   keyMode = " samplingModeWithLive ";
+       
+                  //  mouseRecorded = true;
+                  overDub = true;
+               }
+
+
+
+
+
+
+
+              
+
+
+
 
              if  (measure==245 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
                // frameRate(60);
                
               }
 
+
+
+
              if  (measure==256 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
-                 overDub = true; // do not record from ableton Live
-                 measureToStartRecording=256;
+              //   overDub = true; // do not record from ableton Live
+              //   measureToStartRecording=256;
+
+
+
                  // systemForBigMachine = false;
                  /*
                   samplingWithMouse = false;

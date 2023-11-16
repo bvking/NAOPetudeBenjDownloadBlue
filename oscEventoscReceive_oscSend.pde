@@ -808,7 +808,6 @@ oldEncodeur[0]= encodeur[0];
   myMessage39.add(TrigmodPos[8]);
   */
 
-
   OscMessage myMessage40= new OscMessage("/midPos0"); // SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage41= new OscMessage("/midPos1"); // SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage42= new OscMessage("/midPos2"); // SEND TRIG NOTE IN MAX4LIVE
@@ -820,7 +819,6 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage48= new OscMessage("/dataToLive8"); // oscillator 
   OscMessage myMessage49= new OscMessage("/dataToLive9"); // oscillator behind
 
- 
   // MIDDLE POS
 
   myMessage40.add(sendMiddle[0]);  // Trig on the right but there are bugs in pendular way
@@ -833,7 +831,6 @@ oldEncodeur[0]= encodeur[0];
          text ( " sendMiddle[0] " + sendMiddle[0] , 700, 600);
          text ( " sendMiddle[5] " + sendMiddle[5] , 700, 700);
 
-
  /*
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
   myMessage41.add(dataToLive[10]);
@@ -842,8 +839,7 @@ oldEncodeur[0]= encodeur[0];
   myMessage44.add(dataToLive[7]);
   myMessage45.add(dataToLive[6]);
 
-  */
-  
+  */ 
   myMessage46.add(dataToLive[5]);
   myMessage47.add(dataToLive[4]);
   myMessage48.add(dataToLive[3]);
@@ -864,8 +860,7 @@ oldEncodeur[0]= encodeur[0];
   myMessage59.add(mapAcceleration[2]);
  // myMessage60.add(mapAcceleration[1]);
     
- 
-  
+   
   //  UNCOMMENT to BEGIN TO USE good useful OSC
   // /* myRemoteLocation to port 8000
 

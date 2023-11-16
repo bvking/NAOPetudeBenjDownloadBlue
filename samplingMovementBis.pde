@@ -26,11 +26,8 @@ void samplingMovementProBis()
 
 void handleSamplingModeWithAbletonLiveBis()
 {
- 
-
     textSize (100); 
-
-     text 
+    text 
      ( "OVERDUB enc[0] " + encodeur[0] + " ableton[5] " + ableton[5] + " newPosF[ne-1] " + newPosF[networkSize-1] + " " + // synchroOnMeasure + " " + (formerMeasure != measure) + " " +
        "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height-300 );
 
