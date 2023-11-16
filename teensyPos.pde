@@ -338,7 +338,7 @@ void teensyPos()
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
+if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
   { 
     if (keyMode != " samplingModeWithLiveNO " )
      {
@@ -395,31 +395,29 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
     }
 
    if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall " )
-    {
-         send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
-
-       send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
+     {
+      send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+      send24DatasToTeensy10motorsToBigMachine(4, 6, -3, -1);
      }
 
-    if (keyMode == " addSignalOneAndTwo ")
+   if (keyMode == " addSignalOneAndTwo ")
      {
-        send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
-    }
+      send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+     }
+     
 
-
-
-
-
-
-     if  (keyMode == " samplingModeWithLive "   )  //
+   if  (keyMode == " samplingModeWithLive "   )  //
+     
      { 
        //  revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
        if ( keyMode == " samplingModeWithLive "  ) 
        {    // actualise counter of normal mode from revLfo from method  not here
         //***   ableton[5]= map (ableton[5], 0, 1, 0, TWO_PI) ;  
-
+        /*
         net.phase[0] = newPosF[networkSize-1]; 
         mapPropagationSampledBall(); // usefull?
+        */
+
         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
         
         for (int i = 0; i < networkSize; i++) {   
@@ -463,7 +461,7 @@ if (keyMode == " trigEventWithAbletonSignal " || keyMode == " null " )
     
      if (music_from_ableton_live == " madRush ") 
      {         
-      //  send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+        send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
     }
 
 

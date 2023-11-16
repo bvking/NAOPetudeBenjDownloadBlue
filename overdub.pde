@@ -21,7 +21,7 @@ void overDub()
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive " && overDub==true) // || keyMode == " null "
     { 
-        modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
+        modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) "; // tres important pour le reste des balles
         if (mouseRecorded == true ) //|| mousePressed!= true)if (mousePressed ==  true || mousePressed!= true)
         {
             
