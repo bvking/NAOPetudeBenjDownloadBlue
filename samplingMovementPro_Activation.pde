@@ -28,14 +28,7 @@ void samplingMovementPro()
 
 void handleSamplingModeWithAbletonLive()
 {
- // frameRate =120;
- // frameRatio =120;
- 
-   
-     // beginSample=millis();
-     rotate (-HALF_PI);
-     
-
+    rotate (-HALF_PI);
     textSize (100); 
 
      text 
@@ -46,8 +39,8 @@ void handleSamplingModeWithAbletonLive()
         // int disableDriver=-5;
           int disableDriver=15;
 
-          int driverNetWorkSizeOnOff=-5; // DISABLE ALL expect firsty
-          int timeElapsedBackingPosition = 8000;
+          int driverNetWorkSizeOnOff=-5; // DISABLE ALL expect first driver
+          int timeElapsedBackingPosition = 8000; 
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 

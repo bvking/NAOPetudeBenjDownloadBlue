@@ -3,20 +3,6 @@ int addNumberOfMesureToStartOverDub=8;
 void overDub()
 {
 
-    //if (measure ==  40+addNumberOfMesureToStartOverDub && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush " )
-    /*
-     if(measure ==  measureToStartRecording-1+addNumberOfMesureToStartOverDub && beatPrecised == 4 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " )
-    {// prepare record
-        overDub=true;
-        key = '9'; // align
-        keyReleased();
-        modeCircular = true; // not work
-        formerKeyMetro = '*'; // not work
-        keyMode = " samplingModeWithLive ";
-        // mousePressed(); 
-        mouseRecorded = true;
-    }
-    */
         
     //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
     if (keyMode == " samplingModeWithLive " && overDub==true) // || keyMode == " null "
@@ -29,7 +15,7 @@ void overDub()
             text(" PRESTART SAMPLING  ", 200, 200);
         }
         
-        if (music_from_ableton_live == " pleasureKraft ")  //madRush
+        if (music_from_ableton_live == " madRushNo " || music_from_ableton_live == " pleasureKraftNo "  )  //madRush in samplingMovement
         {
           //  specialMeasureToStartRecordingBis = 41+addNumberOfMesureToStartOverDub;
         }
@@ -56,7 +42,7 @@ void overDub()
         } 
 
         samplingMovementPro(); // followPreviousSample called movementInterpolated/ 
-        handleSamplingModeWithAbletonLiveBis(); //  CAREFULL with pleasureKraft add encoder 0 to angleToInterpolate //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
+        handleSamplingModeWithAbletonLiveBis(); // Disable driver Here//  CAREFULL with pleasureKraft add encoder 0 to angleToInterpolate //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
         
         if (measure ==  measureRecordStopBis && beatPrecised == 1 && beatPrecisedTrigged ==  true)

@@ -87,7 +87,7 @@ void draw()
         }
       */  
           //  ------------- startSamplingWithLive -  trigged from autoMationWithMeasure from TrigEvent  ---------------------------
-       if (overDub == false && keyMode == " samplingModeWithLive " && music_from_ableton_live == " pleasureKraft " ) // madRush
+       if (overDub == false && keyMode == " samplingModeWithLive " && ( music_from_ableton_live == " pleasureKraft " || music_from_ableton_live == " madRush " ) // madRush
        { 
              modeStartKeyToFollow = " truc "; // tres important pour le reste des balles
             if (mousePressed ==  true || mousePressed!= true) // if (mouseRecorded == true )     //                  
@@ -97,7 +97,7 @@ void draw()
             text(" PRESTART SAMPLING  ", 200, 200);
            }
         
-           if (music_from_ableton_live == " pleasureKraft ") // madRush
+           if (music_from_ableton_live == " madRush ") // madRush
            {
             specialMeasureToStartRecording = 41;
            }

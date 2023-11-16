@@ -80,23 +80,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   overDub = true;
                }
 
-
-
-
-
-
-
-              
-
-
-
-
              if  (measure==245 && beatPrecised == 1 && beatPrecisedTrigged==true ) {// return in main
                // frameRate(60);
                
               }
-
-
 
 
              if  (measure==256 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
