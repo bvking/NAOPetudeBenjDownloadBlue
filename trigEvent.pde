@@ -58,7 +58,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    key = '9'; // align
                    keyReleased();
                    modeCircular = true; // not work
-                   formerKeyMetro = '*'; // not work
+                   formerKeyMetro = '$'; // not work
                    keyMode = " samplingModeWithLive ";
        
                   mouseRecorded = true;
@@ -73,7 +73,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    key = '9'; // align
                    keyReleased();
                    modeCircular = true; // not work
-                   formerKeyMetro = '*'; // not work
+                   formerKeyMetro = '$'; // not work
                    keyMode = " samplingModeWithLive ";
        
                   mouseRecorded = true;

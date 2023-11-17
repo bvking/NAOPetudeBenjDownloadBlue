@@ -670,10 +670,6 @@ oldEncodeur[0]= encodeur[0];
   myMessage65.add(encodeur[5]);
 
 
-
-  
-
-
   JoDebug  ="<" // BPM9   
    // + (dataMappedForMotorisedPosition[11])+","+dataMappedForMotorisedPosition[10]+","+(dataMappedForMotorisedPosition[9])+","+dataMappedForMotorisedPosition[8]+","+dataMappedForMotorisedPosition[7]+","
    // + dataMappedForMotorisedPosition[6]+","
@@ -921,18 +917,7 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage38, myRemoteLocation);
   oscP5.send(myMessage39, myRemoteLocation);
   //*** */
-  
-  oscP5.send(myMessage40, myRemoteLocation);
-  oscP5.send(myMessage41, myRemoteLocation);
-  oscP5.send(myMessage42, myRemoteLocation);
-  oscP5.send(myMessage43, myRemoteLocation);
-  oscP5.send(myMessage44, myRemoteLocation);
-  oscP5.send(myMessage45, myRemoteLocation);
-  oscP5.send(myMessage46, myRemoteLocation);
-  oscP5.send(myMessage47, myRemoteLocation);
-  oscP5.send(myMessage48, myRemoteLocation);
-  oscP5.send(myMessage49, myRemoteLocation);
-  oscP5.send(myMessage50, myRemoteLocation);
+
 
  // encodeur position
   oscP5.send(myMessage60, myRemoteLocation);
@@ -961,6 +946,19 @@ oldEncodeur[0]= encodeur[0];
   
 
    // myRemoteLocationII port 8002
+
+  // middleSend
+  oscP5.send(myMessage40, myRemoteLocationII);
+  oscP5.send(myMessage41, myRemoteLocationII);
+  oscP5.send(myMessage42, myRemoteLocationII);
+  oscP5.send(myMessage43, myRemoteLocationII);
+  oscP5.send(myMessage44, myRemoteLocationII);
+  oscP5.send(myMessage45, myRemoteLocationII);
+  oscP5.send(myMessage46, myRemoteLocationII);
+  oscP5.send(myMessage47, myRemoteLocationII);
+  oscP5.send(myMessage48, myRemoteLocationII);
+  oscP5.send(myMessage49, myRemoteLocationII);
+  oscP5.send(myMessage50, myRemoteLocationII);
   
   // acceleration
   /*

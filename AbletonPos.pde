@@ -51,8 +51,8 @@ void abletonPos ()
     }
 
     rotate (-HALF_PI);
-    text ( "vel[0] " + int (velocityBis[0])   +   "vel[networkSize-1] " + int (velocityBis[networkSize-1]) , -500, -3400, 500 );
-    text ( "Acc[0]" +  int (mapAcceleration[0]) + "Acc[networkSize-1]" + int (mapAcceleration[networkSize-1]), -500, -3300, 500 );
+    text ( "vel[0] " + int (velocityBis[0])   +   "vel[networkSize-1] " + int (velocityBis[networkSize-1]) , -500, -4000, -500 );
+    text ( "Acc[0]" +  int (mapAcceleration[0]) + "Acc[networkSize-1]" + int (mapAcceleration[networkSize-1]), -500, -3800, -500 );
     rotate (HALF_PI);
   }
   //*********** END COMPUTE ACCELERATION
