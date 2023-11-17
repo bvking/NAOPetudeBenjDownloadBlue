@@ -1025,7 +1025,9 @@ void phasePattern()
     for (int i = 0; i < networkSize; i++) {      
       //   net.phase[i] -=(networkSize-1-i)*0.1;
       //   net.phase[i]=  net.phase[i]%TWO_PI;
-         net.phase[i] += (networkSize- oscillatorBlocked-i)*0.01;
+
+       //****  net.phase[i] += (networkSize- oscillatorBlocked-i)*0.01;
+          net.phase[i] += (networkSize-1- oscillatorBlocked-i)*0.05; // if oscillatorBlocked=0; net.phase[5] doesn't move with -=  which is trigged with 's'
       //***    net.phase[i]=  net.phase[i]%TWO_PI;
       printSummary(i);
     }
@@ -1037,7 +1039,7 @@ void phasePattern()
       //       net.phase[i] -=i*0.01;
       //         net.phase[i] -=i*0.05;
 
-      net.phase[i] -=      (oscillatorBlocked+i)*0.05;       //if oscillatorBlocked=0; net.phase[0] doesn't move
+      net.phase[i] -=      (oscillatorBlocked+i)*0.01;       //if oscillatorBlocked=0; net.phase[0] doesn't move
     //  net.phase[i]=  net.phase[i]%TWO_PI;
       
     }
@@ -1059,7 +1061,8 @@ void phasePattern()
     for (int i = 0; i < networkSize; i++) {
 
     //  net.phase[i] +=(oscillatorBlocked-i)*0.05; // oscillator 10 do not nove
-        net.phase[i] +=(i+1)*0.05;
+       net.phase[i]-=   TWO_PI/networkSize/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
+
 
    //     net.phase[i] -=(i+1)*0.05;
     //        net.phase[i] +=(5-i)*0.1; // oscillator 10 do not nove
@@ -1117,7 +1120,8 @@ void phasePattern()
       //  net.phase[i] += (oscillatorBlocked+i)*0.05;  // l'oscillateur ne se bloque pas
    //   net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.05;
 
-       net.phase[i] +=(i+1)*0.05;
+   
+         net.phase[i] -=TWO_PI/12/(networkSize-1)*i; // 8 is the step, if 16 little step  //BEHIND
 
    //   net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
