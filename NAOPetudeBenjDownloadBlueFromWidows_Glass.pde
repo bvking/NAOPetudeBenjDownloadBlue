@@ -102,9 +102,9 @@ void draw()
             specialMeasureToStartRecording = 41;
            }
         
-           if (music_from_ableton_live == " pleasureKraftNo " ) // resultMidPosWithEncoder
+           if (music_from_ableton_live == " pleasureKraft " ) // useless because it is in trigEvent
            {
-            specialMeasureToStartRecording = 241;
+            specialMeasureToStartRecording = 231;
             samplingWithMouse=false;
            }
         

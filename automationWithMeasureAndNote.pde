@@ -12,7 +12,7 @@ void autmationWithMeasureAndNote()
   if (measure ==1  && beatPrecised == 2 && beatPrecisedTrigged == true )  //startStop = 3;
    { 
     formerKeyMetro='$';
-    speedDelta = 2;
+    speedDelta = 3;
     //keyCode = CONTROL;
     modeCircular=false;
     key = 'F';keyReleased();
