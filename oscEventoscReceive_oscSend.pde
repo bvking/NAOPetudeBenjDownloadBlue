@@ -729,33 +729,25 @@ oldEncodeur[0]= encodeur[0];
   myMessage75.add(encoderTouched[5]);
 
   if  (systemForBigMachine==false){
-    
-
   myMessage20.add(Pos[0]);
   myMessage21.add(Pos[1]);
   myMessage22.add(Pos[2]);
   myMessage23.add(Pos[3]);
   myMessage24.add(Pos[4]);
   myMessage25.add(Pos[5]);
-
-
   }
 
    if  (systemForBigMachine==true){
-    
-
   myMessage20.add(Pos[0]);
   myMessage21.add(Pos[1]);
   myMessage22.add(Pos[2]);
   myMessage23.add(Pos[3]);
   myMessage24.add(Pos[4]);
   myMessage25.add(Pos[5]);
-  myMessage22.add(Pos[6]);
-  myMessage23.add(Pos[7]);
-  myMessage24.add(Pos[8]);
-  myMessage25.add(Pos[9]);
-
-
+  myMessage26.add(Pos[6]);
+  myMessage27.add(Pos[7]);
+  myMessage28.add(Pos[8]);
+  myMessage29.add(Pos[9]);
   }
 
  /*  
