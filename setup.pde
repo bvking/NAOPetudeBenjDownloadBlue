@@ -12,14 +12,14 @@ public void settings() {
 } 
 */
 
-boolean systemForBigMachine=false;
-//boolean systemForBigMachine=true;
+//boolean systemForBigMachine=false;
+boolean systemForBigMachine=true;
 
-//int networkSize = 10;
-int networkSize = 6;
+int networkSize = 10;
+//int networkSize = 6;
 
-//int numberOfStep = 3200;
-int numberOfStep = 6400;
+int numberOfStep = 3200;
+//int numberOfStep = 6400;
 
 
 
