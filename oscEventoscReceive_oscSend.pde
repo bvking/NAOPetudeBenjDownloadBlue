@@ -534,6 +534,7 @@ void oscSend(){
       } 
      }   
    }
+
    //  rotate (HALF_PI);  
 
      downVelocity[1]=  upVelocity[2]* upVelocity[3]* upVelocity[4]* upVelocity[5];//* upVelocity[6];
@@ -831,6 +832,8 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage49= new OscMessage("/dataToLive9"); // oscillator behind
 
   // MIDDLE POS
+    text ( " sendMiddle[0] " + sendMiddle[0] , 700, 600);
+    text ( " sendMiddle[5] " + sendMiddle[5] , 700, 700);
 
   myMessage40.add(sendMiddle[0]);  // Trig on the right but there are bugs in pendular way
   myMessage41.add(sendMiddle[1]);
@@ -839,8 +842,7 @@ oldEncodeur[0]= encodeur[0];
   myMessage44.add(sendMiddle[4]);
   myMessage45.add(sendMiddle[5]);
 
-         text ( " sendMiddle[0] " + sendMiddle[0] , 700, 600);
-         text ( " sendMiddle[5] " + sendMiddle[5] , 700, 700);
+       
 
  /*
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
@@ -919,8 +921,7 @@ oldEncodeur[0]= encodeur[0];
    //  END TO USE, NOT BELOW, END OF UNCOMMENT
 
 
-    // myRemoteLocation port 8000  data to live
-  //*** /*
+    // myRemoteLocation port 8000  data to live  //*** /*
   oscP5.send(myMessage30, myRemoteLocation);
   oscP5.send(myMessage31, myRemoteLocation);
   oscP5.send(myMessage32, myRemoteLocation);

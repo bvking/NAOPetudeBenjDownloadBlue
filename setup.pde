@@ -14,6 +14,7 @@ public void settings() {
 
 //boolean systemForBigMachine=false;
 boolean systemForBigMachine=true;
+int timeTosendData;
 
 int networkSize = 10;
 //int networkSize = 6;

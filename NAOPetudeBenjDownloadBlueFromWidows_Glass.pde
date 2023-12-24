@@ -393,7 +393,12 @@ void draw()
     
      textSize(100);
      //----
-    
+     //timeTosendData;
+
+    if (millis()>timeTosendData+250){
       oscSend();
+      timeTosendData=millis();
+     // println ("SEND DATA");
+       }
       //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
  }

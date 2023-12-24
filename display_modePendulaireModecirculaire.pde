@@ -123,7 +123,7 @@ void  displayModePendulaireModeCirculaire() {
     mapAcceleration[i]= constrain ((int (map (abs(net.acceleration[i] *100), 0, 150, 0, 255))), 0, 255);
     mapAccelerationinversed[i]= abs (int (map ((net.acceleration[i] *100), -200, 200, 0, 255)));
     //********************************************************* BEGIN GRAPHIC CHIMERA STATE
-    colorMode(HSB, TWO_PI, 100, 100);
+    colorMode(HSB, TWO_PI, 100, 255);
     noStroke();
     // chimera state
     // mouseXY (); // no effect
@@ -140,7 +140,7 @@ void  displayModePendulaireModeCirculaire() {
      }
      */
     //********************************************************* END GRAPHIC CHIMERA STATE
-    translate (x*1, y*1, 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW
+    translate (x*1, y*1, 200+(50*5*i));  //*-1 go in clockwise, *1 go in CCW  add space on axe Z between oscillator
     colorMode(RGB, 255, 255, 255);
     //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
     fill( 175, 175, 255 );
@@ -156,10 +156,26 @@ void  displayModePendulaireModeCirculaire() {
 
       x = displacement*cos(metroPhase[i]); // -PI/2
       y = displacement*sin(metroPhase[i]);// -PI/2
+      
 
+      //float polarX=
 
       sphere(side*3);
       sphereDetail( 4*5);
+
+      float [] motorPositionToDegree = new float [networkSize];
+
+      motorPositionToDegree[i]= dataMappedForMotorisedBigMachine[i]*360/numberOfStep;
+
+      float [] degreeToRadian = new float [networkSize];
+
+      degreeToRadian[i]= radians(motorPositionToDegree[i]);
+      x = displacement+600*cos(degreeToRadian[i]); // -PI/2
+      y = displacement*sin(degreeToRadian[i]);// -PI/2
+
+       fill(255, 255, mapAccelerationinversed[i]);
+
+     ellipse(x, y, 100, 100); 
     }
 
     if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' ) {
@@ -170,8 +186,23 @@ void  displayModePendulaireModeCirculaire() {
       //println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) );
       x = displacement*cos(net.phase[i]);
       y = displacement*sin(net.phase[i]);
+
       sphere(side*3);
       sphereDetail( 4*5);
+
+      float [] motorPositionToDegree = new float [networkSize];
+
+      motorPositionToDegree[i]= dataMappedForMotorisedBigMachine[i]*360/numberOfStep;
+
+      float [] degreeToRadian = new float [networkSize];
+
+      degreeToRadian[i]= radians(motorPositionToDegree[i]);
+      x = displacement+600*cos(degreeToRadian[i]); // -PI/2
+      y = displacement*sin(degreeToRadian[i]);// -PI/2
+
+      sphere(side*3);
+
+     // ellipse(x, y, 100, 100); 
     }
 
 
