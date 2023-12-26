@@ -156,6 +156,7 @@ void teensyPos()
 
               print ( " record $ " + recordLastDataOfMotorPosition[i] + " lastPos " + lastActualPosition [i] );
              //dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]; // // doesn' t work
+
              }
           }
             /*
@@ -443,6 +444,8 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
 
      if (keyMode == " samplingModewithLive " || keyMode == " trigEventWithAbletonSignal ")
      {
+
+
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
         {
          if (measure>241 || measure <=241 )
@@ -460,9 +463,16 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
       }
     
      if (music_from_ableton_live == " madRush ") 
-     {         
+     { 
+      rotate (PI);
+      for (int i = 0; i < networkSize; i++)
+       {   
+         text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
+       }       
         send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
-    }
+      rotate (-PI);
+     }
+
 
 
        rotate(-PI/2);   
