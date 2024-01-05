@@ -27,6 +27,11 @@ void draw()
     
      if (frameCount <=  1)  noLoop(); // check setPort()
      //printDataOnScreen();
+
+       if (music_from_ableton_live == " mouvement " )
+     {
+        trigEventWithAbletonSignal();
+     }
     
      if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
      {

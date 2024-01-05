@@ -1094,7 +1094,7 @@ void setup() {
                  {
                   samplingWithTeensy3_5 = false;
                  // music_from_ableton_live = " madRush ";
-                  music_from_ableton_live = " movement ";
+                  music_from_ableton_live = " mouvement ";
                   //automationForMusicMouvement()               
                   keyMode = " trigEventWithAbletonSignal "; 
                   doo = true; // oposite way is true 
