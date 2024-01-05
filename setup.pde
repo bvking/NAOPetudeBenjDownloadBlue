@@ -1093,7 +1093,9 @@ void setup() {
                  if (systemForBigMachine == true)
                  {
                   samplingWithTeensy3_5 = false;
-                  music_from_ableton_live = " madRush ";               
+                 // music_from_ableton_live = " madRush ";
+                  music_from_ableton_live = " movement ";
+                  //automationForMusicMouvement()               
                   keyMode = " trigEventWithAbletonSignal "; 
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
