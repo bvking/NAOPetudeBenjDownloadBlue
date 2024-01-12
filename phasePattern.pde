@@ -1061,7 +1061,7 @@ void phasePattern()
     for (int i = 0; i < networkSize; i++) {
 
     //  net.phase[i] +=(oscillatorBlocked-i)*0.05; // oscillator 10 do not nove
-       net.phase[i]-=   TWO_PI/networkSize/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
+       net.phase[i]-=   TWO_PI/2/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
 
 
    //     net.phase[i] -=(i+1)*0.05;
@@ -1080,7 +1080,7 @@ void phasePattern()
 
     //  net.phase[i] +=(oscillatorBlocked-i)*0.1;
     //   net.phase[i] -=(i+1)*0.1;
-        net.phase[i]+=   TWO_PI/networkSize/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
+        net.phase[i]+=   TWO_PI/2/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
    //   net.phase[i] =  net.phase[i]%TWO_PI;
       printSummary(i);
     }
@@ -1281,7 +1281,10 @@ void phasePattern()
     println("INCREASE phases with 0.5   "); //
     for (int i = 0; i < networkSize; i++) {
       //       net.phase[i] += QUARTER_PI/2 * net.phase[1*(networkSize-1-i)] ;//
-      net.phase[i] =net.phase[i] +  QUARTER_PI/2;//
+
+
+       net.phase[i] +=TWO_PI/2/(networkSize-1)*i; // based on 'f'
+     // net.phase[i] =net.phase[i] +  QUARTER_PI/2;//
 
       //      net.phase[i] = net.phase[i] - QUARTER_PI  i;
    //   net.phase[i]=  net.phase[i]%TWO_PI;
@@ -1296,7 +1299,9 @@ void phasePattern()
     println("DECREASE phases with 0.5   "); // UTILISE SI ELLES ONT deja un ecart equidistant
     for (int i = 0; i < networkSize; i++) { 
       //   net.phase[i] =net.oldPhase[i]+ (QUARTER_PI/8);
-      net.phase[i] += (QUARTER_PI/8)*(1+i);
+
+         net.phase[i] -=TWO_PI/2/(networkSize-1)*i; // based on 'f'
+     // net.phase[i] += (QUARTER_PI/8)*(1+i);
     
     } 
     }   

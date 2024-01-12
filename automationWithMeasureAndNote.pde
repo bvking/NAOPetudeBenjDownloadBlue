@@ -37,7 +37,9 @@ void autmationWithMeasureAndNote()
   }
 
   if (measure ==2 && beatPrecised == 12 && beatPrecisedTrigged==true  ) { // && beatTrigged==true
-   speedDelta = 2;
+  // speedDelta = 2;
+  //  key = '9'; //Alig
+    keyReleased();
   //  key = '°';
   //  keyReleased();
   }
@@ -51,7 +53,7 @@ void autmationWithMeasureAndNote()
 
 
   if (measure==5 && beatTrigged==true) {
-
+     speedDelta = 3;
     key = '9'; //Alig
     keyReleased();
     memoryi=networkSize-1;
@@ -89,8 +91,8 @@ void autmationWithMeasureAndNote()
   }
 
    if (measure ==26  && beatTrigged==true) {
-      key = 'k';keyReleased();
-       key = 'k';keyReleased();
+    //  key = 'k';keyReleased();
+    //   key = 'k';keyReleased();
   }
 
   if (measure>4 && measure<=41 ) {
@@ -98,6 +100,28 @@ void autmationWithMeasureAndNote()
     autoNote1VelInf64();  // declaer avec A . arrete A puis faire des i ou u
   }
 
+    if (measure ==  27 && beatTrigged ==  true ) {
+    //  speedDelta ='3';
+    key = '9';  // align
+     keyReleased();;
+      }
+
+      if  (measure ==  27 && beatPrecised == 2 && beatPrecisedTrigged==true ) {
+    key='9'; // align
+    keyReleased();
+    }
+
+   if (measure ==  29 && beatTrigged ==  true ) {
+    key = 'k';
+    keyReleased();
+      }
+
+   if (measure ==  31 && beatTrigged ==  true ) {
+     key = 'k';
+     keyReleased();
+     key = '9';  // align
+     keyReleased();
+      }
 
 
   
@@ -220,7 +244,7 @@ void autmationWithMeasureAndNote()
     moveKeys[8]=true;
     moveKeys[11]=true;  // keyMode TrigEvent
     setKeyModeByTappingKeyPadOnce();
-    key = 'f'; keyReleased();
+    key = 'd'; keyReleased();
   }
 
   if  (measure==82 &&   beatPrecised == 1 && beatPrecisedTrigged==true) {
@@ -289,23 +313,25 @@ void autmationWithMeasureAndNote()
 
   if ( (measure==89 || measure==92 || measure==94) && beatTrigged==true) {
 
-    key='P';
+    key='F';
     keyReleased();
   }
 
   if ( (measure==96 || measure==99 || measure==101) && beatTrigged==true) {
 
-    key='P';
+    key='F';
     keyReleased();
    // key='P';
    // keyReleased();
   }
 
   if ( (measure==89 || measure==92 || measure==94) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-    key='f';
-    keyReleased();
+  //**  key='f';
+  //**  keyReleased();
   //  key='f';
    // keyReleased();
+
+
     /*
     key='r';
     keyReleased();
@@ -319,10 +345,12 @@ void autmationWithMeasureAndNote()
   }
 
   if ( (measure==97 || measure==100 || measure==102) && beatPrecisedTrigged==true && beatPrecised == 3) { // acceleration after mouvement
-    key='f';
+  //  key='d';
+  //  keyReleased();
+    key='F';
     keyReleased();
-   // key='f';
-   // keyReleased();
+     key='F';
+    keyReleased();
  
   }
 
@@ -333,7 +361,7 @@ void autmationWithMeasureAndNote()
   }
 
   if ( measure==104 && beatPrecisedTrigged==true  && ( beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13 || beatPrecised == 17 || beatPrecised == 21  )) {
-    key='d';
+    key='F';
     keyReleased();
     }
 
@@ -342,20 +370,25 @@ void autmationWithMeasureAndNote()
    //keyReleased();
    //  key='R';
   //  keyReleased();
-    key='d';
+    key='F';
     keyReleased();
+   
    
   }
 
   if ( measure==107 && beatPrecisedTrigged==true && ( beatPrecised == 1 || beatPrecised == 13 )) {
 
-    key='F';
+   
+
+    key='M';
     keyReleased();
  
   }
   if ( measure==108 && beatTrigged==true) {
-    key='F';
+    key='M';
     keyReleased();
+   //    key='F';
+  //  keyReleased();
     
   
   }
@@ -364,8 +397,12 @@ void autmationWithMeasureAndNote()
             beatPrecised %4==0 ))  {                                                                            //    beatPrecised == 7|| beatPrecised == 9 || beatPrecised == 11 || beatPrecised == 13 || beatPrecised == 15 ||
                                                                                          //     beatPrecised == 17 || beatPrecised == 19 || beatPrecised == 21 || beatPrecised == 23   ) ) { 
                                                                                              
-    key='f'; // good way
+   // key='f'; // good way
+    key='m'; // good way
     keyReleased();
+     key='m'; // good way
+    keyReleased();
+ 
  
   }
 

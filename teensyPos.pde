@@ -294,7 +294,7 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
          recordLastDataOfMotorPosition[i]= dataMappedForMotorisedPosition[i];
          dataMappedForMotorisedBigMachine[i]= dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
        }
-      }
+      } 
      }
 
      if (keyMode == " samplingModewithLive " || keyMode == " trigEventWithAbletonSignal ")
@@ -305,9 +305,9 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
         {
          if (measure>241 || measure <=241 )
          {
-          print (" to change Mode and still runing ");
+          print (" to change Mode and still runing to LITTLE ONLY ");
           // int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData, int driverNetWorkSizeOnOff, int timeElapsedBackingPosition
-          send24DatasToTeensy6motorsToLittleMachine( 6, 2, -3, -1, 2, 1000);
+         // send24DatasToTeensy6motorsToLittleMachine( 6, 2, -3, -1, 2, 1000);
          }
         }
      }
@@ -324,7 +324,7 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
        {   
          text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
        }
-       print (" SEND24DATAS_____END_OF _FUNCRTIONS____") ;      
+       print (" SEND24DATAS_____END_OF _FUNCTIONS____") ;      
         send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       rotate (-PI);
      }
