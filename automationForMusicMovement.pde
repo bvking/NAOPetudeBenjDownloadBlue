@@ -46,6 +46,42 @@ void automationForMusicMouvement()
            key = 'u'; 
            keyReleased(); // decale une à une et revient dans l'alignement
           }
+        
+
+         if (measure%342==0 && beatTrigged==true)
+         {
+             key = '9'; //Alig
+             keyReleased();
+             key = 'F'; //Alig
+             keyReleased();
+             key = 'F'; //Alig
+             keyReleased();
+               
+
+         }
+        
+         if ((measure== 346) && beatPrecised == 1 && beatPrecisedTrigged==true)
+          {
+           formerKeyMetro = '*';
+          // keyReleased(); // decale une à une et revient dans l'alignement
+           for (int i = 0; i < networkSize; i++)
+                 {    
+                 net.naturalFrequency[i]=0.5;
+                 }
+          }
+            if (measure>346 && beatPrecised == 2 && beatPrecisedTrigged==true)
+          {
+           key = 'U'; 
+           keyReleased(); // decale une à une et revient dans l'alignement
+          }
+
+            if (measure%4==0 && beatTrigged==true)
+         {
+           
+             key = 'F';keyReleased();
+             key = 'F';keyReleased();
+
+         }
 
         // key = 'F';keyReleased();
 

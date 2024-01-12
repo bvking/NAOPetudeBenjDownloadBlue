@@ -190,158 +190,13 @@ void teensyPos()
 
             } 
           }
-
-
-    /*
-      if (formerKeyMetro == '*' && (encoderTouched[0] || encoderTouched[1] || encoderTouched[2] || encoderTouched[3] || encoderTouched[4] || encoderTouched[5] ) ) {
-      for (int i = 0; i < networkSize-0; i++) { // 
-       readPositionEncoder[i] =(int) map (encodeur[i], 0, 800, 0, numberOfStep); 
-     dataMappedForMotorisedPosition[i]+= positionFromShiftedOscillator[i];  
-     
-      dataMappedForMotorisedBigMachine[i] = dataMappedForMotorisedPosition[i]+readPositionEncoder[i];
-    
-       print ( " add Encodeur To Processing Position " + readPositionEncoder[i]);
-        print ( " add Encodeur To Processing Position ");
-         print ( " add Encodeur To Processing Position ");
-          print ( " add Encodeur To Processing Position ");
-      } 
-    }
-    */
-    
-       if (keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  " )  {
-         for (int i = 0; i < networkSize-0; i++) { // 
-          // recordLastDataOfMotorPosition[i]+= lastActualPosition[i];
-          //  actualisePositionDataFromCircular = false|| dol==true; //
-          //  recordLastDataOfMotorPosition[i]=recordLastDataOfMotorPosition[i];
-          dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+recordLastDataOfMotorPosition[i]; // +readPositionEncoder[i]
-          }  
-        }
-
-
-       if (formerKeyMetro == '*' && actualisePositionDataFromCircular == true) {
-         for (int i = 0; i < networkSize-0; i++) {
-         //   recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];  // add recordLastDataOfMotorPosition[i] to motor position in  when switching to propagationBallRotationBis
-         } 
-       }
-          /*
-            print ("newPosShifted "); showArrayF (newPosShifted);
-            print ("oldPosShifted "); showArrayF (oldPosShifted);
-
-            print ("net.phase "); showArrayF (net.phase);
-            print ("old.phase "); showArrayF (net.oldPhase);
-
-            print (" dataMappedForMotorisedBigMachine "); showArray (dataMappedForMotorisedBigMachine);
-          */
-          if (formerFormerKey=='I' ){
-         for (int i = 0; i < (networkSize-0); i++) {  
-
-           oldOldPosShifted[i]=oldPosShifted[i];
-           oldPosShifted[i]=newPosShifted[i];
-           newPosShifted[i]=net.phase[i];
-
-            if (net.oldPhase[i]%TWO_PI<net.phase[i]){ 
-        //if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
-
-              //  net.phase[i]-=TWO_PI;
-              //   rev[i]-=1;
-              }
-          }
-     }
-
-    //if ( formerFormerKey=='I' || formerKey=='I'|| key=='I') { // utiliser return
-
-      /*
-     
-       if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { //U--> +1   utiliser return
-              
-              textSize (500);
-              text ( " here in TeensyPos ", 400, height/2);
-
-            print ( "oldPos ");      showArray (oldDataMappedForMotorisedPosition); 
-            print ( "updPos ");      showArray (dataMappedForMotorisedPosition);
-
-
-        for (int i = 0; i < networkSize-0; i++) {
-          println (" here U in TeensyPos", formerKey,  " " ,key);
-              //if (oldDataMappedForMotorisedPosition[i]>dataMappedForMotorisedPosition[i]) {
-                  if (net.oldPhase[i]%TWO_PI<net.phase[i]) {
-     
-             int [] update;
-               println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
-               println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
-                //  println ( "upd " + i + " " + update[i]) ;
-                // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
-                // dataMappedForMotorisedPosition=update;
-                // net.phase[i]+=TWO_PI;
-        //**   rev[i]+=1;
-               println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
-          //     println ( "updA " + i + " " + update[i]) ;          
-            }
-         } 
-          key='#';
-          formerFormerKey='#';
-          formerKey='#';
-       }
-
-
-      */
-
-
-
-    /*
-       if ( formerFormerKey=='U' || formerKey=='U'|| key=='U') { // utiliser return
-             
-              textSize (500);
-              text ( " here I in TeensyPos ", 400, height/2);
-
-            print ( "oldPos ");      showArray (oldDataMappedForMotorisedPosition); 
-            print ( "updPos ");      showArray (dataMappedForMotorisedPosition);
-
-
-          for (int i = 0; i < networkSize-0; i++) {
-               println (" here   in TeensyPos", formerKey,  " " ,key);
-
-             
-           
-              oldOldPosShifted[i]=oldPosShifted[i];
-              oldPosShifted[i]=newPosShifted[i];
-              newPosShifted[i]=phaseMapped[i];
-
-
-             if (newPosShifted[i]>oldPosShifted[i]  && (oldPosShifted[i]<=oldOldPosShifted[i])) { // turnCCW
-     
-                 int [] update;
-                 println ( "old " + i + " " + oldDataMappedForMotorisedPosition[i]);
-                 println ( "bef " + i + " " + dataMappedForMotorisedPosition[i]);
-                  //  println ( "upd " + i + " " + update[i]) ;
-                  // update = upDateMotorisedPosition(dataMappedForMotorisedPosition);
-                 // dataMappedForMotorisedPosition=update;
-                 // net.phase[i]+=TWO_PI;
-                 rev[i]+=1;
-                 println ( "UPA " + i + " " + dataMappedForMotorisedPosition[i]);
-                 //     println ( "updA " + i + " " + update[i]) ;          
-               }
-             } 
-                 key='#';
-                 formerFormerKey='#';
-                 formerKey='#';
-        }
-
-    */  
-
-
-         
-
-
-
-
   } // end mesure 635
       //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
 if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
   { 
-    if (keyMode != " samplingModeWithLiveNO " )
+    if (keyMode != " propagationBallRotationBis " )
      {
     
      if (modeStartKeyToFollow!= " samplingModeInternal "){
@@ -463,6 +318,17 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
       }
     
      if (music_from_ableton_live == " madRush ") 
+     { 
+      rotate (PI);
+      for (int i = 0; i < networkSize; i++)
+       {   
+         text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
+       }
+       print (" SEND24DATAS_____END_OF _FUNCRTIONS____") ;      
+        send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+      rotate (-PI);
+     }
+      if (music_from_ableton_live == " mouvement ") 
      { 
       rotate (PI);
       for (int i = 0; i < networkSize; i++)
