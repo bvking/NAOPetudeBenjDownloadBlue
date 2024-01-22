@@ -1,12 +1,13 @@
-void automationForMusicMouvementFromMeasure324()
+void automationForMusicMouvement()
  {
 
-    if (music_from_ableton_live == " mouvement ")
+    if (music_from_ableton_live == " Dessine ")
     {
+      
 
-      if (measure==324 && beatTrigged==true)
+      if (measure==1 && beatTrigged==true)
          {
-
+   
              key = '9'; //Alig
              keyReleased();
              memoryi=networkSize-1;
@@ -14,23 +15,27 @@ void automationForMusicMouvementFromMeasure324()
               key = 'A'; //memory=? net.naturalFrequency[memoryi]= 0.25
               net.naturalFrequency[memoryi]= 0.5;//4.68/2; // 124 bpm
          }
+         
 
-         if (measure%4==0 && beatTrigged==true)
-         {
-             key = '9'; //Alig
+      if (measure%4==0 && beatTrigged==true)
+          {
+             key = 'f'; //Alig
+            // key = '9'; //Alig
              keyReleased();
 
-         }
+          }
 
 
-         if ((measure>=325 && measure<=327) && beatTrigged==true)
-          {
+      if ((measure>=3 && measure+1%3==0) && beatTrigged==true)
+         {
+          
           key = 'P'; 
           keyReleased(); // decale une à une et revient dans l'alignement
          }
 
-        if (measure==327 && beatPrecised == 1 && beatPrecisedTrigged==true)
+      if (measure== 7 && beatPrecised == 1 && beatPrecisedTrigged==true)
          {
+          
             key='1'; keyReleased();
 
            // key = '°'; // STOP frequency
@@ -85,7 +90,10 @@ void automationForMusicMouvementFromMeasure324()
 
         // key = 'F';keyReleased();
 
-   }
+   } 
+} 
    // key='1'; keyReleased();
- }
+
+   
+ 
 

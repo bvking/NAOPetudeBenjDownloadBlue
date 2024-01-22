@@ -28,12 +28,19 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 signalToSplit4 = map ( signal[4], 0, 1, 0, 1);
 
                 delayTimeToTrig=120; //ms
-                delayTimeToTrig4=120;
+                delayTimeToTrig4=120;  
             
-           if (music_from_ableton_live == " mouvement ")
+            if (music_from_ableton_live == " Dessine ")
             {
 
               automationForMusicMouvement();
+
+            }
+            
+             if (music_from_ableton_live == " mouvement ")
+            {
+
+              automationForMusicMouvementFromMeasure324();
 
             }
         
