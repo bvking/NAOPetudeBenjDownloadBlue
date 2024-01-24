@@ -3,8 +3,7 @@ void automationForMusicMouvement()
 
     if (music_from_ableton_live == " Dessine ")
     {
-      
-
+   
       if (measure==1 && beatTrigged==true)
          {   key = '°'; //no speed
              keyReleased();
