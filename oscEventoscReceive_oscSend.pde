@@ -1,8 +1,13 @@
 int dataLFO, lastDataLfo;
+float positionFromLive;
+
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
 void oscEvent(OscMessage theMsg) {
 
+   if (theMsg.checkAddrPattern("/positionFromLive")==true) {
+    positionFromLive = theMsg.get(0).floatValue();
+  }
 
 
   if (theMsg.checkAddrPattern("/trigedSignFromAbleton0")==true) {
@@ -175,7 +180,9 @@ void oscEvent(OscMessage theMsg) {
 
   if (theMsg.checkAddrPattern("/ableton5")==true) {
     ableton[5] = theMsg.get(0).floatValue();
-  } 
+  }
+
+
 /*
   if (theMsg.checkAddrPattern("/ableton6")==true) {
     ableton[6] = theMsg.get(0).floatValue();
@@ -216,14 +223,10 @@ void oscEvent(OscMessage theMsg) {
     signal[4] = theMsg.get(0).floatValue();
   }
 
-
-
-
-
   if (theMsg.checkAddrPattern("/signal5")==true) {
-    signal[5] = theMsg.get(0).floatValue();
+    signal[6] = theMsg.get(0).floatValue();
   } 
-/*
+
   if (theMsg.checkAddrPattern("/signal6")==true) {
     signal[6] = theMsg.get(0).floatValue();
   } 
@@ -239,7 +242,7 @@ void oscEvent(OscMessage theMsg) {
   if (theMsg.checkAddrPattern("/signal9")==true) {
     signal[9] = theMsg.get(0).floatValue();
   } 
-  */
+  
 
   //***  MIDI NOTE
 

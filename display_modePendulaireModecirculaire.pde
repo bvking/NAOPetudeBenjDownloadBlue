@@ -154,8 +154,8 @@ void  displayModePendulaireModeCirculaire() {
       // if (specialPropagationKey == '?') {    }  // metroPhase[i]+=PI/4;
       //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
 
-      x = displacement*cos(metroPhase[i]); // -PI/2
-      y = displacement*sin(metroPhase[i]);// -PI/2
+   //   x = displacement*cos(metroPhase[i]); // -PI/2
+   //   y = displacement*sin(metroPhase[i]);// -PI/2
       
 
       //float polarX=
@@ -170,8 +170,8 @@ void  displayModePendulaireModeCirculaire() {
       float [] degreeToRadian = new float [networkSize];
 
       degreeToRadian[i]= radians(motorPositionToDegree[i]);
-      x = displacement+600*cos(degreeToRadian[i]); // -PI/2
-      y = displacement*sin(degreeToRadian[i]);// -PI/2
+      x = (displacement+600)*cos(degreeToRadian[i]); // -PI/2
+      y = (displacement+600)*sin(degreeToRadian[i]);// -PI/2
 
        fill(255, 255, mapAccelerationinversed[i]);
 
@@ -184,8 +184,8 @@ void  displayModePendulaireModeCirculaire() {
       // metroPhase[i]= metroPhase[i];
 
       //println ( " metro " + metroPhase[i]  + " formerKeyMetro " + " " + i + " " + char (formerKeyMetro) );
-      x = displacement*cos(net.phase[i]);
-      y = displacement*sin(net.phase[i]);
+     // x = displacement*cos(net.phase[i]);
+     // y = displacement*sin(net.phase[i]);
 
       sphere(side*3);
       sphereDetail( 4*5);
@@ -197,8 +197,8 @@ void  displayModePendulaireModeCirculaire() {
       float [] degreeToRadian = new float [networkSize];
 
       degreeToRadian[i]= radians(motorPositionToDegree[i]);
-      x = displacement+600*cos(degreeToRadian[i]); // -PI/2
-      y = displacement*sin(degreeToRadian[i]);// -PI/2
+      x = (displacement+600)*cos(degreeToRadian[i]); // -PI/2
+      y = (displacement+600)*sin(degreeToRadian[i]);// -PI/2
 
       sphere(side*3);
 
@@ -318,7 +318,8 @@ void  displayModePendulaireModeCirculaire() {
      }
      */
 
-    if ( keyMode == " null " ) {
+    if ( keyMode == " null " )
+    {
 
 
       if ( modeStartKeyToFollow == " samplingModeInternal " ) { //drive ball with lfo
@@ -416,7 +417,8 @@ void  displayModePendulaireModeCirculaire() {
         sphere(side*3);
         sphereDetail( 4*5);
       }
-    }    // end KeyMode==null
+    } 
+       // end KeyMode==null
     popMatrix();
   } // end of i == networkSize
 
@@ -424,7 +426,8 @@ void  displayModePendulaireModeCirculaire() {
     // rotate (PI);
   }
 
-  if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " ) {
+  if ( modeStartKeyToFollow  == " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow  == " samplingModeInternal " )
+  {
 
     for (int i=0; i<=8; i++ ) {
       stroke(25);
@@ -435,7 +438,7 @@ void  displayModePendulaireModeCirculaire() {
 
   if (formerKeyMetro == '$' || formerKeyMetro == '*'  ) // display ball only at good position
   {
-    translate (0, 1000, 0);
+   // translate (0, 1000, 0);
   }
   rotate (PI/2);
   rotate (-PI/2);

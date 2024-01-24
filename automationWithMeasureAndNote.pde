@@ -223,16 +223,16 @@ void autmationWithMeasureAndNote()
     (note3 == 74 && velocity3 >= 1 && velocity3 <= 130) ||
     (note4 == 74 && velocity4 >= 1 && velocity4 <= 130) ||
     (note5 == 74 && velocity5 >= 1 && velocity5 <= 64) ||
-    (note6 == 74 && velocity6 >= 1 && velocity6 <= 64))) {
+    (note6 == 74 && velocity6 >= 1 && velocity6 <= 64))) { 
     //     key='9'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
     // key='t'; //TROUVE AUTRE CHOSE QUE l'ALIGNEMENT   pas cool à 60
 
-   //  key='p'; 
+   //  key='p';  
     // keyReleased();
     formerEvent[74]=millis();
   }
   */
-
+ 
   if  (measure==71 && beatTrigged==true  ) {
     speedDelta=3;
   }
