@@ -1,7 +1,7 @@
 void automationForMusicMouvement()
  {
 
-    if (music_from_ableton_live == " Dessine ")// blabla2021
+    if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {
    
       if (measure==1 && beatTrigged==true)
@@ -19,13 +19,23 @@ void automationForMusicMouvement()
          {
           net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
          }
-      */  
+      */
+       if ((measure>=3 && measure<=6) && beatPrecisedTrigged==true)
+          {
+             key = 'S'; //Alig        
+             phaseDirectToMotor();
+          } 
+        if ((measure>=7 && measure<=10) && beatPrecisedTrigged==true)
+          {
+             key = 'D'; //Alig        
+             phaseDirectToMotor();
+          }   
 
       if (measure%2==0 && beatTrigged==true)
           {
-             key = 'd'; //Alig
+           //  key = 'd'; //Alig
             // key = '9'; //Alig
-            phaseDirectToMotor();
+            // phaseDirectToMotor();
 
            //  keyReleased();
 
@@ -36,8 +46,8 @@ void automationForMusicMouvement()
       if ((measure+1)%(2+0)==0 && beatTrigged==true)
           {
             // key = 'f'; 
-              key = 'D';
-               phaseDirectToMotor();
+            //  key = 'D';
+           //    phaseDirectToMotor();
             // key = '9'; //Alig
             // keyReleased();
 
@@ -52,14 +62,10 @@ void automationForMusicMouvement()
       //    keyReleased(); // decale une à une et revient dans l'alignement
          }
 
-      if (measure== 7 && beatPrecised == 1 && beatPrecisedTrigged==true)
+         /*
+
+        if (measure== 7 && beatPrecised == 1 && beatPrecisedTrigged==true)
          {
-          
-          //  key='1'; keyReleased();
-
-           // key = '°'; // STOP frequency
-          // keyReleased();
-
             for (int i = 0; i < networkSize; i++) {    
             net.naturalFrequency[i]=0.93;
            }
@@ -72,7 +78,7 @@ void automationForMusicMouvement()
           }
         
 
-         if (measure%25==0 && beatTrigged==true)
+        if (measure%25==0 && beatTrigged==true)
          {
              key = '9'; //Alig
              keyReleased();
@@ -80,8 +86,6 @@ void automationForMusicMouvement()
             // keyReleased();
              key = 'F'; //Alig
              keyReleased();
-               
-
          }
         
          if ((measure== 25) && beatPrecised == 1 && beatPrecisedTrigged==true)
@@ -98,6 +102,8 @@ void automationForMusicMouvement()
            key = 'U'; 
            keyReleased(); // decale une à une et revient dans l'alignement
           }
+
+*/
 
             if (measure%4==0 && beatTrigged==true)
          {
