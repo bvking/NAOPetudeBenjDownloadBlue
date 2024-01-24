@@ -1,6 +1,7 @@
 void automationForMusicMouvement()
  {
-    if (music_from_ableton_live == " Dessine ")// blabla
+
+    if (music_from_ableton_live == " Dessine ")// blabla2021
     {
    
       if (measure==1 && beatTrigged==true)
@@ -75,8 +76,8 @@ void automationForMusicMouvement()
          {
              key = '9'; //Alig
              keyReleased();
-             key = 'F'; //Alig
-             keyReleased();
+            // key = 'F'; //Alig
+            // keyReleased();
              key = 'F'; //Alig
              keyReleased();
                
