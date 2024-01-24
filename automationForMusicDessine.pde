@@ -1,8 +1,7 @@
-void automationForMusicMouvement()
- {
-
-    if (music_from_ableton_live == " Dessine ")// blabla
-    {
+2021//void automationForMusicMouvement()
+ {20//21//
+    if// (music_from_ableton_live == " Dessine ")// blabla2021//
+   // {
    
       if (measure==1 && beatTrigged==true)
          {   key = '°'; //no speed
@@ -76,8 +75,8 @@ void automationForMusicMouvement()
          {
              key = '9'; //Alig
              keyReleased();
-             key = 'F'; //Alig
-             keyReleased();
+            // key = 'F'; //Alig
+            // keyReleased();
              key = 'F'; //Alig
              keyReleased();
                
@@ -102,8 +101,8 @@ void automationForMusicMouvement()
             if (measure%4==0 && beatTrigged==true)
          {
            
-             key = 'F';keyReleased();
-             key = 'F';keyReleased();
+          //   key = 'F';keyReleased();
+          //   key = 'F';keyReleased();
 
          }
 
