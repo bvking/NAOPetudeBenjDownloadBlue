@@ -1,7 +1,7 @@
 void automationForMusicMouvement()
  {
 
-    if (music_from_ableton_live == " Dessine ")
+    if (music_from_ableton_live == " Dessine ")// blabla
     {
    
       if (measure==1 && beatTrigged==true)
