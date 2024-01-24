@@ -1,9 +1,6 @@
 void phaseDirectToMotor() // mixed Com
  { 
    if (key == 'S') {
-
-   // net.phase[i] += (networkSize-1- oscillatorBlocked-i)*0.05;
-
      for (int i = 0; i < networkSize; i++) {
       //  net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
        //  lastActualPosition[i]+=  map ( networkSize-1-oscillatorBlocked-i*0.05, 0, TWO_PI, 0, numberOfStep);
