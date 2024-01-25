@@ -1,6 +1,6 @@
-void phaseDirectToMotor() // mixed Com
+  void phaseDirectToMotor() // mixed Com
  {   
-     oscillatorBlocked=2;
+     //  oscillatorBlocked=2;
      text (" osc " + oscillatorBlocked, 200, 200);
       if (key == 'w')
       {
