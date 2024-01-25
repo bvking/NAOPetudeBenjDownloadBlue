@@ -23,33 +23,35 @@ void phasePattern()
 
    if (key == 'i') {
       text ("phasePattern " ,-200+ width/2, height/2);
-   }
+    }
 
    // text ( " net.naturalFrequency[0] " + net.naturalFrequency[0], -1100, 1000);
     //  text ( " net.naturalFrequency[1] " + net.naturalFrequency[1], -1100, 1100);
   //************************************ DONT TOUCH
-    for (int i = 0; i < (networkSize); i++) { 
-   if  (   key == 'J')  {
- // ActualVirtualPosition[i]=ActualVirtualPosition[i]+1600;
-  }
-  }
-
- if  (  keyMode == " phasePattern "  ) {
-//  splitIncomingSignal();
-//   text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
-  if ( propagationLevel==1) {
- // key = 'f';
-   }
-   if ( propagationLevel==2) {
-  //key = 'd';
+    
+     if  (   key == 'J')  {
+       for (int i = 0; i < (networkSize); i++) { 
+        // ActualVirtualPosition[i]=ActualVirtualPosition[i]+1600;
      }
-  }
+     }
+
+ if  (  keyMode == " phasePattern "  )
+    {
+    //  splitIncomingSignal();
+    //   text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
+   if ( propagationLevel==1) {
+        // key = 'f';
+     }
+   if ( propagationLevel==2) {
+      //key = 'd';
+     }
+    }
 
 
  if  (   keyMode != " truc "  )
-  {
-  // if  (   keyMode == " trigEventWithAbletonSignal " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio")
-  // {
+ {
+     // if  (   keyMode == " trigEventWithAbletonSignal " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio")
+      // {
     //     text ( " YOU RELEASE IN PHASE PATTERN or PRESSED ", -200, -200);
     //     splitIncomingSignal();
          /*
@@ -94,7 +96,10 @@ void phasePattern()
       }
 
      // k= shiftingPhaseRatio USELESS?
+      textSize (200);
+      rotate (-PI/2);
       text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
+      rotate (PI/2);
     }
   
 
@@ -113,7 +118,10 @@ void phasePattern()
      oscillatorBlocked++;
      oscillatorBlocked%=networkSize; 
 
-    text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
+      textSize (200);
+      rotate (-PI/2);
+      text (" k " + k + " oscBloc " + oscillatorBlocked + " oldM " + oldMemoryi + " mem " + memoryi, 500, 600);
+      rotate (PI/2);
     } 
 
 
@@ -435,7 +443,7 @@ void phasePattern()
     net.shiftPhases(1); 
     net.shiftFrequencies(1); 
 
- /*     
+  /*     
     oldMemoryi=memoryi;
     memoryi=(memoryi+1)%networkSize;
 
@@ -459,7 +467,7 @@ void phasePattern()
      net.phase[networkSize-1]= net.oldPhase[networkSize-1-1];
     net.naturalFrequency[networkSize-1]= OldFrequency[networkSize-1-1];// // useless
   } 
-*/
+ */
  } 
 
    if (key == 'U' && specialPropagationKey == '?' && modeCircular) { 

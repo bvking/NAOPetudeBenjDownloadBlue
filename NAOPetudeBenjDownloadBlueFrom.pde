@@ -32,6 +32,14 @@ void draw()
      {
         trigEventWithAbletonSignal();
      }
+
+        if (music_from_ableton_live == " Dessine ")
+            {
+
+              automationForMusicMouvement();
+
+            }
+
     
      if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
      {
