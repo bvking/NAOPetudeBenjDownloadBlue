@@ -88,17 +88,18 @@ void phaseDirectToMotor() // mixed Com
           }
      }
 
-      if (key == 'f') 
+      if (key == 'f') // no way
+      
      {
       for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]-=  map ( TWO_PI/12/(networkSize-1)*i, 0, TWO_PI, 0, numberOfStep);
+         lastActualPosition[i]= lastActualPosition[i] - (int) map ( TWO_PI*0.1/12/(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
           }
      }
 
        if (key == 'F') 
      {
        for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]+=  map ( TWO_PI/12/(networkSize-1)*i, 0, TWO_PI, 0, numberOfStep);
+         lastActualPosition[i]=lastActualPosition[i] - (int)  map ( TWO_PI*0.1/12/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
 

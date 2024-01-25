@@ -12,24 +12,74 @@ void automationForMusicMouvement()
              key = '9'; //Alig
              keyReleased();
              memoryi=networkSize-1;
+
+           //   key = 'k'; //Alig
+           //  keyReleased();
      
            //   key = 'A'; //memory=? net.naturalFrequency[memoryi]= 0.25
           //    net.naturalFrequency[memoryi]= 0.93;//4.68/2; // 124 bpm
          }
-      /*
-      if (measure>=1) 
-         {
-          net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
-         }
-      */
-       if ((measure>=3 && measure<=6) && beatPrecisedTrigged==true)
-       {
-             key = 'S'; //Alig        
-             phaseDirectToMotor();
+
+       if (((measure>=1 && measure <=2 )  && beatTrigged==true) ||  (beatPrecised == 9 && beatPrecisedTrigged==true))
+       {    
+             key = 'k'; 
+             keyReleased();       
+           //  phaseDirectToMotor();
+
+           //  key = 'S';        
+           //  phaseDirectToMotor();
        } 
+
+          if (measure==3 && beatTrigged==true)
+
+         {  key = ';'; // align direct phase motor
+            keyReleased();
+
+            key = '=';
+            keyReleased();
+            
+            key = '9'; //Alig graphic
+            keyReleased();
+         
+          }
+
+      if (measure>=3 && measure< 6 && beatPrecisedTrigged==true) 
+         {
+         // net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
+             key = 'F'; //Alig        
+             phaseDirectToMotor();
+         }
+
+    
+      
+       if ((measure>=3 && measure<=6) && beatPrecisedTrigged==true)
+       {    
+         //    key = 'F';        
+         //    phaseDirectToMotor();
+
+           //  key = 'S';        
+           //  phaseDirectToMotor();
+       } 
+
+           if (measure==7 && beatTrigged==true)
+
+         {  key = ';'; // align direct phase motor
+            keyReleased();
+
+            key = '=';
+            keyReleased();
+            
+            key = '9'; //Alig graphic
+            keyReleased();
+         
+          }
+
+
+
+
        if ((measure>=7 && measure<=10) && beatPrecisedTrigged==true)
        {
-             key = 'D'; //Alig        
+             key = 'D';        
              phaseDirectToMotor();
        }  
 
