@@ -7,7 +7,7 @@ void automationForMusicMouvement()
       if (measure==1 && beatTrigged==true)
 
          { // modeCircular=true;
-            key = '°'; //no speed
+             key = '°'; //no speed
              keyReleased();
              key = '9'; //Alig
              keyReleased();
@@ -20,7 +20,7 @@ void automationForMusicMouvement()
           //    net.naturalFrequency[memoryi]= 0.93;//4.68/2; // 124 bpm
          }
 
-       if (((measure>=1 && measure <=2 )  && beatTrigged==true) ||  (beatPrecised == 9 && beatPrecisedTrigged==true))
+       if (((measure>=1 && measure <=2 )  && beatTrigged==true) ||  (beatPrecised == 9 && beatPrecisedTrigged==true && measure <=2 ))
        {    
              key = 'k'; 
              keyReleased();       
@@ -30,7 +30,8 @@ void automationForMusicMouvement()
            //  phaseDirectToMotor();
        } 
 
-          if (measure==3 && beatTrigged==true)
+
+       if (measure==3 && beatTrigged==true)
 
          {  key = ';'; // align direct phase motor
             keyReleased();
@@ -46,14 +47,22 @@ void automationForMusicMouvement()
       if (measure>=3 && measure< 6 && beatPrecisedTrigged==true) 
          {
          // net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
-             key = 'F'; //Alig        
+             key = 's'; //Alig        
              phaseDirectToMotor();
          }
 
     
       
-       if ((measure>=3 && measure<=6) && beatPrecisedTrigged==true)
-       {    
+       if ((measure>=6 && measure<=6) && beatTrigged==true)
+       {   
+             key = 'D';  
+             phaseDirectToMotor();
+             key = 'D';  
+             phaseDirectToMotor();
+             key = 'D';  
+             phaseDirectToMotor();
+
+         //    phaseDirectToMotor(); 
          //    key = 'F';        
          //    phaseDirectToMotor();
 
@@ -77,9 +86,9 @@ void automationForMusicMouvement()
 
 
 
-       if ((measure>=7 && measure<=10) && beatPrecisedTrigged==true)
+       if ((measure>=10 && measure<=10) && beatPrecisedTrigged==true)
        {
-             key = 'D';        
+             key = 'd';        
              phaseDirectToMotor();
        }  
 
