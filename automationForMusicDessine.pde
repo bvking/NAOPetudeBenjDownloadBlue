@@ -6,7 +6,7 @@ void automationForMusicMouvement()
    
       if (measure==1 && beatTrigged==true)
 
-         {  modeCircular=true;
+         { // modeCircular=true;
             key = '°'; //no speed
              keyReleased();
              key = '9'; //Alig
@@ -42,7 +42,29 @@ void automationForMusicMouvement()
        {
              key = 'R'; //Alig        
              phaseDirectToMotor();
-       }   
+       }  
+        if ((measure>=19 && measure<=22) && beatPrecisedTrigged==true)
+       {
+             key = 'w'; //Alig        
+             phaseDirectToMotor();
+       } 
+       if ((measure>=23 && measure<=26) && beatPrecisedTrigged==true)
+       {
+             key = 'W'; //Alig        
+             phaseDirectToMotor();
+       }  
+
+           if ((measure>=27 && measure<=30) && beatPrecisedTrigged==true)
+       { 
+             formerKeyMetro = '*';
+             key = 'W'; //Alig        
+             phaseDirectToMotor();
+       } 
+       if ((measure>=31 && measure<=34) && beatPrecisedTrigged==true)
+       {
+             key = 'w'; //Alig        
+             phaseDirectToMotor();
+       }  
 
          
 

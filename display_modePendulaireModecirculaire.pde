@@ -187,7 +187,7 @@ void  displayModePendulaireModeCirculaire() {
      // x = displacement*cos(net.phase[i]);
      // y = displacement*sin(net.phase[i]);
 
-      sphere(side*3);
+    sphere(side*3);
       sphereDetail( 4*5);
 
       float [] motorPositionToDegree = new float [networkSize];
@@ -200,9 +200,9 @@ void  displayModePendulaireModeCirculaire() {
       x = (displacement+600)*cos(degreeToRadian[i]); // -PI/2
       y = (displacement+600)*sin(degreeToRadian[i]);// -PI/2
 
-      sphere(side*3);
+       fill(255, 255, mapAccelerationinversed[i]);
 
-     // ellipse(x, y, 100, 100); 
+     ellipse(x, y, 100, 100); 
     }
 
 

@@ -1,8 +1,50 @@
 void phaseDirectToMotor() // mixed Com
- { text (" osc " + oscillatorBlocked, 200, 200);
+ {   
+     oscillatorBlocked=2;
+     text (" osc " + oscillatorBlocked, 200, 200);
+      if (key == 'w')
+      {
+       for (int i = 0; i < networkSize; i++)
+        {
+       // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+
+       net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
+
+       lastActualPosition[networkSize-1-i]= lastActualPosition[networkSize-1-i] + (int)  map ((i*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
+       
+       if (formerKeyMetro == '$')
+        {
+       lastActualPosition[networkSize-1-i]%= numberOfStep;        
+         }
+      }
+      }
+
+     if (key == 'W')
+      {
+
+       for (int i = 0; i < networkSize; i++)
+        {
+         // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+
+           net.phase[networkSize-1-i] = net.phase[networkSize-1-i] -  (i*TWO_PI/5)%PI/10; 
+
+           lastActualPosition[networkSize-1-i]= lastActualPosition[networkSize-1-i] - (int)  map ((i*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
+
+           if (formerKeyMetro == '$')
+           {
+           lastActualPosition[networkSize-1-i]%= numberOfStep;        
+           }
+           
+
+          }
+      }
+      
+     
+    
+
 
      if (key == 'R') {
-    println ("Add PI/6 PENDULAR $ without move 11, 8, 5"); // R$
+  
     for (int i = 0; i < networkSize; i++) {
       //   net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit   
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
