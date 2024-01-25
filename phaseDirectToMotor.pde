@@ -1,6 +1,27 @@
 void phaseDirectToMotor() // mixed Com
  { text (" osc " + oscillatorBlocked, 200, 200);
 
+     if (key == 'R') {
+    println ("Add PI/6 PENDULAR $ without move 11, 8, 5"); // R$
+    for (int i = 0; i < networkSize; i++) {
+      //   net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit   
+      //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
+      //   net.phase[i] -= (i*TWO_PI/5)%PI/5;
+
+      //    net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
+
+            lastActualPosition[i]= lastActualPosition[i] - (int)  map ((i*TWO_PI/networkSize)%PI/(networkSize*3), 0, TWO_PI, 0, numberOfStep);
+      
+      }
+    }
+
+    if (key == 'r') {
+        for (int i = 0; i < networkSize; i++) {
+            lastActualPosition[i]= lastActualPosition[i] + (int)  map ((i*TWO_PI/networkSize)%PI/(networkSize*3), 0, TWO_PI, 0, numberOfStep);
+             }
+     }
+
+
    if (key == 'S')
     {
      for (int i = 0; i < networkSize; i++) {
@@ -21,7 +42,7 @@ void phaseDirectToMotor() // mixed Com
      {
              // front  TWO_PI/8/(networkSize)*(i)   behind?
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*0.1/(networkSize)*(networkSize-1-i), 0, TWO_PI, 0, numberOfStep);
+         lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*0.1/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
           }
      }
 

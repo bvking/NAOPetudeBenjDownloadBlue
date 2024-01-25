@@ -962,6 +962,7 @@ void phasePattern()
      // net.phase[i] += (i*TWO_PI/networkSize)%PI/(networkSize*4); // pas en mode circular ? 
 
       net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+      
          if (formerKeyMetro=='$'){
       //  net.phase[i]%=TWO_PI;
       }
