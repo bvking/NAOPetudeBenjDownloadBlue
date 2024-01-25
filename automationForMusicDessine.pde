@@ -47,7 +47,7 @@ void automationForMusicMouvement()
       if (measure>=3 && measure< 6 && beatPrecisedTrigged==true) 
          {
          // net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
-             key = 's'; //Alig        
+             key = 's'; //1/16 grand D      
              phaseDirectToMotor();
          }
 
@@ -61,18 +61,11 @@ void automationForMusicMouvement()
              phaseDirectToMotor();
              key = 'D';  
              phaseDirectToMotor();
-
-         //    phaseDirectToMotor(); 
-         //    key = 'F';        
-         //    phaseDirectToMotor();
-
-           //  key = 'S';        
-           //  phaseDirectToMotor();
        } 
 
-           if (measure==7 && beatTrigged==true)
+       if (measure==7 && beatTrigged==true)
 
-         {  key = ';'; // align direct phase motor
+       {    key = ';'; // align direct phase motor
             keyReleased();
 
             key = '=';
@@ -82,15 +75,24 @@ void automationForMusicMouvement()
             keyReleased();
          
           }
+        
+        if (measure>=7 && measure<=23 && (beatPrecised == 5 || beatPrecised == 1) && beatPrecisedTrigged==true) 
+
+        {   key = 'S';  
+           phaseDirectToMotor();  
+         
+         }
 
 
 
 
-       if ((measure>=10 && measure<=10) && beatPrecisedTrigged==true)
+       if (measure>=11 && measure<=23 && beatPrecisedTrigged==true)
        {
-             key = 'd';        
+             key = 's';        
              phaseDirectToMotor();
        }  
+
+     /*  
 
         if ((measure>=11 && measure<=14) && beatPrecisedTrigged==true)
        {
@@ -123,7 +125,9 @@ void automationForMusicMouvement()
        {
              key = 'w'; //Alig        
              phaseDirectToMotor();
-       }  
+       } 
+
+       */ 
 
          
 
