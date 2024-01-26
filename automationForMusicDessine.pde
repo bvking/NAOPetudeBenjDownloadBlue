@@ -82,7 +82,7 @@ void automationForMusicMouvement()
         
         if (measure>=7 && measure<11 && (beatPrecised == 5+4 || beatPrecised == 1) && beatPrecisedTrigged==true) 
 
-        {   key = 's';  
+        {   key = 'S';  
            phaseDirectToMotor();  
          
          }
