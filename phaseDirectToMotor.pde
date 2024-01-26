@@ -8,13 +8,13 @@
         {
        // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
 
-       net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
+      //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
 
-       lastActualPosition[networkSize-1-i]= lastActualPosition[networkSize-1-i] + (int)  map ((i*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
+       lastActualPosition[networkSize-1-i]+=  (int)  map ((i+1*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
        
        if (formerKeyMetro == '$')
         {
-       lastActualPosition[networkSize-1-i]%= numberOfStep;        
+      // lastActualPosition[networkSize-1-i]%= lastActualPosition[i] + numberOfStep;    // no meaning    
          }
       }
       }
@@ -59,7 +59,7 @@
 
     if (key == 'r') {
         for (int i = 0; i < networkSize; i++) {
-            lastActualPosition[i]= lastActualPosition[i] + (int)  map ((i*TWO_PI/networkSize)%PI/(networkSize*3), 0, TWO_PI, 0, numberOfStep);
+            lastActualPosition[i]+= (int)  map ((i*TWO_PI/networkSize)%PI/(networkSize*3), 0, TWO_PI, 0, numberOfStep);
              }
      }
 
