@@ -5,7 +5,7 @@ void automationForMusicMouvement()
     { 
       speedDelta=4;
    
-      if (measure==1 && beatTrigged==true)
+      if ((measure==1 && beatTrigged==true) ||  (beatPrecised == 2 && beatPrecisedTrigged==true && measure <1 ))
 
          { // modeCircular=true;
              key = '°'; //no speed
@@ -52,6 +52,33 @@ void automationForMusicMouvement()
              phaseDirectToMotor();
          }
 
+      if (measure==4  && beatPrecised ==5+4+4 &&beatPrecisedTrigged==true) 
+         {
+         // net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
+             key = 'd'; //1/16 grand D      
+             phaseDirectToMotor();
+         }
+      
+
+
+      if (measure>=5 && measure< 25 &&  (beatPrecised ==1 || beatPrecised ==5 || beatPrecised ==5+4 || beatPrecised ==5+4+4  ) && beatPrecisedTrigged==true) 
+         {
+         // net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
+             key = 'd'; //1/16 grand D      
+             phaseDirectToMotor();
+         }
+
+      if (measure==14 && beatPrecised ==14  && beatPrecisedTrigged==true) 
+       {   
+             key = 'D';  
+             phaseDirectToMotor();
+
+           //  key = 'D';  
+           //  phaseDirectToMotor();
+           //  key = 'D';  
+          //   phaseDirectToMotor();
+       } 
+
     
       
        if ((measure>=6 && measure<=6) && (beatPrecised ==1 || beatPrecised ==5+4 ) && beatPrecisedTrigged==true) 
@@ -69,8 +96,8 @@ void automationForMusicMouvement()
 
        if (measure==7 && beatTrigged==true)
 
-       {    key = ';'; // align direct phase motor
-            keyReleased();
+       {  //  key = ';'; // accelre le frame/s
+          //  keyReleased();
 
             key = '=';
             keyReleased();

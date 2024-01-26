@@ -1,6 +1,6 @@
   void phaseDirectToMotor() // mixed Com
  {   
-     //  oscillatorBlocked=2;
+     oscillatorBlocked=0;
      text (" osc " + oscillatorBlocked, 200, 200);
       if (key == 'w')
       {
@@ -19,7 +19,7 @@
       }
       }
 
-     if (key == 'W')
+     if (keyDirectToMotor == 'W')
       {
 
        for (int i = 0; i < networkSize; i++)
@@ -75,31 +75,36 @@
     if (key == 'S')
     {
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*1, 0, TWO_PI, 0, numberOfStep);   
+         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1, 0, TWO_PI, 0, numberOfStep);   
           }
     }
 
 
-    if (key == 'd')
+    if (key == 'd')  // reciproque f d
     {
     for (int i = 0; i < networkSize; i++) {
-        lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*1/16/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
+     // TWO_PI*1/16/(networkSize)*(networkSize-1-oscillatorBlocked-i)
+        lastActualPosition[i]= lastActualPosition[i] - (int)  map ( (TWO_PI*1/16/(networkSize)*(networkSize-1-oscillatorBlocked-i)), 0, TWO_PI, 0, numberOfStep);
          }
     }
 
-   if (key == 'D') 
+   if (key == 'D')  // reciproque FD
     {
              // front  TWO_PI/8/(networkSize)*(i)   behind?
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*1/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
+      //        net.phase[i]+=   TWO_PI*0.1/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
+
+         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( TWO_PI*0.1/(networkSize-1)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
           }
      }
 
     if (key == 'f') // no way
 
      {
+     //    net.phase[i] -=TWO_PI/12/(networkSize-1)*i; // 8 is the step, if 16 little step  //BEHIND
       for (int i = 0; i < networkSize; i++) {
-           lastActualPosition[i]=lastActualPosition[i] - (int)  map ( TWO_PI*0.1/8/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
+        //   lastActualPosition[i]=lastActualPosition[i] + (int)  map ( TWO_PI*1/16/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
+          lastActualPosition[i]=lastActualPosition[i] - (int)  map (TWO_PI/16/(networkSize-1)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
 

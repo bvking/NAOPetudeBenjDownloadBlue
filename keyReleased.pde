@@ -1,4 +1,14 @@
+char keyDirectToMotor;
 void keyReleased() {
+
+  if (music_from_ableton_live == " Dessine ")
+
+   {
+
+    keyDirectToMotor = key;
+    phaseDirectToMotor();
+
+   }
 
    recordFrame();  // record event only when they are released
 
@@ -309,7 +319,8 @@ void keyReleased() {
 
   //*********************************************CIRCULAR
 
-
+ if (music_from_ableton_live != " DessineTruc " )
+  {
   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
@@ -323,6 +334,7 @@ void keyReleased() {
      key= '#'; 
 
    } 
+  } 
 
 
     else if ( keyMode == " trigEventWithAbletonSignal " && measure < 635 )  // USELESS
