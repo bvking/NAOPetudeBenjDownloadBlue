@@ -3,9 +3,10 @@ void automationForMusicMouvement()
 
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     { 
-      speedDelta=4;
+     
    
       if (measure==1 && beatTrigged==true)
+       speedDelta=3;
 
          { // modeCircular=true;
              key = '°'; //no speed
@@ -50,12 +51,14 @@ void automationForMusicMouvement()
          // net.phase[0]=map (positionFromLive, 0, 1, -PI, PI);
              key = 's'; //1/16 grand D      
              phaseDirectToMotor();
+             key = 's'; //1/16 grand D      
+             phaseDirectToMotor();
          }
 
     
       
        if ((measure>=6 && measure<=6) && (beatPrecised ==1 || beatPrecised ==5+4 ) && beatPrecisedTrigged==true) 
-       {   
+       {   speedDelta = 3;  
              key = 'D';  
              phaseDirectToMotor();
 
@@ -69,13 +72,11 @@ void automationForMusicMouvement()
 
        if (measure==7 && beatTrigged==true)
 
-       {    key = ';'; // align direct phase motor
+       {             
+            key = '9'; //Alig graphic
             keyReleased();
 
-            key = '=';
-            keyReleased();
-            
-            key = '9'; //Alig graphic
+             key = '=';
             keyReleased();
          
           }
@@ -145,6 +146,21 @@ void automationForMusicMouvement()
              key = 'D';        
              phaseDirectToMotor();    
        } 
+
+
+       if (measure==28 && beatPrecisedTrigged==true) 
+    
+       {     
+          for (int i = 0; i < networkSize; i++) {
+           lastActualPosition[i]+= (int)  map ( PI/16, 0, TWO_PI, 0, numberOfStep);
+          }
+          /*
+            key = '1';
+            keyReleased();
+            phasePattern();
+            */
+             } 
+             
 
 
 
