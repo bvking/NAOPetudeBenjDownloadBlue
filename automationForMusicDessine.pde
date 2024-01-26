@@ -2,7 +2,8 @@ void automationForMusicMouvement()
  {
 
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
-    {
+    { 
+      speedDelta=4;
    
       if (measure==1 && beatTrigged==true)
 
@@ -20,7 +21,7 @@ void automationForMusicMouvement()
           //    net.naturalFrequency[memoryi]= 0.93;//4.68/2; // 124 bpm
          }
 
-       if (((measure>=1 && measure <=2 )  && beatTrigged==true) ||  (beatPrecised == 9 && beatPrecisedTrigged==true && measure <=2 ))
+       if (((measure>=1 && measure <=3 )  && beatTrigged==true) ||  (beatPrecised == 5+4 && beatPrecisedTrigged==true && measure <=2 ))
        {    
              key = 'k'; 
              keyReleased();       
@@ -33,14 +34,14 @@ void automationForMusicMouvement()
 
        if (measure==3 && beatTrigged==true)
 
-         {  key = ';'; // align direct phase motor
-            keyReleased();
+         { // key = ';'; // align direct phase motor
+           // keyReleased();
 
-            key = '=';
-            keyReleased();
+           // key = '=';
+           // keyReleased();
             
-            key = '9'; //Alig graphic
-            keyReleased();
+         //   key = '9'; //Alig graphic
+         //   keyReleased();
          
           }
 
@@ -53,15 +54,18 @@ void automationForMusicMouvement()
 
     
       
-       if ((measure>=6 && measure<=6) && beatTrigged==true)
+       if ((measure>=6 && measure<=6) && (beatPrecised ==1 || beatPrecised ==5+4 ) && beatPrecisedTrigged==true) 
        {   
              key = 'D';  
              phaseDirectToMotor();
-             key = 'D';  
-             phaseDirectToMotor();
-             key = 'D';  
-             phaseDirectToMotor();
+
+           //  key = 'D';  
+           //  phaseDirectToMotor();
+           //  key = 'D';  
+          //   phaseDirectToMotor();
        } 
+      
+
 
        if (measure==7 && beatTrigged==true)
 
@@ -76,17 +80,37 @@ void automationForMusicMouvement()
          
           }
         
-        if (measure>=7 && measure<=23 && (beatPrecised == 5 || beatPrecised == 1) && beatPrecisedTrigged==true) 
+        if (measure>=7 && measure<11 && (beatPrecised == 5+4 || beatPrecised == 1) && beatPrecisedTrigged==true) 
 
-        {   key = 'S';  
+        {   key = 's';  
            phaseDirectToMotor();  
          
          }
 
+        if ((measure==10) && (beatPrecised ==16) && beatPrecisedTrigged==true) 
+        {   
+             key = '9'; //Alig
+             keyReleased();
+       } 
+        
+        if (measure==11 && beatTrigged==true)
 
+        {    
+            key = ';'; // align direct phase motor
+            keyReleased();
 
+            key = '=';
+            keyReleased();
+         
+         }
 
-       if (measure>=11 && measure<=23 && beatPrecisedTrigged==true)
+       if (measure>=11 && measure<=16  && beatPrecisedTrigged==true) 
+       {
+             key = 'd';        
+             phaseDirectToMotor();
+       }  
+
+       if (measure>=17 && measure<=22  && beatPrecisedTrigged==true) 
        {
              key = 's';        
              phaseDirectToMotor();

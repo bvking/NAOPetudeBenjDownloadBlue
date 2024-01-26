@@ -67,7 +67,7 @@
     if (key == 's')
     {
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*1/8, 0, TWO_PI, 0, numberOfStep);   
+         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*1/16, 0, TWO_PI, 0, numberOfStep);   
           }
     }
 
@@ -83,7 +83,7 @@
     if (key == 'd')
     {
     for (int i = 0; i < networkSize; i++) {
-        lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*1/8/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
+        lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*1/16/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
          }
     }
 

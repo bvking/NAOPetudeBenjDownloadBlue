@@ -328,7 +328,19 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
         send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       rotate (-PI);
      }
+
       if (music_from_ableton_live == " mouvement ") 
+     { 
+      rotate (PI);
+      for (int i = 0; i < networkSize; i++)
+       {   
+         text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
+       }       
+        send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+      rotate (-PI);
+     }
+
+      if (music_from_ableton_live == " Dessine ") 
      { 
       rotate (PI);
       for (int i = 0; i < networkSize; i++)
