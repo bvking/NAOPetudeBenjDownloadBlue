@@ -87,22 +87,22 @@ void automationForMusicMouvement()
          
          }
 
-        if ((measure==10) && (beatPrecised ==16) && beatPrecisedTrigged==true) 
+        if ((measure==10) && beatPrecised ==16 && beatPrecisedTrigged==true) 
         {   
              key = '9'; //Alig
              keyReleased();
        } 
-        
-        if (measure==11 && beatTrigged==true)
 
-        {    
+       if (measure==11 && beatTrigged==true)
+
+       {    
             key = ';'; // align direct phase motor
             keyReleased();
 
             key = '=';
             keyReleased();
          
-         }
+       }
 
        if (measure>=11 && measure<=16  && beatPrecisedTrigged==true) 
        {
@@ -114,7 +114,29 @@ void automationForMusicMouvement()
        {
              key = 'd';        
              phaseDirectToMotor();
-       }  
+       } 
+
+            
+       if (measure>=23 && measure<=24 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+
+        {   key = 'w';  
+           phaseDirectToMotor();  
+         
+         } 
+
+        
+       if (measure==25  &&  beatPrecised == 1 && beatPrecisedTrigged==true) 
+       {
+            key = '9';
+            keyReleased();
+       } 
+
+         
+       if (measure==25  &&  beatPrecised == 3 && beatPrecisedTrigged==true) 
+       {
+          key= '=';
+            keyReleased();
+       } 
 
      /*  
 

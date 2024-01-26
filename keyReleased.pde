@@ -62,16 +62,13 @@ void keyReleased() {
     faz+=1;
     getOldPositionOfActiveOscillator(faz);
     }
-    /*  same as above?
-
+  
     if (key == '=' &&  (formerKeyMetro == '$' || formerKeyMetro == '*') )
      {  // realignement
      if (networkSize ==6){
      
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-0);
- 
-          //   dataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i]+ ActualVirtualPosition[i];
       }
 
      if (networkSize ==10){
@@ -88,10 +85,9 @@ void keyReleased() {
         dataMappedForMotorisedPosition[i]=ActualVirtualPosition[0];
       // lastActualPosition[i]= lastActualPosition[0];
       dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];
-       } 
-    
+       }     
     } // end realignement
-*/
+
 
   if (key == '=')
   {  
@@ -315,7 +311,7 @@ void keyReleased() {
   //*********************************************CIRCULAR
 
 
-  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 && music_from_ableton_live != " Dessine "  )
+  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 ) //  && music_from_ableton_live = " Dessine " 
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
