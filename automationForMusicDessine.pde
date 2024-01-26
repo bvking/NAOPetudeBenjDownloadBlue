@@ -125,18 +125,28 @@ void automationForMusicMouvement()
          } 
 
         
-       if (measure==25  &&  beatPrecised == 1 && beatPrecisedTrigged==true) 
+       if (measure==24  &&  beatPrecised == 16 && beatPrecisedTrigged==true) 
        {
             key = '9';
             keyReleased();
+             //  key= '=';
+        //    keyReleased();
        } 
 
          
-       if (measure==25  &&  beatPrecised == 3 && beatPrecisedTrigged==true) 
-       {
-          key= '=';
-            keyReleased();
+       if (measure>=25  &&  (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged==true) 
+       {     
+             key = 'S';        
+             phaseDirectToMotor();    
        } 
+
+      if (measure>=25  &&  (beatPrecised == 5 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+       {     
+             key = 'D';        
+             phaseDirectToMotor();    
+       } 
+
+
 
      /*  
 
