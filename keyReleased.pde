@@ -1,5 +1,10 @@
 void keyReleased() {
 
+  if ( music_from_ableton_live == " Dessine " ) 
+   {
+        phaseDirectToMotor();
+     }
+
    recordFrame();  // record event only when they are released
 
    if (keyCode == ALT){
@@ -310,7 +315,7 @@ void keyReleased() {
   //*********************************************CIRCULAR
 
 
-  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )
+  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 && music_from_ableton_live != " Dessine "  )
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {

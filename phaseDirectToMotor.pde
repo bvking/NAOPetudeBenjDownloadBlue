@@ -67,15 +67,15 @@
     if (key == 's')
     {
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*1/16, 0, TWO_PI, 0, numberOfStep);   
+         lastActualPosition[i]+= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1/16, 0, TWO_PI, 0, numberOfStep);   
           }
     }
 
 
-    if (key == 'S')
+    if (key == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
     {
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] + (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*1, 0, TWO_PI, 0, numberOfStep);   
+         lastActualPosition[i]-= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*1/16, 0, TWO_PI, 0, numberOfStep);   
           }
     }
 
@@ -83,15 +83,16 @@
     if (key == 'd')
     {
     for (int i = 0; i < networkSize; i++) {
-        lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*1/16/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
+        lastActualPosition[i]-= (int)  map ( TWO_PI*0.1/16/(networkSize)*(networkSize-0-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
          }
     }
 
    if (key == 'D') 
     {
              // front  TWO_PI/8/(networkSize)*(i)   behind?
+          // + =   TWO_PI*0.1/(networkSize)*(networkSize-1-i)
      for (int i = 0; i < networkSize; i++) {
-         lastActualPosition[i]= lastActualPosition[i] - (int)  map ( TWO_PI*1/(networkSize)*(networkSize-1-oscillatorBlocked-i), 0, TWO_PI, 0, numberOfStep);
+         lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/(networkSize)*(networkSize-1-i), 0, TWO_PI, 0, numberOfStep);
           }
      }
 
@@ -99,14 +100,14 @@
 
      {
       for (int i = 0; i < networkSize; i++) {
-           lastActualPosition[i]=lastActualPosition[i] - (int)  map ( TWO_PI*0.1/8/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
+           lastActualPosition[i]+=(int)  map ( TWO_PI*0.1/16/(networkSize-0-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
 
        if (key == 'F') 
      {
        for (int i = 0; i < networkSize; i++) {
-           lastActualPosition[i]=lastActualPosition[i] + (int)  map ( TWO_PI*0.1/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
+           lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
 

@@ -106,13 +106,13 @@ void automationForMusicMouvement()
 
        if (measure>=11 && measure<=16  && beatPrecisedTrigged==true) 
        {
-             key = 'd';        
+             key = 's';        
              phaseDirectToMotor();
        }  
 
-       if (measure>=17 && measure<=22  && beatPrecisedTrigged==true) 
+       if (measure>=17 && measure<=23  && beatPrecisedTrigged==true) 
        {
-             key = 's';        
+             key = 'd';        
              phaseDirectToMotor();
        }  
 
