@@ -14,7 +14,7 @@
        
        if (formerKeyMetro == '$')
         {
-      // lastActualPosition[networkSize-1-i]%= lastActualPosition[i] + numberOfStep;    // no meaning    
+   //    lastActualPosition[networkSize-1-i]%= lastActualPosition[i] + numberOfStep;    // no meaning    
          }
       }
       }
@@ -26,23 +26,17 @@
         {
          // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
 
-           net.phase[networkSize-1-i] = net.phase[networkSize-1-i] -  (i*TWO_PI/5)%PI/10; 
+       //    net.phase[networkSize-1-i] = net.phase[networkSize-1-i] -  (i*TWO_PI/5)%PI/10; 
 
            lastActualPosition[networkSize-1-i]= lastActualPosition[networkSize-1-i] - (int)  map ((i*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
 
            if (formerKeyMetro == '$')
            {
-           lastActualPosition[networkSize-1-i]%= numberOfStep;        
+        //   lastActualPosition[networkSize-1-i]%= numberOfStep;        
            }
-           
-
           }
       }
       
-     
-    
-
-
      if (key == 'R') {
   
     for (int i = 0; i < networkSize; i++) {
@@ -52,8 +46,7 @@
 
       //    net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
 
-            lastActualPosition[i]= lastActualPosition[i] - (int)  map ((i*TWO_PI/networkSize)%PI/(networkSize*3), 0, TWO_PI, 0, numberOfStep);
-      
+            lastActualPosition[i]= lastActualPosition[i] - (int)  map ((i*TWO_PI/networkSize)%PI/(networkSize*3), 0, TWO_PI, 0, numberOfStep);   
       }
     }
 
@@ -110,5 +103,50 @@
            lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
+
+      if (key == 'i')
+      {  // memory == 0 is the ball "behind"  the screen
+
+        oldMemoryi=memoryi;
+        memoryi=(memoryi-1);
+      
+        if ( memoryi==-1)
+         {
+         memoryi=networkSize-1;
+        oldMemoryi=0;
+         }
+
+        for (int i = 0; i < (networkSize-0); i++)
+        {  
+        lastOldActualPosition[i]=lastActualPosition[i];
+        }
+    
+        for (int i = 1; i < (networkSize-0); i++) 
+        {  
+        lastActualPosition[i-1]= lastOldActualPosition[i];
+        }
+
+        lastActualPosition[networkSize-1]=  lastOldActualPosition[0];
+      }
+
+     if (key == 'u')
+      {  // memory == 0 is the ball "behind"  the screen
+
+       oldMemoryi=memoryi;
+       memoryi=(memoryi+1);
+       memoryi%=networkSize;
+
+        for (int i = 0; i < (networkSize-0); i++)
+        {  
+        lastOldActualPosition[i]=lastActualPosition[i];
+        }
+
+       for (int i = 1; i < (networkSize-0); i++)
+       {  
+       lastActualPosition[i]=lastOldActualPosition[i-1];       
+       }
+       lastActualPosition[0]= lastOldActualPosition[networkSize-1];
+
+   } 
 
   }

@@ -6,7 +6,7 @@ void automationForMusicMouvement()
      
    
       if (measure==1 && beatTrigged==true)
-       speedDelta=3;
+       speedDelta=2;
 
          { // modeCircular=true;
              key = '°'; //no speed
@@ -107,9 +107,11 @@ void automationForMusicMouvement()
 
        if (measure>=11 && measure<=16  && beatPrecisedTrigged==true) 
        {
+        speedDelta=2;
+
              key = 's';        
              phaseDirectToMotor();
-              key = 's';        
+             key = 's';        
              phaseDirectToMotor();
        }  
 
@@ -117,7 +119,7 @@ void automationForMusicMouvement()
        {
              key = 'd';        
              phaseDirectToMotor();
-                key = 'd';        
+             key = 'd';        
              phaseDirectToMotor();
        } 
 
@@ -133,8 +135,11 @@ void automationForMusicMouvement()
        if (measure==24  &&  beatPrecised == 16 && beatPrecisedTrigged==true) 
        {
          
-       //     key= '=';
-       //     keyReleased();
+            key= '=';
+            keyReleased();
+               key = 'S';        
+             phaseDirectToMotor(); 
+             speedDelta=3;
        } 
 
          
@@ -155,12 +160,13 @@ void automationForMusicMouvement()
        } 
 
 
-       if (measure==28 && beatPrecisedTrigged==true) 
+       if (measure>=28 && measure<32 && beatPrecisedTrigged==true) 
     
        {     
           for (int i = 0; i < networkSize; i++) {
-       //    lastActualPosition[i]+= (int)  map ( PI/16, 0, TWO_PI, 0, numberOfStep);
+             lastActualPosition[i]+= (int)  map ( PI/16, 0, TWO_PI, 0, numberOfStep);
           }
+        }
 
         
        if (measure==29 &&  beatPrecised == 1 && beatPrecisedTrigged==true) 
@@ -170,141 +176,88 @@ void automationForMusicMouvement()
             keyReleased();
           }
 
-        if (measure>=28 && measure<=35 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+        if (measure>=28 && measure<32 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
 
-        {   key = 'r';  
+        {
+           //formerKeyMetro = '$';
+            key = 'w';  
            phaseDirectToMotor();  
          
          } 
 
-
         
-
-
-
-       
-          /*
-            key = '1';
+        if (measure==32 &&  beatPrecised == 1 && beatPrecisedTrigged==true) 
+    
+       {     
+            key= '=';
             keyReleased();
-            phasePattern();
-            */
-             } 
-             
-
-
-
-     /*  
-
-        if ((measure>=11 && measure<=14) && beatPrecisedTrigged==true)
-       {
-             key = 'r'; //Alig        
-             phaseDirectToMotor();
-       } 
-       if ((measure>=15 && measure<=18) && beatPrecisedTrigged==true)
-       {
-             key = 'R'; //Alig        
-             phaseDirectToMotor();
-       }  
-        if ((measure>=19 && measure<=22) && beatPrecisedTrigged==true)
-       {
-             key = 'w'; //Alig        
-             phaseDirectToMotor();
-       } 
-       if ((measure>=23 && measure<=26) && beatPrecisedTrigged==true)
-       {
-             key = 'W'; //Alig        
-             phaseDirectToMotor();
-       }  
-
-           if ((measure>=27 && measure<=30) && beatPrecisedTrigged==true)
-       { 
-             formerKeyMetro = '*';
-             key = 'W'; //Alig        
-             phaseDirectToMotor();
-       } 
-       if ((measure>=31 && measure<=34) && beatPrecisedTrigged==true)
-       {
-             key = 'w'; //Alig        
-             phaseDirectToMotor();
-       } 
-
-       */ 
-
-         
-
-      if (measure%2==0 && beatTrigged==true)
-          {
-           //  key = 'd'; //Alig
-            // key = '9'; //Alig
-            // phaseDirectToMotor();
-
-           //  keyReleased();
-
-
-          }
-     // phaseDirectToMotor() 
-
-      if ((measure+1)%(2+0)==0 && beatTrigged==true)
-          {
-            // key = 'f'; 
-            //  key = 'D';
-           //    phaseDirectToMotor();
-            // key = '9'; //Alig
-            // keyReleased();
-
-
           }
 
 
-      if ((measure>=3 && measure+1%3==0) && beatTrigged==true)
-         {
+
+            if (measure>=32 && measure%2==0 && measure<=35  &&  beatPrecisedTrigged==true) 
+       {      
+             key = 'r';        
+             phaseDirectToMotor();    
            
-        //    key = 'P'; 
-        //    keyReleased(); // decale une à une et revient dans l'alignement
-         }
+       } 
 
-       /*
+              if (measure>=32 && (measure+1)%2==0 && measure<=35  &&  beatPrecisedTrigged==true) 
+       {      
+             key = 'R';        
+             phaseDirectToMotor();    
+           
+       } 
 
-        if (measure== 7 && beatPrecised == 1 && beatPrecisedTrigged==true)
+              if (measure>=35 && measure%2==0 && measure<=38  &&  beatPrecisedTrigged==true) 
+       {      
+             key = 's';        
+             phaseDirectToMotor();    
+             key = 's';        
+             phaseDirectToMotor();    
+           
+       } 
+
+         if (measure>=35 && (measure+1)%2==0 && measure<=38  &&  beatPrecisedTrigged==true) 
          {
-            for (int i = 0; i < networkSize; i++) {    
-            net.naturalFrequency[i]=0.93;
-           }
-         }
+            key = 'd';        
+            phaseDirectToMotor();
+            key = 'd';        
+            phaseDirectToMotor();
+         }  
 
-        if ((measure>=8 && measure<=342 ) && beatPrecised == 2 && beatPrecisedTrigged==true)
-          {
-           key = 'u'; 
-           keyReleased(); // decale une à une et revient dans l'alignement
-          }
-        
-
-        if (measure%25==0 && beatTrigged==true)
+          if (measure>=38 && (measure+0)%2==0 && measure<=38  &&  beatPrecisedTrigged==true && beatPrecised%5==0)
          {
-             key = '9'; //Alig
-             keyReleased();
-            // key = 'F'; //Alig
-            // keyReleased();
-             key = 'F'; //Alig
-             keyReleased();
-         }
-        
-         if ((measure== 25) && beatPrecised == 1 && beatPrecisedTrigged==true)
-          {
-           formerKeyMetro = '*';
-          // keyReleased(); // decale une à une et revient dans l'alignement
-           for (int i = 0; i < networkSize; i++)
-                 {    
-                 net.naturalFrequency[i]=0.5;
-                 }
-          }
-            if (measure>25 && beatPrecised == 2 && beatPrecisedTrigged==true)
-          {
-           key = 'U'; 
-           keyReleased(); // decale une à une et revient dans l'alignement
-          }
+            key = 'i';        
+            phaseDirectToMotor();        
+         } 
 
-      */
+         if (measure>=39 && (measure+1)%2==0 && measure<=42  &&  beatPrecisedTrigged==true) 
+         {
+            key = 'd';        
+             phaseDirectToMotor();         
+         }  
+            if (measure>=40 && (measure+0)%2==0 && measure<=42  &&  beatPrecisedTrigged==true) 
+         {
+            key = 's';        
+             phaseDirectToMotor();      
+         }  
+
+            if (measure>=43  &&  (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+
+         {
+            key = 'i';        
+             phaseDirectToMotor();          
+           
+         } 
+
+          if (measure>=51 && beatPrecisedTrigged==true) 
+    
+       {     
+          for (int i = 0; i < networkSize; i++) {
+             lastActualPosition[i]+= (int)  map ( PI/16, 0, TWO_PI, 0, numberOfStep);
+          }
+        }
 
             if (measure%4==0 && beatTrigged==true)
          {
@@ -316,9 +269,10 @@ void automationForMusicMouvement()
 
         // key = 'F';keyReleased();
 
-   } 
+     }  
+  
 } 
-   // key='1'; keyReleased();
+
 
    
  

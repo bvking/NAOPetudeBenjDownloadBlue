@@ -671,6 +671,7 @@ if (oscillatorMaster > 0) {
             int[] dataMappedForMotorisedPosition  = new int[networkSize];
             int[] ActualVirtualPosition = new int[networkSize];
             int[] lastActualPosition  = new int[networkSize];
+            int[] lastOldActualPosition  = new int[networkSize];
             int[] oldActualVirtualPosition  = new int[networkSize];
             int[] PendularOldVirtualPosition  = new int[networkSize];
             int[] CircularOldVirtualPosition  = new int[networkSize];

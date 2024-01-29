@@ -33,12 +33,12 @@ void draw()
         trigEventWithAbletonSignal();
      }
 
-        if (music_from_ableton_live == " Dessine ")
-            {
+     if (music_from_ableton_live == " Dessine ")
+      {
 
               automationForMusicMouvement();
 
-            }
+      }
 
     
      if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
@@ -413,5 +413,7 @@ void draw()
       timeTosendData=millis();
      // println ("SEND DATA");
        }
+
+
       //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
  }
