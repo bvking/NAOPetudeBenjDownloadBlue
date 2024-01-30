@@ -16,7 +16,7 @@ public void settings() {
 boolean systemForBigMachine=true;
 int timeTosendData;
 
-int networkSize = 10;
+int networkSize = 9;
 //int networkSize = 6;
 
 int numberOfStep = 3200;
@@ -1102,7 +1102,7 @@ void setup() {
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
 
-                 networkSize = 10;
+                 networkSize = 9;
                  numberOfStep = 3200;
                   }
 

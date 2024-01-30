@@ -732,7 +732,8 @@ oldEncodeur[0]= encodeur[0];
   myMessage74.add(encoderTouched[4]);
   myMessage75.add(encoderTouched[5]);
 
-  if  (systemForBigMachine==false){
+  if  (systemForBigMachine==false)
+  {
   myMessage20.add(Pos[0]);
   myMessage21.add(Pos[1]);
   myMessage22.add(Pos[2]);
@@ -741,7 +742,8 @@ oldEncodeur[0]= encodeur[0];
   myMessage25.add(Pos[5]);
   }
 
-   if  (systemForBigMachine==true){
+   if  (systemForBigMachine==true)
+  {
   myMessage20.add(Pos[0]);
   myMessage21.add(Pos[1]);
   myMessage22.add(Pos[2]);
@@ -751,7 +753,10 @@ oldEncodeur[0]= encodeur[0];
   myMessage26.add(Pos[6]);
   myMessage27.add(Pos[7]);
   myMessage28.add(Pos[8]);
+  if (networkSize==10)
+  {
   myMessage29.add(Pos[9]);
+  }
   }
 
  /*  

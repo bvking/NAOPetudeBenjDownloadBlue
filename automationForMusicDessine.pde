@@ -280,7 +280,7 @@ void automationForMusicMouvement()
              phaseDirectToMotor();     
             } 
 
-            if (measure>40  && measure<=49 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+            if (measure>40  && measure<=43 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
             {
             key = 'u';        
             phaseDirectToMotor();        
@@ -330,7 +330,7 @@ void automationForMusicMouvement()
              phaseDirectToMotor();                
            } 
 
-           if (measure>=51 && (beatPrecised >= 13 )   
+           if (measure==51 && beatPrecised >= 13 )   
            {    
             int repeatEachNumberOfFrame = 1; 
             if (frameCount%repeatEachNumberOfFrame==0)
@@ -341,6 +341,20 @@ void automationForMusicMouvement()
               }
              }
            }
+
+              if (measure>=52  )   
+           {    
+            int repeatEachNumberOfFrame = 1; 
+            if (frameCount%repeatEachNumberOfFrame==0)
+             {
+              for (int i = 0; i < networkSize; i++)
+              {
+              lastActualPosition[i]+= (int)  map ( PI*repeatEachNumberOfFrame/5/16, 0, TWO_PI, 0, numberOfStep);
+              }
+             }
+           }
+
+
 
          if (measure%4==0 && beatTrigged==true)
          {
