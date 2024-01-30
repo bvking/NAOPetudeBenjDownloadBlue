@@ -171,8 +171,7 @@ void automationForMusicMouvement()
               }
              }
         }
-
-        
+      
        if (measure==29 &&  beatPrecised == 1 && beatPrecisedTrigged==true)  
        {     
             key= '=';
@@ -184,12 +183,10 @@ void automationForMusicMouvement()
            //formerKeyMetro = '$';
             key = 'w';  
            phaseDirectToMotor();  
-         
-         } 
+       } 
 
         
-        if (measure==32 &&  beatPrecised == 1 && beatPrecisedTrigged==true) 
-    
+        if (measure==32 &&  beatPrecised == 1 && beatPrecisedTrigged==true)     
        {     
             key= '=';
             keyReleased();
@@ -197,85 +194,153 @@ void automationForMusicMouvement()
 
 
 
-            if (measure>=32 && measure%2==0 && measure<=35  &&  beatPrecisedTrigged==true) 
-            {      
+            if (measure>=32 && measure%2==0 && measure<=35  ) // &&  beatPrecisedTrigged==true
+            {  
+            int repeatEachNumberOfFrame = 5; 
+            if (frameCount%repeatEachNumberOfFrame==0)
+             {    
              key = 'r';        
-             phaseDirectToMotor();    
-           
+             phaseDirectToMotor(); 
+              }    
             } 
  
-            if (measure>=32 && (measure+1)%2==0 && measure<=35  &&  beatPrecisedTrigged==true) 
-            {      
-             key = 'R';        
-             phaseDirectToMotor();    
-           
+            if (measure>=32 && (measure+1)%2==0 && measure<=35 ) //  &&  beatPrecisedTrigged==true) 
+            {  
+              int repeatEachNumberOfFrame = 5; 
+             if (frameCount%repeatEachNumberOfFrame==0)
+             {       
+              key = 'R';        
+              phaseDirectToMotor(); 
+              }    
+            }
+
+            if (measure==34 && beatPrecised>=8 )
+            {  
+             int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 's';        
+             phaseDirectToMotor();   
+             key = 's';        
+             phaseDirectToMotor();          
+             }         
+            }  
+
+            if (measure>=35 && measure%2==0 && measure<=38 )
+            {  
+             int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 's';        
+             phaseDirectToMotor();   
+             key = 's';        
+             phaseDirectToMotor();          
+             }         
             } 
 
-            if (measure>=35 && measure%2==0 && measure<=38  &&  beatPrecisedTrigged==true) 
-             {      
-             key = 's';        
+            if (measure>=35 && (measure+1)%2==0 && measure<=38 ) 
+            {
+             int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 'd';        
              phaseDirectToMotor();    
-             key = 's';        
-             phaseDirectToMotor();    
-           
-            } 
+             key = 'd';        
+             phaseDirectToMotor(); 
+             }         
+            }
 
-         if (measure>=35 && (measure+1)%2==0 && measure<=38  &&  beatPrecisedTrigged==true) 
-         {
-            key = 'd';        
-            phaseDirectToMotor();
-            key = 'd';        
-            phaseDirectToMotor();
-         }  
-
-          if (measure>=38 && (measure+0)%2==0 && measure<=40  &&  beatPrecisedTrigged==true && beatPrecised%5==0)
-         {
+            if (measure==38  && beatPrecisedTrigged==true && beatPrecised%13==0)
+            {
             key = 'u';        
             phaseDirectToMotor();        
-         } 
+            } 
 
-         if (measure>=39 && (measure+1)%2==0 && measure<=43  &&  beatPrecisedTrigged==true &&  (beatPrecised != 15)) 
-         {
-            key = 'd';        
+            if (measure==39  && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+            {
+            key = 'u';        
+            phaseDirectToMotor();        
+            }
+
+                if (measure==40  && (beatPrecised == 9) && beatPrecisedTrigged==true) 
+            { 
+             key= '=';
+            keyReleased();
+             }
+
+            if (measure==40  && (beatPrecised == 13) && beatPrecisedTrigged==true) 
+            {
+              key = 'r';        
+             phaseDirectToMotor();   
+              key = 'r';        
+             phaseDirectToMotor(); 
+              key = 'r';        
+             phaseDirectToMotor(); 
+              key = 'r';        
+             phaseDirectToMotor();     
+            } 
+
+            if (measure>40  && measure<=49 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged==true) 
+            {
+            key = 'u';        
+            phaseDirectToMotor();        
+            } 
+
+            /* 
+            if (measure>=39 && (measure+1)%2==0 && measure<=43  &&  (beatPrecised < 16)) //  &&  beatPrecisedTrigged==true
+            {
+             int repeatEachNumberOfFrame = 2; 
+             if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 'd';        
              phaseDirectToMotor();         
-         }
+             }         
+            }        
+            
+            if (measure>=40 && (measure+0)%2==0 && measure<=43   &&  (beatPrecised < 16)) // &&  beatPrecisedTrigged==true
+            {
+             int repeatEachNumberOfFrame = 2; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+              { 
+              key = 's';        
+              phaseDirectToMotor();
+              }       
+            }  
+          */
 
-         if (measure>=40 && (measure+0)%2==0 && measure<=43  &&  beatPrecisedTrigged==true &&  (beatPrecised != 15)) 
-         {
-            key = 's';        
-             phaseDirectToMotor();      
-         }  
-
-         if (measure==43  &&  (beatPrecised == 15) && beatPrecisedTrigged==true) 
-         {
+            if (measure==43  &&  (beatPrecised == 15) && beatPrecisedTrigged==true) 
+            {
              key = '=';        
              phaseDirectToMotor();                   
-         }
+            }
 
-         if (measure==44 && beatPrecisedTrigged==true) 
-         {
+           if (measure==44) 
+           {
+            int repeatEachNumberOfFrame = 5; 
+             if (frameCount%repeatEachNumberOfFrame==0)
+             { 
              key = 'r';        
-             phaseDirectToMotor();   
-                   
-         }
+             phaseDirectToMotor();  
+            }          
+           }
 
-         if (measure>=44 &&  measure<=60 && (beatPrecised == 1 || beatPrecised == 9 ) && beatPrecisedTrigged==true) 
-         {speedDelta = 3;
+           if (measure>=44 &&  measure<=60 && (beatPrecised == 1 || beatPrecised == 9 ) && beatPrecisedTrigged==true) 
+           { speedDelta = 3;
              key = 'u';        
              phaseDirectToMotor();                
-         } 
+           } 
 
-         if (measure>=51 )   
-         {    
-            int ratioSpeed = 1; 
-            if (frameCount%ratioSpeed==0)
+           if (measure>=51 && (beatPrecised >= 13 )   
+           {    
+            int repeatEachNumberOfFrame = 1; 
+            if (frameCount%repeatEachNumberOfFrame==0)
              {
               for (int i = 0; i < networkSize; i++)
               {
-              lastActualPosition[i]+= (int)  map ( PI*ratioSpeed/5/16, 0, TWO_PI, 0, numberOfStep);
+              lastActualPosition[i]+= (int)  map ( PI*repeatEachNumberOfFrame/5/16, 0, TWO_PI, 0, numberOfStep);
               }
              }
-         }
+           }
 
          if (measure%4==0 && beatTrigged==true)
          {
@@ -287,7 +352,7 @@ void automationForMusicMouvement()
 
         // key = 'F';keyReleased();
 
-     }  
+    }  
   
 } 
 
