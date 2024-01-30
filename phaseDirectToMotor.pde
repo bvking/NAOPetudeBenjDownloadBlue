@@ -1,7 +1,23 @@
   void phaseDirectToMotor() // mixed Com
  {   
-       oscillatorBlocked=8;  // retour normal 
+       oscillatorBlocked=9;  // retour normal 
      text (" osc " + oscillatorBlocked, 200, 200);
+
+
+      if (key == 'ç')
+      {
+         float [] realign = new float [networkSize];
+          for (int i = 1; i < networkSize; i++) {
+           realign[i] = lastActualPosition[i]%lastActualPosition[0]; //+PI/2;
+           lastActualPosition[i]+=  lastActualPosition[i] - realign[i];
+          // net.phase[i]%=TWO_PI;
+
+        
+      }
+      }
+
+
+
       if (key == 'w')
       {
        for (int i = 0; i < networkSize; i++)
@@ -10,7 +26,7 @@
 
       //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
 
-       lastActualPosition[networkSize-1-i]+=  (int)  map ((i+1*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
+       lastActualPosition[networkSize-1-i]+=  (int)  map ((i+1/4*TWO_PI/5)%PI/40, 0, TWO_PI, 0, numberOfStep);
        
        if (formerKeyMetro == '$')
         {
@@ -28,7 +44,7 @@
 
        //    net.phase[networkSize-1-i] = net.phase[networkSize-1-i] -  (i*TWO_PI/5)%PI/10; 
 
-           lastActualPosition[networkSize-1-i]= lastActualPosition[networkSize-1-i] - (int)  map ((i*TWO_PI/5)%PI/10, 0, TWO_PI, 0, numberOfStep);
+           lastActualPosition[networkSize-1-i]= lastActualPosition[networkSize-1-i] - (int)  map ((i*1/4*TWO_PI/5)%PI/40, 0, TWO_PI, 0, numberOfStep);
 
            if (formerKeyMetro == '$')
            {
@@ -138,7 +154,7 @@
 
         for (int i = 0; i < (networkSize-0); i++)
         {  
-        lastOldActualPosition[i]=lastActualPosition[i];
+        lastOldActualPosition[i]=lastActualPosition[i]+numberOfStep/6;
         }
 
        for (int i = 1; i < (networkSize-0); i++)
@@ -148,5 +164,7 @@
        lastActualPosition[0]= lastOldActualPosition[networkSize-1];
 
    } 
+
+   //  key = '#';
 
   }
