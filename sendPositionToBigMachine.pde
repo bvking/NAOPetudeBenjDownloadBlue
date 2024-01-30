@@ -77,6 +77,26 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
       + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
     }
 
+     if ( networkSize == 9)
+    {
+    
+     dataFromMode = "<"
+    
+      + 0 + "," + dataMappedForMotorisedBigMachine[8] + ","
+      + dataMappedForMotorisedBigMachine[7] + "," + dataMappedForMotorisedBigMachine[6] + ","
+      + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + ","
+      + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
+      + dataMappedForMotorisedBigMachine[1] + "," + dataMappedForMotorisedBigMachine[0] + ","      // 
+   
+      +  speedDelta + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + ","
+    
+        //  +0+","+0+","+0+","+0+","+0+","+0+","
+    
+      + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
+    
+      + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
+    }
+
     
     if (computeData <-  1) {
         dataTransformed = " BigMachine SpeedDelta  dataNotComputeInTeensy from mode ";
