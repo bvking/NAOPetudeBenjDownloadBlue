@@ -1,5 +1,6 @@
 void automationForMusicMouvement()
  {
+//
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
       if (measure==1 && beatTrigged==true)
@@ -12,6 +13,7 @@ void automationForMusicMouvement()
              keyReleased();
              memoryi=networkSize-1;
 
+key = 'F';  
            //   key = 'k'; //Alig
            //  keyReleased();
      
@@ -66,6 +68,7 @@ void automationForMusicMouvement()
              key = 'D';  
              phaseDirectToMotor();
        } 
+//
       
 
 
@@ -335,8 +338,12 @@ void automationForMusicMouvement()
             int repeatEachNumberOfFrame = 5; 
              if (frameCount%repeatEachNumberOfFrame==0)
              { 
-            key = 'F';        
+           //
+              
+key = 'F';  
              phaseDirectToMotor();  
+            
+key = 'F';        
             }          
            }
 
