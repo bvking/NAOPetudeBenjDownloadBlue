@@ -1,3 +1,6 @@
+    boolean higerPostion;
+  
+
   void phaseDirectToMotor() // mixed Com
  {   
        oscillatorBlocked=9;  // retour normal 
@@ -5,15 +8,36 @@
 
 
       if (key == 'ç')
-      {
-         float [] realign = new float [networkSize];
-          for (int i = 1; i < networkSize; i++) {
-           realign[i] = lastActualPosition[i]%lastActualPosition[0]; //+PI/2;
-           lastActualPosition[i]+=  lastActualPosition[i] - realign[i];
-          // net.phase[i]%=TWO_PI;
 
-        
-      }
+      {
+          float [] realign = new float [networkSize];
+      
+
+        if (lastActualPosition[networkSize-1]> lastActualPosition[0])
+        higerPostion = true;
+        {  
+          for (int i = 0; i < networkSize; i++)
+           {
+           realign[i] = lastActualPosition[networkSize-1]%(lastActualPosition[networkSize-1]+(numberOfStep)); //+PI/2;
+           lastActualPosition[i] = (int) realign[i];
+            println (" HIGER POSITIO " + higerPostion );
+           }
+      
+        }
+  
+
+        if (lastActualPosition[networkSize-1]< lastActualPosition[0])
+        {
+          higerPostion = false;
+           for (int i = 0; i < networkSize; i++) {
+           realign[i] = lastActualPosition[0]%(lastActualPosition[0]+(numberOfStep)); //+PI/2;
+         //   realign[i] = lastActualPosition[networkSize-1]%(lastActualPosition[networkSize-1]+(numberOfStep)); //+PI/2;
+           lastActualPosition[i] = (int) realign[i];
+           println (" HIGER POSITIO " + higerPostion );
+           }
+
+        }
+
       }
 
 
@@ -105,7 +129,7 @@
           }
      }
 
-    if (key == 'f') // no way
+    if (key == 'f') // as 'S'
 
      {
       for (int i = 0; i < networkSize; i++) {
@@ -116,7 +140,7 @@
        if (key == 'F') 
      {
        for (int i = 0; i < networkSize; i++) {
-           lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/(networkSize-1-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
+           lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/(networkSize-0-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
 
