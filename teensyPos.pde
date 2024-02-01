@@ -350,12 +350,10 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
         send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       rotate (-PI);
      }
-
-
-
        rotate(-PI/2);   
  
 }
 
      
+
 
