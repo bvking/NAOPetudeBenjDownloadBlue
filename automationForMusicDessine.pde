@@ -12,8 +12,6 @@ void automationForMusicMouvement()
              key = '9'; //Alig
              keyReleased();
              memoryi=networkSize-1;
-
-key = 'F';  
            //   key = 'k'; //Alig
            //  keyReleased();
      
@@ -346,15 +344,19 @@ key = 'F';
              { 
            //
               
-             key = 'F';  
+             key = 'f';  
+             phaseDirectToMotor();  
+              key = 'f';  
+             phaseDirectToMotor(); 
+             key = 'f';  
              phaseDirectToMotor();  
             
     
             }          
            }
 
-           if (measure>=44 &&  measure<=50 && (beatPrecised == 1 || beatPrecised == 9 ) && beatPrecisedTrigged==true) 
-           { speedDelta = 3;
+           if (measure>=45 &&  measure<=50 && (beatPrecised == 1 || beatPrecised == 9 ) && beatPrecisedTrigged==true) 
+           { //speedDelta = 3;
              key = 'u';        
              phaseDirectToMotor();                
            } 
