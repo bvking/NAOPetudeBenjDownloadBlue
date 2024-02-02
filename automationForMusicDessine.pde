@@ -343,6 +343,8 @@ void automationForMusicMouvement()
              if (frameCount%repeatEachNumberOfFrame==0)
              { 
            //
+            key = 'F';  
+             phaseDirectToMotor();  
               
              key = 'f';  
              phaseDirectToMotor();  
