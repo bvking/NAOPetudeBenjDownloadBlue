@@ -189,6 +189,27 @@
 
    } 
 
+
+     if (key == 'U')
+      {  // memory == 0 is the ball "behind"  the screen
+
+       oldMemoryi=memoryi;
+       memoryi=(memoryi+1);
+       memoryi%=networkSize;
+
+        for (int i = 0; i < (networkSize-0); i++)
+        {  
+        lastOldActualPosition[i]=lastActualPosition[i]+numberOfStep/2;
+        }
+
+       for (int i = 1; i < (networkSize-0); i++)
+       {  
+       lastActualPosition[i]=lastOldActualPosition[i-1];       
+       }
+       lastActualPosition[0]= lastOldActualPosition[networkSize-1];
+
+   } 
+
    //  key = '#';
 
   }
