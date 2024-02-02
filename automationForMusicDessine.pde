@@ -47,7 +47,7 @@ void automationForMusicMouvement()
 
       if (measure>=3 && measure< 6 ) 
          {
-             int repeatEachNumberOfFrame = 2; 
+             int repeatEachNumberOfFrame = 30; 
               if (frameCount%repeatEachNumberOfFrame==0)
              {  
              key = 's';        
