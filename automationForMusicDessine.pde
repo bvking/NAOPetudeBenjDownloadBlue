@@ -102,7 +102,7 @@ void automationForMusicMouvement()
          
        }
 
-       if (measure>=11 && measure<=16  && beatPrecised>0) 
+       if (measure>=11 && measure<=12  && beatPrecised>0) 
        {
         speedDelta=2;
 
@@ -111,15 +111,82 @@ void automationForMusicMouvement()
              {  
              key = 'd';        
              phaseDirectToMotor();
+              key = 'd';        
+             phaseDirectToMotor();
              }   
        }  
 
-       if (measure>=17 && measure<=23  && beatPrecised<17) 
+       if (measure>=13 && measure<=14  && beatPrecised<17) 
        {
             int repeatEachNumberOfFrame = 1; 
               if (frameCount%repeatEachNumberOfFrame==0)
              {  
              key = 's';        
+             phaseDirectToMotor();
+               key = 's';        
+             phaseDirectToMotor();
+             }   
+       } 
+
+
+       if (measure>=15 && measure<=16  && beatPrecised>0) 
+       {
+        speedDelta=2;
+
+           int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 'd';        
+             phaseDirectToMotor();
+              key = 'd';        
+             phaseDirectToMotor();
+             }   
+       }  
+
+       if (measure>=17 && measure<=18  && beatPrecised<17) 
+       {
+            int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 's';        
+             phaseDirectToMotor();
+               key = 's';        
+             phaseDirectToMotor();
+             }   
+       } 
+
+        if (measure==17 && beatTrigged==true)
+
+       {    
+            key = 'w';
+            phaseDirectToMotor();
+            key = 'w';
+            phaseDirectToMotor();
+         
+       }
+
+        if (measure>=17 && measure<=20  && beatPrecisedTrigged==true) 
+       {
+        speedDelta=3;
+
+           int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 'd';        
+             phaseDirectToMotor();
+              key = 'd';        
+             phaseDirectToMotor();
+             }   
+       }  
+
+       if (measure>=20 && measure<=23  && beatPrecisedTrigged==true)
+       {
+            int repeatEachNumberOfFrame = 1; 
+              if (frameCount%repeatEachNumberOfFrame==0)
+             {  
+             key = 's';        
+             phaseDirectToMotor();
+              key = 's';        
              phaseDirectToMotor();
              }   
        } 
@@ -137,7 +204,9 @@ void automationForMusicMouvement()
           int repeatEachNumberOfFrame = 8; 
               if (frameCount%repeatEachNumberOfFrame==0)
              {  
-             key = 'r';        
+             key = 'W';        
+             phaseDirectToMotor();
+               key = 'W';        
              phaseDirectToMotor();
              }  
          
@@ -173,7 +242,7 @@ void automationForMusicMouvement()
        } 
 
 
-       if (measure>=28 && measure<32 && beatPrecisedTrigged==true)  
+       if (measure>28 && measure<32 && beatPrecisedTrigged==true)  
        {     
            int ratioSpeed = 1; 
             if (frameCount%ratioSpeed==0)
@@ -217,6 +286,7 @@ void automationForMusicMouvement()
             int repeatEachNumberOfFrame = 5; 
             if (frameCount%repeatEachNumberOfFrame==0)
              {    
+              textSize(200);
              key = 'R';        
              phaseDirectToMotor(); 
               key = 'R';        
@@ -228,7 +298,8 @@ void automationForMusicMouvement()
             {  
               int repeatEachNumberOfFrame = 5; 
              if (frameCount%repeatEachNumberOfFrame==0)
-             {       
+             { 
+                 textSize(400);      
               key = 'r';        
               phaseDirectToMotor(); 
                 key = 'r';        
@@ -337,23 +408,14 @@ void automationForMusicMouvement()
         //     phaseDirectToMotor();                   
             }
 
-           if (measure==44) 
+           if (measure==44 && beatPrecisedTrigged==true) 
            {
-            int repeatEachNumberOfFrame = 5; 
+            int repeatEachNumberOfFrame = 1; 
              if (frameCount%repeatEachNumberOfFrame==0)
              { 
-           //
-            key = 'F';  
-             phaseDirectToMotor();  
-              
-             key = 'f';  
-             phaseDirectToMotor();  
-              key = 'f';  
-             phaseDirectToMotor(); 
-             key = 'f';  
-             phaseDirectToMotor();  
-            
     
+             key = 'f';  
+             phaseDirectToMotor();  
             }          
            }
 
@@ -369,7 +431,7 @@ void automationForMusicMouvement()
              phaseDirectToMotor(); 
               }    
 
-            if (measure==51 && beatPrecised ==9 && beatPrecisedTrigged==true)   // align
+            if (measure==51 && beatPrecised ==9 && beatPrecisedTrigged==true)   //pas trop car revient en arriere
            { 
              
              key = 'r';        
@@ -388,16 +450,7 @@ void automationForMusicMouvement()
              phaseDirectToMotor(); 
              key = 'r';        
              phaseDirectToMotor();  
-              key = 'r';        
-             phaseDirectToMotor();   
-             key = 'r';        
-             phaseDirectToMotor(); 
-             /*
-             key = 'r';        
-             phaseDirectToMotor(); 
-             key = 'r';        
-             phaseDirectToMotor();  
-             */
+         
              } 
 
            if (measure==51 && beatPrecised >= 13 )   // ROTATION
