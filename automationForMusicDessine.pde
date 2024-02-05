@@ -260,15 +260,12 @@ void automationForMusicMouvement()
          //   keyReleased();
        }
 
-      if (measure>=28 && measure<32  && beatPrecisedTrigged!=true) 
-       {
-            int repeatEachNumberOfFrame = 8; 
-             if (frameCount%repeatEachNumberOfFrame==0)
-             {  
+      if (measure>=28 && measure<32  && beatPrecised%2==0 && beatPrecisedTrigged==true) 
+       { 
             // key = 'w'; 
              key = 'r';        
              phaseDirectToMotor();
-             }  
+             
        } 
 
         
