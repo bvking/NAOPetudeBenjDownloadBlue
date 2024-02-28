@@ -33,7 +33,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             if (music_from_ableton_live == " Dessine ")
             {
 
-               automationForMusicMouvement();
+             //  automationForMusicMouvement();
 
             }
             
