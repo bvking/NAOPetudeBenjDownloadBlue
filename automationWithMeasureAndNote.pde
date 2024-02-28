@@ -501,9 +501,12 @@ void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
 
 void trigBeatWithMeasure()
 {
+
   if (formerBeatPrecised!=beatPrecised) {
     beatPrecisedTrigged=true;
-  } else  beatPrecisedTrigged=false;
+
+  }
+   else  beatPrecisedTrigged=false;
 
   if (formerMeasure!=measure) {
     beatTrigged=true;
@@ -512,8 +515,31 @@ void trigBeatWithMeasure()
     formerFrameBeat=frameCount;
   } else beatTrigged=false;
 
-  if (formerBeatPrecised!=beatPrecised) {
+  if (formerBeatPrecised!=beatPrecised)
+   {
     beatPrecisedTrigged=true;
     println(beatPrecisedTrigged);
-  } else  beatPrecisedTrigged=false;
+  }
+  
+   else  beatPrecisedTrigged=false;
+  
+
+   shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
+
+   if  (beatTrigged==true && shapeLfoMode == 30)
+   {
+    countControlDr-=1;
+   }
+
+   if  (beatTrigged==true && shapeLfoMode == 10)
+   {
+    countControlDr+=1;
+   }
+
 }
+
+
+
+
+
+

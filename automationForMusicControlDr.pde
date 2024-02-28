@@ -1,10 +1,11 @@
-float oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor signal from AbletonLive
+int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor signal from AbletonLive
 
 void mapSignal2ToMotor() {
+    
     oldOldSignal2controlDr=oldSignal2controlDr;
     oldSignal2controlDr=signal2controlDr;
-    signal2controlDr= map (signal[2], 0, 1, 0, numberOfStep);
-
+    signal2controlDr= (int) map (signal[2], 0, 1, 0, numberOfStep);
+  
  
         for(int i = 0; i <  networkSize - 0; i += 1)
          { 
@@ -494,6 +495,8 @@ void automationForMusicControlDr()
            }
 
            if (measure>=45 &&  measure<=50 && (beatPrecised == 1 || beatPrecised == 9 ) && beatPrecisedTrigged==true) 
+
+
            { //speedDelta = 3;
              key = 'u';        
              phaseDirectToMotor();                

@@ -22,6 +22,11 @@ int networkSize = 10;
 int numberOfStep = 3200;
 //int numberOfStep = 6400;
 
+int countControlDr ;   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
+int shapeLfoMode = 10;  //lfo UP CounterWay
+
+float shapeLfoToCount=1;  // lfo up
+
 
 
 boolean samplingWithMouse = false;
@@ -83,6 +88,7 @@ float [] oldPhaseMapped = new float [networkSize];
 int [] specialPhase =new int [networkSize];
 int [] OldSpecialPhase =new int [networkSize];
 int  [] positionToFollow =new int [networkSize];
+int  [] positionFromMotorPhase =new int [networkSize];
 
 float[] deltaOldPhaseActualPhase = new float[networkSize];
 

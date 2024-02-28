@@ -1,9 +1,17 @@
 int dataLFO, lastDataLfo;
 float positionFromLive;
+//int shapeLfoToCount;
+float shapeLfo;
 
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
 void oscEvent(OscMessage theMsg) {
+
+   if (theMsg.checkAddrPattern("/shapeLfoToCount")==true) {
+    shapeLfo = theMsg.get(0).floatValue();
+    shapeLfoToCount = (shapeLfo*10.0);
+ 
+  }
 
    if (theMsg.checkAddrPattern("/positionFromLive")==true) {
     positionFromLive = theMsg.get(0).floatValue();

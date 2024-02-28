@@ -2,7 +2,11 @@ void keyReleased() {
 
   if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
-        phaseDirectToMotor();
+         key=char (Key);
+     //   phaseDirectToMotor();
+
+    // automationForMusicMouvement();
+       
      }
 
    recordFrame();  // record event only when they are released

@@ -1,4 +1,12 @@
 void keyPressed() {
+
+    if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
+   {
+      //  key=char(Key);
+      //  phaseDirectToMotor();
+      //
+       
+     }
   
   // reBoot();
   // to modulate Knob with control controlIP5knob
