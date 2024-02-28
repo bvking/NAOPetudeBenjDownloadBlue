@@ -36,7 +36,7 @@ void draw()
 
       if (music_from_ableton_live == " controlDr ")
       {
-        automationForMusicMouvement();
+        automationForMusicControlDr();
       }
 
      if (music_from_ableton_live == " Dessine ")
