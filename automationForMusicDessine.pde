@@ -1,6 +1,6 @@
 void automationForMusicMouvement()
  {
-//
+
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
       if (measure==1 && beatTrigged==true)
@@ -66,7 +66,7 @@ void automationForMusicMouvement()
              key = 'D';  
              phaseDirectToMotor();
        } 
-//
+     //
       
 
 
@@ -489,15 +489,45 @@ void automationForMusicMouvement()
                //   key = 'F';keyReleased();
                //   key = 'F';keyReleased();
               }
-             }
 
+            }
+
+            // STOP HERE
 
             signal2controlDr= map (signal[2], 0, 1, 0, numberOfStep);
+           
+            if(key != '#') // q is used to preStart speed of repetio
+            {
 
- 
-            for (int i = 0; i < networkSize; i++) {
-           lastActualPosition[i]= (int)  map ( signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+               if(key != 'q') // q is used to preStart speed of repetio
+             {
+            
+             if (modeStartKeyToFollow == " followSignal2 ")
+                 {
+                  phaseDirectToMotor();
+                    for (int i = 0; i < networkSize; i += 1)
+                      {
+                        
+                         phasePatternFollow[i] = lastActualPosition[i]; //
+                        // phasePatternFollow[i] += net.phase[i];
+                       //  phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
+                      }
+                 }
+            
+             key = 'q';
+
+              }
+
+             key = '#';
+
             }
+              
+            for (int i = 0; i < networkSize; i++) {
+             phaseSigna2Followed[i]= (int)  map ( signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+             lastActualPosition[i] +=(int) phaseSigna2Followed[i] +(int) phasePatternFollow[i];  
+            }
+         // key = '#';
+      }
 
      /*
            for(int i = 0; i <  networkSize - 0; i += 1)
@@ -528,9 +558,8 @@ void automationForMusicMouvement()
     */
 
 
-    }  
-  
-} 
+  }  
+ 
 
 
    

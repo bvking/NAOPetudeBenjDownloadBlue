@@ -181,6 +181,7 @@ if (oscillatorMaster > 0) {
             int[] encodeur = new int[networkSize];
             int[] readPositionEncoder = new int[networkSize];
             float[] newPosFollowed = new float[networkSize]; // followOppositeWay
+            float[] phaseSigna2Followed = new float[networkSize]; // followOppositeWay
             float[] newPosFollowedWithoutPropagation = new float[networkSize]; // followOppositeWay
             
             
@@ -1099,6 +1100,9 @@ void setup() {
                    music_from_ableton_live = " Dessine ";
                   //automationForMusicMouvement()               
                   keyMode = " trigEventWithAbletonSignal "; 
+
+                  modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
+
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
 
@@ -1110,8 +1114,11 @@ void setup() {
                  {
                  // samplingWithTeensy3_5 = true;
                  // music_from_ableton_live = " pleasureKraft ";  
-                  music_from_ableton_live = " controlDr ";               
-                  keyMode = " trigEventWithAbletonSignal "; 
+                    keyMode = " trigEventWithAbletonSignal "; 
+
+                    modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
+
+                   music_from_ableton_live = " controlDr "; 
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
 
