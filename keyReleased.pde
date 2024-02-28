@@ -1,6 +1,6 @@
 void keyReleased() {
 
-  if ( music_from_ableton_live == " Dessine " ) 
+  if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
         phaseDirectToMotor();
      }

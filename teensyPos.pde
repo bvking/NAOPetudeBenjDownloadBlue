@@ -340,7 +340,7 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
       rotate (-PI);
      }
 
-      if (music_from_ableton_live == " Dessine ") 
+      if (music_from_ableton_live == " Dessine " ) 
      { 
       rotate (PI);
       for (int i = 0; i < networkSize; i++)
@@ -350,6 +350,22 @@ if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
         send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
       rotate (-PI);
      }
+
+      
+      if (music_from_ableton_live == " controlDr " ) 
+     { 
+      rotate (PI);
+      for (int i = 0; i < networkSize; i++)
+       {   
+         text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
+       }       
+        send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
+      rotate (-PI);
+     }
+
+
+
+
        rotate(-PI/2);   
  
 }
