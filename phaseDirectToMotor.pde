@@ -3,8 +3,25 @@
 
   void phaseDirectToMotor() // mixed Com
  {   
-       oscillatorBlocked=9;  // retour normal 
+    oscillatorBlocked=9;  // retour normal 
      text (" osc " + oscillatorBlocked, 200, 200);
+
+         if (key == '1')
+      {
+       for (int i = 0; i < networkSize; i++)
+        {
+       // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+
+      //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
+
+       lastActualPosition[networkSize-1-i]+=  (int)  map ((i+1/4*TWO_PI/5)%PI/40, 0, TWO_PI, 0, numberOfStep);
+       
+       if (formerKeyMetro == '$')
+        {
+   //    lastActualPosition[networkSize-1-i]%= lastActualPosition[i] + numberOfStep;    // no meaning    
+         }
+      }
+      }
 
 
       if (key == 'ç')
@@ -39,8 +56,6 @@
         }
 
       }
-
-
 
       if (key == 'w')
       {

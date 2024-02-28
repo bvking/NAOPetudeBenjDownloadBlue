@@ -52,20 +52,23 @@ void mapNewPosX() {
     
     
     
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") { 
-        for(int i = 0; i <  networkSize - 0; i += 1) { 
+    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+     { 
+        for(int i = 0; i <  networkSize - 0; i += 1)
+         { 
             //newPosF[i]=phaseMapped[i];
             if (oldPosF[i] > newPosF[i]) { //
                 revLfo[i]++;
                 TrigmodPos[i] = 0;   
             }
             
-            if ( newPosF[i] > oldPosF[i]  && (oldPosF[i] <=  oldOldPosF[i])) {  // voir dans quel sens la retropropagation oriente  i et j
+            if ( newPosF[i] > oldPosF[i]  && (oldPosF[i] <=  oldOldPosF[i])) 
+            {  // voir dans quel sens la retropropagation oriente  i et j
                 revLfo[i]--;
                 TrigmodPos[i] = 0;
-        }
-        }
-}
+            }
+         }
+     }
     
     else  if (modeStartKeyToFollow == " propagationBallRotationBis ") { 
             

@@ -28,16 +28,20 @@ void draw()
      if (frameCount <=  1)  noLoop(); // check setPort()
      //printDataOnScreen();
 
-       if (music_from_ableton_live == " mouvement " )
+       if (music_from_ableton_live == " mouvement " )// DOESN'T EXIST ANYORE
      {
-        trigEventWithAbletonSignal();
+      //  trigEventWithAbletonSignal();
      }
+
+
+      if (music_from_ableton_live == " controlDr ")
+      {
+        automationForMusicMouvement();
+      }
 
      if (music_from_ableton_live == " Dessine ")
       {
-
-              automationForMusicMouvement();
-
+        automationForMusicMouvement();
       }
 
     

@@ -91,7 +91,8 @@ void addSignalOneAndTwoTer() { // from Propa
 }
 
 
-void addSignalOneAndTwoTerOriginal() {
+void addSignalOneAndTwoTerOriginal() 
+{
   print (formerKeyMetro);
 
   // lfoPattern();
@@ -126,7 +127,8 @@ void addSignalOneAndTwoTerOriginal() {
   formerKey=key;
 }
 
-void addSignalLfoPatternTer() {
+void addSignalLfoPatternTer()
+ {
 
   if (doQ==true ) {
     //   pendularPattern(); // offset with lfo oscillator by osillator
@@ -226,35 +228,6 @@ void addSignalLfoPatternTer() {
 
   /////////////////////
 }
-
-
-void assignMotorWithPositionTer() {
-
-  for (int i = 0; i < 12; i++) {
-    // rev[i]=rev[0];
-
-
-    //*******************************  ASSIGN MOTOR WITH POSITION
-
-    if (revLfo[i]!=0  && (positionToMotor[i] >  0) ) { // number of revLfoolution is even and rotation is clock wise
-      dataMappedForMotorisedPosition[i]= int (map (positionToMotor[i], 0, numberOfStep, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
-    }
-
-    if (revLfo[i]!=0  && (positionToMotor[i] <  0)) { // number of revLfoolution is even and rotation is Counter clock wise          // pos[i]= int (map (positionToMotor[i], 0, -numberOfStep, 0,  numberOfStep))+ (revLfo[i]*numberOfStep);
-      dataMappedForMotorisedPosition[i]= int (map (positionToMotor[i], 0, -numberOfStep, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
-    }
-
-    if (revLfo[i]==0 && (positionToMotor[i] < 0) ) { //  number of revLfoolution is 0 and rotation is counter clock wise
-      dataMappedForMotorisedPosition[i]= int (map (positionToMotor[i], 0, -numberOfStep, numberOfStep, 0));
-    }
-    if  (revLfo[i]==0 && (positionToMotor[i] > 0) ) {  //  number of revLfoolution is 0 and rotation is clock wise
-      dataMappedForMotorisedPosition[i]= int (map (positionToMotor[i], 0, numberOfStep, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
-    }
-
-    recordLastDataOfMotorPosition[i]=  dataMappedForMotorisedPosition[i];
-  }
-}
-
 
 void assignMotorWithDataMappedTer() {
 

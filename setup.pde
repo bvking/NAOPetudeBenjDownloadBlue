@@ -1109,7 +1109,8 @@ void setup() {
                  if (systemForBigMachine == false)
                  {
                  // samplingWithTeensy3_5 = true;
-                  music_from_ableton_live = " pleasureKraft ";               
+                 // music_from_ableton_live = " pleasureKraft ";  
+                  music_from_ableton_live = " controlDr ";               
                   keyMode = " trigEventWithAbletonSignal "; 
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
