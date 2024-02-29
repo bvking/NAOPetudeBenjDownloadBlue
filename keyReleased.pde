@@ -2,7 +2,7 @@ void keyReleased() {
 
   if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
-         key=char (Key);
+       //  key=char (Key);
      //   phaseDirectToMotor();
 
     // automationForMusicMouvement();

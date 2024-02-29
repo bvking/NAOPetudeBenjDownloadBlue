@@ -144,7 +144,9 @@ void  displayModePendulaireModeCirculaire() {
     colorMode(RGB, 255, 255, 255);
     //    fill( mapAccelerationinversed[i], 255, 0 ); // Sepheres are all modulated with the same color. depending of acceleration
     fill( 175, 175, 255 );
-    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' ) {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
+
+    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '$' )
+     {  // && ( formerKeyMetro == '$'  || formerKeyMetro == '<' )
       //rotate (PI/3*(networkSize-0)); // to rotate only once
       text ( formerKeyMetro +  " lI " + specialPropagationKey, -width/4, -height/4 ) ;
 
@@ -154,8 +156,8 @@ void  displayModePendulaireModeCirculaire() {
       // if (specialPropagationKey == '?') {    }  // metroPhase[i]+=PI/4;
       //  metroPhase[i] %= TWO_PI;  // in arduinoPos?
 
-   //   x = displacement*cos(metroPhase[i]); // -PI/2
-   //   y = displacement*sin(metroPhase[i]);// -PI/2
+      //   x = displacement*cos(metroPhase[i]); // -PI/2
+      //   y = displacement*sin(metroPhase[i]);// -PI/2
       
 
       //float polarX=
@@ -178,7 +180,8 @@ void  displayModePendulaireModeCirculaire() {
      ellipse(x, y, 100, 100); 
     }
 
-    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' ) {
+    if (keyMode == " trigEventWithAbletonSignal " && formerKeyMetro == '*' )
+     {
 
       text (  memoryi, -width/4, -height/4 ) ;
       // metroPhase[i]= metroPhase[i];
@@ -187,7 +190,7 @@ void  displayModePendulaireModeCirculaire() {
      // x = displacement*cos(net.phase[i]);
      // y = displacement*sin(net.phase[i]);
 
-    sphere(side*3);
+      sphere(side*3);
       sphereDetail( 4*5);
 
       float [] motorPositionToDegree = new float [networkSize];
@@ -202,7 +205,7 @@ void  displayModePendulaireModeCirculaire() {
 
        fill(255, 255, mapAccelerationinversed[i]);
 
-     ellipse(x, y, 100, 100); 
+      ellipse(x, y, 100, 100); 
     }
 
 

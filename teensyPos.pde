@@ -308,10 +308,10 @@ void teensyPos()
 
 
 
-
+     
       if ( music_from_ableton_live == " controlDr "  ) 
       {    // actualise counter of normal mode from revLfo from method  not here
-
+        /*
         for (int i = 0; i < networkSize; i++) {        
         //*******************************  ASSIGN MOTOR WITH POSITION
 
@@ -330,32 +330,36 @@ void teensyPos()
         recordLastDataOfMotorPosition[i]= dataMappedForMotorisedPosition[i];
         dataMappedForMotorisedBigMachine[i]= dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
         }
-        
-            if (formerKeyMetro == '$')
-        {
-         for (int i = 0; i < networkSize; i++)
-          {
+        */
+      
+       if (formerKeyMetro == '$')
+           {
+           for (int i = 0; i < networkSize; i++)
+            {
             // dataMappedForMotorisedPosition[i]+= lastActualPosition[i];  // lastActualPosition[i] comes with key k too
              dataMappedForMotorisedPosition[i]+=lastActualPosition[i];// RENAME good with k only
              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];        
-           }
-        }
+             }
+          }
    
        if (formerKeyMetro == '*' )
-        {
-        for (int i = 0; i < networkSize-0; i++)
-         { // 
-           //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
-            dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i];//+lastActualPosition[i];//+readPositionEncoder[i];  
+           {
+           for (int i = 0; i < networkSize-0; i++)
+            { // 
+            //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
+              dataMappedForMotorisedPosition[i]=lastActualPosition[i]+countControlDr*numberOfStep ;// RENAME good with k only
+              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastActualPosition[i];//+readPositionEncoder[i];  
+               //   text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
+
           } 
         }
         
-
       }
       
         if (music_from_ableton_live == " controlDr " ) 
         { 
         rotate (PI);
+         text (countControlDr, width, -2000-100*networkSize) ; 
         for (int i = 0; i < networkSize; i++)
         {   
          text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
