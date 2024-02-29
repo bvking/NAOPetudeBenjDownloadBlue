@@ -33,18 +33,16 @@ void draw()
       //  trigEventWithAbletonSignal();
      }
 
-
-      if (music_from_ableton_live == " controlDr ")
+       if (music_from_ableton_live == " controlDr ")
       {
-        automationForMusicControlDr();
+      //  automationForMusicControlDr();
       }
 
-     if (music_from_ableton_live == " Dessine ")
+       if (music_from_ableton_live == " Dessine ")
       {
       //  automationForMusicMouvement();
       }
-
-    
+ 
      if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
      {
         setKeyModeByTappingKeyPadOnce();
@@ -188,8 +186,7 @@ void draw()
         //println( "frame " + frameCount%numberOfSample+1 + " m " + measure + " degrée " + nf (degrees(movementInterpolated), 0, 1) + " ms " + millis());
         // frameRatio= 60;
         //frameRate (frameRatio);
-        followSignalSampledOppositeWay(frameRatio);// with millis()
-        
+        followSignalSampledOppositeWay(frameRatio);// with millis()    
       }
     
       //rect(80,40,140,320);
@@ -401,19 +398,15 @@ void draw()
         println(" sendMiddle ");showArrayF(sendMiddle);
         println(" sendMiddle ");showArrayF(sendMiddle);
         */
-
-
      }
-    
-    
-    
     
      textSize(100);
      //----
      //timeTosendData;
-       for (int i = 0; i < networkSize; i++) {
+       for (int i = 0; i < networkSize; i++)
+        {
           Pos[i]=(int) map(lastActualPosition[i], 0, numberOfStep, 0, TWO_PI);
-           }
+         }
 
     if (millis()>timeTosendData+250){
       oscSend();
