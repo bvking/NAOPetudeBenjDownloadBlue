@@ -41,7 +41,7 @@ void draw()
 
      if (music_from_ableton_live == " Dessine ")
       {
-        automationForMusicMouvement();
+      //  automationForMusicMouvement();
       }
 
     
@@ -411,6 +411,9 @@ void draw()
      textSize(100);
      //----
      //timeTosendData;
+       for (int i = 0; i < networkSize; i++) {
+          Pos[i]=(int) map(lastActualPosition[i], 0, numberOfStep, 0, TWO_PI);
+           }
 
     if (millis()>timeTosendData+250){
       oscSend();
