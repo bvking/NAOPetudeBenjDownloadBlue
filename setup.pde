@@ -1118,13 +1118,14 @@ void setup() {
                  {
                  // samplingWithTeensy3_5 = true;
                  // music_from_ableton_live = " pleasureKraft ";  
-                   music_from_ableton_live = " Dessine ";
+                 //  music_from_ableton_live = " Dessine ";
+                   music_from_ableton_live = " controlDr "; 
 
                     keyMode = " trigEventWithAbletonSignal "; 
 
                     modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
 
-                //   music_from_ableton_live = " controlDr "; 
+                
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
 
