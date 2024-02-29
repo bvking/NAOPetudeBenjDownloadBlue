@@ -12,22 +12,20 @@ public void settings() {
 } 
 */
 
-//boolean systemForBigMachine=false;
-boolean systemForBigMachine=true;
+boolean systemForBigMachine=false;
+//boolean systemForBigMachine=true;
 int timeTosendData;
 
-int networkSize = 10;
-//int networkSize = 6;
+//int networkSize = 10;
+int networkSize = 6;
 
-int numberOfStep = 3200;
-//int numberOfStep = 6400;
+//int numberOfStep = 3200;
+int numberOfStep = 6400;
 
 int countControlDr ;   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
 int shapeLfoMode = 10;  //lfo UP CounterWay
 
 float shapeLfoToCount=1;  // lfo up
-
-
 
 boolean samplingWithMouse = false;
 boolean abletonLFO =        true;
@@ -1120,11 +1118,13 @@ void setup() {
                  {
                  // samplingWithTeensy3_5 = true;
                  // music_from_ableton_live = " pleasureKraft ";  
+                   music_from_ableton_live = " Dessine ";
+
                     keyMode = " trigEventWithAbletonSignal "; 
 
                     modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
 
-                   music_from_ableton_live = " controlDr "; 
+                //   music_from_ableton_live = " controlDr "; 
                   doo = true; // oposite way is true 
                // doo = false; // to enable propagation
 
