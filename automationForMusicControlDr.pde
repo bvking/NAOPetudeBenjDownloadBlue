@@ -51,7 +51,7 @@ void automationForMusicControlDr()
              int repeatEachNumberOfFrame = 30; 
               if (frameCount%repeatEachNumberOfFrame==0)
              {  
-             key = 's';        
+           //  key = 's';        
              phaseDirectToMotor();
              }   
             
