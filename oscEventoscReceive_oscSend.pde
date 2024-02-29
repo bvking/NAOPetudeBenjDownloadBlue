@@ -517,34 +517,35 @@ void oscSend(){
    for (int i = 0; i < networkSize-0; i++)
   {  
    
-    if  (1==1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
-    {
-     TrigmodPos[i]=1;
-     oldPos[i]=Pos[i];
+   if  (1==1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+   {
+       TrigmodPos[i]=1;
+       oldPos[i]=Pos[i];
    
-     //MIDDLE POINT == between 61 & 65
-    if ((oldPos[i]<= 64 && Pos[i] >=63) ||
-        (oldPos[i]>= 64 && Pos[i] <=63))
+      //MIDDLE POINT == between 61 & 65
+      if ((oldPos[i]<= 64 && Pos[i] >=63) ||
+          (oldPos[i]>= 64 && Pos[i] <=63))
         
-    {
+      {
    
-       text ( " POS " + i , 500, 500);
+          text ( " POS " + i , 500, 500);
           dataToLive[i]= (networkSize-1)*(i-0);  // because there i beac you can send data with the step you want to separate controller depending oscillator --> here it is 11.
           dataToLive[0]= (networkSize-1)*(i-0);  // you can send data with the step you want to one controler 
       
          upVelocity[i]= 1;  
          TrigmodPos[i]=0; 
-     }
+      }
     
        if ( Pos[i] >65 ||
-            Pos[i] <61) {
-       dataToLive[i]=0;
-       upVelocity[i]= -1;
-       //  TrigmodPos[i]=0; 
+            Pos[i] <61)
+             {
+             dataToLive[i]=0;
+              upVelocity[i]= -1;
+              //  TrigmodPos[i]=0; 
  
-      } 
+          } 
      }   
-   }
+    }
 
    //  rotate (HALF_PI);  
 
@@ -578,14 +579,14 @@ void oscSend(){
     lastDataLfo=dataLFO;
     lfoTosend=1.0;
    }
- //dataLFO = int( millis()*0.001); // sec
- // dataLFO = int( millis()*0.01); // 1/10sec
+    //dataLFO = int( millis()*0.001); // sec
+    // dataLFO = int( millis()*0.01); // 1/10sec
     dataLFO = int( millis()*0.005); // 1/10sec
     rotate(-PI/2);
-  text (  lfoTosend, -1000, -200, 1000);
-  trigLfo=lfoTosend;
-  myMessage1.add(trigLfo); // called led
-  myMessage2.add(1.0-trigLfo); // called led
+     text (  lfoTosend, -1000, -200, 1000);
+     trigLfo=lfoTosend;
+     myMessage1.add(trigLfo); // called led
+    myMessage2.add(1.0-trigLfo); // called led
 
   // oscP5.send(myMessage1, myRemoteLocation8002);
   // oscP5.send(myMessage2, myRemoteLocation8003);
