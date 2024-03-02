@@ -1,5 +1,27 @@
 int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor signal from AbletonLive
+
 void automationForMusicControlDr()
+{
+
+    if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
+    {  
+      if ((measure==1 || measure==2) && beatPrecised%2==0 && beatPrecisedTrigged==true)
+       {
+            key = 's';        
+            phaseDirectFromSeq();     
+         }
+
+     if ( (measure==3 || measure==4) && beatPrecised%2==0 && beatPrecisedTrigged==true)
+      {
+            key = 'd';        
+            phaseDirectFromSeq();     
+      }
+    } 
+}
+
+
+
+void automationForMusicControlDrO()
  {
 
     if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
