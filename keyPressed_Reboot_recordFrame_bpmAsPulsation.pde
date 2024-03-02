@@ -2,9 +2,40 @@ void keyPressed() {
 
     if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
-      //  key=char(Key);
-      //  phaseDirectToMotor();
+   /*
+          for (int i = 0; i < networkSize; i++) {
+        encoderTouched[i]=false;
+     }
       //
+       Pos[0]=127;
+
+    if ( key == 'a')
+     {
+     Pos[0]=57;
+     }
+    if ( key == 'b')
+     {
+     encoderTouched[1]=true;
+     }
+
+    if ( key == 'c')
+     {
+     encoderTouched[2]=true;
+     }
+
+      if ( key == 'd')
+     {
+     encoderTouched[3]=true;
+     }
+      if ( key == 'e')
+     {
+     encoderTouched[4]=true;
+     }
+     if ( key == 'f')
+     {
+     encoderTouched[5]=true;
+     }
+   */
        
      }
   

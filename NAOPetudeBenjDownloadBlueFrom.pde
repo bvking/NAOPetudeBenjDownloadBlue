@@ -405,11 +405,12 @@ void draw()
      //timeTosendData;
        for (int i = 0; i < networkSize; i++)
         {
-          Pos[i]=(int) map(lastActualPosition[i], 0, numberOfStep, 0, TWO_PI);
+         // Pos[i]=(int) map(dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, TWO_PI);
          }
-
+  keyPressed();
+     oscSend();
     if (millis()>timeTosendData+250){
-      oscSend();
+    //  oscSend();
       timeTosendData=millis();
      // println ("SEND DATA");
        }

@@ -3,12 +3,17 @@ void keyReleased() {
   if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
          key=char (Key);
+          keyCode=char (KeyCode);
          automationForMusicControlDr();
-     //   phaseDirectToMotor();
+    
+     
 
-    // automationForMusicMouvement();
-       
-     }
+    
+   //  oscSend();
+
+    //   phaseDirectToMotor();
+    // automationForMusicMouvement();       
+    }
 
    recordFrame();  // record event only when they are released
 

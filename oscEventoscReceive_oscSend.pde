@@ -513,11 +513,50 @@ void printMidiNoteVelocity() {
 
 
 void oscSend(){
+            for (int i = 0; i < networkSize; i++) {
+        encoderTouched[i]=false;
+          TrigmodPos[i]=1;
+     }
+      //
+       Pos[0]=127;
+      
+
+    if ( keyCode == TAB)
+     {
+     encoderTouched[0]=true;
+      TrigmodPos[0]=0;
+       Pos[0]=0;
+     keyCode = BACKSPACE;
+
+     }
+    if ( key == 'b')
+     {
+     encoderTouched[1]=true;
+     }
+
+    if ( key == 'c')
+     {
+     encoderTouched[2]=true;
+     }
+
+      if ( key == 'd')
+     {
+     encoderTouched[3]=true;
+     }
+      if ( key == 'e')
+     {
+     encoderTouched[4]=true;
+     }
+     if ( key == 'f')
+     {
+     encoderTouched[5]=true;
+     }
+   
      rotate (-HALF_PI);  
    for (int i = 0; i < networkSize-0; i++)
   {  
    
-   if  (1==1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+   if  (1!=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
    {
        TrigmodPos[i]=1;
        oldPos[i]=Pos[i];
