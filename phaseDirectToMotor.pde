@@ -27,9 +27,7 @@
       if (key == 'ç')
 
       {
-          float [] realign = new float [networkSize];
-      
-
+        float [] realign = new float [networkSize];
         if (positionFromMotorPhase [networkSize-1]> positionFromMotorPhase [0])
         higerPostion = true;
         {  
@@ -38,9 +36,8 @@
            realign[i] = positionFromMotorPhase [networkSize-1]%(positionFromMotorPhase [networkSize-1]+(numberOfStep)); //+PI/2;
            positionFromMotorPhase [i] = (int) realign[i];
             println (" HIGER POSITIO " + higerPostion );
-           }
-      
-        }
+           }  
+         }
   
 
         if (positionFromMotorPhase [networkSize-1]< positionFromMotorPhase [0])

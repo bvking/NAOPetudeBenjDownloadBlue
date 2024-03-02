@@ -2,24 +2,65 @@ int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor si
 
 void automationForMusicControlDr()
 {
+  formerKeyMetro = '*';
+
+        textSize (50);
 
     if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
     {  
       if ((measure==1 || measure==2) && beatPrecised%2==0 && beatPrecisedTrigged==true)
-       {
+       {    textSize (100);
             key = 's';        
-            phaseDirectFromSeq();     
-         }
+         //   phaseDirectFromSeq();     
+        }
 
-     if ( (measure==3 || measure==4) && beatPrecised%2==0 && beatPrecisedTrigged==true)
-      {
+     if ( (measure>=3 && measure<=4) && beatPrecised%2==0 && beatPrecisedTrigged==true)
+       {
+            textSize (100);
             key = 'd';        
-            phaseDirectFromSeq();     
-      }
-    } 
+          //  phaseDirectFromSeq();     
+       }
+    }
+
+    phaseDirectFromSeq();     
+  
+     if(key != '#') // q is used to preStart speed of repetio
+        {
+
+          if(key != 'q') // q is used to preStart speed of repetio
+             {
+            
+             if (modeStartKeyToFollow == " followSignal2 ")
+                 {
+                  textSize(10);
+               
+                    for (int i = 0; i < networkSize; i += 1)
+                      {
+                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
+                 
+                      }
+            
+             key = 'q';
+
+                 }
+           
+              }
+           key = '#'; 
+        }
+  
+      shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
+             
+      signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
+      oldSignal2controlDr=signal2controlDr;
+      oldOldSignal2controlDr=oldSignal2controlDr;
+            
+
+       for (int i = 0; i < networkSize; i++)
+       {
+          phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+          lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i]));  
+        }
 }
-
-
 
 void automationForMusicControlDrO()
  {
@@ -68,7 +109,7 @@ void automationForMusicControlDrO()
 
          
 
-      if (measure>=3 && measure< 6 ) 
+      if (measure==3 || measure== 6 ) 
          {
              int repeatEachNumberOfFrame = 30; 
               if (frameCount%repeatEachNumberOfFrame==0)
@@ -520,6 +561,10 @@ void automationForMusicControlDrO()
                shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
              
                println (" countControlDr " + countControlDr + " shapeLfoMode " + shapeLfoMode + " shapeLfoToCount " + shapeLfoToCount +  " oldSignal2controlDr " +  oldSignal2controlDr + " signal2controlDr " + signal2controlDr);
+           
+               // counterLfo
+           
+           
                if ( signal2controlDr < oldOldSignal2controlDr  && ( (oldSignal2controlDr <  oldOldSignal2controlDr))) 
                {
                 for (int i = 0; i < networkSize; i++)
@@ -563,11 +608,7 @@ void automationForMusicControlDrO()
                   phaseDirectToMotor();
                     for (int i = 0; i < networkSize; i += 1)
                       {
-
                         phasePatternFollow[i] = positionFromMotorPhase[i]; //
-                        text ("  phasePatternFollow[i]" +  phasePatternFollow[i], 100, 100*i);
-                     
-                        
                        
                        //  lastActualPosition [i] = (int) phasePatternFollow[i];
                         // phasePatternFollow[i] += net.phase[i];

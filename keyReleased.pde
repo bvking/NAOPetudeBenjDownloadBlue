@@ -2,7 +2,8 @@ void keyReleased() {
 
   if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
-       //  key=char (Key);
+         key=char (Key);
+         automationForMusicControlDr();
      //   phaseDirectToMotor();
 
     // automationForMusicMouvement();
@@ -113,7 +114,7 @@ void keyReleased() {
      for (int i = 0; i < networkSize; i++) {
          CircularVirtualPosition[i]=0;
          ActualVirtualPosition[i]=lastActualPosition[0];
-         lastActualPosition[i]= lastActualPosition[0];
+         lastActualPosition[i]+= lastActualPosition[0];
      }    
   }
 
@@ -313,9 +314,10 @@ void keyReleased() {
   }
 
   //*********************************************CIRCULAR
+  if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
+   { 
 
-
-  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 ) //  && music_from_ableton_live = " Dessine " 
+   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 ) //  && music_from_ableton_live = " Dessine " 
     {  
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
@@ -346,35 +348,9 @@ void keyReleased() {
 
     // keyCode = TAB; // to stop speedDelta
     //key= '#'; 
+  }
 
  }
 
 
-    /*
-   if (keyCode == UP) {
-       println(" left INCREASE phase shifting"); //
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11+QUARTER_PI/8;
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-   if (phaseShiftingFollowPhase11>=8*QUARTER_PI/2) { 
-      phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-    }   
-       print ("phaseShiftingFollowPhase11 Ratio ");
-       println (degrees (phaseShiftingFollowPhase11));
-       keyCode = SHIFT;
-   }
   
-   if (keyCode == DOWN)
-     {
-       println(" left INCREASE phase shifting"); //
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11-QUARTER_PI/8;
-       phaseShiftingFollowPhase11= phaseShiftingFollowPhase11%(8*QUARTER_PI/2);   
-        
-       if (phaseShiftingFollowPhase11<=-8*QUARTER_PI/2)
-         { 
-           phaseShiftingFollowPhase11=-phaseShiftingFollowPhase11;
-         }   
-          print ("phaseShiftingFollowPhase11 Ratio ");
-          println (degrees (phaseShiftingFollowPhase11));
-     }
-    */
