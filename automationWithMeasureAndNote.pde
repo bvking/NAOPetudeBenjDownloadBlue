@@ -530,7 +530,7 @@ void trigBeatWithMeasure()
 
    if  (formerBeatOnMeasure>beatOnMeasure && shapeLfoMode == 30)
    {
-    countControlDr-=1;
+    countControlDr=countControlDr-1;
    }
 
    if  (formerBeatOnMeasure>beatOnMeasure && shapeLfoMode == 10)

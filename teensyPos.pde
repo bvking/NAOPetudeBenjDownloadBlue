@@ -23,27 +23,27 @@ void teensyPos()
 
   
   if ( music_from_ableton_live != " controlDr ")
-  { 
-    if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive "  ) 
-    { 
-     //  revLfo=rev;
-    // rev+=revLfo;
-     }
-
-    if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  )
+   { 
+     if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive "  ) 
      { 
+       //  revLfo=rev;
+       // rev+=revLfo;
+      }
+
+     if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  )
+      { 
+        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+      }
+
+     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-     }
-
-    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
-       revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-     }
+      }
 
 
-   if ( measure <= 635) // to avoid machine blocked 
-   {   
-    if ( keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  " )  // || keyMode == " addSignalOneAndTwo "      
-    {  
+     if ( measure <= 635) // to avoid machine blocked 
+     {   
+     if ( keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  " )  // || keyMode == " addSignalOneAndTwo "      
+     {  
       for(int i = 0; i < networkSize; i++) {
 
         //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work. Try to adapt rev with revLfo method
@@ -55,17 +55,17 @@ void teensyPos()
          }
           dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
      }
-    }
+      }
 
-    if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
+     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
         )   
         {  
         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
         for(int i = 0; i < networkSize; i++) {  
         dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
         dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+      }
      }
-    }
 
 
 
@@ -81,10 +81,10 @@ void teensyPos()
           }
 
 
-
-    if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
+ 
+     if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
                                                      && formerKeyMetro =='*')
-    { 
+     { 
 
      if ( keyMode == " propagationBallRotationNOBisTest " ) { 
              // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
@@ -144,16 +144,17 @@ void teensyPos()
           } 
         }
 
-    }   // end mesure 635
+     }   // end mesure 635
         //---------------------------------------------------------------
         //************************ SetAcceleration with measure and position from the song
 
-       if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
-       { 
-        if (keyMode != " propagationBallRotationBis " )
-         {
+      if (keyMode == " trigEventWithAbletonSignalNO " || keyMode == " nullNO " )
+      { 
+       if (keyMode != " propagationBallRotationBis " )
+       {
     
-        if (modeStartKeyToFollow!= " samplingModeInternal "){
+        if (modeStartKeyToFollow!= " samplingModeInternal ")
+        {
          if (measure<=203 ){
            send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
           }
@@ -167,20 +168,19 @@ void teensyPos()
          }
          if (measure>41 && measure<=67){
             send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
+         }
 
          if (measure>67 && measure<=90){
             send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
          }
          if (measure>=105 ){
             send24DatasToTeensy6motorsToLittleMachine( 3, 2, -3, -1, 2, 1000);
-
-
          //   send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
+         }
         }
+       }
       }
-     }
-    }
-   }
+    
 
      
      if (modeStartKeyToFollow == " samplingModeInternal ")
@@ -262,6 +262,7 @@ void teensyPos()
          }
         }
      }
+
     }
 
      // end != music controlDr
