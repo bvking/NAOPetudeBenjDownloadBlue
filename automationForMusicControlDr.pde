@@ -9,14 +9,14 @@ void automationForMusicControlDr()
     if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
     {  
       if ((measure==1 || measure==2) && beatPrecised%2==0 && beatPrecisedTrigged==true)
-       {    textSize (100);
+       {   // textSize (100);
             formerKey = 's';        
          //   phaseDirectFromSeq();     
         }
 
      if ( (measure>=3 && measure<=4) && beatPrecised%2==0 && beatPrecisedTrigged==true)
        {
-            textSize (100);
+          //  textSize (100);
             formerKey = 'd';        
           //  phaseDirectFromSeq();     
        }
@@ -26,35 +26,35 @@ void automationForMusicControlDr()
   
      if(formerKey != '#') // q is used to preStart speed of repetio
         {
-
           if(formerKey != 'q') // q is used to preStart speed of repetio
-             {
-            
+             {   
              if (modeStartKeyToFollow == " followSignal2 ")
                  {
-                  textSize(10);
-               
+                  textSize(10); 
                     for (int i = 0; i < networkSize; i += 1)
                       {
                         phasePatternFollow[i] = positionFromMotorPhase[i]; //
-                 
                       }
-            
              formerKey = 'q';
-
                  }
-           
               }
            formerKey = '#'; 
         }
   
-      shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
-             
+      shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+       if (shapeLfoMode==10)
+      {      
       signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
+       }
+
+      if (shapeLfoMode==30)
+      { 
+      signal2controlDr= (int) map  (signal[2], 0, 1, numberOfStep, 0);
+      }
+      
       oldSignal2controlDr=signal2controlDr;
       oldOldSignal2controlDr=oldSignal2controlDr;
             
-
        for (int i = 0; i < networkSize; i++)
        {
           phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);

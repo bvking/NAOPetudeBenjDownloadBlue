@@ -1,13 +1,11 @@
-void keyReleased() {
+void keyReleased()
+{
 
   if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
          key=char (Key);
-          keyCode=char (KeyCode);
+         keyCode=char (KeyCode);
          automationForMusicControlDr();
-    
-    
-   //  oscSend();
 
     //   phaseDirectToMotor();
     // automationForMusicMouvement();       
@@ -203,25 +201,26 @@ void keyReleased() {
      keyCode = 0;
     }
 
-/*
-  if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
-  {
-   if (keyCode == UP){
+
+    /*
+      if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
+     {
+    if (keyCode == UP){
      
      factorSynchro%=33;
      factorSynchro+=1;
-  }
+      }
      
       
-   if (keyCode == DOWN){
+      if (keyCode == DOWN){
      
      factorSynchro%=-33;
      factorSynchro-=1;
-  }
+      }
 
-  }
+      }
 
- */ 
+    */ 
      
   
 
@@ -312,11 +311,11 @@ void keyReleased() {
   }
 
   //*********************************************CIRCULAR
-  if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
+  if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )   
    { 
 
-   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 ) //  && music_from_ableton_live = " Dessine " 
-    {  
+   if ( music_from_ableton_live != " controlDr "){
+
     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
            phasePattern(); // enable to change configuration, but program go away:
@@ -325,30 +324,28 @@ void keyReleased() {
      {
         //   phasePatternBase(); // enable to change configuration, but program go away
      }
-     key= '#'; 
+    } 
 
-   } 
+  
 
-
-    else if ( keyMode == " trigEventWithAbletonSignal " && measure < 635 )  // USELESS
+    else if ( music_from_ableton_live == " controlDr ")
    {  
-     if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$') {   // formerKeyMetro == 'J'  
-          text (" trigEventWithAbletonSignal ", 0, 200 );
+     if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$')
+      { 
+        //  text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);
 
           for (int i = 0; i < 3; i++)  {  
-        //  String valueText[] =  displayEventFromKeyReleased (keyEvent);
-         
+        //  String valueText[] =  displayEventFromKeyReleased (keyEvent);       
      } 
-       //  phasePattern(); //same as $
-     } 
-   }
+       
+     }
 
-    // keyCode = TAB; // to stop speedDelta
-    //key= '#'; 
-  }
+    }
+     key= '#';
+   }   
+}
 
- }
 
 
   

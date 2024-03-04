@@ -520,8 +520,10 @@ void oscSend(){
           midPos[i]=false;
           sendMiddle[i]=0.;
           TrigmodPos[i]=0;
-          numberOfTrig[i]=4;
+          numberOfTrig[i]=0;
      }
+
+
       //
        Pos[0]=127;
       
@@ -529,26 +531,37 @@ void oscSend(){
     if ( keyCode == TAB || formerKey == 'a') 
      {
       encoderTouched[0]=true;
-      TrigmodPos[0]=0;
-      Pos[0]=0;
-      numberOfTrig[0]=8;
+      TrigmodPos[0]=1;
+      Pos[0]=127;
+
+      numberOfTrig[0]+=1;
+      numberOfTrig[0]%=8+1;
       numberOfRota[0]+=1;
       numberOfRota[0]%=8+1;
   
      }
 
-    if ( key == 'z')
+    if ( formerKey == 'z')
      {
      encoderTouched[1]=true;
-     numberOfTrig[1]=8;
-     numberOfRota[1]+=1;
-     numberOfRota[1]%=8+1;
-    
+
+     numberOfTrig[1]%=8;
+     numberOfTrig[1]+=1;
+     
+     numberOfRota[1]%=8;
+     numberOfRota[1]+=1;   
      }
 
-    if ( key == 'e')
+    if ( formerKey == 'e')
      {
      midPos[2]=true;
+     sendMiddle[2]=1.;
+
+     numberOfTrig[2]%=8;
+     numberOfTrig[2]+=1;
+     
+     numberOfRota[2]%=8;
+     numberOfRota[2]+=1;
      }
 
      // if ( key == 's')
