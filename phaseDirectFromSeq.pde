@@ -37,7 +37,7 @@
 
         }
 
-        if (key == 'e')
+        if (formerKey == 'e')
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT
          positionFromMotorPhase [i]-= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep);   
@@ -45,7 +45,7 @@
         }
 
 
-        if (key == 's')
+        if (formerKey == 's')
         {
         for (int i = 0; i < networkSize; i++)
          {
@@ -54,7 +54,7 @@
         }
 
 
-        if (key == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
+        if (formerKey == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
         {
         for (int i = 0; i < networkSize; i++)
          {
@@ -63,7 +63,7 @@
          }
 
 
-        if (key == 'd')
+        if (formerKey == 'd')
         {
         for (int i = 0; i < networkSize; i++)
          {
@@ -75,7 +75,7 @@
          }
     }
 
-   if (key == 'D') 
+   if (formerKey == 'D') 
     {
              // front  TWO_PI/8/(networkSize)*(i)   behind?
           // + =   TWO_PI*0.1/(networkSize)*(networkSize-1-i)
@@ -84,7 +84,7 @@
           }
      }
 
-     text (" key " + key , 100, -200);
+     text (" formerKey " + formerKey , 100, -200);
     
      
 }

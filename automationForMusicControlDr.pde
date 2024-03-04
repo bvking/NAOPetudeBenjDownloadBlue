@@ -10,24 +10,24 @@ void automationForMusicControlDr()
     {  
       if ((measure==1 || measure==2) && beatPrecised%2==0 && beatPrecisedTrigged==true)
        {    textSize (100);
-            key = 's';        
+            formerKey = 's';        
          //   phaseDirectFromSeq();     
         }
 
      if ( (measure>=3 && measure<=4) && beatPrecised%2==0 && beatPrecisedTrigged==true)
        {
             textSize (100);
-            key = 'd';        
+            formerKey = 'd';        
           //  phaseDirectFromSeq();     
        }
     }
 
     phaseDirectFromSeq();     
   
-     if(key != '#') // q is used to preStart speed of repetio
+     if(formerKey != '#') // q is used to preStart speed of repetio
         {
 
-          if(key != 'q') // q is used to preStart speed of repetio
+          if(formerKey != 'q') // q is used to preStart speed of repetio
              {
             
              if (modeStartKeyToFollow == " followSignal2 ")
@@ -40,12 +40,12 @@ void automationForMusicControlDr()
                  
                       }
             
-             key = 'q';
+             formerKey = 'q';
 
                  }
            
               }
-           key = '#'; 
+           formerKey = '#'; 
         }
   
       shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP

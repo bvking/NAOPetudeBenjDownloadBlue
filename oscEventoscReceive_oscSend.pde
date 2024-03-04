@@ -513,59 +513,79 @@ void printMidiNoteVelocity() {
 
 
 void oscSend(){
-            for (int i = 0; i < networkSize; i++) {
-        encoderTouched[i]=false;
-          TrigmodPos[i]=1;
+
+    for (int i = 0; i < networkSize; i++)
+     {
+          encoderTouched[i]=false;
+          midPos[i]=false;
+          sendMiddle[i]=0.;
+          TrigmodPos[i]=0;
+          numberOfTrig[i]=4;
      }
       //
        Pos[0]=127;
       
 
-    if ( keyCode == TAB)
+    if ( keyCode == TAB || formerKey == 'a') 
      {
-     encoderTouched[0]=true;
+      encoderTouched[0]=true;
       TrigmodPos[0]=0;
-       Pos[0]=0;
-     keyCode = BACKSPACE;
-
+      Pos[0]=0;
+      numberOfTrig[0]=8;
+      numberOfRota[0]+=1;
+      numberOfRota[0]%=8+1;
+  
      }
-    if ( key == 'b')
+
+    if ( key == 'z')
      {
      encoderTouched[1]=true;
+     numberOfTrig[1]=8;
+     numberOfRota[1]+=1;
+     numberOfRota[1]%=8+1;
+    
      }
 
-    if ( key == 'c')
+    if ( key == 'e')
      {
-     encoderTouched[2]=true;
+     midPos[2]=true;
      }
 
-      if ( key == 'd')
+     // if ( key == 's')
+       if ( keyCode == SHIFT)
      {
-     encoderTouched[3]=true;
+     encoderTouched[1]=false;
+        TrigmodPos[1]=1;
+     sendMiddle[1]=1.;
+     Pos[1]=1;
      }
-      if ( key == 'e')
+     // if ( key == 'd')
+           if ( keyCode == CONTROL)
      {
      encoderTouched[4]=true;
+     sendMiddle[2]=1.;
+      TrigmodPos[2]=1;
      }
-     if ( key == 'f')
+     if ( key == 'r')
      {
      encoderTouched[5]=true;
      }
+       keyCode = BACKSPACE;
    
      rotate (-HALF_PI);  
-   for (int i = 0; i < networkSize-0; i++)
-  {  
+    for (int i = 0; i < networkSize-0; i++)
+    {  
    
-   if  (1!=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
-   {
+     if  (1!=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+     {
        TrigmodPos[i]=1;
        oldPos[i]=Pos[i];
    
-      //MIDDLE POINT == between 61 & 65
-      if ((oldPos[i]<= 64 && Pos[i] >=63) ||
+       //MIDDLE POINT == between 61 & 65
+       if ((oldPos[i]<= 64 && Pos[i] >=63) ||
           (oldPos[i]>= 64 && Pos[i] <=63))
         
-      {
+       {
    
           text ( " POS " + i , 500, 500);
           dataToLive[i]= (networkSize-1)*(i-0);  // because there i beac you can send data with the step you want to separate controller depending oscillator --> here it is 11.
@@ -578,11 +598,11 @@ void oscSend(){
        if ( Pos[i] >65 ||
             Pos[i] <61)
              {
-             dataToLive[i]=0;
+              dataToLive[i]=0;
               upVelocity[i]= -1;
               //  TrigmodPos[i]=0; 
  
-          } 
+            } 
      }   
     }
 
@@ -600,7 +620,7 @@ void oscSend(){
      {  Velocity=-1;
      } 
      
-//  OscMessage myMessage = new OscMessage("/test");
+ //  OscMessage myMessage = new OscMessage("/test");
     OscMessage myMessage = new OscMessage("msg");
     myMessage.add(0); /* add an int to the osc message */
     
@@ -614,7 +634,7 @@ void oscSend(){
    float lfoTosend; 
    lfoTosend=0.0;
 
- if (lastDataLfo!=dataLFO){
+  if (lastDataLfo!=dataLFO){
     lastDataLfo=dataLFO;
     lfoTosend=1.0;
    }
@@ -681,7 +701,7 @@ void oscSend(){
   myMessage18.add((float) map (mouseX, 0, 800, 0, 127));
   myMessage19.add((float) map (mouseY, 0, 800, 0, 127));
  
-/*
+ /*
   OscMessage myMessage60= new OscMessage("/fromEncodeurToLive0"); // oscillator SEND 0 or 1
   OscMessage myMessage61= new OscMessage("/fromEncodeurToLive1"); // oscillator 
   OscMessage myMessage62= new OscMessage("/fromEncodeurToLive2"); // oscillator 
@@ -707,6 +727,9 @@ oldEncodeur[0]= encodeur[0];
 
 //*******    if ( oldEncodeur[0]<0 && = encodeur[0];)
 
+  // if (music_from_ableton_live == " controlDr ")
+  // { 
+
   OscMessage myMessage60= new OscMessage("/encodeur0"); // oscillator SEND 0 or 1
   OscMessage myMessage61= new OscMessage("/encodeur1"); // oscillator 
   OscMessage myMessage62= new OscMessage("/encodeur2"); // oscillator 
@@ -720,6 +743,31 @@ oldEncodeur[0]= encodeur[0];
   myMessage63.add(encodeur[3]);
   myMessage64.add(encodeur[4]);
   myMessage65.add(encodeur[5]);
+  // }
+
+
+ //  if (music_from_ableton_live == " controlDr ")
+ //  { 
+
+  OscMessage myMessage90= new OscMessage("/numberOfRota0"); // oscillator SEND 0 or 1
+  OscMessage myMessage91= new OscMessage("/numberOfRota1"); // oscillator 
+  OscMessage myMessage92= new OscMessage("/numberOfRota2"); // oscillator 
+  OscMessage myMessage93= new OscMessage("/numberOfRota3"); // oscillator 
+  OscMessage myMessage94= new OscMessage("/numberOfRota4"); // oscillator 
+  OscMessage myMessage95= new OscMessage("/numberOfRota5"); // oscillato
+
+  myMessage90.add(numberOfRota[0]);  // 0 to 400
+  myMessage91.add(numberOfRota[1]);
+  myMessage92.add(numberOfRota[2]);
+  myMessage93.add(numberOfRota[3]);
+  myMessage94.add(numberOfRota[4]);
+  myMessage95.add(numberOfRota[5]);
+
+  // }
+
+
+
+
 
 
   JoDebug  ="<" // BPM9   
@@ -801,6 +849,7 @@ oldEncodeur[0]= encodeur[0];
   myMessage26.add(Pos[6]);
   myMessage27.add(Pos[7]);
   myMessage28.add(Pos[8]);
+
   if (networkSize==10)
   {
   myMessage29.add(Pos[9]);
@@ -887,16 +936,6 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage48= new OscMessage("/dataToLive8"); // oscillator 
   OscMessage myMessage49= new OscMessage("/dataToLive9"); // oscillator behind
 
-  // MIDDLE POS
-    text ( " sendMiddle[0] " + sendMiddle[0] , 700, 600);
-    text ( " sendMiddle[5] " + sendMiddle[5] , 700, 700);
-
-  myMessage40.add(sendMiddle[0]);  // Trig on the right but there are bugs in pendular way
-  myMessage41.add(sendMiddle[1]);
-  myMessage42.add(sendMiddle[2]);
-  myMessage43.add(sendMiddle[3]);
-  myMessage44.add(sendMiddle[4]);
-  myMessage45.add(sendMiddle[5]);
 
        
 
@@ -988,10 +1027,8 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage37, myRemoteLocation);
   oscP5.send(myMessage38, myRemoteLocation);
   oscP5.send(myMessage39, myRemoteLocation);
-  //*** */
 
-
- // encodeur position
+ // encodeur position  or encoder numberOfRota
   oscP5.send(myMessage60, myRemoteLocation);
   oscP5.send(myMessage61, myRemoteLocation);
   oscP5.send(myMessage62, myRemoteLocation);
@@ -1006,6 +1043,14 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage73, myRemoteLocation);
   oscP5.send(myMessage74, myRemoteLocation);
   oscP5.send(myMessage75, myRemoteLocation);
+
+    // encoder numberOfRota
+  oscP5.send(myMessage90, myRemoteLocation);
+  oscP5.send(myMessage91, myRemoteLocation);
+  oscP5.send(myMessage92, myRemoteLocation);
+  oscP5.send(myMessage93, myRemoteLocation);
+  oscP5.send(myMessage94, myRemoteLocation);
+  oscP5.send(myMessage95, myRemoteLocation);
 
 
   OscMessage myMessage81= new OscMessage("/SignFromAbleton[2]"); // oscillator behind

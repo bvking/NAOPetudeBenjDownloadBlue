@@ -47,11 +47,13 @@ void displaySignalFromAbleton()
     
     //potar data move the circle 
     //OSC RECEIVE
+    //OSCILLOSCOPE
+
     incrementSpeed += 10;
     incrementSpeed = incrementSpeed % width;
     
     float ver_move = (float) incrementSpeed;
-    float triangularLFO = map(automation2, 0, 1, -300, 300); //FollowLFO   .. used to autmationWithMeasureAndNote()
+    float triangularLFO = map(signal[2], 0, 1, -300, 300); //FollowLFO   .. used to autmationWithMeasureAndNote()
     float hor_move = map(automation3, 0, 1, -300, 300);  // //followMad
     
     float RColour = map(automation7, 0, 1, 0, 255);

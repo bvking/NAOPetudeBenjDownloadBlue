@@ -657,6 +657,10 @@ if (oscillatorMaster > 0) {
             int[] pos = new int[networkSize];
             int[] oldPos = new int[networkSize];
             int[] Pos = new int[networkSize]; // to convert data of position always positively
+            int[] numberOfTrig = new int[networkSize];
+            int[] numberOfRota = new int[networkSize];
+
+
             int[] modPos = new int[networkSize]; // ta have special position  quarter or half round
             int[] modOldPos = new int[networkSize]; //to have former
             int[] modOldOldPos = new int[networkSize]; //to have former

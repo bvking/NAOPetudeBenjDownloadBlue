@@ -407,7 +407,9 @@ void draw()
         {
          // Pos[i]=(int) map(dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, TWO_PI);
          }
-  keyPressed();
+
+    // keyPressed();
+    keyReleased();
      oscSend();
     if (millis()>timeTosendData+250){
     //  oscSend();
