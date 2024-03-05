@@ -22,7 +22,7 @@ int networkSize = 6;
 //int numberOfStep = 3200;
 int numberOfStep = 6400;
 
-int countControlDr ;   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
+int[] countControlDr = new int [networkSize];   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
 int shapeLfoMode = 10;  //lfo UP CounterWay
 
 float shapeLfoToCount=1;  // lfo up
@@ -679,6 +679,7 @@ if (oscillatorMaster > 0) {
             int[] CircularVirtualPosition  = new int[networkSize];
             int[] dataMappedForMotorisedPosition  = new int[networkSize];
             int[] ActualVirtualPosition = new int[networkSize];
+            int[] oldLastActualPosition = new int[networkSize];
             int[] lastActualPosition  = new int[networkSize];
             int[] lastOldActualPosition  = new int[networkSize];
             int[] oldActualVirtualPosition  = new int[networkSize];

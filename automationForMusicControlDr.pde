@@ -8,17 +8,17 @@ void automationForMusicControlDr()
 
     if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
     {  
-      if ((measure==1 || measure==2) && beatPrecised%2==0 && beatPrecisedTrigged==true)
-       {   // textSize (100);
-            formerKey = 's';        
-         //   phaseDirectFromSeq();     
+      if ((measure==1 || measure==2) && beatPrecised%4==0 && beatPrecisedTrigged==true)
+       {   
+          //  formerKey = 's';        
+              
         }
 
-     if ( (measure>=3 && measure<=4) && beatPrecised%2==0 && beatPrecisedTrigged==true)
+     if ( (measure>=3 && measure<=4) && beatPrecised%4==0 && beatPrecisedTrigged==true)
        {
-          //  textSize (100);
-            formerKey = 'd';        
-          //  phaseDirectFromSeq();     
+        
+            formerKey = 'e';        
+         
        }
     }
 

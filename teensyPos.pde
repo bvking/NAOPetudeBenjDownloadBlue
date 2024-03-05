@@ -348,7 +348,7 @@ void teensyPos()
            for (int i = 0; i < networkSize-0; i++)
             { // 
             //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
-              dataMappedForMotorisedPosition[i]=lastActualPosition[i]+countControlDr*numberOfStep ;// RENAME good with k only
+              dataMappedForMotorisedPosition[i]=lastActualPosition[i]+countControlDr[i]*numberOfStep ;// RENAME good with k only
               dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastActualPosition[i];//+readPositionEncoder[i];  
                //   text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
 
@@ -360,10 +360,12 @@ void teensyPos()
         if (music_from_ableton_live == " controlDr " ) 
         { 
         rotate (PI);
-        text (" numberOfR[0]  " +numberOfRota[0], width, -2000-100*(networkSize+2)) ; 
-        text (" beatOnMeasur  " +beatOnMeasure, width, -2000-100*(networkSize+1)) ; 
+        text (" numberOfR[0]  " +numberOfRota[0], width, -2000-100*(networkSize+3)) ; 
+        text (" beatOnMeasur  " +beatOnMeasure, width, -2000-100*(networkSize+2)) ; 
+        text (" countDr0  " +countControlDr[0], width, -2000-100*(networkSize+1)) ; 
 
-         text (countControlDr, width, -2000-100*networkSize) ; 
+         text (" countDr5 " + countControlDr[5], width, -2000-100*networkSize) ; 
+
         for (int i = 0; i < networkSize; i++)
         {   
          text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 

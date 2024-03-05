@@ -75,7 +75,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
-       TrigmodPos[i]=0;
+      TrigmodPos[i]=0;
 
       //**    memoryi=i;
 

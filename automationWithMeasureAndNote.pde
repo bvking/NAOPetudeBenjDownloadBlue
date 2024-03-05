@@ -523,20 +523,73 @@ void trigBeatWithMeasure()
   }
   else  beatPrecisedTrigged=false;
 
-  
-  
 
    shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
 
-   if  (formerBeatOnMeasure>beatOnMeasure && shapeLfoMode == 30)
-   {
-    countControlDr=countControlDr-1;
-   }
+   if ( music_from_ableton_live == " controlDr ")
+    {
 
-   if  (formerBeatOnMeasure>beatOnMeasure && shapeLfoMode == 10)
-   {
-    countControlDr+=1;
-   }
+     
+
+
+     for (int i = 0; i < networkSize; i++)
+      {  
+        //  oldLastActualPosition[i]= lastActualPosition[i];
+        positionToMotor[i]=lastActualPosition[i]% numberOfStep;
+        text(oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -300 + (50 * i));  
+       }
+
+    if (formerKeyMetro == '*') 
+     {
+     countRevsPhaseMappedPositiveOnly();
+     }   
+    
+     for(int i = 0; i <  networkSize - 0; i += 1)
+         { 
+            //newPosF[i]=phaseMapped[i];
+            if (oldPosF[i] > newPosF[i]) { //
+                revLfo[i]++;
+                 countControlDr[i]++;
+                TrigmodPos[i] = 0;   
+            }
+            
+            if ( newPosF[i] > oldPosF[i]  && (oldPosF[i] <=  oldOldPosF[i])) 
+            {  // voir dans quel sens la retropropagation oriente  i et j
+                revLfo[i]--;
+                 countControlDr[i]--;
+                TrigmodPos[i] = 0;
+            }
+         }
+
+
+
+     /*
+      if  ( shapeLfoMode == 30 &&  oldLastActualPosition[i]<lastActualPosition[i]) // formerBeatOnMeasure>beatOnMeasure &&
+         {
+             countControlDr[i]=countControlDr[i]-1;
+         }
+      if  ( shapeLfoMode == 10 &&  oldLastActualPosition[i]>lastActualPosition[i]) // formerBeatOnMeasure>beatOnMeasure
+          {
+           countControlDr[i]+=1;
+          }
+       */
+
+
+
+
+      for (int i = 0; i <  networkSize - 0; i += 1) { 
+        oldLastActualPosition[i]= lastActualPosition[i];
+
+        oldPositionToMotor[i] =  positionToMotor[i];
+        oldOldPosF[i] = oldPosF[i];
+        oldPosF[i] = newPosF[i];
+        oldOldPhaseMapped[i] = oldPhaseMapped[i];
+        oldPhaseMapped[i] = phaseMapped[i];
+        net.phase[i] = phaseMapped[i];
+        // net.phase[i]=specialPhase[i];
+    }
+
+  }
 
 }
 

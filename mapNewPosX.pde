@@ -69,6 +69,7 @@ void mapNewPosX() {
             }
          }
      }
+     
     
     else  if (modeStartKeyToFollow == " propagationBallRotationBis ") { 
             
