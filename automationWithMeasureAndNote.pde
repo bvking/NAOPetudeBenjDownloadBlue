@@ -529,27 +529,37 @@ void trigBeatWithMeasure()
    if ( music_from_ableton_live == " controlDr ")
     {
 
-     
-
-
      for (int i = 0; i < networkSize; i++)
       {  
         //  oldLastActualPosition[i]= lastActualPosition[i];
-        positionToMotor[i]=lastActualPosition[i]% numberOfStep;
-        text(oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -300 + (50 * i));  
+        positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
+        text(oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -300 + (100 * i));  
        }
 
     if (formerKeyMetro == '*') 
      {
      countRevsPhaseMappedPositiveOnly();
-     }   
+     }
+       /*
+           for (int i = 0; i <  networkSize - 0; i += 1)
+          { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
+            newPosF[i] = positionToMotor[i] % 6400;
+            
+            //if (net.oldPhase[i] > net.phase[i] ) {
+           if (oldPositionToMotor[i] > positionToMotor[i])
+            {
+                positionToMotor[i] = ((int) map(positionToMotor[i], 0,numberOfStep,  numberOfStep, 0) % numberOfStep); //
+                newPosF[i] = positionToMotor[i] % 6400;
+           }
+          } 
+        */    
     
      for(int i = 0; i <  networkSize - 0; i += 1)
          { 
             //newPosF[i]=phaseMapped[i];
             if (oldPosF[i] > newPosF[i]) { //
                 revLfo[i]++;
-                 countControlDr[i]++;
+                countControlDr[i]++;
                 TrigmodPos[i] = 0;   
             }
             
@@ -585,7 +595,7 @@ void trigBeatWithMeasure()
         oldPosF[i] = newPosF[i];
         oldOldPhaseMapped[i] = oldPhaseMapped[i];
         oldPhaseMapped[i] = phaseMapped[i];
-        net.phase[i] = phaseMapped[i];
+        //net.phase[i] = phaseMapped[i];
         // net.phase[i]=specialPhase[i];
     }
 

@@ -33,7 +33,7 @@ void automationForMusicControlDr()
                   textSize(10); 
                     for (int i = 0; i < networkSize; i += 1)
                       {
-                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
+                        phasePatternFollow[i] += positionFromMotorPhase[i]; //
                       }
              formerKey = 'q';
                  }
@@ -49,7 +49,7 @@ void automationForMusicControlDr()
 
       if (shapeLfoMode==30)
       { 
-      signal2controlDr= (int) map  (signal[2], 0, 1,0,  numberOfStep);
+      signal2controlDr= (int) map  (signal[2], 0, 1,  0,  numberOfStep);
       }
       
       oldSignal2controlDr=signal2controlDr;

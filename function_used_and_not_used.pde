@@ -69,9 +69,9 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     {
 
       onOFF = 1;
-     
+      countControlDr[i]--;
       rev[i]--;
-      text (" YOUR HERE???" + rev[i], 200, -900+(i*10));
+      text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
       //      print (" revultion negative  "); println (revolution[i]=i+1);
       
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
@@ -93,9 +93,9 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
     {
       onOFF = 1;
-    
+      countControlDr[i]++;
       rev[i]++;
-      text (" YOUR HERE???" + rev[i], 200, -900+(i*10));
+      text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
       revolution[i]=0;
       TrigmodPos[i]=0;
         
