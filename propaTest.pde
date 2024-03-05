@@ -35,7 +35,7 @@ void propagationBallRotationTest() { // as addSignalOneAndTwoQuater() in NAOP
         case'b' : 
         doQ = false;
         doZ = false;
-        doB = doB;
+        //doB = doB;
         key = '#';
         break;
         case'z' : // change way of propagation
@@ -227,5 +227,3 @@ void  splitTimeScaleTest(float propagationSpeed) {
     splitTimeLfo = int(timeLfo % 100);    // the time is splitted at each %100. That mean ten time from the beginning to the end of signal[2]. from 0 to 1.
     
     }
-
-

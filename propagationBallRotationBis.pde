@@ -137,7 +137,7 @@ void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as a
         case'b' : 
         doQ = false;
         doZ = false;
-        doB = doB;
+        //doB = doB;
         key = '#';
         break;
         

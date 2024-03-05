@@ -122,7 +122,7 @@ void addSignalOneAndTwoOriginal() {
 
 void propagation2wayDelay() {
 
-  if (doo=true && propagationTrigged==true) {
+  if (doo==true && propagationTrigged==true) {
 
     float phaseAmount=trigedSignFromAbleton[1];
     phaseAmount= map (phaseAmount, 0, 1, 1, 0);

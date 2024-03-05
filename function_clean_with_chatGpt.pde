@@ -92,13 +92,13 @@ void displayArrays() {
 }
 
 void computePhaseSum() {
-  if (modeCircular=true) {
+  if (modeCircular==true) {
     for (int i = 0; i < networkSize; i++) {
       addPhaseAllMode += net.phase[i];
       print ("CIR ave pha " + i);
     }
   }
-  if (modeCircular=false) {
+  if (modeCircular==false) {
     for (int i = 0; i < networkSize; i++) {
       addPhaseAllMode += metroPhase[i];
       print ("CIR ave pha " + i);
