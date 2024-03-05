@@ -194,7 +194,7 @@
     }   
   }
 */
-/*
+/*  GOOD ONE
 void serialEvent(Serial encoderReceiveUSBport101)
 { 
     //read the serial buffer:
