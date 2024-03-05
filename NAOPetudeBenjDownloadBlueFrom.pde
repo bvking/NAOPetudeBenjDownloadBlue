@@ -409,7 +409,8 @@ void draw()
          }
 
     // keyPressed();
-    keyReleased();
+
+     keyReleased();
      oscSend();
     if (millis()>timeTosendData+250){
     //  oscSend();
