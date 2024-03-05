@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 /*
 public void settings() {
-//size(600, 600, P3D);
-// windowRatio(600, 600);
+size(600, 600, P3D);
+ windowRatio(300, 300);
 } 
 */
 
@@ -1165,7 +1165,7 @@ void setup() {
                
      size(600, 600, P3D);
 
-               //  windowRatio(600, 600); 
+                 windowRatio(900, 900); 
               //  translate(0, -800,1000);
                 
                 
