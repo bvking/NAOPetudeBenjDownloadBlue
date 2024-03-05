@@ -40,13 +40,10 @@ void automationForMusicControlDr()
               }
            formerKey = '#'; 
         }
-
-
   
       shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
-       
-       
-       if (shapeLfoMode==10)
+         
+      if (shapeLfoMode==10)
       {      
       signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
        }
