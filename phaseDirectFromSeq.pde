@@ -1,8 +1,8 @@
   void phaseDirectFromSeq() // mixed Com
  {  
     oscillatorBlocked=networkSize-1;
-        if (key == 'ç')
-      {
+       if (key == 'ç')
+       {
         float [] realign = new float [networkSize];
         if (positionFromMotorPhase [networkSize-1]> positionFromMotorPhase [0])
 
@@ -30,19 +30,24 @@
             positionFromMotorPhase [i] = (int) realign[i];
 
           // positionFromMotorPhase [i] = positionFromMotorPhase [0];
-
-          
            }
          }
+       }
 
-        }
-
-        if (formerKey == 'e')
+        if (formerKey == 'e' && shapeLfoMode == 30)
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT
-         positionFromMotorPhase [i]-= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep);   
+         positionFromMotorPhase [i]=  positionFromMotorPhase [i]- (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);   
           }
         }
+
+        if (formerKey == 'e' && shapeLfoMode == 10)
+        {
+         for (int i = 0; i < networkSize; i++) { // 6 HIT
+         positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);   
+          }
+        }
+
 
 
         if (formerKey == 's')

@@ -1135,6 +1135,10 @@ void setup() {
 
                  networkSize = 6;
                  numberOfStep = 6400;
+
+                 for (int i = 0; i <  networkSize; i++) {
+                    numberOfRota[i]=1;     
+                    }
                   }
                 
                   

@@ -360,8 +360,8 @@ void teensyPos()
         if (music_from_ableton_live == " controlDr " ) 
         { 
         rotate (PI);
-        text (" f   "+formerBeatOnMeasure, width, -2000-100*(networkSize+2)) ; 
-        text (" b  " +beatOnMeasure, width, -2000-100*(networkSize+1)) ; 
+        text (" numberOfR[0]  " +numberOfRota[0], width, -2000-100*(networkSize+2)) ; 
+        text (" beatOnMeasur  " +beatOnMeasure, width, -2000-100*(networkSize+1)) ; 
 
          text (countControlDr, width, -2000-100*networkSize) ; 
         for (int i = 0; i < networkSize; i++)
