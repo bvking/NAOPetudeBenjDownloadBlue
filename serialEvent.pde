@@ -302,7 +302,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
 
   
 
-       // trigMiddlepositionFromProcessing see after oscEvent
+       // trigMiddlepositionFromProcessing see after oscEvent 
    
       int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
       int numberOfEncodeur = 6;

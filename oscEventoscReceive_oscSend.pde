@@ -1065,7 +1065,7 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage94, myRemoteLocation);
   oscP5.send(myMessage95, myRemoteLocation);
 
-
+/*
   OscMessage myMessage81= new OscMessage("/SignFromAbleton[2]"); // oscillator behind
   myMessage81.add(trigedSignFromAbleton[1]);  // Trig on the right but there are bugs in pendular way
   oscP5.send(myMessage81, myRemoteLocation);
@@ -1073,7 +1073,7 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage82= new OscMessage("/SignFromAbleton[2]"); // oscillator behind
   myMessage81.add(trigedSignFromAbleton[2]);  // Trig on the right but there are bugs in pendular way
   oscP5.send(myMessage82, myRemoteLocation);
-  
+ */ 
 
    // myRemoteLocationII port 8002
 
