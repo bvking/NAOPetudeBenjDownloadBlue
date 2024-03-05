@@ -194,7 +194,7 @@
     }   
   }
 */
-
+/*
 void serialEvent(Serial encoderReceiveUSBport101)
 { 
     //read the serial buffer:
@@ -207,9 +207,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
     //and convert the sections into integers:
     if ( systemForBigMachine == true && abletonLFO == false)
     {
-
      int valuesFromDue[] = int(split(myEncodeur, ','));   // receive 2 datas splited with , and the last is send with println
-    
      int numberOfDataSplitedWithComa = 2;
     
      if(valuesFromDue.length == numberOfDataSplitedWithComa)
@@ -219,9 +217,8 @@ void serialEvent(Serial encoderReceiveUSBport101)
      } 
     } 
 
-    if (systemForBigMachine == false )
-    {
-
+   if (systemForBigMachine == false && onlyLitteMachineWithSecondSerialPort == true && 1>2)
+   { 
     String[] m0 = match(myEncodeur, "e0");
     String[] m1 = match(myEncodeur, "e1");
     String[] m2 = match(myEncodeur, "e2");
@@ -303,10 +300,31 @@ void serialEvent(Serial encoderReceiveUSBport101)
     }
 
 
-    // trigMiddlepositionFromProcessing
+  
+
+       // trigMiddlepositionFromProcessing see after oscEvent
+   
+      int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
+      int numberOfEncodeur = 6;
+      if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
+        for (int i = 0; i < networkSize; i++) {
+           //  encodeur[i] = values[i];  DON'T WORK
+        } 
+        encodeur[0]= (int)map (abs( values[0]), 0, 4000, 0, 4000)%4000;  
+        encodeur[1] =(int)map (abs( values[1]), 0, 4000, 0, 4000)%4000;  
+        encodeur[2] =(int)map (abs( values[2]), 0, 4000, 0, 4000)%4000; 
+        encodeur[3]= (int)map (abs( values[3]), 0, 4000, 0, 4000)%4000;  
+        encodeur[4] =(int)map (abs( values[4]), 0, 4000, 0, 4000)%4000;  
+        encodeur[5] =(int)map (abs( values[5]), 0, 4000, 0, 4000)%4000; 
+
+    }   
+   }
+
+}
+*/
 
 /*
-    if (Np0 != null) {  // If not null, then a match was found
+ if (Np0 != null) {  // If not null, then a match was found
         midPos[0] = false;
     }
 
@@ -354,36 +372,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
     if (p5 != null) {  // If not null, then a match was found
         midPos[5] = true;
     }
- */   
-    int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
-    
-    int numberOfEncodeur = 6;
-      
-    if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
-        for (int i = 0; i < networkSize; i++) {
-           //  encodeur[i] = values[i];  DON'T WORK
-        } 
-  
-        /*
-        encodeur[0] = values[0];
-        encodeur[1] = values[1];
-        encodeur[2] = values[2];
-        encodeur[3] = values[3];
-        encodeur[4] = values[4];
-        encodeur[5] = values[5];      
-        */
-
-        encodeur[0]= (int)map (abs( values[0]), 0, 4000, 0, 4000)%4000;  
-        encodeur[1] =(int)map (abs( values[1]), 0, 4000, 0, 4000)%4000;  
-        encodeur[2] =(int)map (abs( values[2]), 0, 4000, 0, 4000)%4000; 
-        encodeur[3]= (int)map (abs( values[3]), 0, 4000, 0, 4000)%4000;  
-        encodeur[4] =(int)map (abs( values[4]), 0, 4000, 0, 4000)%4000;  
-        encodeur[5] =(int)map (abs( values[5]), 0, 4000, 0, 4000)%4000; 
-
-    }   
-  }
-
-}
+   */   
 
 
 
