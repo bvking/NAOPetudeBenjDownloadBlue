@@ -37,7 +37,7 @@
         if (formerKey == 'e' && shapeLfoMode == 30)
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT
-         positionFromMotorPhase [i]=  positionFromMotorPhase [i]- (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);   
+         positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);   
           }
         }
 
