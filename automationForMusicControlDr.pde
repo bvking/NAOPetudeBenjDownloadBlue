@@ -40,8 +40,12 @@ void automationForMusicControlDr()
               }
            formerKey = '#'; 
         }
+
+
   
       shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+       
+       
        if (shapeLfoMode==10)
       {      
       signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
@@ -66,7 +70,18 @@ void automationForMusicControlDr()
            {   
            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) -int ( phasePatternFollow[i])); 
            } 
+
+           if (lastActualPosition [i]<0)
+            {
+                lastActualPosition [i] = lastActualPosition[i] +numberOfStep; // easier
+                lastActualPosition [i] %=  numberOfStep;
+            } 
+           else if (lastActualPosition [i] >=  0) {
+                lastActualPosition [i] %=  numberOfStep;
+            }
         }
+
+
 }
 
 void automationForMusicControlDrO()
