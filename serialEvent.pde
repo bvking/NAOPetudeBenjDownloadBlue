@@ -194,7 +194,8 @@
     }   
   }
 */
-/*  GOOD ONE
+
+  //GOOD ONE
 void serialEvent(Serial encoderReceiveUSBport101)
 { 
     //read the serial buffer:
@@ -217,7 +218,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
      } 
     } 
 
-   if (systemForBigMachine == false && onlyLitteMachineWithSecondSerialPort == true && 1>2)
+   if (systemForBigMachine == false && onlyLitteMachineWithSecondSerialPort == true && 1<2)
    { 
     String[] m0 = match(myEncodeur, "e0");
     String[] m1 = match(myEncodeur, "e1");
@@ -273,8 +274,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
 
 
 
-    
-    
+      
     if (m0 != null) {  // If not null, then a match was found
         encoderTouched[0] = true;
     }
@@ -300,8 +300,6 @@ void serialEvent(Serial encoderReceiveUSBport101)
     }
 
 
-  
-
        // trigMiddlepositionFromProcessing see after oscEvent 
    
       int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
@@ -321,7 +319,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
    }
 
 }
-*/
+
 
 /*
  if (Np0 != null) {  // If not null, then a match was found

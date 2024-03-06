@@ -14,14 +14,13 @@ void automationForMusicControlDr()
               
         }
 
-     if ( (measure>=3 && measure<=4) && beatPrecised%4==0 && beatPrecisedTrigged==true)
+     if ( (measure>=3 && measure<=4) && beatPrecised%9==0 && beatPrecisedTrigged==true)
        {
         
             formerKey = 'e';        
          
        }
     }
-
     phaseDirectFromSeq(); 
 
     // based on followSignaSampledOppositeWay    

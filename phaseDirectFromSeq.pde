@@ -34,7 +34,7 @@
          }
        }
 
-        if (formerKey == 'e' && shapeLfoMode == 30)
+        if (formerKey == 'e' )
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT
          positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);  
@@ -42,10 +42,10 @@
           }
         }
 
-        if (formerKey == 'e' && shapeLfoMode == 10)
+        if (formerKey == 'E' )
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT
-         positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]); 
+         positionFromMotorPhase [i]=  positionFromMotorPhase [i]- (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/1/networkSize, 0, TWO_PI, 0, numberOfStep/numberOfRota[0]); 
          positionFromMotorPhase [i]%=   numberOfStep;  
           }
         }
