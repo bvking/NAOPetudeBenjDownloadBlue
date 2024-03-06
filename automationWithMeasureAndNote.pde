@@ -533,13 +533,15 @@ void trigBeatWithMeasure()
       {  
         //  oldLastActualPosition[i]= lastActualPosition[i];
         positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
-        text(oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -300 + (100 * i));  
+        text(phasePatternFollow[i] + " " + positionToMotor[i] , -800, -300 + (100 * i));  
        }
 
     if (formerKeyMetro == '*') 
      {
      countRevsPhaseMappedPositiveOnly();
      }
+
+     // counter si propagation
        /*
            for (int i = 0; i <  networkSize - 0; i += 1)
           { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
@@ -552,39 +554,25 @@ void trigBeatWithMeasure()
                 newPosF[i] = positionToMotor[i] % 6400;
            }
           } 
-        */    
+         
     
      for(int i = 0; i <  networkSize - 0; i += 1)
          { 
-            //newPosF[i]=phaseMapped[i];
             if (oldPosF[i] > newPosF[i]) { //
                 revLfo[i]++;
-                countControlDr[i]++;
+              //  countControlDr[i]++;
                 TrigmodPos[i] = 0;   
             }
             
             if ( newPosF[i] > oldPosF[i]  && (oldPosF[i] <=  oldOldPosF[i])) 
             {  // voir dans quel sens la retropropagation oriente  i et j
                 revLfo[i]--;
-                 countControlDr[i]--;
+              //   countControlDr[i]--;
                 TrigmodPos[i] = 0;
             }
          }
-
-
-
-     /*
-      if  ( shapeLfoMode == 30 &&  oldLastActualPosition[i]<lastActualPosition[i]) // formerBeatOnMeasure>beatOnMeasure &&
-         {
-             countControlDr[i]=countControlDr[i]-1;
-         }
-      if  ( shapeLfoMode == 10 &&  oldLastActualPosition[i]>lastActualPosition[i]) // formerBeatOnMeasure>beatOnMeasure
-          {
-           countControlDr[i]+=1;
-          }
-       */
-
-
+        
+       */  
 
 
       for (int i = 0; i <  networkSize - 0; i += 1) { 

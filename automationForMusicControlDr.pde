@@ -35,7 +35,7 @@ void automationForMusicControlDr()
                   textSize(10); 
                     for (int i = 0; i < networkSize; i += 1)
                       {
-                        phasePatternFollow[i] += positionFromMotorPhase[i]; //
+                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
                       }
              formerKey = 'q';
                  }
