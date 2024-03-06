@@ -22,7 +22,9 @@ void automationForMusicControlDr()
        }
     }
 
-    phaseDirectFromSeq();     
+    phaseDirectFromSeq(); 
+
+    // based on followSignaSampledOppositeWay    
   
      if(formerKey != '#') // q is used to preStart speed of repetio
         {
@@ -42,7 +44,6 @@ void automationForMusicControlDr()
         }
           for (int i = 0; i < networkSize; i++)
           { 
-
            if (phasePatternFollow [i]<0)
             {
                 phasePatternFollow [i] = phasePatternFollow[i] +numberOfStep; // easier
@@ -54,7 +55,8 @@ void automationForMusicControlDr()
           }
   
       shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
-         
+
+
       if (shapeLfoMode==10)
       {      
       signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
@@ -62,16 +64,16 @@ void automationForMusicControlDr()
 
       if (shapeLfoMode==30)
       { 
-      //signal2controlDr= (int) map  (signal[2], 0, 1,  0,  numberOfStep);
       signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
       }
       
-      oldSignal2controlDr=signal2controlDr;
-      oldOldSignal2controlDr=oldSignal2controlDr;
+      //oldSignal2controlDr=signal2controlDr;
+      //oldOldSignal2controlDr=oldSignal2controlDr;
             
        for (int i = 0; i < networkSize; i++)
        {      
-          phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+           phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+
                if (shapeLfoMode==10) // if up add position
            {   
            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
@@ -80,19 +82,6 @@ void automationForMusicControlDr()
            {   
            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
            } 
-          /*
-           if (lastActualPosition [i]<0)
-            {
-                lastActualPosition [i] = lastActualPosition[i] +numberOfStep; // easier
-                lastActualPosition [i] %=  numberOfStep;
-            } 
-           else if (lastActualPosition [i] >=  0) {
-                lastActualPosition [i] %=  numberOfStep;
-            }
-          */
-        }
-
-
 }
 
 void automationForMusicControlDrO()
