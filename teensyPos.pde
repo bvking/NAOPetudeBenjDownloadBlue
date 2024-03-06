@@ -368,7 +368,7 @@ void teensyPos()
 
         for (int i = 0; i < networkSize; i++)
         {   
-         text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
+         text (dataMappedForMotorisedBigMachine[i] + " " + phasePatternFollow[i], width, -2000-100*i) ; 
         }       
         send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
         rotate (-PI);

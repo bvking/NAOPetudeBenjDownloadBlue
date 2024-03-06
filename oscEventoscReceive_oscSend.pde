@@ -534,10 +534,11 @@ void oscSend(){
       TrigmodPos[0]=1;
       Pos[0]=127;
 
-      numberOfTrig[0]+=1;
-      numberOfTrig[0]%=8+1;
-      numberOfRota[0]+=1;
-      numberOfRota[0]%=8+1;
+     numberOfTrig[0]%=8;
+     numberOfTrig[0]+=1;
+     
+     numberOfRota[0]%=8;
+     numberOfRota[0]+=1;
   
      }
 

@@ -33,13 +33,25 @@ void automationForMusicControlDr()
                   textSize(10); 
                     for (int i = 0; i < networkSize; i += 1)
                       {
-                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
+                        phasePatternFollow[i] += positionFromMotorPhase[i]; //
                       }
              formerKey = 'q';
                  }
               }
            formerKey = '#'; 
         }
+          for (int i = 0; i < networkSize; i++)
+          { 
+
+           if (phasePatternFollow [i]<0)
+            {
+                phasePatternFollow [i] = phasePatternFollow[i] +numberOfStep; // easier
+                phasePatternFollow [i] %=  numberOfStep;
+            } 
+           else if (phasePatternFollow [i] >=  0) {
+                phasePatternFollow [i] %=  numberOfStep;
+            }
+          }
   
       shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
          
@@ -50,7 +62,8 @@ void automationForMusicControlDr()
 
       if (shapeLfoMode==30)
       { 
-      signal2controlDr= (int) map  (signal[2], 0, 1,  0,  numberOfStep);
+      //signal2controlDr= (int) map  (signal[2], 0, 1,  0,  numberOfStep);
+      signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
       }
       
       oldSignal2controlDr=signal2controlDr;
@@ -65,9 +78,9 @@ void automationForMusicControlDr()
            } 
                if (shapeLfoMode==30) // if down minus position
            {   
-           lastActualPosition [i] = (  int (phaseSigna2Followed[i]) -int ( phasePatternFollow[i])); 
+           lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
            } 
-
+          /*
            if (lastActualPosition [i]<0)
             {
                 lastActualPosition [i] = lastActualPosition[i] +numberOfStep; // easier
@@ -76,6 +89,7 @@ void automationForMusicControlDr()
            else if (lastActualPosition [i] >=  0) {
                 lastActualPosition [i] %=  numberOfStep;
             }
+          */
         }
 
 
