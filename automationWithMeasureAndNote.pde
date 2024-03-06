@@ -533,6 +533,7 @@ void trigBeatWithMeasure()
       {  
         //  oldLastActualPosition[i]= lastActualPosition[i];
         positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
+       /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
         text(phasePatternFollow[i] + " " + positionToMotor[i] , -800, -300 + (100 * i));  
        }
 

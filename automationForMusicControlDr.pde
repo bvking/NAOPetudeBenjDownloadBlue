@@ -64,6 +64,7 @@ void automationForMusicControlDr()
       if (shapeLfoMode==30)
       { 
       signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
+      signal2controlDr%=numberOfStep;
       }
       
       //oldSignal2controlDr=signal2controlDr;
@@ -75,7 +76,8 @@ void automationForMusicControlDr()
 
           if (shapeLfoMode==10 || shapeLfoMode==30) // if up or down add position
            {   
-           lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i]));  
+           lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
+            lastActualPosition [i]%=numberOfStep; 
            } 
         } 
 }
