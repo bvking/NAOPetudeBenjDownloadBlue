@@ -840,7 +840,7 @@ void setup() {
                 o = new OscP5(this, 2346);//receive data from a port number - it has to be same as in your Max for Live device // careful to oveflow
                // oII = new OscP5(this, 2350);//receive datapiano partitionII
                 
-                oscP5 = new OscP5(this, 8000);//receive data to himself
+                oscP5 = new OscP5(this, 7999);//receive data to himself
 
                 //192.168.1.50
 
