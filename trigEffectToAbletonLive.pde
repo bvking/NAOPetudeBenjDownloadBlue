@@ -4,19 +4,23 @@ boolean[] trigEffectBisTo = new boolean[networkSize];
 int[] timeTriggedFromEncodeur = new int[networkSize];
 int[] startMeasureFromEncodeur = new int[networkSize];
 int[] recEncodeurPosition = new int[networkSize];
+boolean[] oldEncoderTouched = new boolean[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
        for (int i = 0; i < networkSize; i++) { 
+
+
        // encoderTouched[i] =  false;
+            oldEncoderTouched[i]=encoderTouched[i];
+            
         if (encoderTouched[i] ==  true)
          { 
 
-          encodeurPosition[i]=(int) map(encodeur[i], 0, 4000, 0, 0, 4000);
-          recEncodeurPositionrecEncodeurPosition=encodeurPosition[i];
+          encodeurPosition[i]=(int) map(encodeur[i], 0, 4000, 0, 4000);
+          recEncodeurPosition[i]=encodeurPosition[i];
             
             println("Main Found encodeur A MATCH in " + i + " " + encoderTouched[i] + " " + encodeur[i]); 
-
-             text("ENCODEUR TOUCHED " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*100);  
+            text("ENCODEUR TOUCHED " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
 
 
 
@@ -26,6 +30,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
           //  println(" sendPositionToLive " + encoderTouched[i] + " " + Pos[i]);  
  
          }
+             if ( oldEncoderTouched[i] == encoderTouched[i])
+          { 
+           //   text("ENCODEUR MATCH " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
+
+           }
          
           println("MIDDLE POSITION NOTT MATCH in " + i + " " + midPos[i] + " " + midPos[i]); 
 

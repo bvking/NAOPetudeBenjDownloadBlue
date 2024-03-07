@@ -248,32 +248,32 @@ void serialEvent(Serial encoderReceiveUSBport101)
     String[] Np4 = match(myEncodeur, "no4");
     String[] Np5 = match(myEncodeur, "no5");
 
-    /*
+    
 
-    if (Nm0 != null) {  // If not null, then a match was found
+    if (m0 == null) {  // If not null, then a match was found
         encoderTouched[0] = false;
     }
      
-    if (Nm1 != null) {  // If not null, then a match was found
+    if (m1 == null) {  // If not null, then a match was found
         encoderTouched[1] = false;
     }
     
-    if (Nm2 != null) {  // If not null, then a match was found
+    if (m2 == null) {  // If not null, then a match was found
         encoderTouched[2] = false;
     }
         
-    if (Nm3 != null) {  // If not null, then a match was found
+    if (m3 == null) {  // If not null, then a match was found
         encoderTouched[3] = false;
     }
       
-    if (Nm4 != null) {  // If not null, then a match was found
+    if (m4 == null) {  // If not null, then a match was found
         encoderTouched[4] = false;
     }
  
-    if (Nm5 != null) {  // If not null, then a match was found
+    if (m5 == null) {  // If not null, then a match was found
         encoderTouched[5] = false;
     }
-  */
+  
 
 
       
