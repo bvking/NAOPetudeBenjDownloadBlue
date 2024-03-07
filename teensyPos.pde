@@ -41,7 +41,8 @@ void teensyPos()
 
 
      if ( measure <= 635) // to avoid machine blocked 
-     {   
+     { 
+        
      if ( keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  " )  // || keyMode == " addSignalOneAndTwo "      
      {  
       for(int i = 0; i < networkSize; i++) {

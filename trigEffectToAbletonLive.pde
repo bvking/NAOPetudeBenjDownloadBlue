@@ -3,13 +3,23 @@ boolean[] trigEffectTo = new boolean[networkSize];
 boolean[] trigEffectBisTo = new boolean[networkSize];
 int[] timeTriggedFromEncodeur = new int[networkSize];
 int[] startMeasureFromEncodeur = new int[networkSize];
+int[] recEncodeurPosition = new int[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
        for (int i = 0; i < networkSize; i++) { 
+       // encoderTouched[i] =  false;
         if (encoderTouched[i] ==  true)
          { 
+
+          encodeurPosition[i]=(int) map(encodeur[i], 0, 4000, 0, 0, 4000);
+          recEncodeurPositionrecEncodeurPosition=encodeurPosition[i];
             
             println("Main Found encodeur A MATCH in " + i + " " + encoderTouched[i] + " " + encodeur[i]); 
+
+             text("ENCODEUR TOUCHED " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*100);  
+
+
+
 
             //Pos[i] = (int) map(encodeur[i], 0, 800, 0, 127);
 
@@ -17,11 +27,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
  
          }
          
-          println("MIDDLE POSITION A MATCH in " + i + " " + midPos[i] + " " + midPos[i]); 
+          println("MIDDLE POSITION NOTT MATCH in " + i + " " + midPos[i] + " " + midPos[i]); 
 
         if (midPos[i] ==  true)
          { 
-          println("MIDDLE POSITION A MATCH in " + i + " " + midPos[i] + " " + midPos[i]);  
+          println("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]);  
          }
 
     } 
@@ -30,16 +40,20 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() {
 void trigMiddlePositionFromEncodeur()
 {
  int mapRatio= 400;
- textSize(200);
+ textSize(100);
  rotate(-HALF_PI);
     for (int i = 0; i < networkSize; i++) { 
          midPos[i] =  false;
          oldEncodeurPosition[i]=encodeurPosition[i];      
          encodeurPosition[i]=(int) map(encodeur[i], 0, 4000, 0, mapRatio);
+
+         text ( " trigMid " + oldEncodeurPosition[i] + " " + encodeurPosition[i], -1000, 1*i*100);
   
         if ((oldEncodeurPosition[i]<mapRatio/2 && encodeurPosition[i]>mapRatio/2)) 
        {
          midPos[i] =  true;
+        text("MIDDLE POSITION GOD2 MATCH in " + i + " " + midPos[i] + " " + midPos[i] , -1000, 1*i*100);  
+
        }
 
         if ((oldEncodeurPosition[i]>mapRatio/2 && encodeurPosition[i]<mapRatio/2)) 

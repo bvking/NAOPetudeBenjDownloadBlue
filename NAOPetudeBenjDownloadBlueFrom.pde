@@ -333,8 +333,8 @@ void draw()
     
     // data From serial computed to trig middle position and trig just touched 
 
-    trigMiddlePositionFromEncodeur();
-    
+    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
+
     result = multiMatchData(0, 1, TrigmodPos.clone());
     TrigmodPos = result;
     print(" showResul ");showArray(result);
@@ -372,7 +372,7 @@ void draw()
             }
         char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
         String strMiddle = new String(middlePos);
-        text(" showMid " + strMiddle, 300, -1000);
+        text(" showMid " + strMiddle, 800, -1000);
 
       //midPos  but not aligned  covertir en int puis float DO NOT WORK WELL
       /*
@@ -389,8 +389,8 @@ void draw()
           }
 
       */
-        print(" sendMiddle ");showArrayF(sendMiddle);
-        print(" sendMiddle ");showArrayF(sendMiddle);
+        println (" sendMiddle ");showArrayF(sendMiddle);
+        println(" sendMiddle ");showArrayF(sendMiddle);
 
         /*
         resultMidPosWithEncoderF = multiMatchDataF(1, 0, sendMiddle.clone());
@@ -412,6 +412,8 @@ void draw()
 
      keyReleased();
      oscSend();
+   //  trigMiddlePositionFromEncodeur();
+
     if (millis()>timeTosendData+250){
     //  oscSend();
       timeTosendData=millis();

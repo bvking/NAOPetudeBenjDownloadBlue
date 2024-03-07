@@ -516,10 +516,10 @@ void oscSend(){
 
     for (int i = 0; i < networkSize; i++)
      {
-          encoderTouched[i]=false;
-          midPos[i]=false;
-          sendMiddle[i]=0.;
-          TrigmodPos[i]=0;
+        //  encoderTouched[i]=false;
+        //  midPos[i]=false;
+        //  sendMiddle[i]=0.;
+        //  TrigmodPos[i]=0;
           numberOfTrig[i]=0;
      }
 

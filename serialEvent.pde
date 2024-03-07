@@ -218,7 +218,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
      } 
     } 
 
-   if (systemForBigMachine == false && onlyLitteMachineWithSecondSerialPort == true && 1<2)
+   if (systemForBigMachine == false)// && onlyLitteMachineWithSecondSerialPort == true && 1<2)
    { 
     String[] m0 = match(myEncodeur, "e0");
     String[] m1 = match(myEncodeur, "e1");
@@ -248,6 +248,8 @@ void serialEvent(Serial encoderReceiveUSBport101)
     String[] Np4 = match(myEncodeur, "no4");
     String[] Np5 = match(myEncodeur, "no5");
 
+    /*
+
     if (Nm0 != null) {  // If not null, then a match was found
         encoderTouched[0] = false;
     }
@@ -271,7 +273,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
     if (Nm5 != null) {  // If not null, then a match was found
         encoderTouched[5] = false;
     }
-
+  */
 
 
       
@@ -298,6 +300,59 @@ void serialEvent(Serial encoderReceiveUSBport101)
     if (m5 != null) {  // If not null, then a match was found
         encoderTouched[5] = true;
     }
+
+    // midPos  en fonction données machines
+
+     /*
+    if (Np0 != null) {  // If not null, then a match was found
+        midPos[0] = false;
+    }
+
+    if (p0 != null) {  // If not null, then a match was found
+        midPos[0] = true;
+      
+    }
+     
+    if (Np1 != null) {  // If not null, then a match was found
+        midPos[1] = false;
+    } 
+
+    if (p1 != null) {  // If not null, then a match was found
+        midPos[1] = true;
+    }
+
+    if (Np2 != null) {  // If not null, then a match was found
+        midPos[2] = false;
+    }
+    
+    if (p2 != null) {  // If not null, then a match was found
+        midPos[2] = true;
+    }
+
+    if (Np3 != null) {  // If not null, then a match was found
+        midPos[3] = false;
+    }
+   
+    if (p3 != null) {  // If not null, then a match was found
+        midPos[3] = true;
+    }
+
+    if (Np4 != null) {  // If not null, then a match was found
+        midPos[4] = false;
+    }
+    
+    if (p4 != null) {  // If not null, then a match was found
+        midPos[4] = true;
+    }
+
+    if (Np5 != null) {  // If not null, then a match was found
+        midPos[5] = false;
+    }
+    
+    if (p5 != null) {  // If not null, then a match was found
+        midPos[5] = true;
+    }
+    */
 
 
        // trigMiddlepositionFromProcessing see after oscEvent 
