@@ -726,7 +726,7 @@ void oscSend(){
   OscMessage myMessage64= new OscMessage("/fromEncodeurToLive4"); // oscillator 
   OscMessage myMessage65= new OscMessage("/fromEncodeurToLive5"); // oscillato
 
-    myMessage60.add(fromEncodeurToLive[0]);  // 0 or 1;
+  myMessage60.add(fromEncodeurToLive[0]);  // 0 or 1;
   myMessage61.add(fromEncodeurToLive[1]);
   myMessage62.add(fromEncodeurToLive[2]);
   myMessage63.add(fromEncodeurToLive[3]);
@@ -744,9 +744,7 @@ oldEncodeur[0]= encodeur[0];
 
 //*******    if ( oldEncodeur[0]<0 && = encodeur[0];)
 
-  // if (music_from_ableton_live == " controlDr ")
-  // { 
-
+ 
   OscMessage myMessage60= new OscMessage("/encodeur0"); // oscillator SEND 0 or 1
   OscMessage myMessage61= new OscMessage("/encodeur1"); // oscillator 
   OscMessage myMessage62= new OscMessage("/encodeur2"); // oscillator 
@@ -760,27 +758,54 @@ oldEncodeur[0]= encodeur[0];
   myMessage63.add(encodeur[3]);
   myMessage64.add(encodeur[4]);
   myMessage65.add(encodeur[5]);
-  // }
 
-
- //  if (music_from_ableton_live == " controlDr ")
- //  { 
-
-  OscMessage myMessage90= new OscMessage("/numberOfRota0"); // oscillator SEND 0 or 1
+  OscMessage myMessage90= new OscMessage("/numberOfRota0"); // oscillator SEND // 0 to 32 or 64
   OscMessage myMessage91= new OscMessage("/numberOfRota1"); // oscillator 
   OscMessage myMessage92= new OscMessage("/numberOfRota2"); // oscillator 
   OscMessage myMessage93= new OscMessage("/numberOfRota3"); // oscillator 
   OscMessage myMessage94= new OscMessage("/numberOfRota4"); // oscillator 
   OscMessage myMessage95= new OscMessage("/numberOfRota5"); // oscillato
 
-  myMessage90.add(numberOfRota[0]);  // 0 to 400
+  myMessage90.add(numberOfRota[0]);  // // 0 to 32 or 64
   myMessage91.add(numberOfRota[1]);
   myMessage92.add(numberOfRota[2]);
   myMessage93.add(numberOfRota[3]);
   myMessage94.add(numberOfRota[4]);
   myMessage95.add(numberOfRota[5]);
 
-  // }
+  // numberOfTrig
+
+  OscMessage myMessage100= new OscMessage("/numberOfTrig0"); // oscillator SEND // 0 to 32 or 64
+  OscMessage myMessage101= new OscMessage("/numberOfTrig1"); // oscillator 
+  OscMessage myMessage102= new OscMessage("/numberOfTrig2"); // oscillator 
+  OscMessage myMessage103= new OscMessage("/numberOfTrig3"); // oscillator 
+  OscMessage myMessage104= new OscMessage("/numberOfTrig4"); // oscillator 
+  OscMessage myMessage105= new OscMessage("/numberOfTrig5"); // oscillato
+
+  myMessage100.add(numberOfTrig[0]);  // 0 to 32 or 64
+  myMessage101.add(numberOfTrig[1]);
+  myMessage102.add(numberOfTrig[2]);
+  myMessage103.add(numberOfTrig[3]);
+  myMessage104.add(numberOfTrig[4]);
+  myMessage105.add(numberOfTrig[5]);
+
+   // TrigSound
+
+  OscMessage myMessage106= new OscMessage("/TrigSound0"); // oscillator SEND // 0 to 32 or 64
+  OscMessage myMessage107= new OscMessage("/TrigSound1"); // oscillator 
+  OscMessage myMessage108= new OscMessage("/TrigSound2"); // oscillator 
+  OscMessage myMessage109= new OscMessage("/TrigSound3"); // oscillator 
+  OscMessage myMessage110= new OscMessage("/TrigSound4"); // oscillator 
+  OscMessage myMessage111= new OscMessage("/TrigSound5"); // oscillato
+
+  myMessage106.add(TrigSound[0]);  // 0 to 32 or 64
+  myMessage107.add(TrigSound[1]);
+  myMessage108.add(TrigSound[2]);
+  myMessage109.add(TrigSound[3]);
+  myMessage110.add(TrigSound[4]);
+  myMessage111.add(TrigSound[5]);
+
+  
 
 
   JoDebug  ="<" // BPM9   
@@ -1041,7 +1066,7 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage38, myRemoteLocation);
   oscP5.send(myMessage39, myRemoteLocation);
 
- // encodeur position  or encoder numberOfRota
+ // encodeur position 
   oscP5.send(myMessage60, myRemoteLocation);
   oscP5.send(myMessage61, myRemoteLocation);
   oscP5.send(myMessage62, myRemoteLocation);
@@ -1064,6 +1089,31 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage93, myRemoteLocation);
   oscP5.send(myMessage94, myRemoteLocation);
   oscP5.send(myMessage95, myRemoteLocation);
+
+  // encoder numberOfRota
+
+  oscP5.send(myMessage100, myRemoteLocation); 
+  oscP5.send(myMessage101, myRemoteLocation); 
+  oscP5.send(myMessage102, myRemoteLocation); 
+  oscP5.send(myMessage103, myRemoteLocation); 
+  oscP5.send(myMessage104, myRemoteLocation); 
+  oscP5.send(myMessage105, myRemoteLocation); 
+
+  //  TrigSound
+ 
+  oscP5.send(myMessage106, myRemoteLocation); 
+  oscP5.send(myMessage107, myRemoteLocation); 
+  oscP5.send(myMessage108, myRemoteLocation); 
+  oscP5.send(myMessage109, myRemoteLocation); 
+  oscP5.send(myMessage110, myRemoteLocation); 
+  oscP5.send(myMessage111, myRemoteLocation); 
+
+  /*
+  oscP5.send(myMessage112, myRemoteLocation); 
+  oscP5.send(myMessage113, myRemoteLocation); 
+  */
+
+
 
 /*
   OscMessage myMessage81= new OscMessage("/SignFromAbleton[2]"); // oscillator behind

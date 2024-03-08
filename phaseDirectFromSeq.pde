@@ -33,16 +33,25 @@
            }
          }
        }
-
-        if (formerKey == 'e' )
+         if (key == 'a' )
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
-         positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ (int)  map ( (networkSize+0-1- oscillatorBlocked+i)*TWO_PI/1/(networkSize+2), 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);  
+         positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ numberOfStep/numberOfRota[0];
          positionFromMotorPhase [i]%=   numberOfStep;
           }
         }
 
-        if (formerKey == 'E' )
+
+        if (key == 'e' )
+        {
+         for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
+         positionFromMotorPhase [i]=  positionFromMotorPhase [i]+ (int)  map ( (networkSize+0-1- oscillatorBlocked+i)*TWO_PI/1/(networkSize+2), 0, TWO_PI, 0, numberOfStep/numberOfRota[0]);  
+         positionFromMotorPhase [i]%=   numberOfStep;
+        // recordPositionFromMPhase[i]=positionFromMotorPhase [i];
+          }
+        }
+
+        if (key == 'E' )
         {
          for (int i = 0; i < networkSize; i++) { // 6 HIT
          positionFromMotorPhase [i]=  positionFromMotorPhase [i]- (int)  map ( (networkSize+0-1- oscillatorBlocked-i)*TWO_PI/1/(networkSize+2), 0, TWO_PI, 0, numberOfStep/numberOfRota[0]); 
@@ -52,7 +61,7 @@
 
 
 
-        if (formerKey == 's')
+        if (key == 's')
         {
         for (int i = 0; i < networkSize; i++)
          {
@@ -61,7 +70,7 @@
         }
 
 
-        if (formerKey == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
+        if (key == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
         {
         for (int i = 0; i < networkSize; i++)
          {
@@ -70,7 +79,7 @@
          }
 
 
-        if (formerKey == 'd')
+        if (key == 'd')
         {
         for (int i = 0; i < networkSize; i++)
          {
@@ -82,7 +91,7 @@
          }
     }
 
-   if (formerKey == 'D') 
+   if (key == 'D') 
     {
              // front  TWO_PI/8/(networkSize)*(i)   behind?
           // + =   TWO_PI*0.1/(networkSize)*(networkSize-1-i)
@@ -90,6 +99,27 @@
          positionFromMotorPhase [i]+= (int)  map ( TWO_PI*0.1/(networkSize)*(networkSize-1-i), 0, TWO_PI, 0, numberOfStep);
           }
      }
+
+    
+    if (key == 'u')
+      {  // memory == 0 is the ball "behind"  the screen
+
+       oldMemoryi=memoryi;
+       memoryi=(memoryi+1);
+       memoryi%=networkSize;
+
+        for (int i = 0; i < (networkSize-0); i++)
+        {  
+        lastOldActualPosition[i]=positionFromMotorPhase [i];//+numberOfStep/6;
+        }
+
+       for (int i = 1; i < (networkSize-0); i++)
+       {  
+       positionFromMotorPhase [i]=lastOldActualPosition[i-1];       
+       }
+       positionFromMotorPhase [0]= lastOldActualPosition[networkSize-1];
+
+   } 
 
      text (" formerKey " + formerKey , 100, -200);
     
