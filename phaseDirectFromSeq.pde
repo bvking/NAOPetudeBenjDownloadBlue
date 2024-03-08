@@ -121,7 +121,7 @@
 
    } 
 
-     text (" formerKey " + formerKey , 100, -200);
+   //  text (" formerKey " + formerKey , 100, -200);
     
      
 }

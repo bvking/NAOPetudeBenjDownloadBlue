@@ -789,21 +789,21 @@ oldEncodeur[0]= encodeur[0];
   myMessage104.add(numberOfTrig[4]);
   myMessage105.add(numberOfTrig[5]);
 
-   // TrigSound
+   // trigSound
 
-  OscMessage myMessage106= new OscMessage("/TrigSound0"); // oscillator SEND // 0 to 32 or 64
-  OscMessage myMessage107= new OscMessage("/TrigSound1"); // oscillator 
-  OscMessage myMessage108= new OscMessage("/TrigSound2"); // oscillator 
-  OscMessage myMessage109= new OscMessage("/TrigSound3"); // oscillator 
-  OscMessage myMessage110= new OscMessage("/TrigSound4"); // oscillator 
-  OscMessage myMessage111= new OscMessage("/TrigSound5"); // oscillato
+  OscMessage myMessage106= new OscMessage("/trigSound0"); // oscillator SEND // 0 to 32 or 64
+  OscMessage myMessage107= new OscMessage("/trigSound1"); // oscillator 
+  OscMessage myMessage108= new OscMessage("/trigSound2"); // oscillator 
+  OscMessage myMessage109= new OscMessage("/trigSound3"); // oscillator 
+  OscMessage myMessage110= new OscMessage("/trigSound4"); // oscillator 
+  OscMessage myMessage111= new OscMessage("/trigSound5"); // oscillato
 
-  myMessage106.add(TrigSound[0]);  // 0 to 32 or 64
-  myMessage107.add(TrigSound[1]);
-  myMessage108.add(TrigSound[2]);
-  myMessage109.add(TrigSound[3]);
-  myMessage110.add(TrigSound[4]);
-  myMessage111.add(TrigSound[5]);
+  myMessage106.add(trigSound[0]);  // 0 to 32 or 64
+  myMessage107.add(trigSound[1]);
+  myMessage108.add(trigSound[2]);
+  myMessage109.add(trigSound[3]);
+  myMessage110.add(trigSound[4]);
+  myMessage111.add(trigSound[5]);
 
   
 
@@ -1099,7 +1099,7 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage104, myRemoteLocation); 
   oscP5.send(myMessage105, myRemoteLocation); 
 
-  //  TrigSound
+  //  trigSound
  
   oscP5.send(myMessage106, myRemoteLocation); 
   oscP5.send(myMessage107, myRemoteLocation); 

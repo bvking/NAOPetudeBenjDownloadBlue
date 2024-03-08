@@ -88,7 +88,8 @@ int [] OldSpecialPhase =new int [networkSize];
 int  [] positionToFollow =new int [networkSize];
 int  [] positionFromMotorPhase =new int [networkSize];
 int  [] recordPositionFromMPhase =new int [networkSize];
-int  [] TrigSound =new int [networkSize];
+int  [] trigSound =new int [networkSize];
+int  [] changeSound =new int [networkSize];
 
 float[] deltaOldPhaseActualPhase = new float[networkSize];
 

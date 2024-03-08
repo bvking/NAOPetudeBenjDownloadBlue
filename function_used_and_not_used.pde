@@ -61,7 +61,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
   for (int i = 0; i < networkSize; i++) {
       TrigmodPos[i]=1; ///no beacuse TrigmodPos is allready in countRevs
-      TrigSound[i]=0;
+      trigSound[i]=0;
 
     if (
   
@@ -77,7 +77,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
       TrigmodPos[i]=0;
-      TrigSound[i]=1;
+      trigSound[i]=1;
 
       //**    memoryi=i;
 
@@ -100,7 +100,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
       revolution[i]=0;
       TrigmodPos[i]=0;
-      TrigSound[i]=1;
+      trigSound[i]=1;
         
       decompte[i] = 0;  // RESET COUNTER AT 0
     } else {
