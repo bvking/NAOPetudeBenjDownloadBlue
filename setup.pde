@@ -838,24 +838,15 @@ void setup() {
                 // Osc midi potar
                 automation1 = automation2 = automation3 = automation4 = automation5 = automation6 = automation7 = 0.5;
                 o = new OscP5(this, 2346);//receive data from a port number - it has to be same as in your Max for Live device // careful to oveflow
-               // oII = new OscP5(this, 2350);//receive datapiano partitionII
-                
+               // oII = new OscP5(this, 2350);//receive datapiano partitionII   
                 oscP5 = new OscP5(this, 7999);//receive data to himself
 
-                //192.168.1.50
-
-                //  oscP5bis = new OscP5(this, 8002);//receive data to himself
-                
-                // myRemoteLocation = new OscP5(this, 8000); // rsend data to live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
-                // myRemoteLocationII = new OscP5bis(this,8001); // receive data fto live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
-
-               // myRemoteLocation = new NetAddress("192.168.1.77", 8000); // send data to port 8000 
+                // send DATA
+                // myRemoteLocation = new NetAddress("192.168.1.77", 8000); // send data to port 8000 
                 myRemoteLocation = new NetAddress("127.0.0.1", 8000); // rsend data to live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
                 myRemoteLocationII = new NetAddress("127.0.0.1", 8001); // receive data fto live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
-               //  myRemoteLocationII = new NetAddress("192.168.1.77", 8001); 
-               //  myRemoteLocation8002 = new NetAddress("127.0.0.1", 8002);
-              //     myRemoteLocation8002 = new NetAddress("192.168.1.41", 8002);
-              //     myRemoteLocation8003 = new NetAddress("192.168.1.97", 8003);
+                //myRemoteLocationII = new NetAddress("192.168.1.77", 8001); 
+          
                 dataToLive = new float[networkSize];
                 upVelocity = new int[networkSize];
                 
@@ -870,9 +861,7 @@ void setup() {
                 string6 = new B_String(width * 0.1, width * 0.3, width * 0.7, width * 0.9, height * 0.7, 0);
                 string7 = new B_String(width * 0.1, width * 0.3, width * 0.7, width * 0.9, height * 0.8, 133);
                 string8 = new B_String(width * 0.1, width * 0.3, width * 0.7, width * 0.9, height * 0.9, 278);
-                
-                
-                
+                     
                 startStop = 0; // data used in Live
                
                 stepSize = 10; // no effect //  net.stepSize = 1; // no effect  
