@@ -403,14 +403,15 @@ void draw()
      textSize(100);
      //----
      //timeTosendData;
+
+     keyReleased();
+
        for (int i = 0; i < networkSize; i++)
         {
           Pos[i]=abs((int) map(dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, 127));
          }
 
-    // keyPressed();
-
-     keyReleased();
+     
      oscSend();
    //  trigMiddlePositionFromEncodeur();
 
