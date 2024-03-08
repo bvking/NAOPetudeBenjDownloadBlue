@@ -520,19 +520,22 @@ void oscSend(){
         //  midPos[i]=false;
         //  sendMiddle[i]=0.;
         //  TrigmodPos[i]=0;
+
           numberOfTrig[i]=0;
+
      }
 
 
-      //
-       Pos[0]=127;
+      
+     //  Pos[0]=127;
       
 
     if ( keyCode == TAB || formerKey == 'a') 
      {
-      encoderTouched[0]=true;
-      TrigmodPos[0]=1;
-      Pos[0]=127;
+
+     // encoderTouched[0]=true;
+     // TrigmodPos[0]=1;
+     // Pos[0]=127;
 
      numberOfTrig[0]%=8;
      numberOfTrig[0]+=1;
@@ -652,14 +655,14 @@ void oscSend(){
     lastDataLfo=dataLFO;
     lfoTosend=1.0;
    }
-    //dataLFO = int( millis()*0.001); // sec
+    // dataLFO = int( millis()*0.001); // sec
     // dataLFO = int( millis()*0.01); // 1/10sec
     dataLFO = int( millis()*0.005); // 1/10sec
     rotate(-PI/2);
      text (  lfoTosend, -1000, -200, 1000);
      trigLfo=lfoTosend;
      myMessage1.add(trigLfo); // called led
-    myMessage2.add(1.0-trigLfo); // called led
+     myMessage2.add(1.0-trigLfo); // called led
 
   // oscP5.send(myMessage1, myRemoteLocation8002);
   // oscP5.send(myMessage2, myRemoteLocation8003);
@@ -780,10 +783,6 @@ oldEncodeur[0]= encodeur[0];
   // }
 
 
-
-
-
-
   JoDebug  ="<" // BPM9   
    // + (dataMappedForMotorisedPosition[11])+","+dataMappedForMotorisedPosition[10]+","+(dataMappedForMotorisedPosition[9])+","+dataMappedForMotorisedPosition[8]+","+dataMappedForMotorisedPosition[7]+","
    // + dataMappedForMotorisedPosition[6]+","
@@ -866,7 +865,7 @@ oldEncodeur[0]= encodeur[0];
 
   if (networkSize==10)
   {
-  myMessage29.add(Pos[9]);
+   myMessage29.add(Pos[9]);
   }
   }
 

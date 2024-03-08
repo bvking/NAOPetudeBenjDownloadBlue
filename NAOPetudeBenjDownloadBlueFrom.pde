@@ -405,7 +405,7 @@ void draw()
      //timeTosendData;
        for (int i = 0; i < networkSize; i++)
         {
-         // Pos[i]=(int) map(dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, TWO_PI);
+          Pos[i]=abs((int) map(dataMappedForMotorisedPosition[i]%numberOfStep, 0, numberOfStep, 0, 127));
          }
 
     // keyPressed();
