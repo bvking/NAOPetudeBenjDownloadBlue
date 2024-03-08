@@ -4,6 +4,7 @@ boolean[] trigEffectBisTo = new boolean[networkSize];
 int[] timeTriggedFromEncodeur = new int[networkSize];
 int[] startMeasureFromEncodeur = new int[networkSize];
 int[] recEncodeurPosition = new int[networkSize];
+int[] dataMappedForMotorToCompare = new int[networkSize];
 boolean[] oldEncoderTouched = new boolean[networkSize];
 
 int[]touchedTimeStarter = new int[networkSize];
@@ -15,13 +16,28 @@ boolean[] enablingChangeSound = new boolean[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
-    textSize(50);
+    textSize(75);
+        float [] dataMapped = new float[networkSize];
+
     for (int i = 0; i < networkSize; i++)
         { 
         encoderTouched[i] =  false;
         //oldEncodeurPosition[i]= encodeurPosition[i];
-        oldEncodeurPosition[i] = encodeurPosition[i];
-        encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000));   
+        oldEncodeurPosition[i] = encodeurPosition[i]*10;
+        encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000)); 
+
+        //dataMappedForMotorToCompare[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000));
+
+        dataMapped[i]  =  map(dataMappedForMotorisedBigMachine[i], 0, numberOfStep, 0, 4000); // fonctionne en up
+        dataMapped[i] %= 4000;
+
+        dataMappedForMotorToCompare[i] = (int)  map  (dataMapped[i]+1*4/numberOfStep, 0, 4000, 0, 4000); 
+         dataMappedForMotorToCompare[i]%=4000;
+        
+       // (int)  map  ((dataMappedForMotorisedBigMachine[i]+3*numberOfStep/4)%=numberOfStep, 0, numberOfStep, numberOfStep, 0); 
+          rotate (-PI/2);
+         text("ENCODEUR MATCH " + i + " " +encodeurPosition[i] + " " + (dataMappedForMotorToCompare[i]), -600, 1*i*75); 
+        rotate (PI/2); 
             
         // oldEncoderTouched[i]=encoderTouched[i];
         if (oldEncoderTouched[i] != encoderTouched[i])
@@ -44,8 +60,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             //  encodeurPosition[i]=abs ((int) map(encodeur[i], 0, 4000, 0, 4000));   
             
         }      
+      
         
-        if (((oldEncodeurPosition[i] + 1000)) % (4000 ) <= (encodeurPosition[i]) && encodeurPosition[i]> 2000)// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
+        if (((encodeurPosition[i] + 1000)) % (4000 ) <= (dataMappedForMotorisedBigMachine[i]%=numberOfStep) )// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
         {  
             touchedTimeStarter[i] = millis();
             encoderTouched[i] =  true;
@@ -58,7 +75,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
         
         
-        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true)
+        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
             {
             textSize(150);
             
