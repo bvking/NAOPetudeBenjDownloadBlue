@@ -24,11 +24,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     for (int i = 0; i < networkSize; i++)
         { 
         encoderTouched[i] =  false;
-        //oldEncodeurPosition[i]= encodeurPosition[i];
         oldEncodeurPosition[i] = encodeurPosition[i]*10;
         encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
-
-        //dataMappedFromMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000));
 
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize-1-i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
         dataMapped[i]  %= numberOfStep;
@@ -36,13 +33,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         dataMappedFromMotor[i] = (int)  map  (dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
         dataMappedFromMotor[i]%=numberOfStep;
         
-        rotate (-PI/2);
-        text("ENCODEUR MATCH " + i + " " +encodeurPosition[i] + " " + (dataMappedFromMotor[i]), -600, 1*i*75); 
-        rotate (PI/2); 
-         
+   
         if (oldEncoderTouched[i] != encoderTouched[i])
         {            
-         //   text("ENCODEUR MATCH " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
         }
         
         if (oldEncodeurPosition[i] <=  encodeurPosition[i])
@@ -55,7 +48,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         if (encoderTouched[i] ==  true)
         {
-            //  encodeurPosition[i]=abs ((int) map(encodeur[i], 0, 4000, 0, 4000));   
             
         }  
         gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
@@ -63,28 +55,22 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (gapEncoder_Motor[i]> numberOfStep/10)
         {
            textSize(75);
-           text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 200);      
-        }
-
-       
-      
-        
+            rotate (-PI/2);
+            text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
+            rotate (PI/2);      
+        }   
         if (((encodeurPosition[i] +numberOfStep/10)) % 4000 <=  dataMappedFromMotor[i] )// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
         {  
             touchedTimeStarter[i] = millis();
             encoderTouched[i] =  true;
             textSize(75);
-            enablingChangeSound[i] = true;
-            
-          //  text("ENCODEUR TOUCHED " + i + " " + encoderTouched[i] + " " + encodeurPosition[i], -1000, 1 * i * 200);         
-            
+            enablingChangeSound[i] = true;                  
         }
         
         
         if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
             {
-            textSize(150);
-                  
+            textSize(150);           
             changeSound[i] += 1;
             changeSound[i] %=  48;
             
@@ -92,27 +78,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             { 
                 changeSound[i] = 32;
             }
-            text("               changeS " + i + " " + changeSound[i] + " ", -1000, 1 * i * 200); 
-            
-            enablingChangeSound[i] = false;
-            
+            text("               changeS " + i + " " + changeSound[i] + " ", -1000, 1 * i * 150); 
+            enablingChangeSound[i] = false;    
             }
-        
-        
+            
         if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false)
         { 
-            touchedTimeStarter[i] = millis();
-            //  oldEncodeurPosition[i]= encodeurPosition[i];
+            touchedTimeStarter[i] = millis();      
             
-            //   text("ENCODEUR MATCH " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
-            
-        }
-        
-        println("MIDDLE POSITION NOTT MATCH in " + i + " " + midPos[i] + " " + midPos[i]); 
-        
+        }     
         if (midPos[i] ==  true)
         { 
-            println("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]);  
+      //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
         }
         
 } 
