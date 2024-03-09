@@ -4,7 +4,7 @@ boolean[] trigEffectBisTo = new boolean[networkSize];
 int[] timeTriggedFromEncodeur = new int[networkSize];
 int[] startMeasureFromEncodeur = new int[networkSize];
 int[] recEncodeurPosition = new int[networkSize];
-int[] dataMappedForMotorToCompare = new int[networkSize];
+int[] dataMappedFromMotor = new int[networkSize];
 boolean[] oldEncoderTouched = new boolean[networkSize];
 
 int[]touchedTimeStarter = new int[networkSize];
@@ -14,32 +14,32 @@ boolean[] enablingChangeSound = new boolean[networkSize];
 
 
 
+
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
-    textSize(75);
-        float [] dataMapped = new float[networkSize];
+     textSize(75);
+        int [] dataMapped = new int[networkSize];
+        int [] gapEncoder_Motor = new int[networkSize];
 
     for (int i = 0; i < networkSize; i++)
         { 
         encoderTouched[i] =  false;
         //oldEncodeurPosition[i]= encodeurPosition[i];
         oldEncodeurPosition[i] = encodeurPosition[i]*10;
-        encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000)); 
+        encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
-        //dataMappedForMotorToCompare[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000));
+        //dataMappedFromMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000));
 
-        dataMapped[i]  =  map(positionToMotor[i], 0, numberOfStep, 0, 4000); // fonctionne en up
-        dataMapped[i]  %= 4000;
+        dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize-1-i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
+        dataMapped[i]  %= numberOfStep;
 
-        dataMappedForMotorToCompare[i] = (int)  map  (dataMapped[i]+1*4/numberOfStep, 0, 4000, 0, 4000); 
-        dataMappedForMotorToCompare[i]%=4000;
+        dataMappedFromMotor[i] = (int)  map  (dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
+        dataMappedFromMotor[i]%=numberOfStep;
         
-        // (int)  map  ((dataMappedForMotorisedBigMachine[i]+3*numberOfStep/4)%=numberOfStep, 0, numberOfStep, numberOfStep, 0); 
         rotate (-PI/2);
-        text("ENCODEUR MATCH " + i + " " +encodeurPosition[i] + " " + (dataMappedForMotorToCompare[i]), -600, 1*i*75); 
+        text("ENCODEUR MATCH " + i + " " +encodeurPosition[i] + " " + (dataMappedFromMotor[i]), -600, 1*i*75); 
         rotate (PI/2); 
          
-        // oldEncoderTouched[i]=encoderTouched[i];
         if (oldEncoderTouched[i] != encoderTouched[i])
         {            
          //   text("ENCODEUR MATCH " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
@@ -57,10 +57,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {
             //  encodeurPosition[i]=abs ((int) map(encodeur[i], 0, 4000, 0, 4000));   
             
-        }      
+        }  
+        gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
+
+        if (gapEncoder_Motor[i]> numberOfStep/10)
+        {
+           textSize(75);
+           text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 200);      
+        }
+
+       
       
         
-        if (((encodeurPosition[i] + 1000)) % (4000 ) <= (dataMappedForMotorisedBigMachine[i]%=numberOfStep) )// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
+        if (((encodeurPosition[i] +numberOfStep/10)) % 4000 <=  dataMappedFromMotor[i] )// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
         {  
             touchedTimeStarter[i] = millis();
             encoderTouched[i] =  true;
