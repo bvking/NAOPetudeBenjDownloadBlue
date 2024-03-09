@@ -7,39 +7,32 @@ void teensyPos()
    text ( " modeCircular " + modeCircular , 200, -300) ; //
    rotate(-PI);
    int j=1;
-   text  (
-                  
-                  
+   text  (             
                    " MotorisedP " + j + " "  +  dataMappedForMotorisedPosition[j]+
                    " deltaOld  " +deltaOldPhaseActualPhase[j] +  " readPositionEncoder " + readPositionEncoder[j]+
                    " MotorisedBig[j] " +  dataMappedForMotorisedBigMachine[j] + " speedDelta " + speedDelta + " old " + oldMemoryi + " mem " + memoryi +
-                   " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]
-                                    
+                   " net.pha " +  net.phase[j] + " metro " + metroPhase[j]+ " recordFromCir " + recordLastDataOfMotorPosition[j]                                  
                    , -300 , -height-300, -500);
     
-
-
     //  oldDataMappedForMotorisedPosition=dataMappedForMotorisedPosition; 
 
-  
   if ( music_from_ableton_live != " controlDr ")
    { 
-     if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive "  ) 
+     if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive ") 
      { 
        //  revLfo=rev;
        // rev+=revLfo;
       }
 
-     if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal "  )
+     if  ((keyMode == " propagationBallRotationBis " || keyMode == " propagationSampleBall  ") && formerKeyMode == " trigEventWithAbletonSignal ")
       { 
         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
       }
 
-     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal "  ) { 
+     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && formerKeyMode == " trigEventWithAbletonSignal ")
+      { 
        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
       }
-
-
      if ( measure <= 635) // to avoid machine blocked 
      { 
         
@@ -48,7 +41,6 @@ void teensyPos()
       for(int i = 0; i < networkSize; i++) {
 
         //  dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (rev[i]*numberOfStep);  // map motor with countrevs doesn't work. Try to adapt rev with revLfo method
-         // dataMappedForMotorisedPosition[i]=(int) newPosF[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
           dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
 
       if (keyMode == " propagationSampleBall  " ){
@@ -80,22 +72,20 @@ void teensyPos()
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
           }
-
-
- 
-     if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
+      if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
                                                      && formerKeyMetro =='*')
-     { 
+      { 
 
-     if ( keyMode == " propagationBallRotationNOBisTest " ) { 
+          if ( keyMode == " propagationBallRotationNOBisTest " ) 
+          { 
              // rev=revLfo; // actualise counter of normal mode from revLfo from method mapNewPosX() but net.phase i is good?
              //   revLfo=rev;
               text ( " revLfo "  + revLfo[2]  + " rev " + rev[2] +  "keyMode " + keyMode + " phase2 " + net.phase [2] , 0, 100) ; //
           }
 
 
-        for (int i = 0; i < networkSize; i++) {
-  
+         for (int i = 0; i < networkSize; i++) {
+    
              //*******************************  ASSIGN MOTOR WITH POSITION
 
          //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
@@ -113,13 +103,8 @@ void teensyPos()
          if  (rev[i]==0 && (net.phase[i] > 0) ) {  //  number of revolution is 0 and rotation is clock wise     
              dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));         
          }
-
            //  recordLastDataOfMotorPosition[i] = dataMappedForMotorisedPosition[i];
               dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i]; // RENAME;//+readPositionEncoder[i];
-
-              //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
-              //  print ( " record * " + recordLastDataOfMotorPosition[i] );
-           
          }
       
      }
@@ -129,9 +114,7 @@ void teensyPos()
        if (formerKeyMetro == '$')
         {
          for (int i = 0; i < networkSize; i++)
-          {
-            // dataMappedForMotorisedPosition[i]+= lastActualPosition[i];  // lastActualPosition[i] comes with key k too
-             dataMappedForMotorisedPosition[i]+=lastActualPosition[i];// RENAME good with k only
+          {  dataMappedForMotorisedPosition[i]+=lastActualPosition[i];// RENAME good with k only
              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];        
            }
         }
@@ -139,7 +122,7 @@ void teensyPos()
        if (formerKeyMetro == '*' )
         {
         for (int i = 0; i < networkSize-0; i++)
-         { // 
+         {  
            //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
             dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i]+lastActualPosition[i];//+lastActualPosition[i];//+readPositionEncoder[i];  
           } 
