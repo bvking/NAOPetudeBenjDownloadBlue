@@ -52,33 +52,39 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }  
         gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
 
-        if (gapEncoder_Motor[i]> numberOfStep/10)
+         rotate (-PI/2);
+            text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " " + numberOfTrig[i], -1000, 1 * i * 75); 
+            rotate (PI/2); 
+
+        if (gapEncoder_Motor[i]> numberOfStep/12 && (dataMappedFromMotor[i]<=numberOfStep-numberOfStep/6 && dataMappedFromMotor[i]>=numberOfStep/6))
         {
            textSize(75);
             rotate (-PI/2);
-            text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
-            rotate (PI/2);      
-        }   
-        if (((encodeurPosition[i] +numberOfStep/10)) % 4000 <=  dataMappedFromMotor[i] )// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
-        {  
+           // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
+            rotate (PI/2); 
             touchedTimeStarter[i] = millis();
             encoderTouched[i] =  true;
             textSize(75);
-            enablingChangeSound[i] = true;                  
+            enablingChangeSound[i] = true;         
+        }  
+
+        if (((encodeurPosition[i] +numberOfStep/10)) % 4000 <=  dataMappedFromMotor[i] && encodeurPosition[i]>=+numberOfStep/10)// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
+        {  
+                  
         }
         
         
         if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
             {
             textSize(150);           
-            changeSound[i] += 1;
-            changeSound[i] %=  48;
+            numberOfTrig[i] += 1;
+            numberOfTrig[i] %= 17;
             
-            if (changeSound[i] ==  0)
+            if (numberOfTrig[i] ==  0)
             { 
-                changeSound[i] = 32;
+                numberOfTrig[i] = 8;
             }
-            text("               changeS " + i + " " + changeSound[i] + " ", -1000, 1 * i * 150); 
+            text("               changeS " + i + " " + numberOfTrig[i] + " ", -1000, 1 * i * 150); 
             enablingChangeSound[i] = false;    
             }
             

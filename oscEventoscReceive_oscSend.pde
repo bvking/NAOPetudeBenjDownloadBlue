@@ -521,7 +521,7 @@ void oscSend(){
         //  sendMiddle[i]=0.;
         //  TrigmodPos[i]=0;
 
-          numberOfTrig[i]=0;
+        //  numberOfTrig[i]=0;
 
      }
 
