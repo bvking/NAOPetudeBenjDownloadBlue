@@ -28,23 +28,21 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         //dataMappedForMotorToCompare[i] = abs((int) map(encodeur[i], 0, 4000, 0, 4000));
 
-        dataMapped[i]  =  map(dataMappedForMotorisedBigMachine[i], 0, numberOfStep, 0, 4000); // fonctionne en up
-        dataMapped[i] %= 4000;
+        dataMapped[i]  =  map(positionToMotor[i], 0, numberOfStep, 0, 4000); // fonctionne en up
+        dataMapped[i]  %= 4000;
 
         dataMappedForMotorToCompare[i] = (int)  map  (dataMapped[i]+1*4/numberOfStep, 0, 4000, 0, 4000); 
-         dataMappedForMotorToCompare[i]%=4000;
+        dataMappedForMotorToCompare[i]%=4000;
         
-       // (int)  map  ((dataMappedForMotorisedBigMachine[i]+3*numberOfStep/4)%=numberOfStep, 0, numberOfStep, numberOfStep, 0); 
-          rotate (-PI/2);
-         text("ENCODEUR MATCH " + i + " " +encodeurPosition[i] + " " + (dataMappedForMotorToCompare[i]), -600, 1*i*75); 
+        // (int)  map  ((dataMappedForMotorisedBigMachine[i]+3*numberOfStep/4)%=numberOfStep, 0, numberOfStep, numberOfStep, 0); 
+        rotate (-PI/2);
+        text("ENCODEUR MATCH " + i + " " +encodeurPosition[i] + " " + (dataMappedForMotorToCompare[i]), -600, 1*i*75); 
         rotate (PI/2); 
-            
+         
         // oldEncoderTouched[i]=encoderTouched[i];
         if (oldEncoderTouched[i] != encoderTouched[i])
-        { 
-            
-            
-            //   text("ENCODEUR MATCH " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
+        {            
+         //   text("ENCODEUR MATCH " + i + " " + encoderTouched[i] + " " + encodeur[i], -1000, 1*i*200);  
         }
         
         if (oldEncodeurPosition[i] <=  encodeurPosition[i])
@@ -69,8 +67,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             textSize(75);
             enablingChangeSound[i] = true;
             
-          //  text("ENCODEUR TOUCHED " + i + " " + encoderTouched[i] + " " + encodeurPosition[i], -1000, 1 * i * 200);  
-            
+          //  text("ENCODEUR TOUCHED " + i + " " + encoderTouched[i] + " " + encodeurPosition[i], -1000, 1 * i * 200);         
             
         }
         
@@ -78,8 +75,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
             {
             textSize(150);
-            
-            
+                  
             changeSound[i] += 1;
             changeSound[i] %=  48;
             
@@ -144,16 +140,13 @@ void trigMiddlePositionFromEncodeur()
 
 
 void trigEffectToAbletonLive()
-    {
-    
-    
+    { 
     if (oldEncodeur[0] != encodeur[0]) {   
         trigEffectTo[0] = true;
         textSize(150);
         timeTriggedFromEncodeur[0] = millis(); // NOT USED
         trigEffectBisTo[0] = true;
-        fromEncodeurToLive[0] = 1;
-        
+        fromEncodeurToLive[0] = 1;   
     }
     else trigEffectTo[0] = false;
     

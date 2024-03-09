@@ -1130,7 +1130,8 @@ void setup() {
                  numberOfStep = 6400;
 
                  for (int i = 0; i <  networkSize; i++) {
-                    numberOfRota[i]=1;     
+                    numberOfRota[i]=1;   
+                    numberOfTrig[i]=8;    
                     }
                   }
                 
