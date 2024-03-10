@@ -2,7 +2,7 @@
 
 void phaseDirectFromSeq() // mixed Com
 {  
-       oscillatorBlocked = networkSize - 1;
+    oscillatorBlocked = networkSize - 1;
     
     if (key == '9')
     {
@@ -35,9 +35,9 @@ void phaseDirectFromSeq() // mixed Com
                 realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
                 positionFromMotorPhase[i] = (int) realign[i];
                 
-              //  positionFromMotorPhase [i] = positionFromMotorPhase [0];
+                //positionFromMotorPhase [i] = positionFromMotorPhase [0];
                 
-        }  
+            }  
         }
         
         if (positionFromMotorPhase[networkSize - 1] <= positionFromMotorPhase[0] - 6400)
@@ -46,22 +46,22 @@ void phaseDirectFromSeq() // mixed Com
             higerPostion = false;
             for (int i = 0; i < networkSize; i++) {
                 realign[i] = positionFromMotorPhase[0] % (positionFromMotorPhase[0] + (numberOfStep)); //+PI/2;
-              //   realign[i] = positionFromMotorPhase [networkSize-1]%(positionFromMotorPhase [networkSize-1]+(numberOfStep)); //+PI/2;
+                //realign[i] = positionFromMotorPhase [networkSize-1]%(positionFromMotorPhase [networkSize-1]+(numberOfStep)); //+PI/2;
                 
                 positionFromMotorPhase[i] = (int) realign[i];
                 
-               // positionFromMotorPhase [i] = positionFromMotorPhase [0];
-        }
+                // positionFromMotorPhase [i] = positionFromMotorPhase [0];
+            }
         }
     }    
-       
-    if (keyCode == CONTROL )
-     {
+    
+    if (keyCode == CONTROL)
+    {
         enablingParametersChangesToLive =! enablingParametersChangesToLive;  
         keyCode = 0;
-     }
-
-
+}
+    
+    
     if (key == 'a')
         {
         for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
@@ -73,20 +73,41 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == 'e')
     {
-        for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
+        for (int i = 0; i < networkSize; i++)
+        { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / numberOfRota[0]);  
             positionFromMotorPhase[i] %=   numberOfStep;
-                    
-        if (enablingChangeSound[i]==true)
-        {
-             for  (int j = 0; i < networkSize; i++)
-              { 
-             recordPositionsFromInstrument[i][j] =positionFromMotorPhase[j];        
-              }
-         }
+            
+            if (enablingChangeSound[i] ==  true)
+            {
+                patterFromInstument = i;
+            } 
+        }
+        
+        
+        for (int k = 0; k < networkSize; k++)
+        {         
+            for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
+            { 
+                recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
+                  println ( " RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
+            }
         }
      }
 
+         for (int k = 0; k < networkSize; k++)
+        {         
+            for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
+            { 
+             
+                  println ( " RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
+            }
+        }
+    
+   //  print ( " RECORDPATTERN" + recordPositionsFromInstrument);
+   // showArrayDouble (recordPositionsFromInstrument);
+    
+    
     if (key == 'E')
     {
         for (int i = 0; i < networkSize; i++)
@@ -122,7 +143,7 @@ void phaseDirectFromSeq() // mixed Com
         {
             //positionFromMotorPhase [i]+= (int)  map ( TWO_PI/12/(networkSize)*(networkSize-1-i), 0, TWO_PI, 0, numberOfStep);
             positionFromMotorPhase[i] += (int)  map(TWO_PI / 12 / (networkSize) * (networkSize - 1 + oscillatorBlocked - i), 0, TWO_PI, 0, numberOfStep);
-        //    positionFromMotorPhase [i]+= (int)  map ( TWO_PI/12/(networkSize)*(networkSize-1+ -i-oscillatorBlocked), 0, TWO_PI, 0, numberOfStep);
+            //  positionFromMotorPhase [i]+= (int)  map ( TWO_PI/12/(networkSize)*(networkSize-1+ -i-oscillatorBlocked), 0, TWO_PI, 0, numberOfStep);
             
             
         }
@@ -132,7 +153,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         // front  TWO_PI/8/(networkSize)*(i)   behind?
         // + =   TWO_PI*0.1/(networkSize)*(networkSize-1-i)
-        for(int i = 0; i < networkSize; i++) {
+        for (int i = 0; i < networkSize; i++) {
             positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
     }
@@ -154,7 +175,7 @@ void phaseDirectFromSeq() // mixed Com
         {
             positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
         }
-          positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
     } 
     

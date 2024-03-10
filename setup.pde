@@ -22,6 +22,7 @@ int timeTosendData;
 int networkSize = 6;
 
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
+int patterFromInstument;
 
 //int numberOfStep = 3200;
 int numberOfStep = 6400;
@@ -285,6 +286,16 @@ if (oscillatorMaster > 0) {
                 for (int i = 0; i < array.length; i++)
                     print(array[i] + "   ");
                 print(" ");
+            }
+
+             void showArrayDouble(int[] array,  int[] arrayB  ) {
+            for (int i = 0; i < array.length; i++) 
+                for (int j = 0; i < arrayB.length; i++)
+                 {
+                    print(array[i] + "   " + arrayB[j] );
+               
+                }
+                 print(" ");
             }
 
             void showArrayF(float[] array) {

@@ -49,7 +49,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
          rotate (-PI/2);
             text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
-                 " rec " + recordPositionsFromInstrument[i][i] , -1000, 1 * i * 75); 
+                 " rec " + recordPositionsFromInstrument[patterFromInstument][i] + " " + patterFromInstument, -1000, 1 * i * 75); 
             
             rotate (PI/2); 
 
