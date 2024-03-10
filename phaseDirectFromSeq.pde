@@ -100,7 +100,7 @@ void phaseDirectFromSeq() // mixed Com
             for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
             { 
              
-                  println ( " RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
+                  println ( " RECORDPATTERN " + patterFromInstument + " " + recordPositionsFromInstrument[k][i]);       
             }
         }
     
