@@ -1,6 +1,6 @@
 void phaseDirectFromSeq() // mixed Com
-    {  
-    oscillatorBlocked = networkSize - 1;
+{  
+       oscillatorBlocked = networkSize - 1;
     
     if (key == '9')
     {
@@ -50,7 +50,20 @@ void phaseDirectFromSeq() // mixed Com
                // positionFromMotorPhase [i] = positionFromMotorPhase [0];
         }
         }
-    }
+    }    
+    
+    
+
+
+    if (keyCode == CONTROL )
+     {
+        enablingParametersChangesToLive =! enablingParametersChangesToLive;
+    
+     }
+
+       formerKeyCode= keyCode;
+
+
     if (key == 'a')
         {
         for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
@@ -116,7 +129,7 @@ void phaseDirectFromSeq() // mixed Com
         for(int i = 0; i < networkSize; i++) {
             positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
-}
+    }
     
     
     if (key == 'u')
@@ -134,10 +147,10 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 1; i < (networkSize - 0); i++)
         {
             positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
-    }
-        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+        }
+          positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
-} 
+    } 
     
     //  text (" formerKey " + formerKey , 100, -200);
     

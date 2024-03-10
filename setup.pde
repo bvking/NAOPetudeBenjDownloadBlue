@@ -42,7 +42,8 @@ boolean preStartSpeedOfRepetitionUP, preStartSpeedOfRepetitionDOWN ;
 String music_from_ableton_live;
 String positionMov;  
 
-
+boolean enablingParametersChangesToLive=false;
+int secondTouchedTimeStarter;
 
 int oldSimpleSignal2,simpleSignal2;  // 0 to 1
 int directionOfsignal;

@@ -53,7 +53,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
 
          rotate (-PI/2);
-            text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " " + numberOfTrig[i], -1000, 1 * i * 75); 
+            text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " " + numberOfTrig[i]+ " " + enablingParametersChangesToLive , -1000, 1 * i * 75); 
             rotate (PI/2); 
 
         if (gapEncoder_Motor[i]> numberOfStep/12 && (dataMappedFromMotor[i]<=numberOfStep-numberOfStep/6 && dataMappedFromMotor[i]>=numberOfStep/6))
@@ -74,7 +74,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
         
         
-        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
+        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true && enablingParametersChangesToLive == true)
             {
             textSize(150);           
             numberOfTrig[i] += 1;
@@ -85,10 +85,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 numberOfTrig[i] = 8;
             }
             text("               changeS " + i + " " + numberOfTrig[i] + " ", -1000, 1 * i * 150); 
-            enablingChangeSound[i] = false;    
+            enablingChangeSound[i] = false; 
+            secondTouchedTimeStarter = millis(); 
             }
             
-        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false)
+        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 2000 <=  millis() )
         { 
             touchedTimeStarter[i] = millis();      
             
