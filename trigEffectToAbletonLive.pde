@@ -6,14 +6,9 @@ int[] startMeasureFromEncodeur = new int[networkSize];
 int[] recEncodeurPosition = new int[networkSize];
 int[] dataMappedFromMotor = new int[networkSize];
 boolean[] oldEncoderTouched = new boolean[networkSize];
-
 int[]touchedTimeStarter = new int[networkSize];
-
 boolean[] encoderTurnClockWise = new boolean[networkSize];
 boolean[] enablingChangeSound = new boolean[networkSize];
-
-
-
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
@@ -58,12 +53,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         if (gapEncoder_Motor[i]> numberOfStep/12 && (dataMappedFromMotor[i]<=numberOfStep-numberOfStep/6 && dataMappedFromMotor[i]>=numberOfStep/6))
         {
-           textSize(75);
+            textSize(75);
             rotate (-PI/2);
-           // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
+            // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
             rotate (PI/2); 
             touchedTimeStarter[i] = millis();
-            encoderTouched[i] =  true;
+            //  encoderTouchedbis[i] =  true;
             textSize(75);
             enablingChangeSound[i] = true;         
         }  
@@ -76,6 +71,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true && enablingParametersChangesToLive == true)
             {
+            key = 'e';
+            phaseDirectFromSeq();
             textSize(150);           
             numberOfTrig[i] += 1;
             numberOfTrig[i] %= 17;
@@ -88,6 +85,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             enablingChangeSound[i] = false; 
             secondTouchedTimeStarter = millis(); 
             }
+            
             
         if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 2000 <=  millis() )
         { 
@@ -107,7 +105,8 @@ void trigMiddlePositionFromEncodeur()
     int mapRatio = 400;
     textSize(100);
     rotate( - HALF_PI);
-    for (int i = 0; i < networkSize; i++) { 
+    for (int i = 0; i < networkSize; i++)
+     { 
         midPos[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i];      
         encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, mapRatio);
@@ -119,12 +118,12 @@ void trigMiddlePositionFromEncodeur()
             midPos[i] =  true;
             text("MIDDLE POSITION GOD2 MATCH in " + i + " " + midPos[i] + " " + midPos[i] , -1000, 1 * i * 100);  
             
-    }
+        }
         
         if ((oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2)) 
         {
-            midPos[i] =  true;
-    }
+             midPos[i] =  true;
+        }
         
         text(oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 200 * i);
     }
