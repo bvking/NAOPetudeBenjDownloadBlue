@@ -947,7 +947,7 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage38= new OscMessage("/trigModPos8"); // oscillator 
   OscMessage myMessage39= new OscMessage("/trigModPos9"); // oscillator behind 
 
-  text ( " trigMuteAll " + trigMuteAll + " dataMappedBigMachine[0] " + dataMappedForMotorisedBigMachine[0] ,  600, -1100);
+  //text ( " trigMuteAll " + trigMuteAll + " dataMappedBigMachine[0] " + dataMappedForMotorisedBigMachine[0] ,  600, -1100);
      
   myMessage30.add(TrigmodPos[0]);  // Trig on the right but there are bugs in pendular way
   myMessage31.add(TrigmodPos[1]);

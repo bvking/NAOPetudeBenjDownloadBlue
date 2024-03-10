@@ -1,3 +1,5 @@
+
+
 void phaseDirectFromSeq() // mixed Com
 {  
        oscillatorBlocked = networkSize - 1;
@@ -29,6 +31,7 @@ void phaseDirectFromSeq() // mixed Com
         {  
             for (int i = 0; i < networkSize; i++)
             {
+                numberOfTrig[i] = 8;
                 realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
                 positionFromMotorPhase[i] = (int) realign[i];
                 
@@ -51,15 +54,12 @@ void phaseDirectFromSeq() // mixed Com
         }
         }
     }    
-    
-    
+       
     if (keyCode == CONTROL )
      {
         enablingParametersChangesToLive =! enablingParametersChangesToLive;  
         keyCode = 0;
      }
-
-        
 
 
     if (key == 'a')
@@ -72,17 +72,25 @@ void phaseDirectFromSeq() // mixed Com
     
     
     if (key == 'e')
-        {
+    {
         for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / numberOfRota[0]);  
             positionFromMotorPhase[i] %=   numberOfStep;
-            // recordPositionFromMPhase[i]=positionFromMotorPhase [i];
-        }
-    }
-    
-    if (key == 'E')
+                    
+        if (enablingChangeSound[i]==true)
         {
-        for (int i = 0; i < networkSize; i++) { // 6 HIT
+             for  (int j = 0; i < networkSize; i++)
+              { 
+             recordPositionsFromInstrument[i][j] =positionFromMotorPhase[j];        
+              }
+         }
+        }
+     }
+
+    if (key == 'E')
+    {
+        for (int i = 0; i < networkSize; i++)
+        { // 6 HIT
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] - (int)  map((networkSize + 0 - 1 - oscillatorBlocked - i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / numberOfRota[0]); 
             positionFromMotorPhase[i] %=   numberOfStep;  
         }

@@ -17,7 +17,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         int [] gapEncoder_Motor = new int[networkSize];
 
     for (int i = 0; i < networkSize; i++)
-        { 
+    { 
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i]*10;
         encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
@@ -48,16 +48,20 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
 
          rotate (-PI/2);
-            text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " " + numberOfTrig[i]+ " " + enablingParametersChangesToLive , -1000, 1 * i * 75); 
+            text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
+                 " rec " + recordPositionsFromInstrument[i][i] , -1000, 1 * i * 75); 
+            
             rotate (PI/2); 
 
-        if (gapEncoder_Motor[i]> numberOfStep/12 && (dataMappedFromMotor[i]<=numberOfStep-numberOfStep/6 && dataMappedFromMotor[i]>=numberOfStep/6))
+        if (gapEncoder_Motor[i]> numberOfStep/12 && (dataMappedFromMotor[i]<=numberOfStep-numberOfStep/6 && dataMappedFromMotor[i]>=numberOfStep/6)
+            && enablingParametersChangesToLive == true)
         {
             textSize(75);
             rotate (-PI/2);
             // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
             rotate (PI/2); 
             touchedTimeStarter[i] = millis();
+            encoderTouched[i] =  true;
             //  encoderTouchedbis[i] =  true;
             textSize(75);
             enablingChangeSound[i] = true;         
@@ -69,20 +73,22 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
         
         
-        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true && enablingParametersChangesToLive == true)
+        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
             {
             key = 'e';
             phaseDirectFromSeq();
             textSize(150);           
             numberOfTrig[i] += 1;
-            numberOfTrig[i] %= 17;
+            numberOfTrig[i] %= 18;
             
-            if (numberOfTrig[i] ==  0)
+            if (numberOfTrig[i] == 17  )
             { 
                 numberOfTrig[i] = 8;
             }
             text("               changeS " + i + " " + numberOfTrig[i] + " ", -1000, 1 * i * 150); 
             enablingChangeSound[i] = false; 
+
+            enablingParametersChangesToLive = false;
             secondTouchedTimeStarter = millis(); 
             }
             
@@ -94,10 +100,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }     
         if (midPos[i] ==  true)
         { 
-      //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
+        //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
         }
         
-} 
+    } 
 }
 
 void trigMiddlePositionFromEncodeur()

@@ -16,8 +16,12 @@ boolean systemForBigMachine=false;
 //boolean systemForBigMachine=true;
 int timeTosendData;
 
+
+
 //int networkSize = 10;
 int networkSize = 6;
+
+int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 
 //int numberOfStep = 3200;
 int numberOfStep = 6400;
