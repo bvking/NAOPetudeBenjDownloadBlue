@@ -59,11 +59,11 @@ void phaseDirectFromSeq() // mixed Com
     {
         enablingParametersChangesToLive =! enablingParametersChangesToLive;  
         keyCode = 0;
-}
+    }
     
     
     if (key == 'a')
-        {
+    {
         for (int i = 0; i < networkSize; i++) { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + numberOfStep / numberOfRota[0];
             positionFromMotorPhase[i] %=   numberOfStep;
@@ -93,7 +93,7 @@ void phaseDirectFromSeq() // mixed Com
                   println ( " RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
             }
         }
-     }
+        
 
          for (int k = 0; k < networkSize; k++)
         {         
@@ -102,11 +102,29 @@ void phaseDirectFromSeq() // mixed Com
              
                   println ( " RECORDPATTERN " + patterFromInstument + " " + recordPositionsFromInstrument[k][i]);       
             }
-        }
+         }
+     }
+
+    if (key == 'A')
+    {
+       key = 'ç';
+       phaseDirectFromSeq();
+
+       for (int i = 0; i < networkSize; i++)
+       positionFromMotorPhase[i][0] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[0][i];
+    }
+
+
+    if (key == 'B')
+    {
+       key = 'ç';
+       phaseDirectFromSeq();
+
+       for (int i = 0; i < networkSize; i++)
+       positionFromMotorPhase[i][1] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[1][i];
+    }
     
-   //  print ( " RECORDPATTERN" + recordPositionsFromInstrument);
-   // showArrayDouble (recordPositionsFromInstrument);
-    
+      
     
     if (key == 'E')
     {
