@@ -105,23 +105,32 @@ void phaseDirectFromSeq() // mixed Com
          }
      }
 
-    if (key == 'A')
+    if (key == '1')
     {
        key = 'ç';
        phaseDirectFromSeq();
 
        for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i][0] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[0][i];
+       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][0];
     }
 
 
-    if (key == 'B')
+    if (key == '2')
     {
        key = 'ç';
        phaseDirectFromSeq();
 
        for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i][1] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[1][i];
+       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][1];
+    }
+
+    if (key == '3')
+    {
+       key = 'ç';
+       phaseDirectFromSeq();
+
+       for (int i = 0; i < networkSize; i++)
+       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][2];
     }
     
       
