@@ -90,12 +90,13 @@ void phaseDirectFromSeq() // mixed Com
             for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
             { 
                 recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-                  println ( " RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
+                        
             }
         }
-        
-
-         for (int k = 0; k < networkSize; k++)
+          
+    }
+    // display recorded pattern
+       for (int k = 0; k < networkSize; k++)
         {         
             for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
             { 
@@ -103,25 +104,33 @@ void phaseDirectFromSeq() // mixed Com
                   println ( " RECORDPATTERN " + patterFromInstument + " " + recordPositionsFromInstrument[k][i]);       
             }
          }
-     }
 
-    if (key == 'A')
+    if (key == '0')
     {
        key = 'ç';
-       phaseDirectFromSeq();
+       phaseDirectFromSeq(); // align motor
 
        for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i][0] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[0][i];
+       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][0];
     }
 
 
-    if (key == 'B')
+    if (key == '1')
     {
        key = 'ç';
        phaseDirectFromSeq();
 
        for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i][1] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[1][i];
+       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][1];
+    }
+
+     if (key == '2')
+    {
+       key = 'ç';
+       phaseDirectFromSeq();
+
+       for (int i = 0; i < networkSize; i++)
+       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][2];
     }
     
       
