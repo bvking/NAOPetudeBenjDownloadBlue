@@ -161,13 +161,12 @@ void phaseDirectFromSeq() // mixed Com
         {         
         for (int j = 0; j < j + 1; j++) 
             {         
-            println(" RECORDPATTERN " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
+            println(" RECORDPATTERNFOMINSTUMENT " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
         }
     }
     */
     
-    
-    
+      
     if (key == 'E')
     {
         for (int i = 0; i < networkSize; i++)
