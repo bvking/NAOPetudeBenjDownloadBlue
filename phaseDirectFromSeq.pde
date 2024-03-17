@@ -80,60 +80,93 @@ void phaseDirectFromSeq() // mixed Com
             
             if (enablingChangeSound[i] ==  true)
             {
-                patterFromInstument = i;
+                patterFromInstument = networkSize - i;  // instrument are actually in opposite order
             } 
         }
         
         
-        for (int k = 0; k < networkSize; k++)
-        {         
-            for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
-            { 
-                recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-                  println ( " RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
-            }
-        }
-        
-
-         for (int k = 0; k < networkSize; k++)
-        {         
-            for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
-            { 
-             
-                  println ( " RECORDPATTERN " + patterFromInstument + " " + recordPositionsFromInstrument[k][i]);       
-            }
-         }
-     }
-
-    if (key == '1')
-    {
-       key = 'ç';
-       phaseDirectFromSeq();
-
-       for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][0];
     }
-
-
-    if (key == '2')
+    // DISPLAY PATTERN SAVED
+    if (keyCode == CONTROL)
     {
-       key = 'ç';
-       phaseDirectFromSeq();
-
-       for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][1];
+    for (int k = 0; k < networkSize; k++)
+        {         
+        for (int j = 0; j < j + 1; j++) 
+        { 
+             println(" SAVINGPATTERNN " + patterFromInstument + " " + recordPositionsFromInstrument[k][patterFromInstument]);  
+        } 
     }
-
-    if (key == '3')
-    {
-       key = 'ç';
-       phaseDirectFromSeq();
-
-       for (int i = 0; i < networkSize; i++)
-       positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][2];
     }
     
-      
+    if (key == '1')
+    {
+        
+        key = 'ç';
+        phaseDirectFromSeq();
+        patterFromInstrumentRecorded = 0;
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+    } 
+    }
+    
+    
+    if (key == '2')
+    {
+        key = 'ç';
+        phaseDirectFromSeq();
+        patterFromInstrumentRecorded = 1;
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+    } 
+    }
+    
+    if (key == '3')
+    {
+        key = 'ç';
+        phaseDirectFromSeq();
+        patterFromInstrumentRecorded = 2;
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+    } 
+    }
+    
+    if (key == '4')
+    {
+        key = 'ç';
+        phaseDirectFromSeq();
+        patterFromInstrumentRecorded = 3;
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+    } 
+    }
+    
+    
+    if (key == '5')
+    {
+        key = 'ç';
+        phaseDirectFromSeq();
+        patterFromInstrumentRecorded = 4;
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+    } 
+    }
+    
+   /* 
+    for (int k = 0; k < networkSize; k++)
+        {         
+        for (int j = 0; j < j + 1; j++) 
+            {         
+            println(" RECORDPATTERN " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
+        }
+    }
+    */
+    
+    
     
     if (key == 'E')
     {

@@ -22,7 +22,8 @@ int timeTosendData;
 int networkSize = 6;
 
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
-int patterFromInstument;
+int patterFromInstument=0;
+int patterFromInstrumentRecorded=0;
 
 //int numberOfStep = 3200;
 int numberOfStep = 6400;
@@ -38,7 +39,6 @@ boolean samplingWithTeensy3_5 = false;
 
 int numberOfMeasureToRecord;
 int measureToStartRecording;
-
 float delayTime;
 int factorSynchro=14;
 boolean preStartSpeedOfRepetitionUP, preStartSpeedOfRepetitionDOWN ;
