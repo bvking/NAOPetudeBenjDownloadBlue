@@ -57,7 +57,7 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-        enablingParametersChangesToLive=!enablingParametersChangesToLive;  
+        enablingParametersChangesToLive =! enablingParametersChangesToLive;  
         keyCode = 0;
     }
     
@@ -80,11 +80,7 @@ void phaseDirectFromSeq() // mixed Com
             
             if (enablingChangeSound[i] ==  true)
             {
-<<<<<<< Updated upstream
-                patterFromInstument = networkSize -1 - i;  // instrument are actually in opposite order
-=======
-                patterFromInstument = networkSize-1 - i;  // instrument are actually in opposite order
->>>>>>> Stashed changes
+                patterFromInstument = networkSize- 1 - i;  // instrument are actually in opposite order
             } 
         }
         
@@ -172,11 +168,7 @@ void phaseDirectFromSeq() // mixed Com
         } 
     }
     
-<<<<<<< Updated upstream
     /*
-=======
-   
->>>>>>> Stashed changes
     for (int k = 0; k < networkSize; k++)
         {         
         for (int j = 0; j < j + 1; j++) 
@@ -184,7 +176,7 @@ void phaseDirectFromSeq() // mixed Com
             println(" RECORDPATTERNFOMINSTUMENT " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
         }
     }
-    
+    */
     
     
     if (key == 'E')
