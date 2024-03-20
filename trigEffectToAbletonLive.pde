@@ -120,33 +120,32 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
 void trigMiddlePositionFromEncodeur()
 {
-  
-    textSize(100);
+    int sensitivyBound=4000;
+    textSize(75);
     rotate( - HALF_PI);
     for (int i = 0; i < networkSize; i++)
      { 
         midPos[i] =  false;
       //  oldEncodeurPosition[i] = encodeurPosition[i];
         oldEncodeurPosition[i] =  (int) map(encodeurPosition[i], 0, 4000, 0, 4000);    
-        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, mapRatio);
+        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);
         gapEncoder_Motor[i] =  abs (encodeurPosition[i]- oldEncodeurPosition[i]);
     
-      if (oldEncodeurPosition[i] < mapRatio-mapRatio/12 || oldEncodeurPosition[i]>mapRatio-mapRatio/12) // do not disciminate near 0 
+      if (oldEncodeurPosition[i] < sensitivyBound-sensitivyBound/10 && encodeurPosition[i]>sensitivyBound/10) // do not disciminate near 0 
       { 
                 
-        if (oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2) 
+        if (oldEncodeurPosition[i] < sensitivyBound / 2 && encodeurPosition[i] > sensitivyBound / 2) 
         {
             midPos[i] =  true;         
         }
         
-        if (oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2) 
+        if (oldEncodeurPosition[i] > sensitivyBound / 2 && encodeurPosition[i] < sensitivyBound / 2) 
         {
             midPos[i] =  true;
-        }
-        
-        text(" Gap_" +  gapEncoder_Motor[i]  +  " " +  midPos[i], 200, -100 * i-100); // " trigM_" + i + " " + oldEncodeurPosition[i] + " " + encodeurPosition[i] +
-        text(" sendM_ " +  sendMiddleInt[i], 0, -1000-100*i);
+        }    
      }
+    //text(" Gap_"  +  midPos[i], 200, -100 * i-75); //gapEncoder_Motor[i]  +  " "
+    text(" sendM_ " +  sendMiddleInt[i] , 800, 400 - 100 *i-75); // + " " +  oldEncodeurPosition[i] + " " + encodeurPosition[i]
     }
     
 
