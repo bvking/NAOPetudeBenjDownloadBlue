@@ -47,9 +47,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
         rotate (-PI/2);
         
-        text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " nR " + numberOfRota[i]+ " nT " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
+        text(" GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " nR " + numberOfRota[i]+ " nT " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
              " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
-             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded], -1000, 1 * i * 75); 
+             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] + " tM " + TrigmodPos[i], -1000, 1 * i * 75); 
             
          rotate (PI/2); 
 

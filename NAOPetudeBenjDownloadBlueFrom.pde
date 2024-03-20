@@ -375,7 +375,7 @@ void draw()
         text(" showMid " + strMiddle, 800, -1000);
 
       //midPos  but not aligned  covertir en int puis float DO NOT WORK WELL
-      /*
+      
           for (int i = 0; i < networkSize; i++)
           {
            sendMiddleInt[i]= (int)  sendMiddle[i];      
@@ -386,18 +386,22 @@ void draw()
            for (int i = 0; i < networkSize; i++)
           { 
              sendMiddle[i]= (float) resultMidPosWithEncoderInt[i];
+                       text(" sendMid " +  sendMiddle[i], -800, -1000-100*i);
+
           }
 
-      */
-        println (" sendMiddle ");showArrayF(sendMiddle);
-        println(" sendMiddle ");showArrayF(sendMiddle);
+      
+       // println (" sendMiddle ");showArrayF(sendMiddle);
+       // println(" sendMiddle ");showArrayF(sendMiddle);
 
-        /*
+       /* 
         resultMidPosWithEncoderF = multiMatchDataF(1, 0, sendMiddle.clone());
         sendMiddle = resultMidPosWithEncoder;
-        println(" sendMiddle ");showArrayF(sendMiddle);
-        println(" sendMiddle ");showArrayF(sendMiddle);
-        */
+      */ 
+       // println(" sendMiddle ");showArrayF(sendMiddle);
+       // println(" sendMiddle ");showArrayF(sendMiddle);
+
+        
      }
     
      textSize(100);

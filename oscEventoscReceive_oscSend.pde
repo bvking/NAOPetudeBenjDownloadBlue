@@ -591,13 +591,13 @@ void oscSend(){
      {
      encoderTouched[5]=true;
      }
-       keyCode = BACKSPACE;
+      
    
      rotate (-HALF_PI);  
     for (int i = 0; i < networkSize-0; i++)
     {  
    
-     if  (1!=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+     if  (keyCode == TAB && 1>=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
      {
        TrigmodPos[i]=1;
        oldPos[i]=Pos[i];
@@ -624,7 +624,8 @@ void oscSend(){
               //  TrigmodPos[i]=0; 
  
             } 
-     }   
+         keyCode = BACKSPACE;
+      }   
     }
 
    //  rotate (HALF_PI);  
