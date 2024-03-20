@@ -1172,7 +1172,7 @@ void setup() {
                 //***keyMode = " notNull "; 
                 // modeStartKeyToFollow = " samplingModeInternal " ;
 
-               
+     windowMove(0,0);// window at the top_left of the screen
      size(600, 600, P3D);
 
               //   windowRatio(900, 900); 
