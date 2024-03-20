@@ -536,13 +536,14 @@ void oscSend(){
      // encoderTouched[0]=true;
      // TrigmodPos[0]=1;
      // Pos[0]=127;
-
+     
+     /*
      numberOfTrig[0]%=8;
      numberOfTrig[0]+=1;
      
      numberOfRota[0]%=8;
      numberOfRota[0]+=1;
-  
+     */
      }
 
     if ( formerKey == 'z')
@@ -558,6 +559,7 @@ void oscSend(){
 
     if ( formerKey == 'e')
      {
+      /*
      midPos[2]=true;
      sendMiddle[2]=1.;
 
@@ -566,6 +568,7 @@ void oscSend(){
      
      numberOfRota[2]%=8;
      numberOfRota[2]+=1;
+     */
      }
 
      // if ( key == 's')
@@ -576,13 +579,14 @@ void oscSend(){
      sendMiddle[1]=1.;
      Pos[1]=1;
      }
-     // if ( key == 'd')
+     /*
            if ( keyCode == CONTROL)
      {
      encoderTouched[4]=true;
      sendMiddle[2]=1.;
       TrigmodPos[2]=1;
      }
+     */
      if ( key == 'r')
      {
      encoderTouched[5]=true;
