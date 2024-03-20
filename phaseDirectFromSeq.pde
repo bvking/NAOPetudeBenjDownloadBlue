@@ -59,6 +59,7 @@ void phaseDirectFromSeq() // mixed Com
     {
        // enablingParametersChangesToLive = true;  
         enablingParametersChangesToLive =! enablingParametersChangesToLive; 
+        keyCode =0;
        
     }
     
