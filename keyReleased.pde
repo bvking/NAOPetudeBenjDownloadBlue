@@ -7,6 +7,10 @@ void keyReleased()
          keyCode=char (KeyCode);
          automationForMusicControlDr();
 
+          if (keyCode == CONTROL){
+           enablingParametersChangesToLive=false;
+   }
+
     //   phaseDirectToMotor();
     // automationForMusicMouvement();       
     }

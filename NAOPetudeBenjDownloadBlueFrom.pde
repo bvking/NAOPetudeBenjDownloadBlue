@@ -218,8 +218,26 @@ void draw()
         }   
      }
      textSize(200);
+
+     // data From serial computed to trig middle position and trig just touched 
+
+    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
+    //print(" midPos ");
+
+    //showArray(midPos);
+    computeMidPosToSend();
     
+  
+
+     //END  data From serial computed to trig middle position and trig just touched 
+
+
+     // DISPLAY GAP, trig, ... midPos 
      sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
+
+     print(" sendMid ");
+     showArray(sendMiddleInt);
+
      //mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
      teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
@@ -327,82 +345,16 @@ void draw()
         formerKeyCodeAzerty = keyCode;
         formerKeyCode = keyCode;
     }
+
+    if (keyCode == 17)  // CONTROL
+    {
+        keyCode = 32; // BARSPACE
+    }
     
     formerKeyMode = keyMode;
     printModeAndKey();
     
-    // data From serial computed to trig middle position and trig just touched 
-
-    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
-
-    result = multiMatchData(0, 1, TrigmodPos.clone());
-    TrigmodPos = result;
-    print(" showResul ");showArray(result);
-    textSize(150);
     
-    if (networkSize ==  6) 
-    {
-      char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
-            
-     for (int i = 0; i < networkSize; i++)
-      {
-       if (result[i] ==  0) {
-       resultString[i] = 'B';
-        }
-       }
-
-     char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
-     String str2 = new String(data);
-     text(" showTrig " + str2, 300, -850);
-        
-        //- --------------- middle pos sent
-        
-     text(" midPos[0] " + midPos[0], 300, -450);
-     char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
-        
-        // resultString='A';
-        for (int i = 0; i < networkSize; i++) {
-            if (midPos[i] ==  true) {
-                midPosString[i] = 'T';
-                sendMiddle[i] = 0;  // to trig something in M4Live
-                }
-            else {
-                sendMiddle[i] = 1; 
-                }
-            }
-        char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
-        String strMiddle = new String(middlePos);
-        text(" showMid " + strMiddle, 800, -1000);
-
-      //midPos  but not aligned  covertir en int puis float DO NOT WORK WELL
-      
-          for (int i = 0; i < networkSize; i++)
-          {
-           sendMiddleInt[i]= (int)  sendMiddle[i];      
-          }
-
-         resultMidPosWithEncoderInt = multiMatchData(1, 0, sendMiddleInt.clone());
-
-           for (int i = 0; i < networkSize; i++)
-          { 
-             sendMiddle[i]= (float) resultMidPosWithEncoderInt[i];
-                       text(" sendMid " +  sendMiddle[i], -800, -1000-100*i);
-
-          }
-
-      
-       // println (" sendMiddle ");showArrayF(sendMiddle);
-       // println(" sendMiddle ");showArrayF(sendMiddle);
-
-       /* 
-        resultMidPosWithEncoderF = multiMatchDataF(1, 0, sendMiddle.clone());
-        sendMiddle = resultMidPosWithEncoder;
-      */ 
-       // println(" sendMiddle ");showArrayF(sendMiddle);
-       // println(" sendMiddle ");showArrayF(sendMiddle);
-
-        
-     }
     
      textSize(100);
      //----
@@ -417,12 +369,13 @@ void draw()
 
      
      oscSend();
-   //  trigMiddlePositionFromEncodeur();
+     //  trigMiddlePositionFromEncodeur();
 
-    if (millis()>timeTosendData+250){
-    //  oscSend();
+     if (millis()>timeTosendData+250)
+     {
+     //  oscSend();
       timeTosendData=millis();
-     // println ("SEND DATA");
+      // println ("SEND DATA");
        }
 
 

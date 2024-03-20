@@ -40,7 +40,7 @@ void phaseDirectFromSeq() // mixed Com
             }  
         }
         
-        if (positionFromMotorPhase[networkSize - 1] <= positionFromMotorPhase[0] - 6400)
+        if (positionFromMotorPhase[networkSize - 1] <= positionFromMotorPhase[0] - numberOfStep)
         {
             text(" LOWER  POSITION" + higerPostion, 100, 300);
             higerPostion = false;
@@ -57,8 +57,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-        enablingParametersChangesToLive =! enablingParametersChangesToLive;  
-        keyCode = 0;
+        enablingParametersChangesToLive = true;  
+       
     }
     
     

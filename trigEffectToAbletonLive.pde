@@ -9,23 +9,25 @@ boolean[] oldEncoderTouched = new boolean[networkSize];
 int[]touchedTimeStarter = new int[networkSize];
 boolean[] encoderTurnClockWise = new boolean[networkSize];
 boolean[] enablingChangeSound = new boolean[networkSize];
+int mapRatio = 400;
+int [] gapEncoder_Motor = new int[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
-     textSize(75);
+    textSize(75);
         int [] dataMapped = new int[networkSize];
-        int [] gapEncoder_Motor = new int[networkSize];
+    
 
     for (int i = 0; i < networkSize; i++)
     { 
         encoderTouched[i] =  false;
-        oldEncodeurPosition[i] = encodeurPosition[i]*10;
-        encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
+      //  oldEncodeurPosition[i] = encodeurPosition[i]*10;
+      //  encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize-1-i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
         dataMapped[i]  %= numberOfStep;
 
-        dataMappedFromMotor[i] = (int)  map  (dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
+        dataMappedFromMotor[i] = (int)  map  (dataMapped[i], 0, numberOfStep, 0, mapRatio); 
         dataMappedFromMotor[i]%=numberOfStep;
         
    
@@ -44,21 +46,23 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (encoderTouched[i] ==  true)
         {       
         }  
-        gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
+       // gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
         rotate (-PI/2);
         
-        text(" GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i]+ " nR " + numberOfRota[i]+ " nT " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
+        text(" GAP " + i + " " +  gapEncoder_Motor[i] + " nR " + numberOfRota[i]+ " nT " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
              " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
-             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] + " tM " + TrigmodPos[i], -1000, 1 * i * 75); 
-            
+             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] + " tM " + TrigmodPos[i] + 
+             " old " + oldEncodeurPosition[i] + " enc " + encodeurPosition[i] +  " Mid_ " + midPos[i] , -1000, 1 * i * 75); 
+    
          rotate (PI/2); 
 
-        if (gapEncoder_Motor[i]> numberOfStep/12 && (dataMappedFromMotor[i]<=numberOfStep-numberOfStep/6 && dataMappedFromMotor[i]>=numberOfStep/6)
-            && enablingParametersChangesToLive == true)
+        if (gapEncoder_Motor[i]> mapRatio/20 // sensibility between old enco and enco is 400/20 = 200
+            && oldEncodeurPosition[i] < mapRatio-mapRatio/12 // do not disciminate encodeur near from 0 or 400
+            && enablingParametersChangesToLive == true) // true by pressing CONTROL
         {
             textSize(75);
             rotate (-PI/2);
-            // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
+             text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
             rotate (PI/2); 
             touchedTimeStarter[i] = millis();
             encoderTouched[i] =  true;
@@ -73,8 +77,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
         
         
-        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true )
+        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] == true )
             {
+            int j=i;
             key = 'e';
             phaseDirectFromSeq();
             textSize(150);           
@@ -108,33 +113,118 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
 void trigMiddlePositionFromEncodeur()
 {
-    int mapRatio = 400;
+  
     textSize(100);
     rotate( - HALF_PI);
     for (int i = 0; i < networkSize; i++)
      { 
         midPos[i] =  false;
-        oldEncodeurPosition[i] = encodeurPosition[i];      
+      //  oldEncodeurPosition[i] = encodeurPosition[i];
+        oldEncodeurPosition[i] =  (int) map(encodeurPosition[i], 0, 4000, 0, 4000);    
         encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, mapRatio);
-        
-        text(" trigMid " + oldEncodeurPosition[i] + " " + encodeurPosition[i], -1000, 1 * i * 100);
-        
+        gapEncoder_Motor[i] =  abs (encodeurPosition[i]- oldEncodeurPosition[i]);
+    
+      if (oldEncodeurPosition[i] < mapRatio-mapRatio/12 || oldEncodeurPosition[i]>mapRatio-mapRatio/12) // do not disciminate near 0 
+      { 
+                
         if ((oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2)) 
         {
             midPos[i] =  true;
-            text("MIDDLE POSITION GOD2 MATCH in " + i + " " + midPos[i] + " " + midPos[i] , -1000, 1 * i * 100);  
             
         }
         
-        if ((oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2)) 
+        if ((oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2 
+          //   &&           encodeurPosition[i]>oldEncodeurPosition[i]
+             )) 
         {
              midPos[i] =  true;
         }
         
-        text(oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 200 * i);
+        text(" Gap_" +  gapEncoder_Motor[i]  +  " " +  midPos[i], 200, -100 * i-100); // " trigM_" + i + " " + oldEncodeurPosition[i] + " " + encodeurPosition[i] +
+        text(" sendM_ " +  sendMiddleInt[i], 0, -1000-100*i);
+     }
     }
+    
+
     rotate(HALF_PI);
 }
+
+void computeMidPosToSend()
+ {
+
+    result = multiMatchData(0, 1, TrigmodPos.clone());
+    TrigmodPos = result;
+    //print(" showResul ");showArray(result);
+    textSize(150);
+
+          //- --------------- prepare Display midPos pos sent
+    if (networkSize ==  6) 
+    {
+      char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
+            
+      for (int i = 0; i < networkSize; i++)
+      {
+         if (result[i] ==  0) {
+         resultString[i] = 'B';
+        }
+      }
+
+      char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
+      String str2 = new String(data);
+      // text(" showTrig " + str2, 300, -850);
+        
+        //- --------------- middle pos sent
+        
+     //text(" midPos[0] " + midPos[0], 300, -450);
+     char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
+        
+        // resultString='A';
+        for (int i = 0; i < networkSize; i++)
+         {
+            if (midPos[i] ==  true) {
+                midPosString[i] = 'T';
+                sendMiddle[i] = 0;  // to trig something in M4Live
+                }
+            else {
+                sendMiddle[i] = 1; 
+                }
+          }
+        char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
+        String strMiddle = new String(middlePos);
+      //  text(" showMid " + strMiddle, 800, -1000);
+
+      //midPos  but not aligned  covertir en int puis float DO NOT WORK WELL
+      
+          for (int i = 0; i < networkSize; i++)
+          {
+           sendMiddleInt[i]= (int)  sendMiddle[i];      
+          }
+
+         resultMidPosWithEncoderInt = multiMatchData(1, 0, sendMiddleInt.clone());
+
+           for (int i = 0; i < networkSize; i++)
+          { 
+             sendMiddle[i]= (float) resultMidPosWithEncoderInt[i];
+          //    text(" sendMid " +  sendMiddle[i], -800, -1000-100*i);
+
+          }
+
+      
+       // println (" sendMiddle ");showArrayF(sendMiddle);
+       // println(" sendMiddle ");showArrayF(sendMiddle);
+
+       /* 
+        resultMidPosWithEncoderF = multiMatchDataF(1, 0, sendMiddle.clone());
+        sendMiddle = resultMidPosWithEncoder;
+      */ 
+       // println(" sendMiddle ");showArrayF(sendMiddle);
+       // println(" sendMiddle ");showArrayF(sendMiddle);
+
+        
+    }
+  }
+
+
 
 
 void trigEffectToAbletonLive()
