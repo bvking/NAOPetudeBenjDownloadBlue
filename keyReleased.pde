@@ -312,38 +312,39 @@ void keyReleased()
 
   //*********************************************CIRCULAR
   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )   
-   { 
+  { 
 
-   if ( music_from_ableton_live != " controlDr "){
+    if ( music_from_ableton_live != " controlDr ")
+    {
 
-    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
-     {
+      if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+       {
            phasePattern(); // enable to change configuration, but program go away:
-     } 
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
-     {
+       } 
+      if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+       {
         //   phasePatternBase(); // enable to change configuration, but program go away
-     }
+       }
     } 
 
   
 
     else if ( music_from_ableton_live == " controlDr ")
-   {  
-     if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$')
+    {  
+      if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$')
       { 
         //  text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);
 
-          for (int i = 0; i < 3; i++)  {  
-        //  String valueText[] =  displayEventFromKeyReleased (keyEvent);       
-     } 
+          for (int i = 0; i < 3; i++)
+          {  
+          //  String valueText[] =  displayEventFromKeyReleased (keyEvent);       
+          } 
        
-     }
-
+       }
     }
-     key= '#';
-   }   
+   key= '#';
+  }   
 }
 
 
