@@ -552,9 +552,10 @@ void oscSend(){
 
      numberOfTrig[1]%=8;
      numberOfTrig[1]+=1;
-     
+     /*
      numberOfRota[1]%=8;
-     numberOfRota[1]+=1;   
+     numberOfRota[1]+=1;
+     */  
      }
 
     if ( formerKey == 'e')

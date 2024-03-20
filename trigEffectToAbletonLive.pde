@@ -78,7 +78,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         
         if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] == true )
-            {
+        {
             int j=i;
             key = 'e';
             phaseDirectFromSeq();
@@ -95,7 +95,14 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
             enablingParametersChangesToLive = false;
             secondTouchedTimeStarter = millis(); 
-            }
+        }
+
+
+        if (secondTouchedTimeStarter + 2000 <=  millis())
+        { 
+            secondTouchedTimeStarter = millis(); 
+            enablingParametersChangesToLive = false;           
+        } 
             
             
         if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 2000 <=  millis() )
@@ -127,17 +134,14 @@ void trigMiddlePositionFromEncodeur()
       if (oldEncodeurPosition[i] < mapRatio-mapRatio/12 || oldEncodeurPosition[i]>mapRatio-mapRatio/12) // do not disciminate near 0 
       { 
                 
-        if ((oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2)) 
+        if (oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2) 
         {
-            midPos[i] =  true;
-            
+            midPos[i] =  true;         
         }
         
-        if ((oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2 
-          //   &&           encodeurPosition[i]>oldEncodeurPosition[i]
-             )) 
+        if (oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2) 
         {
-             midPos[i] =  true;
+            midPos[i] =  true;
         }
         
         text(" Gap_" +  gapEncoder_Motor[i]  +  " " +  midPos[i], 200, -100 * i-100); // " trigM_" + i + " " + oldEncodeurPosition[i] + " " + encodeurPosition[i] +
