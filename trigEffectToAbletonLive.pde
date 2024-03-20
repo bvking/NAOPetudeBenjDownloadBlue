@@ -93,7 +93,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             text("               changeS " + i + " " + numberOfTrig[i] + " ", -1000, 1 * i * 150); 
             enablingChangeSound[i] = false; 
 
-            enablingParametersChangesToLive = false;
+           // enablingParametersChangesToLive = false;
             secondTouchedTimeStarter = millis(); 
             }
             

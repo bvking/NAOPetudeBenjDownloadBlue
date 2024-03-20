@@ -57,7 +57,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-        enablingParametersChangesToLive = true;  
+       // enablingParametersChangesToLive = true;  
+        enablingParametersChangesToLive =! enablingParametersChangesToLive; 
        
     }
     

@@ -348,7 +348,7 @@ void draw()
 
     if (keyCode == 17)  // CONTROL
     {
-        keyCode = 32; // BARSPACE
+      //  keyCode = 32; // BARSPACE
     }
     
     formerKeyMode = keyMode;
