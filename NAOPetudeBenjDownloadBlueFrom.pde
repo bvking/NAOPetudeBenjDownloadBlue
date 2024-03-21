@@ -218,6 +218,8 @@ void draw()
         }   
      }
      textSize(200);
+
+     trigMiddlePositionFromEncodeur(); 
     
      sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
      //mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
@@ -333,7 +335,7 @@ void draw()
     
     // data From serial computed to trig middle position and trig just touched 
 
-    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
+   // trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
 
     result = multiMatchData(0, 1, TrigmodPos.clone());
     TrigmodPos = result;
