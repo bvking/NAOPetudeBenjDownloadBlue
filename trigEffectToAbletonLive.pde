@@ -19,7 +19,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     for (int i = 0; i < networkSize; i++)
     { 
         encoderTouched[i] =  false;
-        oldEncodeurPosition[i] = encodeurPosition[i]*10;
+        oldEncodeurPosition[i] = encodeurPosition[i]*1;
         encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize-1-i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
@@ -114,9 +114,9 @@ void trigMiddlePositionFromEncodeur()
      { 
         midPos[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i];      
-        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, mapRatio);
+        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);
         
-        text(" trigMid " + oldEncodeurPosition[i] + " " + encodeurPosition[i], -1000, 1 * i * 100);
+      //  text(" trigMid " + oldEncodeurPosition[i] + " " + encodeurPosition[i], -1000, 1 * i * 100);
         
         if ((oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2)) 
         {
