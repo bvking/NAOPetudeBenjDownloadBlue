@@ -11,11 +11,14 @@ boolean[] encoderTurnClockWise = new boolean[networkSize];
 boolean[] enablingChangeSound = new boolean[networkSize];
 int mapRatio = 400;
 int [] gapEncoder_Motor = new int[networkSize];
+int [] gapEncoder_OldEncodeur = new int[networkSize];
+  int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
+     int [] dataMapped = new int[networkSize];
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
     textSize(75);
-        int [] dataMapped = new int[networkSize];
+     
     
 
     for (int i = 0; i < networkSize; i++)
@@ -24,11 +27,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       //  oldEncodeurPosition[i] = encodeurPosition[i]*10;
       //  encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
-        dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize-1-i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
-        dataMapped[i]  %= numberOfStep;
-
-        dataMappedFromMotor[i] = (int)  map  (dataMapped[i], 0, numberOfStep, 0, mapRatio); 
-        dataMappedFromMotor[i]%=numberOfStep;
+     
         
    
         if (oldEncoderTouched[i] != encoderTouched[i])
@@ -49,7 +48,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        // gapEncoder_Motor[i] =  abs (encodeurPosition[i]-dataMappedFromMotor[i]);
         rotate (-PI/2);
         
-        text(" GAP " + i + " " +  gapEncoder_Motor[i] + " nR " + numberOfRota[i]+ " nT " + numberOfTrig[i]+ " " + enablingParametersChangesToLive +
+        text(" GAP " + i + " " +  gapEncoder_Motor[i] + " nR " + numberOfRota[i]+ " nT " + numberOfTrig[i]+ " nStep " + ratioNumberOfStepCorraletedFromInstrument[i] + enablingParametersChangesToLive +
              " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
              " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] + " tM " + TrigmodPos[i] + 
              " old " + oldEncodeurPosition[i] + " enc " + encodeurPosition[i] +  " Mid_ " + midPos[i] , -1000, 1 * i * 75); 
@@ -98,16 +97,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
 
 
-        if (secondTouchedTimeStarter + 2000 <=  millis())
+        if (secondTouchedTimeStarter + 500 <=  millis())
         { 
             secondTouchedTimeStarter = millis(); 
             enablingParametersChangesToLive = false;           
         } 
             
             
-        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 2000 <=  millis() )
+        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 200 <=  millis() )
         { 
-            touchedTimeStarter[i] = millis();      
+          //  touchedTimeStarter[i] = millis();      
             
         }     
         if (midPos[i] ==  true)
@@ -121,6 +120,15 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 void trigMiddlePositionFromEncodeur()
 {
     int sensitivyBound=4000;
+
+    for (int i = 0; i < networkSize; i++)
+    {
+       dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize-1-i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
+       dataMapped[i]  %= numberOfStep;
+
+       dataMappedFromMotor[i] = (int)  map  (dataMapped[i], 0, numberOfStep, 0, sensitivyBound); 
+       dataMappedFromMotor[i]%=numberOfStep;
+     }
     textSize(75);
     rotate( - HALF_PI);
     for (int i = 0; i < networkSize; i++)
@@ -129,10 +137,12 @@ void trigMiddlePositionFromEncodeur()
       //  oldEncodeurPosition[i] = encodeurPosition[i];
         oldEncodeurPosition[i] =  (int) map(encodeurPosition[i], 0, 4000, 0, 4000);    
         encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);
-        gapEncoder_Motor[i] =  abs (encodeurPosition[i]- oldEncodeurPosition[i]);
+       
     
       if (oldEncodeurPosition[i] < sensitivyBound-sensitivyBound/10 && encodeurPosition[i]>sensitivyBound/10) // do not disciminate near 0 
       { 
+        gapEncoder_OldEncodeur[i] = abs (encodeurPosition[i]- oldEncodeurPosition[i]);
+        gapEncoder_Motor[i] =  abs ( encodeur[i]%(sensitivyBound/10)-dataMappedFromMotor[i]%(sensitivyBound/10));
                 
         if (oldEncodeurPosition[i] < sensitivyBound / 2 && encodeurPosition[i] > sensitivyBound / 2) 
         {
@@ -144,8 +154,9 @@ void trigMiddlePositionFromEncodeur()
             midPos[i] =  true;
         }    
      }
-    //text(" Gap_"  +  midPos[i], 200, -100 * i-75); //gapEncoder_Motor[i]  +  " "
-    text(" sendM_ " +  sendMiddleInt[i] , 800, 400 - 100 *i-75); // + " " +  oldEncodeurPosition[i] + " " + encodeurPosition[i]
+    text(" Gap_Enco"  + gapEncoder_Motor[i] + " Gap_Moto " +  gapEncoder_Motor[i]  + " " , 200, -100 * i-75); //gapEncoder_Motor[i]  +  " "
+    //text(" Gap_"  +   midPos[i], 800 -100 * i-75); //gapEncoder_Motor[i]  +  " "
+    //text(" sendM_ " +  sendMiddleInt[i] , 800, 400 - 100 *i-75); // + " " +  oldEncodeurPosition[i] + " " + encodeurPosition[i]
     }
     
 

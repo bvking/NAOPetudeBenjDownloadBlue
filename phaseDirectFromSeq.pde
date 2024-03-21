@@ -57,10 +57,10 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-       // enablingParametersChangesToLive = true;  
+        // enablingParametersChangesToLive = true;  
         enablingParametersChangesToLive =! enablingParametersChangesToLive; 
-        keyCode =0;
-       
+        keyCode = 0;
+        
     }
     
     
@@ -71,36 +71,52 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] %=   numberOfStep;
         }
     }
+
+    for (int i = 0; i < networkSize; i++)
+    { 
+
+       if (enablingChangeSound[i] ==  true)
+            {
+                patterFromInstument = networkSize - 1 - i;  // instrument are actually in opposite order
+            } 
+    }
     
     
     if (key == 'e')
     {
         for (int i = 0; i < networkSize; i++)
-        { // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / numberOfRota[0]);  
-            positionFromMotorPhase[i] %=   numberOfStep;
+        {   
+         
+          
+            ratioNumberOfStepCorraletedFromInstrument[0] = 1;
+            ratioNumberOfStepCorraletedFromInstrument[1] = 2;
+            ratioNumberOfStepCorraletedFromInstrument[2] = 4;
+            ratioNumberOfStepCorraletedFromInstrument[3] = 8;
+            ratioNumberOfStepCorraletedFromInstrument[4] = 16;
+            ratioNumberOfStepCorraletedFromInstrument[5] = 32;
             
-            if (enablingChangeSound[i] ==  true)
-            {
-                patterFromInstument = networkSize- 1 - i;  // instrument are actually in opposite order
-            } 
+                   
+            // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
+            positionFromMotorPhase[i] %=   numberOfStep;      
+            
         }
-     }
-        
-        for (int k = 0; k < networkSize; k++)
+    }
+    
+    for (int k = 0; k < networkSize; k++)
         {    
-             recordPositionsFromInstrument[k][patterFromInstument] = positionFromMotorPhase[k];  
-             /*    
-            for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
-            { 
-                recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-                println(" RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
-            }
-            */
+        recordPositionsFromInstrument[k][patterFromInstument] = positionFromMotorPhase[k];  
+        /*    
+        for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
+        { 
+        recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
+        println(" RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
         }
-        
-        
-   
+        */
+    }
+    
+    
+    
     // DISPLAY PATTERN SAVED
     if (keyCode == CONTROL)
     {
@@ -108,7 +124,7 @@ void phaseDirectFromSeq() // mixed Com
         {         
             for (int j = 0; j < j + 1; j++) 
             { 
-             //   println(" SAVINGPATTERNN " + patterFromInstument + " " + recordPositionsFromInstrument[k][patterFromInstument]);  
+                // println(" SAVINGPATTERNN " + patterFromInstument + " " + recordPositionsFromInstrument[k][patterFromInstument]);  
             } 
         }
     }
@@ -170,15 +186,26 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
         } 
     }
+
+    if (key == '6')
+    {
+        key = 'ç';
+        phaseDirectFromSeq();
+        patterFromInstrumentRecorded = 5;
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+        } 
+    }
     
     /*
     for (int k = 0; k < networkSize; k++)
-        {         
-        for (int j = 0; j < j + 1; j++) 
-            {         
-            println(" RECORDPATTERNFOMINSTUMENT " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
-        }
+    {         
+    for (int j = 0; j < j + 1; j++) 
+    {         
+    println(" RECORDPATTERNFOMINSTUMENT " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
     }
+}
     */
     
     
