@@ -219,21 +219,16 @@ void draw()
      }
      textSize(200);
 
-     // data From serial computed to trig middle position and trig just touched 
 
-    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
-    //print(" midPos ");
-
-    //showArray(midPos);
-    computeMidPosToSend();
-    
-  
-
-     //END  data From serial computed to trig middle position and trig just touched 
-
-
-     // DISPLAY GAP, trig, ... midPos 
+         // DISPLAY GAP, trig, ... midPos 
      sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
+
+         // data From serial computed to trig middle position and trig just touched 
+     trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
+         //print(" midPos ");
+         //showArray(midPos);
+     computeMidPosToSend();
+        //END  data From serial computed to trig middle position and trig just touched 
 
      print(" sendMid ");
      showArray(sendMiddleInt);
