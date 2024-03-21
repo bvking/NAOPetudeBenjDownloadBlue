@@ -83,7 +83,6 @@ void phaseDirectFromSeq() // mixed Com
                 patterFromInstument = networkSize- 1 - i;  // instrument are actually in opposite order
             } 
         }
-     }
         
         for (int k = 0; k < networkSize; k++)
         {    
@@ -98,7 +97,7 @@ void phaseDirectFromSeq() // mixed Com
         }
         
         
-   
+    }
     // DISPLAY PATTERN SAVED
     if (keyCode == CONTROL)
     {
@@ -106,7 +105,7 @@ void phaseDirectFromSeq() // mixed Com
         {         
             for (int j = 0; j < j + 1; j++) 
             { 
-             //   println(" SAVINGPATTERNN " + patterFromInstument + " " + recordPositionsFromInstrument[k][patterFromInstument]);  
+                println(" SAVINGPATTERNN " + patterFromInstument + " " + recordPositionsFromInstrument[k][patterFromInstument]);  
             } 
         }
     }
