@@ -119,21 +119,17 @@ void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
     { 
         midPos[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i];      
-        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);
-        
+        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);    
         //text(" trigMid " + oldEncodeurPosition[i] + " " + encodeurPosition[i], -1000, 1 * i * 100);
-        
         if ((oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2)) 
         {
             midPos[i] =  true;
             text("MIDDLE POSITION GOD2 MATCH in " + i + " " + midPos[i] + " " + midPos[i] , -1000, 1 * i * 100);          
         }
-        
         if ((oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2)) 
         {
             midPos[i] =  true;
         }
-        
         text(oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 200 * i);
     }
     rotate(HALF_PI);
