@@ -76,9 +76,9 @@ void phaseDirectFromSeq() // mixed Com
     for (int i = 0; i < networkSize; i++)
     { 
 
-       if (enablingChangeSound[i] ==  true)
+       if (enablingChangeSound[networkSize - 1 - i] ==  true) // assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right
             {
-                patterFromInstument = networkSize - 1 - i;  // instrument are actually in opposite order
+                patterFromInstument = i;  //
             } 
     }
     
@@ -135,7 +135,7 @@ void phaseDirectFromSeq() // mixed Com
         
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1-0;
+        patterFromInstrumentRecorded = 0;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
@@ -147,7 +147,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1-1;
+        patterFromInstrumentRecorded = 1;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
@@ -158,7 +158,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1-2;
+        patterFromInstrumentRecorded = 2;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
@@ -169,7 +169,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1-3;
+        patterFromInstrumentRecorded = 3;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
@@ -181,7 +181,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1-4;
+        patterFromInstrumentRecorded = 4;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
@@ -192,7 +192,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1-5;
+        patterFromInstrumentRecorded = 5;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];

@@ -27,7 +27,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
         encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
         
-        dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); // fonctionne en up
+        dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
         dataMapped[i]  %= numberOfStep;
         
         dataMappedFromMotor[i] = (int)  map (dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
