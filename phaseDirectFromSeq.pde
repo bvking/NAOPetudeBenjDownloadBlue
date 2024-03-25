@@ -130,7 +130,7 @@ void phaseDirectFromSeq() // mixed Com
 
             recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]+=positionFromMotorPhase[i];   
             recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
-           // positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
+            positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
         }
     }
     
