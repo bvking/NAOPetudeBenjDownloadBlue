@@ -22,6 +22,7 @@ int timeTosendData;
 int networkSize = 6;
 
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
+int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
 int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
 
