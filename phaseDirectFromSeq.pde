@@ -1,4 +1,6 @@
-
+int recallPositionFromInstrument;
+int formerPatternFromInstrument;
+boolean instrumentChanged = false;
 
 void phaseDirectFromSeq() // mixed Com
 {  
@@ -57,7 +59,7 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-        // enablingParametersChangesToLive = true;  
+    
         enablingParametersChangesToLive =! enablingParametersChangesToLive; 
         secondTouchedTimeStarter = millis(); 
         keyCode = 0;
@@ -72,37 +74,65 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] %=   numberOfStep;
         }
     }
-
+    
+    formerPatternFromInstrument = patterFromInstument;
+    
     for (int i = 0; i < networkSize; i++)
-    { 
-
-       if (enablingChangeSound[networkSize - 1 - i] ==  true) // assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right
+    {  
+        
+        
+        if (enablingChangeSound[networkSize - 1 - i] ==  true) // assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right
             {
-                patterFromInstument = i;  //
-            } 
+            patterFromInstument = i;  //
+        } 
     }
+    
     
     
     if (key == 'e')
     {
         for (int i = 0; i < networkSize; i++)
         {   
-         
-          
+            
+            
             ratioNumberOfStepCorraletedFromInstrument[0] = 1;
             ratioNumberOfStepCorraletedFromInstrument[1] = 2;
             ratioNumberOfStepCorraletedFromInstrument[2] = 4;
             ratioNumberOfStepCorraletedFromInstrument[3] = 8;
-            ratioNumberOfStepCorraletedFromInstrument[4] = 16;
-            ratioNumberOfStepCorraletedFromInstrument[5] = 32;
+            ratioNumberOfStepCorraletedFromInstrument[4] = 12;
+            ratioNumberOfStepCorraletedFromInstrument[5] = 16;
             
-                   
+            
             // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
             positionFromMotorPhase[i] %=   numberOfStep;      
             
         }
     }
+    
+    if (formerPatternFromInstrument != patterFromInstument)
+    { 
+        instrumentChanged = true;     
+        int recallPositionFromInstrument = patterFromInstument;
+         key = 'ç';
+         phaseDirectFromSeq();
+    }
+    
+    /*
+    int letter = 'B';
+    
+    switch(letter) {
+    case 'A': 
+    println("Alpha");  // Does not execute
+    break;
+    case 'B': 
+    println("Bravo");  // Prints "Bravo"
+    break;
+    default:
+    println("Zulu");   // Does not execute
+    break;
+}
+    */
     
     for (int k = 0; k < networkSize; k++)
         {    
@@ -112,7 +142,7 @@ void phaseDirectFromSeq() // mixed Com
         { 
         recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
         println(" RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
-        }
+    }
         */
     }
     
@@ -130,7 +160,7 @@ void phaseDirectFromSeq() // mixed Com
         }
     }
     
-    if (key == '1')
+    if (key == '1') //as patterFromInstrumentRecorded = 0;
     {
         
         key = 'ç';
@@ -143,7 +173,7 @@ void phaseDirectFromSeq() // mixed Com
     }
     
     
-    if (key == '2')
+    if (key == '2') // as patterFromInstrumentRecorded = 1;
     {
         key = 'ç';
         phaseDirectFromSeq();
@@ -187,7 +217,7 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
         } 
     }
-
+    
     if (key == '6')
     {
         key = 'ç';
@@ -205,7 +235,7 @@ void phaseDirectFromSeq() // mixed Com
     for (int j = 0; j < j + 1; j++) 
     {         
     println(" RECORDPATTERNFOMINSTUMENT " + patterFromInstrumentRecorded + " " + recordPositionsFromInstrument[k][patterFromInstrumentRecorded]);       
-    }
+}
 }
     */
     
