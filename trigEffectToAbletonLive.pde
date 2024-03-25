@@ -93,15 +93,21 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             enablingChangeSound[i] = false; 
             
             enablingParametersChangesToLive = false;
-            secondTouchedTimeStarter = millis(); 
+           // secondTouchedTimeStarter = millis(); 
         }
+
+        if (secondTouchedTimeStarter + 200 <=  millis())
+        { 
+            enablingParametersChangesToLive = false;             
+        }   
         
         
+
         if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 2000 <=  millis())
         { 
-            touchedTimeStarter[i] = millis();      
-            
-        }     
+          //  touchedTimeStarter[i] = millis();              
+        }   
+
         if (midPos[i] ==  true)
         { 
             //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
