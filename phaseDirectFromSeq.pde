@@ -106,12 +106,12 @@ void phaseDirectFromSeq() // mixed Com
         instrumentChanged = true;     
         int recallPositionFromInstrument = patterFromInstument;
          key = 'ç';
-         phaseDirectFromSeq();
+        // phaseDirectFromSeq();
          textSize(200);
          }
       
        
-    if (key == 'e' && instrumentChanged == false  )
+    if (key == 'e' && instrumentChanged == false  ) // SAVING
     {
         for (int i = 0; i < networkSize; i++)
         {   
@@ -125,13 +125,13 @@ void phaseDirectFromSeq() // mixed Com
             ratioNumberOfStepCorraletedFromInstrument[5] = 16;
             
             
-            // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .  // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
+            // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                      // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
             positionFromMotorPhase[i] %=   numberOfStep;     
 
-            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]+=positionFromMotorPhase[i];   
+            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhase[i];   
             recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
-            positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
+          //  positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
         }
     }
     

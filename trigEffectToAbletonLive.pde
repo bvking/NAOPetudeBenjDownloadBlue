@@ -114,7 +114,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             rotate( - PI / 2);
             // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
             rotate(PI / 2); 
-            touchedTimeStarter[i] = millis();
+            touchedTimeStarter[0] = millis();
             encoderTouched[i] =  true;
             //  encoderTouchedbis[i] =  true;
             textSize(75);
@@ -122,7 +122,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
            }  
         
      
-        if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true)
+        if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[i] ==  true)
             {
             key = 'e';
             phaseDirectFromSeq();
