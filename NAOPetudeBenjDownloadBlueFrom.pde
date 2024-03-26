@@ -19,8 +19,9 @@ void draw()
  { 
      for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
-     }  
-        println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
+     }
+
+    println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
         //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
      displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
      background(0);

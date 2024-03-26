@@ -187,7 +187,7 @@ void phaseDirectFromSeq() // mixed Com
         patterFromInstrumentRecorded = 0;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+            positionFromMotorPhase[i] =recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
         } 
     }
     
@@ -199,7 +199,7 @@ void phaseDirectFromSeq() // mixed Com
         patterFromInstrumentRecorded = 1;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+            positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; // positionFromMotorPhase[i] + 
         } 
     }
     
@@ -210,7 +210,7 @@ void phaseDirectFromSeq() // mixed Com
         patterFromInstrumentRecorded = 2;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+            positionFromMotorPhase[i] =   recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] +
         } 
     }
     
@@ -221,7 +221,7 @@ void phaseDirectFromSeq() // mixed Com
         patterFromInstrumentRecorded = 3;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+            positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
         } 
     }
     
@@ -233,7 +233,7 @@ void phaseDirectFromSeq() // mixed Com
         patterFromInstrumentRecorded = 4;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+            positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];//positionFromMotorPhase[i] +
         } 
     }
     
@@ -244,7 +244,7 @@ void phaseDirectFromSeq() // mixed Com
         patterFromInstrumentRecorded = 5;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + recordPositionsFromInstrument[i][patterFromInstrumentRecorded];
+            positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
         } 
     }
     
