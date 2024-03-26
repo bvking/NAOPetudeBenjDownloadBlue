@@ -57,8 +57,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         rotate(PI / 2); 
         
-        if (gapEncoder_Motor[i] > numberOfStep / 6 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
-            && enablingParametersChangesToLive == true)
+        if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
+            && enablingParametersChangesToLive == true && acc)
         {
             textSize(75);
             rotate( - PI / 2);
