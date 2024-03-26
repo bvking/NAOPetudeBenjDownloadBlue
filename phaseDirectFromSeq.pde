@@ -1,14 +1,8 @@
 int recallPositionFromInstrument;
 int formerPatternFromInstrument;
+
 boolean instrumentChanged = false;
-/*
-            ratioNumberOfStepCorraletedFromInstrument[0] = 1;
-            ratioNumberOfStepCorraletedFromInstrument[1] = 2;
-            ratioNumberOfStepCorraletedFromInstrument[2] = 4;
-            ratioNumberOfStepCorraletedFromInstrument[3] = 8;
-            ratioNumberOfStepCorraletedFromInstrument[4] = 12;
-            ratioNumberOfStepCorraletedFromInstrument[5] = 16;
-*/
+
 
 void phaseDirectFromSeq() // mixed Com
 {  
@@ -42,7 +36,8 @@ void phaseDirectFromSeq() // mixed Com
         {  
             for (int i = 0; i < networkSize; i++)
             {
-                numberOfTrig[i] = 8;
+
+               // numberOfTrig[i] = 8;
                 realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
                 positionFromMotorPhase[i] = (int) realign[i];
                 
@@ -105,8 +100,8 @@ void phaseDirectFromSeq() // mixed Com
           background (127);
         instrumentChanged = true;     
        // int recallPositionFromInstrument = patterFromInstument;
-       //  key = 'ç';
-        // phaseDirectFromSeq();
+         key = 'ç';
+         phaseDirectFromSeq();
          textSize(200);
          }
       
@@ -125,10 +120,10 @@ void phaseDirectFromSeq() // mixed Com
             
             
             // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                      // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
-            positionFromMotorPhase[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
-            positionFromMotorPhase[i] %=   numberOfStep;     
+            positionFromMotorPhaseRecorded[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
+            positionFromMotorPhaseRecorded[i] %=   numberOfStep;     
 
-            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhase[i];   
+            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhaseRecorded[i];  
            //  recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
             positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
         }
@@ -164,8 +159,8 @@ void phaseDirectFromSeq() // mixed Com
     if (key == '1') //as patterFromInstrumentRecorded = 0;
     {
         
-        key = 'ç';
-        phaseDirectFromSeq();
+     //   key = 'ç';
+     //   phaseDirectFromSeq();
         patterFromInstrumentRecorded = networkSize - 1 -0;
         for (int i = 0; i < networkSize; i++)
         {
@@ -176,8 +171,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '2') // as patterFromInstrumentRecorded = 1;
     {
-        key = 'ç';
-        phaseDirectFromSeq();
+     //   key = 'ç';
+     //   phaseDirectFromSeq();
         patterFromInstrumentRecorded = networkSize - 1 -1;
         for (int i = 0; i < networkSize; i++)
         {
@@ -187,8 +182,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '3')
     {
-        key = 'ç';
-        phaseDirectFromSeq();
+     //   key = 'ç';
+     //   phaseDirectFromSeq();
         patterFromInstrumentRecorded = networkSize - 1 -2;
         for (int i = 0; i < networkSize; i++)
         {
@@ -198,8 +193,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '4')
     {
-        key = 'ç';
-        phaseDirectFromSeq();
+     //   key = 'ç';
+     //   phaseDirectFromSeq();
         patterFromInstrumentRecorded = networkSize - 1 -3;
         for (int i = 0; i < networkSize; i++)
         {
@@ -210,8 +205,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '5')
     {
-        key = 'ç';
-        phaseDirectFromSeq();
+     //   key = 'ç';
+     //   phaseDirectFromSeq();
         patterFromInstrumentRecorded = networkSize - 1 -4;
         for (int i = 0; i < networkSize; i++)
         {
@@ -221,8 +216,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '6')
     {
-        key = 'ç';
-        phaseDirectFromSeq();
+      //  key = 'ç';
+      //  phaseDirectFromSeq();
         patterFromInstrumentRecorded = networkSize - 1 -5;
         for (int i = 0; i < networkSize; i++)
         {

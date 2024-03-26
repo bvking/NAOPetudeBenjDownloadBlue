@@ -25,6 +25,7 @@ int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
 int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
+int[] positionFromMotorPhaseRecorded = new int[networkSize];
 
 //int numberOfStep = 3200;
 int numberOfStep = 6400;

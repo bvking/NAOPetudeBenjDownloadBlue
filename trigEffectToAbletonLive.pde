@@ -79,7 +79,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         rotate(PI / 2); 
 
-          if (velocityBis[i]<-250 && enablingParametersChangesToLive == true )
+          if (velocityBis[i]<-250 && enablingParametersChangesToLive == true  ) // && enablingParametersChangesToLive == true 
               //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
               //   && enablingParametersChangesToLive == true )
            {
@@ -91,24 +91,24 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             encoderTouched[i] =  true;
             //  encoderTouchedbis[i] =  true;
             textSize(75);
-            enablingChangeSound[i] = true;         
+            enablingChangeSound[networkSize-1-i] = true;         
            }  
         
      
-        if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[i] ==  true)
+        if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[networkSize-1-i] == true && instrumentChanged == false)
             {
             key = 'e';
             phaseDirectFromSeq();
             textSize(150);           
-            numberOfTrig[i] += 1;
-            numberOfTrig[i] %= 18;
+            numberOfTrig[networkSize-1-i] += 1;
+            numberOfTrig[networkSize-1-i] %= 18;
             
-            if (numberOfTrig[i] == 17 )
+            if (numberOfTrig[networkSize-1-i] == 17 )
             { 
-                numberOfTrig[i] = 8;
+                numberOfTrig[networkSize-1-i] = 8;
             }
-            text("               changeS " + i + " " + numberOfTrig[i] + " ", -1000, 1 * i * 150); 
-            enablingChangeSound[i] = false; 
+            text("               changeS " + i + " " + numberOfTrig[networkSize-1-i] + " ", -1000, 1 * i * 150); 
+            enablingChangeSound[networkSize-1-i] = false; 
             
             enablingParametersChangesToLive = false;
            // secondTouchedTimeStarter = millis(); 
@@ -121,7 +121,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         
 
-        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[i] ==  false && touchedTimeStarter[i] + 2000 <=  millis())
+        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[networkSize-1-i] ==  false && touchedTimeStarter[networkSize-1-i] + 2000 <=  millis())
         { 
           //  touchedTimeStarter[i] = millis();              
         }   
