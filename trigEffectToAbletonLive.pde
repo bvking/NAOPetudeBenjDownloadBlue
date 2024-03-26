@@ -10,6 +10,7 @@ int[]touchedTimeStarter = new int[networkSize];
 boolean[] encoderTurnClockWise = new boolean[networkSize];
 boolean[] enablingChangeSound = new boolean[networkSize];
 int mapRatio = 400;
+int[] encodeurMappedAsMotor = new int[networkSize];
 int[] gapEncoder_Motor = new int[networkSize];
 int[] gapEncoder_OldEncodeur = new int[networkSize];
 int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
@@ -18,14 +19,60 @@ int[] dataMapped = new int[networkSize];
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
     textSize(75);
-    int[] dataMapped = new int[networkSize];
-    int[] gapEncoder_Motor = new int[networkSize];
+   // int[] dataMapped = new int[networkSize];
+  //  int[] gapEncoder_Motor = new int[networkSize];
+
+      
+
+  if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "
+    for (int i = 0; i < networkSize; i++) {
+    /*
+      oldPhaseAcceleration[i] = phaseAcceleration[i];
+      phaseAcceleration[i] = net.phase[i];
+
+      oldVelocityBis[i] = velocityBis[i];
+      //**   velocityBis[i] = (net.phase[i] - net.oldPhase[i]) / 1;
+      velocityBis[i] = (phaseAcceleration[i] - oldPhaseAcceleration[i]) / 1;
+
+      accelerationBis[i] = (velocityBis[i] - oldVelocityBis[i]) / 1;
+      mapAcceleration[i]= constrain ((int (map (abs(accelerationBis[i] *100), -100, 100, 0, 127))), 0, 127);
+    */
+    }
+     /*
+    rotate (-HALF_PI);
+    text ( "vel[0] " + int (velocityBis[0])   +   "vel[networkSize-1] " + int (velocityBis[networkSize-1]) , -500, -4000, -500 );
+    text ( "Acc[0]" +  int (mapAcceleration[0]) + "Acc[networkSize-1]" + int (mapAcceleration[networkSize-1]), -500, -3800, -500 );
+    rotate (HALF_PI);
+    */
+  }
+
+
     
     for (int i = 0; i < networkSize; i++)
     { 
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
-        encodeurPosition[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
+
+         encodeurPosition[i]= encodeur[i];
+         encodeur[i]%=4000;
+
+         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
+
+         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
+
+        //*********** COMPUTE SPEED of encoder
+        
+
+        gapEncoder_OldEncodeur[i]= encodeurPosition[i]- oldEncodeurPosition[i];
+
+        if ( gapEncoder_OldEncodeur[i]< (-4000+400) )
+        {
+             gapEncoder_OldEncodeur[i]+=4000;
+         }
+        velocityBis[i]= gapEncoder_OldEncodeur[i];
+
+
+        //*********** COMPUTE GAP between where the position of motor would have to be and actual position of encoder
         
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
         dataMapped[i]  %= numberOfStep;
@@ -38,28 +85,31 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {            
         }
         
-        if (oldEncodeurPosition[i] <=  encodeurPosition[i])
+        if (velocityBis[i]>10)
         { 
             encoderTurnClockWise[i] = true;
         }
-        else
+        else  if (velocityBis[i]<-10)
+        { 
             encoderTurnClockWise[i] = false; 
-        
+         }
         
         if (encoderTouched[i] ==  true)
         {       
         }  
-        gapEncoder_Motor[i] =  abs(encodeurPosition[i] - dataMappedFromMotor[i]);
+        gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
         rotate( - PI / 2);
         
-        text("GAP " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
-            " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded], -1000, 1 * i * 75); 
+        text("GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
+            " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
+             "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
         
         rotate(PI / 2); 
-        
-        if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
-            && enablingParametersChangesToLive == true && acc)
-        {
+
+          if (velocityBis[i]>250 && enablingParametersChangesToLive == true )
+              //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
+              //   && enablingParametersChangesToLive == true )
+           {
             textSize(75);
             rotate( - PI / 2);
             // text("ENCODEUR TOUCHED " + i + " " +  gapEncoder_Motor[i] + " " + encodeurPosition[i], -1000, 1 * i * 75); 
@@ -69,14 +119,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             //  encoderTouchedbis[i] =  true;
             textSize(75);
             enablingChangeSound[i] = true;         
-        }  
+           }  
         
-        if (((encodeurPosition[i] + numberOfStep / 10)) % 4000 <=  dataMappedFromMotor[i] && encodeurPosition[i]>=+  numberOfStep / 10)// add second compteur//  &&  encoderTurnClockWise[i]==true//;|| recEncodeurPosition[i] <= encodeurPosition[i]-1000  );
-        {  
-            
-        }
-        
-        
+     
         if (touchedTimeStarter[i] + 20 <=  millis() && enablingChangeSound[i] ==  true)
             {
             key = 'e';

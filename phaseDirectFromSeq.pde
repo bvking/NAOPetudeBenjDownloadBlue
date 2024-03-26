@@ -94,12 +94,13 @@ void phaseDirectFromSeq() // mixed Com
         if (enablingChangeSound[networkSize - 1 - i] ==  true) // assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right
             {
             patterFromInstument = i;  //
+            instrumentChanged = false;
         } 
     }
 
         if (formerPatternFromInstrument != patterFromInstument)
 
-    {  
+         {  
        //   noLoop();
           background (127);
         instrumentChanged = true;     
@@ -107,7 +108,7 @@ void phaseDirectFromSeq() // mixed Com
          key = 'ç';
          phaseDirectFromSeq();
          textSize(200);
-    }
+         }
       
        
     if (key == 'e' && instrumentChanged == false  )
@@ -118,7 +119,7 @@ void phaseDirectFromSeq() // mixed Com
             
             ratioNumberOfStepCorraletedFromInstrument[0] = 1;
             ratioNumberOfStepCorraletedFromInstrument[1] = 2 ;
-            ratioNumberOfStepCorraletedFromInstrument[2] = 4;
+            ratioNumberOfStepCorraletedFromInstrument[2] = 3;
             ratioNumberOfStepCorraletedFromInstrument[3] = 8;
             ratioNumberOfStepCorraletedFromInstrument[4] = 12;
             ratioNumberOfStepCorraletedFromInstrument[5] = 16;
