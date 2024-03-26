@@ -19,34 +19,7 @@ int[] dataMapped = new int[networkSize];
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
 {
     textSize(75);
-   // int[] dataMapped = new int[networkSize];
-  //  int[] gapEncoder_Motor = new int[networkSize];
-
-      
-
-  if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "
-    for (int i = 0; i < networkSize; i++) {
-    /*
-      oldPhaseAcceleration[i] = phaseAcceleration[i];
-      phaseAcceleration[i] = net.phase[i];
-
-      oldVelocityBis[i] = velocityBis[i];
-      //**   velocityBis[i] = (net.phase[i] - net.oldPhase[i]) / 1;
-      velocityBis[i] = (phaseAcceleration[i] - oldPhaseAcceleration[i]) / 1;
-
-      accelerationBis[i] = (velocityBis[i] - oldVelocityBis[i]) / 1;
-      mapAcceleration[i]= constrain ((int (map (abs(accelerationBis[i] *100), -100, 100, 0, 127))), 0, 127);
-    */
-    }
-     /*
-    rotate (-HALF_PI);
-    text ( "vel[0] " + int (velocityBis[0])   +   "vel[networkSize-1] " + int (velocityBis[networkSize-1]) , -500, -4000, -500 );
-    text ( "Acc[0]" +  int (mapAcceleration[0]) + "Acc[networkSize-1]" + int (mapAcceleration[networkSize-1]), -500, -3800, -500 );
-    rotate (HALF_PI);
-    */
-  }
-
-
+ 
     
     for (int i = 0; i < networkSize; i++)
     { 

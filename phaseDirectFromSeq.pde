@@ -104,8 +104,8 @@ void phaseDirectFromSeq() // mixed Com
        //   noLoop();
           background (127);
         instrumentChanged = true;     
-        int recallPositionFromInstrument = patterFromInstument;
-         key = 'ç';
+       // int recallPositionFromInstrument = patterFromInstument;
+       //  key = 'ç';
         // phaseDirectFromSeq();
          textSize(200);
          }
@@ -115,8 +115,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         for (int i = 0; i < networkSize; i++)
         {   
-            
-            
+                   
             ratioNumberOfStepCorraletedFromInstrument[0] = 1;
             ratioNumberOfStepCorraletedFromInstrument[1] = 2 ;
             ratioNumberOfStepCorraletedFromInstrument[2] = 3;
@@ -130,28 +129,11 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] %=   numberOfStep;     
 
             recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhase[i];   
-            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
-          //  positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
+           //  recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
+            positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
         }
     }
-    
- 
-    
-    /*
-    int letter = 'B';
-    
-    switch(letter) {
-    case 'A': 
-    println("Alpha");  // Does not execute
-    break;
-    case 'B': 
-    println("Bravo");  // Prints "Bravo"
-    break;
-    default:
-    println("Zulu");   // Does not execute
-    break;
-}
-    */
+
     
     for (int k = 0; k < networkSize; k++)
         {    
@@ -184,7 +166,7 @@ void phaseDirectFromSeq() // mixed Com
         
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 0;
+        patterFromInstrumentRecorded = networkSize - 1 -0;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
@@ -196,7 +178,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 1;
+        patterFromInstrumentRecorded = networkSize - 1 -1;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; // positionFromMotorPhase[i] + 
@@ -207,7 +189,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 2;
+        patterFromInstrumentRecorded = networkSize - 1 -2;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =   recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] +
@@ -218,7 +200,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 3;
+        patterFromInstrumentRecorded = networkSize - 1 -3;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
@@ -230,7 +212,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 4;
+        patterFromInstrumentRecorded = networkSize - 1 -4;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];//positionFromMotorPhase[i] +
@@ -241,7 +223,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         key = 'ç';
         phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 5;
+        patterFromInstrumentRecorded = networkSize - 1 -5;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 

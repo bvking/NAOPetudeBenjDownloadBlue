@@ -247,7 +247,7 @@ void draw()
     
      // rotate(PI);
      // arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
-     abletonPos();
+     //abletonPos(); // Pos with net.phase[i]
      print(" showPos ");
      showArray(Pos);
      println("memoryi " + memoryi);
