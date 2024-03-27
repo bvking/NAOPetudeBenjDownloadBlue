@@ -18,8 +18,8 @@ int timeTosendData;
 
 
 
-//int networkSize = 10;
-int networkSize = 6;
+int networkSize = 10;
+//int networkSize = 6;
 
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];

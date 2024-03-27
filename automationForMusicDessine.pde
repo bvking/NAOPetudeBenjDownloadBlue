@@ -1,17 +1,19 @@
 void automationForMusicMouvement()
  {
-
+       formerKeyMetro = '*';
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
       if (measure==1 && beatTrigged==true)
        speedDelta=2;
 
          { // modeCircular=true;
+         /*
              key = '°'; //no speed
              keyReleased();
              key = '9'; //Alig
              keyReleased();
              memoryi=networkSize-1;
+        */
            //   key = 'k'; //Alig
            //  keyReleased();
      

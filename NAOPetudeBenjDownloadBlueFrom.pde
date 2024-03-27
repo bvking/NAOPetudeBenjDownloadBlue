@@ -3,6 +3,7 @@ import interfascia.*;
 // END SETUP
 void mouseXY()
 {  // MODULATION OF SIGMA and FREQ into GRAPHIC chimera state. No effect
+
     sigma = (map((float(mouseX) / width * 1), 0, 1, 0.0, 1.0));
     print("Sigma");
     println(sigma);

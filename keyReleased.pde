@@ -1,19 +1,33 @@
 void keyReleased()
 {
 
-  if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
+  if ( music_from_ableton_live == " controlDr" ) 
    {
          key=char (Key);
          keyCode=char (KeyCode);
          automationForMusicControlDr();
          
 
-          if (keyCode == CONTROL){
+          if (keyCode == CONTROL)
+          {
           // enablingParametersChangesToLive=false;
+           }
    }
 
-    //   phaseDirectToMotor();
-    // automationForMusicMouvement();       
+  if ( music_from_ableton_live == " Dessine " ) 
+   {
+         //key=char (Key);
+         //keyCode=char (KeyCode);
+
+       //  phaseDirectToMotor();
+
+          // automationForMusicMouvement();  
+         
+
+          if (keyCode == CONTROL)
+          {
+          // enablingParametersChangesToLive=false;
+           }    
     }
 
    recordFrame();  // record event only when they are released
@@ -321,20 +335,23 @@ void keyReleased()
 
     if ( music_from_ableton_live != " controlDr ")
     {
+        if ( music_from_ableton_live != " Dessine ")
+        {
 
-      if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
-       {
+          if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+          {
            phasePattern(); // enable to change configuration, but program go away:
-       } 
-      if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
-       {
-        //   phasePatternBase(); // enable to change configuration, but program go away
-       }
+           } 
+          if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+           {
+            //   phasePatternBase(); // enable to change configuration, but program go away
+           }
+         } 
     } 
 
   
 
-    else if ( music_from_ableton_live == " controlDr ")
+    else if ( music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine ")
     {  
       if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$')
       { 
