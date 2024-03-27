@@ -23,6 +23,15 @@
       }
       }
 
+       if (key == 'k')
+
+      {
+        for (int i = 0; i < networkSize; i++)
+        {
+         lastActualPosition[i] += numberOfStep/4;
+         }
+      }
+       
 
       if (key == 'ç')
 
@@ -51,6 +60,7 @@
            }
 
         }
+       // key = '#';
 
       }
 
