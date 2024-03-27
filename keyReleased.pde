@@ -21,7 +21,7 @@ void keyReleased()
 
        //  phaseDirectToMotor();
 
-          // automationForMusicMouvement();  
+          // automationForMusicDessine();  
          
 
           if (keyCode == CONTROL)

@@ -1117,7 +1117,7 @@ void setup() {
                  // music_from_ableton_live = " madRush ";
                  // music_from_ableton_live = " mouvement ";
                    music_from_ableton_live = " Dessine ";
-                  //automationForMusicMouvement()               
+                  //automationForMusicDessine()               
                   keyMode = " trigEventWithAbletonSignal "; 
 
                   modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
