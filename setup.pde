@@ -18,8 +18,10 @@ int timeTosendData;
 
 
 
-int networkSize = 10;
+int networkSize = 10; // attention avec big Machine numberOfStep = 3200;
 //int networkSize = 6;
+int numberOfStep = 3200;
+//int numberOfStep = 6400;
 
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
@@ -27,8 +29,7 @@ int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
 
-//int numberOfStep = 3200;
-int numberOfStep = 6400;
+
 
 int[] countControlDr = new int [networkSize];   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
 int shapeLfoMode = 10;  //lfo UP CounterWay

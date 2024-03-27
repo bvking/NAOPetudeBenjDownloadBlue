@@ -20,7 +20,7 @@ void automationForMusicControlDr()
             formerKey = 'e';        
          
        }
-    }
+    } 
     phaseDirectFromSeq(); 
 
     // based on followSignaSampledOppositeWay    
