@@ -12,8 +12,8 @@ size(600, 600, P3D);
 } 
 */
 
-boolean systemForBigMachine=false;
-//boolean systemForBigMachine=true;
+//boolean systemForBigMachine=false;
+boolean systemForBigMachine=true;
 int timeTosendData;
 
 
