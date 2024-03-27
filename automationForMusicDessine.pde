@@ -76,7 +76,7 @@ void automationForMusicMouvement()
 
        {             
              key = '=';
-            keyReleased();
+          //  keyReleased();
          
           }
         
@@ -93,14 +93,14 @@ void automationForMusicMouvement()
         if ((measure==10) && beatPrecised ==16 && beatPrecisedTrigged==true) 
         {   
              key = '9'; //Alig
-             keyReleased();
+            // keyReleased();
        } 
 
        if (measure==11 && beatTrigged==true)
 
        {    
             key = '=';
-            keyReleased();
+          //  keyReleased();
          
        }
 
