@@ -1,6 +1,6 @@
 void automationForMusicDessine()
     {
-   // formerKeyMetro = '*';
+   // keyMetro = '*';
     //modeCircular = true;
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
@@ -496,7 +496,7 @@ void automationForMusicDessine()
         
         
         
-        if (measure >=  52 && (measure + 1) % 2 ==  0 && beatPrecised ==9 && beatPrecisedTrigged )
+        if (measure >=  52 && (measure + 1) % 2 == 0 && beatPrecised ==9 && beatPrecisedTrigged )
         {
             key = 'U';  
             phaseDirectFromSeq();
@@ -508,11 +508,13 @@ void automationForMusicDessine()
 
         // phaseDirectFromSeq(); 
 
-    // based on followSignaSampledOppositeWay    
+      // based on followSignaSampledOppositeWay   
+      if (measure >= 52)
+      { 
   
-        if(formerKey != '#') // q is used to preStart speed of repetio
-        {
-          if(formerKey != 'q') // q is used to preStart speed of repetio
+         if(key != '#') // q is used to preStart speed of repetio
+         {
+          if(key != 'q') // q is used to preStart speed of repetio
              {   
              if (modeStartKeyToFollow == " followSignal2 ")
                  {
@@ -521,11 +523,11 @@ void automationForMusicDessine()
                       {
                         phasePatternFollow[i] = positionFromMotorPhase[i]; //
                       }
-             formerKey = 'q';
+             key = 'q';
                  }
               }
-           formerKey = '#'; 
-        }
+           key = '#'; 
+         }
           for (int i = 0; i < networkSize; i++)
           { 
            if (phasePatternFollow [i]<0)
@@ -538,25 +540,25 @@ void automationForMusicDessine()
             }
           }
   
-      shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+         shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
 
 
-      if (shapeLfoMode==10)
-      {      
-      signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
-       }
+         if (shapeLfoMode==10)
+         {      
+         signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
+         }
 
-      if (shapeLfoMode==30)
-      { 
-      signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
-      signal2controlDr%=numberOfStep;
-      }
+         if (shapeLfoMode==30)
+         { 
+         signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
+         signal2controlDr%=numberOfStep;
+         }
       
-      //oldSignal2controlDr=signal2controlDr;
-      //oldOldSignal2controlDr=oldSignal2controlDr;
+             //oldSignal2controlDr=signal2controlDr;
+             //oldOldSignal2controlDr=oldSignal2controlDr;
             
-       for (int i = 0; i < networkSize; i++)
-       {      
+         for (int i = 0; i < networkSize; i++)
+         {      
            phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
 
           if (shapeLfoMode==10 || shapeLfoMode==30) // if up or down add position
@@ -564,9 +566,10 @@ void automationForMusicDessine()
             lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
             lastActualPosition [i]%=numberOfStep; 
            } 
-        } 
+         }
+     } 
         
-    }  
+   }  
     
 } 
 
