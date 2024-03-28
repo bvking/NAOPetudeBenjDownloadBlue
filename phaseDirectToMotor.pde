@@ -79,7 +79,7 @@ void phaseDirectToMotor() // mixed Com
                //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
         }
     }
-}
+    }
     
     if (key == 'W')
     {
@@ -97,7 +97,7 @@ void phaseDirectToMotor() // mixed Com
                //   positionFromMotorPhase[networkSize-1-i]%= numberOfStep;        
         }
         }
-}
+    }
     
     if (key == 'R') {
         
@@ -116,7 +116,7 @@ void phaseDirectToMotor() // mixed Com
         for (int i = 0; i < networkSize; i++) {
             positionFromMotorPhase[i] += (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);
         }
-}
+    }
     
     
     if (key == 'f')

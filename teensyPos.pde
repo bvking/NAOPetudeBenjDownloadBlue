@@ -304,7 +304,7 @@ void teensyPos()
            {
            for (int i = 0; i < networkSize; i++)
             {
-             dataMappedForMotorisedPosition[i]=lastActualPosition[i];// RENAME good with k only
+             dataMappedForMotorisedPosition[i]=lastActualPosition[i]+recordLastDataOfMotorPosition[i];// RENAME good with k only
              dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];        
              }
           }
@@ -316,6 +316,7 @@ void teensyPos()
             //  recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; // NO NEED with followSignalSampledOppositeWay(frameRatio)
               dataMappedForMotorisedPosition[i]=lastActualPosition[i]+countControlDr[i]*numberOfStep ;// RENAME good with k only
               dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+lastActualPosition[i];//+readPositionEncoder[i];  
+              recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i]; 
                //   text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
 
           } 

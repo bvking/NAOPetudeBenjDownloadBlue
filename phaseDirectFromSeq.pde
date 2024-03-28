@@ -15,8 +15,7 @@ void phaseDirectFromSeq() // mixed Com
         {
             positionFromMotorPhase[i] = positionFromMotorPhase[i] + (numberOfStep - positionFromMotorPhase[i]);
         }
-    }
-    
+    } 
     if (key == 'k')
     {
         for (int i = 0; i < networkSize; i++)
@@ -24,8 +23,7 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] += numberOfStep / 16;
         }
     }
-    
-    
+      
     if (key == 'ç')
     {
         float[] realign = new float[networkSize];
@@ -40,9 +38,7 @@ void phaseDirectFromSeq() // mixed Com
                // numberOfTrig[i] = 8;
                 realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
                 positionFromMotorPhase[i] = (int) realign[i];
-                
                 //positionFromMotorPhase [i] = positionFromMotorPhase [0];
-                
             }  
         }
         
@@ -59,7 +55,62 @@ void phaseDirectFromSeq() // mixed Com
                 // positionFromMotorPhase [i] = positionFromMotorPhase [0];
             }
         }
-    }    
+    } 
+
+    
+     if (key == 'w')
+    {
+        for (int i = 0; i < networkSize; i++)
+        {
+            // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+            
+          //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
+            
+            positionFromMotorPhase[networkSize - 1 - i] += (int)  map((i + 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
+            
+            if (formerKeyMetro == '$')
+            {
+               //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
+        }
+    }
+    }
+    
+    if (key == 'W')
+    {
+        
+        for (int i = 0; i < networkSize; i++)
+        {
+            // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
+            
+            //   net.phase[networkSize-1-i] = net.phase[networkSize-1-i] -  (i*TWO_PI/5)%PI/10; 
+            
+            positionFromMotorPhase[networkSize - 1 - i] = positionFromMotorPhase[networkSize - 1 - i] - (int)  map((i * 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
+            
+            if (formerKeyMetro == '$')
+            {
+               //   positionFromMotorPhase[networkSize-1-i]%= numberOfStep;        
+        }
+        }
+    }
+    
+    if (key == 'R') {
+        
+        for (int i = 0; i < networkSize; i++) {
+         //   net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit   
+         //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
+         //   net.phase[i] -= (i*TWO_PI/5)%PI/5;
+            
+        //    net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
+            
+            positionFromMotorPhase[i] = positionFromMotorPhase[i] - (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);   
+    }
+    }
+    
+    if (key == 'r') {
+        for (int i = 0; i < networkSize; i++) {
+            positionFromMotorPhase[i] += (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);
+        }
+    }   
     
     if (keyCode == CONTROL)
     {
