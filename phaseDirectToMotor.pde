@@ -139,7 +139,7 @@
     if (key == 'd')
     {
     for (int i = 0; i < networkSize; i++) {
-        lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/16/(networkSize)*(networkSize-1-i), 0, TWO_PI, 0, numberOfStep);
+        lastActualPosition[i]+= (int)  map ( TWO_PI*0.1/8/(networkSize)*(networkSize-1-i), 0, TWO_PI, 0, numberOfStep);
          }
     }
 
@@ -156,7 +156,7 @@
 
      {
       for (int i = 0; i < networkSize; i++) {
-           lastActualPosition[i]+=(int)  map ( TWO_PI*0.1/16/(networkSize-0-oscillatorBlocked)*i, 0, TWO_PI, 0, numberOfStep);
+           lastActualPosition[i]-=(int)  map ( TWO_PI*0.1/8/(-networkSize-0)*i, 0, TWO_PI, 0, numberOfStep);
           }
      }
 
