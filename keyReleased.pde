@@ -16,9 +16,9 @@ void keyReleased()
 
   if ( music_from_ableton_live == " Dessine " ) 
    {
-         key=char (Key);
-         keyCode=char (KeyCode);
-        // phaseDirectToMotor();
+       //  key=char (Key);
+       //  keyCode=char (KeyCode);
+         phaseDirectToMotor();
         
 
           // automationForMusicDessine();  
