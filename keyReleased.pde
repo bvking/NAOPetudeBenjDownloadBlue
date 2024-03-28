@@ -16,10 +16,10 @@ void keyReleased()
 
   if ( music_from_ableton_live == " Dessine " ) 
    {
-         //key=char (Key);
-         //keyCode=char (KeyCode);
-
-       //  phaseDirectToMotor();
+         key=char (Key);
+         keyCode=char (KeyCode);
+        // phaseDirectToMotor();
+        
 
           // automationForMusicDessine();  
          
@@ -172,8 +172,8 @@ void keyReleased()
           speedDelta=1;
            }
          key='#'; // to trig only once
-     /*
-      oscillatorBlocked--;
+     /*:
+      oscillatorBlocked--;:
       if (oscillatorBlocked < 0) { 
       oscillatorBlocked=networkSize-1;    
      
@@ -365,7 +365,7 @@ void keyReleased()
        
        }
     }
-   key= '#';
+  // key= '#';
   }   
 }
 

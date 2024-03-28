@@ -236,6 +236,6 @@
    textSize (200);
    text ("key" + key, 200, 400 );
 
-   //  key = '#';
+     key = '#';
 
   }
