@@ -18,6 +18,8 @@ void teensyPos()
 
   if ( music_from_ableton_live != " controlDr ")
    { 
+    if ( music_from_ableton_live != " Dessine ")
+    { 
      if ((keyMode == " trigEventWithAbletonSignal "  || keyMode == " null " ) && formerKeyMode == " samplingModeWithLive ") 
      { 
        //  revLfo=rev;
@@ -200,7 +202,7 @@ void teensyPos()
 
      if  (keyMode == " samplingModeWithLive "   )  //
      
-     { 
+      { 
        //  revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
        if ( keyMode == " samplingModeWithLive "  ) 
        {    // actualise counter of normal mode from revLfo from method  not here
@@ -212,29 +214,29 @@ void teensyPos()
 
         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
         
-        for (int i = 0; i < networkSize; i++) {   
+         for (int i = 0; i < networkSize; i++) {   
         //*******************************  ASSIGN MOTOR WITH POSITION
 
-        if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
-        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
+         if (revLfo[i]!=0  && (net.phase[i]>0) ) { // number of revLfoolution is even and rotation is clock wise   
+          dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep))+ (revLfo[i]*numberOfStep);
+          }
+          if (revLfo[i]!=0  && (net.phase[i] <  0)) { // number of revLfoolution is even and rotation is Counter clock wise          // pos[i]= int (map (positionToMotor[i], 0, -numberOfStep, 0,  numberOfStep))+ (revLfo[i]*numberOfStep);
+          dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
+          }
+          if (revLfo[i]==0 && (net.phase[i] < 0) ) { //  number of revLfoolution is 0 and rotation is counter clock wise 
+          dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
+          }         
+           if  (revLfo[i]==0 && (net.phase[i] > 0) ) {  //  number of revLfoolution is 0 and rotation is clock wise     
+          dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
+           }   
+           recordLastDataOfMotorPosition[i]= dataMappedForMotorisedPosition[i];
+          dataMappedForMotorisedBigMachine[i]= dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
         }
-        if (revLfo[i]!=0  && (net.phase[i] <  0)) { // number of revLfoolution is even and rotation is Counter clock wise          // pos[i]= int (map (positionToMotor[i], 0, -numberOfStep, 0,  numberOfStep))+ (revLfo[i]*numberOfStep);
-        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0)) +(revLfo[i]*numberOfStep);       //   print ("pos "); print (i); print (" ");println (pos[i]);
-        }
-        if (revLfo[i]==0 && (net.phase[i] < 0) ) { //  number of revLfoolution is 0 and rotation is counter clock wise 
-        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, -TWO_PI, numberOfStep, 0));        
-        }         
-         if  (revLfo[i]==0 && (net.phase[i] > 0) ) {  //  number of revLfoolution is 0 and rotation is clock wise     
-        dataMappedForMotorisedPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep));                //      print ("pos "); print (i); print (" CW revLfo=0 ");println (pos[i]);
-         }   
-         recordLastDataOfMotorPosition[i]= dataMappedForMotorisedPosition[i];
-         dataMappedForMotorisedBigMachine[i]= dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
-       }
-      } 
-     }
+       } 
+      }
 
-     if (keyMode == " samplingModewithLive " || keyMode == " trigEventWithAbletonSignal ")
-     {
+      if (keyMode == " samplingModewithLive " || keyMode == " trigEventWithAbletonSignal ")
+      {
 
         if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) " || modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
         {
@@ -245,8 +247,8 @@ void teensyPos()
          // send24DatasToTeensy6motorsToLittleMachine( 6, 2, -3, -1, 2, 1000);
          }
         }
+      }
      }
-
     }
 
      // end != music controlDr
@@ -279,7 +281,7 @@ void teensyPos()
       rotate (-PI);
      }
 
-      if (music_from_ableton_live == " Dessine " ) 
+      if (music_from_ableton_live == " DessineOld " ) 
      { 
       rotate (PI);
       for (int i = 0; i < networkSize; i++)
@@ -294,7 +296,7 @@ void teensyPos()
 
 
      
-      if ( music_from_ableton_live == " controlDr "  ) 
+      if ( music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine "  ) 
       {    // actualise counter of normal mode from revLfo from method  not here
         /*
         for (int i = 0; i < networkSize; i++) {        
@@ -341,7 +343,7 @@ void teensyPos()
         
       }
       
-        if (music_from_ableton_live == " controlDr " ) 
+        if (music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine "  ) 
         { 
         rotate (PI);
         text (" numberOfR[0]  " +numberOfRota[0], width, -2000-100*(networkSize+3)) ; 

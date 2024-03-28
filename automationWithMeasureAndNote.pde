@@ -526,7 +526,7 @@ void trigBeatWithMeasure()
 
    shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
 
-   if ( music_from_ableton_live == " controlDr ")
+   if ( music_from_ableton_live == " controlDr "|| music_from_ableton_live == " Dessine "  ) 
     {
 
      for (int i = 0; i < networkSize; i++)
