@@ -1,6 +1,6 @@
 void automationForMusicDessine()
     {
-   // keyMetro = '*';
+    formerKeyMetro = '*';
     //modeCircular = true;
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
