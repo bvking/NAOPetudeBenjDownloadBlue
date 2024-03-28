@@ -18,7 +18,7 @@ void keyReleased()
    {
        //  key=char (Key);
        //  keyCode=char (KeyCode);
-         phaseDirectToMotor();
+          phaseDirectToMotor();
         
 
           // automationForMusicDessine();  

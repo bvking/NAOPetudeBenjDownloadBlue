@@ -461,6 +461,22 @@ void automationForMusicDessine()
                 }
             }
         }
+
+         if (measure ==  52 && beatPrecised == 1 && beatPrecisedTrigged)   // ROTATION
+        {    
+          key = 'ç';
+          phaseDirectToMotor();  
+          key = 'f';
+          phaseDirectToMotor();  
+        }
+
+          if (measure ==  52 && beatPrecised <= 8 && beatPrecisedTrigged)   // ROTATION
+        {    
+         
+          key = 'f';
+          //phaseDirectToMotor(); 
+          keyReleased();  
+        }
         
         if (measure >=  52 && measure < 635)    // ROTATION pas trop vite
         {    
@@ -469,25 +485,73 @@ void automationForMusicDessine()
             {
                 for (int i = 0; i < networkSize; i++)
                 {
-                    lastActualPosition[i] += (int)  map(PI * 3 / 5 / 16, 0, TWO_PI, 0, numberOfStep);
+                //    lastActualPosition[i] += (int)  map(PI * 3 / 5 / 16, 0, TWO_PI, 0, numberOfStep);
                 }
             }
         }
         
         
         
-        if (measure >=  52 && (measure + 1) % 2 ==  0 && (beatPrecised + 1) % 3 ==  0 && beatPrecisedTrigged ==  true)
+        if (measure >=  52 && (measure + 1) % 2 ==  0 && beatPrecised ==9 && beatPrecisedTrigged )
         {
-            key = 'U';        
-            phaseDirectToMotor(); 
+            key = 'U';  
+            keyReleased(); 
+            //phaseDirectToMotor(); 
             
-            //key = 'F';keyReleased();
-            //key = 'F';keyReleased();
             
         }
         
-        // key = 'F';keyReleased();
-        //key = '#'; // in  phaseDirectToMotor(); 
+                 // key = 'F';keyReleased();
+
+             shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
+             
+                   //       println (" countControlDr " + countControlDr + " shapeLfoMode " + shapeLfoMode + " shapeLfoToCount " + shapeLfoToCount +  " oldSignal2controlDr " +  oldSignal2controlDr + " signal2controlDr " + signal2controlDr);
+     
+             signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
+             oldSignal2controlDr=signal2controlDr;
+             oldOldSignal2controlDr=oldSignal2controlDr;
+            
+
+                  //   signal2controlDr= map (signal[2], 0, 1, 0, numberOfStep);
+
+
+        if (measure >=  52 && measure < 635)    // ROTATION pas trop vite
+        {   
+
+
+             if(key != '#') // q is used to preStart speed of repetio
+             {
+
+                  if(key != 'q') // q is used to preStart speed of repetio
+                  {
+            
+                        if (modeStartKeyToFollow == " followSignal2 ")
+                       {
+                        textSize(10);
+                        phaseDirectToMotor();
+                           for (int i = 0; i < networkSize; i += 1)
+                            {
+                           //  phasePatternFollow[i] = positionFromMotorPhase[i]; // with controlDr
+                             phasePatternFollow[i] = lastActualPosition[i]; //
+
+                             //  lastActualPosition [i] = (int) phasePatternFollow[i];
+                               // phasePatternFollow[i] += net.phase[i];
+                             //  phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
+                             }
+                        }
+            
+                    key = 'q';
+
+                  }
+            }
+            key = '#'; 
+              
+            for (int i = 0; i < networkSize; i++)
+             {
+             phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+             lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i]));  
+            }
+        }
         
     }  
     
