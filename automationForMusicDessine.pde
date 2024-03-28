@@ -425,7 +425,8 @@ void automationForMusicDessine()
         if (measure ==  51 && beatPrecised ==  1 && beatPrecisedTrigged ==  true)   // align
         { 
             key = 'ç';        
-            phaseDirectToMotor(); 
+          //  phaseDirectToMotor(); 
+            phaseDirectFromSeq();
         }    
         
         if (measure ==  51 && beatPrecised ==  9 && beatPrecisedTrigged ==  true)   //pas trop car revient en arriere
@@ -434,11 +435,11 @@ void automationForMusicDessine()
             key = 'r';        
             phaseDirectToMotor();   
             key = 'r';        
-            phaseDirectToMotor(); 
+                  phaseDirectFromSeq();
             key = 'r';        
             phaseDirectToMotor(); 
             key = 'r';        
-            phaseDirectToMotor();  
+                  phaseDirectFromSeq(); 
             key = 'r';        
             phaseDirectToMotor();   
             key = 'r';        
@@ -465,17 +466,20 @@ void automationForMusicDessine()
          if (measure ==  52 && beatPrecised == 1 && beatPrecisedTrigged)   // ROTATION
         {    
           key = 'ç';
-          phaseDirectToMotor();  
+        //  phaseDirectToMotor();  
+        phaseDirectFromSeq();
           key = 'f';
-          phaseDirectToMotor();  
+        //  phaseDirectToMotor(); 
+        phaseDirectFromSeq(); 
         }
 
           if (measure ==  52 && beatPrecised <= 8 && beatPrecisedTrigged)   // ROTATION
         {    
          
           key = 'f';
+          phaseDirectFromSeq();
           //phaseDirectToMotor(); 
-          keyReleased();  
+         
         }
         
         if (measure >=  52 && measure < 635)    // ROTATION pas trop vite
@@ -495,63 +499,72 @@ void automationForMusicDessine()
         if (measure >=  52 && (measure + 1) % 2 ==  0 && beatPrecised ==9 && beatPrecisedTrigged )
         {
             key = 'U';  
-            keyReleased(); 
-            //phaseDirectToMotor(); 
+            phaseDirectFromSeq();
+           
+          //  phaseDirectToMotor(); 
             
             
         }
-        
-                 // key = 'F';keyReleased();
 
-             shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
-             
-                   //       println (" countControlDr " + countControlDr + " shapeLfoMode " + shapeLfoMode + " shapeLfoToCount " + shapeLfoToCount +  " oldSignal2controlDr " +  oldSignal2controlDr + " signal2controlDr " + signal2controlDr);
-     
-             signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
-             oldSignal2controlDr=signal2controlDr;
-             oldOldSignal2controlDr=oldSignal2controlDr;
-            
+        // phaseDirectFromSeq(); 
 
-                  //   signal2controlDr= map (signal[2], 0, 1, 0, numberOfStep);
-
-
-        if (measure >=  52 && measure < 635)    // ROTATION pas trop vite
-        {   
-
-
-             if(key != '#') // q is used to preStart speed of repetio
-             {
-
-                  if(key != 'q') // q is used to preStart speed of repetio
-                  {
-            
-                        if (modeStartKeyToFollow == " followSignal2 ")
-                       {
-                        textSize(10);
-                        phaseDirectToMotor();
-                           for (int i = 0; i < networkSize; i += 1)
-                            {
-                           //  phasePatternFollow[i] = positionFromMotorPhase[i]; // with controlDr
-                             phasePatternFollow[i] = lastActualPosition[i]; //
-
-                             //  lastActualPosition [i] = (int) phasePatternFollow[i];
-                               // phasePatternFollow[i] += net.phase[i];
-                             //  phasePatternFollow[i] = phasePatternFollow[i] % TWO_PI;
-                             }
-                        }
-            
-                    key = 'q';
-
-                  }
-            }
-            key = '#'; 
-              
-            for (int i = 0; i < networkSize; i++)
-             {
-             phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
-             lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i]));  
-            }
+    // based on followSignaSampledOppositeWay    
+  
+        if(formerKey != '#') // q is used to preStart speed of repetio
+        {
+          if(formerKey != 'q') // q is used to preStart speed of repetio
+             {   
+             if (modeStartKeyToFollow == " followSignal2 ")
+                 {
+                  textSize(10); 
+                    for (int i = 0; i < networkSize; i += 1)
+                      {
+                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
+                      }
+             formerKey = 'q';
+                 }
+              }
+           formerKey = '#'; 
         }
+          for (int i = 0; i < networkSize; i++)
+          { 
+           if (phasePatternFollow [i]<0)
+            {
+                phasePatternFollow [i] = phasePatternFollow[i] +numberOfStep; // easier
+                phasePatternFollow [i] %=  numberOfStep;
+            } 
+           else if (phasePatternFollow [i] >=  0) {
+                phasePatternFollow [i] %=  numberOfStep;
+            }
+          }
+  
+      shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+
+
+      if (shapeLfoMode==10)
+      {      
+      signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
+       }
+
+      if (shapeLfoMode==30)
+      { 
+      signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
+      signal2controlDr%=numberOfStep;
+      }
+      
+      //oldSignal2controlDr=signal2controlDr;
+      //oldOldSignal2controlDr=oldSignal2controlDr;
+            
+       for (int i = 0; i < networkSize; i++)
+       {      
+           phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+
+          if (shapeLfoMode==10 || shapeLfoMode==30) // if up or down add position
+           {   
+            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
+            lastActualPosition [i]%=numberOfStep; 
+           } 
+        } 
         
     }  
     

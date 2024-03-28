@@ -14,11 +14,11 @@ void phaseDirectToMotor() // mixed Com
             
           //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
             
-            lastActualPosition[networkSize - 1 - i] += (int)  map((i + 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[networkSize - 1 - i] += (int)  map((i + 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
             
             if (formerKeyMetro == '$')
             {
-               //    lastActualPosition[networkSize-1-i]%= lastActualPosition[i] + numberOfStep;    // no meaning    
+               //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
         }
     }
 }
@@ -28,7 +28,7 @@ void phaseDirectToMotor() // mixed Com
     {
         for (int i = 0; i < networkSize; i++)
         {
-            lastActualPosition[i] += numberOfStep / 4;
+            positionFromMotorPhase[i] += numberOfStep / 4;
         }
 }
     
@@ -37,25 +37,25 @@ void phaseDirectToMotor() // mixed Com
         
     {
         float[] realign = new float[networkSize];
-        if (lastActualPosition[networkSize - 1] > lastActualPosition[0])
+        if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0])
             higerPostion = true;
         {  
             for (int i = 0; i < networkSize; i++)
             {
-                realign[i] = lastActualPosition[networkSize - 1] % (lastActualPosition[networkSize - 1] + (numberOfStep)); //+PI/2;
-                lastActualPosition[i] = (int) realign[i];
+                realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
+                positionFromMotorPhase[i] = (int) realign[i];
                 println(" HIGER POSITIO " + higerPostion);
         }  
         }
         
         
-        if (lastActualPosition[networkSize - 1] < lastActualPosition[0])
+        if (positionFromMotorPhase[networkSize - 1] < positionFromMotorPhase[0])
         {
             higerPostion = false;
             for (int i = 0; i < networkSize; i++) {
-                realign[i] = lastActualPosition[0] % (lastActualPosition[0] + (numberOfStep)); //+PI/2;
-              //   realign[i] = lastActualPosition[networkSize-1]%(lastActualPosition[networkSize-1]+(numberOfStep)); //+PI/2;
-                lastActualPosition[i] = (int) realign[i];
+                realign[i] = positionFromMotorPhase[0] % (positionFromMotorPhase[0] + (numberOfStep)); //+PI/2;
+              //   realign[i] = positionFromMotorPhase[networkSize-1]%(positionFromMotorPhase[networkSize-1]+(numberOfStep)); //+PI/2;
+                positionFromMotorPhase[i] = (int) realign[i];
                 println(" HIGER POSITIO " + higerPostion);
         }
             
@@ -72,11 +72,11 @@ void phaseDirectToMotor() // mixed Com
             
           //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
             
-            lastActualPosition[networkSize - 1 - i] += (int)  map((i + 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[networkSize - 1 - i] += (int)  map((i + 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
             
             if (formerKeyMetro == '$')
             {
-               //    lastActualPosition[networkSize-1-i]%= lastActualPosition[i] + numberOfStep;    // no meaning    
+               //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
         }
     }
 }
@@ -90,11 +90,11 @@ void phaseDirectToMotor() // mixed Com
             
             //   net.phase[networkSize-1-i] = net.phase[networkSize-1-i] -  (i*TWO_PI/5)%PI/10; 
             
-            lastActualPosition[networkSize - 1 - i] = lastActualPosition[networkSize - 1 - i] - (int)  map((i * 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[networkSize - 1 - i] = positionFromMotorPhase[networkSize - 1 - i] - (int)  map((i * 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
             
             if (formerKeyMetro == '$')
             {
-               //   lastActualPosition[networkSize-1-i]%= numberOfStep;        
+               //   positionFromMotorPhase[networkSize-1-i]%= numberOfStep;        
         }
         }
 }
@@ -108,13 +108,13 @@ void phaseDirectToMotor() // mixed Com
             
         //    net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
             
-            lastActualPosition[i] = lastActualPosition[i] - (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);   
+            positionFromMotorPhase[i] = positionFromMotorPhase[i] - (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);   
     }
     }
     
     if (key == 'r') {
         for (int i = 0; i < networkSize; i++) {
-            lastActualPosition[i] += (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[i] += (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);
         }
 }
     
@@ -122,8 +122,8 @@ void phaseDirectToMotor() // mixed Com
     if (key == 'f')
     {  key = 's';
         for(int i = 0; i < networkSize; i++) {
-            //  lastActualPosition[i]-= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1/16, 0, TWO_PI, 0, numberOfStep);  
-           //NOPE lastActualPosition[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 0.1 / 16, 0, TWO_PI, 0, numberOfStep);   
+            //  positionFromMotorPhase[i]-= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1/16, 0, TWO_PI, 0, numberOfStep);  
+           //NOPE positionFromMotorPhase[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 0.1 / 16, 0, TWO_PI, 0, numberOfStep);   
         }
     }
     
@@ -131,7 +131,7 @@ void phaseDirectToMotor() // mixed Com
     if (key == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
     {
         for(int i = 0; i < networkSize; i++) {
-            lastActualPosition[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 1 / 16, 0, TWO_PI, 0, numberOfStep);   
+            positionFromMotorPhase[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 1 / 16, 0, TWO_PI, 0, numberOfStep);   
         }
     }
     
@@ -140,7 +140,7 @@ void phaseDirectToMotor() // mixed Com
     {
         for (int i = 0; i < networkSize; i++)
         {
-            lastActualPosition[i] += (int)  map(TWO_PI * 0.1 / 8 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / 8 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
     }
     
@@ -149,7 +149,7 @@ void phaseDirectToMotor() // mixed Com
         // front  TWO_PI/8/(networkSize)*(i)   behind?
         // + =   TWO_PI*0.1/(networkSize)*(networkSize-1-i)
         for(int i = 0; i < networkSize; i++) {
-            lastActualPosition[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
 }
     
@@ -158,14 +158,14 @@ void phaseDirectToMotor() // mixed Com
     {
         for (int i = 0; i < networkSize; i++)
         {
-            lastActualPosition[i] -= (int)  map(TWO_PI * 0.1 / 8 / ( - networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.1 / 8 / ( - networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep);
         }
 }
     
     if (key == 'F') 
     {
         for (int i = 0; i < networkSize; i++) {
-            lastActualPosition[i] += (int)  map(TWO_PI * 0.1 / (networkSize - 0 - oscillatorBlocked) * i, 0, TWO_PI, 0, numberOfStep);
+            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize - 0 - oscillatorBlocked) * i, 0, TWO_PI, 0, numberOfStep);
         }
 }
     
@@ -183,15 +183,15 @@ void phaseDirectToMotor() // mixed Com
         
         for (int i = 0; i < (networkSize - 0); i++)
         {  
-            lastOldActualPosition[i] = lastActualPosition[i];
+            lastOldActualPosition[i] = positionFromMotorPhase[i];
         }
         
         for (int i = 1; i < (networkSize - 0); i++) 
         {  
-            lastActualPosition[i - 1] = lastOldActualPosition[i];
+            positionFromMotorPhase[i - 1] = lastOldActualPosition[i];
         }
         
-        lastActualPosition[networkSize - 1] =  lastOldActualPosition[0];
+        positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
 }
     
     if (key == 'u')
@@ -203,14 +203,14 @@ void phaseDirectToMotor() // mixed Com
         
         for (int i = 0; i < (networkSize - 0); i++)
         {  
-            lastOldActualPosition[i] = lastActualPosition[i] + numberOfStep / 6;
+            lastOldActualPosition[i] = positionFromMotorPhase[i] + numberOfStep / 6;
         }
         
         for (int i = 1; i < (networkSize - 0); i++)
         {
-            lastActualPosition[i] = lastOldActualPosition[i - 1];       
+            positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
     }
-        lastActualPosition[0] = lastOldActualPosition[networkSize - 1];
+        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
 } 
     
@@ -224,14 +224,14 @@ void phaseDirectToMotor() // mixed Com
         
         for (int i = 0; i < (networkSize - 0); i++)
         {  
-            lastOldActualPosition[i] = lastActualPosition[i] + numberOfStep * 0;
+            lastOldActualPosition[i] = positionFromMotorPhase[i] + numberOfStep * 0;
         }
         
         for (int i = 1; i < (networkSize - 0); i++)
         {
-            lastActualPosition[i] = lastOldActualPosition[i - 1];       
+            positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
     }
-        lastActualPosition[0] = lastOldActualPosition[networkSize - 1];
+        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
 } 
     

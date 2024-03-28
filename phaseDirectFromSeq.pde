@@ -306,6 +306,26 @@ void phaseDirectFromSeq() // mixed Com
         positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
     } 
+
+        if (key == 'U')
+    {  // memory == 0 is the ball "behind"  the screen
+        
+        oldMemoryi = memoryi;
+        memoryi = (memoryi + 1);
+        memoryi %=  networkSize;
+        
+        for (int i = 0; i < (networkSize - 0); i++)
+        {  
+            lastOldActualPosition[i] = positionFromMotorPhase[i];//+numberOfStep/6;
+        }
+        
+        for (int i = 1; i < (networkSize - 0); i++)
+        {
+            positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
+        }
+        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+        
+    } 
     
     //  text (" formerKey " + formerKey , 100, -200);
     
