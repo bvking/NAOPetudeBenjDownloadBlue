@@ -1,6 +1,6 @@
 int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor signal from AbletonLive
 
-void automationForMusicControlDr()
+void automationForMusicControlDrWithLittleMachine()
 {
   formerKeyMetro = '*';
 
@@ -653,7 +653,7 @@ void automationForMusicControlDrO()
              phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
              lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i]));  
             }
-            
+
          // key = '#';
       }
 
