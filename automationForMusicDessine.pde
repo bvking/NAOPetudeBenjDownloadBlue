@@ -6,7 +6,7 @@ void automationForMusicDessine()
      }
 void automationForMusicControlDr()
     {
-   // keyMetro = '*';
+    formerKeyMetro = '*';
     //modeCircular = true;
     if (music_from_ableton_live == " controlDr ")//oldMac blabla2021
     {  
@@ -431,8 +431,7 @@ void automationForMusicControlDr()
         if (measure ==  51 && beatPrecised ==  1 && beatPrecisedTrigged ==  true)   // align
         { 
             key = 'ç';        
-          //  phaseDirectToMotor(); 
-            phaseDirectFromSeq();
+            phaseDirectToMotor(); 
         }    
         
         if (measure ==  51 && beatPrecised ==  9 && beatPrecisedTrigged ==  true)   //pas trop car revient en arriere
@@ -441,11 +440,11 @@ void automationForMusicControlDr()
             key = 'r';        
             phaseDirectToMotor();   
             key = 'r';        
-                  phaseDirectFromSeq();
+            phaseDirectToMotor(); 
             key = 'r';        
             phaseDirectToMotor(); 
             key = 'r';        
-                  phaseDirectFromSeq(); 
+            phaseDirectToMotor();  
             key = 'r';        
             phaseDirectToMotor();   
             key = 'r';        
@@ -472,20 +471,17 @@ void automationForMusicControlDr()
          if (measure ==  52 && beatPrecised == 1 && beatPrecisedTrigged)   // ROTATION
         {    
           key = 'ç';
-        //  phaseDirectToMotor();  
-        phaseDirectFromSeq();
+          phaseDirectToMotor();  
           key = 'f';
-        //  phaseDirectToMotor(); 
-        phaseDirectFromSeq(); 
+          phaseDirectToMotor();  
         }
 
           if (measure ==  52 && beatPrecised <= 8 && beatPrecisedTrigged)   // ROTATION
         {    
          
           key = 'f';
-          phaseDirectFromSeq();
           //phaseDirectToMotor(); 
-         
+          keyReleased();  
         }
         
         if (measure >=  52 && measure < 635)    // ROTATION pas trop vite
@@ -505,9 +501,8 @@ void automationForMusicControlDr()
         if (measure >=  52 && (measure + 1) % 2 == 0 && beatPrecised ==9 && beatPrecisedTrigged )
         {
             key = 'U';  
-            phaseDirectFromSeq();
-           
-          //  phaseDirectToMotor(); 
+            keyReleased(); 
+            //phaseDirectToMotor(); 
             
             
         }

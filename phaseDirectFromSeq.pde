@@ -316,7 +316,7 @@ void phaseDirectFromSeq() // mixed Com
         
         for (int i = 0; i < (networkSize - 0); i++)
         {  
-            lastOldActualPosition[i] = positionFromMotorPhase[i]+(numberOfStep);//+numberOfStep/6;
+            lastOldActualPosition[i] = positionFromMotorPhase[i];//+(numberOfStep);//+numberOfStep/6;
         }
         
         for (int i = 1; i < (networkSize - 0); i++)
