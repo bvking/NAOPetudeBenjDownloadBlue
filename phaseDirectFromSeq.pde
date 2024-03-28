@@ -285,6 +285,32 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
     }
+
+     
+    if (key == 'i')
+    {  // memory == 0 is the ball "behind"  the screen
+        
+        oldMemoryi = memoryi;
+        memoryi = (memoryi - 1);
+        
+        if (memoryi == -  1)
+        {
+            memoryi = networkSize - 1;
+            oldMemoryi = 0;
+        }
+        
+        for (int i = 0; i < (networkSize - 0); i++)
+        {  
+            lastOldActualPosition[i] = positionFromMotorPhase[i];
+        }
+        
+        for (int i = 1; i < (networkSize - 0); i++) 
+        {  
+            positionFromMotorPhase[i - 1] = lastOldActualPosition[i];
+        }
+        
+        positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
+}
     
     
     if (key == 'u')

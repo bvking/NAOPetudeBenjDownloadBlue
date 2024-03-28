@@ -1,7 +1,11 @@
 void automationForMusicDessine()
     {
-    formerKeyMetro = '*';
-    //modeCircular = true;
+        if (measure <=  52 )
+        {
+             formerKeyMetro = '*';
+             //modeCircular = true;
+         }
+
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
         if (measure ==  1 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
@@ -511,6 +515,17 @@ void automationForMusicDessine()
       // based on followSignaSampledOppositeWay   
       if (measure >= 52)
       { 
+          if (measure >=  52 && measure<=60 )
+        {
+             formerKeyMetro = '$';
+             //modeCircular = true;
+         }
+
+           if (measure >=60 )
+        {
+             formerKeyMetro = '*';
+             //modeCircular = true;
+         }
   
          if(key != '#') // q is used to preStart speed of repetio
          {
