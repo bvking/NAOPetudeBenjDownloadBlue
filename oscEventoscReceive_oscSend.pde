@@ -811,16 +811,12 @@ oldEncodeur[0]= encodeur[0];
   myMessage110.add(trigSound[4]);
   myMessage111.add(trigSound[5]);
 
-  
-
-
   JoDebug  ="<" // BPM9   
    // + (dataMappedForMotorisedPosition[11])+","+dataMappedForMotorisedPosition[10]+","+(dataMappedForMotorisedPosition[9])+","+dataMappedForMotorisedPosition[8]+","+dataMappedForMotorisedPosition[7]+","
    // + dataMappedForMotorisedPosition[6]+","
     +( dataMappedForMotorisedPosition[5])+","+dataMappedForMotorisedPosition[4]+","+dataMappedForMotorisedPosition[3]+","+dataMappedForMotorisedPosition[2]+","
     + ">";
-    
- 
+     
   OscMessage myMessage20= new OscMessage("/position0"); // oscillator front
   OscMessage myMessage21= new OscMessage("/position1"); // oscillator 
   OscMessage myMessage22= new OscMessage("/position2"); // oscillator 
@@ -844,8 +840,6 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage39= new OscMessage("/decompte2"); // oscillator behind
   */
 
-
- 
   OscMessage myMessage50= new OscMessage("/acceleration0"); // oscillator SEND ACCELERATION
   OscMessage myMessage51= new OscMessage("/acceleration1"); // oscillator 
   OscMessage myMessage52= new OscMessage("/acceleration2"); // oscillator 

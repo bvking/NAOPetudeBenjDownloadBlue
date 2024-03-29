@@ -566,16 +566,18 @@ if (oscillatorMaster > 0) {
             OscP5 oscP5bis;//send data
             NetAddress myRemoteLocation;     // send data  to Live
             NetAddress myRemoteLocationII;   // send data  to Live
-            NetAddress myRemoteLocation8002; // send data to Esp32
-            NetAddress myRemoteLocation8003; // send data to Esp32
-            NetAddress myRemoteLocation8004; // send data to Esp32
-            NetAddress myRemoteLocation8005; // send data to Esp32
-            NetAddress myRemoteLocation8006; // send data to Esp32
-            NetAddress myRemoteLocation8007; // send data to Esp32
-            NetAddress myRemoteLocation8008; // send data to Esp32
-            NetAddress myRemoteLocation8009; // send data to Esp32
-            NetAddress myRemoteLocation8010; // send data to Esp32
-            NetAddress myRemoteLocation8011; // send data to Esp32
+            NetAddress myRemoteLocation9000; // send data to Esp32
+            NetAddress myRemoteLocation9001; // send data to Esp32
+            NetAddress myRemoteLocation9002; // send data to Esp32
+            NetAddress myRemoteLocation9003; // send data to Esp32
+            NetAddress myRemoteLocation9004; // send data to Esp32
+            NetAddress myRemoteLocation9005; // send data to Esp32
+            NetAddress myRemoteLocation9006; // send data to Esp32
+            NetAddress myRemoteLocation9007; // send data to Esp32
+            NetAddress myRemoteLocation9008; // send data to Esp32
+            NetAddress myRemoteLocation9009; // send data to Esp32
+            NetAddress myRemoteLocation9010; // send data to Esp32
+            NetAddress myRemoteLocation9011; // send data to Esp32
             
             float[] dataToLive; 
             int[] upVelocity = new int[networkSize]; 
@@ -867,7 +869,7 @@ void setup() {
                 // myRemoteLocation = new NetAddress("192.168.1.77", 8000); // send data to port 8000 
                 myRemoteLocation = new NetAddress("127.0.0.1", 8000); // rsend data to live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
                 myRemoteLocationII = new NetAddress("127.0.0.1", 8001); // receive data fto live. define address ove which the communication takes place. Requires host address (127.0.0.1 for localhost and the port number previously defined.)
-                //myRemoteLocationII = new NetAddress("192.168.1.77", 8001); 
+                myRemoteLocation8000 = new NetAddress("127.0.0.1", 9000); 
           
                 dataToLive = new float[networkSize];
                 upVelocity = new int[networkSize];
