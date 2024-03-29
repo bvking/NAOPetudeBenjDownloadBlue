@@ -1050,6 +1050,11 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage28, myRemoteLocationII);
   oscP5.send(myMessage29, myRemoteLocationII);
 
+  // myRemoteLocation9000 port 9000 to 9009  //position0 to position9
+
+  oscP5.send(myMessage20, myRemoteLocation9000);
+  oscP5.send(myMessage21, myRemoteLocation9001);
+
 
    //  END TO USE, NOT BELOW, END OF UNCOMMENT
 
