@@ -365,12 +365,12 @@ void draw()
     }
     
     
-    oscSend();
+    //oscSend();
     //  trigMiddlePositionFromEncodeur();
     
     if (millis()>timeTosendData + 250)
     {
-        // oscSend();
+         oscSend();
         timeTosendData = millis();
         //println ("SEND DATA");
 }
