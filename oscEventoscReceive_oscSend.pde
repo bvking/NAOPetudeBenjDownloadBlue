@@ -601,7 +601,7 @@ void oscSend(){
      if  (keyCode == TAB && 1>=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
      {
        TrigmodPos[i]=1;
-       oldPos[i]=Pos[i];
+       oldPos[i]=(int) Pos[i];
    
        //MIDDLE POINT == between 61 & 65
        if ((oldPos[i]<= 64 && Pos[i] >=63) ||
@@ -1054,6 +1054,8 @@ oldEncodeur[0]= encodeur[0];
 
   oscP5.send(myMessage20, myRemoteLocation9000);
   oscP5.send(myMessage21, myRemoteLocation9001);
+  oscP5.send(myMessage22, myRemoteLocation9002);
+  oscP5.send(myMessage23, myRemoteLocation9003);
 
 
    //  END TO USE, NOT BELOW, END OF UNCOMMENT

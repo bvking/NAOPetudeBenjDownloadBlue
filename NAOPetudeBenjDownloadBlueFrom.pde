@@ -250,7 +250,7 @@ void draw()
     // arduinoPos(); // just to TRIGMODPOS TIMER and DATA to live when particular position of phase or pattern are created by the hole balls (oscillator)
     //abletonPos(); // Pos with net.phase[i]
     print(" showPos ");
-    showArray(Pos);
+    showArrayF(Pos);
     println("memoryi " + memoryi);
     print(" encoder_due ");
     showArray(dataFromArduinoDue);
@@ -361,14 +361,14 @@ void draw()
     
     for (int i = 0; i < networkSize; i++)
     {
-        Pos[i] = abs((int) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 127));
+        Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 127));
     }
     
     
     //oscSend();
     //  trigMiddlePositionFromEncodeur();
     
-    if (millis()>timeTosendData + 250)
+    if (millis()>timeTosendData + 50)
     {
          oscSend();
         timeTosendData = millis();

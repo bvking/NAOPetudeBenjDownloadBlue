@@ -680,7 +680,7 @@ if (oscillatorMaster > 0) {
             int[] VirtualPosition  = new int[networkSize];
             int[] pos = new int[networkSize];
             int[] oldPos = new int[networkSize];
-            int[] Pos = new int[networkSize]; // to convert data of position always positively
+            float[] Pos = new float[networkSize]; // to convert data of position always positively
             int[] numberOfTrig = new int[networkSize];
             int[] numberOfRota = new int[networkSize];
 
@@ -940,7 +940,7 @@ void setup() {
                 VirtualPosition = new int[networkSize];
                 pos = new int[networkSize];
                 oldPos = new int[networkSize];
-                Pos = new int[networkSize];
+                //  Pos = new float[networkSize];
                 modPos = new int[networkSize];
                 modOldPos = new int[networkSize]; 
                 modOldOldPos = new int[networkSize]; 
