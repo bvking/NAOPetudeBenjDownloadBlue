@@ -347,34 +347,22 @@ void draw()
     {
         //keyCode = 32; // BARSPACE
     }
-    
     formerKeyMode = keyMode;
     printModeAndKey();
-    
-    
-    
     textSize(100);
-    //----
-    //timeTosendData;
-    
     keyReleased();
     
     for (int i = 0; i < networkSize; i++)
     {
         Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 127));
     }
-    
-    
     //oscSend();
-    //  trigMiddlePositionFromEncodeur();
-    
-    if (millis()>timeTosendData + 50)
+    //  trigMiddlePositionFromEncodeur();    
+   if (millis()>timeTosendData + 50)
     {
          oscSend();
         timeTosendData = millis();
         //println ("SEND DATA");
 }
-    
-    
     //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
 }
