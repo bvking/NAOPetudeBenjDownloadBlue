@@ -356,9 +356,8 @@ void draw()
     {
         Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 127));
     }
-    //oscSend();
     //  trigMiddlePositionFromEncodeur();    
-   if (millis()>timeTosendData + 50)
+   if (millis()>timeTosendData + 250)
     {
          oscSend();
         timeTosendData = millis();

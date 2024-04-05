@@ -412,13 +412,14 @@ void automationForMusicControlDrO()
             {  
              int repeatEachNumberOfFrame = 1; 
               if (frameCount%repeatEachNumberOfFrame==0)
-             {  
-             key = 's';        
-             phaseDirectToMotor();   
-             key = 's';        
-             phaseDirectToMotor();          
+              {  
+              key = 's';        
+              phaseDirectToMotor();   
+              key = 's';        
+              phaseDirectToMotor();          
+              } 
              }         
-            } 
+            
 
             if (measure>=35 && (measure+1)%2==0 && measure<=38 ) 
             {
@@ -686,7 +687,8 @@ void automationForMusicControlDrO()
     */
 
 
-  }  
+  } 
+  
  
 
 
