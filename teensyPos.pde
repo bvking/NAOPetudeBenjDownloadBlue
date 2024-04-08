@@ -328,10 +328,10 @@ void teensyPos()
         { 
         rotate (PI);
         text (" numberOfR[0]  " +numberOfRota[0], width, -2000-100*(networkSize+3)) ; 
-        text (" beatOnMeasur  " +beatOnMeasure, width, -2000-100*(networkSize+2)) ; 
-        text (" countDr0  " +countControlDr[0], width, -2000-100*(networkSize+1)) ; 
+        text (" beatPrecise   " +beatPrecised, width, -2000-100*(networkSize+2)) ; 
+        text (" countDr0___   " +countControlDr[0], width, -2000-100*(networkSize+1)) ; 
 
-         text (" countDr5 " + countControlDr[5], width, -2000-100*networkSize) ; 
+        text (" countDr5__    " + countControlDr[5], width, -2000-100*networkSize) ; 
 
         for (int i = 0; i < networkSize; i++)
         {   

@@ -20,7 +20,7 @@ void draw()
     { 
     for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
-}
+    }
     
     println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
     //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
@@ -33,22 +33,22 @@ void draw()
     if (music_from_ableton_live == " mouvement ")// DOESN'T EXIST ANYORE
     {
         //trigEventWithAbletonSignal();
-}
+    }
     
     if (music_from_ableton_live == " controlDr ")
     {
         //automationForMusicControlDr();
-}
+    }
     
     if (music_from_ableton_live == " Dessine ")
     {
         //automationForMusicDessine();
-}
+    }
     
     if (keyMode == " truc " && music_from_ableton_live == " madRush " && measure <=  120)
     {
         setKeyModeByTappingKeyPadOnce();
-}
+    }
     
     setMovement(key, false);  // to reset function just above
     
@@ -68,7 +68,7 @@ void draw()
     if (modeStartKeyToFollow != " samplingModeInternal ") // if we are not in samplingMode we use clock from Ableton Live     
     { 
         setMeasureAndBeatPrecised();
-}
+    }
     
     trigBeatWithMeasure();
     //printDataOnScreen();
@@ -82,7 +82,7 @@ void draw()
         {
             //switch (key) : different mode of speed, shift, propagation ....
         }
-}
+    }
     
     if (keyMode == " null ")
         {
@@ -153,7 +153,7 @@ void draw()
             modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
             //keyCode = LEFT; keyReleased(); // shift delay of following ball
         }
-    }      //  // end measure & repetiton
+     }      //  // end measure & repetiton
     
     
     
@@ -168,7 +168,7 @@ void draw()
     { 
         updateInternalClock();
         handleInternalSamplingMode();
-} 
+    } 
     
     //trigEffectToAbletonLive();  // add Size to Text
     
@@ -189,7 +189,7 @@ void draw()
         // frameRatio= 60;
         //frameRate (frameRatio);
         followSignalSampledOppositeWay(frameRatio);// with millis()    
-}
+    }
     
     //rect(80,40,140,320);
     //print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
@@ -218,7 +218,7 @@ void draw()
                 }
             }
         }   
-}
+    }
     textSize(200);
     
     
@@ -243,7 +243,7 @@ void draw()
     if (keyMode == " propagationBallRotationBis ") 
     {
         // dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
-}
+    }
     showArray(dataMappedForMotorisedPosition);
     
     // rotate(PI);
@@ -258,7 +258,7 @@ void draw()
     if (encoderTouched[5] ==  true) {
         
         //  keyMode = " samplingModeInternal ";
-}
+    }   
     
     //== = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     
@@ -272,7 +272,7 @@ void draw()
     
     if (formerKey == '!') {
         // formerSartKey = formerKey;
-}
+    }
     
     if (key ==  'j')
     {   // senda trig to start record in Ableton live
@@ -283,12 +283,11 @@ void draw()
         print("startStop from the beginning: ");
         println(startStop);
         key = '#'; // reset key to akey doing nothing
-} 
-    
+    } 
     else
         {
         startStop = 2;
-}
+    }
     
     
     //option to control sound in Live when the animation is stopped then started again and when oscillator 11 touches the left

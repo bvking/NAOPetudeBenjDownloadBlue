@@ -1,21 +1,21 @@
 void automationForMusicDessine()
     {
-        if (measure <=  52 )
+    if (measure <  50)
         {
-             formerKeyMetro = '*';
-             //modeCircular = true;
-         }
-
+        formerKeyMetro = '*';
+        //modeCircular = true;
+    }
+    
     if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
     {  
         if (measure ==  1 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
         {  
-             speedDelta = 2;
-             key = 'ç';
-             phaseDirectFromSeq();      
+            speedDelta = 2;
+            key = 'ç';
+            phaseDirectFromSeq();      
         }
         
-        if (((measure >=  1 && measure <=  3)  && beatTrigged ==  true) || (beatPrecised == 5 + 4 && beatPrecisedTrigged ==  true && measure <= 2))
+        if (((measure >=  1 && measure < 3)  && beatTrigged ==  true) || (beatPrecised == 5 + 4 && beatPrecisedTrigged ==  true && measure <= 2))
         {
             key = 'k'; 
             phaseDirectFromSeq();      
@@ -23,500 +23,18 @@ void automationForMusicDessine()
             //  key = 'S';        
             //  phaseDirectFromSeq();      
         } 
-        
-        
-        if (measure ==  3 && beatTrigged ==  true)
-            
-        { // key = ';'; // align direct phase motor
-            // keyReleased();
-            
-            // key = '=';
-            // keyReleased();
-            
-            // key = '9'; //Alig graphic
-            // keyReleased();
-            
-        }
-        
-        
-        
-        if (measure >=  3 && measure < 6 && (beatPrecised ==  1 || beatPrecised ==  5 + 4)) 
-        {
-      
-                key = 'S';        
-                phaseDirectFromSeq();      
-                key = 'S';        
-                phaseDirectFromSeq();    
-           
-            
-        }
-        
-        
-        
-        if ((measure >=  6 && measure <=  6) && (beatPrecised ==  1 || beatPrecised ==  5 + 4) && beatPrecisedTrigged ==  true) 
-        {
-            speedDelta = 2;  
-            key = 'D';  
-            phaseDirectFromSeq();      
-            key = 'D';  
-            phaseDirectFromSeq();      
-        } 
-        //
-        
-        
-        
-        if (measure ==  7 && beatTrigged ==  true)
-            
-        {
-            // key = '=';
-            //phaseDirectToMotor(); 
-            
-        }
-        
-        if (measure >=  7 && measure < 11 && (beatPrecised == 5 + 4 || beatPrecised == 1) && beatPrecisedTrigged ==  true) 
-            
-        {  
-            key = 'S';  
-            phaseDirectFromSeq();        
-            key = 'S';  
-            phaseDirectFromSeq();      
-            
-        }
-        
-        if ((measure ==  10) && beatPrecised ==  16 && beatPrecisedTrigged ==  true) 
-        {   
-           // key = '9'; //Alig
-            // keyReleased();
-        } 
-        
-        if (measure ==  11 && beatTrigged ==  true)
-            
-        {
-            key = 'ç';
-            phaseDirectFromSeq();      
-            
-        }
-        
-        if (measure >=  11 && measure <=  12  && beatPrecised > 0 && beatPrecisedTrigged ==true) 
-        {
-            speedDelta = 2;
-            
-            int repeatEachNumberOfFrame = 1; 
-            if (frameCount % repeatEachNumberOfFrame ==  0)
-            {  
-                key = 'd';        
-                phaseDirectFromSeq();      
-                key = 'd';        
-                phaseDirectFromSeq();      
-            }   
-        }  
-        
-        if (measure >=  13 && measure <=  14  && beatPrecised < 17 && beatPrecisedTrigged== true) 
-        {
-                key = 's';        
-                phaseDirectFromSeq();      
-                key = 's';        
-                phaseDirectFromSeq();              
-        } 
-        
-        
-        if (measure >=  15 && measure <=  16  && beatPrecised > 0 && beatPrecisedTrigged) 
-        {
-            speedDelta = 2;
-                key = 'd';        
-                phaseDirectFromSeq();      
-                key = 'd';        
-                phaseDirectFromSeq();             
-        }  
-        
-        if (measure >=  17 && measure <=  18  && beatPrecised < 17 && beatPrecisedTrigged) 
-        {     
-                key = 's';        
-                phaseDirectFromSeq();      
-                key = 's';        
-                phaseDirectFromSeq();      
-            }
-        } 
-       
-        
-        if (measure >=  429 && measure <=  430  && beatPrecisedTrigged ==  true) 
-        {
-            speedDelta = 2;
-             
-                key = 'd';        
-                phaseDirectFromSeq();      
-                key = 'd';        
-                phaseDirectFromSeq();      
-               
-        }  
-        
-        if (measure >=  431 && measure <=  433  && beatPrecisedTrigged ==  true)
-        {
-         
-                key = 's';        
-                phaseDirectFromSeq();      
-                key = 's';        
-                phaseDirectFromSeq();      
-             
-        } 
-        
-        if (measure ==  434 && beatPrecised ==  9 && beatPrecisedTrigged ==  true)
-        {   
-                key = 'ç';
-                phaseDirectFromSeq();           
-        }
-        
-        
-        if (measure ==  434 && beatPrecised >= 10 && beatPrecisedTrigged ==  true)
-        { 
-            {  
-                // key = 'w';   
-                key = 'f';        
-                phaseDirectFromSeq(); 
-                  key = 'f';        
-                phaseDirectFromSeq(); 
-                  key = 'f';        
-                phaseDirectFromSeq(); 
-                  key = 'f';        
-                phaseDirectFromSeq(); 
-                  key = 'f';        
-                phaseDirectFromSeq();               
-            }  
-            
-        } 
-        
-        
-        if (measure >=  451 &&  (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13 )  && beatPrecisedTrigged ==  true) 
-        {
-            
-                 key = 'i';        
-                 phaseDirectFromSeq();  
-        } 
-        
-       
-               
-        if (measure ==  440 && beatPrecised ==  1 && beatPrecisedTrigged ==  true)
-        {   
-                key = 'ç';
-                phaseDirectFromSeq();           
-        }
-
-
-            if (measure ==  441 && beatPrecisedTrigged ==  true) 
-        {  
-                key = 'f';        
-                phaseDirectFromSeq();   
-
-                key = 'f';        
-                phaseDirectFromSeq();  
-
-                key = 'f';        
-                phaseDirectFromSeq();  
-                    
-        }
-         
-        
-
-
-
-        if (measure >=  25 && measure <=  28  && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
-        {
-            key = 'S';        
-            phaseDirectFromSeq();          
-            key = 'S';        
-            phaseDirectFromSeq();         
-            key = 'S';        
-            phaseDirectFromSeq();         
-        } 
-        
-        if (measure >=  25 && measure <=  28  && (beatPrecised == 5 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
-        {
-            key = 'D';        
-            phaseDirectFromSeq();          
-            key = 'D';        
-            phaseDirectFromSeq();       
-            key = 'D';        
-            phaseDirectFromSeq();         
-        } 
-        
-        
-        if (measure > 28 && measure < 32 && beatPrecisedTrigged ==  true)  
-        {
-            int ratioSpeed = 1; 
-            if (frameCount % ratioSpeed ==  0)
-            {
-                for (int i = 0; i < networkSize; i++)
-                {
-                    //  lastActualPosition[i]+= (int)  map ( PI*ratioSpeed/5/16, 0, TWO_PI, 0, numberOfStep);
-                }
-            }
-        }
-        
-        if (measure ==  29 &&  beatPrecised == 1 && beatPrecisedTrigged ==  true)  
-        {
-            // key= '=';
-            // keyReleased();
-        }
-        
-        if (measure >=  28 && measure < 32 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
-        {
-            {  
-                // key = 'w'; 
-                key = 'r';        
-                phaseDirectFromSeq();      
-            }  
-        } 
-        
-        
-        if (measure ==  32 &&  beatPrecised == 1 && beatPrecisedTrigged ==  true)     
-        {
-            key = 'ç';
-            phaseDirectFromSeq();      
-            speedDelta = 3;
-        }
-        
-        
-        
-        if (measure >=  32 && measure % 2 ==  0 && measure <=  35 && beatPrecisedTrigged==true) 
-        {  
-            int repeatEachNumberOfFrame = 5; 
-            if (frameCount % repeatEachNumberOfFrame ==  0)
-            {    
-                textSize(200);
-                key = 'R';        
-                phaseDirectFromSeq();       
-                key = 'R';        
-                phaseDirectFromSeq();       
-            }    
-        } 
-        
-        if (measure >=  32 && (measure + 1) % 2 ==  0 && measure<= 35 && beatPrecisedTrigged==true) 
-        {  
-          
-                textSize(400);      
-                key = 'r';        
-                phaseDirectFromSeq();       
-                key = 'r';        
-                phaseDirectFromSeq();       
-               
-        }
-        
-        if (measure ==  34 && beatPrecised >=  8 && beatPrecisedTrigged)
-        {      
-                key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();       
-                key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();                           
-        }  
-        
-        if (measure >=  35 && measure % 2 ==  0 && measure <=  38 && beatPrecisedTrigged)
-        {  
-                key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();      
-                 key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();               
-                    
-        } 
-        
-        if (measure >=  35 && (measure + 1) % 2 ==  0 && measure<= 38 && beatPrecisedTrigged) 
-        {
-         
-                key = 'd';        
-                phaseDirectFromSeq();          
-                key = 'd';        
-                phaseDirectFromSeq();       
-                  key = 'd';        
-                phaseDirectFromSeq();          
-                key = 'd';        
-                phaseDirectFromSeq();           
-        }
-        
-        if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
-        {
-            key = 'u';        
-            phaseDirectFromSeq();              
-        } 
-        
-       
-        
-  
-        
-        if (measure >=  45 &&  measure <=  400 && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
-                  
-        { //speedDelta = 3;
-            key = 'u';        
-                 
-              phaseDirectFromSeq();               
-        } 
-     
-
-         if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   // ROTATION
-        {    
-          key = 'ç';
-        //  phaseDirectFromSeq();        
-        phaseDirectFromSeq();
-          key = 'f';
-        //  phaseDirectFromSeq();       
-        phaseDirectFromSeq(); 
-        }
-
-          if (measure ==  49 && beatPrecised <= 8 && beatPrecisedTrigged)   // ROTATION
-        {         
-          key = 'f';
-          phaseDirectFromSeq();
-          //phaseDirectToMotor();     
-        }
-    
-      
-        if (measure >=  58  && measure <=400 &&  (beatPrecised ==1  || beatPrecised ==9 ) && beatPrecisedTrigged )
-        {
-            key = 'U';  
-            phaseDirectFromSeq();        
-        }
-
-        // phaseDirectFromSeq(); 
-
-      // based on followSignaSampledOppositeWay   
-        if (measure >= 0)
-        { 
-        
-
-           if (measure >=60 )
-           {   speedDelta=3;
-             formerKeyMetro = '*';
-             //modeCircular = true;
-             }
-  
-             //if(key != '#') // q is used to preStart speed of repetio
-             //{
-             if(key != 'q') // q is used to preStart speed of repetio
-             {   
-             if (modeStartKeyToFollow == " followSignal2 ")
-                 {
-                  textSize(10); 
-                    for (int i = 0; i < networkSize; i += 1)
-                      {
-                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
-                      }
-             key = 'q';
-                 }
-              }
-           //key = '#'; 
-           //}
-          for (int i = 0; i < networkSize; i++)
-          { 
-           if (phasePatternFollow [i]<0)
-            {
-                phasePatternFollow [i] = phasePatternFollow[i] +numberOfStep; // easier
-                phasePatternFollow [i] %=  numberOfStep;
-            } 
-           else if (phasePatternFollow [i] >=  0) {
-                phasePatternFollow [i] %=  numberOfStep;
-            }
-          }
-  
-         shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
-
-
-         if (shapeLfoMode==10)
-         {      
-         signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
-         }
-
-         if (shapeLfoMode==30)
-         { 
-         signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
-         signal2controlDr%=numberOfStep;
-         }
-      
-             //oldSignal2controlDr=signal2controlDr;
-             //oldOldSignal2controlDr=oldSignal2controlDr;
-            
-         for (int i = 0; i < networkSize; i++)
-         {  
-           if (measure >=431 ) // ADD ROTATION FROM LFO
-           {    
-           phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
-           } 
-
-
-          if (shapeLfoMode==10 || shapeLfoMode==30) // if up or down add position
-           {   
-            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
-            lastActualPosition [i]%=numberOfStep; 
-           } 
-         }
-     } 
-        
-   
-    
-} 
-
-
-
-
-
-
-
-void automationForMusicDessineOriginal()
-    {
-        if (measure <=  52 )
-        {
-             formerKeyMetro = '*';
-             //modeCircular = true;
-         }
-
-    if (music_from_ableton_live == " Dessine ")//oldMac blabla2021
-    {  
-        if (measure ==  1 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
-        {  
-             speedDelta = 2;
-             key = 'ç';
-             phaseDirectFromSeq();      
-        }
-        
-        if (((measure >=  1 && measure <=  3)  && beatTrigged ==  true) || (beatPrecised == 5 + 4 && beatPrecisedTrigged ==  true && measure <= 2))
-        {
-            key = 'k'; 
-            phaseDirectFromSeq();      
-            
-            //  key = 'S';        
-            //  phaseDirectFromSeq();      
-        } 
-        
-        
-        if (measure ==  3 && beatTrigged ==  true)
-            
-        { // key = ';'; // align direct phase motor
-            // keyReleased();
-            
-            // key = '=';
-            // keyReleased();
-            
-            // key = '9'; //Alig graphic
-            // keyReleased();
-            
-        }
         
         
         
         if (measure >=  3 && measure < 6 && (beatPrecised ==  1 || beatPrecised ==  5 + 4) && beatPrecisedTrigged) 
         {
-          
             
-                key = 'S';        
-                phaseDirectFromSeq();  
-                  key = 'S';        
-                phaseDirectFromSeq();         
-               
+            
+            key = 'S';        
+            phaseDirectFromSeq();  
+            key = 'S';        
+            phaseDirectFromSeq();         
+            
             
         }
         
@@ -554,7 +72,7 @@ void automationForMusicDessineOriginal()
         
         if ((measure ==  10) && beatPrecised ==  16 && beatPrecisedTrigged ==  true) 
         {   
-           // key = '9'; //Alig
+            // key = '9'; //Alig
             // keyReleased();
         } 
         
@@ -566,458 +84,485 @@ void automationForMusicDessineOriginal()
             
         }
         
-        if (measure >=  11 && measure <=  12  && beatPrecised > 0 && beatPrecisedTrigged ==true) 
+        if (measure >=  11 && measure <=  11  && beatPrecised > 0 && beatPrecisedTrigged ==  true) 
         {
             speedDelta = 2;
-            
-            int repeatEachNumberOfFrame = 1; 
-            if (frameCount % repeatEachNumberOfFrame ==  0)
-            {  
-                key = 'd';        
-                phaseDirectFromSeq();      
-                key = 'd';        
-                phaseDirectFromSeq();      
-            }   
-        }  
-        
-        if (measure >=  13 && measure <=  14  && beatPrecised < 17 && beatPrecisedTrigged== true) 
-        {
-  
-                key = 's';        
-                phaseDirectFromSeq();      
-                key = 's';        
-                phaseDirectFromSeq();      
-               
-        } 
-        
-        
-        if (measure >=  15 && measure <=  16  && beatPrecised > 0 && beatPrecisedTrigged) 
-        {
-            speedDelta = 2;
-            
-          
-                key = 'd';        
-                phaseDirectFromSeq();      
-                key = 'd';        
-                phaseDirectFromSeq();      
-             
-        }  
-        
-        if (measure >=  17 && measure <=  18  && beatPrecised < 17 && beatPrecisedTrigged) 
-        {
-           
-                key = 's';        
-                phaseDirectFromSeq();      
-                key = 's';        
-                phaseDirectFromSeq();      
-            }
-        } 
-        
-        if (measure ==  17 && beatTrigged ==  true)
-            
-        {
-            // key = 'w';
-            // phaseDirectFromSeq();      
-            // key = 'w';
-            // phaseDirectFromSeq();      
-            
-        }
-        
-        if (measure >=  17 && measure <=  20  && beatPrecisedTrigged ==  true) 
-        {
-            speedDelta = 2;
-            
-        
-                key = 'd';        
-                phaseDirectFromSeq();      
-                key = 'd';        
-                phaseDirectFromSeq();      
-               
-        }  
-        
-        if (measure >=  20 && measure <=  23  && beatPrecisedTrigged ==  true)
-        {
-         
-                key = 's';        
-                phaseDirectFromSeq();      
-                key = 's';        
-                phaseDirectFromSeq();      
-             
-        } 
-        
-        if (measure ==  23 && beatPrecised ==  15 && beatPrecisedTrigged ==  true)
-        {   
-                key = 'ç';
-                phaseDirectFromSeq();           
-        }
-        
-        
-        if (measure >=  24 && measure <=  24 && beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 && beatPrecisedTrigged ==  true)
-        { 
-            {  
-                // key = 'w';   
-                key = 'f';        
-                phaseDirectFromSeq();               
-            }  
-            
-        } 
-        
-        
-        if (measure ==  24  &&  beatPrecised == 13 && beatPrecisedTrigged ==  true) 
-        {
-            
-          //  key = '=';
-          //  keyReleased();
-        } 
-        
-        if (measure ==  24  &&  beatPrecised == 15 && beatPrecisedTrigged ==  true) 
-        {
-            
-            key = 'S';        
-            phaseDirectFromSeq();       
-            speedDelta = 3;
-        } 
-        
-        
-        if (measure >=  25 && measure <=  28  && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
-        {
-            key = 'S';        
+            key = 'd';        
             phaseDirectFromSeq();          
-            key = 'S';        
-            phaseDirectFromSeq();         
-            key = 'S';        
-            phaseDirectFromSeq();         
-        } 
+            
+        }  
         
-        if (measure >=  25 && measure <=  28  && (beatPrecised == 5 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        if (measure >=  12 && measure <=  12  && beatPrecised < 17 && beatPrecisedTrigged == true) 
         {
-            key = 'D';        
-            phaseDirectFromSeq();          
-            key = 'D';        
-            phaseDirectFromSeq();       
-            key = 'D';        
-            phaseDirectFromSeq();         
-        } 
-        
-        
-        if (measure > 28 && measure < 32 && beatPrecisedTrigged ==  true)  
-        {
-            int ratioSpeed = 1; 
-            if (frameCount % ratioSpeed ==  0)
-            {
-                for (int i = 0; i < networkSize; i++)
-                {
-                    //  lastActualPosition[i]+= (int)  map ( PI*ratioSpeed/5/16, 0, TWO_PI, 0, numberOfStep);
-                }
-            }
-        }
-        
-        if (measure ==  29 &&  beatPrecised == 1 && beatPrecisedTrigged ==  true)  
-        {
-            // key= '=';
-            // keyReleased();
-        }
-        
-        if (measure >=  28 && measure < 32 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
-        {
-            {  
-                // key = 'w'; 
-                key = 'r';        
-                phaseDirectFromSeq();      
-            }  
-        } 
-        
-        
-        if (measure ==  32 &&  beatPrecised == 1 && beatPrecisedTrigged ==  true)     
-        {
-            key = 'ç';
+            key = 's';        
             phaseDirectFromSeq();      
-            speedDelta = 3;
-        }
-        
-        
-        
-        if (measure >=  32 && measure % 2 ==  0 && measure <=  35 && beatPrecisedTrigged==true) 
-        {  
-            int repeatEachNumberOfFrame = 5; 
-            if (frameCount % repeatEachNumberOfFrame ==  0)
-            {    
-                textSize(200);
-                key = 'R';        
-                phaseDirectFromSeq();       
-                key = 'R';        
-                phaseDirectFromSeq();       
-            }    
+            
         } 
         
-        if (measure >=  32 && (measure + 1) % 2 ==  0 && measure<= 35 && beatPrecisedTrigged==true) 
-        {  
-          
-                textSize(400);      
-                key = 'r';        
-                phaseDirectFromSeq();       
-                key = 'r';        
-                phaseDirectFromSeq();       
-               
-        }
-        
-        if (measure ==  34 && beatPrecised >=  8 && beatPrecisedTrigged)
-        {      
-                key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();       
-                key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();                           
+        if (measure >=  13 && measure <=  13  && beatPrecised > 0 && beatPrecisedTrigged ==  true) 
+        {
+            speedDelta = 2;
+            key = 'd';        
+            phaseDirectFromSeq();          
+            
         }  
         
-        if (measure >=  35 && measure % 2 ==  0 && measure <=  38 && beatPrecisedTrigged)
-        {  
-                key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();      
-                 key = 's';        
-                phaseDirectFromSeq();         
-                key = 's';        
-                phaseDirectFromSeq();               
-                    
+        if (measure >=  14 && measure <=  14  && beatPrecised < 17 && beatPrecisedTrigged == true) 
+        {
+            key = 's';        
+            phaseDirectFromSeq();      
+            
         } 
         
-        if (measure >=  35 && (measure + 1) % 2 ==  0 && measure<= 38 && beatPrecisedTrigged) 
+        
+        if (measure ==  11 && beatTrigged ==  true)
+            
         {
-         
-                key = 'd';        
-                phaseDirectFromSeq();          
-                key = 'd';        
-                phaseDirectFromSeq();       
-                  key = 'd';        
-                phaseDirectFromSeq();          
-                key = 'd';        
-                phaseDirectFromSeq();           
+            key = 'S';
+            phaseDirectFromSeq();      
+            
         }
         
-        if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
-        {
-            key = 'u';        
-            phaseDirectFromSeq();              
-        } 
         
-        if (measure ==  39  && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        if (measure >=  15 && measure <=  15  && ((beatPrecised + 1) % 2) ==  0 && beatPrecisedTrigged) 
         {
-            key = 'u';        
-            phaseDirectFromSeq();              
+            speedDelta = 2;
+            
+            key = 'd';        
+            phaseDirectFromSeq();      
+            key = 'd';        
+            phaseDirectFromSeq();      
+            
+        }  
+        
+        if (measure >=  16 && measure <=  16  && ((beatPrecised + 0) % 2) ==  0 && beatPrecisedTrigged) 
+        {    
+            key = 's';        
+            phaseDirectFromSeq();      
+            key = 's';        
+            phaseDirectFromSeq();      
         }
-        
-        if (measure ==  40  && (beatPrecised == 1) && beatPrecisedTrigged ==  true) 
-        { 
-            key = 'ç';     
-            phaseDirectFromSeq();        
-        }
-        
-        if (measure ==  40  && (beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+    } 
+    
+    
+    
+    
+    if (measure >=  17 && measure <=  17  && ((beatPrecised + 1) % 2) ==  0 && beatPrecisedTrigged) 
         {
-            key = 'r';        
-            phaseDirectFromSeq();         
-            key = 'r';        
-            phaseDirectFromSeq();       
-            key = 'r';        
-            phaseDirectFromSeq();       
-            key = 'r';        
-            phaseDirectFromSeq();           
-        } 
+        speedDelta = 2;
         
-        if (measure > 40  && measure <=  43 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
-        {
-            key = 'u';        
-            phaseDirectFromSeq();              
-        } 
-        
-        /* 
-        if (measure>=39 && (measure+1)%2==0 && measure<=43  &&  (beatPrecised < 16)) //  &&  beatPrecisedTrigged==true
-        {
-        int repeatEachNumberOfFrame = 2; 
-        if (frameCount%repeatEachNumberOfFrame==0)
-        {  
         key = 'd';        
-        phaseDirectFromSeq();               
-    }         
-    }        
+        phaseDirectFromSeq();      
+        key = 'd';        
+        phaseDirectFromSeq();      
         
-        if (measure>=40 && (measure+0)%2==0 && measure<=43   &&  (beatPrecised < 16)) // &&  beatPrecisedTrigged==true
-        {
-        int repeatEachNumberOfFrame = 2; 
-        if (frameCount%repeatEachNumberOfFrame==0)
-        { 
+    }  
+    
+    if (measure >=  18 && measure <=  18  && ((beatPrecised + 0) % 2) ==  0 && beatPrecisedTrigged) 
+        {        
         key = 's';        
         phaseDirectFromSeq();      
-    }       
-    }  
-        */
+        key = 's';        
+        phaseDirectFromSeq();      
         
-        if (measure ==  43  && (beatPrecised == 15) && beatPrecisedTrigged ==  true) 
-        {
-            key = 'ç';        
-            phaseDirectFromSeq();               
-        }
-        
-        if (measure ==  44 && beatPrecisedTrigged ==  true) 
-        {  
-                key = 'f';        
-                phaseDirectFromSeq();   
-
-                key = 'f';        
-                phaseDirectFromSeq();  
-
-                key = 'f';        
-                phaseDirectFromSeq();  
-                    
-        }
-        
-        if (measure >=  45 &&  measure <=  448 && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
-                  
-        { //speedDelta = 3;
-            key = 'u';        
-          //  phaseDirectFromSeq();       
-              phaseDirectFromSeq();               
-        } 
-         /*
-        if (measure ==  48 && beatPrecised ==  1 && beatPrecisedTrigged ==  true)   // align
-        { 
-            key = 'ç';        
-          //  phaseDirectFromSeq();       
-            phaseDirectFromSeq();
-        }    
-     
-        if (measure ==  48 && beatPrecised ==  9 && beatPrecisedTrigged ==  true)   //pas trop car revient en arriere
-        {       
-            key = 'r';        
-              phaseDirectFromSeq();
-            key = 'r';        
-                  phaseDirectFromSeq();
-            key = 'r';        
-              phaseDirectFromSeq();
-            key = 'r';        
-                  phaseDirectFromSeq(); 
-            key = 'r';        
-              phaseDirectFromSeq();
-            key = 'r';        
-              phaseDirectFromSeq();
-            key = 'r';        
-              phaseDirectFromSeq();
-            key = 'r';        
-              phaseDirectFromSeq();        
-        } 
-        */
-        
+    } 
     
-
-         if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
+    if (measure ==  19 && beatTrigged ==  true)          
+        {
+        key = 'ç';
+        phaseDirectFromSeq();  
+        key = 'k';
+        phaseDirectFromSeq();  
+        key = 'k';
+        phaseDirectFromSeq();  
+        key = 'D';
+        phaseDirectFromSeq();      
+        
+    }
+    
+    if (measure >=  19 && measure <=  23  && ((beatPrecised + 1) % 5) ==  0 && beatPrecisedTrigged)
+        {  
+        key = 'i';        
+        phaseDirectFromSeq();      
+        
+    } 
+    
+    if (measure ==  23 && beatPrecised ==  15 && beatPrecisedTrigged )
+        {   
+        key = 'ç';
+        phaseDirectFromSeq();           
+    }
+    
+    
+    if (measure >=  24 && measure <=  24 && beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 && beatPrecisedTrigged )
+        { 
+        {  
+            // key = 'w';   
+            key = 'f';        
+            phaseDirectFromSeq();               
+        }  
+        
+    } 
+    
+    
+    if (measure ==  24  &&  beatPrecised == 13 && beatPrecisedTrigged ==  true) 
+        {
+        
+        key = 'ç';
+        phaseDirectFromSeq(); 
+    } 
+    
+    if (measure ==  24  &&  beatPrecised == 15 && beatPrecisedTrigged ==  true) 
+        {
+        
+        key = 'S';        
+        phaseDirectFromSeq();       
+        speedDelta = 3;
+    } 
+    
+    
+    if (measure >=  25 && measure <=  28  && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
+        {
+        key = 'S';        
+        phaseDirectFromSeq();          
+        key = 'S';        
+        phaseDirectFromSeq();         
+        key = 'S';        
+        phaseDirectFromSeq();         
+    } 
+    
+    if (measure >=  25 && measure <=  28  && (beatPrecised == 5 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        {
+        key = 'D';        
+        phaseDirectFromSeq();          
+        key = 'D';        
+        phaseDirectFromSeq();       
+        key = 'D';        
+        phaseDirectFromSeq();         
+    } 
+    
+    
+    if (measure > 28 && measure < 32 && beatPrecisedTrigged ==  false)   // look at the end
+        {
+  
+            for (int i = 0; i < networkSize; i++)
+                {
+                //  lastActualPosition[i]+= (int)  map ( PI/4/32, 0, TWO_PI, 0, numberOfStep);
+            }
+        }
+    
+    if (measure ==  29 &&  beatPrecised == 1 && beatPrecisedTrigged ==  true)  
+        {
+        // key= '=';
+        // keyReleased();
+    }
+    
+    if (measure >=  28 && measure < 32 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        {
+        {  
+            // key = 'w'; 
+            key = 'r';        
+            phaseDirectFromSeq();      
+        }  
+    } 
+    
+    
+    if (measure ==  32 &&  beatPrecised == 1 && beatPrecisedTrigged ==  true)     
+        {
+        key = 'ç';
+        phaseDirectFromSeq();      
+        speedDelta = 3;
+    }
+    
+    
+    
+    if (measure >=  32 && measure % 2 ==  0 && measure <=  35 && beatPrecisedTrigged ==  true) 
+        {  
+        int repeatEachNumberOfFrame = 5; 
+        if (frameCount % repeatEachNumberOfFrame ==  0)
+            {    
+            textSize(200);
+            key = 'R';        
+            phaseDirectFromSeq();       
+            key = 'R';        
+            phaseDirectFromSeq();       
+        }    
+    } 
+    
+    if (measure >=  32 && (measure + 1) % 2 ==  0 && measure<= 35 && beatPrecisedTrigged ==  true) 
+        {  
+        
+        textSize(400);      
+        key = 'r';        
+        phaseDirectFromSeq();       
+        key = 'r';        
+        phaseDirectFromSeq();       
+        
+    }
+    
+    if (measure ==  34 && beatPrecised >=  8 && beatPrecisedTrigged)
+        {      
+        key = 's';        
+        phaseDirectFromSeq();         
+        key = 's';        
+        phaseDirectFromSeq();       
+        key = 's';        
+        phaseDirectFromSeq();         
+        key = 's';        
+        phaseDirectFromSeq();                           
+    }  
+    
+    if (measure >=  35 && measure % 2 ==  0 && measure <=  38 && beatPrecisedTrigged)
+        {  
+        key = 's';        
+        phaseDirectFromSeq();         
+        key = 's';        
+        phaseDirectFromSeq();      
+        key = 's';        
+        phaseDirectFromSeq();         
+        key = 's';        
+        phaseDirectFromSeq();               
+        
+    } 
+    
+    if (measure >=  35 && (measure + 1) % 2 ==  0 && measure<= 38 && beatPrecisedTrigged) 
+        {
+        
+        key = 'd';        
+        phaseDirectFromSeq();          
+        key = 'd';        
+        phaseDirectFromSeq();       
+        key = 'd';        
+        phaseDirectFromSeq();          
+        key = 'd';        
+        phaseDirectFromSeq();           
+    }
+    
+    if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
+        {
+        key = 'u';        
+        phaseDirectFromSeq();              
+    } 
+    
+    if (measure ==  39  && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        {
+        key = 'u';        
+        phaseDirectFromSeq();              
+    }
+    
+    if (measure ==  40  && (beatPrecised == 1) && beatPrecisedTrigged ==  true) 
+        { 
+        key = 'ç';     
+        phaseDirectFromSeq();        
+    }
+    
+    if (measure ==  40  && (beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        {
+        key = 'r';        
+        phaseDirectFromSeq();         
+        key = 'r';        
+        phaseDirectFromSeq();       
+        key = 'r';        
+        phaseDirectFromSeq();       
+        key = 'r';        
+        phaseDirectFromSeq();           
+    } 
+    
+    if (measure > 40  && measure <=  43 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+        {
+        key = 'u';        
+        phaseDirectFromSeq();              
+    } 
+    
+    /* 
+    if (measure>=39 && (measure+1)%2==0 && measure<=43  &&  (beatPrecised < 16)) //  &&  beatPrecisedTrigged==true
+    {
+    int repeatEachNumberOfFrame = 2; 
+    if (frameCount%repeatEachNumberOfFrame==0)
+    {  
+    key = 'd';        
+    phaseDirectFromSeq();               
+}         
+}        
+    
+    if (measure>=40 && (measure+0)%2==0 && measure<=43   &&  (beatPrecised < 16)) // &&  beatPrecisedTrigged==true
+    {
+    int repeatEachNumberOfFrame = 2; 
+    if (frameCount%repeatEachNumberOfFrame==0)
+    { 
+    key = 's';        
+    phaseDirectFromSeq();      
+}       
+}  
+    */
+    
+    if (measure ==  43  && (beatPrecised == 15) && beatPrecisedTrigged ==  true) 
+        {
+        key = 'ç';        
+        phaseDirectFromSeq();               
+    }
+    
+    if (measure ==  44 && beatPrecisedTrigged ==  true) 
+        {  
+        key = 'f';        
+        phaseDirectFromSeq();   
+        
+        key = 'f';        
+        phaseDirectFromSeq();  
+        
+        key = 'f';        
+        phaseDirectFromSeq();  
+        
+    }
+    
+    if (measure >=  45 &&  measure <=  448 && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
+        
+        { //speedDelta = 3;
+        key = 'u';        
+        //  phaseDirectFromSeq();       
+        phaseDirectFromSeq();               
+    } 
+    /*
+    if (measure ==  48 && beatPrecised ==  1 && beatPrecisedTrigged ==  true)   // align
+    { 
+    key = 'ç';        
+    //  phaseDirectFromSeq();       
+    phaseDirectFromSeq();
+    }    
+    
+    if (measure ==  48 && beatPrecised ==  9 && beatPrecisedTrigged ==  true)   //pas trop car revient en arriere
+    {       
+    key = 'r';        
+    phaseDirectFromSeq();
+    key = 'r';        
+    phaseDirectFromSeq();
+    key = 'r';        
+    phaseDirectFromSeq();
+    key = 'r';        
+    phaseDirectFromSeq(); 
+    key = 'r';        
+    phaseDirectFromSeq();
+    key = 'r';        
+    phaseDirectFromSeq();
+    key = 'r';        
+    phaseDirectFromSeq();
+    key = 'r';        
+    phaseDirectFromSeq();        
+    } 
+    */
+    
+    
+    
+    if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
         {    
-          key = 'ç';
+        key = 'ç';
         //  phaseDirectFromSeq();        
         phaseDirectFromSeq();
-          key = 'f';
+        key = 'f';
         //  phaseDirectFromSeq();       
         phaseDirectFromSeq(); 
-        }
-
-          if (measure ==  49 && beatPrecised <= 8 && beatPrecisedTrigged)   
-        {         
-          key = 'f';
-          phaseDirectFromSeq();
-          //phaseDirectToMotor();     
-        }
+    }
     
-      
-        if (measure >=  58  && (beatPrecised ==1  || beatPrecised ==9 ) && beatPrecisedTrigged )
+    if (measure ==  49 && beatPrecised <= 8 && beatPrecisedTrigged)   
+        {         
+        key = 'f';
+        phaseDirectFromSeq();
+        //phaseDirectToMotor();     
+    }
+    
+    
+    if (measure >=  58  && (beatPrecised ==  1  || beatPrecised ==  9) && beatPrecisedTrigged)
         {
-            key = 'U';  
-            phaseDirectFromSeq();        
-        }
-
-        // phaseDirectFromSeq(); 
-
-      // based on followSignaSampledOppositeWay   
-        if (measure >= 0)
+        key = 'U';  
+        phaseDirectFromSeq();        
+    }
+    
+    // phaseDirectFromSeq(); 
+    
+    // based on followSignaSampledOppositeWay   
+    if (measure >= 0)
         { 
-          if (measure >=50 && measure<=60 )
-             { 
-            speedDelta=2;
-             formerKeyMetro = '$';
-             //modeCircular = true;
-             }
-
-           if (measure >=60 )
-           {   speedDelta=3;
-             formerKeyMetro = '*';
-             //modeCircular = true;
-             }
-  
-             //if(key != '#') // q is used to preStart speed of repetio
-             //{
-             if(key != 'q') // q is used to preStart speed of repetio
-             {   
-             if (modeStartKeyToFollow == " followSignal2 ")
-                 {
-                  textSize(10); 
-                    for (int i = 0; i < networkSize; i += 1)
-                      {
-                        phasePatternFollow[i] = positionFromMotorPhase[i]; //
-                      }
-             key = 'q';
-                 }
-              }
-           //key = '#'; 
-           //}
-          for (int i = 0; i < networkSize; i++)
-          { 
-           if (phasePatternFollow [i]<0)
-            {
-                phasePatternFollow [i] = phasePatternFollow[i] +numberOfStep; // easier
-                phasePatternFollow [i] %=  numberOfStep;
-            } 
-           else if (phasePatternFollow [i] >=  0) {
-                phasePatternFollow [i] %=  numberOfStep;
-            }
-          }
-  
-         shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
-
-
-         if (shapeLfoMode==10)
-         {      
-         signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
-         }
-
-         if (shapeLfoMode==30)
-         { 
-         signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
-         signal2controlDr%=numberOfStep;
-         }
-      
-             //oldSignal2controlDr=signal2controlDr;
-             //oldOldSignal2controlDr=oldSignal2controlDr;
-            
-         for (int i = 0; i < networkSize; i++)
-         {  
-           if (measure >=50 ) // ADD ROTATION FROM LFO
-           {    
-           phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
-           } 
-
-
-          if (shapeLfoMode==10 || shapeLfoMode==30) // if up or down add position
-           {   
-            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
-            lastActualPosition [i]%=numberOfStep; 
-           } 
-         }
-     } 
+        if (measure >=  50 && measure <=  60)
+            { 
+            speedDelta = 2;
+            formerKeyMetro = '$';
+            //modeCircular = true;
+        }
         
-   
+        if (measure >=  60)
+        {   speedDelta = 3;
+            formerKeyMetro = '*';
+            //modeCircular = true;
+        }
+        
+        //if(key != '#') // q is used to preStart speed of repetio
+        //{
+        if (key != 'q') // q is used to preStart speed of repetio
+            {   
+            if (modeStartKeyToFollow == " followSignal2 ")
+                {
+                textSize(10); 
+                for (int i = 0; i < networkSize; i += 1)
+                    {
+                    phasePatternFollow[i] = positionFromMotorPhase[i]; //
+                }
+                key= 'q';
+            }
+        }
+        //key = '#'; 
+        //}
+        for (int i = 0; i < networkSize; i++)
+        { 
+            if (phasePatternFollow[i] < 0)
+            {
+                phasePatternFollow[i] = phasePatternFollow[i] + numberOfStep; // easier
+                phasePatternFollow[i] %=  numberOfStep;
+            } 
+            else if (phasePatternFollow[i] >=  0) {
+                phasePatternFollow[i] %=  numberOfStep;
+            }
+        }
+        
+        shapeLfoMode = (int) shapeLfoToCount * 10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+        
+        
+        if (shapeLfoMode ==  10)
+        {      
+            signal2controlDr = (int) map (signal[2], 0, 1, 0, numberOfStep);
+        }
+        
+        if (shapeLfoMode ==  30)
+        { 
+            signal2controlDr = (int) map (signal[2], 0, 1,  numberOfStep, 0) + numberOfStep;
+            signal2controlDr %=  numberOfStep;
+        }
+        
+        //oldSignal2controlDr=signal2controlDr;
+        //oldOldSignal2controlDr=oldSignal2controlDr;
+        
+        for (int i = 0; i < networkSize; i++)
+        { 
+
+              if (measure >28 && measure <32) // ADD ROTATION FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+            } 
+
+            if (measure >=  50) // ADD ROTATION FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+            } 
+            
+            
+            if(shapeLfoMode ==  10 || shapeLfoMode ==  30) // if up or down add position
+            {
+                lastActualPosition[i] = ( int(phaseSigna2Followed[i]) + int(phasePatternFollow[i])); 
+                lastActualPosition[i] %=  numberOfStep; 
+        } 
+        }
+} 
+    
+    
     
 } 
 
