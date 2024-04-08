@@ -40,14 +40,14 @@ void automationForMusicDessine()
         
         
         
-        if (measure >=  3 && measure < 6) 
+        if (measure >=  3 && measure < 6 && (beatPrecised ==  1 || beatPrecised ==  5 + 4)) 
         {
-            int repeatEachNumberOfFrame = 30; 
-            if (frameCount % repeatEachNumberOfFrame ==  0)
-            {  
-                key = 's';        
+      
+                key = 'S';        
                 phaseDirectFromSeq();      
-            }   
+                key = 'S';        
+                phaseDirectFromSeq();    
+           
             
         }
         
@@ -508,14 +508,15 @@ void automationForMusicDessineOriginal()
         
         
         
-        if (measure >=  3 && measure < 6) 
+        if (measure >=  3 && measure < 6 && (beatPrecised ==  1 || beatPrecised ==  5 + 4) && beatPrecisedTrigged) 
         {
-            int repeatEachNumberOfFrame = 30; 
-            if (frameCount % repeatEachNumberOfFrame ==  0)
-            {  
-                key = 's';        
-                phaseDirectFromSeq();      
-            }   
+          
+            
+                key = 'S';        
+                phaseDirectFromSeq();  
+                  key = 'S';        
+                phaseDirectFromSeq();         
+               
             
         }
         
@@ -913,7 +914,7 @@ void automationForMusicDessineOriginal()
         
     
 
-         if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   // ROTATION
+         if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
         {    
           key = 'ç';
         //  phaseDirectFromSeq();        
@@ -923,7 +924,7 @@ void automationForMusicDessineOriginal()
         phaseDirectFromSeq(); 
         }
 
-          if (measure ==  49 && beatPrecised <= 8 && beatPrecisedTrigged)   // ROTATION
+          if (measure ==  49 && beatPrecised <= 8 && beatPrecisedTrigged)   
         {         
           key = 'f';
           phaseDirectFromSeq();
