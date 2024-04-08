@@ -277,22 +277,19 @@ void automationForMusicDessine()
     
     
     if (measure >=  32 && measure % 2 ==  0 && measure <=  35 && beatPrecisedTrigged ==  true) 
-        {  
-        int repeatEachNumberOfFrame = 5; 
-        if (frameCount % repeatEachNumberOfFrame ==  0)
-            {    
+        {     
             textSize(200);
             key = 'R';        
             phaseDirectFromSeq();       
             key = 'R';        
             phaseDirectFromSeq();       
-        }    
+            
     } 
     
     if (measure >=  32 && (measure + 1) % 2 ==  0 && measure<= 35 && beatPrecisedTrigged ==  true) 
         {  
         
-        textSize(400);      
+        textSize(200);      
         key = 'r';        
         phaseDirectFromSeq();       
         key = 'r';        
@@ -306,10 +303,10 @@ void automationForMusicDessine()
         phaseDirectFromSeq();         
         key = 's';        
         phaseDirectFromSeq();       
-        key = 's';        
-        phaseDirectFromSeq();         
-        key = 's';        
-        phaseDirectFromSeq();                           
+       // key = 's';        
+       // phaseDirectFromSeq();         
+       // key = 's';        
+       // phaseDirectFromSeq();                           
     }  
     
     if (measure >=  35 && measure % 2 ==  0 && measure <=  38 && beatPrecisedTrigged)
@@ -318,10 +315,10 @@ void automationForMusicDessine()
         phaseDirectFromSeq();         
         key = 's';        
         phaseDirectFromSeq();      
-        key = 's';        
-        phaseDirectFromSeq();         
-        key = 's';        
-        phaseDirectFromSeq();               
+       // key = 's';        
+       // phaseDirectFromSeq();         
+       // key = 's';        
+       // phaseDirectFromSeq();               
         
     } 
     
@@ -331,11 +328,13 @@ void automationForMusicDessine()
         key = 'd';        
         phaseDirectFromSeq();          
         key = 'd';        
-        phaseDirectFromSeq();       
+        phaseDirectFromSeq();  
+        /*     
         key = 'd';        
         phaseDirectFromSeq();          
         key = 'd';        
-        phaseDirectFromSeq();           
+        phaseDirectFromSeq(); 
+        */          
     }
     
     if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
