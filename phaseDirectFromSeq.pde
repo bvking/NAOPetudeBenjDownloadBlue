@@ -20,7 +20,7 @@ void phaseDirectFromSeq() // mixed Com
     {
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] += numberOfStep / 16;
+            positionFromMotorPhase[i] += numberOfStep / 4;
         }
     }
       
