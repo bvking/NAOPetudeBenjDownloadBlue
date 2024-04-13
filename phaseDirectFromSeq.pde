@@ -157,7 +157,7 @@ void phaseDirectFromSeq() // mixed Com
          }
       
        
-    if (key == 'e' && instrumentChanged == false  ) // SAVING
+    if (key == 'e' && instrumentChanged == false  ) // SELECT PATTEREN DEPEDING INSTRUMENT
     {
         for (int i = 0; i < networkSize; i++)
         {   
@@ -181,16 +181,16 @@ void phaseDirectFromSeq() // mixed Com
     }
 
     
-    for (int k = 0; k < networkSize; k++)
+     if (instrumentChanged == true  ) // SAVING new position to recordPositionsFromInstrument[k][patterFromInstument]
         {    
-        recordPositionsFromInstrument[k][patterFromInstument] = positionFromMotorPhase[k];  
-        /*    
+       // recordPositionsFromInstrument[k][patterFromInstument] = positionFromMotorPhase[k];  
+           
         for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
         { 
         recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-        println(" RECORDPATTERN" + recordPositionsFromInstrument[k][i]);       
+        text (" RECORDPATTERN " + recordPositionsFromInstrument[k][i], i, i*100);       
     }
-        */
+        
     }
     
     

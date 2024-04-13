@@ -12,7 +12,10 @@ void automationForMusicDessine()
         {  
             speedDelta = 2;
             key = 'ç';
-            phaseDirectFromSeq();      
+            phaseDirectFromSeq();   
+        
+              key = 'S';        
+            phaseDirectFromSeq();     
         }
         
         if (((measure >=  1 && measure < 3)  && beatTrigged ==  true) || (beatPrecised == 5 + 4 && beatPrecisedTrigged ==  true && measure <= 2))
@@ -506,4 +509,4 @@ void automationForMusicDessine()
         
         
         
-        
+    
