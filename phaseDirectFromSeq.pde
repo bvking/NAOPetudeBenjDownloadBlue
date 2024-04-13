@@ -149,7 +149,7 @@ void phaseDirectFromSeq() // mixed Com
          {  
        //   noLoop();
           background (127);
-        instrumentChanged = true;     
+          instrumentChanged = true;     
        // int recallPositionFromInstrument = patterFromInstument;
          key = 'ç';
          phaseDirectFromSeq();
@@ -181,7 +181,7 @@ void phaseDirectFromSeq() // mixed Com
      }
 
     
-    if (instrumentChanged == true  ) // SAVING new position to recordPositionsFromInstrument[k][patterFromInstument]
+    if (instrumentChanged == false  ) // SAVING new position to recordPositionsFromInstrument[k][patterFromInstument]
     {    
        // recordPositionsFromInstrument[k][patterFromInstument] = positionFromMotorPhase[k];  
        for (int k = 0; k < networkSize; k++)
@@ -189,7 +189,7 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
         { 
         recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-        text (" RECORDPATTERN " + recordPositionsFromInstrument[k][i], i, i*100);       
+        text (" RECORDPATTERN " + recordPositionsFromInstrument[k][i], i, k*100);       
         }
       }
         
