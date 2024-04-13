@@ -135,6 +135,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         { 
             //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
         }
+           key = '#';
         
     } 
 }

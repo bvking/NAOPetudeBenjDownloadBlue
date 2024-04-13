@@ -195,8 +195,7 @@ void phaseDirectFromSeq() // mixed Com
         
     }
     
-    
-    
+ 
     // DISPLAY PATTERN SAVED
     if (keyCode == CONTROL)
     {
