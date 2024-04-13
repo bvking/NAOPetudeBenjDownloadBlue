@@ -27,7 +27,7 @@ void automationForMusicControlDr()
   
      if(formerKey != '#') // q is used to preStart speed of repetio
         {
-          if(formerKey != 'q') // q is used to preStart speed of repetio
+          if(formerKey != 'e') // q is used to preStart speed of repetio
              {   
              if (modeStartKeyToFollow == " followSignal2 ")
                  {
@@ -36,7 +36,7 @@ void automationForMusicControlDr()
                       {
                         phasePatternFollow[i] = positionFromMotorPhase[i]; //
                       }
-             formerKey = 'q';
+             formerKey = 'e';
                  }
               }
            formerKey = '#'; 
