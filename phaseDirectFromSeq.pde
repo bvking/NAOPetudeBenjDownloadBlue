@@ -178,6 +178,7 @@ void phaseDirectFromSeq() // mixed Com
            //  recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
             positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
         }
+      
      }
 
     
@@ -404,6 +405,8 @@ void phaseDirectFromSeq() // mixed Com
         positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
     } 
+
+    key = '#';
     
     //  text (" formerKey " + formerKey , 100, -200);
     
