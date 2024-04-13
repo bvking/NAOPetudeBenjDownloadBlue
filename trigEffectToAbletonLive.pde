@@ -26,7 +26,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     for (int i = 0; i < networkSize; i++)
     { 
-       // encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
+        encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
 
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
