@@ -250,7 +250,55 @@ void oscEvent(OscMessage theMsg) {
   if (theMsg.checkAddrPattern("/signal9")==true) {
     signal[9] = theMsg.get(0).floatValue();
   } 
+
+  //slider to receive from manage_slider_max_psp
+
+  if (theMsg.checkAddrPattern("/slider0")==true) {
+   // slider[0] = theMsg.get(0).intValue();
+  } 
+
+   if (theMsg.checkAddrPattern("/slider1")==true) {
+   // slider[1] = theMsg.get(0).intValue();
+  }  
+
+   
+  if (theMsg.checkAddrPattern("/slider4")==true) {
+    slider[4] = theMsg.get(0).floatValue();
+  }
+
+  if (theMsg.checkAddrPattern("/slider5")==true) {
+    slider[6] = theMsg.get(0).floatValue();
+  }  
+
+  /*
+
+ 
+
+ 
+  if (theMsg.checkAddrPattern("/slider4")==true) {
+    slider[4] = theMsg.get(0).floatValue();
+  }
+
+  if (theMsg.checkAddrPattern("/slider5")==true) {
+    slider[6] = theMsg.get(0).floatValue();
+  } 
+
+  if (theMsg.checkAddrPattern("/slider6")==true) {
+    slider[6] = theMsg.get(0).floatValue();
+  } 
+
+  if (theMsg.checkAddrPattern("/slider7")==true) {
+    slider[7] = theMsg.get(0).floatValue();
+  }
   
+  if (theMsg.checkAddrPattern("/slider8")==true) {
+    slider[8] = theMsg.get(0).floatValue();
+  }
+
+  if (theMsg.checkAddrPattern("/slider9")==true) {
+    slider[9] = theMsg.get(0).floatValue();
+  } 
+  */
 
   //***  MIDI NOTE
 

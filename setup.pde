@@ -23,6 +23,7 @@ int networkSize = 10; // attention avec big Machine numberOfStep = 3200;
 int numberOfStep = 3200;
 //int numberOfStep = 6400;
 
+float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
 int patterFromInstument=0;
@@ -864,6 +865,7 @@ void setup() {
                 o = new OscP5(this, 2346);//receive data from a port number - it has to be same as in your Max for Live device // careful to oveflow
                // oII = new OscP5(this, 2350);//receive datapiano partitionII   
                 oscP5 = new OscP5(this, 7999);//receive data to himself
+                oII = new OscP5(this, 1000);//receive data to himself
 
                 // send DATA
                 // myRemoteLocation = new NetAddress("192.168.1.77", 8000); // send data to port 8000 

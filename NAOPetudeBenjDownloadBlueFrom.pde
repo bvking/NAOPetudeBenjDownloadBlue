@@ -354,6 +354,7 @@ void draw()
     for (int i = 0; i < networkSize; i++)
     {
         Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 254));
+    println ( " slider " + i + " " + slider[i]);
     }
     //  trigMiddlePositionFromEncodeur();    
    if (millis()>timeTosendData + 20)
