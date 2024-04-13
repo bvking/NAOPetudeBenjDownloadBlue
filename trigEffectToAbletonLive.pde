@@ -16,13 +16,18 @@ int[] gapEncoder_OldEncodeur = new int[networkSize];
 int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
 int[] dataMapped = new int[networkSize];
 
-void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly() 
+// void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
+
+void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {
+
     textSize(75);
  
     
     for (int i = 0; i < networkSize; i++)
     { 
+        encodeur[i]=(int) slider[i];
+
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
 
@@ -73,7 +78,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
         rotate( - PI / 2);
         
-        text("GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
+        text( "VIRT " + slider[i] + "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
              "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
         

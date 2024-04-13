@@ -243,7 +243,7 @@ void oscEvent(OscMessage theMsg) {
     signal[7] = theMsg.get(0).floatValue();
   }
   
-    if (theMsg.checkAddrPattern("/signal8")==true) {
+  if (theMsg.checkAddrPattern("/signal8")==true) {
     signal[8] = theMsg.get(0).floatValue();
   }
 
@@ -254,51 +254,36 @@ void oscEvent(OscMessage theMsg) {
   //slider to receive from manage_slider_max_psp
 
   if (theMsg.checkAddrPattern("/slider0")==true) {
-   // slider[0] = theMsg.get(0).intValue();
+   slider[0] = theMsg.get(0).floatValue();
   } 
-
-   if (theMsg.checkAddrPattern("/slider1")==true) {
-   // slider[1] = theMsg.get(0).intValue();
+  if (theMsg.checkAddrPattern("/slider1")==true) {
+   slider[1] = theMsg.get(0).floatValue();
   }  
-
-   
+  if (theMsg.checkAddrPattern("/slider4")==true) {
+    slider[2] = theMsg.get(0).floatValue();
+  }
+  if (theMsg.checkAddrPattern("/slider5")==true) {
+    slider[3] = theMsg.get(0).floatValue();
+  }  
   if (theMsg.checkAddrPattern("/slider4")==true) {
     slider[4] = theMsg.get(0).floatValue();
   }
-
   if (theMsg.checkAddrPattern("/slider5")==true) {
-    slider[6] = theMsg.get(0).floatValue();
-  }  
-
-  /*
-
- 
-
- 
-  if (theMsg.checkAddrPattern("/slider4")==true) {
-    slider[4] = theMsg.get(0).floatValue();
-  }
-
-  if (theMsg.checkAddrPattern("/slider5")==true) {
-    slider[6] = theMsg.get(0).floatValue();
+    slider[5] = theMsg.get(0).floatValue();
   } 
-
   if (theMsg.checkAddrPattern("/slider6")==true) {
     slider[6] = theMsg.get(0).floatValue();
   } 
-
   if (theMsg.checkAddrPattern("/slider7")==true) {
     slider[7] = theMsg.get(0).floatValue();
   }
-  
   if (theMsg.checkAddrPattern("/slider8")==true) {
     slider[8] = theMsg.get(0).floatValue();
   }
-
   if (theMsg.checkAddrPattern("/slider9")==true) {
     slider[9] = theMsg.get(0).floatValue();
   } 
-  */
+  
 
   //***  MIDI NOTE
 
@@ -924,7 +909,7 @@ oldEncodeur[0]= encodeur[0];
   myMessage25.add(Pos[5]);
   }
 
-   if  (systemForBigMachine==true)
+  if  (systemForBigMachine==true)
   {
   myMessage20.add(Pos[0]);
   myMessage21.add(Pos[1]);
@@ -955,9 +940,6 @@ oldEncodeur[0]= encodeur[0];
   myMessage39.add(Pos[0]);
  */
 
-
-
- 
   //print ( " showTrig ") ; showArray(TrigmodPos);
   //text ( " Trig0 " + TrigmodPos[0], 600, 200);
   //text ( " Trig5 " + TrigmodPos[5], 600, 400);
@@ -1137,7 +1119,7 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage74, myRemoteLocation);
   oscP5.send(myMessage75, myRemoteLocation);
 
-    // encoder numberOfRota
+  // encoder numberOfRota
   oscP5.send(myMessage90, myRemoteLocation);
   oscP5.send(myMessage91, myRemoteLocation);
   oscP5.send(myMessage92, myRemoteLocation);
@@ -1146,7 +1128,6 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage95, myRemoteLocation);
 
   // encoder numberOfRota
-
   oscP5.send(myMessage100, myRemoteLocation); 
   oscP5.send(myMessage101, myRemoteLocation); 
   oscP5.send(myMessage102, myRemoteLocation); 
@@ -1155,7 +1136,6 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage105, myRemoteLocation); 
 
   //  trigSound
- 
   oscP5.send(myMessage106, myRemoteLocation); 
   oscP5.send(myMessage107, myRemoteLocation); 
   oscP5.send(myMessage108, myRemoteLocation); 
