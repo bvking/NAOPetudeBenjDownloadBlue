@@ -5,7 +5,8 @@ float shapeLfo;
 
 //********  OSCRECEIVE
 //RECEIVE OSC AUTOMATION with port 2346 or 2349 and 2350 and analyse OSC messages
-void oscEvent(OscMessage theMsg) {
+void oscEvent(OscMessage theMsg)
+{
 
    if (theMsg.checkAddrPattern("/shapeLfoToCount")==true) {
     shapeLfo = theMsg.get(0).floatValue();
@@ -92,7 +93,7 @@ void oscEvent(OscMessage theMsg) {
   if (theMsg.checkAddrPattern("/oscillator5")==true) {
     oscillator[5] = theMsg.get(0).floatValue();
   }  
-/*
+ /*
   if (theMsg.checkAddrPattern("/oscillator6")==true) {
     oscillator[6] = theMsg.get(0).floatValue();
   } 
@@ -191,7 +192,7 @@ void oscEvent(OscMessage theMsg) {
   }
 
 
-/*
+ /*
   if (theMsg.checkAddrPattern("/ableton6")==true) {
     ableton[6] = theMsg.get(0).floatValue();
   } 
@@ -259,10 +260,10 @@ void oscEvent(OscMessage theMsg) {
   if (theMsg.checkAddrPattern("/slider1")==true) {
    slider[1] = theMsg.get(0).floatValue();
   }  
-  if (theMsg.checkAddrPattern("/slider4")==true) {
+  if (theMsg.checkAddrPattern("/slider2")==true) {
     slider[2] = theMsg.get(0).floatValue();
   }
-  if (theMsg.checkAddrPattern("/slider5")==true) {
+  if (theMsg.checkAddrPattern("/slider3")==true) {
     slider[3] = theMsg.get(0).floatValue();
   }  
   if (theMsg.checkAddrPattern("/slider4")==true) {
@@ -270,7 +271,8 @@ void oscEvent(OscMessage theMsg) {
   }
   if (theMsg.checkAddrPattern("/slider5")==true) {
     slider[5] = theMsg.get(0).floatValue();
-  } 
+  }
+  /* 
   if (theMsg.checkAddrPattern("/slider6")==true) {
     slider[6] = theMsg.get(0).floatValue();
   } 
@@ -283,7 +285,7 @@ void oscEvent(OscMessage theMsg) {
   if (theMsg.checkAddrPattern("/slider9")==true) {
     slider[9] = theMsg.get(0).floatValue();
   } 
-  
+  */
 
   //***  MIDI NOTE
 

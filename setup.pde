@@ -12,16 +12,16 @@ size(600, 600, P3D);
 } 
 */
 
-//boolean systemForBigMachine=false;
-boolean systemForBigMachine=true;
+boolean systemForBigMachine=false;
+//boolean systemForBigMachine=true;
 int timeTosendData;
 
 
 
-int networkSize = 10; // attention avec big Machine numberOfStep = 3200;
-//int networkSize = 6;
-int numberOfStep = 3200;
-//int numberOfStep = 6400;
+//int networkSize = 10; // attention avec big Machine numberOfStep = 3200;
+int networkSize = 6;
+//int numberOfStep = 3200;
+int numberOfStep = 6400;
 
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
