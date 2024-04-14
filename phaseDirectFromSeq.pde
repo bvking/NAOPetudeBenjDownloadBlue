@@ -157,7 +157,7 @@ void phaseDirectFromSeq() // mixed Com
          }
       
        
-    if ( instrumentChanged == false && key != '6' ) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' &&
+    if ( instrumentChanged == false &&  key == 'e') // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
     {
         for (int i = 0; i < networkSize; i++)
         {   
