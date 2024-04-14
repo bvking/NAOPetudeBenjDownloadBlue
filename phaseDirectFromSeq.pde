@@ -114,8 +114,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-    
-        enablingParametersChangesToLive =! enablingParametersChangesToLive; 
+          enablingParametersChangesToLive = true;
+      //  enablingParametersChangesToLive =! enablingParametersChangesToLive; 
         secondTouchedTimeStarter = millis(); 
         keyCode = 0;
         
@@ -130,24 +130,12 @@ void phaseDirectFromSeq() // mixed Com
         }
     }
     
-  
          formerPatternFromInstrument = patterFromInstument;
-    
-    
-    for (int i = 0; i < networkSize; i++)
-    {  
-              
-        if (enablingChangeSound[networkSize - 1 - i] ==  true) // assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right
-            {
-            patterFromInstument = i;  //
-            instrumentChanged = false;
-        } 
-    }
 
+         patterFromInstument = networkSize-1-instrumentTouched;  //
+    
         if (formerPatternFromInstrument != patterFromInstument)
-
          {  
-      
           background (127);
          // instrumentChanged = true;     
       
@@ -161,42 +149,40 @@ void phaseDirectFromSeq() // mixed Com
     {
         for (int i = 0; i < networkSize; i++)
         {   
-                   
-            ratioNumberOfStepCorraletedFromInstrument[0] = 1;
-            ratioNumberOfStepCorraletedFromInstrument[1] = 2 ;
-            ratioNumberOfStepCorraletedFromInstrument[2] = 3;
-            ratioNumberOfStepCorraletedFromInstrument[3] = 8;
-            ratioNumberOfStepCorraletedFromInstrument[4] = 12;
-            ratioNumberOfStepCorraletedFromInstrument[5] = 16;
+        ratioNumberOfStepCorraletedFromInstrument[0] = 1;
+        ratioNumberOfStepCorraletedFromInstrument[1] = 2 ;
+        ratioNumberOfStepCorraletedFromInstrument[2] = 3;
+        ratioNumberOfStepCorraletedFromInstrument[3] = 8;
+        ratioNumberOfStepCorraletedFromInstrument[4] = 12;
+        ratioNumberOfStepCorraletedFromInstrument[5] = 16;
                   
-            // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                      // 8 hit <=networkSize+2. Donc 8 hoit avec numberOfRot 8 = 64 hit
-            positionFromMotorPhaseRecorded[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
-            positionFromMotorPhaseRecorded[i] %=   numberOfStep;     
+            // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                            // 8 hit <=networkSize+ 2. Donc 8 hoit avec numberOfRot 8 = 64 hit
+        positionFromMotorPhaseRecorded[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
+        positionFromMotorPhaseRecorded[i] %=   numberOfStep;     
 
-            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhaseRecorded[i];  
+        recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhaseRecorded[i];  
            //  recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
-            positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
-        }
-      
+        positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
+        }    
      }
 
-    
+     /*
     if (instrumentChanged == false  ) // SAVING new position to recordPositionsFromInstrument[k][patterFromInstument]
     {  
-        textSize(50);  
+        textSize(30);  
        // recordPositionsFromInstrument[k][patterFromInstument] &= positionFromMotorPhase[k];  
        for (int k = 0; k < networkSize; k++)
        {   
         for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
         { 
         recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-        text (" RECORDPATTERN " + recordPositionsFromInstrument[k][i], i, k*50);       
+        text (" recPaT " + patterFromInstument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize-1-instrumentTouched) + " " + enablingChangeSoundB[networkSize-1-instrumentTouched], 700*0, k*30);           
+
         }
       }
-        
     }
+   */
     
- 
     // DISPLAY PATTERN SAVED
     if (keyCode == CONTROL)
     {

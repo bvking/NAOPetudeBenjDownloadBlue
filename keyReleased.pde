@@ -5,7 +5,9 @@ void keyReleased()
    {
          key=char (Key);
          keyCode=char (KeyCode);
-         automationForMusicControlDr();
+        // automationForMusicControlDr();
+
+        // phaseDirectToMotor();
          
 
           if (keyCode == CONTROL)
