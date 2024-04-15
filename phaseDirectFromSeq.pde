@@ -396,8 +396,29 @@ void phaseDirectFromSeq() // mixed Com
         memoryi = (memoryi + 1);
         memoryi %=  networkSize;
         
+
+        for (int i = 0; i < (networkSize - 0); i++)
+        {
+            if (lastPositionFromMotorPhase[i]< positionFromMotorPhase[i])
+
+            {
+                positionFromMotorPhase[i]=positionFromMotorPhase[i]+numberOfStep;
+
+            }
+
+        }
+
+
+        for (int i = 0; i < (networkSize - 0); i++)
+        {
+            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
+
+        } 
+        
         for (int i = 0; i < (networkSize - 0); i++)
         {  
+           // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
+
             lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
         }
         
@@ -405,7 +426,10 @@ void phaseDirectFromSeq() // mixed Com
         {
             positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
         }
+
         positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+
+
         
     } 
 

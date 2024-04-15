@@ -327,15 +327,15 @@ void teensyPos()
         if (music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine "  ) 
         { 
         rotate (PI);
-        text (" numberOfR[0]  " +numberOfRota[0], width, -2000-100*(networkSize+3)) ; 
-        text (" beatPrecise   " +beatPrecised, width, -2000-100*(networkSize+2)) ; 
-        text (" countDr0___   " +countControlDr[0], width, -2000-100*(networkSize+1)) ; 
+        text (" numberOfR[0]  " +numberOfRota[0], width, -2100-100*(networkSize+4)) ; 
+        text (" beatPrecise   " +beatPrecised, width, -2100-100*(networkSize+3)) ; 
+        text (" countDr0___   " +countControlDr[0], width, -2100-100*(networkSize+2)) ; 
 
-        text (" countDr5__    " + countControlDr[5], width, -2000-100*networkSize) ; 
+        text (" countDr5__    " + countControlDr[5], width, -2100-100*networkSize+1) ; 
 
         for (int i = 0; i < networkSize; i++)
         {   
-         text (dataMappedForMotorisedBigMachine[i] + " " + phasePatternFollow[i], width, -2000-100*i) ; 
+         text (dataMappedForMotorisedBigMachine[i] + " " + phasePatternFollow[i], width, -2100-100*i) ; 
         }
         if (music_from_ableton_live == " controlDr " )   
         {    

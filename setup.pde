@@ -28,6 +28,7 @@ int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
 int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
+int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
 
 

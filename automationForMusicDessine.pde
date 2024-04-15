@@ -455,10 +455,17 @@ void automationForMusicDessine()
             if (phasePatternFollow[i] < 0)
             {
                 phasePatternFollow[i] = phasePatternFollow[i] + numberOfStep; // easier
-                phasePatternFollow[i] %=  numberOfStep;
+                 if (key != 'U')
+                 {
+                 phasePatternFollow[i] %=  numberOfStep;
+                 } 
             } 
             else if (phasePatternFollow[i] >=  0) {
-                phasePatternFollow[i] %=  numberOfStep;
+                 if (key != 'U')
+                 {
+                 phasePatternFollow[i] %=  numberOfStep;
+                 } 
+               
             }
         }
         
@@ -492,11 +499,16 @@ void automationForMusicDessine()
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
             } 
             
+            phaseSigna2Followed[i] %= numberOfStep; 
+            
             
             if (shapeLfoMode ==  10 || shapeLfoMode ==  30) // if up or down add position
             {
                 lastActualPosition[i] = (int(phaseSigna2Followed[i]) + int(phasePatternFollow[i])); 
+                  if (key != 'U')
+                 {
                 lastActualPosition[i] %=  numberOfStep; 
+                 }
             } 
         }
     } 
