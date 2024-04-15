@@ -309,13 +309,13 @@ void automationForMusicDessine()
     
     if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
         {
-        key = 'u';        
+        key = 'U';        
         phaseDirectFromSeq();              
     } 
     
     if (measure ==  39  && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
-        key = 'u';        
+        key = 'U';        
         phaseDirectFromSeq();              
     }
     
@@ -339,7 +339,7 @@ void automationForMusicDessine()
     
     if (measure > 40  && measure <=  43 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
-        key = 'u';        
+        key = 'U';        
         phaseDirectFromSeq();              
     } 
     
