@@ -408,12 +408,6 @@ void phaseDirectFromSeq() // mixed Com
 
         }
 
-
-        for (int i = 0; i < (networkSize - 0); i++)
-        {
-            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
-
-        } 
         
         for (int i = 0; i < (networkSize - 0); i++)
         {  
@@ -428,6 +422,12 @@ void phaseDirectFromSeq() // mixed Com
         }
 
         positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+
+          for (int i = 0; i < (networkSize - 0); i++)
+        {
+            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
+
+        } 
 
 
         
