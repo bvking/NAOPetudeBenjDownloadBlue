@@ -215,7 +215,7 @@ void phaseDirectToMotor() // mixed Com
 } 
     
     
-    if (key == 'U')
+    if (key == 'M')
     {  // memory == 0 is the ball "behind"  the screen
         
         oldMemoryi = memoryi;
@@ -233,7 +233,49 @@ void phaseDirectToMotor() // mixed Com
     }
         positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
-} 
+   } 
+
+     if (key == 'U')
+    {  // memory == 0 is the ball "behind"  the screen
+        
+        oldMemoryi = memoryi;
+        memoryi = (memoryi + 1);
+        memoryi %=  networkSize;
+        
+
+        for (int i = 0; i < (networkSize - 0); i++)
+        {
+            println (" lastP " + lastPositionFromMotorPhase[i] + " P " + positionFromMotorPhase[i]);
+            if (lastPositionFromMotorPhase[i]< positionFromMotorPhase[i])
+
+            {
+                positionFromMotorPhase[i]=positionFromMotorPhase[i]+numberOfStep;
+
+            }
+
+        }
+
+        
+        for (int i = 0; i < (networkSize - 0); i++)
+        {  
+           // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
+
+            lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
+        }
+        
+        for (int i = 1; i < (networkSize - 0); i++)
+        {
+            positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
+        }
+
+        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+
+          for (int i = 0; i < (networkSize - 0); i++)
+        {
+            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
+
+        }
+    } 
     
     textSize(200);
     text("key" + key, 200, 400);

@@ -1,5 +1,7 @@
 void automationForMusicDessine()
     {
+   
+    // shapeLfoMode = int (shapeLfo * 100);  // 33 = DOWN=> CounterClockWay  17= UP CW
     if (measure <  50)
         {
         formerKeyMetro = '*';
@@ -261,7 +263,11 @@ void automationForMusicDessine()
     if (measure ==  32 &&  beatPrecised == 1 && beatPrecisedTrigged )     
     {
         key = 'ç';
+        phaseDirectFromSeq(); 
+          key = 'k';
         phaseDirectFromSeq();      
+            key = 'k';
+        phaseDirectFromSeq(); 
         speedDelta = 3;
     }
     
@@ -364,78 +370,61 @@ void automationForMusicDessine()
         //  phaseDirectFromSeq();       
         phaseDirectFromSeq();               
     } 
-    /*
-    if (measure ==  48 && beatPrecised ==  1 && beatPrecisedTrigged ==  true)   // align
-    { 
-    key = 'ç';        
-    //  phaseDirectFromSeq();       
-    phaseDirectFromSeq();
-}    
-    
-    if (measure ==  48 && beatPrecised ==  9 && beatPrecisedTrigged ==  true)   //pas trop car revient en arriere
-    {       
-    key = 'r';        
-    phaseDirectFromSeq();
-    key = 'r';        
-    phaseDirectFromSeq();
-    key = 'r';        
-    phaseDirectFromSeq();
-    key = 'r';        
-    phaseDirectFromSeq(); 
-    key = 'r';        
-    phaseDirectFromSeq();
-    key = 'r';        
-    phaseDirectFromSeq();
-    key = 'r';        
-    phaseDirectFromSeq();
-    key = 'r';        
-    phaseDirectFromSeq();        
-} 
-    */
-    
-    
-    
+     
     if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
         {    
         key = 'ç';
-        //  phaseDirectFromSeq();        
-        phaseDirectFromSeq();
-        key = 's';
-        phaseDirectFromSeq();
-        key = 's';
-        phaseDirectFromSeq(); 
-        key = 's';
-        phaseDirectFromSeq(); 
+         phaseDirectFromSeq();        
     }
-    
-    
-    
-    if (measure >=  60  && (beatPrecised ==  9) && beatPrecisedTrigged) // beatPrecised ==  1  ||
-        {
-        key = 'U';  
+    if (measure ==  49 && beatPrecised == 2 && beatPrecisedTrigged)   
+        {    
+        key = 's';
+        phaseDirectFromSeq(); 
+        key = 's';
+        phaseDirectFromSeq(); 
+        key = 's';
+        phaseDirectFromSeq();       
+    }
+
+    if (measure ==  59 && (beatPrecised == 15 || beatPrecised == 15) && beatPrecisedTrigged)   
+        {    
+        key = 'ç';
         phaseDirectFromSeq();        
     }
     
-    // phaseDirectFromSeq(); 
+       
+    if (measure >=  60 && (measure+0)%2==0  && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9) 
+        {
+        key = 's';  
+        phaseDirectFromSeq();        
+    }
+
+     
+    if (measure >=  60 && (measure+1)%2==0   && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9)
+        {
+        key = 'd';  
+        phaseDirectFromSeq();        
+    }
+    
     
     // based on followSignaSampledOppositeWay   
     if (measure >= 0)
-        { 
-        if (measure >=  50 && measure <=  60)
+    { 
+        if (measure ==  49 && beatTrigged)
             { 
             speedDelta = 2;
             formerKeyMetro = '$';
             //modeCircular = true;
         }
         
-        if (measure >=  60)
+        if (measure ==  60 && beatTrigged)
         {   speedDelta = 2;
             formerKeyMetro = '*';
             //modeCircular = true;
         }
         
-        //if(key != '#') // q is used to preStart speed of repetio
-        //{
+         //if(key != '#') // q is used to preStart speed of repetio
+            //{
         if (key != 'q') // q is used to preStart speed of repetio
             {   
             if (modeStartKeyToFollow == " followSignal2 ")
@@ -449,7 +438,7 @@ void automationForMusicDessine()
             }
         }
         //key = '#'; 
-    //}
+          //}
         for (int i = 0; i < networkSize; i++)
         { 
             if (phasePatternFollow[i] < 0)
@@ -468,8 +457,10 @@ void automationForMusicDessine()
                
             }
         }
+
+        // shapeLfoToCount = (shapeLfo*10.0);
         
-        shapeLfoMode = (int) shapeLfoToCount * 10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+      //  shapeLfoMode = int (shapeLfo * 100.);  // 33 = DOWN=> CounterClockWay  17= UP CW
         
         
         if (shapeLfoMode ==  10)
@@ -477,14 +468,13 @@ void automationForMusicDessine()
             signal2controlDr = (int) map(signal[2], 0, 1, 0, numberOfStep);
         }
         
-        if (shapeLfoMode ==  30)
+        if (shapeLfoMode ==  33)
         { 
             signal2controlDr = (int) map(signal[2], 0, 1,  numberOfStep, 0) + numberOfStep;
             signal2controlDr %=  numberOfStep;
         }
         
-        //oldSignal2controlDr=signal2controlDr;
-        //oldOldSignal2controlDr=oldSignal2controlDr;
+   
         
         for (int i = 0; i < networkSize; i++)
         { 
@@ -494,15 +484,72 @@ void automationForMusicDessine()
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
             } 
             
-            if (measure >=  50) // ADD ROTATION FROM LFO
+            if (measure >=  50 && measure <  68  ) //
             {
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+            }
+
+            if (measure ==  68  && beatTrigged ) // 
+            {
+            speedDelta =5;
+            }
+
+            if (measure >=  68 && measure <=  71   ) // ADD DOUBLE ROATATION  FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
+            }
+
+             if (measure ==  72  && beatTrigged ) // 
+            {
+            speedDelta =6;
+            }
+
+              if (measure >=  72 && measure <=  75   ) // ADD DOUBLE ROATATION  FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
             } 
-            
+
+
+              if (measure ==  76  && beatTrigged ) // 
+            {
+            speedDelta =7;
+            }
+
+            if (measure >=  76 && measure <=  78   ) // ADD DOUBLE ROATATION  FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
+            } 
+
+            if (measure ==  78  && beatTrigged ) // 
+            {
+            speedDelta =6;
+            }
+
+            if (measure >=  78 && measure <=  80  ) // ADD DOUBLE ROATATION  FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
+            } 
+
+            if (measure ==  80  && beatTrigged ) // 
+            {
+            speedDelta = 5;
+            }
+
+            if (measure >=  80 && measure <  84  ) // ADD DOUBLE ROATATION  FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
+            } 
+
+
+
+
+
+
+          // ADDITIOn ROTATION+PHASE  
             phaseSigna2Followed[i] %= numberOfStep; 
             
             
-            if (shapeLfoMode ==  10 || shapeLfoMode ==  30) // if up or down add position
+            if (shapeLfoMode !=  0 ) // if up or down add position
             {
                 lastActualPosition[i] = (int(phaseSigna2Followed[i]) + int(phasePatternFollow[i])); 
                   if (key != 'U')

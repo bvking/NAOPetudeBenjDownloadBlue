@@ -20,7 +20,8 @@ void keyReleased()
    {
        //  key=char (Key);
        //  keyCode=char (KeyCode);
-          phaseDirectToMotor();
+          phaseDirectFromSeq();// wh-y not?
+        //phaseDirectToMotor();
         
 
           // automationForMusicDessine();  
@@ -170,11 +171,12 @@ void keyReleased()
         )
        {
         speedDelta--;
-        if (speedDelta <= 1) { 
+        if (speedDelta == 1) { 
           speedDelta=1;
            }
          key='#'; // to trig only once
-     /*:
+     /*
+     
       oscillatorBlocked--;:
       if (oscillatorBlocked < 0) { 
       oscillatorBlocked=networkSize-1;    

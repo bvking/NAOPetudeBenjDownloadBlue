@@ -32,15 +32,15 @@ void phaseDirectFromSeq() // mixed Com
             text(" HIGER POSITIO " + higerPostion, 100, 200);
              higerPostion = true;
         
-            /*
+            
             for (int i = 0; i < networkSize; i++)
             {
                 realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
                 positionFromMotorPhase[i] = (int) realign[i];
                 //positionFromMotorPhase [i] = positionFromMotorPhase [0];
             } 
-            */
-
+            
+            /*
              if (networkSize ==10)
              { 
                  for (int i = 0; i < 1; i++) 
@@ -56,7 +56,8 @@ void phaseDirectFromSeq() // mixed Com
                   CircularVirtualPosition[i]=0;
                   ActualVirtualPosition[i]=lastActualPosition[0];
                   lastActualPosition[i]+= lastActualPosition[0];
-              }  
+              } 
+            */ 
          }
         
         if (positionFromMotorPhase[networkSize - 1] <= positionFromMotorPhase[0] - numberOfStep)
@@ -399,6 +400,7 @@ void phaseDirectFromSeq() // mixed Com
 
         for (int i = 0; i < (networkSize - 0); i++)
         {
+            println (" lastP " + lastPositionFromMotorPhase[i] + " P " + positionFromMotorPhase[i]);
             if (lastPositionFromMotorPhase[i]< positionFromMotorPhase[i])
 
             {

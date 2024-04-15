@@ -32,18 +32,21 @@ void mapNewPosX() {
     
     // map depending way of rotation
     
-    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ") {
-        for (int i = 0; i <  networkSize - 0; i += 1) { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
+    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+       {
+        for (int i = 0; i <  networkSize - 0; i += 1)
+         { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
             positionToMotor[i] = ((int) map(newPosXaddSignal[i], 0, TWO_PI, 0, numberOfStep) % numberOfStep); //
             newPosF[i] = positionToMotor[i] % 6400;
             
             //if (net.oldPhase[i] > net.phase[i] ) {
-           if (oldPositionToMotor[i] > positionToMotor[i]) {
+           if (oldPositionToMotor[i] > positionToMotor[i])
+            {
                 positionToMotor[i] = ((int) map(newPosXaddSignal[i], 0, -TWO_PI,  numberOfStep, 0) % numberOfStep); //
                 newPosF[i] = positionToMotor[i] % 6400;
-        }
-    }
-} 
+            }
+         }
+       } 
     
     
     // end map depending way of rotation
