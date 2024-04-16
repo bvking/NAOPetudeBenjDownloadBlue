@@ -29,7 +29,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     for (int i = 0; i < networkSize; i++)
     { 
-          if ( modeOfControlDr= " virtual ")
+          if ( modeOfControlDr== " virtual ")
          { 
           encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
          } 

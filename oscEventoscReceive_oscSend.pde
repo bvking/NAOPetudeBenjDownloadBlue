@@ -879,19 +879,19 @@ oldEncodeur[0]= encodeur[0];
 
   // encodeur works with modeOfControlDr= " virtual "
 
-  OscMessage myMessage130= new OscMessage("/encoder0"); // encoder
-  OscMessage myMessage131= new OscMessage("/encoder1"); // oscillator 
-  OscMessage myMessage132= new OscMessage("/encoder2"); // oscillator 
-  OscMessage myMessage133= new OscMessage("/encoder3"); // oscillator 
-  OscMessage myMessage134= new OscMessage("/encoder4"); // oscillator 
-  OscMessage myMessage135= new OscMessage("/encoder5"); // oscillato
+  OscMessage myMessage130= new OscMessage("/encodeur0"); // encodeur
+  OscMessage myMessage131= new OscMessage("/encodeur1"); // oscillator 
+  OscMessage myMessage132= new OscMessage("/encodeur2"); // oscillator 
+  OscMessage myMessage133= new OscMessage("/encodeur3"); // oscillator 
+  OscMessage myMessage134= new OscMessage("/encodeur4"); // oscillator 
+  OscMessage myMessage135= new OscMessage("/encodeur5"); // oscillato
 
-  myMessage130.add(encoder[0]);  // 0 to 32 or 64
-  myMessage131.add(encoder[1]);
-  myMessage132.add(encoder[2]);
-  myMessage133.add(encoder[3]);
-  myMessage134.add(encoder[4]);
-  myMessage135.add(encoder[5]);
+  myMessage130.add(encodeur[0]);  // 0 to 32 or 64
+  myMessage131.add(encodeur[1]);
+  myMessage132.add(encodeur[2]);
+  myMessage133.add(encodeur[3]);
+  myMessage134.add(encodeur[4]);
+  myMessage135.add(encodeur[5]);
 
   oscP5.send(myMessage130, myRemoteLocation); 
   oscP5.send(myMessage131, myRemoteLocation); 
@@ -941,13 +941,13 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage58= new OscMessage("/acceleration8"); // oscillator 
   OscMessage myMessage59= new OscMessage("/acceleration9"); // oscillator behind
 
-  OscMessage myMessage70= new OscMessage("/encoderTouched0"); //  SEND 1 oscillatorTouched
-  OscMessage myMessage71= new OscMessage("/encoderTouched1"); // oscillator 
-  OscMessage myMessage72= new OscMessage("/encoderTouched2"); // oscillator 
-  OscMessage myMessage73= new OscMessage("/encoderTouched3"); // oscillator 
-  OscMessage myMessage74= new OscMessage("/encoderTouched4"); // oscillator 
-  OscMessage myMessage75= new OscMessage("/encoderTouched5"); // oscillato
-  OscMessage myMessage76= new OscMessage("/encoderTouched6"); // oscillator 
+  OscMessage myMessage70= new OscMessage("/encodeurTouched0"); //  SEND 1 oscillatorTouched
+  OscMessage myMessage71= new OscMessage("/encodeurTouched1"); // oscillator 
+  OscMessage myMessage72= new OscMessage("/encodeurTouched2"); // oscillator 
+  OscMessage myMessage73= new OscMessage("/encodeurTouched3"); // oscillator 
+  OscMessage myMessage74= new OscMessage("/encodeurTouched4"); // oscillator 
+  OscMessage myMessage75= new OscMessage("/encodeurTouched5"); // oscillato
+  OscMessage myMessage76= new OscMessage("/encodeurTouched6"); // oscillator 
 
   myMessage70.add(encoderTouched[0]);
   myMessage71.add(encoderTouched[1]);
