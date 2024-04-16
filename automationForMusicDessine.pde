@@ -27,7 +27,6 @@ void automationForMusicDessine()
         } 
         
         
-        
         if (measure >=  3 && measure < 6 && (beatPrecised ==  1 || beatPrecised ==  5 + 4) && beatPrecisedTrigged) 
         {          
             key = 'S';        
@@ -36,8 +35,7 @@ void automationForMusicDessine()
             phaseDirectFromSeq();            
         }
         
-        
-        
+                
         if ((measure >=  6 && measure <=  6) && (beatPrecised ==  1 || beatPrecised ==  5 + 4) && beatPrecisedTrigged ==  true) 
         {
             speedDelta = 2;  
@@ -47,9 +45,7 @@ void automationForMusicDessine()
             phaseDirectFromSeq();      
         } 
         //
-        
-        
-        
+
         if (measure ==  7 && beatTrigged ==  true)
             
         {

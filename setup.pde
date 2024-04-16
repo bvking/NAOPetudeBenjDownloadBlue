@@ -16,7 +16,7 @@ boolean systemForBigMachine=false;
 int networkSize = 6;
 int numberOfStep = 6400;
 
-//  boolean systemForBigMachine=true;
+// boolean systemForBigMachine=true;
 // int networkSize = 10;
 // attention avec big Machine numberOfStep = 3200;
 
@@ -27,7 +27,7 @@ int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
-//int timeTosendData;
+int timeTosendData;
 
 
 int[] countControlDr = new int [networkSize];   // numberOfrevolution depanding lfo and lfoUP or lfoDown 

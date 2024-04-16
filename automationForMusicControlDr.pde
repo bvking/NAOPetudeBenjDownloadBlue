@@ -75,7 +75,7 @@ void automationForMusicControlDr()
           if (shapeLfoMode==10 || shapeLfoMode==30) // if up or down add position
            {   
            lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i])); 
-            lastActualPosition [i]%=numberOfStep; 
+           lastActualPosition [i]%=numberOfStep; 
            } 
         } 
 }
@@ -585,30 +585,8 @@ void automationForMusicControlDrO()
 
                // counterLfo
            
-           
-               if ( signal2controlDr < oldOldSignal2controlDr  && ( (oldSignal2controlDr <  oldOldSignal2controlDr))) 
-               {
-                for (int i = 0; i < networkSize; i++)
-              {
-               /* 
-                revLfo[i]++;
-                TrigmodPos[i] = 0;
-                 text ("  revLfo" +  revLfo[i], 100, 100*i);
-               */  
-              }   
-            } 
+      
 
-            if ( signal2controlDr > oldOldSignal2controlDr  && (oldSignal2controlDr <=  oldOldSignal2controlDr)) 
-            {  // voir dans quel sens la retropropagation oriente  i et j
-                for (int i = 0; i < networkSize; i++)
-              {
-                
-                //revLfo[i]--;
-               // text ("  revLfo" +  revLfo[i], 100, 100*i);
-               // TrigmodPos[i] = 0;
-                
-              }
-            }
 
 
              shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
@@ -660,33 +638,7 @@ void automationForMusicControlDrO()
          // key = '#';
       }
 
-     /*
-           for(int i = 0; i <  networkSize - 0; i += 1)
-           { 
-         
-            OldSpecialPhase[i] = specialPhase[i]; 
-            positionToMotor[i] = specialPhase[i] % numberOfStep;
-            text(oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50 * i));  
-           }
  
-
-         if (modeStartKeyToFollow != " controlDr ")
-          {
-
-              for (int i = 0; i <  networkSize; i += 1)
-              { 
-       
-                positionToMotor[i] = ((int) map(signal2controlDr, 0, numberOfStep, 0, numberOfStep)); //
-                newPosF[i] = positionToMotor[i] % 6400;
-
-                if (oldPositionToMotor[i] > positionToMotor[i])
-                {
-                positionToMotor[i] = ((int) map(signal2controlDr, 0, numberOfStep, numberOfStep, 0)); //
-                newPosF[i] = positionToMotor[i] % 6400;
-                }
-              }
-           }
-    */
 
 
   } 

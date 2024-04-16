@@ -221,7 +221,7 @@ void draw()
     }
     textSize(200);
     
-    
+    // -------------------------------------     MANAGE CONTROLDR  
     // DISPLAY GAP, trig, ... midPos 
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     
@@ -230,7 +230,7 @@ void draw()
     //print(" midPos ");
     //showArray(midPos);
     computeMidPosToSend();
-    //END  data From serial computed to trig middle position and trig just touched 
+    // -------------------------------------     MANAGE CONTROLDR  //END  data From serial computed to trig middle position and trig just touched 
     
     print(" sendMid ");
     showArray(sendMiddleInt);
@@ -360,7 +360,7 @@ void draw()
    if (millis()>timeTosendData + 20)
     {
          oscSend();
-        timeTosendData = millis();
+         timeTosendData = millis();
 }
     //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
 }
