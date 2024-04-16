@@ -2,6 +2,7 @@ int recallPositionFromInstrument;
 int formerPatternFromInstrument;
 
 boolean instrumentChanged = false;
+//boolean[] instrumentToMute = new booleean [networkSize];
 
 
 void phaseDirectFromSeq() // mixed Com
@@ -23,15 +24,15 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] += numberOfStep / 4;
         }
     }
-      
+    
     if (key == 'ç')
     {
         float[] realign = new float[networkSize];
         if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0]) 
         {            
             text(" HIGER POSITIO " + higerPostion, 100, 200);
-             higerPostion = true;
-        
+            higerPostion = true;
+            
             
             for (int i = 0; i < networkSize; i++)
             {
@@ -41,24 +42,24 @@ void phaseDirectFromSeq() // mixed Com
             } 
             
             /*
-             if (networkSize ==10)
-             { 
-                 for (int i = 0; i < 1; i++) 
-                 {      
-                     lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
-                             dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
-                             dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
-                     text ( lastActualPosition[i], 100, 100*i); 
-                 }
-              }
-
-              for (int i = 0; i < networkSize; i++) {
-                  CircularVirtualPosition[i]=0;
-                  ActualVirtualPosition[i]=lastActualPosition[0];
-                  lastActualPosition[i]+= lastActualPosition[0];
-              } 
+            if (networkSize ==10)
+            { 
+            for (int i = 0; i < 1; i++) 
+            {      
+            lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+            dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
+            dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+            text ( lastActualPosition[i], 100, 100*i); 
+            }
+        }
+            
+            for (int i = 0; i < networkSize; i++) {
+            CircularVirtualPosition[i]=0;
+            ActualVirtualPosition[i]=lastActualPosition[0];
+            lastActualPosition[i]+= lastActualPosition[0];
+        } 
             */ 
-         }
+        }
         
         if (positionFromMotorPhase[networkSize - 1] <= positionFromMotorPhase[0] - numberOfStep)
         {
@@ -74,23 +75,23 @@ void phaseDirectFromSeq() // mixed Com
             }
         }
     } 
-
     
-     if (key == 'w')
+    
+    if (key == 'w')
     {
         for (int i = 0; i < networkSize; i++)
         {
             // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
             
-          //  net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
+            //net.phase[networkSize-1-i] = net.phase[networkSize-1-i] + (i*TWO_PI/5)%PI/10; 
             
             positionFromMotorPhase[networkSize - 1 - i] += (int)  map((i + 1 / 4 * TWO_PI / 5) % PI / 40, 0, TWO_PI, 0, numberOfStep);
             
             if (formerKeyMetro == '$')
             {
-               //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
+                //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
+            }
         }
-    }
     }
     
     if (key == 'W')
@@ -106,22 +107,22 @@ void phaseDirectFromSeq() // mixed Com
             
             if (formerKeyMetro == '$')
             {
-               //   positionFromMotorPhase[networkSize-1-i]%= numberOfStep;        
-        }
+                //   positionFromMotorPhase[networkSize-1-i]%= numberOfStep;        
+            }
         }
     }
     
     if (key == 'R') {
         
         for (int i = 0; i < networkSize; i++) {
-         //   net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit   
-         //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
-         //   net.phase[i] -= (i*TWO_PI/5)%PI/5;
+            // net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit   
+            // net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
+            // net.phase[i] -= (i*TWO_PI/5)%PI/5;
             
-        //    net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
+            //  net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // OK en mode circular ? 
             
             positionFromMotorPhase[i] = positionFromMotorPhase[i] - (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);   
-    }
+        }
     }
     
     if (key == 'r') {
@@ -132,8 +133,8 @@ void phaseDirectFromSeq() // mixed Com
     
     if (keyCode == CONTROL)
     {
-          enablingParametersChangesToLive = true;
-      //  enablingParametersChangesToLive =! enablingParametersChangesToLive; 
+        enablingParametersChangesToLive = true;
+        //enablingParametersChangesToLive =! enablingParametersChangesToLive; 
         secondTouchedTimeStarter = millis(); 
         keyCode = 0;
         
@@ -148,58 +149,66 @@ void phaseDirectFromSeq() // mixed Com
         }
     }
     
-         formerPatternFromInstrument = patterFromInstument;
-
-         patterFromInstument = networkSize-1-instrumentTouched;  //
     
-        if (formerPatternFromInstrument != patterFromInstument)
-         {  
-          background (127);
-         // instrumentChanged = true;     
-      
-         key = 'ç';
-         phaseDirectFromSeq();
-         textSize(200);
-         }
-      
-       
-    if ( instrumentChanged == false &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
+    // instrumentToMute[patterFromInstument] = false;
+    
+    patterFromInstument = networkSize - 1 - instrumentTouched;  //
+    
+    if (formerPatternFromInstrument != patterFromInstument)
+        {  
+        background(127);
+      //  instrumentToMute[patterFromInstument] = true;
+        // instrumentChanged = true;       
+        key = 'ç';
+        phaseDirectFromSeq();
+        textSize(200);
+    }
+    else
+        {
+       // instrumentToMute[patterFromInstument] = false; 
+        }
+    
+    
+    // formerPatternFromInstrument = patterFromInstument;
+    
+    
+    if (instrumentChanged == false &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
     {
         for (int i = 0; i < networkSize; i++)
         {   
-        ratioNumberOfStepCorraletedFromInstrument[0] = 1;
-        ratioNumberOfStepCorraletedFromInstrument[1] = 2 ;
-        ratioNumberOfStepCorraletedFromInstrument[2] = 3;
-        ratioNumberOfStepCorraletedFromInstrument[3] = 8;
-        ratioNumberOfStepCorraletedFromInstrument[4] = 12;
-        ratioNumberOfStepCorraletedFromInstrument[5] = 16;
-                  
+            ratioNumberOfStepCorraletedFromInstrument[0] = 1;
+            ratioNumberOfStepCorraletedFromInstrument[1] = 2;
+            ratioNumberOfStepCorraletedFromInstrument[2] = 3;
+            ratioNumberOfStepCorraletedFromInstrument[3] = 8;
+            ratioNumberOfStepCorraletedFromInstrument[4] = 12;
+            ratioNumberOfStepCorraletedFromInstrument[5] = 16;
+            
             // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                            // 8 hit <=networkSize+ 2. Donc 8 hoit avec numberOfRot 8 = 64 hit
-        positionFromMotorPhaseRecorded[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
-        positionFromMotorPhaseRecorded[i] %=   numberOfStep;     
-
-        recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] =positionFromMotorPhaseRecorded[i];  
-           //  recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
-        positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
+            positionFromMotorPhaseRecorded[i] =  positionFromMotorPhase[i] + (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patterFromInstument]);  
+            positionFromMotorPhaseRecorded[i] %=   numberOfStep;     
+            
+            recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument] = positionFromMotorPhaseRecorded[i];  
+            //  recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument]%=  numberOfStep; 
+            positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patterFromInstument];
         }    
-     }
-
-     /*
+}
+    
+    /*
     if (instrumentChanged == false  ) // SAVING new position to recordPositionsFromInstrument[k][patterFromInstument]
     {  
-        textSize(30);  
-       // recordPositionsFromInstrument[k][patterFromInstument] &= positionFromMotorPhase[k];  
-       for (int k = 0; k < networkSize; k++)
-       {   
-        for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
-        { 
-        recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-        text (" recPaT " + patterFromInstument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize-1-instrumentTouched) + " " + enablingChangeSoundB[networkSize-1-instrumentTouched], 700*0, k*30);           
-
-        }
-      }
+    textSize(30);  
+    // recordPositionsFromInstrument[k][patterFromInstument] &= positionFromMotorPhase[k];  
+    for (int k = 0; k < networkSize; k++)
+    {   
+    for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
+    { 
+    recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
+    text (" recPaT " + patterFromInstument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize-1-instrumentTouched) + " " + enablingChangeSoundB[networkSize-1-instrumentTouched], 700*0, k*30);           
+    
     }
-   */
+}
+}
+    */
     
     // DISPLAY PATTERN SAVED
     if (keyCode == CONTROL)
@@ -216,21 +225,21 @@ void phaseDirectFromSeq() // mixed Com
     if (key == '1') //as patterFromInstrumentRecorded = 0;
     {
         
-     //   key = 'ç';
-     //   phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1 -0;
+        // key = 'ç';
+        // phaseDirectFromSeq();
+        patterFromInstrumentRecorded = networkSize - 1 - 0;
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] =recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
+            positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
         } 
     }
     
     
     if (key == '2') // as patterFromInstrumentRecorded = 1;
     {
-     //   key = 'ç';
-     //   phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1 -1;
+        // key = 'ç';
+        // phaseDirectFromSeq();
+        patterFromInstrumentRecorded = networkSize - 1 - 1;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; // positionFromMotorPhase[i] + 
@@ -239,9 +248,9 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '3')
     {
-     //   key = 'ç';
-     //   phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1 -2;
+        // key = 'ç';
+        // phaseDirectFromSeq();
+        patterFromInstrumentRecorded = networkSize - 1 - 2;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =   recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] +
@@ -250,9 +259,9 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '4')
     {
-     //   key = 'ç';
-     //   phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1 -3;
+        // key = 'ç';
+        // phaseDirectFromSeq();
+        patterFromInstrumentRecorded = networkSize - 1 - 3;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
@@ -262,9 +271,9 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '5')
     {
-     //   key = 'ç';
-     //   phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1 -4;
+        // key = 'ç';
+        // phaseDirectFromSeq();
+        patterFromInstrumentRecorded = networkSize - 1 - 4;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];//positionFromMotorPhase[i] +
@@ -273,9 +282,9 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == '6')
     {
-      //  key = 'ç';
-      //  phaseDirectFromSeq();
-        patterFromInstrumentRecorded = networkSize - 1 -5;
+        //key = 'ç';
+        //phaseDirectFromSeq();
+        patterFromInstrumentRecorded = networkSize - 1 - 5;
         for (int i = 0; i < networkSize; i++)
         {
             positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
@@ -342,15 +351,15 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
     }
-
-     
+    
+    
     if (key == 'i')
     {  // memory == 0 is the ball "behind"  the screen
         
         oldMemoryi = memoryi;
         memoryi = (memoryi - 1);
         
-        if (memoryi == -  1)
+        if (memoryi == - 1)
         {
             memoryi = networkSize - 1;
             oldMemoryi = 0;
@@ -367,77 +376,77 @@ void phaseDirectFromSeq() // mixed Com
         }
         
         positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
-}
-    
-    
-    if (key == 'u')
-    {  // memory == 0 is the ball "behind"  the screen
+    }
         
-        oldMemoryi = memoryi;
-        memoryi = (memoryi + 1);
-        memoryi %=  networkSize;
         
-        for (int i = 0; i < (networkSize - 0); i++)
-        {  
-            lastOldActualPosition[i] = positionFromMotorPhase[i]+0*numberOfStep/1;//+numberOfStep/6;
-        }
-        
-        for (int i = 1; i < (networkSize - 0); i++)
-        {
-            positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
-        }
-        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
-        
-    } 
-
-        if (key == 'U')
-    {  // memory == 0 is the ball "behind"  the screen
-        
-        oldMemoryi = memoryi;
-        memoryi = (memoryi + 1);
-        memoryi %=  networkSize;
-        
-
-        for (int i = 0; i < (networkSize - 0); i++)
-        {
-            println (" lastP " + lastPositionFromMotorPhase[i] + " P " + positionFromMotorPhase[i]);
-            if (lastPositionFromMotorPhase[i]< positionFromMotorPhase[i])
-
-            {
-                positionFromMotorPhase[i]=positionFromMotorPhase[i]+numberOfStep;
-
+        if (key == 'u')
+        {  // memory == 0 is the ball "behind"  the screen
+            
+            oldMemoryi = memoryi;
+            memoryi = (memoryi + 1);
+            memoryi %=  networkSize;
+            
+            for (int i = 0; i < (networkSize - 0); i++)
+            {  
+                lastOldActualPosition[i] = positionFromMotorPhase[i] + 0 * numberOfStep / 1;//+numberOfStep/6;
             }
-
-        }
-
-        
-        for (int i = 0; i < (networkSize - 0); i++)
-        {  
-           // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
-
-            lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
-        }
-        
-        for (int i = 1; i < (networkSize - 0); i++)
-        {
-            positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
-        }
-
-        positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
-
-          for (int i = 0; i < (networkSize - 0); i++)
-        {
-            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
-
+            
+            for (int i = 1; i < (networkSize - 0); i++)
+            {
+                positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
+            }
+            positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+            
         } 
-
-
         
-    } 
-
-   // key = '#';
-    
-    //  text (" formerKey " + formerKey , 100, -200);
-    
-    
-}
+        if (key == 'U')
+        {  // memory == 0 is the ball "behind"  the screen
+            
+            oldMemoryi = memoryi;
+            memoryi = (memoryi + 1);
+            memoryi %=  networkSize;
+            
+            
+            for (int i = 0; i < (networkSize - 0); i++)
+            {
+                println(" lastP " + lastPositionFromMotorPhase[i] + " P " + positionFromMotorPhase[i]);
+                if (lastPositionFromMotorPhase[i] < positionFromMotorPhase[i])
+                    
+                {
+                    positionFromMotorPhase[i] = positionFromMotorPhase[i] + numberOfStep;
+                    
+                }
+                
+            }
+            
+            
+            for (int i = 0; i < (networkSize - 0); i++)
+            {  
+                // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
+                
+                lastOldActualPosition[i] = positionFromMotorPhase[i] + numberOfStep / 1;//+numberOfStep/6;
+            }
+            
+            for (int i = 1; i < (networkSize - 0); i++)
+            {
+                positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
+            }
+            
+            positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
+            
+            for (int i = 0; i < (networkSize - 0); i++)
+            {
+                lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
+                
+            } 
+            
+            
+            
+        } 
+        
+        // key = '#';
+        
+        //  text (" formerKey " + formerKey , 100, -200);
+        
+        
+    }

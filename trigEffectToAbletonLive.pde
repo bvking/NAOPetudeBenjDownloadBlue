@@ -86,7 +86,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         rotate(PI / 2); 
 
-        if (velocityBis[i]<-250 && enablingParametersChangesToLive == true  ) // && enablingParametersChangesToLive == true 
+        if (velocityBis[i]<-200 && enablingParametersChangesToLive == true  ) // && enablingParametersChangesToLive == true 
               //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
               //   && enablingParametersChangesToLive == true )
         {

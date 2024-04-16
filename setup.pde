@@ -27,6 +27,7 @@ int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
+boolean[] instrumentToMute = new boolean [networkSize];
 int timeTosendData;
 
 

@@ -333,7 +333,7 @@ void teensyPos()
 
           for (int i = 0; i < networkSize; i++)
           {  
-          text (" countDr "  + countControlDr[networkSize-1-i] + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i], width+600, -2000-100*(networkSize-1-i)) ; 
+          text (" countDr "  + countControlDr[networkSize-1-i] + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i]  + " Mu " + instrumentToMute[patterFromInstument], width+600, -2000-100*(networkSize-1-i)) ; 
            }
 
          for (int i = 0; i < networkSize; i++)

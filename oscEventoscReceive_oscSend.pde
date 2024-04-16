@@ -846,6 +846,23 @@ oldEncodeur[0]= encodeur[0];
   myMessage110.add(trigSound[4]);
   myMessage111.add(trigSound[5]);
 
+    // instrumentToMute
+
+  OscMessage myMessage120= new OscMessage("/instrumentToMute0"); // oscillator SEND // 0 to 32 or 64
+  OscMessage myMessage121= new OscMessage("/instrumentToMute1"); // oscillator 
+  OscMessage myMessage122= new OscMessage("/instrumentToMute2"); // oscillator 
+  OscMessage myMessage123= new OscMessage("/instrumentToMute3"); // oscillator 
+  OscMessage myMessage124= new OscMessage("/instrumentToMute4"); // oscillator 
+  OscMessage myMessage125= new OscMessage("/instrumentToMute5"); // oscillato
+
+  myMessage120.add(instrumentToMute[0]);  // 0 to 32 or 64
+  myMessage121.add(instrumentToMute[1]);
+  myMessage122.add(instrumentToMute[2]);
+  myMessage123.add(instrumentToMute[3]);
+  myMessage124.add(instrumentToMute[4]);
+  myMessage125.add(instrumentToMute[5]);
+
+
   JoDebug  ="<" // BPM9   
    // + (dataMappedForMotorisedPosition[11])+","+dataMappedForMotorisedPosition[10]+","+(dataMappedForMotorisedPosition[9])+","+dataMappedForMotorisedPosition[8]+","+dataMappedForMotorisedPosition[7]+","
    // + dataMappedForMotorisedPosition[6]+","
