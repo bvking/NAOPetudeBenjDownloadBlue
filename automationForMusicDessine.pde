@@ -433,8 +433,11 @@ void automationForMusicDessine()
                 key = 'q';
             }
         }
-        //key = '#'; 
+
+
+       // key = '#'; 
           //}
+
         for (int i = 0; i < networkSize; i++)
         { 
             if (phasePatternFollow[i] < 0)

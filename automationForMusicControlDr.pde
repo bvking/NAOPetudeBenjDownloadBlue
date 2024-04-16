@@ -22,10 +22,11 @@ void automationForMusicControlDr()
        }
     } 
     phaseDirectFromSeq(); 
+    //key = '#'; 
 
     // based on followSignaSampledOppositeWay    
   
-     if(formerKey != '#') // q is used to preStart speed of repetio
+     if(formerKey != 'q') // q is used to preStart speed of repetio
         {
           if(formerKey != 'q') // q is used to preStart speed of repetio
              {   
@@ -39,7 +40,7 @@ void automationForMusicControlDr()
              formerKey = 'q';
                  }
               }
-           formerKey = '#'; 
+           formerKey = 'q'; 
         }
           for (int i = 0; i < networkSize; i++)
           { 
@@ -53,7 +54,7 @@ void automationForMusicControlDr()
             }
           }
   
-      shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN=> CounterClockWay  10= UP CW
+      //shapeLfoMode = (int) shapeLfo*10;  // DO NO TURN WITH       30 = DOWN=> CounterClockWay  10= UP CW
 
 
       if (shapeLfoMode==10)

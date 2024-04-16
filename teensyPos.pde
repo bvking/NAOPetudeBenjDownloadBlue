@@ -338,7 +338,7 @@ void teensyPos()
 
          for (int i = 0; i < networkSize; i++)
          {   
-           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " " + phasePatternFollow[networkSize-1-i], width, -2000-100*(networkSize-1-i)) ; 
+           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " " + phasePatternFollow[networkSize-1-i], width-400, -2000-100*(networkSize-1-i)) ; 
          }
 
         if (music_from_ableton_live == " controlDr " )   

@@ -33,8 +33,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          { 
           encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
          } 
-       
-        
+            
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
         
@@ -46,8 +45,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
         
         //*********** COMPUTE SPEED of encoder
-        
-        
+          
         gapEncoder_OldEncodeur[i] = encodeurPosition[i] - oldEncodeurPosition[i];
         
         if (gapEncoder_OldEncodeur[i] < ( - 4000 + 400))
@@ -55,8 +53,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             gapEncoder_OldEncodeur[i] += 4000;
         }
         velocityBis[i] = gapEncoder_OldEncodeur[i];
-        
-        
+         
         //*********** COMPUTE GAP between where the position of motor would have to be and actual position of encoder
         
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
@@ -64,8 +61,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         dataMappedFromMotor[i] = (int)  map(dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
         dataMappedFromMotor[i] %=  numberOfStep;
-        
-        
+           
         if (oldEncoderTouched[i] != encoderTouched[i])
         {            
         }
@@ -74,14 +70,15 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         { 
             encoderTurnClockWise[i] = true;
         }
-        else  if (velocityBis[i] <-  10)
+        if (velocityBis[i] <-  10)
             { 
                 encoderTurnClockWise[i] = false; 
         }
         
         if (encoderTouched[i] ==  true)
         {       
-        }  
+        }
+
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
         rotate( -PI / 2);     
         text("VIRT " + slider[i] + "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
@@ -116,17 +113,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             // enablingParametersChangesToLive = false;   
         }
-} 
-  // if formerPatternFromInstrument != patternFromInstrument ==> instrumentChanged = true;
-   // key = 'ç';
+    } 
+        // if formerPatternFromInstrument != patternFromInstrument ==> instrumentChanged = true;
+        // key = 'ç';
         // phaseDirectFromSeq();
-    //    phaseDirectToMotor();
+        // phaseDirectToMotor();
     
     
-    if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false) //&&  enablingParametersChangesToLive == false
-        {
+    if (touchedTimeStarter[0] + 1000 <=  millis() && enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false && enablingParametersChangesToLive == true) //&&  enablingParametersChangesToLive == false
+    {
         key = 'e';
         phaseDirectFromSeq();
+        keyCode = '0';
+        
         textSize(150);           
         numberOfTrig[networkSize - 1 - instrumentTouched] += 1;
         numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
@@ -160,12 +159,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         // secondTouchedTimeStarter = millis(); 
     }
     
-    if (secondTouchedTimeStarter + 40 <=  millis() &&  enablingParametersChangesToLive == true)
+    if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
         { 
         text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
-        enablingParametersChangesToLive = false;  
+        enablingParametersChangesToLive = false;
+       // key = '#';  
         //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
-    }   
+    }
+
+     if ( enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
+     { 
+      // key = '#' ;
+      } 
     
     
     /*

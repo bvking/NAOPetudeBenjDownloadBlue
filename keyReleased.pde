@@ -21,6 +21,8 @@ void keyReleased()
        //  key=char (Key);
        //  keyCode=char (KeyCode);
           phaseDirectFromSeq();// wh-y not?
+          
+          key = '#';
         //phaseDirectToMotor();
         
 
