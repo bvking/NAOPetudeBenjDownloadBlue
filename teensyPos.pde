@@ -320,26 +320,25 @@ void teensyPos()
                //   text (dataMappedForMotorisedBigMachine[i], width, -2000-100*i) ; 
 
           } 
-        }
-        
+        }  
       }
       
         if (music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine "  ) 
         { 
          rotate (PI);
        
-         text (" numberOfR[0]  " +numberOfRota[0], width+200, -2000-100*(networkSize+4)) ; 
+         text (" formerK  " + formerKeyMetro , width+200, -2000-100*(networkSize+4)) ; 
          text (" beatPrecise   " +beatPrecised + " formerK  " + formerKeyMetro, width+200, -2000-100*(networkSize+3)) ;
          text (" shapeLfo   " + shapeLfo + " " + shapeLfoMode, width+200, -2000-100*(networkSize+2)) ; 
 
           for (int i = 0; i < networkSize; i++)
           {  
-          text (" countDr "  + countControlDr[networkSize-1-i], width+600, -2000-100*(networkSize-1-i)) ; 
+          text (" countDr "  + countControlDr[networkSize-1-i] + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i], width+600, -2000-100*(networkSize-1-i)) ; 
            }
 
          for (int i = 0; i < networkSize; i++)
          {   
-           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " " + phasePatternFollow[networkSize-1-i], width+200, -2000-100*(networkSize-1-i)) ; 
+           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " " + phasePatternFollow[networkSize-1-i], width, -2000-100*(networkSize-1-i)) ; 
          }
 
         if (music_from_ableton_live == " controlDr " )   

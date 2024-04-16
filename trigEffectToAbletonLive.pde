@@ -102,7 +102,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      }
              
           
-        if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[networkSize-1-instrumentTouched] == true && instrumentChanged == false &&  enablingParametersChangesToLive == false)
+        if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[networkSize-1-instrumentTouched] == true && instrumentChanged == false ) //&&  enablingParametersChangesToLive == false
         {
             key = 'e';
             phaseDirectFromSeq();
@@ -117,6 +117,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize-1-instrumentTouched] + " ", 0, 1 * networkSize-1-instrumentTouched * 50); 
             enablingChangeSound[networkSize-1-instrumentTouched] = false; 
             enablingChangeSoundB[networkSize-1-instrumentTouched] = false; 
+            enablingParametersChangesToLive = false;
 
             
               
@@ -138,7 +139,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
            // secondTouchedTimeStarter = millis(); 
         }
 
-        if (secondTouchedTimeStarter + 200 <=  millis() &&  enablingParametersChangesToLive == true)
+        if (secondTouchedTimeStarter + 40 <=  millis() &&  enablingParametersChangesToLive == true)
         { 
             text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize-1-instrumentTouched] + " ", 0, 1 * networkSize-1-instrumentTouched * 50); 
             enablingParametersChangesToLive = false;  
