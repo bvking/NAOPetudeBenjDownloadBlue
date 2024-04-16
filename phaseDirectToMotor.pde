@@ -40,13 +40,34 @@ void phaseDirectToMotor() // mixed Com
         if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0])
             higerPostion = true;
         {  
+            /*
             for (int i = 0; i < networkSize; i++)
             {
                 realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
                 positionFromMotorPhase[i] = (int) realign[i];
                 println(" HIGER POSITIO " + higerPostion);
-        }  
-        }
+            }  
+            */
+        
+              
+             if (networkSize ==10)
+             { 
+                 for (int i = 0; i < 1; i++) 
+                 {      
+                     lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                             dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
+                             dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+                     text ( lastActualPosition[i], 100, 100*i); 
+                 }
+              }
+
+              for (int i = 0; i < networkSize; i++)
+               {
+                  CircularVirtualPosition[i]=0;
+                  ActualVirtualPosition[i]=lastActualPosition[0];
+                  lastActualPosition[i]+= lastActualPosition[0];
+              } 
+            
         
         
         if (positionFromMotorPhase[networkSize - 1] < positionFromMotorPhase[0])
@@ -62,7 +83,8 @@ void phaseDirectToMotor() // mixed Com
         }
         // key = '#';
         
-}
+       }
+    }
     
     if (key == 'w')
     {

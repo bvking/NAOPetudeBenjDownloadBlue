@@ -163,7 +163,7 @@ void phaseDirectFromSeq() // mixed Com
          }
       
        
-    if ( instrumentChanged == false &&  key == 'e') // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
+    if ( instrumentChanged == false &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
     {
         for (int i = 0; i < networkSize; i++)
         {   
@@ -293,7 +293,7 @@ void phaseDirectFromSeq() // mixed Com
     */
     
     
-    if (key == 'E')
+    if (key == 'E' && music_from_ableton_live == " controlDr ")
     {
         for (int i = 0; i < networkSize; i++)
         { // 6 HIT

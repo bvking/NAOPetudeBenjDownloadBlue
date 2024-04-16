@@ -115,8 +115,8 @@ void automationForMusicDessine()
         if (measure ==  11 && beatTrigged ==  true)
             
         {
-            key = 'S';
-            phaseDirectFromSeq();            
+          //  key = 'S';
+          //  phaseDirectFromSeq();            
         }
         
         
