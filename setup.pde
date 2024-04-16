@@ -30,7 +30,6 @@ int[] positionFromMotorPhaseRecorded = new int[networkSize];
 //int timeTosendData;
 
 
-
 int[] countControlDr = new int [networkSize];   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
 int shapeLfoMode = 10;  //lfo UP CounterWay
 

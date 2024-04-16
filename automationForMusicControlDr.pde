@@ -66,9 +66,7 @@ void automationForMusicControlDr()
       signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
       signal2controlDr%=numberOfStep;
       }
-      
-      //oldSignal2controlDr=signal2controlDr;
-      //oldOldSignal2controlDr=oldSignal2controlDr;
+  
             
        for (int i = 0; i < networkSize; i++)
        {      
@@ -81,6 +79,10 @@ void automationForMusicControlDr()
            } 
         } 
 }
+
+
+
+
 
 void automationForMusicControlDrO()
  {
