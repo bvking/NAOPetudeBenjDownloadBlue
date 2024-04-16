@@ -11,13 +11,11 @@ void oscEvent(OscMessage theMsg)
    if (theMsg.checkAddrPattern("/shapeLfo")==true) {
     shapeLfo = theMsg.get(0).floatValue();
    // shapeLfoToCount = (shapeLfo*10.0);
- 
   }
 
    if (theMsg.checkAddrPattern("/positionFromLive")==true) {
     positionFromLive = theMsg.get(0).floatValue();
   }
-
 
   if (theMsg.checkAddrPattern("/trigedSignFromAbleton0")==true) {
     trigedSignFromAbleton[0] = theMsg.get(0).floatValue();
@@ -585,8 +583,11 @@ void oscSend(){
      {
      encoderTouched[1]=true;
 
+     instrumentToMute[1]=true;
+     /*
      numberOfTrig[1]%=8;
      numberOfTrig[1]+=1;
+     */
      /*
      numberOfRota[1]%=8;
      numberOfRota[1]+=1;
@@ -861,6 +862,21 @@ oldEncodeur[0]= encodeur[0];
   myMessage123.add(instrumentToMute[3]);
   myMessage124.add(instrumentToMute[4]);
   myMessage125.add(instrumentToMute[5]);
+
+    //  trigSound
+  oscP5.send(myMessage120, myRemoteLocation); 
+  oscP5.send(myMessage121, myRemoteLocation); 
+  oscP5.send(myMessage122, myRemoteLocation); 
+  oscP5.send(myMessage123, myRemoteLocation); 
+  oscP5.send(myMessage124, myRemoteLocation); 
+  oscP5.send(myMessage125, myRemoteLocation); 
+
+  oscP5.send(myMessage106, myRemoteLocationII); 
+  oscP5.send(myMessage107, myRemoteLocationII); 
+  oscP5.send(myMessage108, myRemoteLocationII); 
+  oscP5.send(myMessage109, myRemoteLocationII); 
+  oscP5.send(myMessage110, myRemoteLocationII); 
+  oscP5.send(myMessage111, myRemoteLocationII); 
 
 
   JoDebug  ="<" // BPM9   

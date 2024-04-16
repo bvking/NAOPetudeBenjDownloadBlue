@@ -22,42 +22,42 @@ int instrumentTouched;
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {
-
+    
     textSize(75);
- 
+    
     
     for (int i = 0; i < networkSize; i++)
     { 
-       // encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
-
+        // encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
+        
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
-
-         encodeurPosition[i]= encodeur[i];
-         encodeur[i]%=4000;
-
-         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
-
-         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
-
+        
+        encodeurPosition[i] = encodeur[i];
+        encodeur[i] %=  4000;
+        
+        encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
+        
+        oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
+        
         //*********** COMPUTE SPEED of encoder
         
-
-        gapEncoder_OldEncodeur[i]= encodeurPosition[i]- oldEncodeurPosition[i];
-
-        if ( gapEncoder_OldEncodeur[i]< (-4000+400) )
+        
+        gapEncoder_OldEncodeur[i] = encodeurPosition[i] - oldEncodeurPosition[i];
+        
+        if (gapEncoder_OldEncodeur[i] < ( - 4000 + 400))
         {
-             gapEncoder_OldEncodeur[i]+=4000;
-         }
-        velocityBis[i]= gapEncoder_OldEncodeur[i];
-
-
+            gapEncoder_OldEncodeur[i] += 4000;
+        }
+        velocityBis[i] = gapEncoder_OldEncodeur[i];
+        
+        
         //*********** COMPUTE GAP between where the position of motor would have to be and actual position of encoder
         
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
         dataMapped[i]  %= numberOfStep;
         
-        dataMappedFromMotor[i] = (int)  map (dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
+        dataMappedFromMotor[i] = (int)  map(dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
         dataMappedFromMotor[i] %=  numberOfStep;
         
         
@@ -65,101 +65,117 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {            
         }
         
-        if (velocityBis[i]>10)
+        if (velocityBis[i] > 10)
         { 
             encoderTurnClockWise[i] = true;
         }
-        else  if (velocityBis[i]<-10)
-        { 
-            encoderTurnClockWise[i] = false; 
-         }
+        else  if (velocityBis[i] <-  10)
+            { 
+                encoderTurnClockWise[i] = false; 
+        }
         
         if (encoderTouched[i] ==  true)
         {       
         }  
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
-        rotate( - PI / 2);
-        
-        text( "VIRT " + slider[i] + "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patterFromInstument + " " + recordPositionsFromInstrument[patterFromInstument][i] + " "  +
+        rotate( -PI / 2);     
+        text("VIRT " + slider[i] + "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
-             "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
-        
-        rotate(PI / 2); 
+            "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
+        rotate(PI / 2);
 
-        if (velocityBis[i]<-200 && enablingParametersChangesToLive == true  ) // && enablingParametersChangesToLive == true 
-              //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
-              //   && enablingParametersChangesToLive == true )
+        if (velocityBis[i] >   200 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
+        { 
+             instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            instrumentToMute[patternFromInstrument] = true; 
+        } 
+     
+        
+        if (velocityBis[i] <-  200 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
+            //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
+            //   && enablingParametersChangesToLive == true )
         {
+           
+            formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            instrumentToMute[patternFromInstrument] = false; 
+
+            
             touchedTimeStarter[0] = millis();
-
-            encoderTouched[networkSize-1-instrumentTouched] =  true;
-            enablingChangeSound[networkSize-1-instrumentTouched] = true;     
-            enablingChangeSoundB[networkSize-1-instrumentTouched] = true;  
-
-           // enablingParametersChangesToLive = false;   
+            
+            encoderTouched[networkSize - 1 - instrumentTouched] =  true;
+            enablingChangeSound[networkSize - 1 - instrumentTouched] = true;     
+            enablingChangeSoundB[networkSize - 1 - instrumentTouched] = true;  
+            
+            // enablingParametersChangesToLive = false;   
         }
-     }
-             
-          
-        if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[networkSize-1-instrumentTouched] == true && instrumentChanged == false ) //&&  enablingParametersChangesToLive == false
+} 
+  // if formerPatternFromInstrument != patternFromInstrument ==> instrumentChanged = true;
+   // key = 'ç';
+        // phaseDirectFromSeq();
+    //    phaseDirectToMotor();
+    
+    
+    if (touchedTimeStarter[0] + 20 <=  millis() && enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false) //&&  enablingParametersChangesToLive == false
         {
-            key = 'e';
-            phaseDirectFromSeq();
-            textSize(150);           
-            numberOfTrig[networkSize-1-instrumentTouched] += 1;
-            numberOfTrig[networkSize-1-instrumentTouched] %= 18;
-            
-            if (numberOfTrig[networkSize-1-instrumentTouched] == 17 )
+        key = 'e';
+        phaseDirectFromSeq();
+        textSize(150);           
+        numberOfTrig[networkSize - 1 - instrumentTouched] += 1;
+        numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
+        
+        if (numberOfTrig[networkSize - 1 - instrumentTouched] == 17)
             { 
-                numberOfTrig[networkSize-1-instrumentTouched] = 8;
-            }
-            text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize-1-instrumentTouched] + " ", 0, 1 * networkSize-1-instrumentTouched * 50); 
-            enablingChangeSound[networkSize-1-instrumentTouched] = false; 
-            enablingChangeSoundB[networkSize-1-instrumentTouched] = false; 
-            enablingParametersChangesToLive = false;
-
-            
-              
-         if (instrumentChanged == false  ) // SAVING new position to recordPositionsFromInstrument[k][patterFromInstument]
-         {  
-         textSize(30);  
-         // recordPositionsFromInstrument[k][patterFromInstument] &= positionFromMotorPhase[k];  
+            numberOfTrig[networkSize - 1 - instrumentTouched] = 8;
+        }
+        text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
+        enablingChangeSound[networkSize - 1 - instrumentTouched] = false; 
+        enablingChangeSoundB[networkSize - 1 - instrumentTouched] = false; 
+        enablingParametersChangesToLive = false;
+        
+        
+        
+        if (instrumentChanged == false ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
+        {  
+            textSize(30);  
+            // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
             for (int k = 0; k < networkSize; k++)
-             {   
-            for (int i = patterFromInstument; i < patterFromInstument + 1; i++) 
-             { 
-             recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-            text (" recPaT " + patterFromInstument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize-1-instrumentTouched) + " " + enablingChangeSoundB[networkSize-1-instrumentTouched], 700*0, k*30);           
-
+            {   
+                for (int i = patternFromInstrument; i < patternFromInstrument + 1; i++) 
+            { 
+                    recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
+                   text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);           
+                    
+                }
             }
-            }
-          }       
-            enablingParametersChangesToLive = false;
-           // secondTouchedTimeStarter = millis(); 
-        }
-
-        if (secondTouchedTimeStarter + 40 <=  millis() &&  enablingParametersChangesToLive == true)
+        }       
+        enablingParametersChangesToLive = false;
+        // secondTouchedTimeStarter = millis(); 
+    }
+    
+    if (secondTouchedTimeStarter + 40 <=  millis() &&  enablingParametersChangesToLive == true)
         { 
-            text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize-1-instrumentTouched] + " ", 0, 1 * networkSize-1-instrumentTouched * 50); 
-            enablingParametersChangesToLive = false;  
-          //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
-        }   
-        
-        
-        /*
-        if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[networkSize-1-i] ==  false && touchedTimeStarter[networkSize-1-i] + 2000 <=  millis())
-        { 
-          //  touchedTimeStarter[i] = millis();              
-        }   
-
-        if (midPos[i] ==  true)
-        { 
-            //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
-        }
-        //   key = '#';
-        */
-        
+        text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
+        enablingParametersChangesToLive = false;  
+        //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
+    }   
+    
+    
+    /*
+    if (oldEncoderTouched[i] == encoderTouched[i] && enablingChangeSound[networkSize-1-i] ==  false && touchedTimeStarter[networkSize-1-i] + 2000 <=  millis())
+    { 
+    //  touchedTimeStarter[i] = millis();              
+    }   
+    
+    if (midPos[i] ==  true)
+    { 
+    //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
+    }
+    //   key = '#';
+    */
+    
     
 }
 
@@ -202,11 +218,11 @@ void computeMidPosToSend()
         char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
         
         for (int i = 0; i < networkSize; i++)
-    {
+        {
             if (result[i] ==  0) {
                 resultString[i] = 'B';
             }
-    }
+        }
         
         char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
         String str2 = new String(data);

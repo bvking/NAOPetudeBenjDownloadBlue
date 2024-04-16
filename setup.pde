@@ -23,11 +23,11 @@ int numberOfStep = 6400;
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
-int patterFromInstument=0;
+int patternFromInstrument = 0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
-boolean[] instrumentToMute = new boolean [networkSize];
+boolean[] instrumentToMute = new boolean[networkSize];
 int timeTosendData;
 
 
