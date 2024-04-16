@@ -863,7 +863,6 @@ oldEncodeur[0]= encodeur[0];
   myMessage124.add(instrumentToMute[4]);
   myMessage125.add(instrumentToMute[5]);
 
-    //  trigSound
   oscP5.send(myMessage120, myRemoteLocation); 
   oscP5.send(myMessage121, myRemoteLocation); 
   oscP5.send(myMessage122, myRemoteLocation); 
@@ -877,6 +876,29 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage109, myRemoteLocationII); 
   oscP5.send(myMessage110, myRemoteLocationII); 
   oscP5.send(myMessage111, myRemoteLocationII); 
+
+  // encodeur works with modeOfControlDr= " virtual "
+
+  OscMessage myMessage130= new OscMessage("/encoder0"); // encoder
+  OscMessage myMessage131= new OscMessage("/encoder1"); // oscillator 
+  OscMessage myMessage132= new OscMessage("/encoder2"); // oscillator 
+  OscMessage myMessage133= new OscMessage("/encoder3"); // oscillator 
+  OscMessage myMessage134= new OscMessage("/encoder4"); // oscillator 
+  OscMessage myMessage135= new OscMessage("/encoder5"); // oscillato
+
+  myMessage130.add(encoder[0]);  // 0 to 32 or 64
+  myMessage131.add(encoder[1]);
+  myMessage132.add(encoder[2]);
+  myMessage133.add(encoder[3]);
+  myMessage134.add(encoder[4]);
+  myMessage135.add(encoder[5]);
+
+  oscP5.send(myMessage130, myRemoteLocation); 
+  oscP5.send(myMessage131, myRemoteLocation); 
+  oscP5.send(myMessage132, myRemoteLocation); 
+  oscP5.send(myMessage133, myRemoteLocation); 
+  oscP5.send(myMessage134, myRemoteLocation); 
+  oscP5.send(myMessage135, myRemoteLocation); 
 
 
   JoDebug  ="<" // BPM9   

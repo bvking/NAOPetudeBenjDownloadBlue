@@ -17,6 +17,7 @@ int[] gapEncoder_OldEncodeur = new int[networkSize];
 int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
 int[] dataMapped = new int[networkSize];
 int instrumentTouched; 
+String modeOfControlDr = " virtual ";
 
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 
@@ -28,7 +29,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     for (int i = 0; i < networkSize; i++)
     { 
-        // encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
+          if ( modeOfControlDr= " virtual ")
+         { 
+          encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
+         } 
+       
         
         encoderTouched[i] =  false;
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
