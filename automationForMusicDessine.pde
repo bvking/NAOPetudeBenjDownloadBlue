@@ -482,7 +482,13 @@ void automationForMusicDessine()
             if (measure > 28 && measure < 32) // ADD ROTATION FROM LFO
             {
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
-            } 
+            }
+
+             if (measure > 32 && measure < 50) // ADD ROTATION FROM LFO
+            {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep*4, 0, numberOfStep);
+            }
+
             
             if (measure >=  50 && measure <  68  ) //
             {

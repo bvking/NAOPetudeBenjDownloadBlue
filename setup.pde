@@ -12,16 +12,13 @@ size(600, 600, P3D);
 } 
 */
 
-//boolean systemForBigMachine=false;
-                    boolean systemForBigMachine=true;
-int timeTosendData;
+boolean systemForBigMachine=false;
+int networkSize = 6;
+int numberOfStep = 6400;
 
-
-
-                    int networkSize = 10; // attention avec big Machine numberOfStep = 3200;
-//int networkSize = 6;
-                    int numberOfStep = 3200;
-//int numberOfStep = 6400;
+//  boolean systemForBigMachine=true;
+// int networkSize = 10;
+// attention avec big Machine numberOfStep = 3200;
 
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
@@ -30,6 +27,7 @@ int patterFromInstument=0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
+//int timeTosendData;
 
 
 
