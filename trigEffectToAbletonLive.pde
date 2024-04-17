@@ -120,18 +120,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         // phaseDirectToMotor();
     
     
-    if (touchedTimeStarter[0] + 1000 <=  millis() && enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false && enablingParametersChangesToLive == true) //&&  enablingParametersChangesToLive == false
+    if (touchedTimeStarter[0] + 1000 <=  millis() && enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
     {
+        background(50);
         key = 'e';
         phaseDirectFromSeq();
-        keyCode = '0';
+        //keyCode = '0';
         
         textSize(150);           
         numberOfTrig[networkSize - 1 - instrumentTouched] += 1;
         numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
         
         if (numberOfTrig[networkSize - 1 - instrumentTouched] == 17)
-            { 
+        { 
             numberOfTrig[networkSize - 1 - instrumentTouched] = 8;
         }
         text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
@@ -139,20 +140,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSoundB[networkSize - 1 - instrumentTouched] = false; 
         enablingParametersChangesToLive = false;
         
-        
-        
+    
         if (instrumentChanged == false ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
         {  
             textSize(30);  
             // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
             for (int k = 0; k < networkSize; k++)
             {   
-                for (int i = patternFromInstrument; i < patternFromInstrument + 1; i++) 
+            for (int i = patternFromInstrument; i < patternFromInstrument + 1; i++) 
             { 
                     recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-                   text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);           
-                    
-                }
+                    text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);                        
+            }
             }
         }       
         enablingParametersChangesToLive = false;

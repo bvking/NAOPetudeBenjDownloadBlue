@@ -15,8 +15,7 @@ void automationForMusicDessine()
             speedDelta = 2;
             key = 'ç';
             phaseDirectFromSeq();   
-        
-              key = 'S';        
+            key = 'S';        
             phaseDirectFromSeq();     
         }
         
@@ -47,21 +46,17 @@ void automationForMusicDessine()
         //
 
         if (measure ==  7 && beatTrigged ==  true)
-            
         {
             // key = '=';
             //phaseDirectToMotor(); 
-            
         }
         
-        if (measure >=  7 && measure < 11 && (beatPrecised == 5 + 4 || beatPrecised == 1) && beatPrecisedTrigged ==  true) 
-            
+        if (measure >=  7 && measure < 11 && (beatPrecised == 5 + 4 || beatPrecised == 1) && beatPrecisedTrigged ==  true)          
         {  
             key = 'S';  
             phaseDirectFromSeq();        
             key = 'S';  
             phaseDirectFromSeq();      
-            
         }
         
         if ((measure ==  10) && beatPrecised ==  16 && beatPrecisedTrigged ==  true) 
@@ -70,12 +65,10 @@ void automationForMusicDessine()
             // keyReleased();
         } 
         
-        if (measure ==  11 && beatTrigged ==  true)
-            
+        if (measure ==  11 && beatTrigged ==  true)       
         {
             key = 'ç';
             phaseDirectFromSeq();      
-            
         }
         
         if (measure >=  11 && measure <=  11  && beatPrecised > 0 && beatPrecisedTrigged ==  true) 
@@ -83,7 +76,6 @@ void automationForMusicDessine()
             speedDelta = 2;
             key = 'd';        
             phaseDirectFromSeq();          
-            
         }  
         
         if (measure >=  12 && measure <=  12  && beatPrecised < 17 && beatPrecisedTrigged == true) 
@@ -280,9 +272,8 @@ void automationForMusicDessine()
     } 
     
     if (measure >=  32 && (measure + 1) % 2 ==  0 && measure< 35 && beatPrecisedTrigged ) 
-        {  
-        
-        textSize(400);      
+        {     
+        textSize(200);      
         key = 'r';        
         phaseDirectFromSeq();       
         key = 'r';        
@@ -544,9 +535,6 @@ void automationForMusicDessine()
             {
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
             } 
-
-
-
 
 
 

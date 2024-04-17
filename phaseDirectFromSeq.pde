@@ -376,11 +376,9 @@ void phaseDirectFromSeq() // mixed Com
         
         positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
     }
-    
-    
+      
     if (key == 'u')
-        {  // memory == 0 is the ball "behind"  the screen
-        
+        {  // memory == 0 is the ball "behind"  the screen   
         oldMemoryi = memoryi;
         memoryi = (memoryi + 1);
         memoryi %=  networkSize;
@@ -399,8 +397,7 @@ void phaseDirectFromSeq() // mixed Com
     } 
     
     if (key == 'U')
-        {  // memory == 0 is the ball "behind"  the screen
-        
+        {  // memory == 0 is the ball "behind"  the screen    
         oldMemoryi = memoryi;
         memoryi = (memoryi + 1);
         memoryi %=  networkSize;
@@ -410,42 +407,32 @@ void phaseDirectFromSeq() // mixed Com
             {
             println(" lastP " + lastPositionFromMotorPhase[i] + " P " + positionFromMotorPhase[i]);
             if (lastPositionFromMotorPhase[i] < positionFromMotorPhase[i])
-                
-                {
+            {
                 positionFromMotorPhase[i] = positionFromMotorPhase[i] + numberOfStep;
                 
             }
             
         }
-        
-        
         for (int i = 0; i < (networkSize - 0); i++)
-            {  
-            // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;
-            
+        {  
+            // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;   
             lastOldActualPosition[i] = positionFromMotorPhase[i] + numberOfStep / 1;//+numberOfStep/6;
         }
         
         for (int i = 1; i < (networkSize - 0); i++)
-            {
+        {
             positionFromMotorPhase[i] = lastOldActualPosition[i - 1];       
         }
         
         positionFromMotorPhase[0] = lastOldActualPosition[networkSize - 1];
         
         for (int i = 0; i < (networkSize - 0); i++)
-            {
-            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];
-            
+        {
+            lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];        
         } 
-        
-        
-        
     } 
     //çs   key = '#';    
     
-    
     //  text (" formerKey " + formerKey , 100, -200);
-    
-    
+
 }

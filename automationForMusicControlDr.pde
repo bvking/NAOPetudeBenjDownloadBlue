@@ -2,7 +2,7 @@ int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor si
 
 void automationForMusicControlDr()
 {
-  formerKeyMetro = '*';
+ // formerKeyMetro = '*';
 
         textSize (50);
 
@@ -11,14 +11,11 @@ void automationForMusicControlDr()
       if ((measure==1 || measure==2) && beatPrecised%4==0 && beatPrecisedTrigged==true)
        {   
           //  formerKey = 's';        
-              
         }
 
      if ( (measure>=3 && measure<=4) && beatPrecised%9==0 && beatPrecisedTrigged==true)
-       {
-        
-            formerKey = 'e';        
-         
+       {     
+            formerKey = 'e';              
        }
     } 
     phaseDirectFromSeq(); 
@@ -56,7 +53,6 @@ void automationForMusicControlDr()
   
       //shapeLfoMode = (int) shapeLfo*10;  // DO NO TURN WITH       30 = DOWN=> CounterClockWay  10= UP CW
 
-
       if (shapeLfoMode==10)
       {      
       signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
@@ -67,8 +63,7 @@ void automationForMusicControlDr()
       signal2controlDr= (int) map  (signal[2], 0, 1,  numberOfStep, 0)+numberOfStep;
       signal2controlDr%=numberOfStep;
       }
-  
-            
+             
        for (int i = 0; i < networkSize; i++)
        {      
            phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
@@ -80,10 +75,6 @@ void automationForMusicControlDr()
            } 
         } 
 }
-
-
-
-
 
 void automationForMusicControlDrO()
  {
