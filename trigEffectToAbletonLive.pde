@@ -85,16 +85,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
         rotate(PI / 2);
 
+        /*
         if (velocityBis[i] >   250)
          { 
         frameEnablingParameter=frameCount;
-        enablingParametersChangesToLive == true;
+        enablingParametersChangesToLive = true;
          }
         
-         if (frameEnablingParameter+2 >=   frameCount)
+         if (frameEnablingParameter+5 <=   frameCount)
          { 
-         enablingParametersChangesToLive == false;
+          enablingParametersChangesToLive = false;
          }
+         */
 
 
         if (velocityBis[i] >   250 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
