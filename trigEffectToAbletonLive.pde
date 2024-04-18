@@ -160,8 +160,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      
         
         if (velocityBis[i] <-  250 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
-            //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
-            //   && enablingParametersChangesToLive == true )
+ 
         {
 
             formerPatternFromInstrument = patternFromInstrument;
@@ -172,7 +171,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             touchedTimeStarter[0] = millis();
             
             encoderTouched[patternFromInstrument] =  true;
-            enablingChangeSound[patternFromInstrument] = true;     
+           // enablingChangeSound[patternFromInstrument] = true;     
             enablingChangeSoundB[patternFromInstrument] = true;  
      
         }
