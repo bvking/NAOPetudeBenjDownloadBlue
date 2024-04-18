@@ -18,6 +18,7 @@ int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in pha
 int[] dataMapped = new int[networkSize];
 int instrumentTouched; 
 String modeOfControlDr = " virtual ";
+int frameEnablingParameter;
 
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 
@@ -84,6 +85,17 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
         rotate(PI / 2);
 
+        if (velocityBis[i] >   250)
+         { 
+        frameEnablingParameter=frameCount;
+        enablingParametersChangesToLive == true;
+         }
+        
+         if (frameEnablingParameter+2 >=   frameCount)
+         { 
+         enablingParametersChangesToLive == false;
+         }
+
 
         if (velocityBis[i] >   250 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
         {  
@@ -102,7 +114,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
              {
                 instrumentChanged = false;        
              }
-                enablingChangeSound[networkSize - 1 - instrumentTouched] = false;
+                enablingChangeSound[patternFromInstrument] = false;
               //  enablingParametersChangesToLive = false;
 
         } 
@@ -122,7 +134,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
              else
                 instrumentChanged = false;
 
-            enablingChangeSound[networkSize - 1 - instrumentTouched] = false;
+            enablingChangeSound[patternFromInstrument] = false;
             enablingParametersChangesToLive = false;
 
         } 
@@ -140,16 +152,15 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        
             touchedTimeStarter[0] = millis();
             
-            encoderTouched[networkSize - 1 - instrumentTouched] =  true;
-            enablingChangeSound[networkSize - 1 - instrumentTouched] = true;     
-            enablingChangeSoundB[networkSize - 1 - instrumentTouched] = true;  
+            encoderTouched[patternFromInstrument] =  true;
+            enablingChangeSound[patternFromInstrument] = true;     
+            enablingChangeSoundB[patternFromInstrument] = true;  
      
         }
     } 
      
     
     
-  //  if (enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
       if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
     {
@@ -166,11 +177,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         if (numberOfTrig[patternFromInstrument] == 17)
         { 
-            numberOfTrig[networkSize - 1 - instrumentTouched] = 8;
+            numberOfTrig[patternFromInstrument] = 8;
         }
         text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
         enablingChangeSound[patternFromInstrument] = false; 
-        enablingChangeSoundB[networkSize - 1 - instrumentTouched] = false; 
+        enablingChangeSoundB[patternFromInstrument] = false; 
         enablingParametersChangesToLive = false;
         
     
