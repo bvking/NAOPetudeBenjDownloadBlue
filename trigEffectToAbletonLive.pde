@@ -90,12 +90,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         if (velocityBis[i] >   250)
          { 
+            formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
 
              timeEnablingChangesParameter[patternFromInstrument]=millis();
 
-              enablingChangeToLive[patternFromInstrument]=true;
+             enablingChangeToLive[patternFromInstrument]=true;
 
              secondTouchedTimeStarter=millis();
 
@@ -109,9 +110,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          
 
         //velocityBis[i] >   250 && 
-        if (enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
+        if (enablingParametersChangesToLive == true && enablingChangeToLive[patternFromInstrument]==true ) // && enablingParametersChangesToLive == true 
         {  
-            formerPatternFromInstrument = patternFromInstrument;
+           
             /*
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
@@ -128,12 +129,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 instrumentChanged = false;        
              }
                 enablingChangeSound[patternFromInstrument] = false;
+               
               //  enablingParametersChangesToLive = false;
 
         } 
 
         // velocityBis[i] >   250 &&
-        if ( enablingParametersChangesToLive == true && instrumentChanged == false) // && enablingParametersChangesToLive == true 
+        if ( enablingParametersChangesToLive == true && enablingChangeToLive[patternFromInstrument]==true && instrumentChanged == false) // && enablingParametersChangesToLive == true 
         { 
             /*
             instrumentTouched = i;
@@ -150,6 +152,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 instrumentChanged = false;
 
             enablingChangeSound[patternFromInstrument] = false;
+             enablingChangeToLive[patternFromInstrument]= false; 
 
           //  enablingParametersChangesToLive = false;
 
