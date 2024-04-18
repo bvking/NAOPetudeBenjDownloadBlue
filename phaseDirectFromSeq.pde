@@ -151,14 +151,14 @@ void phaseDirectFromSeq() // mixed Com
     
     
     
-    if (formerPatternFromInstrument != patternFromInstrument && frameCount<=frameTrigger+5)
+    if (formerPatternFromInstrument != patternFromInstrument && frameCount<=frameTrigger+1)
         {  
         background(127);
        // frameTrigger=frameCount;
         
         // instrumentChanged = true;       
         key = 'ç';
-       // phaseDirectFromSeq();
+      //  phaseDirectFromSeq();
         phaseDirectToMotor();
         textSize(200);
     }
