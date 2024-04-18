@@ -85,11 +85,14 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         rotate(PI / 2);
 
 
-        if (velocityBis[i] >   200 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
+        if (velocityBis[i] >   250 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
         { 
-             instrumentTouched = i;
+            instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            instrumentToMute[patternFromInstrument] = true; 
+            instrumentToMute[patternFromInstrument] = true;
+            enablingChangeSound[networkSize - 1 - instrumentTouched] = false;
+            enablingParametersChangesToLive = false;
+
         } 
      
         
