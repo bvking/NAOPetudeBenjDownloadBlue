@@ -18,7 +18,9 @@ int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in pha
 int[] dataMapped = new int[networkSize];
 int instrumentTouched; 
 String modeOfControlDr = " virtual ";
-int frameEnablingParameter;
+
+
+boolean[]  enablingChangeToLive = new boolean[networkSize];
 
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 
@@ -85,26 +87,35 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
         rotate(PI / 2);
 
-        /*
+        
         if (velocityBis[i] >   250)
          { 
-        frameEnablingParameter=frameCount;
-        enablingParametersChangesToLive = true;
-         }
-        
-         if (frameEnablingParameter+5 <=   frameCount)
-         { 
-          enablingParametersChangesToLive = false;
-         }
-         */
-
-
-        if (velocityBis[i] >   250 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
-        {  
-            formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
 
+             timeEnablingChangesParameter[patternFromInstrument]=millis();
+
+              enablingChangeToLive[patternFromInstrument]=true;
+
+             secondTouchedTimeStarter=millis();
+
+              enablingParametersChangesToLive = true;
+         }
+        
+         if (timeEnablingChangesParameter[patternFromInstrument]+200 <= millis())
+         { 
+         // enablingParametersChangesToLive = false;
+         }
+         
+
+        //velocityBis[i] >   250 && 
+        if (enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
+        {  
+            formerPatternFromInstrument = patternFromInstrument;
+            /*
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+           */
             
              if (formerPatternFromInstrument != patternFromInstrument)
              {
@@ -121,11 +132,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         } 
 
-
-        if (velocityBis[i] >   250 && enablingParametersChangesToLive == true && instrumentChanged == false) // && enablingParametersChangesToLive == true 
+        // velocityBis[i] >   250 &&
+        if ( enablingParametersChangesToLive == true && instrumentChanged == false) // && enablingParametersChangesToLive == true 
         { 
+            /*
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            */
 
             instrumentToMute[patternFromInstrument] =! instrumentToMute[patternFromInstrument];
 
@@ -137,7 +150,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 instrumentChanged = false;
 
             enablingChangeSound[patternFromInstrument] = false;
-            enablingParametersChangesToLive = false;
+
+          //  enablingParametersChangesToLive = false;
 
         } 
      
@@ -165,7 +179,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
       if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
-    {
+     {
         frameTrigger=frameCount;
 
         background(50);

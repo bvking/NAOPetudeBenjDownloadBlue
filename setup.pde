@@ -31,6 +31,14 @@ int[] positionFromMotorPhaseRecorded = new int[networkSize];
 boolean[] instrumentToMute = new boolean[networkSize];
 int timeTosendData;
 
+int[] timeEnablingChangesParameter = new int[networkSize];
+ 
+/*
+   for (int i = 0; i < networkSize; i++)
+    { 
+    timeEnablingChangesParameter[i]=0;
+    } 
+*/
 
 int[] countControlDr = new int [networkSize];   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
 int shapeLfoMode = 10;  //lfo UP CounterWay
