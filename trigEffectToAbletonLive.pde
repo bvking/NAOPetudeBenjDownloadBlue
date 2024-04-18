@@ -64,8 +64,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
            
         if (oldEncoderTouched[i] != encoderTouched[i])
         {            
-        }
-        
+        }     
         if (velocityBis[i] > 10)
         { 
             encoderTurnClockWise[i] = true;
@@ -73,8 +72,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (velocityBis[i] <-  10)
             { 
                 encoderTurnClockWise[i] = false; 
-        }
-        
+        }     
         if (encoderTouched[i] ==  true)
         {       
         }
@@ -94,11 +92,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         } 
      
         
-        if (velocityBis[i] <-  200 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
+        if (velocityBis[i] <-  250 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
             //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
             //   && enablingParametersChangesToLive == true )
         {
-           
+          //  noLoop();
+           // frameTrigger=frameCount;
+            
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
@@ -119,9 +119,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         // phaseDirectFromSeq();
         // phaseDirectToMotor();
     
+    // touchedTimeStarter[0] + 1000 <=  millis() && 
     
-    if (touchedTimeStarter[0] + 1000 <=  millis() && enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
+    if (enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
     {
+        frameTrigger=frameCount;
+        
         background(50);
         key = 'e';
         phaseDirectFromSeq();
