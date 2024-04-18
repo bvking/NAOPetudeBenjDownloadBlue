@@ -151,7 +151,7 @@ void phaseDirectFromSeq() // mixed Com
     
     
     
-    if (formerPatternFromInstrument != patternFromInstrument && frameCount<=frameTrigger+1)
+    if (frameCount<=frameTrigger+2) // formerPatternFromInstrument != patternFromInstrument && 
         {  
         background(127);
         // frameTrigger=frameCount;     
