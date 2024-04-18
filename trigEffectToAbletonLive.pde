@@ -70,8 +70,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             encoderTurnClockWise[i] = true;
         }
         if (velocityBis[i] <-  10)
-            { 
-                encoderTurnClockWise[i] = false; 
+        { 
+           encoderTurnClockWise[i] = false; 
         }     
         if (encoderTouched[i] ==  true)
         {       
@@ -83,6 +83,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
             "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
         rotate(PI / 2);
+
 
         if (velocityBis[i] >   200 && enablingParametersChangesToLive == true ) // && enablingParametersChangesToLive == true 
         { 
@@ -96,35 +97,27 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             //  if (gapEncoder_Motor[i] > numberOfStep / 10 && (dataMappedFromMotor[i] <=  numberOfStep - numberOfStep / 6 && dataMappedFromMotor[i] >=  numberOfStep / 6)
             //   && enablingParametersChangesToLive == true )
         {
-          //  noLoop();
-           // frameTrigger=frameCount;
-            
+
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             instrumentToMute[patternFromInstrument] = false; 
-
-            
+       
             touchedTimeStarter[0] = millis();
             
             encoderTouched[networkSize - 1 - instrumentTouched] =  true;
             enablingChangeSound[networkSize - 1 - instrumentTouched] = true;     
             enablingChangeSoundB[networkSize - 1 - instrumentTouched] = true;  
-            
-            // enablingParametersChangesToLive = false;   
+     
         }
     } 
-        // if formerPatternFromInstrument != patternFromInstrument ==> instrumentChanged = true;
-        // key = 'ç';
-        // phaseDirectFromSeq();
-        // phaseDirectToMotor();
+     
     
-    // touchedTimeStarter[0] + 1000 <=  millis() && 
     
     if (enablingChangeSound[networkSize - 1 - instrumentTouched] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
     {
         frameTrigger=frameCount;
-        
+
         background(50);
         key = 'e';
         phaseDirectFromSeq();
