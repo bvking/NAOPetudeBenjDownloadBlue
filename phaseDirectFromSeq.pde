@@ -5,7 +5,7 @@ boolean instrumentChanged = false;
 
 void phaseDirectFromSeq() // mixed Com
 {  
-    instrumentChanged = false;
+   // instrumentChanged = false;
     oscillatorBlocked = networkSize - 1;
     
     if (key == '9')
