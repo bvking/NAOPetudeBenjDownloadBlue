@@ -17,6 +17,7 @@ int networkSize = 6;
 int numberOfStep = 6400;
 
 int frameTrigger;
+int recallLastPatternInstrument;
 /*
 boolean systemForBigMachine=true;
 int networkSize = 10;

@@ -194,9 +194,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        //  frameTrigger=frameCount;
          key = 'ç';
          phaseDirectToMotor();
+     
+       //**  recallLastPatternInstrument=patternFromInstrument;
+         
 
-        // phaseDirectFromSeq();
+      //**  phaseDirectFromSeq();
        //  enablingChangeSound[patternFromInstrument] = false;
+      //**   recallLastPatternInstrument=1000;
          
      }
     

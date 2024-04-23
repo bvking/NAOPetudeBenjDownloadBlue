@@ -62,11 +62,12 @@ void phaseDirectToMotor() // mixed Com
              }
              }
             
-            for (int i = 0; i < networkSize; i++) {
-            CircularVirtualPosition[i]=0;
-            ActualVirtualPosition[i]=lastActualPosition[0];
+            for (int i = 0; i < networkSize; i++) 
+            {
+             CircularVirtualPosition[i]=0;
+             ActualVirtualPosition[i]=lastActualPosition[0];
             lastActualPosition[i]+= lastActualPosition[0];
-               } 
+            } 
             
         }
         
@@ -74,16 +75,33 @@ void phaseDirectToMotor() // mixed Com
         {
             text(" LOWER  POSITION" + higerPostion, 100, 300);
             higerPostion = false;
+            /*
             for (int i = 0; i < networkSize; i++) {
                 realign[i] = positionFromMotorPhase[0] % (positionFromMotorPhase[0] + (numberOfStep)); //+PI/2;
                 //realign[i] = positionFromMotorPhase [networkSize-1]%(positionFromMotorPhase [networkSize-1]+(numberOfStep)); //+PI/2;
                 
                 positionFromMotorPhase[i] = (int) realign[i];
-                
-                // positionFromMotorPhase [i] = positionFromMotorPhase [0];
+          */
+            if (networkSize ==10)
+            { 
+            for (int i = 0; i < 1; i++) 
+            {      
+            lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+            dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
+            dataMappedForMotorisedPosition[8])/(networkSize-1); // +dataMappedForMotorisedPosition[9]
+            text ( lastActualPosition[i], 100, 100*i); 
+             }
+             }
+            
+            for (int i = 0; i < networkSize; i++) 
+            {
+             // CircularVirtualPosition[i]=0;
+             // ActualVirtualPosition[i]=lastActualPosition[0];
+            lastActualPosition[i]+= lastActualPosition[0];
+            }        
             }
-        }
-    } 
+     }
+     
     
     if (key == 'w')
     {
