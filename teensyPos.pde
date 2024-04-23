@@ -331,12 +331,15 @@ void teensyPos()
          text (" beatPrecise   " +beatPrecised + " formerK  " + formerKeyMetro, width+200, -2000-100*(networkSize+3)) ;
          text (" shapeLfo   " + shapeLfo + " " + shapeLfoMode, width+200, -2000-100*(networkSize+2)) ; 
 
+        if (!systemForBigMachine) 
+         {    
           for (int i = 0; i < networkSize; i++)
           {  
           text (" countDr " + (networkSize-1-i) + " " + countControlDr[networkSize-1-i] + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i]  + " Mu " + instrumentToMute[networkSize-1-i] +
                 " enaChangeS " + enablingChangeSound[networkSize-1-i] + " instChanged " + instrumentChanged + " enabToL " + enablingChangeToLive[networkSize-1-i] +
                 " enablingPara " + enablingParametersChangesToLive , width+600, -2000-100*(networkSize-1-i)) ; 
            }
+         }
 
          for (int i = 0; i < networkSize; i++)
          {   

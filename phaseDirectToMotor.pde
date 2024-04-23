@@ -154,16 +154,7 @@ void phaseDirectToMotor() // mixed Com
             positionFromMotorPhase[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 1 / 16, 0, TWO_PI, 0, numberOfStep);   
         }
     }
-    
-    
-    if (key == 'd')
-    {
-        for (int i = 0; i < networkSize; i++)
-        {
-            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / 8 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
-        }
-    }
-    
+
     if (key == 'D') 
     {
         // front  TWO_PI/8/(networkSize)*(i)   behind?
@@ -171,7 +162,11 @@ void phaseDirectToMotor() // mixed Com
         for(int i = 0; i < networkSize; i++) {
             positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
-}
+    }
+    
+  
+    
+  
     
     if (key == 's') // as former f as 'S'
         
@@ -180,7 +175,16 @@ void phaseDirectToMotor() // mixed Com
         {
             positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.1 / 8 / ( - networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep);
         }
-}
+    }
+
+      
+    if (key == 'd')
+    {
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / 8 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+        }
+    }
     
     if (key == 'F') 
     {

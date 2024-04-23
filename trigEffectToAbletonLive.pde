@@ -25,11 +25,9 @@ boolean[]  enablingChangeToLive = new boolean[networkSize];
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
-{
-    
+{  
     textSize(75);
-    
-    
+       
     for (int i = 0; i < networkSize; i++)
     { 
           if ( modeOfControlDr== " virtual ")
@@ -81,14 +79,17 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
 
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
-        rotate( -PI / 2);     
+        rotate( -PI / 2);
+        if (!systemForBigMachine) 
+         {    
         text("VIRT " + slider[i] + "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
             " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
-            "lfo2 " + shapeLfoMode , -1000, 1 * i * 75); 
+            "lfo2 " + shapeLfoMode , -1000, +1200 - (i * 75));
+           } 
         rotate(PI / 2);
 
         
-        if (velocityBis[i] >   250)
+        if (velocityBis[i] >   250)  // to change phasePattern
          { 
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;

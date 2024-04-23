@@ -20,10 +20,16 @@ void keyReleased()
    {
        //  key=char (Key);
        //  keyCode=char (KeyCode);
-          phaseDirectFromSeq();// wh-y not?
+          phaseDirectFromSeq();// wh-y not? good one
+
+        //   phaseDirectToMotor(); better s and d
+
+          
           
           key = '#';
         //phaseDirectToMotor();
+        
+
         
 
           // automationForMusicDessine();  

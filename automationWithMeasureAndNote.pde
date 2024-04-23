@@ -525,7 +525,7 @@ void trigBeatWithMeasure()
 
 
    shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
-
+   textSize(75);
    if ( music_from_ableton_live == " controlDr "|| music_from_ableton_live == " Dessine "  ) 
     {
 
@@ -534,7 +534,7 @@ void trigBeatWithMeasure()
         //  oldLastActualPosition[i]= lastActualPosition[i];
         positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
-        text( "Tb " + phasePatternFollow[i] + " " + positionToMotor[i] , -800, -300 + (100 * i));  
+        text( "pFoll " + phasePatternFollow[i] + " " + positionToMotor[i] , -1000, -300 + (100 * i), -800);  
        }
 
     if (formerKeyMetro == '*') 
