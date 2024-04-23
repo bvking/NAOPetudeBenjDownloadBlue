@@ -199,7 +199,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          
 
       //**  phaseDirectFromSeq();
-       //  enablingChangeSound[patternFromInstrument] = false;
+         enablingChangeSound[patternFromInstrument] = false;
       //**   recallLastPatternInstrument=1000;
          
      }
@@ -208,14 +208,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
      {
+         recallLastPatternInstrument=1000;
        //  frameTrigger=frameCount;
        //  phaseDirectFromSeq();
        
-
+       
         background(50);
         key = 'e';
         phaseDirectFromSeq();
         //keyCode = '0';
+        
         
         textSize(150);           
         numberOfTrig[patternFromInstrument] += 1;
