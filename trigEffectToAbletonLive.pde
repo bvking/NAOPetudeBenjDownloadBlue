@@ -189,20 +189,23 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
        if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
-     {
-        /*
-         frameTrigger=frameCount;
-         phaseDirectFromSeq();
-         enablingChangeSound[patternFromInstrument] = false;
-         */
+     {  
+         
+       //  frameTrigger=frameCount;
+         key = 'ç';
+         phaseDirectToMotor();
+
+        // phaseDirectFromSeq();
+       //  enablingChangeSound[patternFromInstrument] = false;
+         
      }
     
     
       if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
      {
-         frameTrigger=frameCount;
-         phaseDirectFromSeq();
+       //  frameTrigger=frameCount;
+       //  phaseDirectFromSeq();
        
 
         background(50);

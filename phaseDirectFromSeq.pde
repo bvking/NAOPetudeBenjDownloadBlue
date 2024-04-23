@@ -160,7 +160,8 @@ void phaseDirectFromSeq() // mixed Com
         //  phaseDirectFromSeq();
         phaseDirectToMotor();
         textSize(200);
-         key = 'e';
+        noLoop();
+       //  key = 'e';
     }
     
     else
