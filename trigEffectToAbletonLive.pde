@@ -102,6 +102,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
              secondTouchedTimeStarter=millis();
 
               enablingParametersChangesToLive = true;
+
+                if (formerPatternFromInstrument != patternFromInstrument)
+             {
+                instrumentChanged = true;
+                instrumentToMute[patternFromInstrument] = false;
+                
+             } 
+             else   if (formerPatternFromInstrument == patternFromInstrument)
+             {
+                instrumentChanged = false;        
+            
+               // enablingChangeSound[patternFromInstrument] = true;
+             }
          }
         
          if (timeEnablingChangesParameter[patternFromInstrument]+200 <= millis())
@@ -121,13 +134,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
              if (formerPatternFromInstrument != patternFromInstrument)
              {
-                instrumentChanged = true;
+              //  instrumentChanged = true;
                 instrumentToMute[patternFromInstrument] = false;
                 
              } 
-             else
+             else   if (formerPatternFromInstrument == patternFromInstrument)
              {
-                instrumentChanged = false;        
+             //   instrumentChanged = false;        
             
                // enablingChangeSound[patternFromInstrument] = true;
              }
@@ -162,7 +175,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         } 
      
         
-        if (velocityBis[i] <-  250) // && enablingParametersChangesToLive == true 
+        if (velocityBis[i] <-  1250) // && enablingParametersChangesToLive == true 
         {  
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
@@ -195,12 +208,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          key = 'ç';
          phaseDirectToMotor();
      
-       //**  recallLastPatternInstrument=patternFromInstrument;
+        recallLastPatternInstrument=patternFromInstrument;
          
 
-      //**  phaseDirectFromSeq();
-         enablingChangeSound[patternFromInstrument] = false;
-      //**   recallLastPatternInstrument=1000;
+        phaseDirectFromSeq();
+        // enablingChangeSound[patternFromInstrument] = false;
+         recallLastPatternInstrument=1000;
          
      }
     
