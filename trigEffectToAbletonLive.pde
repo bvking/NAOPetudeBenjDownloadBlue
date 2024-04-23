@@ -32,7 +32,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
           if ( modeOfControlDr== " virtual ")
          { 
-          encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
+        //  encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
          } 
             
         encoderTouched[i] =  false;
@@ -117,9 +117,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
              }
          }
         
-         if (timeEnablingChangesParameter[patternFromInstrument]+200 <= millis())
+         if (timeEnablingChangesParameter[patternFromInstrument]+20 <= millis())
          { 
-         // enablingParametersChangesToLive = false;
+          enablingParametersChangesToLive = false;
          }
          
 
@@ -206,8 +206,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          phaseDirectToMotor();
      
         recallLastPatternInstrument=patternFromInstrument;
-         
-
         phaseDirectFromSeq();
         // enablingChangeSound[patternFromInstrument] = false;
          recallLastPatternInstrument=1000;

@@ -196,7 +196,7 @@ void phaseDirectFromSeq() // mixed Com
          key = '#';    
     }
     
-    /*
+    
     if (instrumentChanged == false  ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
     {  
     textSize(30);  
@@ -211,7 +211,7 @@ void phaseDirectFromSeq() // mixed Com
 }
 }
 }
-    */
+    
     
     // DISPLAY PATTERN SAVED
     if (keyCode == CONTROL)
@@ -463,7 +463,8 @@ void phaseDirectFromSeq() // mixed Com
             lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];        
         } 
     } 
-    //çs   key = '#';    
+    //çs   key = '#'; 
+    key = '#';    
     
     //  text (" formerKey " + formerKey , 100, -200);
 
