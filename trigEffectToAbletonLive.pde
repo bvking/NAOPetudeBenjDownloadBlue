@@ -32,7 +32,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
           if ( modeOfControlDr== " virtual ")
          { 
-        //  encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
+          encodeur[i]=(int) map (slider[i], 0., 127., 0, 4000);
          } 
             
         encoderTouched[i] =  false;
@@ -197,22 +197,43 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
     } 
 
-       if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
+    if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
      {  
          
        //  frameTrigger=frameCount;
-         key = 'ç';
-         phaseDirectToMotor();
+    
+       //  key = 'ç';
+       //  phaseDirectFromSeq();
+
+       //  phaseDirectToMotor();
+
+         key = '=';
+         keyReleased();
+
+          if (enablingChangeSound[2] == true)
+         {  println (" recall no Loop " + patternFromInstrument);
+            noLoop();
+             Key= '1';
+         }
+          if (enablingChangeSound[3] == true)
+         {  println (" recall no Loop " + patternFromInstrument);
+            noLoop();
+             Key= '2';
+         }
+      
+
+        enablingChangeSound[patternFromInstrument] = false;
      
         recallLastPatternInstrument=patternFromInstrument;
+   
         phaseDirectFromSeq();
         // enablingChangeSound[patternFromInstrument] = false;
          recallLastPatternInstrument=1000;
          
      }
-    
-    
+
+   
       if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == false )//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
 
      {
@@ -241,8 +262,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingParametersChangesToLive = false;
         
     
-        if (instrumentChanged == false ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
-        {  
+     if (instrumentChanged == false ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
+      {  
             textSize(30);  
             // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
             for (int k = 0; k < networkSize; k++)
@@ -253,11 +274,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                     text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);                        
             }
             }
-        }
-        instrumentChanged = false;       
+      }
+       // instrumentChanged = false;       
         enablingParametersChangesToLive = false;
         // secondTouchedTimeStarter = millis(); 
     }
+
     
     if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
         { 

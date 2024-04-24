@@ -161,7 +161,7 @@ void phaseDirectFromSeq() // mixed Com
         phaseDirectToMotor();
         textSize(200);
        // noLoop();
-      //   key = 'e';
+       //   key = 'e';
     }
     
     else
@@ -170,9 +170,6 @@ void phaseDirectFromSeq() // mixed Com
         
     }  
   
-    
-    
-    
     if (instrumentChanged == false &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
     {
         for (int i = 0; i < networkSize; i++)
@@ -234,11 +231,12 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 0; i < networkSize; i++)
             {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
-        } 
+        }
+      
     }
     
     
-    if (key == '2'|| recallLastPatternInstrument==1) // as patterFromInstrumentRecorded = 1;
+    if (key == '2'|| Key == '1') // as patterFromInstrumentRecorded = 1;
         {
         // key = 'ç';
         // phaseDirectFromSeq();
@@ -246,10 +244,11 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 0; i < networkSize; i++)
             {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; // positionFromMotorPhase[i] + 
-        } 
+        }
+        
     }
     
-    if (key == '3' || recallLastPatternInstrument==2)
+    if (key == '3' ||  Key == '2') //
         {
         // key = 'ç';
         // phaseDirectFromSeq();
@@ -464,7 +463,8 @@ void phaseDirectFromSeq() // mixed Com
         } 
     } 
     //çs   key = '#'; 
-    key = '#';    
+    key = '#';  
+    Key = '#'; 
     
     //  text (" formerKey " + formerKey , 100, -200);
 
