@@ -327,23 +327,23 @@ void teensyPos()
         { 
          rotate (PI);
        
-         text (" formerK  " + formerKeyMetro , width+200, -2000-100*(networkSize+4)) ; 
-         text (" beatPrecise   " +beatPrecised + " formerK  " + formerKeyMetro, width+200, -2000-100*(networkSize+3)) ;
-         text (" shapeLfo   " + shapeLfo + " " + shapeLfoMode, width+200, -2000-100*(networkSize+2)) ; 
+         text (" formerK  " + formerKeyMetro , width-200, -2000-100*(networkSize+4)) ; 
+         text (" beatPrecise   " +beatPrecised + " measure  " + measure, width-200, -2000-100*(networkSize+3)) ;
+         text (" shapeLfo   " + shapeLfo + " " + shapeLfoMode, width-200, -2000-100*(networkSize+2)) ; 
 
         if (!systemForBigMachine) 
          {    
           for (int i = 0; i < networkSize; i++)
           {  
-          text (" countDr " + (networkSize-1-i) + " " + countControlDr[networkSize-1-i] + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i]  + " Mu " + instrumentToMute[networkSize-1-i] +
+          text ( (networkSize-1-i) + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i]  + " Mu " + instrumentToMute[networkSize-1-i] +
                 " enaChangeS " + enablingChangeSound[networkSize-1-i] + " instChanged " + instrumentChanged + " enabToL " + enablingChangeToLive[networkSize-1-i] +
                 " enablingPara " + enablingParametersChangesToLive , width+600, -2000-100*(networkSize-1-i)) ; 
            }
          }
 
          for (int i = 0; i < networkSize; i++)
-         {   
-           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " " + phasePatternFollow[networkSize-1-i], width-1200, -2000-100*(networkSize-1-i)) ; 
+         { 
+           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " coun " + countControlDr[networkSize-1-i], width+600, -2500-100*(networkSize-1-i)) ;   // phasePatternFollow[networkSize-1-i]
          }
 
         if (music_from_ableton_live == " controlDr " )   
