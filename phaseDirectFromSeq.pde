@@ -129,7 +129,18 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 0; i < networkSize; i++) {
             positionFromMotorPhase[i] += (int)  map((i * TWO_PI / networkSize) % PI / (networkSize * 3), 0, TWO_PI, 0, numberOfStep);
         }
-    }   
+    }
+    
+    if (key == 'P')
+    {
+        for (int i = 0; i < networkSize; i++)
+         {
+     positionFromMotorPhase[i] +=(int)  map((TWO_PI/(networkSize-0))*(1*(networkSize-1-i)), 0, TWO_PI, 0, numberOfStep); //  10 hit but problem with counter
+     }
+     }
+     
+
+     // END of PHASE OFFSET
     
     if (keyCode == CONTROL)
     {

@@ -1,3 +1,5 @@
+boolean enableRotation = true;
+
 void automationForMusicDessine()
     {
    
@@ -47,8 +49,10 @@ void automationForMusicDessine()
 
         if (measure ==  7 && beatTrigged ==  true)
         {
-             key = '=';
-             keyReleased();
+            // key = '=';
+            // keyReleased();
+             key = 'ç';
+             phaseDirectFromSeq();   
             //phaseDirectToMotor(); 
         }
         
@@ -69,8 +73,8 @@ void automationForMusicDessine()
         if (measure ==  11 && beatTrigged ==  true)       
         {
             key = 'ç';
-            //phaseDirectFromSeq(); 
-            phaseDirectToMotor();     
+            phaseDirectFromSeq(); 
+            //phaseDirectToMotor();     
         }
         
         if (measure >=  11 && measure <=  11  && beatPrecised > 0 && beatPrecisedTrigged ==  true) 
@@ -308,17 +312,21 @@ void automationForMusicDessine()
         phaseDirectFromSeq();              
     } 
     
-    if (measure ==  39  && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+    if (measure ==  39  && ((beatPrecised+1)%2 == 0)  && beatPrecisedTrigged ==  true)  //|| beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
         key = 'U';        
         phaseDirectFromSeq();              
     }
+
+  
+
     
     if (measure ==  40  && (beatPrecised == 1) && beatPrecisedTrigged ==  true) 
         { 
         key = 'ç';     
         phaseDirectFromSeq();        
     }
+    
     
     if (measure ==  40  && (beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
@@ -334,7 +342,7 @@ void automationForMusicDessine()
     
     if (measure > 40  && measure <=  43 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
-        key = 'U';        
+        key = 'k';   // U      
         phaseDirectFromSeq();              
     } 
     
@@ -342,17 +350,24 @@ void automationForMusicDessine()
     
     if (measure ==  43  && (beatPrecised == 15) && beatPrecisedTrigged ==  true) 
         {
-        key = 'ç';        
+        key = 'ç';   
+        //keyReleased();     
         phaseDirectFromSeq();               
     }
     
-    if (measure ==  44 && (beatPrecised + 1) % 5 == 0 && beatPrecisedTrigged ==  true) 
+    if (measure ==  44 && (beatPrecised + 1) % 5 == 0 && beatPrecisedTrigged ==  true && beatPrecised < 10 ) 
         {  
         key = 's';        
         phaseDirectFromSeq();       
     }
+
+    if (measure ==  44 && (beatPrecised == 10 || beatPrecised == 16) && beatPrecisedTrigged ==  true && beatPrecised > 9 ) 
+        {  
+        key = 'U';       
+        phaseDirectFromSeq();       
+    }
     
-    if (measure >=  45 &&  measure <=  48 && (beatPrecised == 1 || beatPrecised == 9) && beatPrecisedTrigged ==  true) 
+    if (measure >=  45 &&  measure <=  48 && (beatPrecised == 5 || beatPrecised == 13 ) && beatPrecisedTrigged ==  true) //4*2 == 8 event  //|| beatPrecised == 13
         
         { //speedDelta = 3;
         key = 'U';        
@@ -363,12 +378,15 @@ void automationForMusicDessine()
     if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
         {    
         key = 'ç';
-        phaseDirectFromSeq();
-        formerKeyMetro = '$';  
+        keyReleased();   
+       
+       // phaseDirectFromSeq();
 
+     
     }
     if (measure ==  49 && beatPrecised == 2 && beatPrecisedTrigged)   
-        {    
+        { 
+        formerKeyMetro = '$';   
         key = 's';
         phaseDirectFromSeq(); 
         key = 's';
@@ -380,22 +398,42 @@ void automationForMusicDessine()
     if (measure ==  59 && (beatPrecised == 15 || beatPrecised == 15) && beatPrecisedTrigged)   
         {    
         key = 'ç';
-        phaseDirectFromSeq();        
+        keyReleased();  
+       // phaseDirectToMotor();
+        // phaseDirectFromSeq();        
+    }     
+    if (measure ==  60 && beatPrecisedTrigged ) 
+        {     
+        textSize(200);      
+        key = 'r';        
+        phaseDirectFromSeq();       
+        key = 'r';        
+        phaseDirectFromSeq();          
     }
-    
        
-    if (measure >=  60 && (measure+0)%2==0  && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9) 
-        {
+    if (measure >=  61 && measure <  89 && (measure+0)%2==0  && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9) 
+    {
         key = 's';  
         phaseDirectFromSeq();        
     }
 
-     
-    if (measure >=  60 && (measure+1)%2==0   && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9)
-        {
+    if (measure >=  61 && measure <  69 && (measure+1)%2==0   && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9)
+    {
         key = 'd';  
         phaseDirectFromSeq();        
     }
+
+    if (measure ==  69 && (beatPrecised == 1) && beatPrecisedTrigged)   
+     {    
+        key = 'ç';
+        keyReleased();      
+    } 
+
+    if (measure ==  69 && (beatPrecised %2== 0) && beatPrecisedTrigged)   
+    {    
+        key = 'r';
+        keyReleased();      
+    } 
     
     
     // based on followSignaSampledOppositeWay   
@@ -404,7 +442,7 @@ void automationForMusicDessine()
         if (measure ==  49 && beatTrigged)
             { 
             speedDelta = 2;
-            formerKeyMetro = '$';
+           // formerKeyMetro = '$';
             //modeCircular = true;
         }
         
@@ -473,23 +511,29 @@ void automationForMusicDessine()
         for (int i = 0; i < networkSize; i++)
         { 
             
-            if (measure > 28 && measure < 32) // ADD ROTATION FROM LFO
+            if (measure > 0 && measure < 32) // ADD ROTATION FROM LFO
             {
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
             }
 
            //  if (measure > 32 && measure < 50) // ADD SLOW ROTATION FROM LFO
 
-            if (measure<  32) // ADD SLOW ROTATION FROM LFO
+            if (measure ==  32) // STOP ROTATION FROM LFO
             {
-                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep*1/4, 0, numberOfStep*1/4);
+                enableRotation = false;
+              //  phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep*1/4, 0, numberOfStep*1/4);
             }
 
-            
-            if (measure >=  50 && measure <  68  ) //
+            if (measure == 35 && beatPrecised ==9)
             {
-                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+                enableRotation = true;
             }
+              if (enableRotation && measure <  68  )
+              {
+                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+            
+            }
+ 
 
             if (measure ==  68  && beatTrigged ) // 
             {
@@ -541,8 +585,6 @@ void automationForMusicDessine()
             {
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
             } 
-
-
 
           // ADDITIOn ROTATION+PHASE  
             phaseSigna2Followed[i] %= numberOfStep; 
