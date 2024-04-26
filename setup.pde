@@ -820,7 +820,7 @@ if (oscillatorMaster > 0) {
 void setup() {
 
             numberOfMeasureToRecord=4;      
-            frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
+            frameRatio = 60;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
                 

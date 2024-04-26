@@ -73,10 +73,12 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
      // ((oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > -0.25* (numberOfStep/2) && positionToMotor[i] < 0)) ||   (oldPositionToMotor[i] < -1.75 * PI && positionToMotor[i] > -0.25 * PI)
      // )
-  
-         ((oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 7/8* (numberOfStep/1)))  //|| (  ) 
+       
+      //************** (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
+        1<-1
          
      )  // ORIGINAL 
+        //**  (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) ))
 
       //  (oldPositionToMotor[i] < 0.10 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.9* (numberOfStep/2) ))
         //**   (oldPositionToMotor[i] < 0.5 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.5 * (numberOfStep/2) ))
@@ -105,15 +107,20 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     // both positive angles || both negative angles || negative-to-positive angle
 
     if (
-      (positionToMotor[i] < 0.25 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.75 * numberOfStep/2 ))
+     // (positionToMotor[i] < 0.25 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.75 * numberOfStep/2 ))
      // (positionToMotor[i] < 0.10 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.9 * numberOfStep/2 ))
-     // (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.5 * numberOfStep/2 ))
+
+      (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.5 * numberOfStep/2 ))
+      
+
+     //  (positionToMotor[i] < 1 * numberOfStep*7/8 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1 * numberOfStep*2 ))
+
 
     {
       onOFF = 1;
       countControlDr[i]++;
       rev[i]++;
-      text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
+      text (" YOUR HERE GOOD" + rev[i], 200, -900+(i*100));
       revolution[i]=0;
       TrigmodPos[i]=0;
       trigSound[i]=1;

@@ -34,29 +34,22 @@ void phaseDirectFromSeq() // mixed Com
             
             for (int i = 0; i < networkSize; i++)
             {
-                /*
-            realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                     realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
                          dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
                          dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
-                */
+
+             realign[i]%=numberOfStep;
+               
+                
+              //  realign[i]= positionFromMotorPhase[i]-(int) realign[9];
+
+              //PAS MALM  realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[0]) + numberOfStep; //+PI/2;
+              // realign[i] = dataMappedForMotorisedPosition[networkSize - 1] % (dataMappedForMotorisedPosition[0]) + numberOfStep; //+PI/2;
+
+
+              positionFromMotorPhase[i] =  positionFromMotorPhase[networkSize - 1] - (int) realign[i];
+              countControlDr[i]+=1;
             
-                
-            realign[i] = (positionFromMotorPhase[0]+positionFromMotorPhase[1]+positionFromMotorPhase[2]+positionFromMotorPhase[3]+
-                         positionFromMotorPhase[4]+positionFromMotorPhase[5]+positionFromMotorPhase[6]+positionFromMotorPhase[7]+
-                         positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
-                
-            
-                
-                realign[i]= positionFromMotorPhase[i]-(int) realign[9];
-             
-            //lastActualPosition[i]= dataMappedForMotorisedPosition[i] + realign[i];
-            // lastActualPosition[i]=lastActualPosition[i]+ positionFromMotorPhase[i] + (int) realign[i];
-
-              //  realign[i] = positionFromMotorPhase[networkSize - 1] % (positionFromMotorPhase[networkSize - 1] + (numberOfStep)); //+PI/2;
-
-
-                positionFromMotorPhase[i] = positionFromMotorPhase[i] + (int) realign[i];
-                //positionFromMotorPhase [i] = positionFromMotorPhase [0];
             }
             
             
@@ -89,7 +82,7 @@ void phaseDirectFromSeq() // mixed Com
                 realign[i] = positionFromMotorPhase[0] % (positionFromMotorPhase[0] + (numberOfStep)); //+PI/2;
                 //realign[i] = positionFromMotorPhase [networkSize-1]%(positionFromMotorPhase [networkSize-1]+(numberOfStep)); //+PI/2;
                 
-                positionFromMotorPhase[i] = (int) realign[i];
+                positionFromMotorPhase[i] += (int) realign[i];
                 
                 // positionFromMotorPhase [i] = positionFromMotorPhase [0];
             }
