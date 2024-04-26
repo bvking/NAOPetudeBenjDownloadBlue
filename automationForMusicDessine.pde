@@ -393,7 +393,21 @@ void automationForMusicDessine()
         key = 's';
         phaseDirectFromSeq(); 
         key = 's';
+        phaseDirectFromSeq();  
+         key = 's';
+        phaseDirectFromSeq(); 
+        key = 's';
+        phaseDirectFromSeq();  
+        key = 's';
+        phaseDirectFromSeq(); 
+        key = 's';
         phaseDirectFromSeq();       
+        key = 's';
+        phaseDirectFromSeq();  
+         key = 's';
+        phaseDirectFromSeq(); 
+        key = 's';
+        phaseDirectFromSeq();      
     }
 
     if (measure ==  59 && (beatPrecised == 15 || beatPrecised == 15) && beatPrecisedTrigged)   
@@ -412,7 +426,7 @@ void automationForMusicDessine()
         phaseDirectFromSeq();          
     }
        
-    if (measure >=  61 && measure <  89 && (measure+0)%2==0  && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9) 
+    if (measure >=  61 && measure <  69 && (measure+0)%2==0  && beatPrecisedTrigged) // && (beatPrecised ==  1  || beatPrecised ==  9) 
     {
         key = 's';  
         phaseDirectFromSeq();        
@@ -538,7 +552,7 @@ void automationForMusicDessine()
 
             if (measure ==  68  && beatTrigged ) // 
             {
-            speedDelta =5;
+            speedDelta =4;
             }
 
             if (measure >=  68 && measure <=  71   ) // ADD DOUBLE ROATATION  FROM LFO
@@ -548,7 +562,7 @@ void automationForMusicDessine()
 
              if (measure ==  72  && beatTrigged ) // 
             {
-            speedDelta =6;
+          //  speedDelta =6;
             }
 
               if (measure >=  72 && measure <=  75   ) // ADD DOUBLE ROATATION  FROM LFO
@@ -559,7 +573,7 @@ void automationForMusicDessine()
 
               if (measure ==  76  && beatTrigged ) // 
             {
-            speedDelta =7;
+         //   speedDelta =7;
             }
 
             if (measure >=  76 && measure <=  78   ) // ADD DOUBLE ROATATION  FROM LFO
@@ -569,7 +583,7 @@ void automationForMusicDessine()
 
             if (measure ==  78  && beatTrigged ) // 
             {
-            speedDelta =6;
+          //  speedDelta =6;
             }
 
             if (measure >=  78 && measure <=  80  ) // ADD DOUBLE ROATATION  FROM LFO
@@ -579,13 +593,18 @@ void automationForMusicDessine()
 
             if (measure ==  80  && beatTrigged ) // 
             {
-            speedDelta = 5;
+          //  speedDelta = 5;
             }
 
-            if (measure >=  80 && measure <  84  ) // ADD DOUBLE ROATATION  FROM LFO
+            if (measure >=  80 && measure <  91 ) // ADD DOUBLE ROATATION  FROM LFO
             {
                 phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep/2, 0, numberOfStep/1);
             } 
+
+              if (measure ==  87  && beatTrigged ) // 
+            {
+            speedDelta = 2;
+            }
 
           // ADDITIOn ROTATION+PHASE  
             phaseSigna2Followed[i] %= numberOfStep; 

@@ -34,9 +34,16 @@ void phaseDirectFromSeq() // mixed Com
             
             for (int i = 0; i < networkSize; i++)
             {
-                     realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                /*
+                         realign[i] = (positionFromMotorPhase[0]+positionFromMotorPhase[1]+positionFromMotorPhase[2]+positionFromMotorPhase[3]+
+                         positionFromMotorPhase[4]+positionFromMotorPhase[5]+positionFromMotorPhase[6]+positionFromMotorPhase[7]+
+                         positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
+                */
+
+                        realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
                          dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
                          dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+                
 
              realign[i]%=numberOfStep;
                
@@ -47,7 +54,7 @@ void phaseDirectFromSeq() // mixed Com
               // realign[i] = dataMappedForMotorisedPosition[networkSize - 1] % (dataMappedForMotorisedPosition[0]) + numberOfStep; //+PI/2;
 
 
-              positionFromMotorPhase[i] =  positionFromMotorPhase[networkSize - 1] - (int) realign[i];
+              positionFromMotorPhase[i] =  positionFromMotorPhase[networkSize - 1] + (int) realign[i];
               countControlDr[i]+=1;
             
             }
@@ -79,12 +86,20 @@ void phaseDirectFromSeq() // mixed Com
             text(" LOWER  POSITION" + higerPostion, 100, 300);
             higerPostion = false;
             for (int i = 0; i < networkSize; i++) {
-                realign[i] = positionFromMotorPhase[0] % (positionFromMotorPhase[0] + (numberOfStep)); //+PI/2;
-                //realign[i] = positionFromMotorPhase [networkSize-1]%(positionFromMotorPhase [networkSize-1]+(numberOfStep)); //+PI/2;
-                
-                positionFromMotorPhase[i] += (int) realign[i];
-                
-                // positionFromMotorPhase [i] = positionFromMotorPhase [0];
+               /* 
+             realign[i] = (positionFromMotorPhase[0]+positionFromMotorPhase[1]+positionFromMotorPhase[2]+positionFromMotorPhase[3]+
+                         positionFromMotorPhase[4]+positionFromMotorPhase[5]+positionFromMotorPhase[6]+positionFromMotorPhase[7]+
+                         positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
+                         */
+
+               realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
+                         dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+
+               realign[i]%=numberOfStep;
+
+              positionFromMotorPhase[i] =  positionFromMotorPhase[0] + (int) realign[i];
+              countControlDr[i]+=1;
             }
         }
     } 

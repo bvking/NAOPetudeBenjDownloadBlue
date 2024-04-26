@@ -74,7 +74,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
      // ((oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > -0.25* (numberOfStep/2) && positionToMotor[i] < 0)) ||   (oldPositionToMotor[i] < -1.75 * PI && positionToMotor[i] > -0.25 * PI)
      // )
        
-      //************** (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
+      // (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
         1<-1
          
      )  // ORIGINAL 
