@@ -18,11 +18,12 @@ void keyReleased()
 
   if ( music_from_ableton_live == " Dessine " ) 
    {
-       //  key=char (Key);
-       //  keyCode=char (KeyCode);
-          phaseDirectFromSeq();// wh-y not? good one
+        // key=char (Key);
+        // keyCode=char (KeyCode);
 
-        //   phaseDirectToMotor(); better s and d
+        //**  phaseDirectFromSeq();// wh-y not? good one
+
+           phaseDirectToMotor(); // better s and d
 
           
           

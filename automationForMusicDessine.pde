@@ -14,7 +14,7 @@ void automationForMusicDessine()
     {  
         if (measure ==  1 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
         {  
-            speedDelta = 2;
+            speedDelta = 1;
             key = 'ç';
             phaseDirectFromSeq();   
             key = 'S';        
@@ -39,7 +39,7 @@ void automationForMusicDessine()
                 
         if ((measure >=  6 && measure <=  6) && (beatPrecised ==  1 || beatPrecised ==  5 + 4) && beatPrecisedTrigged ==  true) 
         {
-            speedDelta = 2;  
+            speedDelta = 1;  
             key = 'D';  
             phaseDirectFromSeq();      
             key = 'D';  
@@ -65,7 +65,8 @@ void automationForMusicDessine()
         }
         
         if ((measure ==  10) && beatPrecised ==  16 && beatPrecisedTrigged ==  true) 
-        {   
+        {  
+            speedDelta = 2; 
             // key = '9'; //Alig
             // keyReleased();
         } 
@@ -93,7 +94,7 @@ void automationForMusicDessine()
         
         if (measure >=  13 && measure <=  13  && beatPrecised > 0 && beatPrecisedTrigged ==  true) 
         {
-            speedDelta = 2;
+            speedDelta = 1;
             key = 'd';        
             phaseDirectFromSeq();          
             
