@@ -21,20 +21,22 @@ void keyReleased()
         // key=char (Key);
         // keyCode=char (KeyCode);
 
-        //**  phaseDirectFromSeq();// wh-y not? good one
+         //**  phaseDirectFromSeq();// wh-y not? good one
 
-           phaseDirectToMotor(); // better s and d
-
-          
-          
-          key = '#';
-        //phaseDirectToMotor();
-        
-
-        
-
-          // automationForMusicDessine();  
          
+        
+          // automationForMusicDessine(); 
+
+           if (key == '='){
+            background(200);
+            for (int i = 0; i < networkSize; i++) {
+              println ( " cccc " + countControlDr[i]);
+             countControlDr[i]=0;
+              }
+             }
+          
+         
+           phaseDirectToMotor(); // better s and d  
 
           if (keyCode == CONTROL)
           {
@@ -107,7 +109,6 @@ void keyReleased()
        
         ActualVirtualPosition[0]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+
-
         dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9]      
         )/(networkSize-0);
       }
@@ -147,10 +148,9 @@ void keyReleased()
 
 
 
-  if (keyCode == UP && formerKey == 's' )
+  if (keyCode == UP )
   {  
-    if (key!='#')
-     { 
+ 
         if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
              || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
             )
@@ -168,13 +168,12 @@ void keyReleased()
           key='#'; // to trig only once  
           */
        }
-     }
+     
   }
 
-  if (keyCode == DOWN && formerKey == 's' )
+  if (keyCode == DOWN )
   {  
-     if (key!='#')
-      {  
+  
        if ( keyMode == " phasePattern " || modeStartKeyToFollow == " followDistribueAddLfoPattern "
            || modeStartKeyToFollow == " trigEventWithAbletonSignal " || keyMode == " trigEventWithAbletonSignal "
         )
@@ -194,7 +193,7 @@ void keyReleased()
       key='#'; // to trig only once
     */
        }
-      }
+      
    }
    
    
@@ -235,7 +234,7 @@ void keyReleased()
 
 
     /*
-      if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
+      if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " ) // synchro sample movement with measure
      {
     if (keyCode == UP){
      
@@ -258,9 +257,6 @@ void keyReleased()
 
       
     
-   
- 
- 
 
   // Choose TimeSpace of Sampling with Sculdy Sampling Method
 
@@ -337,10 +333,6 @@ void keyReleased()
 
  // handleKeyPressToChoosemodeCircularementOrNot();
 
-  if (formerKeyMetro == 'à') {  
-    println ("Frequencie adatped to PENDULAR way WITH OTHER PATTERN trigged with à");
-    //  pendularOtherPattern ();
-  }
 
   //*********************************************CIRCULAR
   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )   
@@ -378,8 +370,11 @@ void keyReleased()
        
        }
     }
+      
   // key= '#';
-  }   
+  } 
+   key = '#';
+   keyCode = 0;  
 }
 
 
