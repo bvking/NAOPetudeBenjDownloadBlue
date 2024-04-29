@@ -35,8 +35,8 @@ void keyReleased()
               }
              }
           
-         
-           phaseDirectToMotor(); // better s and d  
+           phaseDirectFromSeq();
+           //phaseDirectToMotor(); // better s and d  
 
           if (keyCode == CONTROL)
           {

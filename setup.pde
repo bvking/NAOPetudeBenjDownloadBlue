@@ -11,18 +11,19 @@ size(600, 600, P3D);
  windowRatio(300, 300);
 } 
 */
-/*
+
 boolean systemForBigMachine=false;
 int networkSize = 6;
 int numberOfStep = 6400;
-*/
+
 int frameTrigger;
 int recallLastPatternInstrument;
 
+/*
 boolean systemForBigMachine=true;
 int networkSize = 10;
 int numberOfStep = 3200;  //attention avec big Machine
-
+*/
 
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];

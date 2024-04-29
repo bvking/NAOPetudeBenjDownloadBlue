@@ -254,8 +254,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             }
             }
         }
-        instrumentChanged = false;       
+
+        // instrumentChanged = false;
+
         enablingParametersChangesToLive = false;
+        
         // secondTouchedTimeStarter = millis(); 
     }
     

@@ -39,11 +39,20 @@ void phaseDirectFromSeq() // mixed Com
                          positionFromMotorPhase[4]+positionFromMotorPhase[5]+positionFromMotorPhase[6]+positionFromMotorPhase[7]+
                          positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
                 */
+                if (networkSize==10)
+                 {
 
                         realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
                          dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
                          dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+                  }
                 
+                if (networkSize==6)
+                 {
+
+                        realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                         dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
+                  }
 
              realign[i]%=numberOfStep;
                
@@ -92,9 +101,18 @@ void phaseDirectFromSeq() // mixed Com
                          positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
                          */
 
-               realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                if (networkSize==10)
+                {
+                         realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
                          dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
                          dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
+                }
+                
+                if (networkSize==6)
+                {
+                        realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
+                        dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
+                }
 
                realign[i]%=numberOfStep;
 
