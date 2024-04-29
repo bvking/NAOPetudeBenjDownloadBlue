@@ -81,27 +81,26 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
         rotate( -PI / 2);
         if (!systemForBigMachine) 
-         {    
-        text("VIRT " + slider[i] + "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " GapM " +  gapEncoder_Motor[i] + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
-            " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
-            "lfo2 " + shapeLfoMode , -1000, +1200 - (i * 75));
+         { 
+         //   "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] + 
+        text( "GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
+              " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
+              "lfo2 " + shapeLfoMode , -1000, +1200 - (i * 75));
            } 
         rotate(PI / 2);
-
-        
-        if (velocityBis[i] >   250)  // to change phasePattern
+   
+        if (velocityBis[i] >   250 &&   millis()>timeEnablingChangesParameter[patternFromInstrument]+30)  // to change phasePattern
          { 
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
 
-             timeEnablingChangesParameter[patternFromInstrument]=millis();
+         //   timeEnablingChangesParameter[patternFromInstrument]=millis();
+            enablingChangeToLive[patternFromInstrument]=true;
 
-             enablingChangeToLive[patternFromInstrument]=true;
+        
 
-             secondTouchedTimeStarter=millis();
-
-              enablingParametersChangesToLive = true;
+            enablingParametersChangesToLive = true;
 
                 if (formerPatternFromInstrument != patternFromInstrument)
              {
@@ -109,7 +108,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 instrumentToMute[patternFromInstrument] = false;
                 
              } 
-             else   if (formerPatternFromInstrument == patternFromInstrument)
+             else  if (formerPatternFromInstrument == patternFromInstrument)
              {
                 instrumentChanged = false;        
             
@@ -204,6 +203,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        //  frameTrigger=frameCount;
          key = 'ç';
          phaseDirectToMotor();
+         noLoop();
      
         recallLastPatternInstrument=patternFromInstrument;
         phaseDirectFromSeq();
@@ -253,12 +253,15 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                     text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);                        
             }
             }
+             timeEnablingChangesParameter[patternFromInstrument]=millis();
         }
 
         // instrumentChanged = false;
 
+       
+
         enablingParametersChangesToLive = false;
-        
+
         // secondTouchedTimeStarter = millis(); 
     }
     

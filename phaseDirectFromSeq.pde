@@ -34,11 +34,6 @@ void phaseDirectFromSeq() // mixed Com
             
             for (int i = 0; i < networkSize; i++)
             {
-                /*
-                         realign[i] = (positionFromMotorPhase[0]+positionFromMotorPhase[1]+positionFromMotorPhase[2]+positionFromMotorPhase[3]+
-                         positionFromMotorPhase[4]+positionFromMotorPhase[5]+positionFromMotorPhase[6]+positionFromMotorPhase[7]+
-                         positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
-                */
                 if (networkSize==10)
                  {
 
@@ -95,12 +90,6 @@ void phaseDirectFromSeq() // mixed Com
             text(" LOWER  POSITION" + higerPostion, 100, 300);
             higerPostion = false;
             for (int i = 0; i < networkSize; i++) {
-               /* 
-             realign[i] = (positionFromMotorPhase[0]+positionFromMotorPhase[1]+positionFromMotorPhase[2]+positionFromMotorPhase[3]+
-                         positionFromMotorPhase[4]+positionFromMotorPhase[5]+positionFromMotorPhase[6]+positionFromMotorPhase[7]+
-                         positionFromMotorPhase[8]+positionFromMotorPhase[9])/(networkSize-1);
-                         */
-
                 if (networkSize==10)
                 {
                          realign[i] = (dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
