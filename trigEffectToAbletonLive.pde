@@ -19,6 +19,7 @@ int[] dataMapped = new int[networkSize];
 int[] timeDisablingChangesParameter = new int[networkSize];
 int instrumentTouched; 
 boolean enablingRecordFromAndToInstru;
+boolean enablingRecallFromAndToInstru;
 String modeOfControlDr = " virtual ";
 
 
@@ -154,16 +155,29 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             //  frameTrigger=frameCount;
             key = 'ç';
             phaseDirectToMotor();
-            // noLoop();
+
+                    for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+                { 
+                   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
+                   text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                    
+                }
+        
+
+           
             
             recallLastPatternInstrument = patternFromInstrument;
+            enablingRecallFromAndToInstru = true;
             phaseDirectFromSeq();
+        
+            enablingRecallFromAndToInstru = false;
+
             // enablingChangeSound[patternFromInstrument] = false;
-            recallLastPatternInstrument = 1000;
+            // recallLastPatternInstrument = 1000;
             
             enablingChangeSound[patternFromInstrument] = false;
             
-    }
+        }
         
         
         if (velocityBis[i] <-  1250) // && enablingParametersChangesToLive == true 
@@ -191,7 +205,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (enablingParametersChangesToLive == true && instrumentChanged == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
             
         {
-            recallLastPatternInstrument = 1000;
+           // recallLastPatternInstrument = 1000;
             //  frameTrigger=frameCount;
             //  phaseDirectFromSeq();
             
@@ -229,7 +243,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             {  
                for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
-                   recordPositionsFromInstrument[k][j] = positionFromMotorPhase[k]; 
+                   //recordPositionsFromInstrument[k][j] = positionFromMotorPhase[k]; 
                    text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);           
                     
                 }
@@ -260,13 +274,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             //key = '#' ;
     }
         
-} 
+ } 
     
     /*
     if (midPos[i] ==  true)
     { 
     //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
-}
+     }
     //   key = '#';
     */
     
