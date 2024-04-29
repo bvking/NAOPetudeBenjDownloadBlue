@@ -16,6 +16,7 @@ int[] gapEncoder_Motor = new int[networkSize];
 int[] gapEncoder_OldEncodeur = new int[networkSize];
 int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
 int[] dataMapped = new int[networkSize];
+int[] timeDisablingChangesParameter = new int[networkSize];
 int instrumentTouched; 
 String modeOfControlDr = " virtual ";
 
@@ -88,6 +89,42 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
               "lfo2 " + shapeLfoMode , -1000, +1200 - (i * 75));
            } 
         rotate(PI / 2);
+
+        if (velocityBis[i] >  200 && velocityBis[i] <  250 )  // to change phasePattern
+         { 
+
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+    
+         timeDisablingChangesParameter[patternFromInstrument]=millis();
+        
+         }
+
+        if (velocityBis[i] >  250 )  // to change phasePattern
+         { 
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+    
+         timeEnablingChangesParameter[patternFromInstrument]=millis();
+        
+         }
+
+
+        if (timeEnablingChangesParameter[patternFromInstrument]>(timeDisablingChangesParameter[patternFromInstrument])
+           && timeEnablingChangesParameter[patternFromInstrument]+20<= millis())
+        { 
+          enablingChangeToLive[patternFromInstrument]=true;
+        }
+
+
+        if (timeEnablingChangesParameter[patternFromInstrument]+30<= millis())
+         {
+              enablingChangeToLive[patternFromInstrument]=false;
+         }
+
+
+        
+/*¨
    
         if (velocityBis[i] >   250 &&   millis()>timeEnablingChangesParameter[patternFromInstrument]+30)  // to change phasePattern
          { 
@@ -97,8 +134,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
          //   timeEnablingChangesParameter[patternFromInstrument]=millis();
             enablingChangeToLive[patternFromInstrument]=true;
-
-        
 
             enablingParametersChangesToLive = true;
 
@@ -115,12 +150,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                // enablingChangeSound[patternFromInstrument] = true;
              }
          }
-        
-         if (timeEnablingChangesParameter[patternFromInstrument]+20 <= millis())
-         { 
-          enablingParametersChangesToLive = false;
-         }
-         
+*/
+           
 
         //velocityBis[i] >   250 && 
         if (enablingParametersChangesToLive == true && enablingChangeToLive[patternFromInstrument]==true ) // && enablingParametersChangesToLive == true 
@@ -129,17 +160,17 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             /*
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-           */
+            */
             
              if (formerPatternFromInstrument != patternFromInstrument)
              {
-              //  instrumentChanged = true;
+                instrumentChanged = true;
                 instrumentToMute[patternFromInstrument] = false;
                 
              } 
              else   if (formerPatternFromInstrument == patternFromInstrument)
              {
-             //   instrumentChanged = false;        
+                instrumentChanged = false;        
             
                // enablingChangeSound[patternFromInstrument] = true;
              }
@@ -219,8 +250,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          recallLastPatternInstrument=1000;
        //  frameTrigger=frameCount;
        //  phaseDirectFromSeq();
-       
-       
+        
         background(50);
         key = 'e';
         phaseDirectFromSeq();
@@ -264,6 +294,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         // secondTouchedTimeStarter = millis(); 
     }
+       if (timeEnablingChangesParameter[patternFromInstrument]+20 <= millis())
+         { 
+          enablingParametersChangesToLive = false;
+        //  enablingChangeSound[patternFromInstrument]=false;
+         }
     
     if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
         { 
