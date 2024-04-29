@@ -18,6 +18,7 @@ int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in pha
 int[] dataMapped = new int[networkSize];
 int[] timeDisablingChangesParameter = new int[networkSize];
 int instrumentTouched; 
+boolean enablingRecordFromAndToInstru;
 String modeOfControlDr = " virtual ";
 
 
@@ -127,43 +128,43 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (formerPatternFromInstrument != patternFromInstrument)
         {
             instrumentChanged = true;
-           // instrumentToMute[patternFromInstrument] = false;
+            // instrumentToMute[patternFromInstrument] = false;
             
         } 
         else  if (formerPatternFromInstrument == patternFromInstrument)
-        {
-            instrumentChanged = false;                 
+            {
+                instrumentChanged = false;                 
                 // enablingChangeSound[patternFromInstrument] = true;
-        }
+            }
         
         //********
         
-        if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true ) // && enablingParametersChangesToLive == true 
+        if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
         { 
             enablingChangeSound[patternFromInstrument] = true;
-              
+            
         } 
         
-             
+        
         //velocityBis[i] >   250 && 
         if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
-        
+            
         {  
+            
+            //  frameTrigger=frameCount;
+            key = 'ç';
+            phaseDirectToMotor();
+            // noLoop();
+            
+            recallLastPatternInstrument = patternFromInstrument;
+            phaseDirectFromSeq();
+            // enablingChangeSound[patternFromInstrument] = false;
+            recallLastPatternInstrument = 1000;
+            
+            enablingChangeSound[patternFromInstrument] = false;
+            
+    }
         
-        //  frameTrigger=frameCount;
-        key = 'ç';
-        phaseDirectToMotor();
-        // noLoop();
-        
-        recallLastPatternInstrument = patternFromInstrument;
-        phaseDirectFromSeq();
-        // enablingChangeSound[patternFromInstrument] = false;
-        recallLastPatternInstrument = 1000;
-
-        enablingChangeSound[patternFromInstrument] = false;
-        
-       }
-  
         
         if (velocityBis[i] <-  1250) // && enablingParametersChangesToLive == true 
         {  
@@ -185,84 +186,87 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             */
             
         }
-    
-     
+        
+        
         if (enablingParametersChangesToLive == true && instrumentChanged == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
-        
-       {
-        recallLastPatternInstrument = 1000;
-        //  frameTrigger=frameCount;
-        //  phaseDirectFromSeq();
-        
-        background(50);
-        key = 'e';
-        phaseDirectFromSeq();
-        //keyCode = '0';
-        
-        
-        textSize(150);           
-        numberOfTrig[patternFromInstrument] += 1;
-        numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
-        
-        if (numberOfTrig[patternFromInstrument] == 17)
-        { 
-            numberOfTrig[patternFromInstrument] = 8;
-        }
-        text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
-       
-        enablingParametersChangesToLive = false;
-        enablingChangeSound[patternFromInstrument] = false; 
-       
-        enablingChangeSoundB[patternFromInstrument] = true; 
-      
-        }
-    
-
-        if ( enablingChangeSoundB[patternFromInstrument] == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
-        {  
-         textSize(30);  
-         // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
-         for (int k = 0; k < networkSize; k++)
-         {   
-         for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
-         { 
-         recordPositionsFromInstrument[k][j] = positionFromMotorPhase[k]; 
-          text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][j] + " enaSound " + (networkSize-1-instrumentTouched) + " " + enablingChangeSoundB[networkSize-1-instrumentTouched], 700*0, k*30);           
-    
-        }
-        }
-        enablingChangeSoundB[patternFromInstrument] = false;
-        timeEnablingChangesParameter[patternFromInstrument] = millis();
-        }
             
-
-    if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
+        {
+            recallLastPatternInstrument = 1000;
+            //  frameTrigger=frameCount;
+            //  phaseDirectFromSeq();
+            
+            background(50);
+            key = 'e';
+            phaseDirectFromSeq();
+            //keyCode = '0';
+            
+            
+            textSize(150);           
+            numberOfTrig[patternFromInstrument] += 1;
+            numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
+            
+            if (numberOfTrig[patternFromInstrument] == 17)
+            { 
+                numberOfTrig[patternFromInstrument] = 8;
+            }
+            text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+            
+            enablingParametersChangesToLive = false;
+            enablingRecordFromAndToInstru = true;
+            
+            
+            enablingChangeSound[patternFromInstrument] = false; 
+            enablingChangeSoundB[patternFromInstrument] = true; 
+            
+        }
+        
+        
+        if ( enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
+        {  
+            textSize(30);  
+            // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
+            for(int k = 0; k < networkSize; k++)
+            {  
+               for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+                { 
+                   recordPositionsFromInstrument[k][j] = positionFromMotorPhase[k]; 
+                   text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);           
+                    
+                }
+            }
+            enablingRecordFromAndToInstru = false;
+            enablingChangeSoundB[patternFromInstrument] = false;
+            timeEnablingChangesParameter[patternFromInstrument] = millis();
+        }
+        
+        
+        if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
         { 
-
-       // enablingParametersChangesToLive = false;
-        //  enablingChangeSound[patternFromInstrument]=false;
-    }
-    
-    if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
+            
+            // enablingParametersChangesToLive = false;
+            //  enablingChangeSound[patternFromInstrument]=false;
+        }
+        
+        if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
         { 
-        text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
-       // enablingParametersChangesToLive = false;
-        // key = '#';  
-        //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
+            text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
+            // enablingParametersChangesToLive = false;
+            // key = '#';  
+            //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
+        }
+        
+        if (enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
+        { 
+            //key = '#' ;
     }
-    
-    if (enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
-    { 
-        //key = '#' ;
-     }
-
-     } 
+        
+} 
     
     /*
     if (midPos[i] ==  true)
     { 
     //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
-    }
+}
     //   key = '#';
     */
     

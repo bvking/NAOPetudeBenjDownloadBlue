@@ -222,7 +222,7 @@ void phaseDirectFromSeq() // mixed Com
     
    if ( music_from_ableton_live == " controlDr ")
     { 
-      if (enablingChangeSound[patternFromInstrument] == true &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
+      if (enablingParametersChangesToLive == true &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
       {
         for (int i = 0; i < networkSize; i++)
         {   
@@ -235,11 +235,13 @@ void phaseDirectFromSeq() // mixed Com
             
             // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                            // 8 hit <=networkSize+ 2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhaseRecorded[i] =  positionFromMotorPhase[i]+ (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patternFromInstrument]);  
-            positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
-            positionFromMotorPhaseRecorded[i] %=   numberOfStep;     
-            
+            //positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
+            positionFromMotorPhaseRecorded[i] %=   numberOfStep; 
+    
             recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument] = positionFromMotorPhaseRecorded[i];  
+
             //  recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument]%=  numberOfStep; 
+            
             positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
         }
          key = '#';    
