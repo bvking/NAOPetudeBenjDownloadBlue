@@ -222,7 +222,7 @@ void phaseDirectFromSeq() // mixed Com
     
    if ( music_from_ableton_live == " controlDr ")
     { 
-      if (instrumentChanged == false &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
+      if (enablingChangeSound[patternFromInstrument] == true &&  key == 'e' && music_from_ableton_live == " controlDr ") // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
       {
         for (int i = 0; i < networkSize; i++)
         {   
@@ -246,6 +246,7 @@ void phaseDirectFromSeq() // mixed Com
       }
     
     
+    /*
       if (instrumentChanged == false  ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
       {  
          textSize(30);  
@@ -259,7 +260,9 @@ void phaseDirectFromSeq() // mixed Com
     
         }
         }
+        timeEnablingChangesParameter[patternFromInstrument] = millis();
       }
+      */
     
          // DISPLAY PATTERN SAVED with controlDr
       if (keyCode == CONTROL)
