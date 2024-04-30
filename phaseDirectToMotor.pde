@@ -21,7 +21,7 @@ void phaseDirectToMotor() // mixed Com
                //    positionFromMotorPhase[networkSize-1-i]%= positionFromMotorPhase[i] + numberOfStep;    // no meaning    
         }
     }
-}
+    }
     
     if (key == 'k')
         
@@ -30,15 +30,40 @@ void phaseDirectToMotor() // mixed Com
         {
             positionFromMotorPhase[i] += numberOfStep / 4;
         }
-}
-    
+    }
+
+     if (key == 'à')
+    {
+        textSize(300);
+         for (int i = 0; i < networkSize; i++)
+        {
+                /*
+                   if (networkSize==6)
+                 {
+
+                        realign[i] = (positionFromMotorPhase[0]+positionFromMotorPhase[1]+positionFromMotorPhase[2]+positionFromMotorPhase[3]+
+                         positionFromMotorPhase[4]+positionFromMotorPhase[5])/(networkSize-1);
+                  }
+
+                 positionFromMotorPhase[i]=realign[i];
+                 gapBetweenOriginAndAlign=3200-realign[i];
+                 */
+         positionFromMotorPhase[i]=0;
+         phasePatternFollow[i]=0;
+         recordPositionAligned[i][patternFromInstrument]=positionFromMotorPhase[i]=0;
+
+         println (" alignPos" + patternFromInstrument + " recordedPosAligned? " + recordPositionAligned[i][patternFromInstrument]) ;  
+
+        }
+
+     }
     
      if (key == 'ç')
     {
         float[] realign = new float[networkSize];
         if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0]) 
         {    rotate(-PI/2);        
-            text(" HIGER POSITIO " + higerPostion, 100, 200);
+            text(" HIGER POSITIO_FROM_DIRECT " + higerPostion, 100, 200);
             higerPostion = true;
               for (int i = 0; i < networkSize; i++)
             {  
@@ -189,7 +214,7 @@ void phaseDirectToMotor() // mixed Com
     
     
     if (key == 'f')
-    {  key = 's';
+    {   key = 's';
         for(int i = 0; i < networkSize; i++) {
             //  positionFromMotorPhase[i]-= (int)  map ( (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1/16, 0, TWO_PI, 0, numberOfStep);  
            //NOPE positionFromMotorPhase[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 0.1 / 16, 0, TWO_PI, 0, numberOfStep);   

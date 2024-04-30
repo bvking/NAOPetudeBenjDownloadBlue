@@ -28,6 +28,7 @@ int numberOfStep = 3200;  //attention avec big Machine
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
+int[][] recordPositionAligned = new int [networkSize][networkSize];
 int patternFromInstrument = 0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
@@ -297,6 +298,11 @@ if (oscillatorMaster > 0) {
                 return theArray;
             }
             */
+             void showArrayB(boolean[] array) {
+                for (int i = 0; i < array.length; i++)
+                    print(array[i] + "   ");
+                print(" ");
+            }
             
             void showArray(int[] array) {
                 for (int i = 0; i < array.length; i++)
@@ -803,8 +809,7 @@ if (oscillatorMaster > 0) {
             float bpmToSend = 0.0;
             
             //frame where to stop
-            //int framecount = 10040;//4440 //50400à°)-_
-            int framecount = 30040;//4440 //5040  0à°)-_
+            int framecount = 30040;//4440 //5040  
             
             void frameStop() { 
                 if (frameCount % framecount ==  0) { /// choose the in the   frame where you want to stop
@@ -821,7 +826,7 @@ if (oscillatorMaster > 0) {
 void setup() {
 
             numberOfMeasureToRecord=4;      
-            frameRatio = 60;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
+            frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
                 

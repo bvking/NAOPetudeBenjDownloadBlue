@@ -28,7 +28,7 @@ void phaseDirectFromSeq() // mixed Com
         float[] realign = new float[networkSize];
         if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0]) 
         {   textSize(200);         
-            text(" HIGER POSITIO " + higerPostion, 100, 200);
+            text(" HIGER POSITIO FRO_SEQ" + higerPostion, 100, 200);
             higerPostion = true; 
             
             
@@ -55,7 +55,7 @@ void phaseDirectFromSeq() // mixed Com
                 for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
                  //  recordPositionsFromInstrument[i][j] =(int) realign[i]; 
-                   text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                   text(" recFrom_ç_PaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
                     
                 }
                
@@ -207,12 +207,13 @@ void phaseDirectFromSeq() // mixed Com
     
     
     
-    if (frameCount<=frameTrigger+2) // formerPatternFromInstrument != patternFromInstrument && 
+    if (frameCount<=frameTrigger+1) // formerPatternFromInstrument != patternFromInstrument && 
         {  
         background(127);
         // frameTrigger=frameCount;     
         //  instrumentChanged = true;       
-        key = 'ç';
+       // key = 'ç';
+          key = 'à';
         //  phaseDirectFromSeq();
         phaseDirectToMotor();
         textSize(200);
@@ -260,7 +261,7 @@ void phaseDirectFromSeq() // mixed Com
                 { 
                    recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
                    text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                  println (" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ;  
+                   println (" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ;  
  
                 }
         }
@@ -307,7 +308,7 @@ void phaseDirectFromSeq() // mixed Com
         
         // key = 'ç';
         // phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 0;
+        patterFromInstrumentRecorded = 5;
         for (int i = 0; i < networkSize; i++)
             {
             positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
@@ -364,7 +365,7 @@ void phaseDirectFromSeq() // mixed Com
         {
         //key = 'ç';
         //phaseDirectFromSeq();
-        patterFromInstrumentRecorded = 5;
+        patterFromInstrumentRecorded = 0;
         for (int i = 0; i < networkSize; i++)
             {
             positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 

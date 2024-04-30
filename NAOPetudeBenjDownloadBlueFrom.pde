@@ -223,7 +223,10 @@ void draw()
     
     // -------------------------------------     MANAGE CONTROLDR  
     // DISPLAY GAP, trig, ... midPos 
+    print(" enablingChangeSound");
+    showArrayB(enablingChangeSound);
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
+   
     
     // data From serial computed to trig middle position and trig just touched 
     trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
@@ -254,6 +257,11 @@ void draw()
     println("memoryi " + memoryi);
     print(" encoder_due ");
     showArray(dataFromArduinoDue);
+    print(" slider ");
+    showArrayF( slider);
+    print(" velocityBis ");
+    showArrayF( velocityBis);
+
     
     if (encoderTouched[5] ==  true) {
         
@@ -308,7 +316,7 @@ void draw()
     rotate(HALF_PI + PI);
     
     cohesionTrig = int(map(LevelCohesionToSend, 0, 1, 0, 100));
-    println(cohesionTrig);
+    //println(cohesionTrig);
     
     //***** automatise Oscillator Movingwith a former Key
     //*+*+* +* +* +*  arduinoPos(); // // carefull with arduinoPos and function after arduinopos
@@ -351,16 +359,17 @@ void draw()
     textSize(100);
     keyReleased();
     
-    for (int i = 0; i < networkSize; i++)
+    for (int i = 0; i < networkSize-0; i++)
     {
-    Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 254));
-    println ( " slider " + i + " " + slider[i] + " vel " + velocityBis[i]);
+     Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 254));
+   //  print ( " slider " + i + " " + slider[i] + " vel " + velocityBis[i]);
     }
-    //  trigMiddlePositionFromEncodeur();    
-   if (millis()>timeTosendData + 20)
+    println (""); 
+     //  trigMiddlePositionFromEncodeur();    
+    if (millis()>timeTosendData + 20)
     {
          oscSend();
          timeTosendData = millis();
-}
+     }
     //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
 }

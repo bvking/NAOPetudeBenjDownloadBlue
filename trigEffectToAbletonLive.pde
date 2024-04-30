@@ -91,7 +91,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 "lfo2 " + shapeLfoMode , -1000, + 1200 - (i * 75));
         } 
         rotate(PI / 2);
-        
+
+        /*
         if (velocityBis[i] >  200 && velocityBis[i] <  250)  // to change phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
@@ -101,8 +102,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeDisablingChangesParameter[patternFromInstrument] = millis();
             
         }
-        
-        if (velocityBis[i] >  250)  // to change phasePattern
+        */
+        if (velocityBis[i] >  250)  // to change phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
@@ -111,15 +112,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeEnablingChangesParameter[patternFromInstrument] = millis();
             
         }
+    } 
         
-        if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
-            && timeEnablingChangesParameter[patternFromInstrument] + 20<= millis())
+        //if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
+        //    && timeEnablingChangesParameter[patternFromInstrument] + 20<= millis())
+        
+        if (timeEnablingChangesParameter[patternFromInstrument] + 25<= millis())
+
         { 
             enablingChangeToSpecificInstrument[patternFromInstrument] = true;
             enablingParametersChangesToLive = true;
         }
         
-        if (timeEnablingChangesParameter[patternFromInstrument] + 30 <= millis())
+        if (timeEnablingChangesParameter[patternFromInstrument] + 35 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 25)
         {
             enablingChangeToSpecificInstrument[patternFromInstrument] = false;
             enablingParametersChangesToLive = false;
@@ -145,16 +150,21 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             enablingChangeSound[patternFromInstrument] = true;
             
         } 
-        
+    
+
+    
         
         //velocityBis[i] >   250 && 
-        if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
-            
+        if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
         {  
             
-          frameTrigger=frameCount;
-        //    key = 'ç';
-        //    phaseDirectToMotor();
+        //  frameTrigger=frameCount;
+        //  phaseDirectFromSeq();
+         
+           key = 'à';
+           phaseDirectToMotor();
+            for (int i = 0; i < networkSize; i++)
+            {  
             
                     for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
@@ -164,16 +174,17 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
                  //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
 
-                   text(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                  println (" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ; 
+                text(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                 println (" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ; 
                 }
+            }
             
-
-           
-            
+     
             recallLastPatternInstrument = patternFromInstrument;
             enablingRecallFromAndToInstru = true;
             phaseDirectFromSeq();
+             for (int i = 0; i < networkSize; i++)
+            {  
                   for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
                    recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
@@ -185,6 +196,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                    text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
                    println (" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ;  
                 }
+             }
         
             enablingRecallFromAndToInstru = false;
 
@@ -194,6 +206,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             enablingChangeSound[patternFromInstrument] = false;
             
         }
+    
+      for (int i = 0; i < networkSize; i++)
+        {  
         
         
         if (velocityBis[i] <-  1250) // && enablingParametersChangesToLive == true 
@@ -216,6 +231,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             */
             
         }
+      }
         
         
         if (enablingParametersChangesToLive == true && instrumentChanged == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
@@ -288,7 +304,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
         { 
             //key = '#' ;
-    }
+        }
         
  } 
     
@@ -301,7 +317,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     */
     
     
-}
+
 
 void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
 {
