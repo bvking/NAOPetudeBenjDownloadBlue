@@ -1143,7 +1143,7 @@ void setup() {
                  // music_from_ableton_live = " mouvement ";
                    modeOfControlDr = " NoVirtual ";
                    music_from_ableton_live = " Dessine ";
-                  // music_from_ableton_live = " controlDr ";
+                  // music_from_ableton_live = " controlDr ";:
                   //automationForMusicDessine()               
                   keyMode = " trigEventWithAbletonSignal "; 
 
@@ -1162,6 +1162,9 @@ void setup() {
                  // music_from_ableton_live = " pleasureKraft ";  
                  //  music_from_ableton_live = " Dessine ";
                     music_from_ableton_live = " controlDr "; 
+
+                    formerKeyMetro = '*';
+                    modeCircular= true;
 
                     keyMode = " trigEventWithAbletonSignal "; 
 
