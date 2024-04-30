@@ -223,10 +223,7 @@ void draw()
     
     // -------------------------------------     MANAGE CONTROLDR  
     // DISPLAY GAP, trig, ... midPos 
-   
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
-   
-    
     // data From serial computed to trig middle position and trig just touched 
     trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
     //print(" midPos ");
@@ -256,10 +253,7 @@ void draw()
     println("memoryi " + memoryi);
     print(" encoder_due ");
     showArray(dataFromArduinoDue);
-    print(" slider ");
-    showArrayF( slider);
-    print(" velocityBis ");
-    showArrayF( velocityBis);
+ 
 
     
     if (encoderTouched[5] ==  true) {

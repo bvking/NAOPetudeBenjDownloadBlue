@@ -113,7 +113,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         }
 
-    } 
+      }
+         print(" " + patternFromInstrument +  " slider ");
+         showArrayF( slider);
+         print(" velocityBis ");
+         showArrayF( velocityBis); 
         
         if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
             && timeEnablingChangesParameter[patternFromInstrument] + 20<= millis())
@@ -149,6 +153,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
         { 
             enablingChangeSound[patternFromInstrument] = true;
+            print (" enablingChangeSound ");
+            showArrayB (enablingChangeSound);
             
         } 
     
@@ -169,11 +175,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
                     for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
-                   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
+                //   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
           //         recordPositionsFromInstrument[i][j] = 0; 
                   
 
                  //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
+
+                 positionFromMotorPhase[i] =  recordPositionAligned[i][patternFromInstrument];
 
                 text(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
                  println (" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ; 
@@ -188,7 +196,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             {  
                   for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
-                   recordPositionsFromInstrument[i][j] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; 
+                 //  recordPositionsFromInstrument[i][j] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; 
           //         recordPositionsFromInstrument[i][j] = 0; 
                   
 
