@@ -223,8 +223,7 @@ void draw()
     
     // -------------------------------------     MANAGE CONTROLDR  
     // DISPLAY GAP, trig, ... midPos 
-    print(" enablingChangeSound");
-    showArrayB(enablingChangeSound);
+   
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
    
     

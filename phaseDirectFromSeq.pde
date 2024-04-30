@@ -248,7 +248,8 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] =  positionFromMotorPhase[i]+ (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patternFromInstrument]);  
             positionFromMotorPhase[i] %=   numberOfStep; 
             //positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
-            recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument]= positionFromMotorPhaseRecorded[i];
+
+            recordPositionsFromInstrument[i][patternFromInstrument]= positionFromMotorPhase[i];
           
     
             //recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument] = positionFromMotorPhaseRecorded[i];  

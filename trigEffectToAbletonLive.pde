@@ -92,7 +92,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         } 
         rotate(PI / 2);
 
-        /*
+        
         if (velocityBis[i] >  200 && velocityBis[i] <  250)  // to change phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
@@ -102,7 +102,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeDisablingChangesParameter[patternFromInstrument] = millis();
             
         }
-        */
+        
         if (velocityBis[i] >  250)  // to change phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
@@ -112,12 +112,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeEnablingChangesParameter[patternFromInstrument] = millis();
             
         }
+
     } 
         
-        //if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
-        //    && timeEnablingChangesParameter[patternFromInstrument] + 20<= millis())
+        if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
+            && timeEnablingChangesParameter[patternFromInstrument] + 20<= millis())
         
-        if (timeEnablingChangesParameter[patternFromInstrument] + 25<= millis())
+       // if (timeEnablingChangesParameter[patternFromInstrument] + 25<= millis())
 
         { 
             enablingChangeToSpecificInstrument[patternFromInstrument] = true;
@@ -187,7 +188,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             {  
                   for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
-                   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
+                   recordPositionsFromInstrument[i][j] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; 
           //         recordPositionsFromInstrument[i][j] = 0; 
                   
 
@@ -202,6 +203,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
             // enablingChangeSound[patternFromInstrument] = false;
             // recallLastPatternInstrument = 1000;
+             print(" enablingChangeSound");
+             showArrayB(enablingChangeSound);
             
             enablingChangeSound[patternFromInstrument] = false;
             
