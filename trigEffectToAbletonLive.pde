@@ -152,23 +152,39 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         {  
             
-            //  frameTrigger=frameCount;
-            key = 'ç';
-            phaseDirectToMotor();
-
+          frameTrigger=frameCount;
+        //    key = 'ç';
+        //    phaseDirectToMotor();
+            
                     for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
                    recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
-                   text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                    
+          //         recordPositionsFromInstrument[i][j] = 0; 
+                  
+
+                 //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
+
+                   text(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                  println (" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ; 
                 }
-        
+            
 
            
             
             recallLastPatternInstrument = patternFromInstrument;
             enablingRecallFromAndToInstru = true;
             phaseDirectFromSeq();
+                  for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+                { 
+                   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
+          //         recordPositionsFromInstrument[i][j] = 0; 
+                  
+
+                 //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
+
+                   text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                   println (" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ;  
+                }
         
             enablingRecallFromAndToInstru = false;
 

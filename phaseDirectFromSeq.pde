@@ -49,7 +49,15 @@ void phaseDirectFromSeq() // mixed Com
                          dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5])/(networkSize-1);
                   }
 
+
              realign[i]%=numberOfStep;
+
+                for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+                { 
+                 //  recordPositionsFromInstrument[i][j] =(int) realign[i]; 
+                   text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                    
+                }
                
                 
               //  realign[i]= positionFromMotorPhase[i]-(int) realign[9];
@@ -232,11 +240,15 @@ void phaseDirectFromSeq() // mixed Com
             ratioNumberOfStepCorraletedFromInstrument[3] = 8;
             ratioNumberOfStepCorraletedFromInstrument[4] = 12;
             ratioNumberOfStepCorraletedFromInstrument[5] = 16;
-            
+
+           
+              positionFromMotorPhase[i] += recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
             // 6 HIT  si number of rot=1 -->  42 HIT si umber of rot=7 car 6*7 .                                                            // 8 hit <=networkSize+ 2. Donc 8 hoit avec numberOfRot 8 = 64 hit
             positionFromMotorPhase[i] =  positionFromMotorPhase[i]+ (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patternFromInstrument]);  
-            //positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
             positionFromMotorPhase[i] %=   numberOfStep; 
+            //positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
+            recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument]= positionFromMotorPhaseRecorded[i];
+          
     
             //recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument] = positionFromMotorPhaseRecorded[i];  
 
@@ -248,7 +260,8 @@ void phaseDirectFromSeq() // mixed Com
                 { 
                    recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
                    text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                    
+                  println (" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ;  
+ 
                 }
         }
          key = '#';    
