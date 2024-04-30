@@ -95,9 +95,6 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       TrigmodPos[i]=0;
       trigSound[i]=1;
 
-      //**    memoryi=i;
-
-
       decompte[i] = -1; // // RESET COUNTER AT 0 (i know it's strange, otherwise with 0 it begin at 1, not 0)
     } else { // if you do twice there is a funny bug
     }
