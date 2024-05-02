@@ -35,7 +35,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
         if (modeOfControlDr == " virtual ")
         { 
-            encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
+          //  encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
         } 
         
         encoderTouched[i] =  false;
@@ -103,7 +103,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         }
         
-        if (velocityBis[i] >  250)  // to change phasePattern 250
+        if (velocityBis[i] >  250 && velocityBis[i] <  350  )  // to change phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
@@ -113,27 +113,45 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         }
 
+            if (velocityBis[i] > 350  )  // to change phasePattern 250
+        {
+            formerPatternFromInstrument = patternFromInstrument; 
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            
+             timeDisablingChangesParameter[patternFromInstrument] = millis();
+            
+        }
+
+
+
       }
          print(" " + patternFromInstrument +  " slider ");
          showArrayF( slider);
          print(" velocityBis ");
          showArrayF( velocityBis); 
         
-        if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
-            && timeEnablingChangesParameter[patternFromInstrument] + 20<= millis())
+       // if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
+       //     && timeEnablingChangesParameter[patternFromInstrument] + 20< millis())
         
-       // if (timeEnablingChangesParameter[patternFromInstrument] + 25<= millis())
-
+        if (timeEnablingChangesParameter[patternFromInstrument] + 25<= millis())
         { 
             enablingChangeToSpecificInstrument[patternFromInstrument] = true;
             enablingParametersChangesToLive = true;
         }
         
-        if (timeEnablingChangesParameter[patternFromInstrument] + 35 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 25)
+        if (timeEnablingChangesParameter[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 25  )
         {
             enablingChangeToSpecificInstrument[patternFromInstrument] = false;
             enablingParametersChangesToLive = false;
         }
+
+        if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument])
+             {
+            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+            enablingParametersChangesToLive = false;
+        }
+
         
         
         if (formerPatternFromInstrument != patternFromInstrument)
@@ -158,9 +176,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         } 
     
-
     
-        
         //velocityBis[i] >   250 && 
         if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
         {  
@@ -188,7 +204,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 }
             }
             
-     
             recallLastPatternInstrument = patternFromInstrument;
             enablingRecallFromAndToInstru = true;
             phaseDirectFromSeq();

@@ -533,7 +533,7 @@ void frameResolution() {
 
   //***********CONTROL FRAME RATIO SPEED
   if (key == '+') {
-    frameRatio=120;
+    frameRatio=60;
     frameRate(frameRatio);
     println ("MAXIMMMMMMMMMMUMMMMMMM");
     text((frameRatio), -width/2, -height );
