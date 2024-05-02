@@ -59,7 +59,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
-        oldOldVelocityBis[i]  =  oldVelocityBis[i]; // to use to disciminate variation of speed
+        oldOldVelocityBis[i] = (int) oldVelocityBis[i]; // to use to disciminate variation of speed
         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
         
         //*********** COMPUTE SPEED of encoder
@@ -101,10 +101,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text    (" GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text    (" GAP " + velocityBis[i] + " OLD " + oldVelocityBis[i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
-                 " lfo2 " + shapeLfoMode , -1000, + 1200 - (i * 75));
+                 " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
         } 
         rotate(PI / 2);
         
