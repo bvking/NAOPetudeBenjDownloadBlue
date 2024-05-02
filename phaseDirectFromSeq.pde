@@ -1,5 +1,4 @@
 int recallPositionFromInstrument;
-int formerPatternFromInstrument;
 boolean instrumentChangedToAddPulse = false;
 
 
@@ -320,7 +319,7 @@ void phaseDirectFromSeq() // mixed Com
                         positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //   positionFromMotorPhase[i] + 
                         
                         println("recall 0 " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                        noLoop();
+                      //  noLoop();
                         
                     } 
                     
@@ -385,7 +384,7 @@ void phaseDirectFromSeq() // mixed Com
                         positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
                         println(" recall 5 " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
                     }
-                    noLoop(); 
+                   // noLoop(); 
                 }
                 recallLastPatternInstrument = 1000;
             } 

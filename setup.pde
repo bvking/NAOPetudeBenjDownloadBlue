@@ -30,6 +30,7 @@ int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
 int[][] recordPositionAligned = new int [networkSize][networkSize];
 int patternFromInstrument = 0;
+int patternFromInstrumentWithNegativeSpeed = 0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
@@ -826,7 +827,7 @@ if (oscillatorMaster > 0) {
 void setup() {
 
             numberOfMeasureToRecord=4;      
-            frameRatio = 60;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
+            frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8
             frameRate(frameRatio); //57 frame pour 1 tour. // joure avec G et g et cf le p
                 
                 

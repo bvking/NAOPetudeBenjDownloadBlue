@@ -22,6 +22,17 @@ boolean enablingRecordFromAndToInstru;
 boolean enablingRecallFromAndToInstru;
 String modeOfControlDr = " virtual ";
 
+int formerPatternFromInstrument;
+int formerPatternFromInstrumentWithNegativeSpeed;
+
+int  instrumentTouchedWithNegativeSpeed;
+int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
+int[]  timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
+boolean instrumentChangedToAddPulseWithNegativeSpeed;
+boolean enablingParametersChangesToLiveWithNegativeSpeed;
+boolean[]  enablingChangeToSpecificInstrumentWithNegativeSpeed = new boolean[networkSize];
+int thresholdToDiscriminateNegativeSpeed;
+
 
 boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
 
@@ -82,14 +93,15 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
         
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
-    
+        
         rotate( -PI / 2);
         if (!systemForBigMachine) 
         { 
-            // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] + 
-            text("GAPE " + velocityBis[i] + " acc " + accelerationBis[i] + " " + i + " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
-                " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
-                "lfo2 " + shapeLfoMode , -1000, + 1200 - (i * 75));
+            // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
+        text    (" GAP " + velocityBis[i] + " OLD " + oldVelocityBis[i] + " " + i + " Ro " + numberOfRota[i] + " M " + instrumentToMute[i] + 
+                 " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
+                 " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
+                 " lfo2 " + shapeLfoMode , -1000, + 1200 - (i * 75));
         } 
         rotate(PI / 2);
         
@@ -121,7 +133,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeDisablingChangesParameter[patternFromInstrument] = millis();          
         }     
     }
-
+    
     
     //  enablingChangeToSpecificInstrument with POSITIVE SPEED DISCRIMINATION
     if (timeEnablingChangesParameter[patternFromInstrument] + 25 <= millis())
@@ -142,27 +154,101 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingParametersChangesToLive = false;
     }
     
- 
+    
     if (formerPatternFromInstrument != patternFromInstrument)
         {
         instrumentChangedToAddPulse = true;
-        // instrumentToMute[patternFromInstrument] = false;
-        
+        // instrumentToMute[patternFromInstrument] = false;      
     } 
     else  if (formerPatternFromInstrument == patternFromInstrument)
         {
-        instrumentChangedToAddPulse = false;                 
+            instrumentChangedToAddPulse = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
+        }
+    
+    //---------------------------------------------------------------------------------------------
+    // DISCRIMINATE INSTRUMENT TOUCHED with NEGATIVE SPEED
+    thresholdToDiscriminateNegativeSpeed = 0;
+   
+
+    for (int i = 0; i < networkSize; i++)
+    { 
+         println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i] );
+        
+         if (velocityBis[i] <  - 200 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
+        {
+            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
+            instrumentTouchedWithNegativeSpeed = i;
+            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
+            
+            timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
+        }
+    
+        
+        if (velocityBis[i] <  -5 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] > - 250 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
+        {
+            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
+            instrumentTouchedWithNegativeSpeed = i;
+            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
+            
+            timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
+        }
+    
+       /* 
+        if (velocityBis[i] < -250 + thresholdToDiscriminateNegativeSpeed )  // to DISABLEchange phasePattern
+        {
+            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
+            instrumentTouchedWithNegativeSpeed = i;
+            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
+            
+            timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
+        }
+        */
+        
+        
+        
+        //  enablingChangeToSpecificInstrument with NEGATIVE SPEED DISCRIMINATION
+        if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] + 25 <= millis())
+        { 
+            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
+            enablingParametersChangesToLiveWithNegativeSpeed = true;
+        }
+        
+        if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed]> 25)
+        {
+            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+            enablingParametersChangesToLiveWithNegativeSpeed = false;
+        }
+        
+        if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] > timeDisablingChangesParameter[patternFromInstrumentWithNegativeSpeed])
+        {
+            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+            enablingParametersChangesToLiveWithNegativeSpeed = false;
+        }
     }
     
-    //********
-
-        print(" " + patternFromInstrument +  " slider ");
-        showArrayF(slider);
-        print(" velocityBis ");
-        showArrayF(velocityBis); 
+    if (formerPatternFromInstrumentWithNegativeSpeed != patternFromInstrumentWithNegativeSpeed)
+    {
+        instrumentChangedToAddPulseWithNegativeSpeed = true;
+        // instrumentToMute[patternFromInstrument] = false;      
+    } 
+    else  if (formerPatternFromInstrument == patternFromInstrument)
+        {
+            instrumentChangedToAddPulseWithNegativeSpeed = false;                 
+            // enablingChangeSound[patternFromInstrument] = true;
+        }
     
-     //********
+    
+    
+    
+    //********
+    
+    print(" " + patternFromInstrument +  " slider ");
+    showArrayF(slider);
+    print(" velocityBis ");
+    showArrayF(velocityBis); 
+    
+    //********
     
     if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
         { 
@@ -253,22 +339,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             */
             
         }
-}
+} 
     
-    
+    // ADD PULSE WITH POSITIVE DISCIMINATION
     if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
         
         {
-        // recallLastPatternInstrument = 1000;
-        //  frameTrigger=frameCount;
-        //  phaseDirectFromSeq();
-        
         background(50);
         key = 'e';
         phaseDirectFromSeq();
-        //keyCode = '0';
-        
-        
+        //keyCode = '0'; 
         textSize(150);           
         numberOfTrig[patternFromInstrument] += 1;
         numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
@@ -282,13 +362,51 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingParametersChangesToLive = false;
         enablingRecordFromAndToInstru = true;
         
-        
         enablingChangeSound[patternFromInstrument] = false; 
-        enablingChangeSoundB[patternFromInstrument] = true; 
+        enablingChangeSoundB[patternFromInstrument] = true;       
+    }
+    
+    // ADD PULSE WITH NEGATIVE DISCIMINATION
+    
+    if (enablingParametersChangesToLiveWithNegativeSpeed == true && instrumentChangedToAddPulseWithNegativeSpeed == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
         
+        {
+    
+        //keyCode = '0'; 
+        textSize(150);           
+        numberOfRota[patternFromInstrument] += 1;
+        numberOfRota[networkSize - 1 - instrumentTouched] %= 18;
+        
+        if (numberOfRota[patternFromInstrumentWithNegativeSpeed] == 17)
+        { 
+            numberOfRota[patternFromInstrumentWithNegativeSpeed] = 8;
+        }
+        
+        if (numberOfRota[patternFromInstrument] % 2 == 0)
+        { 
+            instrumentToMute[patternFromInstrument] = false;
+        }
+        
+        if (numberOfRota[patternFromInstrument] % 2 == 1)
+        { 
+            instrumentToMute[patternFromInstrument] = true;
+        }
+        
+        
+        // text("               changeMUTE " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+        
+        enablingParametersChangesToLiveWithNegativeSpeed = false;
+        // enablingRecordFromAndToInstru = true;
+        
+        // enablingChangeSound[patternFromInstrument] = false; 
+        //enablingChangeSoundB[patternFromInstrument] = true;       
     }
     
     
+    
+    
+    
+    //USELESS ? 
     if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
         {  
         textSize(30);  
