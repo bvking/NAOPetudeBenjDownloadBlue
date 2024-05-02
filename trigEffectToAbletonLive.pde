@@ -93,15 +93,14 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }     
         if (encoderTouched[i] ==  true)
         {       
-        }
-        
+        }   
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
         
         rotate( -PI / 2);
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text    (" GAP " + velocityBis[i] + " OLD " + oldVelocityBis[i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text    (" GAP " + velocityBis[i] + " OLD " + oldVelocityBis[i] + " olDD " + oldOldVelocityBis[i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
@@ -176,7 +175,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
     for (int i = 0; i < networkSize; i++)
     { 
-         println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i] );
+         println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i]  +  " old "+  oldOldVelocityBis[i] );
         /*
          if (velocityBis[i] <  - 200 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
         {
@@ -189,21 +188,21 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         */
     
         
-        if (velocityBis[i] <  -0 + thresholdToDiscriminateNegativeSpeed && oldVelocityBis[i] > -50 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
+        if (velocityBis[i] <  -0 + thresholdToDiscriminateNegativeSpeed && oldVelocityBis[i] > 0 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
             instrumentTouchedWithNegativeSpeed = i;
             patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
             
             timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis(); 
-             instrumentToMute[patternFromInstrument] =true;     
+            instrumentToMute[patternFromInstrument] =true;     
 
             enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
             enablingParametersChangesToLiveWithNegativeSpeed = true;    
         }
     
        
-        if (oldVelocityBis[i] < -velocityBis[i] &&   velocityBis[i] <  -0  )  // to DISABLEchange phasePattern // && velocityBis[i] < -10 + thresholdToDiscriminateNegativeSpeed
+        if (oldVelocityBis[i] < -50 &&   velocityBis[i] >  0 )  // to DISABLEchange phasePattern // && velocityBis[i] < -10 + thresholdToDiscriminateNegativeSpeed
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
             instrumentTouchedWithNegativeSpeed = i;
@@ -216,7 +215,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             enablingParametersChangesToLiveWithNegativeSpeed = false;     
         }
         
-        
+         
         
         
         //  enablingChangeToSpecificInstrument with NEGATIVE SPEED DISCRIMINATION
