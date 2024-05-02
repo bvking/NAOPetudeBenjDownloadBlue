@@ -176,7 +176,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     for (int i = 0; i < networkSize; i++)
     { 
          println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i]  +  " old "+  oldOldVelocityBis[i] );
-        /*
+        
          if (velocityBis[i] <  - 200 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
@@ -185,9 +185,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
         }
-        */
-    
         
+    
+        /* // lastSolution
         if (velocityBis[i] <  -0 + thresholdToDiscriminateNegativeSpeed && oldVelocityBis[i] > 0 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
@@ -197,8 +197,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis(); 
             instrumentToMute[patternFromInstrument] =true;     
 
-          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
-          //  enablingParametersChangesToLiveWithNegativeSpeed = true;    
+    
         }
     
        
@@ -211,11 +210,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();   
              instrumentToMute[patternFromInstrument] = false;  
 
-          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
-          //  enablingParametersChangesToLiveWithNegativeSpeed = false;     
+            
         }
         
-         
+        */ 
         
         
         //  enablingChangeToSpecificInstrument with NEGATIVE SPEED DISCRIMINATION
