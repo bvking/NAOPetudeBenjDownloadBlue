@@ -33,6 +33,8 @@ boolean enablingParametersChangesToLiveWithNegativeSpeed;
 boolean[]  enablingChangeToSpecificInstrumentWithNegativeSpeed = new boolean[networkSize];
 int thresholdToDiscriminateNegativeSpeed;
 
+int[]  oldOldVelocityBis = new int[networkSize];
+
 
 boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
 
@@ -56,7 +58,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         encodeur[i] %=  4000;
         
         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
-        
+
+        oldOldVelocityBis[i]  =  oldVelocityBis[i]; // to use to disciminate variation of speed
         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
         
         //*********** COMPUTE SPEED of encoder
@@ -98,9 +101,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text    (" GAP " + velocityBis[i] + " OLD " + oldVelocityBis[i] + " " + i + " Ro " + numberOfRota[i] + " M " + instrumentToMute[i] + 
-                 " old " + oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " + numberOfTrig[i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][i] + " "  +
-                 " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded] +
+        text    (" GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+                 " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
+                 " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 - (i * 75));
         } 
         rotate(PI / 2);
@@ -193,7 +196,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
             
             timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis(); 
-             instrumentToMute[patternFromInstrument] =true;         
+             instrumentToMute[patternFromInstrument] =true;     
+
+            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
+            enablingParametersChangesToLiveWithNegativeSpeed = true;    
         }
     
        
@@ -204,7 +210,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();   
-             instrumentToMute[patternFromInstrument] = false;       
+             instrumentToMute[patternFromInstrument] = false;  
+
+            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+            enablingParametersChangesToLiveWithNegativeSpeed = false;     
         }
         
         
@@ -214,21 +223,21 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] + 25 <= millis())
         { 
             
-            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
-            enablingParametersChangesToLiveWithNegativeSpeed = true;
+          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
+          //  enablingParametersChangesToLiveWithNegativeSpeed = true;
 
         }
         
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed]> 25)
         {
-            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
-            enablingParametersChangesToLiveWithNegativeSpeed = false;
+          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+          //  enablingParametersChangesToLiveWithNegativeSpeed = false;
         }
         
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] > timeDisablingChangesParameter[patternFromInstrumentWithNegativeSpeed])
         {
-            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
-            enablingParametersChangesToLiveWithNegativeSpeed = false;
+         //   enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+         //   enablingParametersChangesToLiveWithNegativeSpeed = false;
         }
     }
     
