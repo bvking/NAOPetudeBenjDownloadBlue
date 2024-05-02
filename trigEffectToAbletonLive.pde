@@ -197,8 +197,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis(); 
             instrumentToMute[patternFromInstrument] =true;     
 
-            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
-            enablingParametersChangesToLiveWithNegativeSpeed = true;    
+          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
+          //  enablingParametersChangesToLiveWithNegativeSpeed = true;    
         }
     
        
@@ -211,8 +211,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();   
              instrumentToMute[patternFromInstrument] = false;  
 
-            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
-            enablingParametersChangesToLiveWithNegativeSpeed = false;     
+          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+          //  enablingParametersChangesToLiveWithNegativeSpeed = false;     
         }
         
          
@@ -220,23 +220,22 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         //  enablingChangeToSpecificInstrument with NEGATIVE SPEED DISCRIMINATION
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] + 25 <= millis())
-        { 
-            
-          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
-          //  enablingParametersChangesToLiveWithNegativeSpeed = true;
+        {     
+            enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
+            enablingParametersChangesToLiveWithNegativeSpeed = true;
 
         }
         
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed]> 25)
         {
-          //  enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
-          //  enablingParametersChangesToLiveWithNegativeSpeed = false;
+           enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+           enablingParametersChangesToLiveWithNegativeSpeed = false;
         }
         
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] > timeDisablingChangesParameter[patternFromInstrumentWithNegativeSpeed])
         {
-         //   enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
-         //   enablingParametersChangesToLiveWithNegativeSpeed = false;
+           enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = false;
+           enablingParametersChangesToLiveWithNegativeSpeed = false;
         }
     }
     
