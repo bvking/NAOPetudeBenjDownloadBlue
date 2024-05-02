@@ -48,7 +48,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
         if (modeOfControlDr == " virtual ")
         { 
-            //encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
+            encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
         } 
         
         encoderTouched[i] =  false;
@@ -137,7 +137,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
     
     
-    //  enablingChangeToSpecificInstrument with POSITIVE SPEED DISCRIMINATION
+    //  POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with 
     if (timeEnablingChangesParameter[patternFromInstrument] + 25 <= millis())
     { 
         enablingChangeToSpecificInstrument[patternFromInstrument] = true;
@@ -185,6 +185,26 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
         }
+
+        // newSolution
+
+           if (velocityBis[i] <  -200 && velocityBis[i] >  -350)  // to ENABLEchange phasePattern 250
+        {
+            formerPatternFromInstrument = patternFromInstrument; 
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            
+            timeEnablingChangesParameter[patternFromInstrument] = millis();          
+        }
+        
+        if (velocityBis[i] < -250)  // to DISABLEchange phasePattern
+        {
+            formerPatternFromInstrument = patternFromInstrument; 
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            
+            timeDisablingChangesParameter[patternFromInstrument] = millis();          
+        }  
         
     
         /* // lastSolution
@@ -195,9 +215,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
             
             timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis(); 
-            instrumentToMute[patternFromInstrument] =true;     
-
-    
+            instrumentToMute[patternFromInstrument] =true;         
         }
     
        
@@ -209,14 +227,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();   
              instrumentToMute[patternFromInstrument] = false;  
-
-            
         }
         
         */ 
         
         
-        //  enablingChangeToSpecificInstrument with NEGATIVE SPEED DISCRIMINATION
+        //  NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] + 25 <= millis())
         {     
             enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
