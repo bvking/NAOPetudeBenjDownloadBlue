@@ -103,7 +103,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         }
         
-        if (velocityBis[i] >  250 && velocityBis[i] <  350  )  // to change phasePattern 250
+        if (velocityBis[i] >  200 && velocityBis[i] <  350  )  // to change phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
@@ -113,7 +113,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
         }
 
-            if (velocityBis[i] > 350  )  // to change phasePattern 250
+            if (velocityBis[i] > 250  )  // to change phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;

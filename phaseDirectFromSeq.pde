@@ -402,7 +402,7 @@ void phaseDirectFromSeq() // mixed Com
     }
     */
     
-    
+     
     if (key == 'E' && music_from_ableton_live == " controlDr ")
         {
         for (int i = 0; i < networkSize; i++)
