@@ -35,7 +35,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
         if (modeOfControlDr == " virtual ")
         { 
-          //  encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
+            //encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
         } 
         
         encoderTouched[i] =  false;
@@ -82,6 +82,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
         
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
+    
         rotate( -PI / 2);
         if (!systemForBigMachine) 
         { 
@@ -91,150 +92,145 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 "lfo2 " + shapeLfoMode , -1000, + 1200 - (i * 75));
         } 
         rotate(PI / 2);
-
         
-        if (velocityBis[i] >  200 && velocityBis[i] <  250)  // to change phasePattern
+        // DISCRIMINATE INSTRUMENT TOUCHED with POSITIVE SPEED
+        if (velocityBis[i] >  200 && velocityBis[i] <  250)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             
-            timeDisablingChangesParameter[patternFromInstrument] = millis();
-            
+            timeDisablingChangesParameter[patternFromInstrument] = millis();          
         }
         
-        if (velocityBis[i] >  200 && velocityBis[i] <  350  )  // to change phasePattern 250
+        if (velocityBis[i] >  200 && velocityBis[i] <  350)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             
-            timeEnablingChangesParameter[patternFromInstrument] = millis();
-            
+            timeEnablingChangesParameter[patternFromInstrument] = millis();          
         }
-
-            if (velocityBis[i] > 250  )  // to change phasePattern 250
+        
+        if (velocityBis[i] > 250)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             
-             timeDisablingChangesParameter[patternFromInstrument] = millis();
-            
-        }
+            timeDisablingChangesParameter[patternFromInstrument] = millis();          
+        }     
+    }
 
-
-
-      }
-         print(" " + patternFromInstrument +  " slider ");
-         showArrayF( slider);
-         print(" velocityBis ");
-         showArrayF( velocityBis); 
-        
-       // if (timeEnablingChangesParameter[patternFromInstrument] > (timeDisablingChangesParameter[patternFromInstrument])
-       //     && timeEnablingChangesParameter[patternFromInstrument] + 20< millis())
-        
-        if (timeEnablingChangesParameter[patternFromInstrument] + 25<= millis())
-        { 
-            enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-            enablingParametersChangesToLive = true;
-        }
-        
-        if (timeEnablingChangesParameter[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 25  )
+    
+    //  enablingChangeToSpecificInstrument with POSITIVE SPEED DISCRIMINATION
+    if (timeEnablingChangesParameter[patternFromInstrument] + 25 <= millis())
+    { 
+        enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+        enablingParametersChangesToLive = true;
+    }
+    
+    if (timeEnablingChangesParameter[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 25)
         {
-            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-            enablingParametersChangesToLive = false;
-        }
-
-        if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument])
-             {
-            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-            enablingParametersChangesToLive = false;
-        }
-
-        
-        
-        if (formerPatternFromInstrument != patternFromInstrument)
+        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        enablingParametersChangesToLive = false;
+    }
+    
+    if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument])
         {
-            instrumentChanged = true;
-            // instrumentToMute[patternFromInstrument] = false;
-            
-        } 
-        else  if (formerPatternFromInstrument == patternFromInstrument)
-            {
-                instrumentChanged = false;                 
-                // enablingChangeSound[patternFromInstrument] = true;
-            }
+        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        enablingParametersChangesToLive = false;
+    }
+    
+ 
+    if (formerPatternFromInstrument != patternFromInstrument)
+        {
+        instrumentChangedToAddPulse = true;
+        // instrumentToMute[patternFromInstrument] = false;
         
-        //********
-        
-        if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
+    } 
+    else  if (formerPatternFromInstrument == patternFromInstrument)
+        {
+        instrumentChangedToAddPulse = false;                 
+            // enablingChangeSound[patternFromInstrument] = true;
+    }
+    
+    //********
+
+        print(" " + patternFromInstrument +  " slider ");
+        showArrayF(slider);
+        print(" velocityBis ");
+        showArrayF(velocityBis); 
+    
+     //********
+    
+    if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
         { 
-            enablingChangeSound[patternFromInstrument] = true;
-            print (" enablingChangeSound ");
-            showArrayB (enablingChangeSound);
-            
-        } 
+        enablingChangeSound[patternFromInstrument] = true;
+        print(" enablingChangeSound ");
+        showArrayB(enablingChangeSound);
+        
+    } 
     
     
-        //velocityBis[i] >   250 && 
-        if (enablingChangeSound[patternFromInstrument] == true && instrumentChanged == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
+    //velocityBis[i] >   250 && 
+    if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
         {  
-            
+        
         //  frameTrigger=frameCount;
         //  phaseDirectFromSeq();
-         
-           key = 'à';
-           phaseDirectToMotor();
-            for (int i = 0; i < networkSize; i++)
+        
+        key = 'à';
+        phaseDirectToMotor();
+        for (int i = 0; i < networkSize; i++)
             {  
             
-                    for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+            for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
                 //   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
-          //         recordPositionsFromInstrument[i][j] = 0; 
-                  
-
-                 //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
-
-                 positionFromMotorPhase[i] =  recordPositionAligned[i][patternFromInstrument];
-
+                //  recordPositionsFromInstrument[i][j] = 0; 
+                
+                
+                //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
+                
+                positionFromMotorPhase[i] =  recordPositionAligned[i][patternFromInstrument];
+                
                 text(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                 println (" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ; 
-                }
+                println(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]); 
             }
-            
-            recallLastPatternInstrument = patternFromInstrument;
-            enablingRecallFromAndToInstru = true;
-            phaseDirectFromSeq();
-             for (int i = 0; i < networkSize; i++)
-            {  
-                  for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
-                { 
-                 //  recordPositionsFromInstrument[i][j] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; 
-          //         recordPositionsFromInstrument[i][j] = 0; 
-                  
-
-                 //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
-
-                   text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                   println (" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]) ;  
-                }
-             }
-        
-            enablingRecallFromAndToInstru = false;
-
-            // enablingChangeSound[patternFromInstrument] = false;
-            // recallLastPatternInstrument = 1000;
-             print(" enablingChangeSound");
-             showArrayB(enablingChangeSound);
-            
-            enablingChangeSound[patternFromInstrument] = false;
-            
         }
+        
+        recallLastPatternInstrument = patternFromInstrument;
+        enablingRecallFromAndToInstru = true;
+        phaseDirectFromSeq();
+        for (int i = 0; i < networkSize; i++)
+            {  
+            for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+                { 
+                //  recordPositionsFromInstrument[i][j] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; 
+                //  recordPositionsFromInstrument[i][j] = 0; 
+                
+                
+                //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
+                
+                text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
+                println(" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]);  
+            }
+        }
+        
+        enablingRecallFromAndToInstru = false;
+        
+        // enablingChangeSound[patternFromInstrument] = false;
+        // recallLastPatternInstrument = 1000;
+        print(" enablingChangeSound");
+        showArrayB(enablingChangeSound);
+        
+        enablingChangeSound[patternFromInstrument] = false;
+        
+    }
     
-      for (int i = 0; i < networkSize; i++)
-        {  
+    for (int i = 0; i < networkSize; i++)
+    {  
         
         
         if (velocityBis[i] <-  1250) // && enablingParametersChangesToLive == true 
@@ -257,92 +253,92 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             */
             
         }
-      }
+}
+    
+    
+    if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
         
-        
-        if (enablingParametersChangesToLive == true && instrumentChanged == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
-            
         {
-           // recallLastPatternInstrument = 1000;
-            //  frameTrigger=frameCount;
-            //  phaseDirectFromSeq();
-            
-            background(50);
-            key = 'e';
-            phaseDirectFromSeq();
-            //keyCode = '0';
-            
-            
-            textSize(150);           
-            numberOfTrig[patternFromInstrument] += 1;
-            numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
-            
-            if (numberOfTrig[patternFromInstrument] == 17)
+        // recallLastPatternInstrument = 1000;
+        //  frameTrigger=frameCount;
+        //  phaseDirectFromSeq();
+        
+        background(50);
+        key = 'e';
+        phaseDirectFromSeq();
+        //keyCode = '0';
+        
+        
+        textSize(150);           
+        numberOfTrig[patternFromInstrument] += 1;
+        numberOfTrig[networkSize - 1 - instrumentTouched] %= 18;
+        
+        if (numberOfTrig[patternFromInstrument] == 17)
             { 
-                numberOfTrig[patternFromInstrument] = 8;
-            }
-            text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
-            
-            enablingParametersChangesToLive = false;
-            enablingRecordFromAndToInstru = true;
-            
-            
-            enablingChangeSound[patternFromInstrument] = false; 
-            enablingChangeSoundB[patternFromInstrument] = true; 
-            
+            numberOfTrig[patternFromInstrument] = 8;
         }
+        text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+        
+        enablingParametersChangesToLive = false;
+        enablingRecordFromAndToInstru = true;
         
         
-        if ( enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
+        enablingChangeSound[patternFromInstrument] = false; 
+        enablingChangeSoundB[patternFromInstrument] = true; 
+        
+    }
+    
+    
+    if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
         {  
-            textSize(30);  
-            // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
-            for(int k = 0; k < networkSize; k++)
+        textSize(30);  
+        // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
+        for (int k = 0; k < networkSize; k++)
             {  
-               for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
+            for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
-                   //recordPositionsFromInstrument[k][j] = positionFromMotorPhase[k]; 
-                   text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);           
-                    
-                }
+                //recordPositionsFromInstrument[k][j] = positionFromMotorPhase[k]; 
+                text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, k * 30);           
+                
             }
-            enablingRecordFromAndToInstru = false;
-            enablingChangeSoundB[patternFromInstrument] = false;
-            timeEnablingChangesParameter[patternFromInstrument] = millis();
         }
-        
-        
-        if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
-        { 
-            
-            // enablingParametersChangesToLive = false;
-            //  enablingChangeSound[patternFromInstrument]=false;
-        }
-        
-        if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
-        { 
-            text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
-            // enablingParametersChangesToLive = false;
-            // key = '#';  
-            //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
-        }
-        
-        if (enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
-        { 
-            //key = '#' ;
-        }
-        
- } 
-    
-    /*
-    if (midPos[i] ==  true)
-    { 
-    //  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
-     }
-    //   key = '#';
-    */
+        enablingRecordFromAndToInstru = false;
+        enablingChangeSoundB[patternFromInstrument] = false;
+        timeEnablingChangesParameter[patternFromInstrument] = millis();
+    }
     
     
+    if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
+        { 
+        
+        // enablingParametersChangesToLive = false;
+        //  enablingChangeSound[patternFromInstrument]=false;
+    }
+    
+    if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
+        { 
+        text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
+        // enablingParametersChangesToLive = false;
+        // key = '#';  
+        //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
+    }
+    
+    if (enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
+        { 
+        //key = '#' ;
+    }
+    
+} 
+
+/*
+if (midPos[i] ==  true)
+{ 
+//  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
+}
+//   key = '#';
+*/
+
+
 
 
 void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
