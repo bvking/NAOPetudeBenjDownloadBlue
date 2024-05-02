@@ -247,7 +247,7 @@ void phaseDirectFromSeq() // mixed Com
                 // 8 hit <=networkSize+ 2. Donc 8 hoit avec numberOfRot 8 = 64 hit
                 
                 positionFromMotorPhase[i] = (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patternFromInstrument]);  
-                positionFromMotorPhase[i] %=   numberOfStep; 
+                positionFromMotorPhase[i] %=   numberOfStep;
                 
                 //positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
                 
