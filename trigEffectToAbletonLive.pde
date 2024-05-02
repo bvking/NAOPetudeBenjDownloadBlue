@@ -174,7 +174,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     for (int i = 0; i < networkSize; i++)
     { 
          println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i] );
-        
+        /*
          if (velocityBis[i] <  - 200 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
@@ -183,9 +183,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
         }
+        */
     
         
-        if (velocityBis[i] <  -5 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] > - 250 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
+        if (velocityBis[i] <  -0 + thresholdToDiscriminateNegativeSpeed && oldVelocityBis[i] > -0 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
             instrumentTouchedWithNegativeSpeed = i;
@@ -194,8 +195,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
         }
     
-       /* 
-        if (velocityBis[i] < -250 + thresholdToDiscriminateNegativeSpeed )  // to DISABLEchange phasePattern
+       
+        if (oldVelocityBis[i] < -velocityBis[i] &&  velocityBis[i] < -30 + thresholdToDiscriminateNegativeSpeed )  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
             instrumentTouchedWithNegativeSpeed = i;
@@ -203,7 +204,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
         }
-        */
+        
         
         
         
@@ -282,7 +283,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 positionFromMotorPhase[i] =  recordPositionAligned[i][patternFromInstrument];
                 
                 text(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                println(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]); 
+             //   println(" recPaTAbletonLive " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]); 
             }
         }
         
@@ -300,7 +301,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
                 
                 text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-                println(" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]);  
+             //   println(" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]);  
             }
         }
         
@@ -308,7 +309,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         // enablingChangeSound[patternFromInstrument] = false;
         // recallLastPatternInstrument = 1000;
-        print(" enablingChangeSound");
+      //  print(" enablingChangeSound");
         showArrayB(enablingChangeSound);
         
         enablingChangeSound[patternFromInstrument] = false;
