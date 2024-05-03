@@ -66,7 +66,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         gapEncoder_OldEncodeur[i] = encodeurPosition[i] - oldEncodeurPosition[i];
         
-        if (gapEncoder_OldEncodeur[i] < ( -4000 + 400))
+        if (gapEncoder_OldEncodeur[i] < ( -4000 + 2000))
         {
             gapEncoder_OldEncodeur[i] += 4000;
         }
