@@ -75,10 +75,11 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
      // )
        
       // (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
-        1<-1
+      //  1<-1
          
-     )  // ORIGINAL 
-        //**  (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) ))
+     //)  // ORIGINAL 
+       (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>=0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
+       )
 
       //  (oldPositionToMotor[i] < 0.10 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.9* (numberOfStep/2) ))
         //**   (oldPositionToMotor[i] < 0.5 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.5 * (numberOfStep/2) ))
@@ -106,21 +107,14 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     if (
      // (positionToMotor[i] < 0.25 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.75 * numberOfStep/2 ))
      // (positionToMotor[i] < 0.10 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.9 * numberOfStep/2 ))
-
      // (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldPositionToMotor[i] > 1.5 * numberOfStep/2 )
-     // ||
-
+     // (positionToMotor[i] < 1 * numberOfStep*7/8 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1 * numberOfStep*2 ))
+   
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 1.5 * numberOfStep/2 )
       &&
-      //( oldOldPositionToMotor[i] >  positionToMotor[i] )
          ( oldPositionToMotor[i] >=  positionToMotor[i] )
-
-
-
       )
-     //  (positionToMotor[i] < 1 * numberOfStep*7/8 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1 * numberOfStep*2 ))
-
-
+    
     {
       onOFF = 1;
       countControlDr[i]++;
@@ -134,8 +128,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     } else {
 
       decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
-      revolution[i]=1;
-      
+      revolution[i]=1;     
     }
   }
 }
