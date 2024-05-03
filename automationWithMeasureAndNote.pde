@@ -532,9 +532,10 @@ void trigBeatWithMeasure()
      for (int i = 0; i < networkSize; i++)
       {  
         //  oldLastActualPosition[i]= lastActualPosition[i];
-        positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
+        //  *****  positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
+           positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
-        text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + " " + oldPositionToMotor[networkSize-1-i]+ " "+ countControlDr[i] , -2000, -300 + (networkSize-1-i*100), -800);  
+        text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[i] + " " + countControlDr[i] , -2000, -300 + (networkSize-1-i*100), -800);  
        }
 
     if (formerKeyMetro == '*') 
@@ -577,13 +578,14 @@ void trigBeatWithMeasure()
 
 
       for (int i = 0; i <  networkSize - 0; i += 1) { 
-        oldLastActualPosition[i]= lastActualPosition[i];
-
+        oldLastActualPosition[i] = lastActualPosition[i];
+        oldOldPositionToMotor[i] = oldPositionToMotor[i];
         oldPositionToMotor[i] =  positionToMotor[i];
         oldOldPosF[i] = oldPosF[i];
         oldPosF[i] = newPosF[i];
         oldOldPhaseMapped[i] = oldPhaseMapped[i];
         oldPhaseMapped[i] = phaseMapped[i];
+
         //net.phase[i] = phaseMapped[i];
         // net.phase[i]=specialPhase[i];
     }
