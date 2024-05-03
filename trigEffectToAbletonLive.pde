@@ -48,7 +48,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
         if (modeOfControlDr == " virtual ")
         { 
-            encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
+          //  encodeur[i] = (int) map(slider[i], 0., 127., 0, 4000);
         } 
         
         encoderTouched[i] =  false;
@@ -66,7 +66,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         gapEncoder_OldEncodeur[i] = encodeurPosition[i] - oldEncodeurPosition[i];
         
-        if (gapEncoder_OldEncodeur[i] < ( -4000 + 2000))
+        if (gapEncoder_OldEncodeur[i] < ( -4000 + 400))
         {
             gapEncoder_OldEncodeur[i] += 4000;
         }
@@ -137,7 +137,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
     
     
-    //  POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with 
+    // TIME to TRIG POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with 
     if (timeEnablingChangesParameter[patternFromInstrument] + 25 <= millis())
     { 
         enablingChangeToSpecificInstrument[patternFromInstrument] = true;
@@ -177,33 +177,33 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     { 
          println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i]  +  " old "+  oldOldVelocityBis[i] );
         
-         if (velocityBis[i] <  - 200 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
+         if (velocityBis[i] <  - 100 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
+        {
+            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
+            instrumentTouchedWithNegativeSpeed = i;
+            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
+            
+          //  timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
+        }
+
+        // newSolution
+
+           if (velocityBis[i] <  -100 && velocityBis[i] >  -400)  // to ENABLEchange phasePattern 250
+        {
+            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
+            instrumentTouchedWithNegativeSpeed = i;
+            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
+            
+            timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
+        }
+        
+        if (velocityBis[i] < -15 && oldVelocityBis[i] >-15)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
             instrumentTouchedWithNegativeSpeed = i;
             patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
             
             timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
-        }
-
-        // newSolution
-
-           if (velocityBis[i] <  -200 && velocityBis[i] >  -350)  // to ENABLEchange phasePattern 250
-        {
-            formerPatternFromInstrument = patternFromInstrument; 
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeEnablingChangesParameter[patternFromInstrument] = millis();          
-        }
-        
-        if (velocityBis[i] < -250)  // to DISABLEchange phasePattern
-        {
-            formerPatternFromInstrument = patternFromInstrument; 
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeDisablingChangesParameter[patternFromInstrument] = millis();          
         }  
         
     
@@ -232,7 +232,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         */ 
         
         
-        //  NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
+        // // TIME to TRIG NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] + 25 <= millis())
         {     
             enablingChangeToSpecificInstrumentWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = true;
