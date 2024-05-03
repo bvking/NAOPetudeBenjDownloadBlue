@@ -108,6 +108,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         rotate(PI / 2);
         
         // DISCRIMINATE INSTRUMENT TOUCHED with POSITIVE SPEED
+        //LAST SOLUTION
+        /*
         if (velocityBis[i] >  200 && velocityBis[i] <  250)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
@@ -117,7 +119,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeDisablingChangesParameter[patternFromInstrument] = millis();          
         }
         
-        if (velocityBis[i] >  200 && velocityBis[i] <  350)  // to ENABLEchange phasePattern 250
+        if (velocityBis[i] >  100 && velocityBis[i] <  200)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
@@ -126,25 +128,28 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             timeEnablingChangesParameter[patternFromInstrument] = millis();          
         }
         
-        if (velocityBis[i] > 250)  // to DISABLEchange phasePattern
+        if (oldOldVelocityBis[i] < 50)  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument; 
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             
             timeDisablingChangesParameter[patternFromInstrument] = millis();          
-        }     
+        } 
+        */    
     }
     
     
     // TIME to TRIG POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with 
-    if (timeEnablingChangesParameter[patternFromInstrument] + 25 <= millis())
+
+    /*
+    if (timeEnablingChangesParameter[patternFromInstrument] + 34 <= millis())
     { 
         enablingChangeToSpecificInstrument[patternFromInstrument] = true;
         enablingParametersChangesToLive = true;
     }
     
-    if (timeEnablingChangesParameter[patternFromInstrument] + 40 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 25)
+    if (timeEnablingChangesParameter[patternFromInstrument] +100 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 68)
         {
         enablingChangeToSpecificInstrument[patternFromInstrument] = false;
         enablingParametersChangesToLive = false;
@@ -155,7 +160,42 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeToSpecificInstrument[patternFromInstrument] = false;
         enablingParametersChangesToLive = false;
     }
+
+    */
     
+
+      // DISCRIMINATE BIS INSTRUMENT TOUCHED with POSITIVE SPEED
+
+    for (int i = 0; i < networkSize; i++)
+    { 
+        
+        if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] )  // to DISABLEchange phasePattern
+        {
+            formerPatternFromInstrument = patternFromInstrument;
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            
+            timeEnablingChangesParameter[patternFromInstrument] = millis();
+
+           enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+            enablingParametersChangesToLive = true;          
+        }
+
+        if (velocityBis[i] >  150 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] )  // to DISABLEchange phasePattern
+        {
+            formerPatternFromInstrument = patternFromInstrument;
+            instrumentTouched = i;
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+            
+            timeDisablingChangesParameter[patternFromInstrument] = millis(); 
+
+            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+            enablingParametersChangesToLive = false;          
+        }
+    }
+
+
+
     
     if (formerPatternFromInstrument != patternFromInstrument)
         {
