@@ -524,7 +524,7 @@ void trigBeatWithMeasure()
   else  beatPrecisedTrigged=false;
 
 
-   shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
+  // shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
    textSize(75);
    if ( music_from_ableton_live == " controlDr "|| music_from_ableton_live == " Dessine "  ) 
     {
@@ -532,8 +532,8 @@ void trigBeatWithMeasure()
      for (int i = 0; i < networkSize; i++)
       {  
         //  oldLastActualPosition[i]= lastActualPosition[i];
-        //  *****  positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
-           positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
+       positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
+        //   positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
         text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[i] + " " + countControlDr[i] , -2000, -300 + (networkSize-1-i*100), -800);  
        }

@@ -3,7 +3,7 @@ void mapNewPosX() {
     
     for (int i = 0; i <  networkSize - 0; i += 1) { 
         //  TrigmodPos[i]=1; 
-}
+     }
     
     if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
     {
@@ -146,7 +146,12 @@ void mapNewPosX() {
             }
         }
     }
-}
+ }
+
+    if (music_from_ableton_live != " Dessine ") 
+    {
+     if (music_from_ableton_live != " controlDr ") 
+     {
     
     for (int i = 0; i <  networkSize - 0; i += 1) { 
         oldPositionToMotor[i] =  positionToMotor[i];
@@ -156,5 +161,7 @@ void mapNewPosX() {
         oldPhaseMapped[i] = phaseMapped[i];
         net.phase[i] = phaseMapped[i];
         // net.phase[i]=specialPhase[i];
+    }
+    }
     }
 }

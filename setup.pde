@@ -1180,7 +1180,7 @@ void setup() {
 
                  for (int i = 0; i <  networkSize; i++) {
                     numberOfRota[i]=1;   
-                    numberOfTrig[i]=8;    
+                    numberOfTrig[i]=0;    
                     }
                   }
                 

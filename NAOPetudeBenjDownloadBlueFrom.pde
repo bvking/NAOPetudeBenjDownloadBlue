@@ -20,8 +20,7 @@ void draw()
     { 
     for (int i = 0; i < networkSize; i++) {
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
-    }
-    
+    } 
     println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
     //handleKeyPressToChoosemodeCircularementOrNot(); // Gestion des touches * et $ pour definir mode circulaire ou non
     displayArrays(); // Affichage des tableaux compte tours et triggeurs de tours
@@ -213,7 +212,13 @@ void draw()
                 { 
                     if (keyMode != " samplingModeWithLiveNO ")
                         {
-                        countRevs(); // below modePendular to compute revolution
+                         if (music_from_ableton_live != " controlDr ")
+                         {
+                             if (music_from_ableton_live != " Dessine ")
+                             {
+                             countRevs(); // below modePendular to compute revolution
+                             }
+                         }
                     }
                 }
             }

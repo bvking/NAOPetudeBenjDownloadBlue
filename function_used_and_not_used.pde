@@ -55,11 +55,23 @@ void devant_derriere() {
   }
 }
 void countRevsPhaseMappedPositiveOnly() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
+     print ( "velocityBis ");
+    showArrayF( velocityBis);
+    print ( " c ");
+    showArray ( countControlDr );
+    print ( "oldOldPositionToMotors ");
+    showArray( oldOldPositionToMotor);
+    print ( " oldPositionToMotor ");
+    showArray( oldPositionToMotor);
+    print ( "  positionToMotor ");
+    showArray(  positionToMotor);
+
 
   onOFF=0;
   
 
-  for (int i = 0; i < networkSize; i++) {
+  for (int i = 0; i < networkSize; i++)
+  {
       TrigmodPos[i]=1; ///no beacuse TrigmodPos is allready in countRevs
       trigSound[i]=0;
 
@@ -73,42 +85,45 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
      // ((oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > -0.25* (numberOfStep/2) && positionToMotor[i] < 0)) ||   (oldPositionToMotor[i] < -1.75 * PI && positionToMotor[i] > -0.25 * PI)
      // )
      // ORIGINAL 
-       (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>=0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
+       1>=1
+     //  (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>=0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
+     //  &&   ( oldPositionToMotor[i] <=  positionToMotor[i] )
        )
 
       //  (oldPositionToMotor[i] < 0.10 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.9* (numberOfStep/2) ))
       //**(oldPositionToMotor[i] < 0.5 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.5 * (numberOfStep/2) ))
 
     {
-      onOFF = 1;
-      countControlDr[i]--;
-      rev[i]--;
-     // text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
+      /*
+     onOFF = 1;
+     countControlDr[i]--;
+     rev[i]--;
+    
        
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
       TrigmodPos[i]=0;
       trigSound[i]=1;
 
       decompte[i] = -1; // // RESET COUNTER AT 0 (i know it's strange, otherwise with 0 it begin at 1, not 0)
-    } else { // if you do twice there is a funny bug
-    }
 
-
+      */
+    } 
     // increment caused by positive angular velocity
     // both positive angles || both negative angles || negative-to-positive angle
 
-    if (
+    if ( 
+     //shapeLfo == 10 &&
+
      // (positionToMotor[i] < 0.25 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.75 * numberOfStep/2 ))
      // (positionToMotor[i] < 0.10 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.9 * numberOfStep/2 ))
      // (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldPositionToMotor[i] > 1.5 * numberOfStep/2 )
      // (positionToMotor[i] < 1 * numberOfStep*7/8 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1 * numberOfStep*2 ))
    
-      (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 1.5 * numberOfStep/2 )
+      (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
-         ( oldPositionToMotor[i] >=  positionToMotor[i] )
+      ( (oldOldPositionToMotor[i] >=  oldPositionToMotor[i]) ) // || (oldPositionToMotor[i]>=positionToMotor[i])
       )
-    
-    {
+     {
       onOFF = 1;
       countControlDr[i]++;
       rev[i]++;

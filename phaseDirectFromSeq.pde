@@ -382,6 +382,7 @@ void phaseDirectFromSeq() // mixed Com
                 }
                 // noLoop(); 
             }
+            enablingRecallFromAndToInstru = false;
             recallLastPatternInstrument = 1000;
             key = '#';
         } 
