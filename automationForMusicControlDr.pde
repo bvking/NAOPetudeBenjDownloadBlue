@@ -2,7 +2,7 @@ int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor si
 
 void automationForMusicControlDr()
 {
- // formerKeyMetro = '*';
+  formerKeyMetro = '*';
 
         textSize (50);
 

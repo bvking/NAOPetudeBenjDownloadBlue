@@ -5,27 +5,37 @@ void mapNewPosX() {
         //  TrigmodPos[i]=1; 
 }
     
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
-        for(int i = 0; i <  networkSize - 0; i += 1) { 
+    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+    {
+        for(int i = 0; i <  networkSize - 0; i += 1)
+         { 
             //text (" revLfo[i] " + revLfo[i] + " trigModPos[oscillatorChange] " + TrigmodPos[oscillatorChange]  +  " mapData From Key" +  keyMode + " modStart "  + modeStartKeyToFollow, 800, 100*(i));
             newPosXaddSignal[i] %=  TWO_PI;
             net.phase[i] = newPosXaddSignal[i]; // to trig something with arduinoPos
-    }
+         }
     }
     
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ") {
+    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+     {
         text(" delay " + delayTimeFollowPhase11 + " phase " + degrees(phaseShiftingFollowPhase11), 0, -800);
         for(int i = 0; i <  networkSize - 0; i += 1) { 
             //  net.phase[i]=phaseMapped[i]
             OldSpecialPhase[i] = specialPhase[i]; //specialPhase[i] from  followSignal
             positionToMotor[i] = specialPhase[i] % numberOfStep;
             text(oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50 * i));  
+     }
     }
-    } 
+
+    if (music_from_ableton_live != " Dessine ") 
+    {
+     if (music_from_ableton_live != " controlDr ") 
+     {
     
-    if (formerKeyMetro == '*') 
-    { // //  if (modeCircular==true) { doesn't work
+      if (formerKeyMetro == '*') 
+       { // //  if (modeCircular==true) { doesn't work
         countRevsPhaseMappedPositiveOnly();
+       }
+     }
     }
     
     print(" cou+Only in mapNew "); showArray(rev);    
