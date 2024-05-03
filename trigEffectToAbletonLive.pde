@@ -340,32 +340,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSound[patternFromInstrument] = false;
         
     }
-    
-    for (int i = 0; i < networkSize; i++)
-    {  
-        
-        
-        if (velocityBis[i] <-  1250) // && enablingParametersChangesToLive == true 
-        {  
-            /*
-            formerPatternFromInstrument = patternFromInstrument;
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeEnablingChangesParameter[patternFromInstrument]=millis();
-            
-            instrumentToMute[patternFromInstrument] =! instrumentToMute[patternFromInstrument];
-            
-            touchedTimeStarter[0] = millis();
-            
-            encoderTouched[patternFromInstrument] =  true;
-            enablingChangeSoundB[patternFromInstrument] = true; 
-            // enablingChangeSound[patternFromInstrument] = true;      
-            //  enablingParametersChangesToLive = false;
-            */
-            
-        }
-} 
+
     
     // ADD PULSE WITH POSITIVE DISCIMINATION
     if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
@@ -410,12 +385,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         if (numberOfRota[patternFromInstrument] % 2 == 0)
         { 
-          //  instrumentToMute[patternFromInstrument] = false;
+            instrumentToMute[patternFromInstrument] = false;
         }
         
         if (numberOfRota[patternFromInstrument] % 2 == 1)
         { 
-          //  instrumentToMute[patternFromInstrument] = true;
+            instrumentToMute[patternFromInstrument] = true;
         }
         
         
