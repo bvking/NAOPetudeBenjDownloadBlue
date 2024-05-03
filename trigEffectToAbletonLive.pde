@@ -177,8 +177,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeEnablingChangesParameter[patternFromInstrument] = millis();
 
-           enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-            enablingParametersChangesToLive = true;          
+        //   enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+        //    enablingParametersChangesToLive = true;          
         }
 
         if (velocityBis[i] >  150 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] )  // to DISABLEchange phasePattern
@@ -189,9 +189,27 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             
             timeDisablingChangesParameter[patternFromInstrument] = millis(); 
 
-            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-            enablingParametersChangesToLive = false;          
+         //   enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+         //   enablingParametersChangesToLive = false;          
         }
+    }
+
+    if (timeEnablingChangesParameter[patternFromInstrument] + 34 <= millis())
+    { 
+        enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+        enablingParametersChangesToLive = true;
+    }
+    
+    if (timeEnablingChangesParameter[patternFromInstrument] +100 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 35)
+        {
+        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        enablingParametersChangesToLive = false;
+    }
+    
+    if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument])
+        {
+    //    enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+     //   enablingParametersChangesToLive = false;
     }
 
 
