@@ -70,28 +70,21 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       // no   (net.oldPhase[i] < 0.25 * PI && net.phase[i] > -0.25 * PI)
 
     if (
-
      // ((oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > -0.25* (numberOfStep/2) && positionToMotor[i] < 0)) ||   (oldPositionToMotor[i] < -1.75 * PI && positionToMotor[i] > -0.25 * PI)
      // )
-       
-      // (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
-      //  1<-1
-         
-     //)  // ORIGINAL 
+     // ORIGINAL 
        (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>=0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
        )
 
       //  (oldPositionToMotor[i] < 0.10 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.9* (numberOfStep/2) ))
-        //**   (oldPositionToMotor[i] < 0.5 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.5 * (numberOfStep/2) ))
+      //**(oldPositionToMotor[i] < 0.5 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.5 * (numberOfStep/2) ))
 
     {
-
       onOFF = 1;
       countControlDr[i]--;
       rev[i]--;
-      text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
-      //      print (" revultion negative  "); println (revolution[i]=i+1);
-      
+     // text (" YOUR HERE???" + rev[i], 200, -900+(i*100));
+       
       revolution[i]=0; // trig 0 to sent 0 in Max4Live
       TrigmodPos[i]=0;
       trigSound[i]=1;
@@ -119,7 +112,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       onOFF = 1;
       countControlDr[i]++;
       rev[i]++;
-      text (" YOUR HERE GOOD" + rev[i], 200, -900+(i*100));
+      //text (" YOUR HERE GOOD" + rev[i], 200, -900+(i*100));
       revolution[i]=0;
       TrigmodPos[i]=0;
       trigSound[i]=1;
