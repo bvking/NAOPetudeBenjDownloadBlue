@@ -168,8 +168,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
     for (int i = 0; i < networkSize; i++)
     { 
+
         
-        if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] )  // to DISABLEchange phasePattern
+        if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i])  // to ENABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
@@ -181,7 +182,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         //    enablingParametersChangesToLive = true;          
         }
 
-        if (velocityBis[i] >  150 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] )  // to DISABLEchange phasePattern
+        if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
@@ -192,6 +193,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          //   enablingChangeToSpecificInstrument[patternFromInstrument] = false;
          //   enablingParametersChangesToLive = false;          
         }
+
+    
     }
 
     if (timeEnablingChangesParameter[patternFromInstrument] + 34 <= millis())
@@ -200,16 +203,23 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingParametersChangesToLive = true;
     }
     
-    if (timeEnablingChangesParameter[patternFromInstrument] +100 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 35)
+    if (timeEnablingChangesParameter[patternFromInstrument]+ 69<= millis() && timeEnablingChangesParameter[patternFromInstrument]+35> millis() ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
+        {
+        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        enablingParametersChangesToLive = false;
+    }
+
+        
+    if ( timeDisablingChangesParameter[patternFromInstrument]+ 34> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
         enablingChangeToSpecificInstrument[patternFromInstrument] = false;
         enablingParametersChangesToLive = false;
     }
     
-    if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument])
+    if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33)
         {
-    //    enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-     //   enablingParametersChangesToLive = false;
+        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        enablingParametersChangesToLive = false;
     }
 
 
