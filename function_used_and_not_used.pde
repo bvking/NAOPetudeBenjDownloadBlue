@@ -118,10 +118,34 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
      // (positionToMotor[i] < 0.10 * numberOfStep/2 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1.9 * numberOfStep/2 ))
      // (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldPositionToMotor[i] > 1.5 * numberOfStep/2 )
      // (positionToMotor[i] < 1 * numberOfStep*7/8 && positionToMotor[i]>0)  && (oldPositionToMotor[i] > 1 * numberOfStep*2 ))
+
+     // || (oldPositionToMotor[i]>=positionToMotor[i])
    
+      (
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
-      ( (oldOldPositionToMotor[i] >=  oldPositionToMotor[i]) ) // || (oldPositionToMotor[i]>=positionToMotor[i])
+      ( (oldOldPositionToMotor[i] >  oldPositionToMotor[i]) )
+      ) 
+
+      ||
+      (
+      (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldPositionToMotor[i] > 0.75 * numberOfStep/1 )
+      &&
+       ((oldOldPositionToMotor[i] <  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]>=positionToMotor[i]) )
+      
+      &&
+      (
+     
+       ( !
+      (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
+      &&
+      ( (oldOldPositionToMotor[i] >  oldPositionToMotor[i]) )
+      )
+      ) 
+
+      )
+
+     
       )
      {
       onOFF = 1;
