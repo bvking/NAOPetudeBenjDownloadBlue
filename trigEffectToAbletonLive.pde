@@ -272,40 +272,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }  
         
     
-        /* // lastSolution
-        
-        if (velocityBis[i] <  - 100 + thresholdToDiscriminateNegativeSpeed && velocityBis[i] >  - 400+  thresholdToDiscriminateNegativeSpeed)  // to DISABLEchange phasePattern
-        {
-            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
-            instrumentTouchedWithNegativeSpeed = i;
-            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
-            
-          //  timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();          
-        }
-
-
-        if (velocityBis[i] <  -0 + thresholdToDiscriminateNegativeSpeed && oldVelocityBis[i] > 0 + thresholdToDiscriminateNegativeSpeed)  // to ENABLEchange phasePattern 250
-        {
-            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
-            instrumentTouchedWithNegativeSpeed = i;
-            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
-            
-            timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis(); 
-            instrumentToMute[patternFromInstrument] =true;         
-        }
     
-       
-        if (oldVelocityBis[i] < -50 &&   velocityBis[i] >  0 )  // to DISABLEchange phasePattern // && velocityBis[i] < -10 + thresholdToDiscriminateNegativeSpeed
-        {
-            formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed; 
-            instrumentTouchedWithNegativeSpeed = i;
-            patternFromInstrumentWithNegativeSpeed = networkSize - 1 - instrumentTouchedWithNegativeSpeed;  //
-            
-            timeDisablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] = millis();   
-             instrumentToMute[patternFromInstrument] = false;  
-        }
-        
-        */ 
         
         
         // // TIME to TRIG NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
