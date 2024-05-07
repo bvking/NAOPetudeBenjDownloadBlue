@@ -30,6 +30,7 @@ int  instrumentTouchedWithNegativeSpeed;
 int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
 int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
 int[] timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
+int timeDisablingCAddPulseAwithTwoInstrumentAtTheSameTime;
 
 boolean instrumentChangedToAddPulseWithNegativeSpeed;
 boolean enablingParametersChangesToLiveWithNegativeSpeed;
@@ -168,32 +169,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     if (formerPatternFromInstrument != patternFromInstrument)
         {
         instrumentChangedToAddPulse = true;
-        // instrumentToMute[patternFromInstrument] = false;      
+        timeDisablingCAddPulseAwithTwoInstrumentAtTheSameTime = millis();    
     } 
     else  if (formerPatternFromInstrument == patternFromInstrument)
     {
-            instrumentChangedToAddPulse = false;                 
+        instrumentChangedToAddPulse = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
      }
     
     //--------------------------:-------------------------------------------------------------------
 
-
-
     // DISCRIMINATE INSTRUMENT TOUCHED with NEGATIVE SPEED
     thresholdToDiscriminateNegativeSpeed = 0;
-    /*
-    print ( "velocityBis ");
-    showArrayF( velocityBis);
-    print ( " c ");
-    showArray ( countControlDr );
-    print ( "oldOldPositionToMotors ");
-    showArray( oldOldPositionToMotor);
-    print ( " oldPositionToMotor ");
-    showArray( oldPositionToMotor);
-    print ( "  positionToMotor ");
-    showArray(  positionToMotor);
-    */
 
     for (int i = 0; i < networkSize; i++)
     { 
@@ -202,7 +189,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         // newSolution
 
-           if (velocityBis[i] <  -100 && velocityBis[i] >  -400)  // to ENABLEchange phasePattern 250
+         if (velocityBis[i] <  -100 && velocityBis[i] >  -400)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
             instrumentTouchedWithNegativeSpeed = i;
@@ -276,7 +263,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     
     //ALIGN AND RECALL
-    if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
+    if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true &&
+     timeDisablingCAddPulseAwithTwoInstrumentAtTheSameTime+5000<=millis()
+      )
+       
     {  
    
         key = 'à';
@@ -351,6 +341,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSoundB[patternFromInstrument] = true;
         timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument] = millis();       // start disabloing Ro
     }
+
+
+    // Avoid two Trig At the same Time
+
+
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
     
@@ -388,8 +383,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
       
     //USELESS ? 
+    /*
     if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
-        {  
+    {  
         textSize(30);  
         // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
         for (int k = 0; k < networkSize; k++)
@@ -405,6 +401,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSoundB[patternFromInstrument] = false;
         timeEnablingChangesParameter[patternFromInstrument] = millis();
     }
+    */
     
     
     if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
