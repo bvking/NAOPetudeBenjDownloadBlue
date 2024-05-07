@@ -26,6 +26,8 @@ int formerPatternFromInstrument;
 int formerPatternFromInstrumentWithNegativeSpeed;
 
 int  instrumentTouchedWithNegativeSpeed;
+int  timeToWaitToEnableNextMovement;
+int timeToWaitToEnableNextMovementFromNegative;
 
 int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
 int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
@@ -38,6 +40,7 @@ int thresholdToDiscriminateNegativeSpeed;
 
 int[]  oldOldVelocityBis = new int[networkSize];
 boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
+
 
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 
@@ -182,25 +185,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
     // DISCRIMINATE INSTRUMENT TOUCHED with NEGATIVE SPEED
     thresholdToDiscriminateNegativeSpeed = 0;
-    /*
-    print ( "velocityBis ");
-    showArrayF( velocityBis);
-    print ( " c ");
-    showArray ( countControlDr );
-    print ( "oldOldPositionToMotors ");
-    showArray( oldOldPositionToMotor);
-    print ( " oldPositionToMotor ");
-    showArray( oldPositionToMotor);
-    print ( "  positionToMotor ");
-    showArray(  positionToMotor);
-    */
+
 
     for (int i = 0; i < networkSize; i++)
     { 
-       //  println ("                     GAPGAPGAP " +  velocityBis[i] + " old "+  oldVelocityBis[i]  +  " old "+  oldOldVelocityBis[i] +
-       //             "oldDpMotor " + oldOldPositionToMotor[i] + " " + oldPositionToMotor[i] + " " + positionToMotor[i]  );
-        
-        // newSolution
+    
 
            if (velocityBis[i] <  -100 && velocityBis[i] >  -400)  // to ENABLEchange phasePattern 250
         {
@@ -251,10 +240,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         // instrumentToMute[patternFromInstrument] = false;      
     } 
     else  if (formerPatternFromInstrument == patternFromInstrument)
-        {
+    {
             instrumentChangedToAddPulseWithNegativeSpeed = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
-        }
+    }
  
     //********
     
@@ -268,15 +257,14 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
     { 
         enablingChangeSound[patternFromInstrument] = true;
-       // print(" enablingChangeSound ");
-       // showArrayB(enablingChangeSound);
-       
-        
+    
     } 
     
     
     //ALIGN AND RECALL
-    if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
+    if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true
+         && timeToWaitToEnableNextMovement+5000 <= millis()
+         ) 
     {  
    
         key = 'à';
@@ -298,18 +286,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         recallLastPatternInstrument = patternFromInstrument;
         enablingRecallFromAndToInstru = true;
         phaseDirectFromSeq();
-        for (int i = 0; i < networkSize; i++)
-            {  
-            for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
-                { 
-                //  recordPositionsFromInstrument[i][j] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; 
-                //  recordPositionsFromInstrument[i][j] = 0;              
-                //  recordPositionsFromInstrument[i][j] = (int) realign[i]; 
-                
-                text(" recPaTphaseDirect " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j] + " enaSound " + (networkSize - 1 - instrumentTouched) + " " + enablingChangeSoundB[networkSize - 1 - instrumentTouched], 700 * 0, j * 30);           
-             //   println(" recPaTAbletonLiveBis " + patternFromInstrument + " " + recordPositionsFromInstrument[i][j]);  
-            }
-        }
+   
         
         enablingRecallFromAndToInstru = false;      
         // enablingChangeSound[patternFromInstrument] = false;
@@ -321,7 +298,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
    
     // ADD PULSE WITH POSITIVE DISCIMINATION
-    if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false)  
+    if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false
+        && timeToWaitToEnableNextMovement+5000 <= millis()
+       )  
         {
             
         numberOfTrig[patternFromInstrument] += 1;
@@ -350,15 +329,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSound[patternFromInstrument] = false; 
         enablingChangeSoundB[patternFromInstrument] = true;
         timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument] = millis();       // start disabloing Ro
+        timeToWaitToEnableNextMovement = millis();       // start disabloing Ro
     }
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
     
     if (enablingParametersChangesToLiveWithNegativeSpeed == true && instrumentChangedToAddPulseWithNegativeSpeed == false
         && 
-        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument]+5000 <= millis())       // wait 5000 to enabling Ro+=1
+        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument]+5000 <= millis()
+        &&
+        timeToWaitToEnableNextMovementFromNegative+5000<=millis()
+        )       // wait 5000 to enabling Ro+=1
      {
-        //keyCode = '0'; 
+        timeToWaitToEnableNextMovementFromNegative=millis();
         textSize(150);           
         numberOfRota[patternFromInstrumentWithNegativeSpeed] += 1;
         numberOfRota[networkSize - 1 - instrumentTouched] %= 10;
@@ -388,6 +371,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
       
     //USELESS ? 
+    
     if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
         {  
         textSize(30);  
@@ -405,6 +389,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSoundB[patternFromInstrument] = false;
         timeEnablingChangesParameter[patternFromInstrument] = millis();
     }
+    
     
     
     if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
