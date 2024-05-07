@@ -105,61 +105,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         } 
         rotate(PI / 2);
         
-        // DISCRIMINATE INSTRUMENT TOUCHED with POSITIVE SPEED
-        //LAST SOLUTION
-        /*
-        if (velocityBis[i] >  200 && velocityBis[i] <  250)  // to DISABLEchange phasePattern
-        {
-            formerPatternFromInstrument = patternFromInstrument;
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeDisablingChangesParameter[patternFromInstrument] = millis();          
-        }
-        
-        if (velocityBis[i] >  100 && velocityBis[i] <  200)  // to ENABLEchange phasePattern 250
-        {
-            formerPatternFromInstrument = patternFromInstrument; 
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeEnablingChangesParameter[patternFromInstrument] = millis();          
-        }
-        
-        if (oldOldVelocityBis[i] < 50)  // to DISABLEchange phasePattern
-        {
-            formerPatternFromInstrument = patternFromInstrument; 
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeDisablingChangesParameter[patternFromInstrument] = millis();          
-        } 
-        */    
-    }
-    
-    
-    // TIME to TRIG POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with 
-
-    /*
-    if (timeEnablingChangesParameter[patternFromInstrument] + 34 <= millis())
-    { 
-        enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-        enablingParametersChangesToLive = true;
-    }
-    
-    if (timeEnablingChangesParameter[patternFromInstrument] +100 <= millis() && timeEnablingChangesParameter[patternFromInstrument]> 68)
-        {
-        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        enablingParametersChangesToLive = false;
-    }
-    
-    if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument])
-        {
-        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        enablingParametersChangesToLive = false;
-    }
-    */
-    
       // DISCRIMINATE BIS INSTRUMENT TOUCHED with POSITIVE SPEED
 
     for (int i = 0; i < networkSize; i++)
