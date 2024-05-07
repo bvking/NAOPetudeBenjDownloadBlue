@@ -294,7 +294,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         // enablingChangeSound[patternFromInstrument] = false;
         // recallLastPatternInstrument = 1000;
         //  print(" enablingChangeSound");
-        showArrayB(enablingChangeSound);
+       // showArrayB(enablingChangeSound);
         enablingChangeSound[patternFromInstrument] = false;
         timeToWaitToEnableNextMovement = millis()+1000;
         
@@ -379,7 +379,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        
         enablingRecordFromAndToInstru = false;
         enablingChangeSoundB[patternFromInstrument] = false;
-       // timeEnablingChangesParameter[patternFromInstrument] = millis();
+        timeEnablingChangesParameter[patternFromInstrument] = millis();
     }
     
     

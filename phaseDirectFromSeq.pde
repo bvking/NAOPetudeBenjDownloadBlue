@@ -254,17 +254,10 @@ void phaseDirectFromSeq() // mixed Com
                 positionFromMotorPhase[i] = (int)  map((networkSize + 0 - 1 - oscillatorBlocked + i) * TWO_PI / 1 / (networkSize + 2), 0, TWO_PI, 0, numberOfStep / ratioNumberOfStepCorraletedFromInstrument[patternFromInstrument]);  
                 positionFromMotorPhase[i] %=   numberOfStep;
                 
-                //positionFromMotorPhaseRecorded[i] = positionFromMotorPhaseRecorded[i] + recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
-                
+        
                 recordPositionsFromInstrument[i][patternFromInstrument] += positionFromMotorPhase[i];
-                
-                
-                // recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument] = positionFromMotorPhaseRecorded[i];  
-                
-                //  recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument]%=  numberOfStep; 
-                
-                // positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
-                
+                        
+
                 positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patternFromInstrument];
 
                 if (numberOfTrig[patternFromInstrument]==0)
@@ -284,23 +277,7 @@ void phaseDirectFromSeq() // mixed Com
         }
         
         
-        /*
-        if(instrumentChangedToAddPulse == false  ) // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
-        {  
-        textSize(30);  
-        // recordPositionsFromInstrument[k][patternFromInstrument] &= positionFromMotorPhase[k];  
-        for (int k = 0; k < networkSize; k++)
-        {   
-        for (int i = patternFromInstrument; i < patternFromInstrument + 1; i++) 
-        { 
-        recordPositionsFromInstrument[k][i] = positionFromMotorPhase[k]; 
-        text(" recPaT " + patternFromInstrument + " " + recordPositionsFromInstrument[k][i] + " enaSound " + (networkSize-1-instrumentTouched) + " " + enablingChangeSoundB[networkSize-1-instrumentTouched], 700*0, k*30);           
-        
-    }
-    }
-        timeEnablingChangesParameter[patternFromInstrument] = millis();
-    }
-        */
+
         
         // DISPLAY PATTERN SAVED with controlDr
         if (keyCode == CONTROL)
