@@ -553,15 +553,17 @@ void oscSend(){
         //  midPos[i]=false;
         //  sendMiddle[i]=0.;
         //  TrigmodPos[i]=0;
-
         //  numberOfTrig[i]=0;
-
      }
-
-
-      
-     //  Pos[0]=127;
-      
+     
+    if (formerKey == 'ç')
+        {
+            background(200);
+            for (int i = 0; i < networkSize; i++)
+             {
+             numberOfRota[i]=numberOfTrig[i]=0;
+          }
+        }
 
     if ( keyCode == TAB || formerKey == 'a') 
      {

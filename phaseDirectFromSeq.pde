@@ -45,10 +45,12 @@ void phaseDirectFromSeq() // mixed Com
                 {
                     
                     realign[i] = (dataMappedForMotorisedPosition[0] + dataMappedForMotorisedPosition[1] + dataMappedForMotorisedPosition[2] + dataMappedForMotorisedPosition[3]+
-                        dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5]) / (networkSize - 1);
+                                  dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5]) / (networkSize - 1);
                 }
+
                 
-                
+                //numberOfRota[i]=numberOfTrig[i]=0;
+
                 realign[i] %=  numberOfStep;
                 
                 for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 

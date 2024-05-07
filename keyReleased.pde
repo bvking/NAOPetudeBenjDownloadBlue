@@ -8,6 +8,16 @@ void keyReleased()
         // automationForMusicControlDr();
 
          phaseDirectToMotor();
+        /*
+        if (formerKey == 'ç')
+        {
+            background(200);
+            for (int i = 0; i < networkSize; i++)
+             {
+             numberOfRota[i]=numberOfTrig[i]=0;
+          }
+        }
+        */
          
 
           if (keyCode == CONTROL)

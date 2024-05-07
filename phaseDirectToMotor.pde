@@ -84,6 +84,7 @@ void phaseDirectToMotor() // mixed Com
                   }
 
              realign[i]%=numberOfStep;
+             //numberOfRota[i]=numberOfTrig[i]=0;
 
               positionFromMotorPhase[i] =  positionFromMotorPhase[networkSize - 1] - (int) realign[i];
               countControlDr[i]+=1;
