@@ -337,8 +337,10 @@ void teensyPos()
           for (int i = 0; i < networkSize; i++)
           {  
           text ( (networkSize-1-i) + " Ro " +numberOfRota[networkSize-1-i]  + " Tr " + numberOfTrig[networkSize-1-i]  + " Mu " + instrumentToMute[networkSize-1-i] +
-                " enaChangeS " + enablingChangeSound[networkSize-1-i] + " instChanged " + instrumentChangedToAddPulse + " enabToL " + enablingChangeToSpecificInstrument[networkSize-1-i] +
-                " enablingPara " + enablingParametersChangesToLive , width+600, -2000-100*(networkSize-1-i)) ; 
+               " timeToWaitToEnableNextMovement " + timeToWaitToEnableNextMovement +   " enablingPara " + enablingParametersChangesToLive
+
+               // " enaChangeS " + enablingChangeSound[networkSize-1-i] + " instChanged " + instrumentChangedToAddPulse + " enabToL " + enablingChangeToSpecificInstrument[networkSize-1-i] +
+               , width+200, -2000-100*(networkSize-1-i)) ; 
            }
          }
 

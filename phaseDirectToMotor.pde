@@ -60,6 +60,13 @@ void phaseDirectToMotor() // mixed Com
     
      if (key == 'ç')
     {
+       
+            background(200);
+            for (int i = 0; i < networkSize; i++)
+             {
+             numberOfRota[i]=numberOfTrig[i]=0;
+          }
+        
         float[] realign = new float[networkSize];
         if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0]) 
         {    rotate(-PI/2);        

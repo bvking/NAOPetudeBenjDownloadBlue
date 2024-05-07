@@ -555,7 +555,7 @@ void oscSend(){
         //  TrigmodPos[i]=0;
         //  numberOfTrig[i]=0;
      }
-     
+
     if (formerKey == 'ç')
         {
             background(200);
@@ -581,7 +581,7 @@ void oscSend(){
      */
      }
 
-    if ( formerKey == 'z')
+    if ( Key == 'z')
      {
      encoderTouched[1]=true;
 
@@ -592,7 +592,7 @@ void oscSend(){
      */
      /*
      numberOfRota[1]%=8;
-     numberOfRota[1]+=1;
+     numberOfRota[1]+=1
      */  
      }
 

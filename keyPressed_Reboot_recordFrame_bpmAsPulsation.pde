@@ -2,6 +2,7 @@ void keyPressed() {
 
     if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
+    
    /*
           for (int i = 0; i < networkSize; i++) {
         encoderTouched[i]=false;

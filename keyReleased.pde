@@ -7,17 +7,8 @@ void keyReleased()
          keyCode=char (KeyCode);
         // automationForMusicControlDr();
 
-         phaseDirectToMotor();
-        /*
-        if (formerKey == 'ç')
-        {
-            background(200);
-            for (int i = 0; i < networkSize; i++)
-             {
-             numberOfRota[i]=numberOfTrig[i]=0;
-          }
-        }
-        */
+        // phaseDirectToMotor(); // automatically directFromSeq
+ 
          
 
           if (keyCode == CONTROL)
