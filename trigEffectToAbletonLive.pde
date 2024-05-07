@@ -323,11 +323,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     // ADD PULSE WITH POSITIVE DISCIMINATION
     if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false)  
         {
-        background(50);
-        key = 'e';
-        phaseDirectFromSeq();
-        //keyCode = '0'; 
-        textSize(150);           
+            
         numberOfTrig[patternFromInstrument] += 1;
         numberOfTrig[networkSize - 1 - instrumentTouched] %= 10;
         
@@ -338,6 +334,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         //  0--> Kick
             numberOfTrig[0] = (int) map (numberOfTrig[0], 0, 8, 0, 8);  // all go from 8 to 16
         //   5--> HitHat
+
+        background(50);
+        key = 'e';
+        phaseDirectFromSeq();
+        //keyCode = '0'; 
+        textSize(150);    
 
 
         text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 

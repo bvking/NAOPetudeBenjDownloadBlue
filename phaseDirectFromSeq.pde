@@ -261,6 +261,11 @@ void phaseDirectFromSeq() // mixed Com
                 // positionFromMotorPhase[i] = recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
                 
                 positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patternFromInstrument];
+
+                if (numberOfTrig[patternFromInstrument]==0)
+                 { 
+                    positionFromMotorPhase[i]=0;
+                 }
                 
                 for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                     { 
