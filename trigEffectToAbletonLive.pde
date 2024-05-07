@@ -26,8 +26,11 @@ int formerPatternFromInstrument;
 int formerPatternFromInstrumentWithNegativeSpeed;
 
 int  instrumentTouchedWithNegativeSpeed;
+
 int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
-int[]  timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
+int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
+int[] timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
+
 boolean instrumentChangedToAddPulseWithNegativeSpeed;
 boolean enablingParametersChangesToLiveWithNegativeSpeed;
 boolean[]  enablingChangeToSpecificInstrumentWithNegativeSpeed = new boolean[networkSize];
@@ -104,6 +107,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
         } 
         rotate(PI / 2);
+    } 
         
       // DISCRIMINATE BIS INSTRUMENT TOUCHED with POSITIVE SPEED
 
@@ -167,10 +171,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         // instrumentToMute[patternFromInstrument] = false;      
     } 
     else  if (formerPatternFromInstrument == patternFromInstrument)
-        {
+    {
             instrumentChangedToAddPulse = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
-        }
+     }
     
     //--------------------------:-------------------------------------------------------------------
 
@@ -262,17 +266,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     //********
     
     if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
-        { 
+    { 
         enablingChangeSound[patternFromInstrument] = true;
-        print(" enablingChangeSound ");
-        showArrayB(enablingChangeSound);
+       // print(" enablingChangeSound ");
+       // showArrayB(enablingChangeSound);
+       
         
     } 
     
     
     //ALIGN AND RECALL
     if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false       
-        {  
+    {  
    
         key = 'à';
         phaseDirectToMotor();
@@ -341,13 +346,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingRecordFromAndToInstru = true;
         
         enablingChangeSound[patternFromInstrument] = false; 
-        enablingChangeSoundB[patternFromInstrument] = true;       
+        enablingChangeSoundB[patternFromInstrument] = true;
+        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument] = millis();       // start disabloing Ro
     }
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
     
-    if (enablingParametersChangesToLiveWithNegativeSpeed == true && instrumentChangedToAddPulseWithNegativeSpeed == false)//&& enablingParametersChangesToLive == true //&&  enablingParametersChangesToLive == false
-        {
+    if (enablingParametersChangesToLiveWithNegativeSpeed == true && instrumentChangedToAddPulseWithNegativeSpeed == false
+        && 
+        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument]+5000 <= millis())       // wait 5000 to enabling Ro+=1
+     {
         //keyCode = '0'; 
         textSize(150);           
         numberOfRota[patternFromInstrumentWithNegativeSpeed] += 1;
