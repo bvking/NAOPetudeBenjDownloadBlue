@@ -239,12 +239,12 @@ void phaseDirectFromSeq() // mixed Com
         {
             for (int i = 0; i < networkSize; i++)
                 {   
-                ratioNumberOfStepCorraletedFromInstrument[0] = 1;
+                ratioNumberOfStepCorraletedFromInstrument[0] = 2;
                 ratioNumberOfStepCorraletedFromInstrument[1] = 2;
-                ratioNumberOfStepCorraletedFromInstrument[2] = 3;
-                ratioNumberOfStepCorraletedFromInstrument[3] = 8;
-                ratioNumberOfStepCorraletedFromInstrument[4] = 12;
-                ratioNumberOfStepCorraletedFromInstrument[5] = 16;
+                ratioNumberOfStepCorraletedFromInstrument[2] = 2;
+                ratioNumberOfStepCorraletedFromInstrument[3] = 2;
+                ratioNumberOfStepCorraletedFromInstrument[4] = 2;
+                ratioNumberOfStepCorraletedFromInstrument[5] = 2;
                 
                 
                 //  positionFromMotorPhase[i] += recordPositionFromMotorPhaseFromLastInstrument[i][patternFromInstrument];
