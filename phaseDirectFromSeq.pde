@@ -26,9 +26,17 @@ void phaseDirectFromSeq() // mixed Com
     { 
         
         for (int i = 0; i < networkSize; i++)
-         {
-             numberOfRota[i]=numberOfTrig[i]=0;
-          }
+        {
+         numberOfRota[i]=numberOfTrig[i]=0;
+        }
+
+        for (int k = 0; k < networkSize; k++)
+        {   
+             for (int j = 0; j < networkSize; j++)  // [patternFromInstrument]
+             { 
+             recordPositionsFromInstrument[k][j]=0;
+             }
+        }
 
         float[] realign = new float[networkSize];
         if (positionFromMotorPhase[networkSize - 1] > positionFromMotorPhase[0]) 
@@ -55,8 +63,6 @@ void phaseDirectFromSeq() // mixed Com
                 }
 
                 
-            
-
                 realign[i] %=  numberOfStep;
                 
                 for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
