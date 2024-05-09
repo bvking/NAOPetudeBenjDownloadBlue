@@ -181,8 +181,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     //--------------------------:-------------------------------------------------------------------
 
-
-
     // DISCRIMINATE INSTRUMENT TOUCHED with NEGATIVE SPEED
     thresholdToDiscriminateNegativeSpeed = 0;
 
@@ -372,36 +370,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
     
     
-    
-    if (timeEnablingChangesParameter[patternFromInstrument] + 20 <= millis())
-        { 
-        
-        // enablingParametersChangesToLive = false;
-        //  enablingChangeSound[patternFromInstrument]=false;
-    }
-    
-    if (secondTouchedTimeStarter + 1000 <=  millis() &&  enablingParametersChangesToLive == true)
-        { 
-        text("               changeS " + instrumentTouched + " " + numberOfTrig[networkSize - 1 - instrumentTouched] + " ", 0, 1 * networkSize - 1 - instrumentTouched * 50); 
-        // enablingParametersChangesToLive = false;
-        // key = '#';  
-        //  enablingChangeSoundB[networkSize-1-instrumentTouched] =!enablingChangeSoundB[networkSize-1-instrumentTouched] ; // = false;              
-    }
-    
-    if (enablingChangeSound[networkSize - 1 - instrumentTouched] = false)  
-        { 
-        //key = '#' ;
-    }
-    
 } 
-
-/*
-if (midPos[i] ==  true)
-{ 
-//  text ("MIDDLE POSITION GOOD MATCH in " + i + " " + midPos[i] + " " + midPos[i]+ " ", -500, 1 * i * 200);   
-}
-//   key = '#';
-*/
 
 
 

@@ -238,6 +238,7 @@ void draw()
     
     print(" sendMid ");
     showArray(sendMiddleInt);
+    println();
     
     //mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
