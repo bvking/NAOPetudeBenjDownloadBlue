@@ -41,7 +41,6 @@ int thresholdToDiscriminateNegativeSpeed;
 int[]  oldOldVelocityBis = new int[networkSize];
 boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
 
-
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
@@ -176,9 +175,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     } 
     else  if (formerPatternFromInstrument == patternFromInstrument)
     {
-            instrumentChangedToAddPulse = false;                 
+        instrumentChangedToAddPulse = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
-     }
+    }
     
     //--------------------------:-------------------------------------------------------------------
 
@@ -212,8 +211,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
     
     
-        
-        
         // // TIME to TRIG NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
         if (timeEnablingChangesParameterWithNegativeSpeed[patternFromInstrumentWithNegativeSpeed] + 34 <= millis())
         {     
@@ -291,10 +288,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
    
         
         enablingRecallFromAndToInstru = false;      
-        // enablingChangeSound[patternFromInstrument] = false;
-        // recallLastPatternInstrument = 1000;
-        //  print(" enablingChangeSound");
-       // showArrayB(enablingChangeSound);
+  
         enablingChangeSound[patternFromInstrument] = false;
         timeToWaitToEnableNextMovement = millis()+1000;
         
@@ -322,8 +316,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         phaseDirectFromSeq();
       
         textSize(150);    
-
-
         text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
         
         enablingParametersChangesToLive = false;
@@ -366,10 +358,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
              
         
         enablingParametersChangesToLiveWithNegativeSpeed = false;
-        
-        
-        // enablingChangeSound[patternFromInstrument] = false; 
-        //enablingChangeSoundB[patternFromInstrument] = true;       
+           
     }
       
     //USELESS ? 

@@ -6,6 +6,16 @@ void phaseDirectFromSeq() // mixed Com
 {  
     // instrumentChangedToAddPulse = false;
     oscillatorBlocked = networkSize - 1;
+
+    if (key == '0')
+    {
+        for (int i = 0; i < networkSize; i++)
+        {
+            positionFromMotorPhase[i] =0;
+            dataMappedForMotorisedPosition[i] = 0;
+
+        }
+    } 
     
     if (key == '9')
     {
@@ -22,7 +32,7 @@ void phaseDirectFromSeq() // mixed Com
         }
     }
     
-    if (key == 'ç')
+    if (key == 'ç')// reset memories and positions
     { 
         
         for (int i = 0; i < networkSize; i++)
@@ -34,7 +44,9 @@ void phaseDirectFromSeq() // mixed Com
         {   
              for (int j = 0; j < networkSize; j++)  // [patternFromInstrument]
              { 
-             recordPositionsFromInstrument[k][j]=0;
+             recordPositionsFromInstrument[k][j]+=(numberOfStep/4)*k;
+             recordPositionsFromInstrument[k][j]%=numberOfStep;
+             positionFromMotorPhase[k]=recordPositionsFromInstrument[k][j];
              }
         }
 
@@ -80,26 +92,17 @@ void phaseDirectFromSeq() // mixed Com
                 //countControlDr[i] += 1;
                 
             }
-            
-            
-            /*
-            if (networkSize ==10)
-            { 
-            for (int i = 0; i < 1; i++) 
-            {      
-            lastActualPosition[i]=(dataMappedForMotorisedPosition[0]+dataMappedForMotorisedPosition[1]+dataMappedForMotorisedPosition[2]+dataMappedForMotorisedPosition[3]+
-            dataMappedForMotorisedPosition[4]+dataMappedForMotorisedPosition[5]+dataMappedForMotorisedPosition[6]+dataMappedForMotorisedPosition[7]+
-            dataMappedForMotorisedPosition[8]+dataMappedForMotorisedPosition[9])/(networkSize-1);
-            text ( lastActualPosition[i], 100, 100*i); 
+
+        for (int k = 0; k < networkSize; k++)
+        {   
+             for (int j = 0; j < networkSize; j++)  // [patternFromInstrument]
+             { 
+             recordPositionsFromInstrument[k][j]+=(numberOfStep/4)*k;
+             recordPositionsFromInstrument[k][j]%=numberOfStep;
+             positionFromMotorPhase[k]=recordPositionsFromInstrument[k][j];
+             }
         }
-        }
-            
-            for (int i = 0; i < networkSize; i++) {
-            CircularVirtualPosition[i]=0;
-            ActualVirtualPosition[i]=lastActualPosition[0];
-            lastActualPosition[i]+= lastActualPosition[0];
-        } 
-            */
+        
             
         }
         
