@@ -86,12 +86,20 @@ void handleSamplingModeWithAbletonLive()
        angleToInterpolate = (float) map(ableton[0], 0, 1 , 0, TWO_PI); 
     }
 
-    if (!systemForBigMachine && samplingWithTeensy3_5  && music_from_ableton_live == " pleasureKraft " && measure >260)
+    if (!systemForBigMachine && samplingWithTeensy3_5  && music_from_ableton_live == " pleasureKraft ") //  && measure >260
     {   
        angleToInterpolate = (float) map (abs(encodeur[0]), 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW 
     }
 
+    if (!systemForBigMachine && samplingWithTeensy3_5  && music_from_ableton_live == " controlDr " && measure <17)
+    {   
+       angleToInterpolate = (float) map (abs(encodeur[0]), 0, 4000, 0, TWO_PI)%TWO_PI;  // tourner CCW 
+    }
+
+
+
       newPosF[networkSize-1]= angleToInterpolate;
+      text (" angle "+   newPosF[networkSize-1]  , 200, 200 ); 
 
       sphere(side*3);
       sphereDetail( 4*5); 

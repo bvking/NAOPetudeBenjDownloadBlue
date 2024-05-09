@@ -30,25 +30,51 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig=120; //ms
                 delayTimeToTrig4=120; 
 
-              if (music_from_ableton_live == " controlDr ")
-            {
 
+            if (music_from_ableton_live == " controlDr ")
+            {
                automationForMusicControlDr();
 
+              if  (measure<=16 ) 
+              {// return in main
+                  formerKeyMetro =  '*';
+                //  net.phase[networkSize-1]=(float)map(encodeur[0], 0, 4000 , 0, TWO_PI);           
+              }
+                  // ARM sampling with angleTointerpolate
+              if  (measure==7 && beatPrecised == 3 && beatPrecisedTrigged==true && music_from_ableton_live == " controlDr ")
+               {// return in main
+                   overDub = false; // tot takeOfff
+                   specialMeasureToStartRecording=8;
+                   key = '9'; // align
+                   keyReleased();
+                   modeCircular = true; // not work
+                   formerKeyMetro = '*'; // 
+                   keyMode = " samplingModeWithLive ";
+       
+                  mouseRecorded = true;
+                  overDub = false;
+               }
+
+                     
+              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
+                {
+  
+                  formerKeyMetro='*';
+                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+                  keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
+                  systemForBigMachine=false;
+                  samplingWithMouse = false;
+                 }
             } 
             
             if (music_from_ableton_live == " Dessine ")
             {
-
                automationForMusicDessine();
-
             }
             
              if (music_from_ableton_live == " mouvement ")
             {
-
               automationForMusicMouvementFromMeasure324();
-
             }
         
            if (music_from_ableton_live == " pleasureKraft ")

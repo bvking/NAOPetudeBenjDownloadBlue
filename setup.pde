@@ -1095,7 +1095,7 @@ void setup() {
                     }
 
                 smooth();
-                       noStroke();
+                noStroke();
   
                 cp5 = new ControlP5(this);
   
@@ -1159,10 +1159,11 @@ void setup() {
 
                  if (systemForBigMachine == false)
                  {
-                 // samplingWithTeensy3_5 = true;
-                 // music_from_ableton_live = " pleasureKraft ";  
-                 //  music_from_ableton_live = " Dessine ";
+                     samplingWithTeensy3_5 = true;
+                    //  music_from_ableton_live = " pleasureKraft ";  
+                    // music_from_ableton_live = " Dessine ";
                     music_from_ableton_live = " controlDr "; 
+                    samplingWithTeensy3_5 = true;
 
                     formerKeyMetro = '*';
                     modeCircular= true;
