@@ -329,9 +329,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     if (enablingParametersChangesToLiveWithNegativeSpeed == true && instrumentChangedToAddPulseWithNegativeSpeed == false
         && 
-        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument]+5000 <= millis()
+        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument]+5000 <= millis() // from Tr
         &&
-        timeToWaitToEnableNextMovementFromNegative+5000<=millis()
+        timeToWaitToEnableNextMovementFromNegative+500<=millis() // from Ro itself
         )       // wait 5000 to enabling Ro+=1
      {
         timeToWaitToEnableNextMovementFromNegative=millis();
