@@ -104,7 +104,7 @@ void draw()
             text(" PRESTART SAMPLING  ", 200, 200);
         }
         
-        if (music_from_ableton_live == " controlDr  ") // madRush  / WITH pleasurKraft specialMeasureToStartRecording comes from trigEvent
+        if (music_from_ableton_live == " controlDr  ") // 
         {
             specialMeasureToStartRecording = 8;
              samplingWithMouse = false;
