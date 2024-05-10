@@ -28,6 +28,7 @@ int formerPatternFromInstrumentWithNegativeSpeed;
 int  instrumentTouchedWithNegativeSpeed;
 int  timeToWaitToEnableNextMovement;
 int timeToWaitToEnableNextMovementFromNegative;
+int timeDisablingChangesParameterWithPositiveSpeed;
 
 int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
 int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
@@ -112,11 +113,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     } 
         
       // DISCRIMINATE BIS INSTRUMENT TOUCHED with POSITIVE SPEED
-
-    for (int i = 0; i < networkSize; i++)
-    { 
-        if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i])  // to ENABLEchange phasePattern
-      //    if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && velocityBis [i]< oldOldVelocityBis [i])  // to ENABLEchange phasePattern
+    //if (timeDisablingChangesParameterWithPositiveSpeed+30<=millis())
+    //{ 
+     for (int i = 0; i < networkSize; i++)
+     { 
+      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i])  // to ENABLEchange phasePattern
+          //      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && velocityBis [i]< oldOldVelocityBis [i])  // to ENABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
@@ -128,8 +130,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         //    enablingParametersChangesToLive = true;          
         }
 
-     if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])  // to DISABLEchange phasePattern
-       // if (velocityBis[i] >  0 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])  // to DISABLEchange phasePattern
+      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])// && timeDisablingChangesParameterWithPositiveSpeed+50<=millis())  // to DISABLEchange phasePattern
+         // if (velocityBis[i] >  0 && velocityBis[i] <  100 ) //&& velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])  // to DISABLEchange phasePattern
         {
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
@@ -140,46 +142,61 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          //   enablingChangeToSpecificInstrument[patternFromInstrument] = false;
          //   enablingParametersChangesToLive = false;          
         }  
-    }
+     }
+    //}
 
     // // TIME to TRIG NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
 
-    if (timeEnablingChangesParameter[patternFromInstrument] + 34 <= millis() //&&  timeToWaitToEnableNextMovement +5000 <= millis()
-    )
-    { 
-        println (" TRIG ON "); println (" TRIG ON "); println (" TRIG ON ");
+   //if (timeDisablingChangesParameterWithPositiveSpeed+ 500<=millis())
+   //  {
+        if (timeEnablingChangesParameter[patternFromInstrument] + 34 < millis() )  //&& timeToWaitToEnableNextMovement+ 50 <= millis() ) 
+    
+        { 
+       
+            println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
         enablingChangeToSpecificInstrument[patternFromInstrument] = true;
         enablingParametersChangesToLive = true;
-    }
+        }
     
-    if (timeEnablingChangesParameter[patternFromInstrument]+ 69<= millis() && timeEnablingChangesParameter[patternFromInstrument]+35> millis() ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
+          if (timeEnablingChangesParameter[patternFromInstrument]+ 69<= millis() && timeEnablingChangesParameter[patternFromInstrument]+35> millis() ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
-            println ( "OFF 1" ); println ( "OFF 1" ); println ( "OFF 1" );
+          
+             println ( "                       OFF 1            " + patternFromInstrument + " " +  formerPatternFromInstrument);
         enablingChangeToSpecificInstrument[patternFromInstrument] = false;
         enablingParametersChangesToLive = false;
-    }
+         }
        
-    if ( timeDisablingChangesParameter[patternFromInstrument]+ 34> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
+        if ( timeDisablingChangesParameter[patternFromInstrument]+ 34> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
-            println ( "OFF 2" ); println ( "OFF 2" ); println ( "OFF 2" );
+         
+             println ( "                       OFF 2             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
         enablingChangeToSpecificInstrument[patternFromInstrument] = false;
         enablingParametersChangesToLive = false;
-    }
+         }
     
-    if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33)
+         if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33)//+ timeToWaitToEnableNextMovement+500 <= millis())
         {
-            println ( "OFF 3" );   println ( "OFF 3" );   println ( "OFF 3" );
+
+            println ("                         OFF 3             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
         enablingChangeToSpecificInstrument[patternFromInstrument] = false;
         enablingParametersChangesToLive = false;
-    }
-    //-------------------------------------------------------------------------------------------
+         }
+
+    //}
+      //-------------------------------------------------------------------------------------------
   
-    if (formerPatternFromInstrument != patternFromInstrument)
-        {
+    if (formerPatternFromInstrument != patternFromInstrument  )
+     {
         instrumentChangedToAddPulse = true;
         // instrumentToMute[patternFromInstrument] = false;      
+     }
+
+    if (timeDisablingChangesParameterWithPositiveSpeed+500<=millis())
+     {
+       // instrumentChangedToAddPulse = false;
+        // instrumentToMute[patternFromInstrument] = false;      
     } 
-    else  if (formerPatternFromInstrument == patternFromInstrument)
+    if (formerPatternFromInstrument == patternFromInstrument)
     {
         instrumentChangedToAddPulse = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
@@ -247,10 +264,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
  
     //********
     
-    print(" " + patternFromInstrument +  " slider ");
-    showArrayF(slider);
-    print(" velocityBis ");
-    showArrayF(velocityBis); 
+   // print(" " + patternFromInstrument +  " slider ");
+   // showArrayF(slider);
+   // print(" velocityBis ");
+   // showArrayF(velocityBis); 
     
     //********
     
@@ -297,10 +314,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
    
     // ADD PULSE WITH POSITIVE DISCIMINATION
-    if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false
-       && timeToWaitToEnableNextMovement+500 <= millis()
+    if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
+
+       //&& timeToWaitToEnableNextMovement+500 <= millis()
        )  
-        {
+    {
             
         numberOfTrig[patternFromInstrument] += 1;
         numberOfTrig[networkSize - 1 - instrumentTouched] %= 10;
@@ -319,6 +337,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       
         textSize(150);    
         text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+        println("                                changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] ); 
+        println("                                changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] ); 
         
         enablingParametersChangesToLive = false;
         enablingRecordFromAndToInstru = true;
@@ -326,6 +346,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSound[patternFromInstrument] = false; 
         enablingChangeSoundB[patternFromInstrument] = true;
         timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument] = millis();       // start disabloing Ro
+
+        timeDisablingChangesParameterWithPositiveSpeed = millis();
+
         timeToWaitToEnableNextMovement = millis();       // start disabloing Ro
     }
     
@@ -361,19 +384,24 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         enablingParametersChangesToLiveWithNegativeSpeed = false;
            
-    }
+     }
       
-    //USELESS ? 
+        //USELESS ? 
     
-    if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
-        {  
+     if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
+     {  
        
         enablingRecordFromAndToInstru = false;
         enablingChangeSoundB[patternFromInstrument] = false;
-        timeEnablingChangesParameter[patternFromInstrument] = millis();
-    }
+      //  timeEnablingChangesParameter[patternFromInstrument] = millis();
+     }
+
+      if (enablingRecordFromAndToInstru == false )
+       { 
+         }
     
     
+   
 } 
 
 
@@ -405,7 +433,7 @@ void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
 }
 
 void computeMidPosToSend()
-    {
+{
     
     result = multiMatchData(0, 1, TrigmodPos.clone());
     TrigmodPos = result;
@@ -480,106 +508,3 @@ void computeMidPosToSend()
 }
 
 
-
-
-void trigEffectToAbletonLive()
-    { 
-    if (oldEncodeur[0] != encodeur[0]) {   
-        trigEffectTo[0] = true;
-        textSize(150);
-        timeTriggedFromEncodeur[0] = millis(); // NOT USED
-        trigEffectBisTo[0] = true;
-        fromEncodeurToLive[0] = 1;   
-    }
-    else trigEffectTo[0] = false;
-    
-    if (trigEffectBisTo[0] ==  true && beatTrigged ==  true) {
-        startMeasureFromEncodeur[0] = measure;
-        textSize(400);
-        trigEffectBisTo[0] = false;  
-    }
-    
-    if (measure ==  startMeasureFromEncodeur[0] + 2) {   
-        textSize(200);
-        fromEncodeurToLive[0] = 0;
-    }
-    text(" trigEffectTo[0] " + trigEffectTo[0] + " fromEncodeurToLive[0] " + fromEncodeurToLive[0] +  " encodeur[0] " + encodeur[0] , -300, 700);
-    
-    oldEncodeur[0] = encodeur[0];
-    
-    /*
-    if (oldEncodeur[1] != encodeur[1]) {   
-    trigEffectTo[1] = true;
-    textSize(150);
-    timeTriggedFromEncodeur[1] = millis(); // NOT USED
-    trigEffectBisTo[1] = true;
-    fromEncodeurToLive[1] = 1;
-    
-}
-    else trigEffectTo[1] = false;
-    
-    if (trigEffectBisTo[1] ==  true && beatTrigged ==  true) {
-    startMeasureFromEncodeur[1] = measure;
-    textSize(400); 
-    trigEffectBisTo[1] = false; 
-}
-    
-    if (measure ==  startMeasureFromEncodeur[1] + 2) {   
-    textSize(200);
-    fromEncodeurToLive[1] = 0;
-}
-    text(" trigEffectTo[1]" + trigEffectTo[1] + " fromEncodeurToLive[1]"  + fromEncodeurToLive[1] +  " encodeur[1] " + encodeur[1] , -300, 800);
-    
-    oldEncodeur[1] = encodeur[1];
-    
-    */
-    
-    
-    
-    
-} 
-
-
-
-
-
-
-void trigEffectToAbletonLiveArray() { 
-    
-    /*
-    
-    for (int j = 0; j < networkSize; j++)  {
-    
-    for (int i = j; i < j + 1; i++) {
-    
-    if (oldEncodeur[i] != encodeur[i]) {   
-    trigEffectTo[i] = true;
-    textSize(150);
-    timeTriggedFromEncodeur[i] = millis(); // NOT USED
-    trigEffectBisTo[i] = true;
-    fromEncodeurToLive[i] = 1;
-    
-}
-    else trigEffectTo[i] = false;
-    
-    if (trigEffectBisTo[i] ==  true && beatTrigged ==  true) {
-    startMeasureFromEncodeur[i] = measure;
-    textSize(400); 
-    trigEffectBisTo[i] = false;  
-}
-    
-    if (measure ==  startMeasureFromEncodeur[i] + 2) {   
-    textSize(200);
-    fromEncodeurToLive[i] = 0;
-}
-    
-    oldEncodeur[i] = encodeur[i];
-    
-    
-    
-}
-    text ( j + " fromEncodeurToLive[j] " + fromEncodeurToLive[j] +  " encodeur[j] " + encodeur[j] , -300, 700 + 100 * j);
-    
-}
-    */  
-} 
