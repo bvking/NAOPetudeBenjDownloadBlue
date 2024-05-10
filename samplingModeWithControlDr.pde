@@ -33,7 +33,7 @@
              samplingWithMouse = false;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 4;
+        measureRecordStop = specialMeasureToStartRecording + 2;
         //measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&

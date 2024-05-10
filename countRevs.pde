@@ -1,8 +1,13 @@
 void countRevsPhaseMappedPositiveOnly() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
-     print ( "velocityBis ");
+    print ( "                                                                 oldd ");
+    showArray( oldOldVelocityBis);
+    print ( "oldV ");
+    showArrayF( oldVelocityBis);
+    print ( "vBis ");
     showArrayF( velocityBis);
     print ( " c ");
     showArray ( countControlDr );
+    println ();
     print ( "oldOldPositionToMotors ");
     showArray( oldOldPositionToMotor);
     print ( " oldPositionToMotor ");
