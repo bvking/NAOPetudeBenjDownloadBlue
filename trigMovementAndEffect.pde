@@ -1,50 +1,4 @@
-int[] fromEncodeurToLive = new int[networkSize];
-boolean[] trigEffectTo = new boolean[networkSize];
-boolean[] trigEffectBisTo = new boolean[networkSize];
-int[] timeTriggedFromEncodeur = new int[networkSize];
-int[] startMeasureFromEncodeur = new int[networkSize];
-int[] recEncodeurPosition = new int[networkSize];
-int[] dataMappedFromMotor = new int[networkSize];
-boolean[] oldEncoderTouched = new boolean[networkSize];
-int[]touchedTimeStarter = new int[networkSize];
-boolean[] encoderTurnClockWise = new boolean[networkSize];
-boolean[] enablingChangeSound = new boolean[networkSize];
-boolean[]  enablingChangeSoundB = new boolean[networkSize];
-int mapRatio = 400;
-int[] encodeurMappedAsMotor = new int[networkSize];
-int[] gapEncoder_Motor = new int[networkSize];
-int[] gapEncoder_OldEncodeur = new int[networkSize];
-int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
-int[] dataMapped = new int[networkSize];
-int[] timeDisablingChangesParameter = new int[networkSize];
-int instrumentTouched; 
-boolean enablingRecordFromAndToInstru;
-boolean enablingRecallFromAndToInstru;
-String modeOfControlDr = " virtual ";
-
-int formerPatternFromInstrument;
-int formerPatternFromInstrumentWithNegativeSpeed;
-
-int  instrumentTouchedWithNegativeSpeed;
-int  timeToWaitToEnableNextMovement;
-int timeToWaitToEnableNextMovementFromNegative;
-int timeDisablingChangesParameterWithPositiveSpeed;
-
-int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
-int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
-int[] timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
-
-boolean instrumentChangedToAddPulseWithNegativeSpeed;
-boolean enablingParametersChangesToLiveWithNegativeSpeed;
-boolean[]  enablingChangeToSpecificInstrumentWithNegativeSpeed = new boolean[networkSize];
-int thresholdToDiscriminateNegativeSpeed;
-
-int[]  oldOldVelocityBis = new int[networkSize];
-boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
-
-// void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
-
-void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginal()
+void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {  
     textSize(75);
     
@@ -149,21 +103,24 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginal()
 
    //if (timeDisablingChangesParameterWithPositiveSpeed+ 500<=millis())
    //  {
-        if (timeEnablingChangesParameter[patternFromInstrument] + 34 < millis() )  //&& timeToWaitToEnableNextMovement+ 50 <= millis() ) 
+        if (timeEnablingChangesParameter[patternFromInstrument] + 30 <= millis() &&timeEnablingChangesParameter[patternFromInstrument] +100 < millis() )  //&& timeToWaitToEnableNextMovement+ 50 <= millis() ) 
     
         { 
        
             println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
-        enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-        enablingParametersChangesToLive = true;
+            println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
+       // enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+       // enablingParametersChangesToLive = true;
+           enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+           enablingParametersChangesToLive = false;
         }
     
           if (timeEnablingChangesParameter[patternFromInstrument]+ 69<= millis() && timeEnablingChangesParameter[patternFromInstrument]+35> millis() ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
           
              println ( "                       OFF 1            " + patternFromInstrument + " " +  formerPatternFromInstrument);
-        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        enablingParametersChangesToLive = false;
+       // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+       // enablingParametersChangesToLive = false;
          }
        
         if ( timeDisablingChangesParameter[patternFromInstrument]+ 34> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
@@ -174,12 +131,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginal()
         enablingParametersChangesToLive = false;
          }
     
-         if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33)//+ timeToWaitToEnableNextMovement+500 <= millis())
+         if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33
+         && timeToWaitToEnableNextMovement+500 <= millis()
+         )//
         {
 
             println ("                         OFF 3             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
-        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        enablingParametersChangesToLive = false;
+        // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        //enablingParametersChangesToLive = false;
+        enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+        enablingParametersChangesToLive = true;
          }
 
     //}
@@ -403,108 +364,3 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginal()
     
    
 } 
-
-
-
-
-void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
-{
-    int mapRatio = 400;
-    textSize(100);
-    rotate( -HALF_PI);
-    for (int i = 0; i < networkSize; i++)
-    { 
-        midPos[i] =  false;
-        oldEncodeurPosition[i] = encodeurPosition[i];      
-        encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);    
-        //text(" trigMid " + oldEncodeurPosition[i] + " " + encodeurPosition[i], -1000, 1 * i * 100);
-        if ((oldEncodeurPosition[i] < mapRatio / 2 && encodeurPosition[i] > mapRatio / 2)) 
-        {
-            midPos[i] =  true;
-            text("MIDDLE POSITION GOD2 MATCH in " + i + " " + midPos[i] + " " + midPos[i] , -1000, 1 * i * 100);          
-        }
-        if ((oldEncodeurPosition[i] > mapRatio / 2 && encodeurPosition[i] < mapRatio / 2)) 
-        {
-            midPos[i] =  true;
-        }
-        text(oldEncodeurPosition[i] + " " + encodeurPosition[i] + " " +  midPos[i], 100, 200 * i);
-    }
-    rotate(HALF_PI);
-}
-
-void computeMidPosToSend()
-{
-    
-    result = multiMatchData(0, 1, TrigmodPos.clone());
-    TrigmodPos = result;
-    //print(" showResul ");showArray(result);
-    textSize(150);
-    
-    //- --------------- prepare Display midPos pos sent
-    if (networkSize ==  6) 
-    {
-        char resultString[] = {'A', 'A', 'A', 'A', 'A', 'A'};
-        
-        for (int i = 0; i < networkSize; i++)
-        {
-            if (result[i] ==  0) {
-                resultString[i] = 'B';
-            }
-        }
-        
-        char data[] = {resultString[0], resultString[1], resultString[2],resultString[3], resultString[4], resultString[5]};
-        String str2 = new String(data);
-        //text(" showTrig " + str2, 300, -850);
-        
-        //- --------------- middle pos sent
-        
-        //text(" midPos[0] " + midPos[0], 300, -450);
-        char midPosString[] = {'F', 'F', 'F', 'F', 'F', 'F'};
-        
-        // resultString='A';
-        for (int i = 0; i < networkSize; i++)
-        {
-            if (midPos[i] ==  true) {
-                midPosString[i] = 'T';
-                sendMiddle[i] = 0;  // to trig something in M4Live
-            }
-            else {
-                sendMiddle[i] = 1; 
-            }
-        }
-        char middlePos[] = {midPosString[0], midPosString[1], midPosString[2],midPosString[3], midPosString[4], midPosString[5]};
-        String strMiddle = new String(middlePos);
-        //text(" showMid " + strMiddle, 800, -1000);
-        
-        //midPos  but not aligned  covertir en int puis float DO NOT WORK WELL
-        
-        for (int i = 0; i < networkSize; i++)
-        {
-            sendMiddleInt[i] = (int)  sendMiddle[i];      
-        }
-        
-        resultMidPosWithEncoderInt = multiMatchData(1, 0, sendMiddleInt.clone());
-        
-        for (int i = 0; i < networkSize; i++)
-        { 
-            sendMiddle[i] = (float) resultMidPosWithEncoderInt[i];
-            //text(" sendMid " +  sendMiddle[i], -800, -1000-100*i);
-            
-        }
-        
-        
-        // println (" sendMiddle ");showArrayF(sendMiddle);
-        // println(" sendMiddle ");showArrayF(sendMiddle);
-        
-        /* 
-        resultMidPosWithEncoderF = multiMatchDataF(1, 0, sendMiddle.clone());
-        sendMiddle = resultMidPosWithEncoder;
-        */
-        // println(" sendMiddle ");showArrayF(sendMiddle);
-        // println(" sendMiddle ");showArrayF(sendMiddle);
-        
-        
-    }
-}
-
-
