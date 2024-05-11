@@ -1,4 +1,4 @@
-int chronoON, chronoOFF;
+int chronoON, chronoOFF, timeToLastChangedInstrument;
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {  
@@ -73,12 +73,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     if ( timeToWaitToEnableNextMovement+500<=millis())
     {
           print ( "                                                               DISCR  oldd ");
-    showArray( oldOldVelocityBis);
-    print ( "oldV ");
-    showArrayF( oldVelocityBis);
-    print ( "vBis ");
-    showArrayF( velocityBis);
-    println ();
+     showArray( oldOldVelocityBis);
+     print ( "oldV ");
+     showArrayF( oldVelocityBis);
+     print ( "vBis ");
+     showArrayF( velocityBis);
+     println ();
 
 
      for (int i = 0; i < networkSize; i++)
@@ -144,14 +144,15 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         
 
-    // // TIME to TRIG POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
+     // // TIME to TRIG POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
 
-   //if (timeDisablingChangesParameterWithPositiveSpeed+ 500<=millis())
-   //  {
+     //if (timeDisablingChangesParameterWithPositiveSpeed+ 500<=millis())
+     //  {
+
         if (timeEnablingChangesParameter[instrumentTouched] + 30 <= millis() &&timeEnablingChangesParameter[instrumentTouched] +100 < millis() )  //&& timeToWaitToEnableNextMovement+ 50 <= millis() ) 
     
         { 
-    
+               println ("                     TRIG WHAT " + instrumentTouched);
           //  println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
           //  println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
            // enablingChangeToSpecificInstrument[patternFromInstrument] = true;
@@ -168,17 +169,23 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             enablingParametersChangesToLive = false;
          }
        
-        if ( timeDisablingChangesParameter[instrumentTouched]+ 25> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
+        if ( timeDisablingChangesParameter[instrumentTouched]+ 25> millis() 
+            &&  timeToLastChangedInstrument >=1000
+            //&&  timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
+            && chronoON >=500
+            
+             ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
          
              println ( "                       TRIG MOUV            " + " " + instrumentTouched + " " + patternFromInstrument + " " +  formerPatternFromInstrument);
               enablingChangeToSpecificInstrument[instrumentTouched] = true;
               enablingParametersChangesToLive = true;
          }
+
     
          if (timeEnablingChangesParameter[instrumentTouched] > timeDisablingChangesParameter[instrumentTouched]+33
                // && timeToWaitToEnableNextMovement+500 <= millis()
-                 && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
+               //  && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
          )     //
         {
 
@@ -189,31 +196,17 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          // enablingParametersChangesToLive = true;
          }
         
-        /*
-        if ((timeEnablingChangesParameter[instrumentTouched] - timeDisablingChangesParameter[instrumentTouched] > 33)
-           &&  (timeEnablingChangesParameter[instrumentTouched] - timeDisablingChangesParameter[instrumentTouched] < 200)
-            
-        
-         )     //
-        {
-
-            println ("                         OFF 4             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
-          // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-          //enablingParametersChangesToLive = false;
-          enablingChangeToSpecificInstrument[instrumentTouched] = true;
-          enablingParametersChangesToLive = true;
-         }
-
-        */
+   
 
     //}
       //-------------------------------------------------------------------------------------------
   
     if (formerPatternFromInstrument != patternFromInstrument 
-        && timeToWaitToEnableNextMovement+500 <= millis()
+        
          )
      {
         instrumentChangedToAddPulse = true;
+        timeToLastChangedInstrument = millis();
         // instrumentToMute[patternFromInstrument] = false;      
      }
 
@@ -280,6 +273,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     if (formerPatternFromInstrumentWithNegativeSpeed != patternFromInstrumentWithNegativeSpeed)
     {
         instrumentChangedToAddPulseWithNegativeSpeed = true;
+
         // instrumentToMute[patternFromInstrument] = false;      
     } 
     else  if (formerPatternFromInstrument == patternFromInstrument)
