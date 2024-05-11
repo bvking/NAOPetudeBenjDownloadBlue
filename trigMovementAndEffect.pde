@@ -108,7 +108,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             ) 
        {
             timeDisablingChangesParameter[instrumentTouched] = millis(); 
-            chronoON = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[instrumentTouched];
+           // chronoON = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[instrumentTouched];
+           chronoON = timeDisablingChangesParameter[instrumentTouched] - timeEnablingChangesParameter[instrumentTouched];
             
             //timeDisablingChangesParameterWithPositiveSpeed = millis();
             println ("                     CHRONO ON " + (chronoON) + " " + patternFromInstrument + " " +  formerPatternFromInstrument);   
@@ -120,7 +121,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          // if (velocityBis[i] >  0 && velocityBis[i] <  100 ) //&& velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])  // to DISABLEchange phasePattern
         {
             timeEnablingChangesParameter[instrumentTouched] = millis();
-            chronoOFF = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[instrumentTouched];
+           // chronoOFF = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[instrumentTouched];
+            chronoOFF = timeDisablingChangesParameter[instrumentTouched] - timeEnablingChangesParameter[instrumentTouched];
             
          //   println ("                     CHRONO OFF Bis" + (timeEnablingChangesParameter[instrumentTouched] - timeDisablingChangesParameter[instrumentTouched]) + " " + patternFromInstrument + " " +  formerPatternFromInstrument);
             println ("                     CHRONO OFF " + (chronoOFF) + " " + patternFromInstrument + " " +  formerPatternFromInstrument);
