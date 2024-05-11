@@ -199,8 +199,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          // enablingParametersChangesToLive = true;
          }
         
-   
-
     //}
       //-------------------------------------------------------------------------------------------
   
@@ -296,8 +294,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
     { 
-        enablingChangeSound[patternFromInstrument] = true;
-    
+        enablingChangeSound[patternFromInstrument] = true;  
     } 
     
     
@@ -306,13 +303,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          && timeToWaitToEnableNextMovement+5000 <= millis()
          ) 
     {  
-   
         key = 'à';
         phaseDirectToMotor();
          timeToWaitToEnableNextMovement = millis();
         for (int i = 0; i < networkSize; i++)
-            {  
-            
+            {         
             for (int j = patternFromInstrument; j < patternFromInstrument + 1; j++) 
                 { 
                 //   recordPositionsFromInstrument[i][j] = positionFromMotorPhase[i]; 
@@ -327,13 +322,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         recallLastPatternInstrument = patternFromInstrument;
         enablingRecallFromAndToInstru = true;
         phaseDirectFromSeq();
-   
-        
+       
         enablingRecallFromAndToInstru = false;      
   
         enablingChangeSound[patternFromInstrument] = false;
-        timeToWaitToEnableNextMovement = millis()+1000;
-        
+        timeToWaitToEnableNextMovement = millis()+1000;    
     }
    
     // ADD PULSE WITH POSITIVE DISCIMINATION
@@ -342,8 +335,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        //&& timeToWaitToEnableNextMovement+500 <= millis()
        //  && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
        )  
-    {
-            
+    {       
         numberOfTrig[patternFromInstrument] += 1;
         numberOfTrig[patternFromInstrument] %= 10;
         
@@ -404,8 +396,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         { 
             instrumentToMute[patternFromInstrumentWithNegativeSpeed] = true;
         }
-             
-        
+       
         enablingParametersChangesToLiveWithNegativeSpeed = false;
            
      }
