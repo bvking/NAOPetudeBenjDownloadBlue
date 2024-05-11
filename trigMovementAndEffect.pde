@@ -17,8 +17,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
-        oldOldVelocityBis[i] = (int) oldVelocityBis[i]; // to use to disciminate variation of speed
-        oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
+        oldOldVelocityBis[networkSize - 1 - i] = (int) oldVelocityBis[networkSize - 1 - i]; // to use to disciminate variation of speed
+        oldVelocityBis[networkSize - 1 - i]= velocityBis[networkSize - 1 - i];// usefull may be to compute acceleration
         
         //*********** COMPUTE SPEED of encoder
         
@@ -69,84 +69,120 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       // DISCRIMINATE BIS INSTRUMENT TOUCHED with POSITIVE SPEED
     //if (timeDisablingChangesParameterWithPositiveSpeed+30<=millis())
     if ( timeToWaitToEnableNextMovement+500<=millis())
-    { 
+    {
+          print ( "                                                               DISCR  oldd ");
+    showArray( oldOldVelocityBis);
+    print ( "oldV ");
+    showArrayF( oldVelocityBis);
+    print ( "vBis ");
+    showArrayF( velocityBis);
+    println ();
+
+
      for (int i = 0; i < networkSize; i++)
      { 
-      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i])  // to ENABLEchange phasePattern
+      if (velocityBis[i] >  75 && velocityBis[i] <  200) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
+       
           //      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && velocityBis [i]< oldOldVelocityBis [i])  // to ENABLEchange phasePattern
         {
+            timeDisablingChangesParameterWithPositiveSpeed = millis();
             formerPatternFromInstrument = patternFromInstrument;
             instrumentTouched = i;
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-            
-            timeEnablingChangesParameter[patternFromInstrument] = millis();
+   
+            println ("                     CHRONO ON " + timeEnablingChangesParameter[instrumentTouched] + " " + timeDisablingChangesParameter[instrumentTouched] + " " +  patternFromInstrument + " " +  formerPatternFromInstrument);  
+            println ( " vBis " + velocityBis[instrumentTouched] +  " oldVelocityBis " + oldVelocityBis[instrumentTouched] + " oldold " + oldOldVelocityBis [instrumentTouched]) ;
+            println ( " vBis " + velocityBis[instrumentTouched] +  " oldVelocityBis " + oldVelocityBis[instrumentTouched] + " oldold " + oldOldVelocityBis [instrumentTouched]) ;
 
-            timeDisablingChangesParameterWithPositiveSpeed = millis();
-
-
-
-        //   enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-        //    enablingParametersChangesToLive = true;          
         }
+      }
 
-      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])// && timeDisablingChangesParameterWithPositiveSpeed+50<=millis())  // to DISABLEchange phasePattern
+         // trig up to 100 ascending speed
+    
+      if ( (oldVelocityBis [instrumentTouched]> 100 && oldVelocityBis [instrumentTouched]< 200) &&  (oldVelocityBis[instrumentTouched] >= velocityBis [instrumentTouched ]) && (oldVelocityBis [instrumentTouched ]> oldOldVelocityBis [instrumentTouched ]) ) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
+       {
+            
+            timeEnablingChangesParameter[instrumentTouched] = millis();
+            //timeDisablingChangesParameterWithPositiveSpeed = millis();
+            println ("                     CHRONO ON Bis" + timeEnablingChangesParameter[instrumentTouched] + " " + timeDisablingChangesParameter[instrumentTouched] + " " +  patternFromInstrument + " " +  formerPatternFromInstrument);   
+            println ("                     CHRONO ON Bis" + (timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[patternFromInstrument]) + " " + patternFromInstrument + " " +  formerPatternFromInstrument);   
+
+        }
+    
+    
+      if ( oldVelocityBis [instrumentTouched]> 50 && oldVelocityBis [instrumentTouched]< 200 &&  velocityBis[instrumentTouched]<= oldVelocityBis [instrumentTouched] && oldVelocityBis [instrumentTouched]< oldOldVelocityBis [instrumentTouched]) // && velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])// && timeDisablingChangesParameterWithPositiveSpeed+50<=millis())  // to DISABLEchange phasePattern
          // if (velocityBis[i] >  0 && velocityBis[i] <  100 ) //&& velocityBis[i]< oldVelocityBis [i] && oldVelocityBis [i]< oldOldVelocityBis [i])  // to DISABLEchange phasePattern
         {
-            formerPatternFromInstrument = patternFromInstrument;
-            instrumentTouched = i;
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+          //  formerPatternFromInstrument = patternFromInstrument;
+          //  instrumentTouched = i;
+          //  patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             
-            timeDisablingChangesParameter[patternFromInstrument] = millis(); 
+            timeDisablingChangesParameter[instrumentTouched] = millis(); 
 
-         //   enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-         //   enablingParametersChangesToLive = false;          
-        }  
-     }
+            println ("                     CHRONO OFF Bis" + timeEnablingChangesParameter[instrumentTouched] + " " + timeDisablingChangesParameter[instrumentTouched] + " " + patternFromInstrument + " " +  formerPatternFromInstrument);
+            println ("                     CHRONO OFF Bis" + timeEnablingChangesParameter[patternFromInstrument] + " " + timeDisablingChangesParameter[patternFromInstrument] + " " + patternFromInstrument + " " +  formerPatternFromInstrument);
+
+ 
+        }
     }
 
-    // // TIME to TRIG NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
+    // // TIME to TRIG POSITIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
 
    //if (timeDisablingChangesParameterWithPositiveSpeed+ 500<=millis())
    //  {
-        if (timeEnablingChangesParameter[patternFromInstrument] + 30 <= millis() &&timeEnablingChangesParameter[patternFromInstrument] +100 < millis() )  //&& timeToWaitToEnableNextMovement+ 50 <= millis() ) 
+        if (timeEnablingChangesParameter[instrumentTouched] + 30 <= millis() &&timeEnablingChangesParameter[instrumentTouched] +100 < millis() )  //&& timeToWaitToEnableNextMovement+ 50 <= millis() ) 
     
         { 
-       
-            println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
-            println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
-       // enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-       // enablingParametersChangesToLive = true;
+    
+          //  println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
+          //  println ("                     TRIG ON " + patternFromInstrument + " " +  formerPatternFromInstrument);
+           // enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+           // enablingParametersChangesToLive = true;
            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
            enablingParametersChangesToLive = false;
         }
     
-          if (timeEnablingChangesParameter[patternFromInstrument]+ 69<= millis() && timeEnablingChangesParameter[patternFromInstrument]+35> millis() ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
+          if (timeEnablingChangesParameter[instrumentTouched]+ 69<= millis() && timeEnablingChangesParameter[instrumentTouched]+35> millis() ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
           
              println ( "                       OFF 1            " + patternFromInstrument + " " +  formerPatternFromInstrument);
-        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        enablingParametersChangesToLive = false;
+            enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+            enablingParametersChangesToLive = false;
          }
        
         if ( timeDisablingChangesParameter[patternFromInstrument]+ 34> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
          
              println ( "                       OFF 2             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
-        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        enablingParametersChangesToLive = false;
+              enablingChangeToSpecificInstrument[instrumentTouched] = false;
+              enablingParametersChangesToLive = false;
          }
     
          if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33
-        // && timeToWaitToEnableNextMovement+500 <= millis()
-           && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
-         )//
+               // && timeToWaitToEnableNextMovement+500 <= millis()
+                 && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
+         )     //
         {
 
             println ("                         OFF 3             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
-        // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-        //enablingParametersChangesToLive = false;
-        enablingChangeToSpecificInstrument[patternFromInstrument] = true;
-        enablingParametersChangesToLive = true;
+          // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+          //enablingParametersChangesToLive = false;
+         // enablingChangeToSpecificInstrument[patternFromInstrument] = true;
+         // enablingParametersChangesToLive = true;
+         }
+
+           if ((timeEnablingChangesParameter[instrumentTouched] - timeDisablingChangesParameter[instrumentTouched] > 33)
+           &&  (timeEnablingChangesParameter[patternFromInstrument] - timeDisablingChangesParameter[instrumentTouched] < 200)
+            
+        
+         )     //
+        {
+
+            println ("                         OFF 4             "  + patternFromInstrument + " " +  formerPatternFromInstrument);
+          // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+          //enablingParametersChangesToLive = false;
+          enablingChangeToSpecificInstrument[instrumentTouched] = true;
+          enablingParametersChangesToLive = true;
          }
 
     //}
@@ -286,6 +322,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
 
        //&& timeToWaitToEnableNextMovement+500 <= millis()
+         && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
        )  
     {
             

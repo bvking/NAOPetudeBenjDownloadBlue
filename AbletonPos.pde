@@ -34,7 +34,8 @@ void abletonPos ()
        
       
   //*********** COMPUTE ACCELERATION
-
+  if (  music_from_ableton_live == " controlDr " )
+  {
   if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "
     for (int i = 0; i < networkSize; i++) {
       //     net.phase[i] = newPosF[i];  // to compute acceelration
@@ -56,4 +57,5 @@ void abletonPos ()
     rotate (HALF_PI);
   }
   //*********** END COMPUTE ACCELERATION
+  }
 }

@@ -191,7 +191,8 @@ void draw()
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();
     //print(" dataPMpost + keyMode " + keyMode);
-    showArray(positionToMotor);
+   
+    println();
     
     net.step(); // actualise step in sync library ==> actualise net.phase[i]
     netG.step(); //actualise step for chimera state, not use yet
