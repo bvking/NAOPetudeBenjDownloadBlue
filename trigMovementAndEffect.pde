@@ -68,7 +68,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
       // DISCRIMINATE BIS INSTRUMENT TOUCHED with POSITIVE SPEED
     //if (timeDisablingChangesParameterWithPositiveSpeed+30<=millis())
-    //{ 
+    if ( timeToWaitToEnableNextMovement+500<=millis())
+    { 
      for (int i = 0; i < networkSize; i++)
      { 
       if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i])  // to ENABLEchange phasePattern
@@ -79,6 +80,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
             
             timeEnablingChangesParameter[patternFromInstrument] = millis();
+
+            timeDisablingChangesParameterWithPositiveSpeed = millis();
+
+
 
         //   enablingChangeToSpecificInstrument[patternFromInstrument] = true;
         //    enablingParametersChangesToLive = true;          
@@ -97,7 +102,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          //   enablingParametersChangesToLive = false;          
         }  
      }
-    //}
+    }
 
     // // TIME to TRIG NEGATIVE SPEED DISCRIMINATION to enablingChangeToSpecificInstrument with
 
@@ -119,8 +124,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {
           
              println ( "                       OFF 1            " + patternFromInstrument + " " +  formerPatternFromInstrument);
-       // enablingChangeToSpecificInstrument[patternFromInstrument] = false;
-       // enablingParametersChangesToLive = false;
+        enablingChangeToSpecificInstrument[patternFromInstrument] = false;
+        enablingParametersChangesToLive = false;
          }
        
         if ( timeDisablingChangesParameter[patternFromInstrument]+ 34> millis()) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
@@ -132,7 +137,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          }
     
          if (timeEnablingChangesParameter[patternFromInstrument] > timeDisablingChangesParameter[patternFromInstrument]+33
-         && timeToWaitToEnableNextMovement+500 <= millis()
+        // && timeToWaitToEnableNextMovement+500 <= millis()
+           && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
          )//
         {
 
@@ -146,7 +152,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     //}
       //-------------------------------------------------------------------------------------------
   
-    if (formerPatternFromInstrument != patternFromInstrument  )
+    if (formerPatternFromInstrument != patternFromInstrument 
+        && timeToWaitToEnableNextMovement+500 <= millis()
+         )
      {
         instrumentChangedToAddPulse = true;
         // instrumentToMute[patternFromInstrument] = false;      
@@ -282,7 +290,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     {
             
         numberOfTrig[patternFromInstrument] += 1;
-        numberOfTrig[networkSize - 1 - instrumentTouched] %= 10;
+        numberOfTrig[patternFromInstrument] %= 10;
         
         if (numberOfTrig[patternFromInstrument] == 9)
             { 
@@ -297,9 +305,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         phaseDirectFromSeq();
       
         textSize(150);    
-        text("               changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
-        println("                                changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] ); 
-        println("                                changeS " + instrumentTouched + " " + numberOfTrig[patternFromInstrument] ); 
+        text("               changeS " + patternFromInstrument+ " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+        println("                                changeS " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+        println("                                changeS " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
         
         enablingParametersChangesToLive = false;
         enablingRecordFromAndToInstru = true;

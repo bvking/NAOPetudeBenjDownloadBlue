@@ -80,7 +80,7 @@ void draw()
 
 
      //--------------- START SAMPLING with  " controlDr " " samplingModeWithLive "
-    samplingModeWithControlDr();
+    //**samplingModeWithControlDr();
 
     
     //---------------  ARM " samplingModeWithLive "
