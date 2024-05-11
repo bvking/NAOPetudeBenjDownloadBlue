@@ -170,9 +170,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          }
        
         if ( timeDisablingChangesParameter[instrumentTouched]+ 25> millis() 
-            &&  timeOfLastChangedInstument >=1000
+            &&  timeOfLastChangedInstument+1000 <=millis()
             //&&  timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
             && chronoON >=500  // USEFULL  ??     wait at least 500 ms
+            && timeToWaitToEnableNextMovementFromNegative +1500<= millis()  // wait at least 500 from discri --
             
              ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
