@@ -1,4 +1,4 @@
-int chronoON, chronoOFF, timeOfLastChangedInstument;
+int chronoON, chronoOFF, timeOfLastChangedInstument, newPatternFromInstrument;
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {  
@@ -79,11 +79,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      print ( "vBis ");
      showArrayF( velocityBis);
      println ();
-
+     }
 
      for (int i = 0; i < networkSize; i++)
      { 
-      if (velocityBis[i] >  75 && velocityBis[i] <  150) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
+      if (velocityBis[i] >  75 && velocityBis[i] <  150 ) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
        
           //      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && velocityBis [i]< oldOldVelocityBis [i])  // to ENABLEchange phasePattern
         {
@@ -100,6 +100,26 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         }
       }
+
+      for (int i = 0; i < networkSize; i++)
+     { 
+      if (velocityBis[i] >  75 && velocityBis[i] <  150 &&  timeDisablingChangesParameterWithPositiveSpeed+1000<=millis()) 
+       { 
+            //formerPatternFromInstrument = patternFromInstrument;
+            //instrumentTouched = i;
+           
+            newPatternFromInstrument = networkSize - 1 - instrumentTouched;  //
+    
+        }
+       }
+
+      if (formerPatternFromInstrument != newPatternFromInstrument)
+        {
+         //  patternFromInstrument= formerPatternFromInstrument;
+         }
+
+     for (int i = 0; i < networkSize; i++)
+     { 
 
          // trig up to 100 ascending speed
     
@@ -208,6 +228,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      {
         instrumentChangedToAddPulse = true;
         timeOfLastChangedInstument = millis();
+         
         // instrumentToMute[patternFromInstrument] = false;      
      }
 
