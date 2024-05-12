@@ -4,7 +4,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     print ( "oldV ");
     showArrayF( oldVelocityBis);
     print ( "vBis ");
-    showArrayF( velocityBis);
+    showArray( velocityBis);
     print ( " c ");
     showArray ( countControlDr );
     println ();

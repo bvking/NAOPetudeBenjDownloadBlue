@@ -25,6 +25,11 @@ int networkSize = 10;
 int numberOfStep = 3200;  //attention avec big Machine
 */
 
+int[] getUppestVelocityBis = new int[networkSize];
+int bigValue, bigIndex;
+
+
+
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
 int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
@@ -329,7 +334,7 @@ if (oscillatorMaster > 0) {
             
             //
             
-            float[]  velocityBis =  new float[networkSize]; //;
+            int[]  velocityBis =  new int[networkSize]; //;
             float[]  oldVelocityBis =  new float[networkSize]; //;
             float[]  accelerationBis =  new float[networkSize]; //;
             //float[]  oldaccelerationBis =  new float[networkSize]; //;
@@ -825,6 +830,10 @@ if (oscillatorMaster > 0) {
 
 
 void setup() {
+
+              bigValue = getUppestVelocityBis[0];
+              bigValue = velocityBis[0];
+              bigIndex = 0;
 
             numberOfMeasureToRecord=4;      
             frameRatio = 30;///30/5=> 108/5 BPM 21.6  or 114/5 = 22.8

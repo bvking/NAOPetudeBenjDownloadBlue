@@ -1,4 +1,12 @@
-int chronoON, chronoOFF, timeOfLastChangedInstument, newPatternFromInstrument;
+int chronoON, chronoOFF, timeOfLastChangedInstument, newPatternFromInstrument, newInstrumentTouched, lastInstrumentTouched, timeDisablingChangesPatternFromInstrument;
+int lastPatternFromInstrument;
+//int[] counts = new int[] { 202, 34, 567, 10, 99, 239, 56};
+
+
+/*
+  bigValue = getUppestVelocityBis0];
+  bigIndex = 0;
+  */
 
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {  
@@ -77,13 +85,58 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      print ( "oldV ");
      showArrayF( oldVelocityBis);
      print ( "vBis ");
-     showArrayF( velocityBis);
+     showArray( velocityBis);
      println ();
      }
 
+    
+    for(int i = 1; i <  networkSize-1; i++)
+    {
+     getUppestVelocityBis[i]=(int) velocityBis[i];
+
+    if(velocityBis[i] > bigValue)
+    {
+      bigValue = velocityBis[i];
+      bigIndex = i;
+    }
+    }
+
+      print("The biggest count was found at index " + bigIndex);
+      println(" and had the value " + velocityBis[bigIndex]);
+    
+
+    
+    for(int i = 0; i <  velocityBis.length; i++)
+    {
+    if(velocityBis[i] > bigValue)
+    {
+      bigValue = velocityBis[i];
+      bigIndex = i;
+    }
+    }
+
+    print("The biggest count was found at index " + bigIndex);
+     println(" and had the value " + velocityBis[bigIndex]);
+     
+
+    
+    for(int i = 1; i < getUppestVelocityBis.length; i++)
+    {
+      
+
+     if(getUppestVelocityBis[i] > bigValue){
+      bigValue = getUppestVelocityBis[i];
+      bigIndex = i;
+     }
+     }
+     
+      print("The biggest count was found at index " + bigIndex);
+      println(" and had the value " + getUppestVelocityBis[bigIndex]);
+    
+
      for (int i = 0; i < networkSize; i++)
      { 
-      if (velocityBis[i] >  75 && velocityBis[i] <  150 ) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
+      if (velocityBis[i] >  75 && velocityBis[i] <  150 && timeToWaitToEnableNextMovement+1000<=millis()) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
        
           //      if (velocityBis[i] >  100 && velocityBis[i] <  200 && velocityBis[i]< oldVelocityBis [i] && velocityBis [i]< oldOldVelocityBis [i])  // to ENABLEchange phasePattern
         {
@@ -93,30 +146,73 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             instrumentTouched = i;
             // timeDisablingChangesParameter[instrumentTouched] = millis();
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-   
-         //   println ("                     CHRONO ON " + timeEnablingChangesParameter[instrumentTouched] + " " + timeDisablingChangesParameter[instrumentTouched] + " " +  patternFromInstrument + " " +  formerPatternFromInstrument);  
-           // println ( " vBis " + velocityBis[instrumentTouched] +  " oldVelocityBis " + oldVelocityBis[instrumentTouched] + " oldold " + oldOldVelocityBis [instrumentTouched]) ;
-           // println ( " vBis " + velocityBis[instrumentTouched] +  " oldVelocityBis " + oldVelocityBis[instrumentTouched] + " oldold " + oldOldVelocityBis [instrumentTouched]) ;
+
+            print ( " enable Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
+            print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
+
+            if (newPatternFromInstrument != patternFromInstrument  && timeDisablingChangesPatternFromInstrument+100<=millis()  && timeDisablingChangesPatternFromInstrument>20)
+        {
+              patternFromInstrument = lastPatternFromInstrument;
+              formerPatternFromInstrument = lastPatternFromInstrument;
+              instrumentTouched = networkSize - 1 - lastPatternFromInstrument;
+      
+            print ( " disabl Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
+            print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
+                   //  noLoop();
+            }
+
+        
 
         }
       }
 
       for (int i = 0; i < networkSize; i++)
      { 
-      if (velocityBis[i] >  75 && velocityBis[i] <  150 &&  timeDisablingChangesParameterWithPositiveSpeed+1000<=millis()) 
+      if (velocityBis[i] >  75 && velocityBis[i] <  150 &&  timeDisablingChangesParameterWithPositiveSpeed+200<=millis()) 
        { 
             //formerPatternFromInstrument = patternFromInstrument;
-            //instrumentTouched = i;
+            lastInstrumentTouched = instrumentTouched;
+            newInstrumentTouched = i;
+
+            background(30);
            
-            newPatternFromInstrument = networkSize - 1 - instrumentTouched;  //
-    
+            newPatternFromInstrument = networkSize - 1 - newInstrumentTouched;  //
+
+            print ( " enable Discrimination instru with N " ); print(newInstrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
+            print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
+            timeDisablingChangesPatternFromInstrument=millis();
+           // noLoop();
+
+        if (newInstrumentTouched != instrumentTouched)
+         {
+         instrumentTouched = lastInstrumentTouched;
+         }
         }
        }
+    
+      for (int i = 0; i < networkSize; i++)
+     { 
 
+      if  ((velocityBis[i] >  75 && velocityBis[i] <  150 )  && timeToWaitToEnableNextMovement+1500<=millis() && timeDisablingChangesParameterWithPositiveSpeed+500<=millis()) 
+       { 
+            timeDisablingChangesParameterWithPositiveSpeed = millis();
+            
+           
+            instrumentTouched = i;
+            // timeDisablingChangesParameter[instrumentTouched] = millis();
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+             formerPatternFromInstrument = patternFromInstrument;  // directly to enable trig ++
+           
+        }
+     }
+
+    
+     /*
       if (formerPatternFromInstrument != newPatternFromInstrument)
         {
-         //  patternFromInstrument= formerPatternFromInstrument;
+           patternFromInstrument= formerPatternFromInstrument;
          }
+    */
 
      for (int i = 0; i < networkSize; i++)
      { 
@@ -195,7 +291,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             &&  timeOfLastChangedInstument+1000 <=millis()
             //&&  timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
             && chronoON >=500  // USEFULL  ??     wait at least 500 ms
-            && timeToWaitToEnableNextMovementFromNegative +1500<= millis()  // wait at least 500 from discri --
+            && timeToWaitToEnableNextMovementFromNegative +1000<= millis()  // wait at least 1000 from discri --
             
              ) // timeEnablingChangesParameter[patternFromInstrument] +70 <= millis() && 
         {
@@ -374,9 +470,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       
         textSize(150);    
         text("               changeS " + patternFromInstrument+ " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
-        println("                                changeS " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
-        println("                                changeS " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
-        
+        println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+        println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+
+        lastPatternFromInstrument=patternFromInstrument;
+
         enablingParametersChangesToLive = false;
         enablingRecordFromAndToInstru = true;
         

@@ -34,7 +34,7 @@ void abletonPos ()
        
       
   //*********** COMPUTE ACCELERATION
-  if (  music_from_ableton_live == " controlDr " )
+  if (  music_from_ableton_live != " controlDr " )
   {
   if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "
     for (int i = 0; i < networkSize; i++) {
@@ -45,7 +45,7 @@ void abletonPos ()
 
       oldVelocityBis[i] = velocityBis[i];
       //**   velocityBis[i] = (net.phase[i] - net.oldPhase[i]) / 1;
-      velocityBis[i] = (phaseAcceleration[i] - oldPhaseAcceleration[i]) / 1;
+      velocityBis[i] =(int) (phaseAcceleration[i] - oldPhaseAcceleration[i]) / 1;
 
       accelerationBis[i] = (velocityBis[i] - oldVelocityBis[i]) / 1;
       mapAcceleration[i]= constrain ((int (map (abs(accelerationBis[i] *100), -100, 100, 0, 127))), 0, 127);
