@@ -326,10 +326,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
 
         if ( 
-            (chronoOFF>=25 && chronoOFF<=50 &&  oldVelocityBis [instrumentTouched ] > 35 &&  oldVelocityBis [instrumentTouched ] <80) // switch between Discimi et normalUSE
+            chronoOFF>=25 && chronoOFF<=200 
+            &&  oldOldVelocityBis [instrumentTouched ] > 50 &&  oldOldVelocityBis [instrumentTouched ] <150
+            &&  velocityBis [instrumentTouched ] >= 10 &&  velocityBis [instrumentTouched ] <50    // switch between Discimi et normalUSE
          )     //
         {
-
+               timeDisablingChangesParameterWithPositiveSpeed = millis();
                println ("                    TrigMov              " + " " + instrumentTouched + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " " + numberOfTrig[patternFromInstrument] );
                 enablingChangeToSpecificInstrument[instrumentTouched] = true;
                 enablingParametersChangesToLive = true;
