@@ -1,7 +1,7 @@
-int chronoON, chronoOFF, timeOfLastChangedInstument, newPatternFromInstrument, newInstrumentTouched, lastInstrumentTouched, timeDisablingChangesPatternFromInstrument;
-int lastPatternFromInstrument;
+boolean sameInstrument;// = false;
+ int deltaAmplitude ;
 
-void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginalSecond()
+void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {  
     textSize(75);
     
@@ -90,40 +90,18 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginalSecond()
     
     for(int i = 0; i <  networkSize-1; i++)
     {
-     getUppestVelocityBis[i]=(int) velocityBis[i];
-
     if(velocityBis[i] < bigValue)
     {
       bigValue = velocityBis[i];
       bigIndex = i;
     }
-    }
-    
-
+    }  
       print("The slowest count was found at index " + bigIndex);
       println(" and had the value " + velocityBis[bigIndex]);
-    
 
     
-
-    
-        for(int i = 0; i <  velocityBis.length; i++)
-    {
-    if(oldOldVelocityBis[i] >= bigDeltaI)// && oldOldVelocityBis[i] > bigValue)
-    
-    {
-      bigDelta = oldOldVelocityBis[i];
-      bigDeltaI = i;
-
-    }
-     }
-     print("The biggest Odelt was found at index " + bigDeltaI);
-     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-    
-
     for(int i = 0; i <  networkSize-1; i++)
     {
-   
     if(velocityBis[i] > bigValue)
     {
       bigValue = velocityBis[i];
@@ -132,19 +110,79 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginalSecond()
     }
      print("The biggest delta was found at index " + bigIndex);
      println(" and had the value " + velocityBis[bigIndex]);
+    
+    /*
+     for(int i = 0; i <  networkSize-1; i++)
+     {
+     if(oldOldVelocityBis[i] > bigDelta)// && oldOldVelocityBis[i] > bigValue)
+    
+     {
+      bigDelta = oldOldVelocityBis[i];
+      bigDeltaI = i;
 
-
-    int deltaAmplitude = velocityBis[bigIndex]- oldOldVelocityBis[bigDeltaI];
-
-    if (bigIndex==bigDeltaI)
-     { 
-
-     print("The delTest Odelt was found at index " + bigIndex);
-     //println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-     println(" and had the value " +  deltaAmplitude);
-      }
+     }
+     }
    
+     print("The biggest Odelt was found at index " + bigDeltaI);
+     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
+       */
+    
+    for(int i = 0; i <  networkSize-1; i++)
+    {
+    if(oldOldVelocityBis[i] > bigValue)
+    {
+      bigValue = oldOldVelocityBis[i];
+      bigDeltaI = i;
+    }
+    }
+     print("The biggest Odlta was found at index " + bigDeltaI);
+     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
 
+     if (bigIndex==bigDeltaI)
+     {  
+     sameInstrument = true;
+     deltaAmplitude = velocityBis[bigIndex]- oldOldVelocityBis[bigIndex];
+         print("The delTest Odelt was found at index " + bigIndex);
+     //println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
+     println(" and had the value " +  deltaAmplitude + " " + sameInstrument);
+
+      }
+     if (bigIndex!=bigDeltaI)
+     { 
+     sameInstrument = false;
+      }
+
+
+         /*
+    for(int i = 0; i <  velocityBis.length; i++)
+    {
+    if(oldOldVelocityBis[i] >= velocityBis[bigIndex]) // && oldOldVelocityBis[i] > bigDelta)
+    
+    {
+      //bigValue = velocityBis[i];
+      //bigIndex = i;
+      bigDelta = oldOldVelocityBis[i]-velocityBis[bigIndex];
+      bigDeltaI = i;
+
+    }
+    }
+    */
+    
+    if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis())
+    {
+
+            timeDisablingChangesParameterWithPositiveSpeed = millis();
+            
+            formerPatternFromInstrument = patternFromInstrument;
+            instrumentTouched = bigIndex;
+            // timeDisablingChangesParameter[instrumentTouched] = millis();
+            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
+
+            print ( " enable Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
+            print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
+    }
+      
+/*
      for (int i = 0; i < networkSize; i++)
      { 
       if (velocityBis[i] >  75 && velocityBis[i] <  150 && timeToWaitToEnableNextMovement+1000<=millis()) // && velocityBis[i]> oldVelocityBis [i] && oldVelocityBis [i]> oldOldVelocityBis [i]  )  // to ENABLEchange phasePattern
@@ -171,11 +209,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginalSecond()
             print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
                    //  noLoop();
             }
-
-        
-
         }
       }
+  */
 
       for (int i = 0; i < networkSize; i++)
      { 
