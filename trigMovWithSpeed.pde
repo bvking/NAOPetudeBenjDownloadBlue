@@ -287,6 +287,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       if ( oldVelocityBis [instrumentTouched]> 50 && oldVelocityBis [instrumentTouched]< 200 &&  velocityBis[instrumentTouched]<= oldVelocityBis [instrumentTouched] && 
            oldVelocityBis [instrumentTouched]< oldOldVelocityBis [instrumentTouched] && timeToWaitToEnableNextMovement+100<=millis()) //
         {
+            timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();
             timeEnablingChangesParameter[instrumentTouched] = millis();
            // chronoOFF = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[instrumentTouched];
             chronoOFF = timeDisablingChangesParameter[instrumentTouched] - timeEnablingChangesParameter[instrumentTouched];
@@ -370,9 +371,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     //}
       //-------------------------------------------------------------------------------------------
   
-    if (formerPatternFromInstrument != patternFromInstrument 
-        
-         )
+    if (formerPatternFromInstrument != patternFromInstrument)
      {
         instrumentChangedToAddPulse = true;
         timeOfLastChangedInstument = millis();
@@ -392,13 +391,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
     
     //--------------------------:-------------------------------------------------------------------
-
     // DISCRIMINATE INSTRUMENT TOUCHED with NEGATIVE SPEED
     thresholdToDiscriminateNegativeSpeed = 0;
 
     for (int i = 0; i < networkSize; i++)
-    { 
-    
+    {   
         if (velocityBis[i] <  -50 && velocityBis[i] >  -400)  // to ENABLEchange phasePattern 250
         {
             formerPatternFromInstrumentWithNegativeSpeed = patternFromInstrumentWithNegativeSpeed;
@@ -532,7 +529,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         enablingChangeSound[patternFromInstrument] = false; 
         enablingChangeSoundB[patternFromInstrument] = true;
-        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument] = millis();       // start disabloing Ro
+        timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();       // start disabloing Ro
 
         timeDisablingChangesParameterWithPositiveSpeed = millis();
 
