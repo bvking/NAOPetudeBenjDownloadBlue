@@ -88,7 +88,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      }
 
     
-    for(int i = 0; i <  networkSize-1; i++)
+    for(int i = 0; i <  networkSize-0; i++)
     {
     if(velocityBis[i] < bigValue)
     {
@@ -100,7 +100,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       println(" and had the value " + velocityBis[bigIndex]);
 
     
-    for(int i = 0; i <  networkSize-1; i++)
+    for(int i = 0; i <  networkSize-0; i++)
     {
     if(velocityBis[i] > bigValue)
     {
@@ -168,9 +168,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
     */
     
-    if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis())
+    if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis()) // PRE DISCRIMIN
     {
-
+            //timeEnablingChangesParameter[instrumentTouched] = millis();
+           //timeDisablingChangesParameter[instrumentTouched] = millis(); 
             timeDisablingChangesParameterWithPositiveSpeed = millis();
             
             formerPatternFromInstrument = patternFromInstrument;
@@ -178,12 +179,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             // timeDisablingChangesParameter[instrumentTouched] = millis();
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
 
-            timeDisablingChangesParameter[instrumentTouched] = millis(); 
+           
        
-            chronoON = timeDisablingChangesParameter[instrumentTouched] - timeEnablingChangesParameter[instrumentTouched];
+            chronoON = timeToWaitToEnableNextMovement - timeEnablingChangesParameter[instrumentTouched];
             
             //timeDisablingChangesParameterWithPositiveSpeed = millis();
-            println ("                     CHRONO ON " + (chronoON) + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " "  + " " + numberOfTrig[patternFromInstrument]);   
+            println ("                                                          DISCRIM ON  " + (chronoON) + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " "  + " " + numberOfTrig[patternFromInstrument]);   
 
             print ( " enable Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
             print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
@@ -219,7 +220,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }
       }
   */
-
+   /*
       for (int i = 0; i < networkSize; i++)
      { 
       if (velocityBis[i] >  75 && velocityBis[i] <  150 &&  timeDisablingChangesParameterWithPositiveSpeed+200<=millis()) 
@@ -243,23 +244,22 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          }
         }
        }
+    */
        
-    
+     /*
       for (int i = 0; i < networkSize; i++)
      { 
 
       if  ((velocityBis[i] >  75 && velocityBis[i] <  150 )  && timeToWaitToEnableNextMovement+1500<=millis() && timeDisablingChangesParameterWithPositiveSpeed+500<=millis()) 
        { 
-            timeDisablingChangesParameterWithPositiveSpeed = millis();
-            
-           
+            timeDisablingChangesParameterWithPositiveSpeed = millis();       
             instrumentTouched = i;
             // timeDisablingChangesParameter[instrumentTouched] = millis();
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-             formerPatternFromInstrument = patternFromInstrument;  // directly to enable trig ++
-           
+             formerPatternFromInstrument = patternFromInstrument;  // directly to enable trig ++         
         }
      }
+     */
      
 
     
@@ -270,34 +270,45 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          }
     */
 
-     for (int i = 0; i < networkSize; i++)
-     { 
 
-         // trig up to 100 ascending speed
-    /*
-      if ( (oldVelocityBis [instrumentTouched]> 100 && oldVelocityBis [instrumentTouched]< 200) &&  (oldVelocityBis[instrumentTouched] >= velocityBis [instrumentTouched ]) && (oldVelocityBis [instrumentTouched ]> oldOldVelocityBis [instrumentTouched ])
+         // trig up when descend from 109 to 1
+    
+      if ( (velocityBis [instrumentTouched]< 150 && velocityBis [instrumentTouched]>70)
+         &&
+         (oldVelocityBis [instrumentTouched]> 100 && oldVelocityBis [instrumentTouched]< 300) &&  (oldVelocityBis[instrumentTouched] >= velocityBis [instrumentTouched ])
+         &&
+         (oldOldVelocityBis [instrumentTouched ]<= oldVelocityBis [instrumentTouched ]) // Aescending
            // &&  oldVelocityBis[instrumentTouched]<150
             ) 
-       {
-          
+       {      
+          timeEnablingChangesParameter[instrumentTouched] = millis();
+
+          chronoON = timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] - timeEnablingChangesParameter[instrumentTouched];
 
         }
-    */
+                println ("                                                        CHRONO ON First " + (chronoON) + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " " + " " + numberOfTrig[patternFromInstrument]);   
+
     
-      if ( oldVelocityBis [instrumentTouched]> 50 && oldVelocityBis [instrumentTouched]< 200 &&  velocityBis[instrumentTouched]<= oldVelocityBis [instrumentTouched] && 
-           oldVelocityBis [instrumentTouched]< oldOldVelocityBis [instrumentTouched] && timeToWaitToEnableNextMovement+100<=millis()) //
+    
+      if (  (velocityBis [instrumentTouched]< 150 && velocityBis [instrumentTouched]>10) 
+         //&& (oldVelocityBis [instrumentTouched]> 50 && oldVelocityBis [instrumentTouched]< 200)
+          &&  (oldVelocityBis[instrumentTouched] >= velocityBis [instrumentTouched ]) 
+          && (oldOldVelocityBis [instrumentTouched ]>= oldVelocityBis [instrumentTouched ]) // Desccending
+           
+           && timeToWaitToEnableNextMovement+100<=millis()) //
         {
             timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();
-            timeEnablingChangesParameter[instrumentTouched] = millis();
+            timeDisablingChangesParameter[instrumentTouched] = millis();
+
+           //** timeEnablingChangesParameter[instrumentTouched] = millis();
            // chronoOFF = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingChangesParameter[instrumentTouched];
             chronoOFF = timeDisablingChangesParameter[instrumentTouched] - timeEnablingChangesParameter[instrumentTouched];
             
          //   println ("                     CHRONO OFF Bis" + (timeEnablingChangesParameter[instrumentTouched] - timeDisablingChangesParameter[instrumentTouched]) + " " + patternFromInstrument + " " +  formerPatternFromInstrument);
-            println ("                     CHRONO OFF " + (chronoOFF) + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " " + " " + numberOfTrig[patternFromInstrument]);   
-
- 
         }
-    }
+                println ("                                                        CHRONO  OFF Seco " + (chronoOFF) + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " " + " " + numberOfTrig[patternFromInstrument]);   
+
+    
 
         if ( //(chronoON>30 && chronoON<80)
           // && 
@@ -497,7 +508,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
    
     // ADD PULSE WITH POSITIVE DISCIMINATION
     if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
-
+        && timeToWaitToEnableNextMovementFromNegative+2000 <= millis()
        //&& timeToWaitToEnableNextMovement+500 <= millis()
        //  && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
        )  
