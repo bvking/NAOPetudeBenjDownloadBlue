@@ -212,7 +212,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginalSecond()
             instrumentTouched = i;
             // timeDisablingChangesParameter[instrumentTouched] = millis();
             patternFromInstrument = networkSize - 1 - instrumentTouched;  //
-             formerPatternFromInstrument = patternFromInstrument;  // directly to enable trig ++
+             formerPatternFromInstrument = patternFromInstrument;  // directly to enable trig ++!
            
         }
      }
