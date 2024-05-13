@@ -112,32 +112,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
 
     
-    for(int i = 0; i <  velocityBis.length; i++)
-    {
-    if(oldOldVelocityBis[i] >= velocityBis[i] && oldOldVelocityBis[i] > bigValue)
+
     
-    {
-      bigValue = velocityBis[i];
-      bigIndex = i;
-      bigDelta = oldOldVelocityBis[i];
-      bigDeltaI = i;
-
-    }
-    }
-
-    print("The biggest delta was found at index " + bigIndex);
-     println(" and had the value " + velocityBis[bigIndex]);
-
-         print("The biggest Odelt was found at index " + bigDeltaI);
-     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-  
         for(int i = 0; i <  velocityBis.length; i++)
     {
     if(oldOldVelocityBis[i] >= bigDeltaI)// && oldOldVelocityBis[i] > bigValue)
     
     {
-      bigValue = velocityBis[i];
-      bigIndex = i;
+
+      //bigValue = velocityBis[i];
+      //bigIndex = i;
       bigDelta = oldOldVelocityBis[i];
       bigDeltaI = i;
 
@@ -173,9 +157,35 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       bigIndex = i;
     }
     }
-     
-      print("The biggest count was found at index " + bigIndex);
-      println(" and had the value " + getUppestVelocityBis[bigIndex]);
+    
+
+     print("The biggest delta was found at index " + bigIndex);
+     println(" and had the value " + velocityBis[bigIndex]);
+
+    /*
+    for(int i = 0; i <  velocityBis.length; i++)
+    {
+    if(oldOldVelocityBis[i] >= velocityBis[bigIndex]) // && oldOldVelocityBis[i] > bigDelta)
+    
+    {
+      //bigValue = velocityBis[i];
+      //bigIndex = i;
+      bigDelta = oldOldVelocityBis[i]-velocityBis[bigIndex];
+      bigDeltaI = i;
+
+    }
+    }
+    */
+
+    int deltaAmplitude = velocityBis[bigIndex]- oldOldVelocityBis[bigDeltaI];
+
+    if (bigIndex=bigDeltaI)
+     { 
+
+     print("The delTest Odelt was found at index " + bigIndex);
+     //println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
+     println(" and had the value " +  deltaAmplitude);
+      }
    
 
      for (int i = 0; i < networkSize; i++)
