@@ -326,9 +326,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
 
         if ( 
-            chronoOFF>=25 && chronoOFF<=200 
+            chronoOFF>=25 && chronoOFF<=500
             &&  oldOldVelocityBis [instrumentTouched ] > 50 &&  oldOldVelocityBis [instrumentTouched ] <150
-            &&  velocityBis [instrumentTouched ] >= 10 &&  velocityBis [instrumentTouched ] <50    // switch between Discimi et normalUSE
+            &&  (oldOldVelocityBis [instrumentTouched ]>= oldVelocityBis [instrumentTouched ]) // Desccending
+            &&  velocityBis [instrumentTouched ] >= 10 &&  velocityBis [instrumentTouched ] <100   // switch between Discimi et normalUSE
+            && timeToWaitToEnableNextMovement+1000<=millis() //
          )     //
         {
                timeDisablingChangesParameterWithPositiveSpeed = millis();
