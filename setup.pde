@@ -26,7 +26,7 @@ int numberOfStep = 3200;  //attention avec big Machine
 */
 
 int[] getUppestVelocityBis = new int[networkSize];
-int bigValue, bigIndex;
+int bigValue, bigIndex, bigDelta, bigDeltaI;
 
 
 
@@ -335,7 +335,7 @@ if (oscillatorMaster > 0) {
             //
             
             int[]  velocityBis =  new int[networkSize]; //;
-            float[]  oldVelocityBis =  new float[networkSize]; //;
+            int[]  oldVelocityBis =  new int[networkSize]; //;
             float[]  accelerationBis =  new float[networkSize]; //;
             //float[]  oldaccelerationBis =  new float[networkSize]; //;
             
@@ -832,6 +832,10 @@ if (oscillatorMaster > 0) {
 void setup() {
 
               bigValue = getUppestVelocityBis[0];
+
+              bigDelta = oldVelocityBis[0]; 
+              bigDeltaI = 0;
+ 
               bigValue = velocityBis[0];
               bigIndex = 0;
 

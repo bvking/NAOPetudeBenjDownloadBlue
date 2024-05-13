@@ -27,8 +27,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
-        oldOldVelocityBis[networkSize - 1 - i] = (int) oldVelocityBis[networkSize - 1 - i]; // to use to disciminate variation of speed
-        oldVelocityBis[networkSize - 1 - i]= velocityBis[networkSize - 1 - i];// usefull may be to compute acceleration
+
         
         //*********** COMPUTE SPEED of encoder
         
@@ -38,9 +37,12 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {
             gapEncoder_OldEncodeur[i] += 4000;
         }
+
+        oldOldVelocityBis[i] =  oldVelocityBis[i]; // to use to disciminate variation of speed
+        oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
         velocityBis[i] = gapEncoder_OldEncodeur[i];
         
-        //*********** COMPUTE GAP between where the position of motor would have to be and actual position of encoder
+        //*********** COMPUTE GAP between where the position of motor would have to be and actual position of encoder  not USED
         
         dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
         dataMapped[i]  %= numberOfStep;
@@ -61,8 +63,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         }     
         if (encoderTouched[i] ==  true)
         {       
-        }   
-        gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]);
+        } 
+
+        gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]); // not USED
+
+        //*********************************
         
         rotate( -PI / 2);
         if (!systemForBigMachine) 
@@ -83,43 +88,70 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
           print ( "                                                               DISCR  oldd ");
      showArray( oldOldVelocityBis);
      print ( "oldV ");
-     showArrayF( oldVelocityBis);
+     showArray( oldVelocityBis);
      print ( "vBis ");
      showArray( velocityBis);
      println ();
      }
 
     
-    for(int i = 1; i <  networkSize-1; i++)
+    for(int i = 0; i <  networkSize-1; i++)
     {
      getUppestVelocityBis[i]=(int) velocityBis[i];
 
-    if(velocityBis[i] > bigValue)
+    if(velocityBis[i] < bigValue)
     {
       bigValue = velocityBis[i];
       bigIndex = i;
     }
     }
+    
 
-      print("The biggest count was found at index " + bigIndex);
+      print("The slowest count was found at index " + bigIndex);
       println(" and had the value " + velocityBis[bigIndex]);
     
 
     
     for(int i = 0; i <  velocityBis.length; i++)
     {
-    if(velocityBis[i] > bigValue)
+    if(oldOldVelocityBis[i] >= velocityBis[i] && oldOldVelocityBis[i] > bigValue)
+    
     {
       bigValue = velocityBis[i];
       bigIndex = i;
+      bigDelta = oldOldVelocityBis[i];
+      bigDeltaI = i;
+
     }
     }
 
-    print("The biggest count was found at index " + bigIndex);
+    print("The biggest delta was found at index " + bigIndex);
      println(" and had the value " + velocityBis[bigIndex]);
-     
 
+         print("The biggest Odelt was found at index " + bigDeltaI);
+     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
+  
+        for(int i = 0; i <  velocityBis.length; i++)
+    {
+    if(oldOldVelocityBis[i] >= bigDeltaI)// && oldOldVelocityBis[i] > bigValue)
     
+    {
+      bigValue = velocityBis[i];
+      bigIndex = i;
+      bigDelta = oldOldVelocityBis[i];
+      bigDeltaI = i;
+
+    }
+     }
+
+
+     print("The biggest Odelt was found at index " + bigDeltaI);
+     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
+    
+
+
+
+    /*
     for(int i = 1; i < getUppestVelocityBis.length; i++)
     {
       
@@ -129,10 +161,22 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       bigIndex = i;
      }
      }
+     */
+
+    for(int i = 0; i <  networkSize-1; i++)
+    {
+     getUppestVelocityBis[i]=(int) velocityBis[i];
+
+    if(velocityBis[i] > bigValue)
+    {
+      bigValue = velocityBis[i];
+      bigIndex = i;
+    }
+    }
      
       print("The biggest count was found at index " + bigIndex);
       println(" and had the value " + getUppestVelocityBis[bigIndex]);
-    
+   
 
      for (int i = 0; i < networkSize; i++)
      { 
