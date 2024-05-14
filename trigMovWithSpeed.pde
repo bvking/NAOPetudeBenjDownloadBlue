@@ -263,9 +263,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
            patternFromInstrument= formerPatternFromInstrument;
          }
     */
-         // trig up when descend from 109 to 1
+         // trig up when descend from 150 to 50
     
-      if ( (velocityBis [instrumentTouched]< 150 && velocityBis [instrumentTouched]>70)
+      if ( (velocityBis [instrumentTouched]< 150 && velocityBis [instrumentTouched]>50)
          &&
          (oldVelocityBis [instrumentTouched]> 100 && oldVelocityBis [instrumentTouched]< 300) &&  (oldVelocityBis[instrumentTouched] >= velocityBis [instrumentTouched ])
          &&
