@@ -1,14 +1,33 @@
 void keyReleased()
 {
 
-  if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
+  if ( music_from_ableton_live == " controlDr" ) 
    {
          key=char (Key);
          keyCode=char (KeyCode);
          automationForMusicControlDr();
+         
 
-    //   phaseDirectToMotor();
-    // automationForMusicMouvement();       
+          if (keyCode == CONTROL)
+          {
+          // enablingParametersChangesToLive=false;
+           }
+   }
+
+  if ( music_from_ableton_live == " Dessine " ) 
+   {
+       //  key=char (Key);
+       //  keyCode=char (KeyCode);
+          phaseDirectToMotor();
+        
+
+          // automationForMusicDessine();  
+         
+
+          if (keyCode == CONTROL)
+          {
+          // enablingParametersChangesToLive=false;
+           }    
     }
 
    recordFrame();  // record event only when they are released
@@ -153,8 +172,8 @@ void keyReleased()
           speedDelta=1;
            }
          key='#'; // to trig only once
-     /*
-      oscillatorBlocked--;
+     /*:
+      oscillatorBlocked--;:
       if (oscillatorBlocked < 0) { 
       oscillatorBlocked=networkSize-1;    
      
@@ -312,38 +331,42 @@ void keyReleased()
 
   //*********************************************CIRCULAR
   if ( keyMode == " trigEventWithAbletonSignal " && measure <=635 )   
-   { 
+  { 
 
-   if ( music_from_ableton_live != " controlDr "){
+    if ( music_from_ableton_live != " controlDr ")
+    {
+        if ( music_from_ableton_live != " Dessine ")
+        {
 
-    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
-     {
+          if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
+          {
            phasePattern(); // enable to change configuration, but program go away:
-     } 
-    if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
-     {
-        //   phasePatternBase(); // enable to change configuration, but program go away
-     }
+           } 
+          if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+           {
+            //   phasePatternBase(); // enable to change configuration, but program go away
+           }
+         } 
     } 
 
   
 
-    else if ( music_from_ableton_live == " controlDr ")
-   {  
-     if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$')
+    else if ( music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine ")
+    {  
+      if ( formerKeyMetro == '*' || formerKeyMetro == '<' || formerKeyMetro == '$')
       { 
         //  text (" trigEventWithAbletonSignal ", 0, 200 );
         //  displayDebugWhenKeyReleased (eventToTrig[]);
 
-          for (int i = 0; i < 3; i++)  {  
-        //  String valueText[] =  displayEventFromKeyReleased (keyEvent);       
-     } 
+          for (int i = 0; i < 3; i++)
+          {  
+          //  String valueText[] =  displayEventFromKeyReleased (keyEvent);       
+          } 
        
-     }
-
+       }
     }
-     key= '#';
-   }   
+  // key= '#';
+  }   
 }
 
 

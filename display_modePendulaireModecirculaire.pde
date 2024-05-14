@@ -200,8 +200,8 @@ void  displayModePendulaireModeCirculaire() {
       float [] degreeToRadian = new float [networkSize];
 
       degreeToRadian[i]= radians(motorPositionToDegree[i]);
-      x = (displacement+600)*cos(degreeToRadian[i]); // -PI/2
-      y = (displacement+600)*sin(degreeToRadian[i]);// -PI/2
+      x = (displacement+600)*cos(degreeToRadian[i]-PI/2+PI); // -PI/2 to match with motor
+      y = (displacement+600)*sin(degreeToRadian[i]-PI/2+PI); // -PI/2
 
        fill(255, 255, mapAccelerationinversed[i]);
 

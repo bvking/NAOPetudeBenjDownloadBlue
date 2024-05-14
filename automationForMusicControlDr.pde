@@ -1,6 +1,6 @@
 int oldOldSignal2controlDr, oldSignal2controlDr, signal2controlDr;  // phasor signal from AbletonLive
 
-void automationForMusicControlDr()
+void automationForMusicControlDrWithLittleMachine()
 {
   formerKeyMetro = '*';
 
@@ -20,7 +20,7 @@ void automationForMusicControlDr()
             formerKey = 'e';        
          
        }
-    }
+    } 
     phaseDirectFromSeq(); 
 
     // based on followSignaSampledOppositeWay    
@@ -561,7 +561,8 @@ void automationForMusicControlDrO()
              {
               for (int i = 0; i < networkSize; i++)
               {
-              positionFromMotorPhase [i]+= (int)  map ( PI*3/5/16, 0, TWO_PI, 0, numberOfStep);
+             // positionFromMotorPhase [i]+= (int)  map ( PI*3/5/16, 0, TWO_PI, 0, numberOfStep);
+                 positionFromMotorPhase [i]+= 3200/180;  // 1 round in 6 sec
               }
              }
            
@@ -578,10 +579,7 @@ void automationForMusicControlDrO()
 
             // STOP HERE
 
-               shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
-             
-               println (" countControlDr " + countControlDr + " shapeLfoMode " + shapeLfoMode + " shapeLfoToCount " + shapeLfoToCount +  " oldSignal2controlDr " +  oldSignal2controlDr + " signal2controlDr " + signal2controlDr);
-           
+
                // counterLfo
            
            
@@ -607,7 +605,13 @@ void automationForMusicControlDrO()
                // TrigmodPos[i] = 0;
                 
               }
-            } 
+            }
+
+
+             shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
+             
+           //       println (" countControlDr " + countControlDr + " shapeLfoMode " + shapeLfoMode + " shapeLfoToCount " + shapeLfoToCount +  " oldSignal2controlDr " +  oldSignal2controlDr + " signal2controlDr " + signal2controlDr);
+            
 
              signal2controlDr= (int) map  (signal[2], 0, 1, 0, numberOfStep);
              oldSignal2controlDr=signal2controlDr;
@@ -649,6 +653,7 @@ void automationForMusicControlDrO()
              phaseSigna2Followed[i]= (int)  map (signal2controlDr, 0, numberOfStep, 0, numberOfStep);
              lastActualPosition [i] = (  int (phaseSigna2Followed[i]) +int ( phasePatternFollow[i]));  
             }
+
          // key = '#';
       }
 

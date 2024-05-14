@@ -536,13 +536,14 @@ void oscSend(){
      // encoderTouched[0]=true;
      // TrigmodPos[0]=1;
      // Pos[0]=127;
-
+     
+     /*
      numberOfTrig[0]%=8;
      numberOfTrig[0]+=1;
      
      numberOfRota[0]%=8;
      numberOfRota[0]+=1;
-  
+     */
      }
 
     if ( formerKey == 'z')
@@ -551,13 +552,15 @@ void oscSend(){
 
      numberOfTrig[1]%=8;
      numberOfTrig[1]+=1;
-     
+     /*
      numberOfRota[1]%=8;
-     numberOfRota[1]+=1;   
+     numberOfRota[1]+=1;
+     */  
      }
 
     if ( formerKey == 'e')
      {
+      /*
      midPos[2]=true;
      sendMiddle[2]=1.;
 
@@ -566,6 +569,7 @@ void oscSend(){
      
      numberOfRota[2]%=8;
      numberOfRota[2]+=1;
+     */
      }
 
      // if ( key == 's')
@@ -576,24 +580,25 @@ void oscSend(){
      sendMiddle[1]=1.;
      Pos[1]=1;
      }
-     // if ( key == 'd')
+     /*
            if ( keyCode == CONTROL)
      {
      encoderTouched[4]=true;
      sendMiddle[2]=1.;
       TrigmodPos[2]=1;
      }
+     */
      if ( key == 'r')
      {
      encoderTouched[5]=true;
      }
-       keyCode = BACKSPACE;
+      
    
      rotate (-HALF_PI);  
     for (int i = 0; i < networkSize-0; i++)
     {  
    
-     if  (1!=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+     if  (keyCode == TAB && 1>=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
      {
        TrigmodPos[i]=1;
        oldPos[i]=Pos[i];
@@ -620,7 +625,8 @@ void oscSend(){
               //  TrigmodPos[i]=0; 
  
             } 
-     }   
+         keyCode = BACKSPACE;
+      }   
     }
 
    //  rotate (HALF_PI);  

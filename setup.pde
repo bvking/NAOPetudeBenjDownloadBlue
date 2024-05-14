@@ -12,20 +12,24 @@ size(600, 600, P3D);
 } 
 */
 
-boolean systemForBigMachine=false;
-//boolean systemForBigMachine=true;
+//boolean systemForBigMachine=false;
+boolean systemForBigMachine=true;
 int timeTosendData;
 
 
 
-//int networkSize = 10;
-int networkSize = 6;
+int networkSize = 10; // attention avec big Machine numberOfStep = 3200;
+//int networkSize = 6;
+int numberOfStep = 3200;
+//int numberOfStep = 6400;
 
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
-int patterFromInstument;
+int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][networkSize];
+int patterFromInstument=0;
+int patterFromInstrumentRecorded=0;
+int[] positionFromMotorPhaseRecorded = new int[networkSize];
 
-//int numberOfStep = 3200;
-int numberOfStep = 6400;
+
 
 int[] countControlDr = new int [networkSize];   // numberOfrevolution depanding lfo and lfoUP or lfoDown 
 int shapeLfoMode = 10;  //lfo UP CounterWay
@@ -38,7 +42,6 @@ boolean samplingWithTeensy3_5 = false;
 
 int numberOfMeasureToRecord;
 int measureToStartRecording;
-
 float delayTime;
 int factorSynchro=14;
 boolean preStartSpeedOfRepetitionUP, preStartSpeedOfRepetitionDOWN ;
@@ -1114,8 +1117,9 @@ void setup() {
                   samplingWithTeensy3_5 = false;
                  // music_from_ableton_live = " madRush ";
                  // music_from_ableton_live = " mouvement ";
-                   music_from_ableton_live = " Dessine ";
-                  //automationForMusicMouvement()               
+                 //  music_from_ableton_live = " Dessine ";
+                   music_from_ableton_live = " controlDr ";
+                  //automationForMusicDessine()               
                   keyMode = " trigEventWithAbletonSignal "; 
 
                   modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
@@ -1172,7 +1176,7 @@ void setup() {
                 //***keyMode = " notNull "; 
                 // modeStartKeyToFollow = " samplingModeInternal " ;
 
-               
+     windowMove(0,0);// window at the top_left of the screen
      size(600, 600, P3D);
 
               //   windowRatio(900, 900); 
