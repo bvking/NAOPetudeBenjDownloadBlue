@@ -1,5 +1,4 @@
 
-
 void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData, int driverNetWorkSizeOnOff, int timeElapsedBackingPosition) {  // dataMarkedToTeensyArevoir
     rotate( -PI / 2);
    // driver On =2
@@ -7,6 +6,7 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     for (int i = 0; i < networkSize; i++) {
         //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
         //  + dataMappedForMotorisedPosition[i]%6400+ 
+        startingPos[networkSize -1 - i] = encodeur[i];
     }
     
     dataFromMode = "<"

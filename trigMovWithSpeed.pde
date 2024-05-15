@@ -4,6 +4,8 @@ int chronoOFFThird ;
 int timeEnablingDiscrimination;
 int discriminON;
 
+boolean manualyMoved = false;
+
 void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 {  
     textSize(75);
@@ -29,11 +31,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         gapEncoder_OldEncodeur[i] = encodeurPosition[i] - oldEncodeurPosition[i];
         
-        if (gapEncoder_OldEncodeur[i] < ( -4000 ));//+ 400))
+        if (gapEncoder_OldEncodeur[i] < ( -4000 + 400))
         {
             gapEncoder_OldEncodeur[i] += 4000;
         }
-        
 
         oldOldVelocityBis[i] =  oldVelocityBis[i]; // to use to disciminate variation of speed
         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
@@ -41,11 +42,31 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         //*********** COMPUTE GAP between where the position of motor would have to be and actual position of encoder  not USED
         
-        dataMapped[i]  = (int) map(dataMappedForMotorisedBigMachine[networkSize - 1 - i], 0, numberOfStep, 0, numberOfStep); //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
-        dataMapped[i]  %= numberOfStep;
+        dataMapped[i]  = (int) dataMappedForMotorisedPosition[networkSize - 1 - i]; //assign instrument changed at the good order 0 left, then 1,2, .., .. 4 right fonctionne en up
         
-        dataMappedFromMotor[i] = (int)  map(dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
-        dataMappedFromMotor[i] %=  numberOfStep;
+        dataMappedFromMotor[i] = (int)  map(dataMapped[i], 0, numberOfStep, 0, 4000); 
+
+        if(startingPos[i] <= dataMappedFromMotor[i]){   
+          if(startingPos[i] -100 <= encodeurBrut[networkSize-1-i] && encodeurBrut[networkSize-1-i] <= dataMappedFromMotor[i] + 100 ) { 
+            manualyMoved = false;
+          }  else if( dataMappedFromMotor[i] <= encodeurBrut[networkSize-1-i] )
+          {  
+            patternFromInstrument=i; 
+            if(!manualyMoved) { 
+                numberOfTrig[patternFromInstrument] += 1;
+                numberOfTrig[patternFromInstrument] %= 10;   
+                manualyMoved = true;  
+             } 
+          }  else if( encodeurBrut[networkSize-1-i] <= startingPos[i]  )
+           {  
+             patternFromInstrument=i; 
+
+           numberOfRota[patternFromInstrument] += 1;
+           numberOfRota[patternFromInstrument] %= 10;  
+        } 
+        } 
+
+
         
         //_____ not USED
         if (oldEncoderTouched[i] != encoderTouched[i])
@@ -72,7 +93,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text    (" GAP " + velocityBis[i] + " OLD " + oldVelocityBis[i] + " olDD " + oldOldVelocityBis[i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text    (" encoBr " +  encodeurBrut[networkSize-1-i] + " " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
@@ -117,7 +138,22 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      print("The biggest delta was found at index " + bigIndex);
      println(" and had the value " + velocityBis[bigIndex]);
     
-  
+    /*
+     for(int i = 0; i <  networkSize-1; i++)
+     {
+     if(oldOldVelocityBis[i] > bigDelta)// && oldOldVelocityBis[i] > bigValue)
+    
+     {
+      bigDelta = oldOldVelocityBis[i];
+      bigDeltaI = i;
+
+     }
+     }
+   
+     print("The biggest Odelt was found at index " + bigDeltaI);
+     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
+       */
+    
     for(int i = 0; i <  networkSize-1; i++)
     {
     if(oldOldVelocityBis[i] > bigValue)
@@ -144,6 +180,21 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       }
 
 
+      /*
+      for(int i = 0; i <  velocityBis.length; i++)
+     {
+     if(oldOldVelocityBis[i] >= velocityBis[bigIndex]) // && oldOldVelocityBis[i] > bigDelta)
+    
+     {
+      //bigValue = velocityBis[i];
+      //bigIndex = i;
+      bigDelta = oldOldVelocityBis[i]-velocityBis[bigIndex];
+      bigDeltaI = i;
+
+     }
+     }
+     */
+    
     if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis()) // FIRST DISCRIMIN
     {
             //timeEnablingChangesParameter[instrumentTouched] = millis();
@@ -486,8 +537,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        //  && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
        )  
     {       
-        numberOfTrig[patternFromInstrument] += 1;
-        numberOfTrig[patternFromInstrument] %= 10;
+       //** */ numberOfTrig[patternFromInstrument] += 1;
+       //** */ numberOfTrig[patternFromInstrument] %= 10;
         
         if (numberOfTrig[patternFromInstrument] == 9)
             { 
@@ -531,8 +582,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      {
         timeToWaitToEnableNextMovementFromNegative=millis();
         textSize(150);           
-        numberOfRota[patternFromInstrumentWithNegativeSpeed] += 1;
-        numberOfRota[networkSize - 1 - instrumentTouched] %= 10;
+       //** */ numberOfRota[patternFromInstrumentWithNegativeSpeed] += 1;
+       //** */ numberOfRota[networkSize - 1 - instrumentTouched] %= 10;
         
         if (numberOfRota[patternFromInstrumentWithNegativeSpeed] == 9)
         { 

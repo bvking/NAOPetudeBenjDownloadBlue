@@ -43,6 +43,8 @@ boolean[] instrumentToMute = new boolean[networkSize];
 int timeTosendData;
 
 int[] timeEnablingChangesParameter = new int[networkSize];
+int[] startingPos = new int[networkSize];
+int[] encodeurBrut = new int[networkSize];
  
 /*
    for (int i = 0; i < networkSize; i++)

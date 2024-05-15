@@ -360,15 +360,23 @@ void serialEvent(Serial encoderReceiveUSBport101)
       int values[] = int(split(myEncodeur, ',')); // dispatch receive datas splited with ,
       int numberOfEncodeur = 6;
       if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
-        for (int i = 0; i < networkSize; i++) {
+        for (int i = 0; i < networkSize; i++)
+         {
+            encodeurBrut[i]=values[i];
            //  encodeur[i] = values[i];  DON'T WORK
         } 
+     //   encodeurBrut[0]=values[0];
+     //   encodeurBrut[1]=values[1];
+
+
+        /*
         encodeur[0]= (int)map (abs( values[0]), 0, 4000, 0, 4000)%4000;  
         encodeur[1] =(int)map (abs( values[1]), 0, 4000, 0, 4000)%4000;  
         encodeur[2] =(int)map (abs( values[2]), 0, 4000, 0, 4000)%4000; 
         encodeur[3]= (int)map (abs( values[3]), 0, 4000, 0, 4000)%4000;  
         encodeur[4] =(int)map (abs( values[4]), 0, 4000, 0, 4000)%4000;  
         encodeur[5] =(int)map (abs( values[5]), 0, 4000, 0, 4000)%4000; 
+        */
 
     }   
    }

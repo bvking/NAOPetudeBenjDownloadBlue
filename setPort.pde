@@ -44,13 +44,13 @@ void setPort()
         println(" serial port 1 connected to bluetooth " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=false;      
     }
-
+  /*
      if (matchPort1B!= null) { 
         allMachineConnected = false;
         println(" serial port 1 as programming port ending with 201 " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=true;      
     }
-
+*/
 
      if (matchPort1B2!= null) { 
         allMachineConnected = false;
@@ -60,12 +60,14 @@ void setPort()
         bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1=true;      
     }
    
+   
     if (matchPort1!= null) { 
         allMachineConnected = false;    
         println(" serial port 1 as programming port ending with 101 " + portsUSBfrom1 + " allMachineConnected " + allMachineConnected);   
        
        // onlyLitteMachineWithSecondSerialPort = true;    
     }
+    
    
     if (matchPort2!= null) { 
         allMachineConnected = false;
