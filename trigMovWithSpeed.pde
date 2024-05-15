@@ -21,7 +21,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         oldEncodeurPosition[i] = encodeurPosition[i] * 1;
         
         encodeurPosition[i] = encodeur[i];
-        encodeur[i] %=  4000;
         
         encodeurMappedAsMotor[i] = abs((int) map(encodeur[i], 0, 4000, 0, numberOfStep)); 
 
@@ -46,16 +45,42 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         dataMappedFromMotor[i] = (int)  map(dataMapped[i], 0, numberOfStep, 0, 4000); 
 
-        if(startingPos[i] <= dataMappedFromMotor[i]){   
-          if(startingPos[i] -100 <= encodeurBrut[networkSize-1-i] && encodeurBrut[networkSize-1-i] <= dataMappedFromMotor[i] + 100 ) { 
+        
+        /*
+        if(startingPos[i] <= dataMappedFromMotor[i] ){   
+          if(startingPos[i] -100 <= encodeurBrut[networkSize-1-i] && encodeurBrut[networkSize-1-i] <= dataMappedFromMotor[i]) { 
             manualyMoved = false;
-          }  else if( dataMappedFromMotor[i] <= encodeurBrut[networkSize-1-i]  + 100)
+          }  else if( dataMappedFromMotor[i] <= encodeurBrut[networkSize-1-i])
           {  
             patternFromInstrument=i; 
             if(!manualyMoved) { 
                 numberOfTrig[patternFromInstrument] += 1;
-                numberOfTrig[patternFromInstrument] %= 10;   
-                manualyMoved = true;  
+                numberOfTrig[patternFromInstrument] %= 9;   
+                manualyMoved = true; 
+
+                key = 'e';
+                   background(50);
+  
+               phaseDirectFromSeq();
+      
+                textSize(150);    
+                text("               changeS " + patternFromInstrument+ " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+                println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+                println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+
+              //  lastPatternFromInstrument=patternFromInstrument;
+
+            /*
+             enablingParametersChangesToLive = false;
+             enablingRecordFromAndToInstru = true;
+        
+             enablingChangeSound[patternFromInstrument] = false; 
+             enablingChangeSoundB[patternFromInstrument] = true;
+             timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();       // start disabloing Ro
+
+              timeToWaitToEnableNextMovement = millis();       // start disabloing Ro 
+              */
+             /*
              } 
           }  else if( encodeurBrut[networkSize-1-i] <= startingPos[i] - 100 )
            {  
@@ -69,6 +94,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             } 
           }
         } 
+       */
+
+
 
 
         
@@ -222,7 +250,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     }
     
     //********
-    
+   //  FORMER PROGRAM BIS
+
+   /*
     if (enablingChangeToSpecificInstrument[patternFromInstrument] ==  true) // && enablingParametersChangesToLive == true 
     { 
         enablingChangeSound[patternFromInstrument] = true;  
@@ -259,16 +289,19 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSound[patternFromInstrument] = false;
         timeToWaitToEnableNextMovement = millis()+1000;    
     }
+  
+ 
    
-    // ADD PULSE WITH POSITIVE DISCIMINATION
+    // ADD PULSE WITH POSITIVE DISCIMINATION  //&& timeToWaitToEnableNextMovement+500 <= millis()   && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
+  
+  
     if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
         && timeToWaitToEnableNextMovementFromNegative+2000 <= millis()
-       //&& timeToWaitToEnableNextMovement+500 <= millis()
-       //  && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
+       
        )  
     {       
-       //** */ numberOfTrig[patternFromInstrument] += 1;
-       //** */ numberOfTrig[patternFromInstrument] %= 10;
+       //**  numberOfTrig[patternFromInstrument] += 1;
+       //**  numberOfTrig[patternFromInstrument] %= 10;
         
         if (numberOfTrig[patternFromInstrument] == 9)
             { 
@@ -300,6 +333,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         timeToWaitToEnableNextMovement = millis();       // start disabloing Ro
     }
+    */
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
     
@@ -336,6 +370,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       
         //USELESS ? 
     
+    /*
      if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
      {  
        
@@ -348,6 +383,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        { 
          }
     
+    */
     
    
 } 
