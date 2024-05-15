@@ -29,10 +29,11 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         
         gapEncoder_OldEncodeur[i] = encodeurPosition[i] - oldEncodeurPosition[i];
         
-        if (gapEncoder_OldEncodeur[i] < ( -4000 + 400))
+        if (gapEncoder_OldEncodeur[i] < ( -4000 ));//+ 400))
         {
             gapEncoder_OldEncodeur[i] += 4000;
         }
+        
 
         oldOldVelocityBis[i] =  oldVelocityBis[i]; // to use to disciminate variation of speed
         oldVelocityBis[i] = velocityBis[i];// usefull may be to compute acceleration
@@ -46,6 +47,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         dataMappedFromMotor[i] = (int)  map(dataMapped[i], 0, numberOfStep, 0, numberOfStep); 
         dataMappedFromMotor[i] %=  numberOfStep;
         
+        //_____ not USED
         if (oldEncoderTouched[i] != encoderTouched[i])
         {            
         }     
@@ -63,6 +65,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
 
         gapEncoder_Motor[i] =  abs(encodeurMappedAsMotor[i] - dataMappedFromMotor[i]); // not USED
 
+        //_____ not USED
         //*********************************
         
         rotate( -PI / 2);
@@ -114,22 +117,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      print("The biggest delta was found at index " + bigIndex);
      println(" and had the value " + velocityBis[bigIndex]);
     
-    /*
-     for(int i = 0; i <  networkSize-1; i++)
-     {
-     if(oldOldVelocityBis[i] > bigDelta)// && oldOldVelocityBis[i] > bigValue)
-    
-     {
-      bigDelta = oldOldVelocityBis[i];
-      bigDeltaI = i;
-
-     }
-     }
-   
-     print("The biggest Odelt was found at index " + bigDeltaI);
-     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-       */
-    
+  
     for(int i = 0; i <  networkSize-1; i++)
     {
     if(oldOldVelocityBis[i] > bigValue)
@@ -156,21 +144,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       }
 
 
-      /*
-      for(int i = 0; i <  velocityBis.length; i++)
-     {
-     if(oldOldVelocityBis[i] >= velocityBis[bigIndex]) // && oldOldVelocityBis[i] > bigDelta)
-    
-     {
-      //bigValue = velocityBis[i];
-      //bigIndex = i;
-      bigDelta = oldOldVelocityBis[i]-velocityBis[bigIndex];
-      bigDeltaI = i;
-
-     }
-     }
-     */
-    
     if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis()) // FIRST DISCRIMIN
     {
             //timeEnablingChangesParameter[instrumentTouched] = millis();

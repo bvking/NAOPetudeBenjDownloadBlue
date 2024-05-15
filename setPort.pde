@@ -10,11 +10,19 @@ void setPort()
     printArray(portsUSB);
     
     String[] matchPort1Nothing = match(portsUSB[1],"/dev/tty.Bluetooth-Incoming-Port");
-    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
-    String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201");
+   // String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
 
-    String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
-    String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
+   // String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201");
+    String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem127280601");
+
+    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem127280601"); // chez Jo
+
+   // String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127301101");
+
+     String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127280601");
+
+    //String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
+    String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-1420");
     String[] matchPort2BlueTooth = match(portsUSB[2], "/dev/tty.Bluetooth-Incoming-Port");
     String[] matchPort2B = match(portsUSB[2], "/dev/cu.usbserial-0001"); // only serial connected
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
@@ -58,7 +66,7 @@ void setPort()
        
        // onlyLitteMachineWithSecondSerialPort = true;    
     }
-
+   
     if (matchPort2!= null) { 
         allMachineConnected = false;
   
