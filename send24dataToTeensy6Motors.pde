@@ -6,7 +6,7 @@ void send24DatasToTeensy6motorsToLittleMachine(int accelerationRatio, int driver
     for (int i = 0; i < networkSize; i++) {
         //   oldDataMappedForMotorisedPosition[i]= dataMappedForMotorisedPosition[i];
         //  + dataMappedForMotorisedPosition[i]%6400+ 
-        startingPos[networkSize -1 - i] = encodeur[i];
+        startingPos[networkSize -1 - i] = encodeurBrut[i];
     }
     
     dataFromMode = "<"

@@ -49,7 +49,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if(startingPos[i] <= dataMappedFromMotor[i]){   
           if(startingPos[i] -100 <= encodeurBrut[networkSize-1-i] && encodeurBrut[networkSize-1-i] <= dataMappedFromMotor[i] + 100 ) { 
             manualyMoved = false;
-          }  else if( dataMappedFromMotor[i] <= encodeurBrut[networkSize-1-i] )
+          }  else if( dataMappedFromMotor[i] <= encodeurBrut[networkSize-1-i]  + 100)
           {  
             patternFromInstrument=i; 
             if(!manualyMoved) { 
@@ -57,13 +57,17 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
                 numberOfTrig[patternFromInstrument] %= 10;   
                 manualyMoved = true;  
              } 
-          }  else if( encodeurBrut[networkSize-1-i] <= startingPos[i]  )
+          }  else if( encodeurBrut[networkSize-1-i] <= startingPos[i] - 100 )
            {  
-             patternFromInstrument=i; 
+            if(!manualyMoved) 
+            { 
+              patternFromInstrument=i; 
 
-           numberOfRota[patternFromInstrument] += 1;
-           numberOfRota[patternFromInstrument] %= 10;  
-        } 
+              numberOfRota[patternFromInstrument] += 1;
+              numberOfRota[patternFromInstrument] %= 10; 
+
+            } 
+          }
         } 
 
 
@@ -93,7 +97,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text    (" encoBr " +  encodeurBrut[networkSize-1-i] + " " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text     ( " start " +  startingPos[i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
@@ -216,6 +220,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             print ( " enable Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
             print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
     }
+
+      // FOREMER PROGRAMM 
     /*
     if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeEnablingDiscrimination+1000<=millis()) // SECOND DISCRIMIN
 
@@ -483,6 +489,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             instrumentChangedToAddPulseWithNegativeSpeed = false;                 
             // enablingChangeSound[patternFromInstrument] = true;
     }
+
+    // FOREMER PROGRAMM
  
     //********
     

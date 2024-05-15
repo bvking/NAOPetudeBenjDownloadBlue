@@ -22,7 +22,8 @@ void setPort()
      String[] matchPort1 = match(portsUSB[1], "/dev/cu.usbmodem127280601");
 
     //String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-0001");
-    String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-1420");
+    //String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-1420");
+    String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-2130");
     String[] matchPort2BlueTooth = match(portsUSB[2], "/dev/tty.Bluetooth-Incoming-Port");
     String[] matchPort2B = match(portsUSB[2], "/dev/cu.usbserial-0001"); // only serial connected
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
