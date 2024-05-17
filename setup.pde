@@ -45,6 +45,9 @@ int timeTosendData;
 int[] timeEnablingChangesParameter = new int[networkSize];
 int[] startingPos = new int[networkSize];
 int[] encodeurBrut = new int[networkSize];
+boolean[] controlUpWay = new boolean[networkSize];
+boolean[] controlDownWay = new boolean[networkSize];
+boolean[] centerPos = new boolean[networkSize];
  
 /*
    for (int i = 0; i < networkSize; i++)
