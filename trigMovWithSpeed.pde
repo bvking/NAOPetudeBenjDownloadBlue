@@ -3,6 +3,7 @@ int deltaAmplitude ;
 int chronoOFFThird ; 
 int timeEnablingDiscrimination;
 int discriminON;
+boolean  enablingParametersChangesToLiveUp;
 
 boolean manualyMoved = false;
 
@@ -125,7 +126,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text     ( "up " +  controlUpWay[networkSize-1-i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text     ( "center " +  centerPos[networkSize-1-i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
@@ -185,6 +186,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      print("The biggest Odelt was found at index " + bigDeltaI);
      println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
        */
+
+     /*  
     
     for(int i = 0; i <  networkSize-0; i++)
     {
@@ -210,6 +213,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      { 
      sameInstrument = false;
       }
+      */
 
 
       /*
@@ -226,7 +230,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      }
      }
      */
-    
+    /*
     if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis()) // FIRST DISCRIMIN
     {
             //timeEnablingChangesParameter[instrumentTouched] = millis();
@@ -248,6 +252,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             print ( " enable Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
             print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
     }
+    */
     
     //********
    //  FORMER PROGRAM BIS
@@ -260,8 +265,9 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
    */ 
     //ALIGN AND RECALL
-    if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true
-         && timeToWaitToEnableNextMovement+5000 <= millis()
+   
+    if (enablingChangeSound[patternFromInstrument] == true &&  sameInstrument == false
+         && timeToWaitToEnableNextMovement+1000 <= millis()
          ) 
     {  
         key = 'à';
@@ -287,8 +293,10 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingRecallFromAndToInstru = false;      
   
         enablingChangeSound[patternFromInstrument] = false;
-        timeToWaitToEnableNextMovement = millis()+1000;    
+        timeToWaitToEnableNextMovement = millis();    
     }
+    
+
   
  
    
@@ -297,18 +305,29 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {
         if (controlUpWay[i] == true)
         { 
-            patternFromInstrument = networkSize-1-i;
-            }
-            enablingParametersChangesToLive = true;
-        }  
-           //if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
-           //    && timeToWaitToEnableNextMovementFromNegative+2000 <= millis() 
-            //   )
-           
-        if (enablingParametersChangesToLive == true)
+          // i = instrumentTouched;
+           formerPatternFromInstrument = patternFromInstrument; 
+           patternFromInstrument = networkSize-1-i;
+           enablingParametersChangesToLiveUp = true;
+        }
+        }
+
+        if (formerPatternFromInstrument == patternFromInstrument)
+         {
+          sameInstrument = true;
+          enablingChangeSound[patternFromInstrument] = true;
+         }
+         else 
         {
-          enablingParametersChangesToLive = false;
-        
+          sameInstrument = false;
+        }
+
+
+           
+        if (enablingParametersChangesToLiveUp == true && sameInstrument == true)
+        {
+         
+            
          numberOfTrig[patternFromInstrument] += 1;
          numberOfTrig[patternFromInstrument] %= 10;
          
@@ -324,25 +343,28 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          background(50);
          key = 'e';
          phaseDirectFromSeq();
+         enablingParametersChangesToLiveUp= false;
+         
       
          textSize(150);    
          text("               changeS " + patternFromInstrument+ " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
          println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
          println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+         /*
+        lastPatternFromInstrument=patternFromInstrument;
 
-           // lastPatternFromInstrument=patternFromInstrument;
-
-        enablingRecordFromAndToInstru = true;
-          
+         enablingRecordFromAndToInstru = true;
          enablingChangeSound[patternFromInstrument] = false; 
          enablingChangeSoundB[patternFromInstrument] = true;
          timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();       // start disabloing Ro
-
-         //timeDisablingChangesParameterWithPositiveSpeed = millis();
+         
+         timeDisablingChangesParameterWithPositiveSpeed = millis();
 
          timeToWaitToEnableNextMovement = millis();       // start disabloing Ro
+         */
 
-        for(int i = 0; i <  networkSize-0; i++)
+         
+         for(int i = 0; i <  networkSize-0; i++)
          {
             controlUpWay[i] = false;
           }
@@ -352,36 +374,58 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
     
-    if (enablingParametersChangesToLiveWithNegativeSpeed == true && instrumentChangedToAddPulseWithNegativeSpeed == false
-        && 
-        timeDisablingChangesParameterWithNegativeSpeedBis[patternFromInstrument]+500 <= millis() // from Tr
-        &&
-        timeToWaitToEnableNextMovementFromNegative+500<=millis() // from Ro itself
-        )       // wait 5000 to enabling Ro+=1
-     {
-        timeToWaitToEnableNextMovementFromNegative=millis();
-        textSize(150);           
-       //** */ numberOfRota[patternFromInstrumentWithNegativeSpeed] += 1;
-       //** */ numberOfRota[networkSize - 1 - instrumentTouched] %= 10;
-        
-        if (numberOfRota[patternFromInstrumentWithNegativeSpeed] == 9)
+        for(int i = 0; i <  networkSize-0; i++)
+        {
+        if (controlDownWay[i] == true)
         { 
+           //i = instrumentTouched;
+           patternFromInstrumentWithNegativeSpeed = networkSize-1-i;
+           enablingParametersChangesToLiveWithNegativeSpeed = true;
+          // timeToWaitToEnableNextMovementFromNegative=millis();
+        }
+         
+        }
+
+        if (enablingParametersChangesToLiveWithNegativeSpeed == true)
+        {
+          enablingParametersChangesToLiveWithNegativeSpeed= false;
+              
+          numberOfRota[patternFromInstrumentWithNegativeSpeed] += 1;
+          numberOfRota[networkSize - 1 - instrumentTouched] %= 10;
+        
+         if (numberOfRota[patternFromInstrumentWithNegativeSpeed] == 9)
+         { 
             numberOfRota[patternFromInstrumentWithNegativeSpeed] = 0;
-        }
-        
-        if (numberOfRota[patternFromInstrumentWithNegativeSpeed] % 2 == 0)
-        { 
+         }
+         
+         if (numberOfRota[patternFromInstrumentWithNegativeSpeed] % 2 == 0)
+         { 
             instrumentToMute[patternFromInstrumentWithNegativeSpeed] = false;
-        }
+         }
         
-        if (numberOfRota[patternFromInstrumentWithNegativeSpeed] % 2 == 1)
-        { 
+         if (numberOfRota[patternFromInstrumentWithNegativeSpeed] % 2 == 1)
+         { 
             instrumentToMute[patternFromInstrumentWithNegativeSpeed] = true;
+         }
+
+    
+           for(int i = 0; i <  networkSize-0; i++)
+         {
+            controlDownWay[i]= false;
+          }
+             
         }
-       
-        enablingParametersChangesToLiveWithNegativeSpeed = false;
-           
-     }
+
+        for(int i = 0; i <  networkSize-0; i++)
+        {
+        if (centerPos[i] == true)
+        { 
+          // i = instrumentTouched;
+           patternFromInstrument = networkSize-1-i;
+           enablingParametersChangesToLive = true;
+           //encodeurTouched[patternFromInstrument] = true;
+        }
+        }
       
         //USELESS ? 
     

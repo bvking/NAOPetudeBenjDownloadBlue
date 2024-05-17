@@ -245,7 +245,7 @@ void phaseDirectFromSeq() // mixed Com
     if (music_from_ableton_live == " controlDr ")
         { 
       //  if (enablingParametersChangesToLive == true &&  key == 'e' && music_from_ableton_live == " controlDr " && instrumentChangedToAddPulse == false) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
-       if  (enablingParametersChangesToLive == true && key == 'e' && music_from_ableton_live == " controlDr " ) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
+       if  (enablingParametersChangesToLiveUp== true && key == 'e' && music_from_ableton_live == " controlDr " ) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
         {
             for (int i = 0; i < networkSize; i++)
                 {   
@@ -283,6 +283,7 @@ void phaseDirectFromSeq() // mixed Com
                     
                 }
             }
+            enablingParametersChangesToLiveUp = false;
             key = '#';    
         }
         
@@ -315,7 +316,7 @@ void phaseDirectFromSeq() // mixed Com
                     positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; //                  
                     text(" recall 0 " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded], 200, patterFromInstrumentRecorded * 100);
                      println(" recall 0 " + patterFromInstrumentRecorded + " " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                    noLoop();                 
+                  //  noLoop();                 
                 }       
             }
             
@@ -328,7 +329,7 @@ void phaseDirectFromSeq() // mixed Com
                     {
                     positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded]; // positionFromMotorPhase[i] + 
                     println(" recall 1 " + patterFromInstrumentRecorded + " " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                    noLoop();
+                   // noLoop();
                 } 
             }
             
@@ -340,7 +341,7 @@ void phaseDirectFromSeq() // mixed Com
                     {
                     positionFromMotorPhase[i] =   recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] +
                     println(" recall 2 " + patterFromInstrumentRecorded + " " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                    noLoop();  
+                  //  noLoop();  
                 } 
             }
             
@@ -353,7 +354,7 @@ void phaseDirectFromSeq() // mixed Com
                     {
                     positionFromMotorPhase[i] = recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] +
                      println(" recall 3 " + patterFromInstrumentRecorded + " " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                    noLoop();  
+                  //  noLoop();  
                 } 
             }
             
@@ -367,7 +368,7 @@ void phaseDirectFromSeq() // mixed Com
                     {
                     positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];//positionFromMotorPhase[i] +
                        println(" recall 4 " + patterFromInstrumentRecorded + " " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                    noLoop(); 
+                  //  noLoop(); 
                 } 
             }
             
@@ -381,7 +382,7 @@ void phaseDirectFromSeq() // mixed Com
                     positionFromMotorPhase[i] =  recordPositionsFromInstrument[i][patterFromInstrumentRecorded];// positionFromMotorPhase[i] + 
                     text(" recall 5 " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded], 200, patterFromInstrumentRecorded * 100);  
                     println(" recall 4 " + patterFromInstrumentRecorded + " " + patternFromInstrument + " " + recordPositionsFromInstrument[i][patterFromInstrumentRecorded]);  
-                    noLoop(); 
+                   // noLoop(); 
                 }
                 // noLoop(); 
             }
@@ -412,8 +413,7 @@ void phaseDirectFromSeq() // mixed Com
         }
     }
     
-    
-    
+
     if (key == 'S') //     net.phase[i] -= (networkSize-1- oscillatorBlocked-i)*TWO_PI/networkSize*0.1;
         {
         for (int i = 0; i < networkSize; i++)
