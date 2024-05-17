@@ -23,7 +23,7 @@ void setPort()
     //String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-1420"); // avec grosse MAchine
     //String[] matchPort2 = match(portsUSB[2], "/dev/cu.usbserial-2130"); // chez Jo
     String[] matchPort2BlueTooth = match(portsUSB[2], "/dev/tty.Bluetooth-Incoming-Port");
-    
+
     String[] matchPort2B = match(portsUSB[2], "/dev/cu.usbserial-0001"); // only serial connected
     String[] matchPort3 = match(portsUSB[3], "/dev/cu.usbserial-0001");
 
@@ -99,6 +99,7 @@ void setPort()
              println(" portConnectedOfBigMachine " + portConnectedOfBigMachine); //  + portsUSBfrom2 + " "
             
               teensyport = new Serial(this, ports[1],115200); // si port connecté Monterey
+              
               encoderReceiveUSBport101 =  new Serial(this,ports[2], 115200); // si port connecté Monterey
          
            // DueSerialNativeUSBport101 =  new Serial(this,ports[2], 115200); 

@@ -125,7 +125,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text     ( " start " +  startingPos[i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text     ( "up " +  controlUpWay[networkSize-1-i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
@@ -186,7 +186,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
        */
     
-    for(int i = 0; i <  networkSize-1; i++)
+    for(int i = 0; i <  networkSize-0; i++)
     {
     if(oldOldVelocityBis[i] > bigValue)
     {
@@ -258,7 +258,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         enablingChangeSound[patternFromInstrument] = true;  
     } 
     
-    
+   */ 
     //ALIGN AND RECALL
     if (enablingChangeSound[patternFromInstrument] == true && instrumentChangedToAddPulse == true
          && timeToWaitToEnableNextMovement+5000 <= millis()
@@ -293,47 +293,62 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
  
    
     // ADD PULSE WITH POSITIVE DISCIMINATION  //&& timeToWaitToEnableNextMovement+500 <= millis()   && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
-  
-  
-    if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
-        && timeToWaitToEnableNextMovementFromNegative+2000 <= millis()
-       
-       )  
-    {       
-       //**  numberOfTrig[patternFromInstrument] += 1;
-       //**  numberOfTrig[patternFromInstrument] %= 10;
+        for(int i = 0; i <  networkSize-0; i++)
+        {
+        if (controlUpWay[i] == true)
+        { 
+            patternFromInstrument = networkSize-1-i;
+            }
+            enablingParametersChangesToLive = true;
+        }  
+           //if (enablingParametersChangesToLive == true && instrumentChangedToAddPulse == false //&& timeDisablingChangesParameterWithPositiveSpeed+500<=millis()
+           //    && timeToWaitToEnableNextMovementFromNegative+2000 <= millis() 
+            //   )
+           
+        if (enablingParametersChangesToLive == true)
+        {
+          enablingParametersChangesToLive = false;
         
-        if (numberOfTrig[patternFromInstrument] == 9)
-            { 
-            numberOfTrig[patternFromInstrument] = 0;  // all go from 8 to 16
-        }
-        //  0--> Kick Bottom
+         numberOfTrig[patternFromInstrument] += 1;
+         numberOfTrig[patternFromInstrument] %= 10;
+         
+        
+         if (numberOfTrig[patternFromInstrument] == 9)
+          { 
+             numberOfTrig[patternFromInstrument] = 0;  // all go from 8 to 16
+          }
+            //  0--> Kick Bottom
             numberOfTrig[0] = (int) map (numberOfTrig[0], 0, 8, 0, 8);  // all go from 8 to 16
-        //   5--> HitHat
+            //   5--> HitHat
 
-        background(50);
-        key = 'e';
-        phaseDirectFromSeq();
+         background(50);
+         key = 'e';
+         phaseDirectFromSeq();
       
-        textSize(150);    
-        text("               changeS " + patternFromInstrument+ " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
-        println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
-        println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+         textSize(150);    
+         text("               changeS " + patternFromInstrument+ " " + numberOfTrig[patternFromInstrument] + " ", 0, 1 * patternFromInstrument * 50); 
+         println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
+         println("            changeInstrument " + patternFromInstrument + " " + numberOfTrig[patternFromInstrument] ); 
 
-        lastPatternFromInstrument=patternFromInstrument;
+           // lastPatternFromInstrument=patternFromInstrument;
 
-        enablingParametersChangesToLive = false;
         enablingRecordFromAndToInstru = true;
-        
-        enablingChangeSound[patternFromInstrument] = false; 
-        enablingChangeSoundB[patternFromInstrument] = true;
-        timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();       // start disabloing Ro
+          
+         enablingChangeSound[patternFromInstrument] = false; 
+         enablingChangeSoundB[patternFromInstrument] = true;
+         timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();       // start disabloing Ro
 
-        //timeDisablingChangesParameterWithPositiveSpeed = millis();
+         //timeDisablingChangesParameterWithPositiveSpeed = millis();
 
-        timeToWaitToEnableNextMovement = millis();       // start disabloing Ro
-    }
-    */
+         timeToWaitToEnableNextMovement = millis();       // start disabloing Ro
+
+        for(int i = 0; i <  networkSize-0; i++)
+         {
+            controlUpWay[i] = false;
+          }
+       }     
+
+  
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
     

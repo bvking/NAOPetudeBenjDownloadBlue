@@ -245,7 +245,7 @@ void phaseDirectFromSeq() // mixed Com
     if (music_from_ableton_live == " controlDr ")
         { 
       //  if (enablingParametersChangesToLive == true &&  key == 'e' && music_from_ableton_live == " controlDr " && instrumentChangedToAddPulse == false) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
-       if  (key == 'e' && music_from_ableton_live == " controlDr " ) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
+       if  (enablingParametersChangesToLive == true && key == 'e' && music_from_ableton_live == " controlDr " ) // SELECT PATTEREN DEPEDING INSTRUMENT // key == 'e' && key != '6'
         {
             for (int i = 0; i < networkSize; i++)
                 {   
