@@ -948,20 +948,20 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage58= new OscMessage("/acceleration8"); // oscillator 
   OscMessage myMessage59= new OscMessage("/acceleration9"); // oscillator behind
 
-  OscMessage myMessage70= new OscMessage("/encodeurTouched0"); //  SEND 1 oscillatorTouched
-  OscMessage myMessage71= new OscMessage("/encodeurTouched1"); // oscillator 
-  OscMessage myMessage72= new OscMessage("/encodeurTouched2"); // oscillator 
-  OscMessage myMessage73= new OscMessage("/encodeurTouched3"); // oscillator 
-  OscMessage myMessage74= new OscMessage("/encodeurTouched4"); // oscillator 
-  OscMessage myMessage75= new OscMessage("/encodeurTouched5"); // oscillato
-  OscMessage myMessage76= new OscMessage("/encodeurTouched6"); // oscillator 
+  OscMessage myMessage70= new OscMessage("/numberOfCenter0"); //  SEND 1 oscillatorTouched
+  OscMessage myMessage71= new OscMessage("/numberOfCenter1"); // oscillator 
+  OscMessage myMessage72= new OscMessage("/numberOfCenter2"); // oscillator 
+  OscMessage myMessage73= new OscMessage("/numberOfCenter3"); // oscillator 
+  OscMessage myMessage74= new OscMessage("/numberOfCenter4"); // oscillator 
+  OscMessage myMessage75= new OscMessage("/numberOfCenter5"); // oscillato
+  OscMessage myMessage76= new OscMessage("/numberOfCenter6"); // oscillator 
 
-  myMessage70.add(encoderTouched[0]);
-  myMessage71.add(encoderTouched[1]);
-  myMessage72.add(encoderTouched[2]);
-  myMessage73.add(encoderTouched[3]);
-  myMessage74.add(encoderTouched[4]);
-  myMessage75.add(encoderTouched[5]);
+  myMessage70.add(numberOfCenter[0]);
+  myMessage71.add(numberOfCenter[1]);
+  myMessage72.add(numberOfCenter[2]);
+  myMessage73.add(numberOfCenter[3]);
+  myMessage74.add(numberOfCenter[4]);
+  myMessage75.add(numberOfCenter[5]);
 
   if  (systemForBigMachine==false)
   {
@@ -1175,7 +1175,7 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage64, myRemoteLocation);
   oscP5.send(myMessage65, myRemoteLocation);
 
-  // encodeur moved
+  // encodeur center
   oscP5.send(myMessage70, myRemoteLocation);
   oscP5.send(myMessage71, myRemoteLocation);
   oscP5.send(myMessage72, myRemoteLocation);
