@@ -1,46 +1,4 @@
-int[] fromEncodeurToLive = new int[networkSize];
-boolean[] trigEffectTo = new boolean[networkSize];
-boolean[] trigEffectBisTo = new boolean[networkSize];
-int[] timeTriggedFromEncodeur = new int[networkSize];
-int[] startMeasureFromEncodeur = new int[networkSize];
-int[] recEncodeurPosition = new int[networkSize];
-int[] dataMappedFromMotor = new int[networkSize];
-boolean[] oldEncoderTouched = new boolean[networkSize];
-int[]touchedTimeStarter = new int[networkSize];
-boolean[] encoderTurnClockWise = new boolean[networkSize];
-boolean[] enablingChangeSound = new boolean[networkSize];
-boolean[]  enablingChangeSoundB = new boolean[networkSize];
-int mapRatio = 400;
-int[] encodeurMappedAsMotor = new int[networkSize];
-int[] gapEncoder_Motor = new int[networkSize];
-int[] gapEncoder_OldEncodeur = new int[networkSize];
-int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
-int[] dataMapped = new int[networkSize];
-int[] timeDisablingChangesParameter = new int[networkSize];
-int instrumentTouched; 
-boolean enablingRecordFromAndToInstru;
-boolean enablingRecallFromAndToInstru;
-String modeOfControlDr = " virtual ";
 
-int formerPatternFromInstrument;
-int formerPatternFromInstrumentWithNegativeSpeed;
-
-int  instrumentTouchedWithNegativeSpeed;
-int  timeToWaitToEnableNextMovement;
-int timeToWaitToEnableNextMovementFromNegative;
-int timeDisablingChangesParameterWithPositiveSpeed;
-
-int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
-int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
-int[] timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
-
-boolean instrumentChangedToAddPulseWithNegativeSpeed;
-boolean enablingParametersChangesToLiveWithNegativeSpeed;
-boolean[]  enablingChangeToSpecificInstrumentWithNegativeSpeed = new boolean[networkSize];
-int thresholdToDiscriminateNegativeSpeed;
-
-int[]  oldOldVelocityBis = new int[networkSize];
-boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
 
 // void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly(int virtualEncodeur0, int virtualEncodeur1, int virtualEncodeur2, int virtualEncodeur3, int virtualEncodeur4, int virtualEncodeur5 ) 
 

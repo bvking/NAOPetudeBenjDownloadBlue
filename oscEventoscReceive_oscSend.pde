@@ -635,8 +635,7 @@ void oscSend(){
      rotate (-HALF_PI);  
     for (int i = 0; i < networkSize-0; i++)
     {  
-   
-     if  (keyCode == TAB && 1>=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+     if  ( 1>=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
      {
        TrigmodPos[i]=1;
        oldPos[i]=(int) Pos[i];
@@ -646,8 +645,13 @@ void oscSend(){
           (oldPos[i]>= 64 && Pos[i] <=63))
         
        {
-   
-          text ( " POS " + i , 500, 500);
+          patternFromInstrumentWithCenter = networkSize-1-i;
+          numberOfCenter[patternFromInstrumentWithCenter] += 1;
+          numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+
+          text ( " POS " + i + " "  + numberOfCenter[patternFromInstrumentWithCenter] , 500, 500);
+          println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
+
           dataToLive[i]= (networkSize-1)*(i-0);  // because there i beac you can send data with the step you want to separate controller depending oscillator --> here it is 11.
           dataToLive[0]= (networkSize-1)*(i-0);  // you can send data with the step you want to one controler 
       
@@ -666,6 +670,7 @@ void oscSend(){
          keyCode = BACKSPACE;
       }   
     }
+
 
    //  rotate (HALF_PI);  
 

@@ -318,32 +318,22 @@ void serialEvent(Serial encoderReceiveUSBport101)
         centerPos[0] = true; 
     }
 
-   
-
     if (c1 != null) {  // If not null, then a match was found
         centerPos[1] = true;
     }
-
   
-    
     if (c2 != null) {  // If not null, then a match was found
         centerPos[2] = true;
     }
-
- 
    
     if (c3 != null) {  // If not null, then a match was found
         centerPos[3] = true;
-    }
-
-  
+    }  
     
     if (c4 != null) {  // If not null, then a match was found
         centerPos[4] = true;
     }
-
-
-    
+ 
     if (c5 != null) {  // If not null, then a match was found
         centerPos[5] = true;
     }
@@ -359,6 +349,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
          {
            /// encodeurBrut[i]=values[i];
              encodeur[i] = (int)map (abs( values[i]), 0, 4000, 0, 4000)%4000;  
+          
         } 
      //   encodeurBrut[0]=values[0];
      //   encodeurBrut[1]=values[1];

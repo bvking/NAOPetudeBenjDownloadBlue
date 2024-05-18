@@ -1,3 +1,47 @@
+int[] fromEncodeurToLive = new int[networkSize];
+boolean[] trigEffectTo = new boolean[networkSize];
+boolean[] trigEffectBisTo = new boolean[networkSize];
+int[] timeTriggedFromEncodeur = new int[networkSize];
+int[] startMeasureFromEncodeur = new int[networkSize];
+int[] recEncodeurPosition = new int[networkSize];
+int[] dataMappedFromMotor = new int[networkSize];
+boolean[] oldEncoderTouched = new boolean[networkSize];
+int[]touchedTimeStarter = new int[networkSize];
+boolean[] encoderTurnClockWise = new boolean[networkSize];
+boolean[] enablingChangeSound = new boolean[networkSize];
+boolean[]  enablingChangeSoundB = new boolean[networkSize];
+int mapRatio = 400;
+int[] encodeurMappedAsMotor = new int[networkSize];
+int[] gapEncoder_Motor = new int[networkSize];
+int[] gapEncoder_OldEncodeur = new int[networkSize];
+int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
+int[] dataMapped = new int[networkSize];
+int[] timeDisablingChangesParameter = new int[networkSize];
+int instrumentTouched; 
+boolean enablingRecordFromAndToInstru,enablingRecallFromAndToInstru;
+
+String modeOfControlDr = " virtual ";
+
+int formerPatternFromInstrument;
+int formerPatternFromInstrumentWithNegativeSpeed;
+
+int  instrumentTouchedWithNegativeSpeed;
+int  timeToWaitToEnableNextMovement;
+int timeToWaitToEnableNextMovementFromNegative;
+int timeDisablingChangesParameterWithPositiveSpeed;
+
+int[] timeDisablingChangesParameterWithNegativeSpeed = new int[networkSize];
+int [] timeDisablingChangesParameterWithNegativeSpeedBis = new int[networkSize];
+int[] timeEnablingChangesParameterWithNegativeSpeed = new int[networkSize];
+
+boolean instrumentChangedToAddPulseWithNegativeSpeed;
+boolean enablingParametersChangesToLiveWithNegativeSpeed, enablingParametersChangesToLiveWithCenter;
+boolean[]  enablingChangeToSpecificInstrumentWithNegativeSpeed = new boolean[networkSize];
+int thresholdToDiscriminateNegativeSpeed;
+
+int[]  oldOldVelocityBis = new int[networkSize];
+boolean[]  enablingChangeToSpecificInstrument = new boolean[networkSize];
+
 boolean sameInstrument;// = false;
 int deltaAmplitude ;
 int chronoOFFThird ; 
@@ -126,7 +170,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (!systemForBigMachine) 
         { 
             // "VIRT " + slider[i] +   " GapM " +  gapEncoder_Motor[i] +  " acc " + accelerationBis[i] +
-        text     ( "center " +  centerPos[networkSize-1-i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
+        text     ( "center " +  numberOfCenter[networkSize-1-i] + " encoBr " +  encodeurBrut[networkSize-1-i] + " motor " + dataMappedForMotorisedBigMachine[i]  + " GAP " + velocityBis[networkSize-1-i] + " OLD " + oldVelocityBis[networkSize-1-i] + " olDD " + oldOldVelocityBis[networkSize-1-i] + " " + (networkSize-1-i) + " Ro " + numberOfRota[networkSize-1-i] + " M " + instrumentToMute[networkSize-1-i] + 
                  " old " + oldEncodeurPosition[networkSize-1-i] + " " + encodeurPosition[networkSize-1-i] + " " + numberOfTrig[networkSize-1-i] + " " + enablingParametersChangesToLive + " SAVING " + patternFromInstrument + " " + recordPositionsFromInstrument[patternFromInstrument][networkSize-1-i] + " "  +
                  " recall " + patterFromInstrumentRecorded  + " " + recordPositionsFromInstrument[networkSize-1-i][patterFromInstrumentRecorded] +
                  " lfo2 " + shapeLfoMode , -1000, + 1200 -75*(networkSize-1-i));
@@ -321,17 +365,13 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {
           sameInstrument = false;
         }
-
-
-           
+       
         if (enablingParametersChangesToLiveUp == true && sameInstrument == true)
         {
          
-            
          numberOfTrig[patternFromInstrument] += 1;
          numberOfTrig[patternFromInstrument] %= 10;
-         
-        
+                 
          if (numberOfTrig[patternFromInstrument] == 9)
           { 
              numberOfTrig[patternFromInstrument] = 0;  // all go from 8 to 16
@@ -367,12 +407,20 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          for(int i = 0; i <  networkSize-0; i++)
          {
             controlUpWay[i] = false;
+          
           }
-       }     
+       }
+
+          for(int i = 0; i <  networkSize-0; i++)
+         {
+           
+             println( " cen " + (i) + centerPos[i] );
+          }     
 
   
     
     // ADD PULSE WITH NEGATIVE DISCIMINATION
+      
     
         for(int i = 0; i <  networkSize-0; i++)
         {
@@ -383,9 +431,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
            enablingParametersChangesToLiveWithNegativeSpeed = true;
           // timeToWaitToEnableNextMovementFromNegative=millis();
         }
-         
         }
-
         if (enablingParametersChangesToLiveWithNegativeSpeed == true)
         {
           enablingParametersChangesToLiveWithNegativeSpeed= false;
@@ -415,16 +461,31 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
           }
              
         }
+        // ADD PULSE WITH CEHTER
 
         for(int i = 0; i <  networkSize-0; i++)
         {
         if (centerPos[i] == true)
         { 
           // i = instrumentTouched;
-           patternFromInstrument = networkSize-1-i;
-           enablingParametersChangesToLive = true;
+           patternFromInstrumentWithCenter = networkSize-1-i;
+           enablingParametersChangesToLiveWithCenter = true;
            //encodeurTouched[patternFromInstrument] = true;
         }
+        }
+
+        if (enablingParametersChangesToLiveWithCenter == true )
+        {
+          enablingParametersChangesToLiveWithCenter= false; 
+
+          numberOfCenter[patternFromInstrumentWithCenter] += 1;
+          numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+             
+          for(int i = 0; i <  networkSize-0; i++)
+         {
+            centerPos[i]= false;
+         }
+
         }
       
         //USELESS ? 

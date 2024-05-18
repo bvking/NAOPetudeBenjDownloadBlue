@@ -36,6 +36,7 @@ int[][] recordPositionFromMotorPhaseFromLastInstrument = new int [networkSize][n
 int[][] recordPositionAligned = new int [networkSize][networkSize];
 int patternFromInstrument = 0;
 int patternFromInstrumentWithNegativeSpeed = 0;
+int patternFromInstrumentWithCenter = 0;
 int patterFromInstrumentRecorded=0;
 int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
@@ -48,6 +49,7 @@ int[] encodeurBrut = new int[networkSize];
 boolean[] controlUpWay = new boolean[networkSize];
 boolean[] controlDownWay = new boolean[networkSize];
 boolean[] centerPos = new boolean[networkSize];
+int[] numberOfCenter = new int[networkSize];
  
 /*
    for (int i = 0; i < networkSize; i++)
