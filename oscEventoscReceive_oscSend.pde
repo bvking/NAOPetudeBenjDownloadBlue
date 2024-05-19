@@ -635,7 +635,7 @@ void oscSend(){
      rotate (-HALF_PI);  
     for (int i = 0; i < networkSize-0; i++)
     {  
-     if  ( 1>=1) //formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
+     if  ( 1>=1 && formerKeyMetro == '$' && modeStartKeyToFollow !=  " followSignalSampledOppositeWay(frameRatio) ")
      {
        TrigmodPos[i]=1;
        oldPos[i]=(int) Pos[i];

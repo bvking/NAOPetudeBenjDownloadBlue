@@ -200,8 +200,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       bigIndex = i;
     }
     }  
-      print("The slowest count was found at index " + bigIndex);
-      println(" and had the value " + velocityBis[bigIndex]);
+     // print("The slowest count was found at index " + bigIndex);
+     // println(" and had the value " + velocityBis[bigIndex]);
 
     
     for(int i = 0; i <  networkSize-0; i++)
@@ -212,8 +212,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
       bigIndex = i;
     }
     }
-     print("The biggest delta was found at index " + bigIndex);
-     println(" and had the value " + velocityBis[bigIndex]);
+    // print("The biggest delta was found at index " + bigIndex);
+    // println(" and had the value " + velocityBis[bigIndex]);
     
     /*
      for(int i = 0; i <  networkSize-1; i++)
@@ -274,29 +274,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
      }
      }
      */
-    /*
-    if (deltaAmplitude<-50 && sameInstrument && velocityBis[bigIndex]<100 && velocityBis[bigIndex]>50 && timeToWaitToEnableNextMovement+1000<=millis()) // FIRST DISCRIMIN
-    {
-            //timeEnablingChangesParameter[instrumentTouched] = millis();
-           //timeDisablingChangesParameter[instrumentTouched] = millis(); 
-            timeEnablingDiscrimination = millis();
-            
-            formerPatternFromInstrument = patternFromInstrument;
-            instrumentTouched = bigIndex;
-            // timeDisablingChangesParameter[instrumentTouched] = millis();
-            patternFromInstrument = networkSize - 1 - instrumentTouched;  //
 
-           
-       
-            discriminON = timeDisablingChangesParameterWithPositiveSpeed - timeEnablingDiscrimination; // normal - disci
-            
-            //timeDisablingChangesParameterWithPositiveSpeed = millis();
-            println ("                                                          DISCRIM ON  " + (discriminON) + " " + patternFromInstrument + " " +  formerPatternFromInstrument + " "  + " " + numberOfTrig[patternFromInstrument]);   
-
-            print ( " enable Discrimination instru with i " ); print( instrumentTouched) ; print ( " formerPatternFromInstrument " ); print (  formerPatternFromInstrument); print ( "patternFromInstrument "); print ( patternFromInstrument);
-            print ( " newPatternFromInstrument "); println ( newPatternFromInstrument);
-    }
-    */
     
     //********
    //  FORMER PROGRAM BIS
@@ -415,6 +393,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          {
            
              println( " cen " + (i) + centerPos[i] );
+             centerPos[i]= false;
           }     
 
   
@@ -461,16 +440,16 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
           }
              
         }
-        // ADD PULSE WITH CEHTER
 
+        // ADD PULSE WITH CEHTER
+      /*
         for(int i = 0; i <  networkSize-0; i++)
         {
         if (centerPos[i] == true)
         { 
-          // i = instrumentTouched;
+   
            patternFromInstrumentWithCenter = networkSize-1-i;
            enablingParametersChangesToLiveWithCenter = true;
-           //encodeurTouched[patternFromInstrument] = true;
         }
         }
 
@@ -478,8 +457,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         {
           enablingParametersChangesToLiveWithCenter= false; 
 
-          numberOfCenter[patternFromInstrumentWithCenter] += 1;
-          numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+           numberOfCenter[patternFromInstrumentWithCenter] += 1;
+           numberOfCenter[patternFromInstrumentWithCenter] %= 9;
              
           for(int i = 0; i <  networkSize-0; i++)
          {
@@ -487,23 +466,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          }
 
         }
-      
-        //USELESS ? 
-    
-    /*
-     if (enablingRecordFromAndToInstru == true)  // SAVING new position to recordPositionsFromInstrument[k][patternFromInstrument]
-     {  
-       
-        enablingRecordFromAndToInstru = false;
-        enablingChangeSoundB[patternFromInstrument] = false;
-      //  timeEnablingChangesParameter[patternFromInstrument] = millis();
-     }
-
-      if (enablingRecordFromAndToInstru == false )
-       { 
-         }
-    
-    */
+       */
     
    
 } 
@@ -527,7 +490,9 @@ void  trigMiddlePositionFromEncodeur()
           patternFromInstrumentWithCenter = networkSize-1-i;
           numberOfCenter[patternFromInstrumentWithCenter] += 1;
           numberOfCenter[patternFromInstrumentWithCenter] %= 9;
-          println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
+          numberOfCenter[patternFromInstrumentWithCenter] =(int) map (numberOfCenter[patternFromInstrumentWithCenter] , 0, 8, 0, 127);
+
+       //   println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
           rotate(HALF_PI);
         }
          oldEncodeurPosition[i] = encodeurPosition[i];      

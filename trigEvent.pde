@@ -682,10 +682,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             //  key = 't'; keyReleased();
              key = '9'; keyReleased();
              key = 'E'; keyReleased();
-
           } 
            
-
           if (measure >= 90 && measure <= 100 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
               key = 'h'; keyReleased(); 
               key = 'h'; keyReleased();
@@ -743,16 +741,6 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             
  }    
   
-
-
-
-
-
-
-
-
-
-
 
     /*
         if (formerKeyMetro == '$' && key == '='){
