@@ -213,9 +213,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     // print("The biggest delta was found at index " + bigIndex);
     // println(" and had the value " + velocityBis[bigIndex]);
     
-
-
-    
     //********
    //  FORMER PROGRAM BIS
 
@@ -258,10 +255,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         timeToWaitToEnableNextMovement = millis();    
     }
     
-
-  
- 
-   
     // ADD PULSE WITH POSITIVE DISCIMINATION  //&& timeToWaitToEnableNextMovement+500 <= millis()   && timeDisablingChangesParameterWithPositiveSpeed+500 <= millis()
         for(int i = 0; i <  networkSize-0; i++)
         {
@@ -301,6 +294,14 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          background(50);
          key = 'e';
          phaseDirectFromSeq();
+
+        if (numberOfTrig[patternFromInstrument] ==0)
+
+         {
+           key = 'ç';
+         phaseDirectFromSeq();
+          }
+
          enablingParametersChangesToLiveUp= false;
          
       
