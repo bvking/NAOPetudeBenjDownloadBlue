@@ -337,14 +337,14 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
              centerPos[i]= false;
           }     
 
-  
-    
-    // ADD PULSE WITH NEGATIVE DISCIMINATION
+   
+       // ADD PULSE WITH NEGATIVE DISCIMINATION
       
     
         for(int i = 0; i <  networkSize-0; i++)
         {
-        if (controlDownWay[i] == true)
+        if (controlDownWay[i] == true   &&
+           millis()>=timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched]+500)
         { 
            //i = instrumentTouched;
            patternFromInstrumentWithNegativeSpeed = networkSize-1-i;
@@ -352,6 +352,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
           // timeToWaitToEnableNextMovementFromNegative=millis();
         }
         }
+
         if (enablingParametersChangesToLiveWithNegativeSpeed == true)
         {
           enablingParametersChangesToLiveWithNegativeSpeed= false;
@@ -374,6 +375,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             instrumentToMute[patternFromInstrumentWithNegativeSpeed] = true;
          }
 
+        // MODULE EFFECT WITH MIDDLE POSITION    
+
     
            for(int i = 0; i <  networkSize-0; i++)
          {
@@ -381,6 +384,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
           }
              
         }
+
+
 
         // ADD PULSE WITH CEHTER
       /*
@@ -422,12 +427,17 @@ void  trigMiddlePositionFromEncodeur()
 
             println ( encodeurPosition[i] + " " +  oldEncodeurPosition[i]); 
 
-       if (( oldEncodeurPosition[i] <= 2000 && encodeurPosition[i] >=2000)
+       if ((( oldEncodeurPosition[i] <= 2200 && encodeurPosition[i] >=1800)
            ||
-           ( oldEncodeurPosition[i] >= 2000 && encodeurPosition[i] <=2000)
+           ( oldEncodeurPosition[i] >= 2200 && encodeurPosition[i] <=1800)
+           )
+           &&
+           millis()>=timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched]+500
           )
         
        {
+          timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched] = millis();
+
           patternFromInstrumentWithCenter = networkSize-1-i;
           numberOfCenter[patternFromInstrumentWithCenter] += 1;
           numberOfCenter[patternFromInstrumentWithCenter] %= 9;
