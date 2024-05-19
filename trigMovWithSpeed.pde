@@ -327,13 +327,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
           
           }
        }
-
-          for(int i = 0; i <  networkSize-0; i++)
-         {
-     
-             println( " cen " + (i) + centerPos[i] );
-          }     
-
+  
    
        // ADD PULSE WITH NEGATIVE DISCIMINATION
       
@@ -373,7 +367,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
          }
 
         // MODULE EFFECT WITH MIDDLE POSITION    
-
     
            for(int i = 0; i <  networkSize-0; i++)
          {
