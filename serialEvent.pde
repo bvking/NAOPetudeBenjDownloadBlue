@@ -316,6 +316,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
      
     if (c0 != null) {  // If not null, then a match was found
         centerPos[0] = true; 
+      
     }
 
     if (c1 != null) {  // If not null, then a match was found
@@ -347,9 +348,8 @@ void serialEvent(Serial encoderReceiveUSBport101)
       if (values.length == numberOfEncodeur) {//  always 6 when only 6 encoders
         for (int i = 0; i < networkSize; i++)
          {
-           /// encodeurBrut[i]=values[i];
-             encodeur[i] = (int)map (abs( values[i]), 0, 4000, 0, 4000)%4000;  
-          
+             encodeurBrut[i]=values[i];
+             encodeur[i] = (int)map (abs( values[i]), 0, 4000, 0, 4000)%4000;       
         } 
      //   encodeurBrut[0]=values[0];
      //   encodeurBrut[1]=values[1];
