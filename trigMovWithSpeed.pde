@@ -142,9 +142,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
        */
 
 
-
-
-        
+   
         //_____ not USED
         if (oldEncoderTouched[i] != encoderTouched[i])
         {            
@@ -215,65 +213,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     // print("The biggest delta was found at index " + bigIndex);
     // println(" and had the value " + velocityBis[bigIndex]);
     
-    /*
-     for(int i = 0; i <  networkSize-1; i++)
-     {
-     if(oldOldVelocityBis[i] > bigDelta)// && oldOldVelocityBis[i] > bigValue)
-    
-     {
-      bigDelta = oldOldVelocityBis[i];
-      bigDeltaI = i;
 
-     }
-     }
-   
-     print("The biggest Odelt was found at index " + bigDeltaI);
-     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-       */
-
-     /*  
-    
-    for(int i = 0; i <  networkSize-0; i++)
-    {
-    if(oldOldVelocityBis[i] > bigValue)
-    {
-      bigValue = oldOldVelocityBis[i];
-      bigDeltaI = i;
-    }
-    }
-     print("The biggest Odlta was found at index " + bigDeltaI);
-     println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-
-     if (bigIndex==bigDeltaI)
-     {  
-     sameInstrument = true;
-     deltaAmplitude = velocityBis[bigIndex]- oldOldVelocityBis[bigIndex];
-         print("The delTest Odelt was found at index " + bigIndex);
-     //println(" and had the value " + oldOldVelocityBis[bigDeltaI]);
-     println(" and had the value " +  deltaAmplitude + " " + sameInstrument);
-
-      }
-     if (bigIndex!=bigDeltaI)
-     { 
-     sameInstrument = false;
-      }
-      */
-
-
-      /*
-      for(int i = 0; i <  velocityBis.length; i++)
-     {
-     if(oldOldVelocityBis[i] >= velocityBis[bigIndex]) // && oldOldVelocityBis[i] > bigDelta)
-    
-     {
-      //bigValue = velocityBis[i];
-      //bigIndex = i;
-      bigDelta = oldOldVelocityBis[i]-velocityBis[bigIndex];
-      bigDeltaI = i;
-
-     }
-     }
-     */
 
     
     //********
@@ -490,7 +430,8 @@ void  trigMiddlePositionFromEncodeur()
           patternFromInstrumentWithCenter = networkSize-1-i;
           numberOfCenter[patternFromInstrumentWithCenter] += 1;
           numberOfCenter[patternFromInstrumentWithCenter] %= 9;
-          numberOfCenter[patternFromInstrumentWithCenter] =(int) map (numberOfCenter[patternFromInstrumentWithCenter] , 0, 8, 0, 127);
+         // numberOfCenter[patternFromInstrumentWithCenter] =(int) map (numberOfCenter[patternFromInstrumentWithCenter] , 0, 8, 0, 127);
+         numberOfCenter[patternFromInstrumentWithCenter] *= 16;
 
        //   println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
           rotate(HALF_PI);

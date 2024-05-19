@@ -1191,19 +1191,37 @@ void setup() {
                     keyMode = " trigEventWithAbletonSignal "; 
 
                     modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
+                  
+                   // keyReleased();
 
                 
-                  doo = true; // oposite way is true 
-               // doo = false; // to enable propagation
+                   doo = true; // oposite way is true 
+                   // doo = false; // to enable propagation
 
-                 networkSize = 6;
-                 numberOfStep = 6400;
+                   networkSize = 6;
+                   numberOfStep = 6400;
 
                  for (int i = 0; i <  networkSize; i++) {
                     numberOfRota[i]=1;   
                     numberOfTrig[i]=0;    
                     }
-                  }
+
+
+                    key = 'ç'; // set position with 180° offset
+                    phaseDirectFromSeq();
+
+                         
+                       for (int k = 0; k < networkSize; k++)
+                       {   
+                          for (int j = 0; j < networkSize; j++)  // [patternFromInstrument]
+                         { 
+                            recordPositionsFromInstrument[k][j] += (numberOfStep / 4) * k;
+                            recordPositionsFromInstrument[k][j] %=  numberOfStep;
+                             positionFromMotorPhase[k] = recordPositionsFromInstrument[k][j];
+                         }
+                      }
+
+                }
                 
                   
                 
