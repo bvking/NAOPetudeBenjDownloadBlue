@@ -645,13 +645,14 @@ void oscSend(){
           (oldPos[i]>= 64 && Pos[i] <=63))
         
        {
-          patternFromInstrumentWithCenter = networkSize-1-i;
-          numberOfCenter[patternFromInstrumentWithCenter] += 1;
-          numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+        //  patternFromInstrumentWithCenter = networkSize-1-i;
+        //  numberOfCenter[patternFromInstrumentWithCenter] += 1;
+        //  numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+        //  println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
 
-          text ( " POS " + i + " "  + numberOfCenter[patternFromInstrumentWithCenter] , 500, 500);
-          println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
 
+         // text ( " POS " + i + " "  + numberOfCenter[patternFromInstrumentWithCenter] , 500, 500);
+         
           dataToLive[i]= (networkSize-1)*(i-0);  // because there i beac you can send data with the step you want to separate controller depending oscillator --> here it is 11.
           dataToLive[0]= (networkSize-1)*(i-0);  // you can send data with the step you want to one controler 
       

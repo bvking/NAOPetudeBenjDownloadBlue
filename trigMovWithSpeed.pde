@@ -507,3 +507,30 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
     
    
 } 
+
+void  trigMiddlePositionFromEncodeur()
+{
+      for (int i = 0; i < networkSize; i++)
+    { 
+
+      
+         encodeurPosition[i] = (int) map(encodeur[i], 0, 4000, 0, 4000);    
+
+            println ( encodeurPosition[i] + " " +  oldEncodeurPosition[i]); 
+
+       if (( oldEncodeurPosition[i] <= 2000 && encodeurPosition[i] >=2000)
+           ||
+           ( oldEncodeurPosition[i] >= 2000 && encodeurPosition[i] <=2000)
+          )
+        
+       {
+          patternFromInstrumentWithCenter = networkSize-1-i;
+          numberOfCenter[patternFromInstrumentWithCenter] += 1;
+          numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+          println ( " numberOfCenter " + numberOfCenter[networkSize-1-i]); 
+          rotate(HALF_PI);
+        }
+         oldEncodeurPosition[i] = encodeurPosition[i];      
+     }
+ }
+

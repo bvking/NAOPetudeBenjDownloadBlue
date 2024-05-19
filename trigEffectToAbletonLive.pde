@@ -365,7 +365,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnlyOriginal()
 
 
 
-void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
+void trigMiddlePositionFromEncodeurOriginal() // midPos à revoir avec ancienne version
 {
     int mapRatio = 400;
     textSize(100);
@@ -389,6 +389,8 @@ void trigMiddlePositionFromEncodeur() // midPos à revoir avec ancienne version
     }
     rotate(HALF_PI);
 }
+
+
 
 void computeMidPosToSend()
 {
