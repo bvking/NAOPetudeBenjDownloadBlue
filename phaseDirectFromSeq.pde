@@ -43,7 +43,8 @@ void phaseDirectFromSeq() // mixed Com
         for (int k = 0; k < networkSize; k++)
         {   
             for (int j = 0; j < networkSize; j++)  // [patternFromInstrument]
-            { 
+            {  
+                recordPositionsFromInstrument[k][j] = 0;
                 recordPositionsFromInstrument[k][j] += (numberOfStep / 4) * k;
                 recordPositionsFromInstrument[k][j] %=  numberOfStep;
                 positionFromMotorPhase[k] = recordPositionsFromInstrument[k][j];
