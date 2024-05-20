@@ -241,8 +241,6 @@ void serialEvent(Serial encoderReceiveUSBport101)
     String[] c4 = match(myEncodeur, "c4");
     String[] c5 = match(myEncodeur, "c5");
 
-
-
     String[] Nm0 = match(myEncodeur, "n0");
     String[] Nm1 = match(myEncodeur, "n1");
     String[] Nm2 = match(myEncodeur, "n2");
@@ -339,6 +337,7 @@ void serialEvent(Serial encoderReceiveUSBport101)
         centerPos[5] = true;
     }
     
+    
 
 
        // trigMiddlepositionFromProcessing see after oscEvent 
@@ -351,19 +350,6 @@ void serialEvent(Serial encoderReceiveUSBport101)
              encodeurBrut[i]=values[i];
              encodeur[i] = (int)map (abs( values[i]), 0, 4000, 0, 4000)%4000;       
         } 
-     //   encodeurBrut[0]=values[0];
-     //   encodeurBrut[1]=values[1];
-
-
-        /*
-        encodeur[0]= (int)map (abs( values[0]), 0, 4000, 0, 4000)%4000;  
-        encodeur[1] =(int)map (abs( values[1]), 0, 4000, 0, 4000)%4000;  
-        encodeur[2] =(int)map (abs( values[2]), 0, 4000, 0, 4000)%4000; 
-        encodeur[3]= (int)map (abs( values[3]), 0, 4000, 0, 4000)%4000;  
-        encodeur[4] =(int)map (abs( values[4]), 0, 4000, 0, 4000)%4000;  
-        encodeur[5] =(int)map (abs( values[5]), 0, 4000, 0, 4000)%4000; 
-        */
-
     }   
    }
 
