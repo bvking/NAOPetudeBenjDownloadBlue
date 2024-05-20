@@ -1167,7 +1167,6 @@ void setup() {
                   // music_from_ableton_live = " controlDr ";:
                   //automationForMusicDessine()               
                   keyMode = " trigEventWithAbletonSignal "; 
-
                   modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
 
                   doo = true; // oposite way is true 

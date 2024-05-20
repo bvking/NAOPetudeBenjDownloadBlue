@@ -45,7 +45,7 @@ void draw()
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
-    switchFonctionDependingKeyMode();
+    switchFonctionDependingKeyMode();   // in setup <--  keyMode = " trigEventWithAbletonSignal ";  modeStartKeyToFollow = " followSignal2 ";
     computePhaseSum(); // to improve
     
     //--- discriminate position from time line of Ableton
@@ -80,7 +80,7 @@ void draw()
 
 
      //--------------- START SAMPLING with  " controlDr " " samplingModeWithLive "
-    //**samplingModeWithControlDr();
+     // samplingModeWithControlDr();
 
     
     //---------------  ARM " samplingModeWithLive "

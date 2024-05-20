@@ -31,9 +31,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                 delayTimeToTrig4=120; 
 
 
-            if (music_from_ableton_live == " controlDr ")
+            if (music_from_ableton_live == " controlDrNo ")
             {
-               automationForMusicControlDr();
+               automationForMusicControlDr();  // phasePatterFollow && signal2follown from ableton 
 
               if  (measure<=16 ) 
               {// return in main
@@ -56,16 +56,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                }
 
                      
-              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
-                {
+              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true  && music_from_ableton_live == "controlDr " )
+               {// return in main) // we are in followSignal            
+                
   
                   formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
                   keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
-                  systemForBigMachine=false;
+                  systemForBigMachine=false; 
                   samplingWithMouse = false;
-                 }
-            } 
+              } 
+             } 
             
             if (music_from_ableton_live == " Dessine ")
             {
@@ -82,16 +83,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
              /*
              if  (measure<=241 ) {// return in main
                   net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI);           
-              }
-            
+              }        
              if  (measure==240 && beatPrecised == 4 && beatPrecisedTrigged==true ) {// return in main
                    overDub = false; // tot takeOfff
                   measureToStartRecording=240;
                   keyMode = " samplingModeWithLive ";
               }
              */
-
-
               if  (measure<=45 ) {// return in main
                   formerKeyMetro =  '*';
                   net.phase[networkSize-1]=(float)map(ableton[0], 0, 1 , 0, TWO_PI);           
