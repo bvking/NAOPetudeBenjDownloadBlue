@@ -25,33 +25,35 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       TrigmodPos[i]=1; ///no beacuse TrigmodPos is allready in countRevs
       trigSound[i]=0;
 
-
-     if 
+    if 
     ( 
-      (
-      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=numberOfStep)  && (oldOldPositionToMotor[i] < 0.75 * numberOfStep/1 )
+      (// test A
+      (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0)  && (positionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] <  oldPositionToMotor[i]) )
       ) 
 
       ||
-      (
-      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=numberOfStep)  && (oldPositionToMotor[i] < 0.75 * numberOfStep/1 )
+      (// test B
+      (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0) && (oldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
-       ((oldOldPositionToMotor[i] >  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]<=positionToMotor[i]) )
+       ((oldOldPositionToMotor[i] <  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]>=positionToMotor[i]) )
       
       &&
       (
-       ( !
-      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=numberOfStep)  && (oldOldPositionToMotor[i] < 0.75 * numberOfStep/1 )
+       ( ! // not
+
+      (// test A
+      (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0)  && (positionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] <  oldPositionToMotor[i]) )
+      )
+
       )
       ) 
       )
  
-    )   
-
+    )
 
     {
       onOFF = 1;
@@ -69,6 +71,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
     if 
     ( 
+      
       (// test A
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
@@ -83,13 +86,15 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       
       &&
       (
-       ( ! // not test A
+       ( ! // not 
+        //test A
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] >  oldPositionToMotor[i]) )
       )
       ) 
       )
+      
  
     )
      {
