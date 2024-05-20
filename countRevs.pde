@@ -25,23 +25,6 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       TrigmodPos[i]=1; ///no beacuse TrigmodPos is allready in countRevs
       trigSound[i]=0;
 
-      // EXAMPLE
-
-      //    ((net.oldPhase[i] < 0.25 *PI && net.oldPhase[i]>0)  && (net.phase[i] > -0.25* PI && net.phase[i] <0))  ||
-      //    (net.oldPhase[i] < -1.75 * PI && net.phase[i] > -0.25 * PI)// ||
-      // no   (net.oldPhase[i] < 0.25 * PI && net.phase[i] > -0.25 * PI)
-
-    //if (
-     // ((oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > -0.25* (numberOfStep/2) && positionToMotor[i] < 0)) ||   (oldPositionToMotor[i] < -1.75 * PI && positionToMotor[i] > -0.25 * PI)
-     // )
-     // ORIGINAL 
-      // 1>=1
-     //  (oldPositionToMotor[i] < 0.25 *(numberOfStep/2) && oldPositionToMotor[i]>=0)  && (positionToMotor[i] > 1.75* (numberOfStep/2) )
-     //  &&   ( oldPositionToMotor[i] <=  positionToMotor[i] )
-    //   )
-
-      //  (oldPositionToMotor[i] < 0.10 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.9* (numberOfStep/2) ))
-      //**(oldPositionToMotor[i] < 0.5 *(numberOfStep/2) && oldPositionToMotor[i]>0)  && (positionToMotor[i] > 1.5 * (numberOfStep/2) ))
 
      if 
     ( 
@@ -67,27 +50,19 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       ) 
       )
  
-    )
-    
-    
-     {
-      
-    }
+    )   
+
 
     {
-      /*
-     onOFF = 1;
-     countControlDr[i]--;
-     rev[i]--;
-    
-       
-      revolution[i]=0; // trig 0 to sent 0 in Max4Live
+   onOFF = 1;
+      countControlDr[i]--;
+      rev[i]--;
+      text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
+      revolution[i]=0;
       TrigmodPos[i]=0;
       trigSound[i]=1;
-
-      decompte[i] = -1; // // RESET COUNTER AT 0 (i know it's strange, otherwise with 0 it begin at 1, not 0)
-
-      */
+        
+      decompte[i] = -1;  // RESET COUNTER AT 0
     } 
     // increment caused by positive angular velocity
     // both positive angles || both negative angles || negative-to-positive angle
@@ -121,7 +96,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
       onOFF = 1;
       countControlDr[i]++;
       rev[i]++;
-      text (" YOUR HERE GOOD" + rev[i], 200, -900+(i*100));
+      text (" YOUR HERE ++++" + rev[i], 200, -900+(i*100));
       revolution[i]=0;
       TrigmodPos[i]=0;
       trigSound[i]=1;
