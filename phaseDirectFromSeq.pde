@@ -286,10 +286,7 @@ void phaseDirectFromSeq() // mixed Com
             enablingParametersChangesToLiveUp = false;
             key = '#';    
         }
-        
-        
-        
-        
+               
         // DISPLAY PATTERN SAVED with controlDr
         if (keyCode == CONTROL)
             {
@@ -301,7 +298,6 @@ void phaseDirectFromSeq() // mixed Com
                 } 
             }
         }
-        
         
         if (enablingRecallFromAndToInstru == true || key == '1' ||  key == '2' ||  key == '3' || key == '4' ||  key == '5' ||  key == '6')
             {
@@ -560,7 +556,6 @@ void phaseDirectFromSeq() // mixed Com
             lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];        
         } 
     } 
-    //çs   key = '#'; 
     key = '#';    
     
     //  text(" formerKey " + formerKey , 100, -200);

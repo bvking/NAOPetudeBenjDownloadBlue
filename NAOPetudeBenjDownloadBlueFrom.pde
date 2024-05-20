@@ -226,7 +226,7 @@ void draw()
     // DISPLAY GAP, trig, ... midPos 
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     // data From serial computed to trig middle position and trig just touched 
-    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
+    //trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
     //print(" midPos ");
     //showArray(midPos);
     computeMidPosToSend();
