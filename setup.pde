@@ -1191,17 +1191,14 @@ void setup() {
                     keyMode = " trigEventWithAbletonSignal "; 
 
                     modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
-                  
-                   // keyReleased();
 
-                
                    doo = true; // oposite way is true 
                    // doo = false; // to enable propagation
 
                    networkSize = 6;
                    numberOfStep = 6400;
 
-                 for (int i = 0; i <  networkSize; i++) {
+                    for (int i = 0; i <  networkSize; i++) {
                     numberOfRota[i]=1;   
                     numberOfTrig[i]=0;    
                     }
@@ -1209,7 +1206,6 @@ void setup() {
 
                     key = 'ç'; // set position with 180° offset
                     phaseDirectFromSeq();
-
                          
                        for (int k = 0; k < networkSize; k++)
                        {   
@@ -1224,8 +1220,6 @@ void setup() {
                 }
                 
                   
-                
-
                 k = 0; // phaseShifting
                 oscillatorBlocked = networkSize - 1;
                 memoryi = networkSize - 1;
@@ -1233,8 +1227,6 @@ void setup() {
                 
                 
                 //keyMode = " addSignalOneAndTwoBis ";  
-                formerKeyMetro = '$';
-
                 //--keyMode = " phasePattern ";
                 //--phasePattern();
                 
@@ -1244,8 +1236,8 @@ void setup() {
                 //***keyMode = " notNull "; 
                 // modeStartKeyToFollow = " samplingModeInternal " ;
 
-     windowMove(0,0);// window at the top_left of the screen
-     size(600, 600, P3D);
+                 windowMove(0,0);// window at the top_left of the screen
+                 size(600, 600, P3D);
 
               //   windowRatio(900, 900); 
               //  translate(0, -800,1000);

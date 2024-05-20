@@ -45,7 +45,7 @@ void draw()
     
     keyModeRed = keyMode; // don't read keyMode in file.txt
     
-    switchFonctionDependingKeyMode();
+    switchFonctionDependingKeyMode(); //keyMode: trigEvent   modeStartKey: followwSignal
     computePhaseSum(); // to improve
     
     //--- discriminate position from time line of Ableton
@@ -80,9 +80,9 @@ void draw()
 
 
      //--------------- START SAMPLING with  " controlDr " " samplingModeWithLive "
-    //**samplingModeWithControlDr();
-
+    samplingModeWithControlDr();
     
+   
     //---------------  ARM " samplingModeWithLive "
     if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush ") // madRush
         //if(measure ==  40 && beatPrecised == 3 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush)
@@ -226,7 +226,7 @@ void draw()
     // DISPLAY GAP, trig, ... midPos 
     sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly();
     // data From serial computed to trig middle position and trig just touched 
-    trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
+    //trigMiddlePositionFromEncodeur();  // trigMidPos en focntion encoder // ern fondtion position encodeur reel et encodeurTouched, pas sur
     //print(" midPos ");
     //showArray(midPos);
     computeMidPosToSend();
