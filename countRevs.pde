@@ -29,21 +29,21 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
      if 
     ( 
       (
-      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=0)  && (oldOldPositionToMotor[i] < 0.75 * numberOfStep/1 )
+      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=numberOfStep)  && (oldOldPositionToMotor[i] < 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] <  oldPositionToMotor[i]) )
       ) 
 
       ||
       (
-      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=0)  && (oldPositionToMotor[i] < 0.75 * numberOfStep/1 )
+      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=numberOfStep)  && (oldPositionToMotor[i] < 0.75 * numberOfStep/1 )
       &&
        ((oldOldPositionToMotor[i] >  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]<=positionToMotor[i]) )
       
       &&
       (
        ( !
-      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=0)  && (oldOldPositionToMotor[i] < 0.75 * numberOfStep/1 )
+      (positionToMotor[i] > 0.5 * numberOfStep/2 && positionToMotor[i]<=numberOfStep)  && (oldOldPositionToMotor[i] < 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] <  oldPositionToMotor[i]) )
       )
@@ -54,7 +54,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
 
     {
-   onOFF = 1;
+      onOFF = 1;
       countControlDr[i]--;
       rev[i]--;
       text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
@@ -69,21 +69,21 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
 
     if 
     ( 
-      (
+      (// test A
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] >  oldPositionToMotor[i]) )
       ) 
 
       ||
-      (
+      (// test B
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
        ((oldOldPositionToMotor[i] <  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]>=positionToMotor[i]) )
       
       &&
       (
-       ( !
+       ( ! // not test A
       (positionToMotor[i] < 0.5 * numberOfStep/2 && positionToMotor[i]>=0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep/1 )
       &&
       ( (oldOldPositionToMotor[i] >  oldPositionToMotor[i]) )
