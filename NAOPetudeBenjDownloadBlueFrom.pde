@@ -86,7 +86,7 @@ void draw()
     //---------------  ARM " samplingModeWithLive "
     if (measure ==  40 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " madRush ") // madRush
         //if(measure ==  40 && beatPrecised == 3 && beatPrecisedTrigged ==  true && music_from_ableton_live == " pleasureKraft " ) // madRush)
-        {    // prepare record
+    {    // prepare record
         key = '9'; // align
         keyReleased();
         modeCircular = true; // not work

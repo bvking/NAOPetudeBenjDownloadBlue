@@ -21,7 +21,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
       }
                 
           
-                 
+    formerKeyMetro = '*';        
     
     if(key == '*' || key == '$') {
         formerKeyMetro = key;

@@ -52,15 +52,7 @@ void teensyPos()
      }
       }
 
-     if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
-        )   
-        {  
-        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-        for(int i = 0; i < networkSize; i++) {  
-        dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
-        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
-      }
-     }
+   
 
 
 
@@ -349,10 +341,33 @@ void teensyPos()
            text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " coun " + countControlDr[networkSize-1-i], width+600, -2500-100*(networkSize-1-i)) ;   // phasePatternFollow[networkSize-1-i]
          }
 
-        if (music_from_ableton_live == " controlDr " )   
-        {    
-         send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
+        if ( keyMode!= " samplingModeWithLive ") 
+        {   
+             if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ") 
+          {   
+
+            if (music_from_ableton_live == " controlDr " )   
+            {    
+            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
+            }
+          }
         }
+
+        if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
+        )   
+        {  
+        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+        for(int i = 0; i < networkSize; i++) {  
+        
+        //dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+        dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+      }
+          send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
+     }
+
+
+
         if (music_from_ableton_live == " Dessine "  ) 
         {     
           send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
