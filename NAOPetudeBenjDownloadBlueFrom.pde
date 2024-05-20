@@ -58,7 +58,7 @@ void draw()
     { 
         setMeasureAndBeatPrecised();
     }
-    
+     
     trigBeatWithMeasure();
     //printDataOnScreen();
     //rotate( -HALF_PI);
