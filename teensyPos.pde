@@ -356,15 +356,26 @@ void teensyPos()
         if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
         )   
         {  
-        revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
-        for(int i = 0; i < networkSize; i++) {  
+         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+          for(int i = 0; i < networkSize; i++)
+          {  
         
-        //dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
-        dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
-        dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
-      }
-          send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
-     }
+           //dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+           dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+           dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+          }
+
+         if ( measure>=measureRecordStop )
+          { 
+          int disableDriver=15;
+          int driverNetWorkSizeOnOff=15;
+          int timeElapsedBackingPosition = 4000;
+          int dataNoComputed=-4;
+             send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
+           //  send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
+          }
+       }
+         
 
 
 

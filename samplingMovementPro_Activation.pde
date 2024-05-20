@@ -36,11 +36,11 @@ void handleSamplingModeWithAbletonLive()
        "samplingM " + samplingWithMouse + " mouseY " +  mouseY + " measure "  +  measure + " actualSec " + actualSec, -width/4, - height - 300);
 
        if (measure>=measureRecordStart && measure<=measureRecordStop ) { 
-          int disableDriver=-5;
-         // int disableDriver=15;  // ENABLE FIRST
+          //int disableDriver=-5;
+           int disableDriver=15; // ENABLE FIRST
 
-         //int driverNetWorkSizeOnOff=15; // ENALBLE ALL expect first driver
-         int driverNetWorkSizeOnOff=-5; // DISABLE ALL expect first driver
+          //int driverNetWorkSizeOnOff=15;// ENABLE LAST expect first driver
+          int driverNetWorkSizeOnOff=-5; // DISABLE LAST expect first driver
           int timeElapsedBackingPosition = 8000; 
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
@@ -50,7 +50,7 @@ void handleSamplingModeWithAbletonLive()
        if ( measure>=measureRecordStop ) { 
           int disableDriver=15;
           int driverNetWorkSizeOnOff=15;
-          int timeElapsedBackingPosition = 1000;
+          int timeElapsedBackingPosition = 2000;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
              send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 

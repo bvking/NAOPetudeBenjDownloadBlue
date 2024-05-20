@@ -35,12 +35,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             {
                automationForMusicControlDr();
 
-              if  (measure<=16 ) 
-              {// return in main
-                  formerKeyMetro =  '*';
-                //  net.phase[networkSize-1]=(float)map(encodeur[0], 0, 4000 , 0, TWO_PI);           
-              }
-                  // ARM sampling with angleTointerpolate
+                  // ARM sampling with angleTointerpolate  USEFULL BUT TRY TO SIMPLER
+          
               if  (measure==7 && beatPrecised == 3 && beatPrecisedTrigged==true && music_from_ableton_live == " controlDr ")
                {// return in main
                    overDub = false; // tot takeOfff
@@ -65,6 +61,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   systemForBigMachine=false;
                   samplingWithMouse = false;
                  }
+            
             } 
             
             if (music_from_ableton_live == " Dessine ")
