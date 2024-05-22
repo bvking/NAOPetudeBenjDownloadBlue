@@ -535,7 +535,7 @@ void trigBeatWithMeasure()
        positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
         //   positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
-        text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[i] + " " + countControlDr[i] , -2000, -300 + (networkSize-1-i*100), -800);  
+        text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[i] + " " + countControlDr[i]+ " " + rev[i] , -2200, -300 + (networkSize-1-i*100), -800);  
        }
 
    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")

@@ -1,5 +1,5 @@
 void countRevsPhaseMappedPositiveOnly() { // ============================================= Ter NE PAS TOUCHER LE COMPTEUR ou Reduire l'espace avant et apres 0 pour eviter bug à grande vitesse
-    print("                                                                 oldd ");
+    print("                                                                 VELOCI    oldd ");
     showArray(oldOldVelocityBis);
     print("oldV ");
     showArray(oldVelocityBis);
@@ -21,7 +21,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
     
     
     for (int i = 0; i < networkSize; i++)
-        {
+    {
         TrigmodPos[i] = 1; ///no beacuse TrigmodPos is allready in countRevs
         trigSound[i] = 0;
         
@@ -32,48 +32,41 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             (// test A
             (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0)  && (positionToMotor[i] > 0.75 * numberOfStep/1 )
             &&
-            ( (oldOldPositionToMotor[i] <  oldPositionToMotor[i]) )
+            ( (positionToMotor[i] >  oldOldPositionToMotor[i]) )
+            &&
+              (positionToMotor[i] >  oldPositionToMotor[i]) 
             ) 
-            
+            /*
             ||
             (// test B
             (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0) && (oldPositionToMotor[i] > 0.75 * numberOfStep/1 )
             &&
-            ((oldOldPositionToMotor[i] <  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]>=positionToMotor[i]) )
+            ((positionToMotor[i] <  oldPositionToMotor[i] ) && ( oldPositionToMotor[i]>=positionToMotor[i]) )
             
             &&
-            (
-           ( ! // not
-            
-            (// test A
+            (  // not test A 
+            (!
             (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0)  && (positionToMotor[i] > 0.75 * numberOfStep/1 )
             &&
-            ( (oldOldPositionToMotor[i] <  oldPositionToMotor[i]) )
-            )
-            
+            ( (positionToMotor[i] >  oldOldPositionToMotor[i]) )
             )
             ) 
             )
-            
+            */
             
            )
                 {
             
-           // onOFF = 1;
-           // countControlDr[i]--;
-          //  rev[i]--;
-          //  text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
-           // revolution[i]=0;
-          //  TrigmodPos[i]=0;
-           // trigSound[i]=1;
-            
-          //  decompte[i] = -1;  // RESET COUNTER AT 0
-            
-           }
-         
+            onOFF = 1;
+            countControlDr[i]--;
+            rev[i]--;
+            text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
+            TrigmodPos[i]=0;
+            trigSound[i]=1;         
+            decompte[i] = -1;  // RESET COUNTER AT 0
+           }         
       
-        // increment caused by positive angular velocity
-        // both positive angles || both negative angles || negative-to-positive angle
+        // increment caused by positive angular velocity________________ both positive angles || both negative angles || negative-to-positive angle
         
         if 
            ( 
@@ -91,9 +84,8 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
            ((oldOldPositionToMotor[i] <  oldPositionToMotor[i]) && (oldPositionToMotor[i]>= positionToMotor[i]))
             
             && 
-           (
-          (// not 
-            //test A
+           ( // not test A
+           ( !  
            (positionToMotor[i] < 0.5 * numberOfStep / 2 && positionToMotor[i]>= 0)  && (oldOldPositionToMotor[i] > 0.75 * numberOfStep / 1)
             && 
            ((oldOldPositionToMotor[i] >  oldPositionToMotor[i]))
@@ -106,19 +98,20 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
         {
             onOFF = 1;
             countControlDr[i]++;
-        rev[i]++;
-        text(" YOUR HERE ++++" + rev[i], 200, -900 + (i * 100));
-        revolution[i] = 0;
-        TrigmodPos[i] = 0;
-        trigSound[i] = 1;
+              rev[i]++;
+              text(" YOUR HERE ++++" + rev[i], 200, -900 + (i * 100));
+             revolution[i] = 0;
+             TrigmodPos[i] = 0;
+             trigSound[i] = 1;
         
-        decompte[i] = 0;  // RESET COUNTER AT 0
-    } else {
+             decompte[i] = 0;  // RESET COUNTER AT 0
+        } else
+     {
         
         decompte[i]  ++; //START COUNTER when a REVOLUTION START OR FINISH
         revolution[i] = 1;     
-    }
-}
+     }
+   }
 }
 
 

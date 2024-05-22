@@ -16,7 +16,8 @@ float phaseMappedFollow  [] =  new float  [networkSize];
 */
 
 
-void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot) { // as addSignalOneAndTwoQuater() in NAOP 
+void propagationBallRotationBis(float speedOfPropagationFromLiveOrNot)
+ { // as addSignalOneAndTwoQuater() in NAOP 
     keyMode = " propagationBallRotationBis ";
    // modeStartKeyToFollow = " null ";
     //formerKeyMetro = '*';
