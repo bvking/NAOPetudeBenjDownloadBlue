@@ -36,7 +36,7 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             &&
               (positionToMotor[i] >  oldPositionToMotor[i]) 
             ) 
-            /*
+            /* useless but maybe usefull in propagationMode
             ||
             (// test B
             (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0) && (oldPositionToMotor[i] > 0.75 * numberOfStep/1 )
