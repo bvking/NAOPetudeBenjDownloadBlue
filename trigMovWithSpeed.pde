@@ -386,7 +386,6 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
             centerPos[i]= false;
            patternFromInstrumentWithCenter = networkSize-1-i;
            numberOfCenter[patternFromInstrumentWithCenter] +=1;
-
            enablingParametersChangesToLiveWithCenter = true;
         }
         }
@@ -394,9 +393,8 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         if (enablingParametersChangesToLiveWithCenter == true )
         {
           enablingParametersChangesToLiveWithCenter= false; 
-
          //  numberOfCenter[patternFromInstrumentWithCenter] += 1;
-        //   numberOfCenter[patternFromInstrumentWithCenter] %= 9;
+          numberOfCenter[patternFromInstrumentWithCenter] %= 9;
          
 
         }  
