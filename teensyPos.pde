@@ -357,7 +357,7 @@ void teensyPos()
               */
 
                  
-            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 5000);
+            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 10000);
             }
           }
         }
@@ -379,7 +379,7 @@ void teensyPos()
           int driverLast=15;
           int timeElapsedBackingPosition = 4000;
           int dataNoComputed=-4;
-             send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 
+             send24DatasToTeensy6motorsToLittleMachine( 3, disableFirstDriver, dataNoComputed, -1, driverLast, timeElapsedBackingPosition); // 
            //  send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
           }
        }

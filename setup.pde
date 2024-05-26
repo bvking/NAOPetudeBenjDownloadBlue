@@ -12,18 +12,19 @@ size(600, 600, P3D);
 } 
 */
 
-/*
+
 boolean systemForBigMachine=false;
 int networkSize = 6;
 int numberOfStep = 6400;
-*/
+
 
 int frameTrigger;
 int recallLastPatternInstrument;
-
+/*
 boolean systemForBigMachine=true;
 int networkSize = 10;
 int numberOfStep = 3200;  //attention avec big Machine
+*/
 
 int[] getUppestVelocityBis = new int[networkSize];
 int bigValue, bigIndex, bigDelta, bigDeltaI;
