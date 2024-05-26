@@ -335,7 +335,7 @@ void sendPositionToLiveFromTouchedEncodeurNetworkSizeOnly()
         for(int i = 0; i <  networkSize-0; i++)
         {
         if (controlDownWay[i] == true   &&
-           millis()>=timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched]+500)
+           millis()>=timeDisablingChangesParameterWithNegativeSpeedBis[instrumentTouched]+50)
         { 
            //i = instrumentTouched;
            patternFromInstrumentWithNegativeSpeed = networkSize-1-i;

@@ -79,6 +79,11 @@ void handleKeyPressToChoosemodeCircularementOrNot() {
 void displayArrays() {
   print("encodeur ");
   showArray(encodeur);
+  print("encodeurBrut ");
+   for (int i = 0; i < networkSize; i++) {
+      encodeurBrut[i] %=4000;     
+    }
+  showArray(encodeurBrut);
   print("countRev ");
   showArray(rev);
   // print  (" encodeurTouched " + encoderTouched[0]+ "  " + encoderTouched[1]+ "  " + encoderTouched[2]+ "  " +
@@ -94,18 +99,30 @@ void displayArrays() {
 void computePhaseSum() {
   if (modeCircular==true) {
     for (int i = 0; i < networkSize; i++) {
-      addPhaseAllMode += net.phase[i];
-      print ("CIR ave pha " + i);
+      float[] phasePonderate = new float [networkSize];
+      
+
+      phasePonderate[i] = encodeurBrut[i]/networkSize;
+      addPhaseAllMode += phasePonderate [i];
+      print ("CIR ave phasePonderate " + i + " " + phasePonderate[i]);
     }
+
+  print("addPhaseAllMode ");
+  println (addPhaseAllMode);
+
   }
   if (modeCircular==false) {
     for (int i = 0; i < networkSize; i++) {
-      addPhaseAllMode += metroPhase[i];
-      print ("CIR ave pha " + i);
+    //  addPhaseAllMode[i] += metroPhase[i]/networkSize;
+    //  print ("CIR ave pha " + i);
     }
+ // print("addPhaseAllMode ");
+ // showArray(addPhaseAllMode);
+
   }
-  addPhaseAllMode/=networkSize;
-  print (addPhaseAllMode);
+  //addPhaseAllMode/=networkSize;
+  //print (addPhaseAllMode);
+  
   addPhaseAllMode = map(addPhaseAllMode, -(networkSize - 1) * TWO_PI, (networkSize - 1) * TWO_PI, 0, 1);
   print(" averagemapped ");
   println(addPhaseAllMode);

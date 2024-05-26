@@ -347,17 +347,8 @@ void teensyPos()
           {   
 
             if (music_from_ableton_live == " controlDr " )   
-            { 
-              /*
-                 for(int i = 0; i < networkSize; i++)
-                {         
-                dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
-                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
-                }
-              */
-
-                 
-            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 10000);
+            {    
+            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
             }
           }
         }
