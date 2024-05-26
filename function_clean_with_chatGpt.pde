@@ -106,7 +106,7 @@ void computePhaseSum() {
        gapBetweenEncodeur[i]= (int)(phasePonderate[networkSize-i]-phasePonderate[networkSize-i-1]);
        print (" Gap " + (i) + " " + gapBetweenEncodeur[i]);
     }
-  addPhaseAllMode =  gapBetweenEncodeur[4];
+  addPhaseAllMode = abs(gapBetweenEncodeur[4]);
   print("  addPhaseAllMode ");
   println (addPhaseAllMode);
 
