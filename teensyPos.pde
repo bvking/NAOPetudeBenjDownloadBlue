@@ -347,19 +347,27 @@ void teensyPos()
           {   
 
             if (music_from_ableton_live == " controlDr " )   
-            {    
-            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
+            { 
+              /*
+                 for(int i = 0; i < networkSize; i++)
+                {         
+                dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
+                dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
+                }
+              */
+
+                 
+            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 5000);
             }
           }
         }
 
-        if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " //&& modeCircular    // || keyMode == " addSignalOneAndTwo "
-        )   
+        if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " 
+        )
         {  
-         revLfo=rev; // actualise counter revLfo from " normal mode"  from rev 
+          revLfo=rev;// useless here // actualise counter revLfo from " normal mode"  from rev 
           for(int i = 0; i < networkSize; i++)
-          {  
-        
+          {       
            //dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (revLfo[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
            dataMappedForMotorisedPosition[i]=(int) positionToMotor[i]+ (rev[i]*numberOfStep);//+ (int) recordLastDataOfMotorPosition[i];
            dataMappedForMotorisedBigMachine[i]=dataMappedForMotorisedPosition[i];//+readPositionEncoder[i];
@@ -367,8 +375,8 @@ void teensyPos()
 
          if ( measure>=measureRecordStop )
           { 
-          int disableDriver=15;
-          int driverNetWorkSizeOnOff=15;
+          int disableFirstDriver=15;
+          int driverLast=15;
           int timeElapsedBackingPosition = 4000;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableDriver, dataNoComputed, -1, driverNetWorkSizeOnOff, timeElapsedBackingPosition); // 

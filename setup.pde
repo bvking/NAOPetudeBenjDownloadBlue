@@ -12,23 +12,21 @@ size(600, 600, P3D);
 } 
 */
 
+/*
 boolean systemForBigMachine=false;
 int networkSize = 6;
 int numberOfStep = 6400;
+*/
 
 int frameTrigger;
 int recallLastPatternInstrument;
 
-/*
 boolean systemForBigMachine=true;
 int networkSize = 10;
 int numberOfStep = 3200;  //attention avec big Machine
-*/
 
 int[] getUppestVelocityBis = new int[networkSize];
 int bigValue, bigIndex, bigDelta, bigDeltaI;
-
-
 
 float[] slider = new float[networkSize]; // slider from max_msp
 int[][] recordPositionsFromInstrument = new int [networkSize][networkSize];
@@ -1161,7 +1159,7 @@ void setup() {
                  {
                   samplingWithTeensy3_5 = false;
                  // music_from_ableton_live = " madRush ";
-                 // music_from_ableton_live = " mouvement ";
+                 // music_from_ableton_live = " mouvement "; .. doesn't exist anymore
                    modeOfControlDr = " NoVirtual ";
                    music_from_ableton_live = " Dessine ";
                   // music_from_ableton_live = " controlDr ";:
