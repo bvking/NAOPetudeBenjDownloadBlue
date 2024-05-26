@@ -1,3 +1,5 @@
+ 
+
 void setMovement(int k, boolean b) {//azeqsdwxcrty
   switch (k) {
   case 'a':
@@ -81,7 +83,7 @@ void displayArrays() {
   showArray(encodeur);
   print("encodeurBrut ");
    for (int i = 0; i < networkSize; i++) {
-      encodeurBrut[i] %=4000;     
+      encodeurBrut[i] %=4000;   
     }
   showArray(encodeurBrut);
   print("countRev ");
@@ -98,16 +100,14 @@ void displayArrays() {
 
 void computePhaseSum() {
   if (modeCircular==true) {
-    for (int i = 0; i < networkSize; i++) {
-      float[] phasePonderate = new float [networkSize];
-      
-
-      phasePonderate[i] = encodeurBrut[i]/networkSize;
-      addPhaseAllMode += phasePonderate [i];
-      print ("CIR ave phasePonderate " + i + " " + phasePonderate[i]);
+    
+    for (int i = 1; i < networkSize-1; i++) {
+       phasePonderate[i] = encodeurBrut[i];
+       gapBetweenEncodeur[i]= (int)(phasePonderate[networkSize-i]-phasePonderate[networkSize-i-1]);
+       print (" Gap " + (i) + " " + gapBetweenEncodeur[i]);
     }
-
-  print("addPhaseAllMode ");
+  addPhaseAllMode =  gapBetweenEncodeur[4];
+  print("  addPhaseAllMode ");
   println (addPhaseAllMode);
 
   }
@@ -122,9 +122,9 @@ void computePhaseSum() {
   }
   //addPhaseAllMode/=networkSize;
   //print (addPhaseAllMode);
-  
-  addPhaseAllMode = map(addPhaseAllMode, -(networkSize - 1) * TWO_PI, (networkSize - 1) * TWO_PI, 0, 1);
-  print(" averagemapped ");
+
+  addPhaseAllMode = map(addPhaseAllMode, 0, 2000, 0, 12);
+  print(" averagemapped  between 0 and 12 ");
   println(addPhaseAllMode);
 }
 

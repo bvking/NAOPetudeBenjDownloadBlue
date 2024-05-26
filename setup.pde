@@ -42,6 +42,8 @@ int[] positionFromMotorPhaseRecorded = new int[networkSize];
 boolean[] instrumentToMute = new boolean[networkSize];
 int timeTosendData;
 
+float[] phasePonderate = new float [networkSize];   
+int[]  gapBetweenEncodeur = new int[networkSize];
 int[] timeEnablingChangesParameter = new int[networkSize];
 int[] startingPos = new int[networkSize];
 int[] encodeurBrut = new int[networkSize];
