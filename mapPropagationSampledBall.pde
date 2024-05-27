@@ -29,7 +29,7 @@ void mapPropagationSampledBall() {
              specialPhase[i] = (int) map (phaseMapped[i], 0, TWO_PI, 0, numberOfStep);
 
              positionToMotor[i]= specialPhase[i]%numberOfStep;
-           //  text (" positionToMotor " + oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
+             text (" positionToMotor " + oldPositionToMotor[i] + " " + positionToMotor[i] , -800, -500 + (50*i));  
              //dataMappedForMotorisedPosition[i] = positionToMotor[i];
        }
 
