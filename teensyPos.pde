@@ -382,6 +382,13 @@ void teensyPos()
         {     
           send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         }
+       // special to test chor with little machine
+        if (music_from_ableton_live == " Dessine "  ) 
+        {     
+            send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
+        }
+
+
         rotate (-PI);
         }
 
