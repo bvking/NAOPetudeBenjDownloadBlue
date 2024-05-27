@@ -202,8 +202,8 @@ void automationForMusicDessine()
     
     if (measure ==  24  &&  beatPrecised == 13 && beatPrecisedTrigged ) 
         {        
-        key = 'ç';
-        phaseDirectFromSeq(); 
+      //  key = 'ç';
+      //  phaseDirectFromSeq(); 
     } 
     
     if (measure ==  24  &&  beatPrecised == 15 && beatPrecisedTrigged ) 
