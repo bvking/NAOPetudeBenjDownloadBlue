@@ -540,8 +540,9 @@ void trigBeatWithMeasure()
 
    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
     {
-    if (formerKeyMetro == '*') 
+    if (formerKeyMetro == '*' || formerKeyMetro == '$' ) 
      {
+      
      countRevsPhaseMappedPositiveOnly();
      }
     }
