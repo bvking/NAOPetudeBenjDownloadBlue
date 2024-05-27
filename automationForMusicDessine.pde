@@ -51,8 +51,8 @@ void automationForMusicDessine()
         {
             // key = '=';
             // keyReleased();
-             key = 'ç';
-             phaseDirectFromSeq();   
+          //**   key = 'ç';
+          //**   phaseDirectFromSeq();   
             //phaseDirectToMotor(); 
         }
         
@@ -73,8 +73,8 @@ void automationForMusicDessine()
         
         if (measure ==  11 && beatTrigged ==  true)       
         {
-            key = 'ç';
-            phaseDirectFromSeq(); 
+        //**    key = 'ç';
+        //**    phaseDirectFromSeq(); 
             //phaseDirectToMotor();     
         }
         
@@ -159,9 +159,9 @@ void automationForMusicDessine()
     
     if (measure ==  19 && beatTrigged )          
         {
-        key = 'ç';
+     //**   key = 'ç';
 
-        phaseDirectFromSeq();  
+      //**  phaseDirectFromSeq();  
         /*
         key = 'k';
         phaseDirectFromSeq();  
@@ -175,7 +175,7 @@ void automationForMusicDessine()
         
     }
     
-    if (measure >=  19 && measure <=  24  && ((beatPrecised + 1) % 5) ==  0 && beatPrecisedTrigged)
+    if (measure >  19 && measure <  24  && ((beatPrecised + 1) % 5) ==  0 && beatPrecisedTrigged)
         {  
         key = 'i';        
         phaseDirectFromSeq();      
