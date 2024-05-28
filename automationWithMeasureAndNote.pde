@@ -535,7 +535,9 @@ void trigBeatWithMeasure()
        positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
         //   positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
-        text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[i] + " " + countControlDr[i]+ " " + rev[i] , -2200, -300 + (networkSize-1-i*100), -800);  
+       text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + 
+             " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[i] + " " + countControlDr[i]+
+             " " + rev[i] + " " + revLfo[i] , -2200, -300 + (networkSize-1-i*100), -800);  
        }
 
    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
@@ -547,7 +549,8 @@ void trigBeatWithMeasure()
      }
     }
 
-     // counter si propagation
+     print ( " counter si propagation revLfo " );
+     showArray(revLfo);
        /*
            for (int i = 0; i <  networkSize - 0; i += 1)
           { // la premiere celle du fond i=2,  la derniere celle du devant i=11  
@@ -578,7 +581,7 @@ void trigBeatWithMeasure()
             }
          }
         
-       */  
+      */ 
 
 
       for (int i = 0; i <  networkSize - 0; i += 1) { 

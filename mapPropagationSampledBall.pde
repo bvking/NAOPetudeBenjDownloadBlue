@@ -1,7 +1,8 @@
 void mapPropagationSampledBall() {
 
         textSize(100);
-      for (int i = 0; i <  networkSize-0; i+=1) { 
+      for (int i = 0; i <  networkSize-0; i+=1)
+       { 
           //   net.phase[i]=newPosXaddSignal[i]; // use to display  ?
 
           if ( keyMode == " trigEventWithAbletonSignal ") { 
