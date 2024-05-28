@@ -6,6 +6,9 @@ void phaseDirectFromSeq() // mixed Com
 {  
     // instrumentChangedToAddPulse = false;
     oscillatorBlocked = networkSize - 1;
+    rotate(-HALF_PI);
+    text(" osc " + oscillatorBlocked + " specialPropagationK " + specialPropagationKey, 200, 200);
+    rotate(HALF_PI);
     
     if (key == '0')
     {
@@ -539,15 +542,13 @@ void phaseDirectFromSeq() // mixed Com
             println(" lastP " + lastPositionFromMotorPhase[i] + " P " + positionFromMotorPhase[i]);
             if (lastPositionFromMotorPhase[i] < positionFromMotorPhase[i])
                 {
-                positionFromMotorPhase[i] = positionFromMotorPhase[i] + numberOfStep;
-                
+                positionFromMotorPhase[i] = positionFromMotorPhase[i] + 0*numberOfStep;            
             }
             
         }
         for (int i = 0; i < (networkSize - 0); i++)
             {  
-            // lastOldActualPosition[i] = positionFromMotorPhase[i]+numberOfStep/1;//+numberOfStep/6;   
-            lastOldActualPosition[i] = positionFromMotorPhase[i] + numberOfStep / 1;//+numberOfStep/6;
+            lastOldActualPosition[i] = positionFromMotorPhase[i] + 0*numberOfStep / 1;//+numberOfStep/6;
         }
         
         for (int i = 1; i < (networkSize - 0); i++)
@@ -561,15 +562,8 @@ void phaseDirectFromSeq() // mixed Com
             {
             lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];        
         } 
-    } 
-    if (key != '#' )
-     {
-         if (key != 'q' )
-     {
-   // specialPropagationKey = key;
-      } 
-     } 
-    // specialPropagationKey = key;
+    }
+
     key = '#';    
     
     //  text(" formerKey " + formerKey , 100, -200);

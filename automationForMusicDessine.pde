@@ -161,6 +161,7 @@ void automationForMusicDessine()
         {
      //**   key = 'ç';
        key = '0';
+       specialPropagationKey  = key ;  
        phaseDirectFromSeq();  
         /*
         key = 'k';
@@ -263,16 +264,18 @@ void automationForMusicDessine()
     if (measure ==  32 &&  beatPrecised == 1 && beatPrecisedTrigged )     
     {
           
-          key = 'k';
+        key = 'k';
         phaseDirectFromSeq();      
-            key = 'k';
+        key = 'k';
         phaseDirectFromSeq(); 
         
         key = '0'; // not ç
+        specialPropagationKey  = key ; 
         phaseDirectFromSeq(); 
+       
          
-            key = 'k';
-        phaseDirectFromSeq(); 
+        //key = 'k';
+        //phaseDirectFromSeq(); 
       
         speedDelta = 3;
     }
@@ -308,12 +311,17 @@ void automationForMusicDessine()
 
      if (measure ==  35 && beatPrecised ==  1 && beatPrecisedTrigged)
     { 
+        key = '0'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq(); 
+        /*
         key = 'k';
         phaseDirectFromSeq();      
             key = 'k';
         phaseDirectFromSeq();      
             key = 'k';
-        phaseDirectFromSeq();      
+        phaseDirectFromSeq();  
+        */    
        
     }  
     
@@ -331,14 +339,16 @@ void automationForMusicDessine()
     
     if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
         {
-        key = 'U';        
-        phaseDirectFromSeq();              
+        key = 'U';  
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();                    
     } 
     
     if (measure ==  39  && ((beatPrecised+1)%2 == 0)  && beatPrecisedTrigged ==  true)  //|| beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
-        key = 'U';        
-        phaseDirectFromSeq();              
+        key = 'U';  
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();               
     }
 
   
@@ -346,8 +356,9 @@ void automationForMusicDessine()
     
     if (measure ==  40  && (beatPrecised == 1) && beatPrecisedTrigged ==  true) 
         { 
-        key = 'ç';     
-        phaseDirectFromSeq();        
+        key = '0'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();       
     }
     
     
@@ -373,9 +384,9 @@ void automationForMusicDessine()
     
     if (measure ==  43  && (beatPrecised == 15) && beatPrecisedTrigged ==  true) 
         {
-        key = 'ç';   
-        //keyReleased();     
-        phaseDirectFromSeq();               
+        key = '0'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();                
     }
     
     if (measure ==  44 && (beatPrecised + 1) % 5 == 0 && beatPrecisedTrigged ==  true && beatPrecised < 10 ) 
@@ -386,7 +397,8 @@ void automationForMusicDessine()
 
     if (measure ==  44 && (beatPrecised == 10 || beatPrecised == 16) && beatPrecisedTrigged ==  true && beatPrecised > 9 ) 
         {  
-        key = 'U';       
+        key = 'U';
+        specialPropagationKey  = key ;        
         phaseDirectFromSeq();       
     }
     
@@ -394,16 +406,15 @@ void automationForMusicDessine()
         
         { //speedDelta = 3;
         key = 'U';        
-        //  phaseDirectFromSeq();       
+        specialPropagationKey  = key ;        
         phaseDirectFromSeq();               
     } 
      
     if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
         {    
-        key = 'ç';
-        keyReleased();   
-       
-       // phaseDirectFromSeq();
+        key = '0'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq(); 
 
      
     }
@@ -434,10 +445,9 @@ void automationForMusicDessine()
 
     if (measure ==  59 && (beatPrecised == 15 || beatPrecised == 15) && beatPrecisedTrigged)   
         {    
-        key = 'ç';
-        keyReleased();  
-       // phaseDirectToMotor();
-        // phaseDirectFromSeq();        
+        key = '0'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();    
     }     
     if (measure ==  60 && beatPrecisedTrigged ) 
         {     
@@ -460,15 +470,16 @@ void automationForMusicDessine()
         phaseDirectFromSeq();        
     }
 
-    if (measure ==  69 && (beatPrecised == 1) && beatPrecisedTrigged)   
+    if (measure >=  69 && (beatPrecised == 1) && beatPrecisedTrigged)   
      {    
-        key = 'ç';
-        keyReleased();      
+        key = 'i'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();    
     } 
 
-    if (measure ==  69 && (beatPrecised %2== 0) && beatPrecisedTrigged)   
+    if (measure >=  69 && (beatPrecised == 9) && beatPrecisedTrigged)   
     {    
-        key = 'r';
+        key = 'd';
         keyReleased();      
     } 
     
