@@ -6,7 +6,7 @@ void keyReleased()
          key=char (Key);
          keyCode=char (KeyCode);
         // automationForMusicControlDr();
-
+        //   phaseDirectFromSeq(); // useless ?
         // phaseDirectToMotor(); // automatically directFromSeq
  
          
@@ -19,20 +19,13 @@ void keyReleased()
 
   if ( music_from_ableton_live == " Dessine " ) 
    {
-        // key=char (Key);
-        // keyCode=char (KeyCode);
-
-         //**  phaseDirectFromSeq();// wh-y not? good one
-
-         
-        
           // automationForMusicDessine(); 
 
            if (key == '='){
-            background(200);
-            for (int i = 0; i < networkSize; i++) {
-              println ( " cccc " + countControlDr[i]);
-             countControlDr[i]=0;
+              background(200);
+              for (int i = 0; i < networkSize; i++) {
+              key = '0';
+              countControlDr[i]=countControlDr[0];
               }
              }
           
