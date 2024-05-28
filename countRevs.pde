@@ -27,8 +27,6 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
         
         if 
            (
-            //1 >=  1
-            
             (// test A
             (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0)  && (positionToMotor[i] > 0.75 * numberOfStep/1 )
             &&
@@ -36,7 +34,9 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             &&
               (positionToMotor[i] >  oldPositionToMotor[i]) 
             ) 
-            /* useless but maybe usefull in propagationMode
+            //  useless but maybe usefull in propagationMode
+            
+            /*
             ||
             (// test B
             (oldOldPositionToMotor[i] < 0.5 * numberOfStep/2 && oldOldPositionToMotor[i]>=0) && (oldPositionToMotor[i] > 0.75 * numberOfStep/1 )
@@ -53,16 +53,21 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             ) 
             )
             */
+            
            )
                 {
-            
+            if ( specialPropagationKey != 'i')
+            {
             onOFF = 1;
             countControlDr[i]--;
+      
             rev[i]--;
             text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
             TrigmodPos[i]=0;
             trigSound[i]=1;         
             decompte[i] = -1;  // RESET COUNTER AT 0
+            } 
+            
            }         
       
         // increment caused by positive angular velocity________________ both positive angles || both negative angles || negative-to-positive angle

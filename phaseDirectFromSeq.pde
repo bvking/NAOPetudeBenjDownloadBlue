@@ -484,6 +484,7 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == 'i')
         {  // memory == 0 is the ball "behind"  the screen
+        specialPropagationKey = key;
         
         oldMemoryi = memoryi;
         memoryi = (memoryi - 1);

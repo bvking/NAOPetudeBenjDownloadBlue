@@ -66,7 +66,7 @@ void teensyPos()
                  //recordLastDataOfMotorPosition[i]=dataMappedForMotorisedPosition[i];
               }
           }
-      if ( (keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
+      if ( (keyMode == " trigEventWithAbletonSignalNo " || keyMode == " propagationSampleNOBall  " )   // propagationBallRotationNOBisTest
                                                      && formerKeyMetro =='*')
       { 
 

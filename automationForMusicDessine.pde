@@ -178,7 +178,8 @@ void automationForMusicDessine()
     //if (measure >  19 && measure <  24  && ((beatPrecised + 1) % 5) ==  0 && beatPrecisedTrigged)
       if (measure >  19 && measure <  24  && (beatPrecised == 5 || beatPrecised == 13 )  && beatPrecisedTrigged)
         {  
-        key = 'i';        
+        key = 'i';   
+        specialPropagationKey  = key ;     
         phaseDirectFromSeq();      
         
     } 
