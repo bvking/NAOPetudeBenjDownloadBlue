@@ -56,21 +56,23 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             
            )
                 {
-            if ( specialPropagationKey != 'i')
+            if ( specialPropagationKey != 'i' )
             {
-            onOFF = 1;
-            countControlDr[i]--;
+             if ( specialPropagationKey != '0' )
+             { 
+              onOFF = 1;
+               countControlDr[i]--;
       
-            rev[i]--;
-            text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
-            TrigmodPos[i]=0;
-            trigSound[i]=1;         
-            decompte[i] = -1;  // RESET COUNTER AT 0
+               rev[i]--;
+              text (" YOUR HERE ---" + rev[i], 200, -900+(i*100));
+              TrigmodPos[i]=0;
+              trigSound[i]=1;         
+              decompte[i] = -1;  // RESET COUNTER AT 0
+             }
             }
 
             specialPropagationKey = key;
-
-            
+          
            }         
       
         // increment caused by positive angular velocity________________ both positive angles || both negative angles || negative-to-positive angle

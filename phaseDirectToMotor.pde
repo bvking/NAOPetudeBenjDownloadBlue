@@ -4,7 +4,7 @@ boolean higerPostion;
 void phaseDirectToMotor() // mixed Com
     {  
     oscillatorBlocked = networkSize - 1;  // retour normal et joli avec f et d 
-    text(" osc " + oscillatorBlocked, 200, 200);
+    text(" osc " + oscillatorBlocked + " specialPropagationK " + specialPropagationKey, 200, 200);
     
     if (key == '1' && music_from_ableton_live == " Dessine ")
     {
