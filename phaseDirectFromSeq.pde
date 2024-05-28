@@ -484,7 +484,7 @@ void phaseDirectFromSeq() // mixed Com
     
     if (key == 'i')
         {  // memory == 0 is the ball "behind"  the screen
-        specialPropagationKey = key;
+     
         
         oldMemoryi = memoryi;
         memoryi = (memoryi - 1);
@@ -562,7 +562,14 @@ void phaseDirectFromSeq() // mixed Com
             lastPositionFromMotorPhase[i] = positionFromMotorPhase[i];        
         } 
     } 
-    //çs   key = '#'; 
+    if (key != '#' )
+     {
+         if (key != 'q' )
+     {
+   // specialPropagationKey = key;
+      } 
+     } 
+    // specialPropagationKey = key;
     key = '#';    
     
     //  text(" formerKey " + formerKey , 100, -200);

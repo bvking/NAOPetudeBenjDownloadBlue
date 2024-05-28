@@ -66,7 +66,10 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             TrigmodPos[i]=0;
             trigSound[i]=1;         
             decompte[i] = -1;  // RESET COUNTER AT 0
-            } 
+            }
+
+            specialPropagationKey = key;
+
             
            }         
       
