@@ -470,7 +470,7 @@ void automationForMusicDessine()
         phaseDirectFromSeq();        
     }
 
-    if (measure >=  69 && (beatPrecised == 1) && beatPrecisedTrigged)   
+    if (measure >=  69 &&   measure <=  76 && (beatPrecised == 1) && beatPrecisedTrigged)   
      {    
         key = 'i'; // not ç
         specialPropagationKey  = key ; 
@@ -481,6 +481,13 @@ void automationForMusicDessine()
     {    
         key = 'd';
         keyReleased();      
+    } 
+
+    if (measure >=  76 &&   measure <=  83 && (beatPrecised == 1) && beatPrecisedTrigged)   
+     {    
+        key = 'U'; // not ç
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();    
     } 
     
     
