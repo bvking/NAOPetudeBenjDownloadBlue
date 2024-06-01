@@ -10,7 +10,7 @@ void setPort()
     printArray(portsUSB);
     
     String[] matchPort1Nothing = match(portsUSB[1],"/dev/tty.Bluetooth-Incoming-Port");
-   // String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
+    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
     String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201"); // BIG MACHINE
 
     //String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem127280601");
@@ -44,13 +44,13 @@ void setPort()
         println(" serial port 1 connected to bluetooth " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=false;      
     }
-  /*
+  
      if (matchPort1B!= null) { 
         allMachineConnected = false;
         println(" serial port 1 as programming port ending with 201 " + portsUSB[1] + " allMachineConnected " + allMachineConnected); 
         portConnectedToBigMachineOnly=true;      
     }
-*/
+
 
      if (matchPort1B2!= null) { 
         allMachineConnected = false;
