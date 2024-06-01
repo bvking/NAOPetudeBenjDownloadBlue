@@ -386,7 +386,7 @@ void teensyPos()
        // special to test chor with little machine
         if (music_from_ableton_live == " Dessine "  ) 
         {     
-          send24DatasToTeensy6motorsToLittleMachine (10, 2, -3, -1, 2, 1000);
+         // send24DatasToTeensy6motorsToLittleMachine (10, 2, -3, -1, 2, 1000);
         }
 
 

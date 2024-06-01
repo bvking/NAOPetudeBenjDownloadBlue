@@ -1141,9 +1141,7 @@ void setup() {
                .setColorActive(color(255,255,0))
                .setDragDirection(Knob.HORIZONTAL)
                ;
-       
-
-                
+                  
                 //***************************************** SET 3D CAM 
                 
                 cam = new PeasyCam(this, 2000);
@@ -1172,9 +1170,10 @@ void setup() {
                   modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
 
                   doo = true; // oposite way is true 
-               // doo = false; // to enable propagation
+                  // doo = false; // to enable propagation
 
                  networkSize = 10;
+                 //networkSize = 9;
                  numberOfStep = 3200;
                   }
 
@@ -1190,7 +1189,6 @@ void setup() {
                     modeCircular= true;
 
                     keyMode = " trigEventWithAbletonSignal "; 
-
                     modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
 
                    doo = true; // oposite way is true 
