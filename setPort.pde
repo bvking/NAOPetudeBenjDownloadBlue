@@ -10,7 +10,8 @@ void setPort()
     printArray(portsUSB);
     
     String[] matchPort1Nothing = match(portsUSB[1],"/dev/tty.Bluetooth-Incoming-Port");
-    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
+    //String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
+     String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbserial-0001"); // BIG TEST with node32S
     String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201"); // BIG MACHINE
 
     //String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem127280601");
@@ -150,7 +151,8 @@ void setPort()
                 println(" Port 1 CONNECTED to programming port of Teensy 4.1 withOut encoder");
                 //*************** WITH TEENSY connected
                 //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
-                teensy4port = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
+               teensy4port = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
+              //teensyport = new Serial(this, ports[0], 115200);
                 //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
         }
     

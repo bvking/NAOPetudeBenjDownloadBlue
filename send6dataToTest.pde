@@ -9,18 +9,26 @@ void send6dataToTest() {
         startingPos[networkSize -1 - i] = encodeurBrut[i];
     }
     
-    dataFromMode = "<"
-        
+   // dataFromMode = "<"
+
+        dataFromMode = "<"
+    
+    + dataMappedForMotorisedPosition[5] + "," + dataMappedForMotorisedPosition[4] + "," + dataMappedForMotorisedPosition[3] + "," + dataMappedForMotorisedPosition[2] + ","
+    + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","  
+       + 0 + "," + 0 + ">";      // 
+
+    /*    
     + (123) + "," + (456) + "," 
     + (789) + "," + (101112) + ","
     + (123) + "," + (456) + "," 
     + (123) + "," + (456) + "," 
     + (789) + "," + (101112) + ","
     + (123) + "," + (456)
-    + ">";  
+    + ">"; 
+    */ 
 
 
-      teensyport.write(dataFromMode);
-      prinln ( " send6datas " + dataFromMode);
+      teensy4port.write(dataFromMode); // teensy remplace par serial
+    //  prinln ( " send6datas " + dataFromMode);
 
 }
