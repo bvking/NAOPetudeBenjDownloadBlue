@@ -3,7 +3,7 @@ void computeSpeedAndAcceleration()
     for (int i = 0; i < networkSize; i++)
     { 
  
-        oldOldPositionToMotor[i] = oldPositionToMotor[i];
+        oldOldPositionFromMotor[i] = oldPositionFromMotor[i];
         oldPositionFromMotor[i] =   positionFromMotor[i];
         positionFromMotor[i] = abs(positionToMotor[i]);
 

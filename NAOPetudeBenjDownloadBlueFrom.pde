@@ -60,6 +60,7 @@ void draw()
     }
     
     trigBeatWithMeasure();
+    computeSpeedAndAcceleration();
     //printDataOnScreen();
     //rotate( -HALF_PI);
     printMidiNoteVelocity();

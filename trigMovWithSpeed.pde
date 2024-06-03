@@ -12,7 +12,7 @@ boolean[] enablingChangeSound = new boolean[networkSize];
 boolean[]  enablingChangeSoundB = new boolean[networkSize];
 int mapRatio = 400;
 int[] encodeurMappedAsMotor = new int[networkSize];
-int[] gapEncoder_Motor = new int[networkSize];
+
 int[] gapEncoder_OldEncodeur = new int[networkSize];
 int[] ratioNumberOfStepCorraletedFromInstrument = new int[networkSize];// in phaseDirectFromSeq
 int[] dataMapped = new int[networkSize];
