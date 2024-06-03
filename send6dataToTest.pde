@@ -1,3 +1,4 @@
+String dataFromModeToTest;
 void send6dataToTest() {
 //void send6dataToTest(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData, int driverNetWorkSizeOnOff, int timeElapsedBackingPosition) {  // dataMarkedToTeensyArevoir
     rotate( -PI / 2);
@@ -11,24 +12,24 @@ void send6dataToTest() {
     
    // dataFromMode = "<"
 
-        dataFromMode = "<"
+        
+      dataFromModeToTest  = "<"
     
     + dataMappedForMotorisedPosition[5] + "," + dataMappedForMotorisedPosition[4] + "," + dataMappedForMotorisedPosition[3] + "," + dataMappedForMotorisedPosition[2] + ","
-    + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","  
-       + 0 + "," + 0 + ">";      // 
-
-    /*    
-    + (123) + "," + (456) + "," 
-    + (789) + "," + (101112) + ","
-    + (123) + "," + (456) + "," 
-    + (123) + "," + (456) + "," 
-    + (789) + "," + (101112) + ","
-    + (123) + "," + (456)
-    + ">"; 
-    */ 
+    + dataMappedForMotorisedPosition[1] + "," + dataMappedForMotorisedPosition[0] + ","      // 
+    
+    + 0 + "," + 0 + ","
+    + 0 + "," + 0 + ","
+    
+     //+  accelerationRatio + "," + driver0_On_Off + "," + computeData + "," + eraseProcessingData + "," + driverNetWorkSizeOnOff + "," + timeElapsedBackingPosition + "," 
+     +0+","+0+","+0+","+0+","+0+","+0+","
+      +0+","+0+","+0+","+0+
+    
+     ">";  
 
 
-      teensy4port.write(dataFromMode); // teensy remplace par serial
-    //  prinln ( " send6datas " + dataFromMode);
+      teensy4port.write(dataFromModeToTest); // teensy remplace par serial
+      
+      println( " send6datas " + dataFromModeToTest);
 
 }
