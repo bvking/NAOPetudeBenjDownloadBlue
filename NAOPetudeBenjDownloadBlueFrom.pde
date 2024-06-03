@@ -60,6 +60,7 @@ void draw()
     }
     
     trigBeatWithMeasure();
+    computeSpeedAndAcceleration();
     //printDataOnScreen();
     //rotate( -HALF_PI);
     printMidiNoteVelocity();
@@ -106,7 +107,7 @@ void draw()
     //see storeinputexample to create sample
     //Display with strings midi note (pitch and duration).  Display with  ellipse cyclicals and continues datas (potar, fader, lfo). from Ableton Live
     displaySignalFromAbleton();
-    computeAngularTimeSpeed();
+    //computeAngularTimeSpeed();
     //**printDataOnScreen();
     differentFunction();
     displayOscillatorSpheres();
@@ -122,6 +123,7 @@ void draw()
     
     //rect(80,40,140,320);
     //print(measureRecordStop + " measureRecordStop dataPMpret + keyMode " + keyMode);
+    print ( "positionToMotor ");
     showArray(positionToMotor);
     displayModePendulaireModeCirculaire();
     //displayKeyModeNull();
@@ -169,7 +171,7 @@ void draw()
     
     print(" sendMid ");
     showArray(sendMiddleInt);
-    println();
+    
     
     //mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
@@ -180,6 +182,7 @@ void draw()
     {
         // dataMappedForMotorisedPosition=positionToMotor; // do it just in abletonPos
     }
+    print(" dataUsedWithTeensy ");
     showArray(dataMappedForMotorisedPosition);
     
     // rotate(PI);

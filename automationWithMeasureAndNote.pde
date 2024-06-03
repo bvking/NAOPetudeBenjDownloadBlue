@@ -501,33 +501,35 @@ void displayDebugWhenKeyReleased (eventToTrig[1], eventToTrig[0])
 
 void trigBeatWithMeasure()
 {
-   formerBeatOnMeasure=beatOnMeasure;
+     formerBeatOnMeasure=beatOnMeasure;
 
-  if (formerBeatPrecised!=beatPrecised) {
-    beatPrecisedTrigged=true;
+     if (formerBeatPrecised!=beatPrecised) {
+        beatPrecisedTrigged=true;
 
-  }
-   else  beatPrecisedTrigged=false;
+     }
+     else  beatPrecisedTrigged=false;
 
-  if (formerMeasure!=measure) {
+   if (formerMeasure!=measure) {
     beatTrigged=true;
     beatOnMeasure=(measure%4)+1;
    
     formerFrameBeat=frameCount;
-  } else beatTrigged=false;
+   } else beatTrigged=false;
 
-  if (formerBeatPrecised!=beatPrecised)
+   if (formerBeatPrecised!=beatPrecised)
    {
     beatPrecisedTrigged=true;
-   // println(beatPrecisedTrigged);
-  }
-  else  beatPrecisedTrigged=false;
+   }
+    else  beatPrecisedTrigged=false;
 
 
   // shapeLfoMode = (int) shapeLfoToCount*10;  // 30 = DOWN  10= UP
-   textSize(75);
-   if ( music_from_ableton_live == " controlDr "|| music_from_ableton_live == " Dessine "  ) 
-    {
+    textSize(75);
+  
+
+
+  if ( music_from_ableton_live == " controlDr "|| music_from_ableton_live == " Dessine "  ) 
+  {
 
      for (int i = 0; i < networkSize; i++)
       {  
@@ -540,14 +542,14 @@ void trigBeatWithMeasure()
              " " + rev[i] + " " + revLfo[i] , -2200, -300 + (networkSize-1-i*100), -800);  
        }
 
-   if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
-    {
-    if (formerKeyMetro == '*' ) 
+     if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")
      {
-      
-     countRevsPhaseMappedPositiveOnly();
+     if (formerKeyMetro == '*' ) 
+       {   
+       countRevsPhaseMappedPositiveOnly();
+       }
      }
-    }
+
 
      print ( " counter si propagation revLfo " );
      showArray(revLfo);
@@ -583,8 +585,9 @@ void trigBeatWithMeasure()
         
       */ 
 
-
-      for (int i = 0; i <  networkSize - 0; i += 1) { 
+ 
+    for (int i = 0; i <  networkSize - 0; i += 1)
+    { 
         oldLastActualPosition[i] = lastActualPosition[i];
         oldOldPositionToMotor[i] = oldPositionToMotor[i];
         oldPositionToMotor[i] =  positionToMotor[i];
@@ -592,12 +595,8 @@ void trigBeatWithMeasure()
         oldPosF[i] = newPosF[i];
         oldOldPhaseMapped[i] = oldPhaseMapped[i];
         oldPhaseMapped[i] = phaseMapped[i];
-
-        //net.phase[i] = phaseMapped[i];
-        // net.phase[i]=specialPhase[i];
     }
-
-  }
+   }
 
 }
 

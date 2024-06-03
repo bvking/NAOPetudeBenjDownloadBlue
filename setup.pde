@@ -25,6 +25,15 @@ boolean systemForBigMachine=true;
 int networkSize = 10;
 int numberOfStep = 3200;  //attention avec big Machine
 
+int[] oldOldVelocityMotor =  new int[networkSize];
+int[] oldVelocityMotor =  new int[networkSize];
+int[] velocityMotor =  new int[networkSize];
+
+ 
+int[] oldOldPositionFromMotor =  new int[networkSize];
+int[] oldPositionFromMotor =  new int[networkSize];
+int[] positionFromMotor =  new int[networkSize];
+
 
 int[] getUppestVelocityBis = new int[networkSize];
 int bigValue, bigIndex, bigDelta, bigDeltaI;
@@ -41,6 +50,9 @@ int[] lastPositionFromMotorPhase = new int[networkSize];
 int[] positionFromMotorPhaseRecorded = new int[networkSize];
 boolean[] instrumentToMute = new boolean[networkSize];
 int timeTosendData;
+
+
+int[] gapEncoder_Motor = new int[networkSize];
 
 float[] phasePonderate = new float [networkSize];   
 int[]  gapBetweenEncodeur = new int[networkSize];
