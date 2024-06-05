@@ -532,6 +532,8 @@ void trigBeatWithMeasure()
      for (int i = 0; i < networkSize; i++)
       {  
         //  oldLastActualPosition[i]= lastActualPosition[i];
+
+
        positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
         //   positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
@@ -583,8 +585,9 @@ void trigBeatWithMeasure()
         
       */ 
 
-
-      for (int i = 0; i <  networkSize - 0; i += 1) { 
+  
+    for (int i = 0; i <  networkSize - 0; i += 1)
+    {
         oldLastActualPosition[i] = lastActualPosition[i];
         oldOldPositionToMotor[i] = oldPositionToMotor[i];
         oldPositionToMotor[i] =  positionToMotor[i];
@@ -592,11 +595,8 @@ void trigBeatWithMeasure()
         oldPosF[i] = newPosF[i];
         oldOldPhaseMapped[i] = oldPhaseMapped[i];
         oldPhaseMapped[i] = phaseMapped[i];
-
-        //net.phase[i] = phaseMapped[i];
-        // net.phase[i]=specialPhase[i];
     }
-
+  
   }
 
 }

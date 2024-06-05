@@ -11,8 +11,6 @@ void send6dataToTest() {
     
     dataFromMode = "<"
     
-
-    
     + 123 + "," + 456 + "," 
     + 789 + "," + 101112 + ","
     + 123 + "," + 456 + "," 
@@ -22,7 +20,7 @@ void send6dataToTest() {
     + ">";  
 
 
-      teensyport.write(dataFromMode);
-      prinln ( " send6datas " + dataFromMode);
+     // teensyport.write(dataFromMode);
+      println ( " send6datas " + dataFromMode);
 
 }

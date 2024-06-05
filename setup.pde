@@ -3,7 +3,7 @@
 // import java.util.Arrays;
 import sync.*;
 PNetwork net;
-import java.util.Arrays;
+import java.util.Arrays; 
 
 /*
 public void settings() {
@@ -35,6 +35,8 @@ int[] oldPositionFromMotor =  new int[networkSize];
 int[] positionFromMotor =  new int[networkSize];
 
 int[] gapEncoder_Motor =  new int[networkSize];
+int[] gapEncoder_OldMoteur = new int[networkSize];
+int[] acceleraMotor =  new int[networkSize];
 
 
 int[] getUppestVelocityBis = new int[networkSize];
@@ -1247,7 +1249,7 @@ void setup() {
                 // modeStartKeyToFollow = " samplingModeInternal " ;
 
                  windowMove(0,0);// window at the top_left of the screen
-                 size(400, 400, P3D);
+                 size(800, 800, P3D);
 
               //   windowRatio(900, 900); 
               //  translate(0, -800,1000);

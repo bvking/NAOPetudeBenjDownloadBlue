@@ -129,7 +129,8 @@ void recordTer() {
   }
 }
 
-void bpmAsPulsationFunctionOscillator_networkSize() {
+void bpmAsPulsationFunctionOscillator_networkSize() 
+{
 
   if (formerKeyMetro == '$' || formerKeyMetro == 'à') {
 
@@ -177,7 +178,7 @@ void bpmAsPulsationFunctionOscillator_networkSize() {
   }
 }
 
-MovingAverage avgTimer = new MovingAverage(2);
+MovingAverage avgTimer = new MovingAverage(2);  // only 2 datas
 
 
 
@@ -252,7 +253,6 @@ private class MovingAverage {
 
     return average;
   }
-
 
 
   public void reset() {

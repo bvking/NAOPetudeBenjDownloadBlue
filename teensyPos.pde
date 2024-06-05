@@ -321,7 +321,9 @@ void teensyPos()
          rotate (PI);
        
          text (" formerK  " + formerKeyMetro , width-200, -2000-100*(networkSize+4)) ; 
-         text (" beatPrecise   " +beatPrecised + " measure  " + measure, width-200, -2000-100*(networkSize+3)) ;
+         textSize(150);
+         text (" beatPrecise   " +beatPrecised + " measure  " + measure, width-800, -2000-100*(networkSize+3)) ;
+         textSize(75);
          text (" shapeLfo   " + shapeLfo + " " + shapeLfoMode, width-200, -2000-100*(networkSize+2)) ; 
 
         if (!systemForBigMachine) 

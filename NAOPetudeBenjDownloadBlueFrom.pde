@@ -19,6 +19,7 @@ void mousePressed()
 void draw()
     { 
     for (int i = 0; i < networkSize; i++) {
+       
         oldDataMappedForMotorisedPosition[i] = dataMappedForMotorisedPosition[i];
     } 
     println(" MUSIC " + music_from_ableton_live + " spelPropKey " +  specialPropagationKey);
@@ -174,7 +175,7 @@ void draw()
     
     //mapEncodeurToNumberOfStepsMotor(); // enabling send position à finir
     
-   //** teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
+    teensyPos();   // INSIDE <-- send24DatasToTeensy10motorsToBigMachine   // attention si mesure =635 Live  placé ici, la machine bloque si live n'est pas lancé
     //print(" dataMP + keyMode " + keyMode);
     send6dataToTest();
     
@@ -302,6 +303,24 @@ void draw()
     {
         oscSend();
         timeTosendData = millis();
-}
+     }
+
+
+  
+      for (int i = 0; i <  networkSize - 0; i += 1)
+    { 
+        oldLastActualPosition[i] = lastActualPosition[i];
+      //  oldOldPositionToMotor[i] = oldPositionToMotor[i]; // begin
+      //  oldOldPositionToMotor[i] = oldPositionToMotor[i];
+      //  oldPositionToMotor[i] =  positionToMotor[i];
+    
+
+        oldOldPosF[i] = oldPosF[i];
+        oldPosF[i] = newPosF[i];
+        oldOldPhaseMapped[i] = oldPhaseMapped[i];
+        oldPhaseMapped[i] = phaseMapped[i];
+    }
+  
+
     //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP
 }
