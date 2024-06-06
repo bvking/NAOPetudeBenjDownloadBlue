@@ -176,7 +176,9 @@ void bpmAsPulsationFunctionOscillator_networkSize()
       }
     }
   }
+
 }
+
 
 MovingAverage avgTimer = new MovingAverage(2);  // only 2 datas
 

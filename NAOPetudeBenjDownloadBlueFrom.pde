@@ -320,6 +320,10 @@ void draw()
         oldOldPhaseMapped[i] = oldPhaseMapped[i];
         oldPhaseMapped[i] = phaseMapped[i];
     }
+
+    bpmAsPulsationFunction();
+
+        println( " PULSAT " + pulsation ); 
   
 
     //== = = = = = = = = = = = == == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = == = = = = = = = = = = = = = END OF MAIN LOOP

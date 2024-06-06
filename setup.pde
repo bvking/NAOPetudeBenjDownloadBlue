@@ -29,6 +29,7 @@ int[] oldOldVelocityMotor =  new int[networkSize];
 int[] oldVelocityMotor =  new int[networkSize];
 int[] velocityMotor =  new int[networkSize];
 
+float acceleration0;
  
 int[] oldOldPositionFromMotor =  new int[networkSize];
 int[] oldPositionFromMotor =  new int[networkSize];

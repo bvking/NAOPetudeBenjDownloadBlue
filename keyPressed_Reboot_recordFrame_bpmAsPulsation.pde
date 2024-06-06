@@ -1,48 +1,12 @@
-void keyPressed() {
+void keyPressed()
+{
 
-    if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
+  if ( music_from_ableton_live == " Dessine " || music_from_ableton_live == " controlDr" ) 
    {
-    
-   /*
-          for (int i = 0; i < networkSize; i++) {
-        encoderTouched[i]=false;
-     }
-      //
-       Pos[0]=127;
-
-    if ( key == 'a')
-     {
-     Pos[0]=57;
-     }
-    if ( key == 'b')
-     {
-     encoderTouched[1]=true;
-     }
-
-    if ( key == 'c')
-     {
-     encoderTouched[2]=true;
-     }
-
-      if ( key == 'd')
-     {
-     encoderTouched[3]=true;
-     }
-      if ( key == 'e')
-     {
-     encoderTouched[4]=true;
-     }
-     if ( key == 'f')
-     {
-     encoderTouched[5]=true;
-     }
-   */
-       
-     }
-  
-  // reBoot();
-  // to modulate Knob with control controlIP5knob
-  switch(keyCode) {
+     
+    // reBoot();
+    // to modulate Knob with control controlIP5knob
+    switch(keyCode) {
     case(DOWN):
     valueOfKnobA-=5;
     myKnobA.setValue( valueOfKnobA);
@@ -60,9 +24,8 @@ void keyPressed() {
     moveKeys[8]=true;
   }
   //------
-
-
-  if (key == '@'|| keyCode == ESC) {
+  if (key == '@'|| keyCode == ESC)
+   {
     startStop=3;
     OscMessage myMessage15= new OscMessage("/startStop");
     myMessage15.add(startStop);
@@ -72,7 +35,8 @@ void keyPressed() {
 
   frameResolution();
 
-  if ((key == '!'  ) ) {
+  if ((key == '!'  ) )
+   {
     text ("STOP MOVEMENT AND TIMER: and BPM ;) when restart slowly", 400, -400); //     // Toggle between sketch paused - running_Timer
     formerKey = '!'; // to prepare the next start. With the touch A you can trig play in live
 
@@ -83,23 +47,18 @@ void keyPressed() {
     String dataMarkedToDue  ="<"
       // + mapAcceleration[11]+","+ int  (bpmToSend)  +","+cohesionCounterHigh+","+ onOFF+","+nextScene+","
       + mapAcceleration[4]+","+ mapAcceleration[3]+","+mapAcceleration[2]+","+ mapAcceleration[1]+","+mapAcceleration[0]+","
-
-      // +(VirtualPosition[11]) +","+VirtualPosition[2] +","+VirtualPosition[11] +","+VirtualPosition[0] +","+VirtualPosition[11] +","
-      //  +int (phazi[11])+","+int (phazi[0])+","+int (phazi[11])+","+int (phazi[0])+","+int (phazi[11])+","
-
-      //  +modPos[11]+","+modPos[10]+","+modPos[9]+","+modPos[8]+","+modPos[7]+","+modPos[6]+","+modPos[5]+","+modPos[4]+","+modPos[3]+","+modPos[2]+","+modPos[1]+","+modPos[0]+ "," // to manage 12 note
-
       +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+ ","+ startStop + ">";
 
-    print ("dataStop: ");
-    println(frameCount + ": " +  " dataMarkedToDue" + ( dataMarkedToDue ));
+      print ("dataStop: ");
+      println(frameCount + ": " +  " dataMarkedToDue" + ( dataMarkedToDue ));
 
     //      encoderReceiveUSBport101.write(dataMarkedToDue );
 
     running_Timer = false;
 
 
-    if (isLooping()) {
+    if (isLooping()) 
+    {
 
       pause_start_time = millis();
 
@@ -119,10 +78,12 @@ void keyPressed() {
      */
     noLoop();
     lastMillis=0;// restart period  oscillation number 11 to 0 ms
+
     timeFrame=1;
-    frameCount=1; // restart the begining of the program
+    frameCount=1; // restart the begining of the program or to read the beginning of th e file ?
   }
-  if (key == ':'||key == '=') {
+  if (key == ':'||key == '=')
+   {
     if (key == ':') {
       //    frameRatio=30;
       //    frameRate(frameRatio);
@@ -153,13 +114,18 @@ void keyPressed() {
     // simply call loop again to resume playing from where it was paused
     //  song.rewind();
   }
+ }
 }
 
-void reBoot() {
 
-    if (formerFormerKey == '@' || keyCode == ESC) {
+void reBoot()
+ {
+
+    if (formerFormerKey == '@' || keyCode == ESC)
+    {
   
-    if (millis()>= formerEvent[3]) {
+    if (millis()>= formerEvent[3])
+     {
 
     output.println("1999999:0:0:0:0");
     output.println("2000000:0:0:0:0");
@@ -170,7 +136,8 @@ void reBoot() {
     }
    }
 
-   if (key == '@' || keyCode == ESC) {
+   if (key == '@' || keyCode == ESC)
+    {
 
     formerKeyMetro = '$';
     modeCircular  = true;
@@ -187,6 +154,7 @@ void reBoot() {
       send24DatasToTeensy10motorsToBigMachine(3,-3,3,-1); // 3,-3,3,°-3
     }
 }
+
 /*
       if (networkSize==10){
 
@@ -262,7 +230,9 @@ void reBoot() {
   }
  }
 */
-void recordFrame() {
+
+void recordFrame() 
+{
   // if (frameCount !=formerFrame && (key != '!' && key != ':')  ){// do not record ! && :   // (frameCount !=formerFrame && key != '!' && key != ':') do not record ! only
   //if (frameCount !=formerFrame || key != key || key != '!' || key != ':' || key != ',' || key != ';'|| key != '=') {// do not record ! && :   // (frameCount !=formerFrame && key != '!' && key != ':') do not record ! only
   if (2>=1 ) { // frameCount !=formerFrame  && ( key != '!' || key != ':' || key != ',' || key != ';'|| key != '=')
@@ -272,14 +242,16 @@ void recordFrame() {
 }
 
 
-void bpmAsPulsationFunction() {
+void bpmAsPulsationFunction()
+ {
   // MIDDLE if ((PendularOldLeftVirtualPosition[i]+800 <= 800 && PendularLeftVirtualPosition[i]+800 >=800) ||
   //     (PendularOldLeftVirtualPosition[i]+800 >= 800 && PendularLeftVirtualPosition[i]+800 <=800)) {
 
   // in pendular way, revolution trig 0 on the right and rev trig 0 on left side
 
  /// if ( revolution[networkSize-1]==0 ){  // work bad at frameRate(30)
-  if ( TrigmodPos[networkSize-1]==0) {
+  if ( TrigmodPos[networkSize-1]==0)
+   {
     if (!ready) {
       ready = true;
       prev_time = millis();
@@ -287,9 +259,9 @@ void bpmAsPulsationFunction() {
       int curr_time = millis();
       pulsation = avgTimer.nextValue(curr_time - prev_time);
       prev_time = curr_time;
-      textSize (100);
+   
     }
   }
-  textSize (200);
  
 }
+ 
