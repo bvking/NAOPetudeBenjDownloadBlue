@@ -22,7 +22,7 @@ int frameTrigger;
 int recallLastPatternInstrument;
 
 boolean systemForBigMachine=true;
-int networkSize = 10;
+int networkSize = 9;
 int numberOfStep = 3200;  //attention avec big Machine
 
 int[] oldOldVelocityMotor =  new int[networkSize];
@@ -1120,15 +1120,18 @@ void setup() {
                     // which+1 is the smallest (the oldest in the array)
                     //  formerEvent[i]=0; //Time elapsed before trigging event
                     }
-                for (int i = 0; i <  networkSize; i++) {
+                for (int i = 0; i <  networkSize; i++)
+                   {
                     phaseToMotor = new int[networkSize];
                     phaseMapped = new float[nbBall];
                     phaseMappedFollow = new float[nbBall];
                     ActualVirtualPosition[i] = 0;
                     
                     for (int j = 0; j < nbMaxDelais; j++)
+                     {
                         phases[i][j] = -PI;      
                     }
+                 }
 
                 smooth();
                 noStroke();
@@ -1187,8 +1190,8 @@ void setup() {
                   doo = true; // oposite way is true 
                   // doo = false; // to enable propagation
 
-                 networkSize = 10;
-                 //networkSize = 9;
+                // networkSize = 10;
+                 networkSize = 9;
                  numberOfStep = 3200;
                   }
 
