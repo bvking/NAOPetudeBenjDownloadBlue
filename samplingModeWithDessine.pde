@@ -51,7 +51,8 @@
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
         
-        if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true) // go to follow made in Trigevent
+        if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true
+            || (measure ==  measureRecordStop && beatTrigged)) // go to follow made in Trigevent
         { // repetition and trigging
             // net.phase[0]+=PI/2;
             

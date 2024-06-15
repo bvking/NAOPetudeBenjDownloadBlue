@@ -61,7 +61,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   systemForBigMachine=false;
                   samplingWithMouse = false;
                  }
-            
+         
             } 
             
             if (music_from_ableton_live == " Dessine ")
@@ -83,13 +83,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                }
 
                      
-              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
+              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true
+                    ||( measure==measureRecordStop && beatTrigged )  ) // we are in followSignal            
                 {
   
                   formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-                  keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
-                  systemForBigMachine=false;
+                 // keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
+                // systemForBigMachine=false;
                   samplingWithMouse = false;
                  }
 
