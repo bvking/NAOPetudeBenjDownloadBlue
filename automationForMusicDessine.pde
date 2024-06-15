@@ -5,7 +5,7 @@ void automationForMusicDessine()
    
     // shapeLfoMode = int (shapeLfo * 100);  // 33 = DOWN=> CounterClockWay  17= UP CW
     if (measure <=  1)
-        {
+    {
         formerKeyMetro = '*';
         //modeCircular = true;
     }
@@ -446,10 +446,12 @@ void automationForMusicDessine()
         {    
         key = '0'; // not ç
         specialPropagationKey  = key ; 
+        keyReleased();
+        key = '0'; // not ç
         phaseDirectFromSeq(); 
-           key = 's';
+        key = 's';
         phaseDirectFromSeq(); 
-           key = 's';
+         key = 's';
         phaseDirectFromSeq(); 
        
 
@@ -566,7 +568,7 @@ void automationForMusicDessine()
          //if(key != '#') // q is used to preStart speed of repetio
             //{
         if (key != 'q') // q is used to preStart speed of repetio
-            {   
+        {   
             if (modeStartKeyToFollow == " followSignal2 ")
                 {
                 textSize(10); 
@@ -579,13 +581,12 @@ void automationForMusicDessine()
         }
 
 
-       // key = '#'; 
-          //}
-
-        for (int i = 0; i < networkSize; i++)
-        { 
+         for (int i = 0; i < networkSize; i++)
+         { 
+            oldPhasePatternFollow[i] = phasePatternFollow[i]%numberOfStep;
             if (phasePatternFollow[i] < 0)
             {
+             
                 phasePatternFollow[i] = phasePatternFollow[i] + numberOfStep; // easier
                  if (key != 'U')
                  {
@@ -599,11 +600,11 @@ void automationForMusicDessine()
                  } 
                
             }
-        }
+         }
 
         // shapeLfoToCount = (shapeLfo*10.0);
         
-      //  shapeLfoMode = int (shapeLfo * 100.);  // 33 = DOWN=> CounterClockWay  17= UP CW
+        // shapeLfoMode = int (shapeLfo * 100.);  // 33 = DOWN=> CounterClockWay  17= UP CW
         
         
         if (shapeLfoMode ==  10)
@@ -637,14 +638,14 @@ void automationForMusicDessine()
 
         if (measure == 35 && beatPrecised ==9)
         {
-                enableRotation = true;
+            enableRotation = true;
         }
 
         if (enableRotation && measure <  91  )
         {
-                 for (int i = 0; i < networkSize; i++)
+            for (int i = 0; i < networkSize; i++)
         { 
-                phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
+            phaseSigna2Followed[i] = (int)  map(signal2controlDr, 0, numberOfStep, 0, numberOfStep);
         }
         }
  
@@ -667,11 +668,8 @@ void automationForMusicDessine()
 
          for (int i = 0; i < networkSize; i++)
         { 
-
-
           // ADDITIOn ROTATION+PHASE  
-            phaseSigna2Followed[i] %= numberOfStep; 
-                        
+            phaseSigna2Followed[i] %= numberOfStep;                       
             if (shapeLfoMode !=  0 ) // if up or down add position
             {
                 lastActualPosition[i] = (int(phaseSigna2Followed[i]) + int(phasePatternFollow[i])); 

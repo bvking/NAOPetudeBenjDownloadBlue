@@ -374,9 +374,7 @@ if (oscillatorMaster > 0) {
             int oldOscillatorChange, oscillatorChange;
             boolean oscillatorChanged;
             
-            
-            
-            
+
             int[] recordLastDataOfMotorPosition = new int[networkSize];  // not used
             
             //float[] phaseShiftingFollowLFO = new float[12];
@@ -393,6 +391,7 @@ if (oscillatorMaster > 0) {
         
             //int[] j = new int[networkSize];// number of the last changed oscillator
             float[] phaseKeptAtChange =  new float[networkSize]; //;
+            float[] oldPhasePatternFollow =  new float[networkSize]; //;
             float[] phasePatternFollow =  new float[networkSize]; //;
             
             float[] newPosXaddSignal =  new float[networkSize]; //;

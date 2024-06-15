@@ -3,7 +3,11 @@ boolean instrumentChangedToAddPulse = false;
 
 
 void phaseDirectFromSeq() // mixed Com
-{  
+{ 
+    for (int i = 0; i < networkSize; i++)
+    {
+    print (" oldP " + oldPhasePatternFollow[networkSize-1-i] + " " + phasePatternFollow[networkSize-1-i] ); 
+    } 
     // instrumentChangedToAddPulse = false;
     oscillatorBlocked = networkSize - 1;
     rotate(-HALF_PI);
@@ -70,6 +74,14 @@ void phaseDirectFromSeq() // mixed Com
                         dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5] + dataMappedForMotorisedPosition[6] + dataMappedForMotorisedPosition[7]+
                         dataMappedForMotorisedPosition[8] + dataMappedForMotorisedPosition[9]) / (networkSize - 1);
                 }
+
+                if (networkSize ==  9)
+                {
+                    
+                    realign[i] = (dataMappedForMotorisedPosition[0] + dataMappedForMotorisedPosition[1] + dataMappedForMotorisedPosition[2] + dataMappedForMotorisedPosition[3]+
+                        dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5] + dataMappedForMotorisedPosition[6] + dataMappedForMotorisedPosition[7]+
+                        dataMappedForMotorisedPosition[8] ) / (networkSize - 1);
+                }
                 
                 if (networkSize ==  6)
                 {
@@ -120,6 +132,13 @@ void phaseDirectFromSeq() // mixed Com
                     realign[i] = (dataMappedForMotorisedPosition[0] + dataMappedForMotorisedPosition[1] + dataMappedForMotorisedPosition[2] + dataMappedForMotorisedPosition[3]+
                         dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5] + dataMappedForMotorisedPosition[6] + dataMappedForMotorisedPosition[7]+
                         dataMappedForMotorisedPosition[8] + dataMappedForMotorisedPosition[9]) / (networkSize - 1);
+                }
+
+                if (networkSize ==  10)
+                {
+                    realign[i] = (dataMappedForMotorisedPosition[0] + dataMappedForMotorisedPosition[1] + dataMappedForMotorisedPosition[2] + dataMappedForMotorisedPosition[3]+
+                        dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5] + dataMappedForMotorisedPosition[6] + dataMappedForMotorisedPosition[7]+
+                        dataMappedForMotorisedPosition[8] ) / (networkSize - 1);
                 }
                 
                 if (networkSize ==  6)
@@ -458,6 +477,15 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 16 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
     }
+
+    if (key == 'P')
+        {
+        for (int i = 0; i < networkSize; i++)
+            {
+            positionFromMotorPhase[i] += (int)  map(TWO_PI/(networkSize-0)*(1*(networkSize-1-i)), 0, TWO_PI, 0, numberOfStep);
+        }
+    }
+    
     
     /*  with oscillator blocked
     
@@ -500,7 +528,7 @@ void phaseDirectFromSeq() // mixed Com
         
         for (int i = 0; i < (networkSize - 0); i++)
             {  
-            lastOldActualPosition[i] = positionFromMotorPhase[i];
+            lastOldActualPosition[i] = oldPositionToMotor[i];
         }
         
         for (int i = 1; i < (networkSize - 0); i++) 
@@ -508,7 +536,7 @@ void phaseDirectFromSeq() // mixed Com
             positionFromMotorPhase[i - 1] = lastOldActualPosition[i];
         }
         
-        positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
+            positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
     }
     
     if (key == 'u')
@@ -519,7 +547,8 @@ void phaseDirectFromSeq() // mixed Com
         
         for (int i = 0; i < (networkSize - 0); i++)
             {  
-            lastOldActualPosition[i] = positionFromMotorPhase[i] + 0 * numberOfStep / 1;//+numberOfStep/6;
+         //   lastOldActualPosition[i] = positionFromMotorPhase[i] + 0 * numberOfStep / 1;//+numberOfStep/6;
+          lastOldActualPosition[i] = oldPositionToMotor[i] + 0 * numberOfStep / 1;//+numberOfStep/6;
         }
         
         for (int i = 1; i < (networkSize - 0); i++)

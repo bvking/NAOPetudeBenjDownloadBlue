@@ -537,13 +537,14 @@ void trigBeatWithMeasure()
        positionToMotor[i]=abs(lastActualPosition[i]%numberOfStep);
         //   positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
-       text( "pFoll " + phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + 
+       text( "pFollOld " + oldPhasePatternFollow[networkSize-1-i] + " " +  phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + 
              " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[networkSize-1-i] + " " + countControlDr[networkSize-1-i] +
              " " + rev[networkSize-1-i] + " " + revLfo[networkSize-1-i]+ " VelMoto " + velocityMotor[networkSize-1-i] + " accMoto " + acceleraMotor[networkSize-1-i]
             
               , -2200, -300 + (networkSize-1-i*100), -800); 
 
         text( " speedR " + speedRatio[networkSize-1-i] + "  accelR" + speedRatio[networkSize-1-i],  0, -1500 + (networkSize-1-i*100), -800); 
+      //  print (" old " + oldPhasePatternFollow[networkSize-1-i] + " " + phasePatternFollow[networkSize-1-i] );
        }
 
    if (modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ")

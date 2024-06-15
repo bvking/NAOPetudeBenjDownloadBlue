@@ -5,7 +5,7 @@ float signalToSplit4;
 void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
      splitTimeLfo= int  (timeLfo%1000); 
-
+             /*
                 textSize (50);
                 text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400-1000);
                 text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height+100, -500);
@@ -29,7 +29,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
                 delayTimeToTrig=120; //ms
                 delayTimeToTrig4=120; 
-
+            */
 
             if (music_from_ableton_live == " controlDr ")
             {
@@ -554,7 +554,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       } //// end premiere partie
        
 
-      if (positionMov == " seconde " ){    // 58 to 68
+      if (positionMov == " seconde " )
+      {    // 58 to 68
             propagationSpeed = 60;
             keyMode = " propagationBallRotationBis ";
            //  switchFonctionDependingKeyMode();
