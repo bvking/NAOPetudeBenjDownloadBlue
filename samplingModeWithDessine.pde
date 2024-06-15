@@ -2,10 +2,10 @@
     {
 
      //--------------- START SAMPLING with  " Dessine " " samplingModeWithLive "
-     if (measure ==  7 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " Dessine ")
+     if (measure ==  6 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " Dessine ")
      {
         
-        key = 'ç'; // align
+        key = '0'; // align
         phaseDirectFromSeq();
         modeCircular = true; // not work
         formerKeyMetro = '*'; // not work
@@ -29,11 +29,11 @@
         
         if (music_from_ableton_live == " Dessine  ") // 
         {
-            specialMeasureToStartRecording = 8;
+            specialMeasureToStartRecording = 7;
              samplingWithMouse = false;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 2;
+         measureRecordStop = specialMeasureToStartRecording + 4;
         //measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&

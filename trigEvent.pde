@@ -68,12 +68,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             {
                automationForMusicDessine();
                     
-              if  (measure==7 && beatPrecised == 3 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
+              if  (measure==6 && beatPrecised == 16 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
                {// return in main
                    overDub = false; // tot takeOfff
-                   specialMeasureToStartRecording=8;
-                   key = '9'; // align
-                   keyReleased();
+                   specialMeasureToStartRecording=7;
+                   key = '0'; // align
+                   phaseDirectFromSeq();
                    modeCircular = true; // not work
                    formerKeyMetro = '*'; // 
                    keyMode = " samplingModeWithLive ";

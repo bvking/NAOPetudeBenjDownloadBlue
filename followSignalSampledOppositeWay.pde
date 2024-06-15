@@ -89,7 +89,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
 
         //  if(formerKeyCode == 9 || formerKeyCode == 1) // to avoid bug when tapping with shift
          //   {
-             if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) ")
+             if (modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " && music_from_ableton_live != " Dessine ")
                  {
                   phasePatternBase(); //
                  //    phasePattern();
@@ -132,7 +132,7 @@ void followSignalSampledOppositeWay(int ratioTimeFrame) {
            else if (phaseMapped[i] >=  0) {
                 phaseMapped[i] %=  TWO_PI;
             }
-            net.phase[i] = phaseMapped[i]; // to be used in !modeCircular
+          //  net.phase[i] = phaseMapped[i]; // to be used in !modeCircular
         }
     }
     //option to add rotationSpeed
