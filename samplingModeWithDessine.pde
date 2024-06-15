@@ -1,12 +1,15 @@
+   int startRec = 7;
    void samplingModeWithDessine()
     {
 
      //--------------- START SAMPLING with  " Dessine " " samplingModeWithLive "
-     if (measure ==  7 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " Dessine ")
+     if (measure ==  startRec-1 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " Dessine ")
      {
         
-        key = 'ç'; // align
-        phaseDirectFromSeq();
+        //key = 'ç'; // align
+        //phaseDirectFromSeq();
+        key = '0'; // align
+        keyReleased();
         modeCircular = true; // not work
         formerKeyMetro = '*'; // not work
         keyMode = " samplingModeWithLive ";
@@ -29,11 +32,11 @@
         
         if (music_from_ableton_live == " Dessine  ") // 
         {
-            specialMeasureToStartRecording = 8;
+            specialMeasureToStartRecording = startRec;
              samplingWithMouse = false;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 2;
+        measureRecordStop = specialMeasureToStartRecording + 4;
         //measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&

@@ -1199,7 +1199,7 @@ void setup() {
                      samplingWithTeensy3_5 = true;
                     //  music_from_ableton_live = " pleasureKraft ";  
                      music_from_ableton_live = " Dessine "; // normally is controlDr. Here is just to test choregraphie
-                   // music_from_ableton_live = " controlDr "; 
+                    //music_from_ableton_live = " controlDr "; 
                     samplingWithTeensy3_5 = true;
 
                     formerKeyMetro = '*';
