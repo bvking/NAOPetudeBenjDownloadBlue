@@ -83,6 +83,7 @@ void draw()
 
      //--------------- START SAMPLING with  " controlDr " " samplingModeWithLive "
     samplingModeWithControlDr();
+    samplingModeWithDessine();
     
     //---------------  START SAMPLING with  " MADRUSH or PleasureKraft "'
     //samplingModeWithMadRushOrPlezasureKraft();

@@ -57,7 +57,7 @@ void handleSamplingModeWithAbletonLive()
        }
 
      //==================== sampling from ENCODER_due
-     if (systemForBigMachine && !samplingWithMouse && abletonLFO==false)
+     if (systemForBigMachine && !samplingWithMouse && abletonLFO==false  && music_from_ableton_live == " madRush ")
      {
       angleToInterpolate = (float) map (dataFromArduinoDue[1], 0, 4000, 0, TWO_PI);//%TWO_PI;  // tourner CCW
      }
@@ -70,6 +70,13 @@ void handleSamplingModeWithAbletonLive()
     if (samplingWithMouse==true &&  abletonLFO==false && music_from_ableton_live == " madRush ")
     {   
        angleToInterpolate = (float) map(mouseY, 0, 200, 0, TWO_PI) % TWO_PI; 
+    }
+
+     //==================== sampling with ableton[5] && madRush
+
+     if (samplingWithMouse==false  && abletonLFO==true && music_from_ableton_live == " Dessine " && overDub == false)
+    {   
+       angleToInterpolate = (float) map(ableton[5], 0, 1 , 0, TWO_PI); 
     }
 
      //==================== sampling with ableton[5] && madRush

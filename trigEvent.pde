@@ -67,6 +67,33 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             if (music_from_ableton_live == " Dessine ")
             {
                automationForMusicDessine();
+                    
+              if  (measure==7 && beatPrecised == 3 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
+               {// return in main
+                   overDub = false; // tot takeOfff
+                   specialMeasureToStartRecording=8;
+                   key = '9'; // align
+                   keyReleased();
+                   modeCircular = true; // not work
+                   formerKeyMetro = '*'; // 
+                   keyMode = " samplingModeWithLive ";
+       
+                  mouseRecorded = true;
+                  overDub = false;
+               }
+
+                     
+              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
+                {
+  
+                  formerKeyMetro='*';
+                  modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
+                  keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
+                  systemForBigMachine=false;
+                  samplingWithMouse = false;
+                 }
+
+
             }
             
              if (music_from_ableton_live == " mouvement ")
