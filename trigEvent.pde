@@ -68,7 +68,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             {
                automationForMusicDessine();
                     
-              if  (measure==6 && beatPrecised == 16 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
+              if  (measure==6 && beatPrecised == 15 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
                {// return in main
                    overDub = false; // tot takeOfff
                    specialMeasureToStartRecording=7;
