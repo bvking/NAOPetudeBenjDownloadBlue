@@ -1176,10 +1176,10 @@ void setup() {
                  if (systemForBigMachine == true)
                  {
                   samplingWithTeensy3_5 = false;
-                 // music_from_ableton_live = " madRush ";
-                 // music_from_ableton_live = " mouvement "; .. doesn't exist anymore
-                   modeOfControlDr = " NoVirtual ";
-                   music_from_ableton_live = " Dessine "; 
+                  modeOfControlDr = " NoVirtual ";
+                  // music_from_ableton_live = " madRush "; // do not start well !
+                  // music_from_ableton_live = " mouvement "; .. doesn't exist anymore
+                    music_from_ableton_live = " Dessine "; 
                   // music_from_ableton_live = " controlDr ";:
                   //automationForMusicDessine()               
                   keyMode = " trigEventWithAbletonSignal "; 

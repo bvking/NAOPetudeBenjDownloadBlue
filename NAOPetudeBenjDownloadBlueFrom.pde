@@ -39,6 +39,7 @@ void draw()
     {
         setKeyModeByTappingKeyPadOnce();
     }
+
     
     setMovement(key, false);  // to reset function just above
     
@@ -82,7 +83,8 @@ void draw()
 
 
      //--------------- START SAMPLING with  " controlDr " " samplingModeWithLive "
-    samplingModeWithControlDr();
+    // samplingModeWithMadRush();
+    //samplingModeWithControlDr();
     samplingModeWithDessine();
     
     //---------------  START SAMPLING with  " MADRUSH or PleasureKraft "'
@@ -91,7 +93,7 @@ void draw()
      {
          if (overDub == true)
         { 
-        overDub();      
+     //   overDub();      
          }
     } 
     
