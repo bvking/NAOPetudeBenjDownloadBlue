@@ -67,13 +67,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             if (music_from_ableton_live == " Dessine ")
             {
                automationForMusicDessine();
-                    
-              if  (measure==7 && beatPrecised == 3 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
+               /*     
+              if  (measure==6 && beatPrecised == 16 && beatPrecisedTrigged==true && music_from_ableton_live == " Dessine ")
                {// return in main
                    overDub = false; // tot takeOfff
-                   specialMeasureToStartRecording=8;
-                   key = '9'; // align
-                   keyReleased();
+                   specialMeasureToStartRecording=7;
+                   key = '0'; // align
+                   phaseDirectFromSeq();
                    modeCircular = true; // not work
                    formerKeyMetro = '*'; // 
                    keyMode = " samplingModeWithLive ";
@@ -81,18 +81,26 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                   mouseRecorded = true;
                   overDub = false;
                }
+               */
 
-                     
-              if  (measure==measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged==true) // we are in followSignal            
+
+
+                       specialMeasureToStartRecording=7;
+
+            
+              if  (measure==measureRecordStop && beatPrecised == 1  && beatPrecisedTrigged==true) // we are in followSignal            
                 {
-  
-                  formerKeyMetro='*';
+                
+                //  keyCode = BACKSPACE; keyReleased(); // align following ball
+                //  keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
+                    formerKeyMetro='*';
                   modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";
-                  keyCode = LEFT; keyReleased(); // // shift phaseOffset with modeStartKeyToFollow
-                  systemForBigMachine=false;
+                //  systemForBigMachine =false;
                   samplingWithMouse = false;
                  }
+              
 
+            
 
             }
             

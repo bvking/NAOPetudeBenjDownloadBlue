@@ -87,6 +87,21 @@ void automationForMusicDessine()
         
         if (measure ==  11 && beatTrigged ==  true)       
         {
+            keyCode = BACKSPACE;
+            followSignalSampledOppositeWay(frameRatio);
+             keyCode = LEFT;
+            followSignalSampledOppositeWay(frameRatio);
+
+        //**    key = 'ç';
+        //**    phaseDirectFromSeq(); 
+            //phaseDirectToMotor();     
+        }
+
+            if (measure ==  14 && beatTrigged ==  true)       
+        {
+                keyMode = " trigEventWithAbletonSignal "; 
+                modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
+
         //**    key = 'ç';
         //**    phaseDirectFromSeq(); 
             //phaseDirectToMotor();     

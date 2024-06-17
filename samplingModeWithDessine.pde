@@ -2,11 +2,11 @@
     {
 
      //--------------- START SAMPLING with  " Dessine " " samplingModeWithLive "
-     if (measure ==  7 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " Dessine ")
+     if (measure ==  6 && beatPrecised == 16 && beatPrecisedTrigged ==  true && music_from_ableton_live == " Dessine ")
      {
         
-        key = 'ç'; // align
-        phaseDirectFromSeq();
+        //key = 'ç'; // align
+        //phaseDirectFromSeq();
         modeCircular = true; // not work
         formerKeyMetro = '*'; // not work
         keyMode = " samplingModeWithLive ";
@@ -29,11 +29,11 @@
         
         if (music_from_ableton_live == " Dessine  ") // 
         {
-            specialMeasureToStartRecording = 8;
+            specialMeasureToStartRecording = 7;
              samplingWithMouse = false;
         }
         
-        measureRecordStop = specialMeasureToStartRecording + 2;
+        measureRecordStop = specialMeasureToStartRecording + 4; // set in tirgEvent
         //measureRecordStop = specialMeasureToStartRecording + numberOfMeasureToRecord;
         
         if (readyToRecord == true &&  specialMeasureToStartRecording == measure && beatTrigged) // synchronise recording with beatTrigged == true &&
@@ -50,15 +50,20 @@
         
         handleSamplingModeWithAbletonLive(); //when measure==measureRecordStop --> trig modeStartKeyToFollow = followSignalSampledOppositeWay(frameRatio) 
         //  ------------- endSamplingWithLive -  trigged from draw()  ---------------------------
-        
+    
+     
+     
         if (measure ==  measureRecordStop && beatPrecised == 1 && beatPrecisedTrigged ==  true) // go to follow made in Trigevent
         { // repetition and trigging
             // net.phase[0]+=PI/2;
             
             // mouseRecorded = false;
+           //  keyCode = BACKSPACE; keyReleased(); // align following ball
             keyMode = " trigEventWithAbletonSignal "; // doesn't work correctly. Now it works from autoMationWithMeasure
             modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
-            //keyCode = LEFT; keyReleased(); // shift delay of following ball
+          // 
+
         }
+    
      }
     } 
