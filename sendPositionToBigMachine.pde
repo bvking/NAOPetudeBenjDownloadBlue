@@ -119,7 +119,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
 
             if ( portConnectedToBigMachineOnly==true || bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1 == true )
              { 
-              samplingWithMouse=false;      
+             // samplingWithMouse=false;      
               allMachineConnected=false;
               println(" BigMachine port USB connected to 1 or 2 " + portsUSBfrom2 + " portConnectedOfBigMachine " + portConnectedOfBigMachine +  " portOfBigMachineConnected " + portOfBigMachineConnected);  
               text(" only BIG Machine  ENDING with 201 on port 1" + portsUSBfrom1 + " allMachineConnected " + allMachineConnected, 0, 1000); 
@@ -133,6 +133,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
               
               println(" something Connected but only WIFI. That's mean nothing for the moment ");
                text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
+              // teensy4port.write(dataFromMode);
 
             }
          

@@ -316,8 +316,8 @@ void teensyPos()
         }  
       }
       
-        if (music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine "  ) 
-        { 
+      if (music_from_ableton_live == " controlDr " || music_from_ableton_live == " Dessine "  ) 
+      { 
          rotate (PI);
        
          text (" formerK  " + formerKeyMetro , width-200, -2000-100*(networkSize+4)) ; 
@@ -326,7 +326,7 @@ void teensyPos()
          textSize(75);
          text (" shapeLfo   " + shapeLfo + " " + shapeLfoMode, width-200, -2000-100*(networkSize+2)) ; 
 
-        if (!systemForBigMachine) 
+         if (!systemForBigMachine) 
          {    
           for (int i = 0; i < networkSize; i++)
           {  
@@ -338,13 +338,13 @@ void teensyPos()
            }
          }
 
-         for (int i = 0; i < networkSize; i++)
-         { 
-           text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " coun " + countControlDr[networkSize-1-i], width+600, -2500-100*(networkSize-1-i)) ;   // phasePatternFollow[networkSize-1-i]
-         }
+        for (int i = 0; i < networkSize; i++)
+        { 
+        text (dataMappedForMotorisedBigMachine[networkSize-1-i] + " "+ (networkSize-1-i) + " coun " + countControlDr[networkSize-1-i], width+600, -2500-100*(networkSize-1-i)) ;   // phasePatternFollow[networkSize-1-i]
+        }
 
-        if ( keyMode!= " samplingModeWithLive ") 
-        {   
+      if ( keyMode!= " samplingModeWithLive ") 
+      {   
              if ( modeStartKeyToFollow != " followSignalSampledOppositeWay(frameRatio) ") 
           {   
 
@@ -353,10 +353,9 @@ void teensyPos()
             send24DatasToTeensy6motorsToLittleMachine (6, 2, -3, -1, 2, 1000);
             }
           }
-        }
+      }
 
-        if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " 
-        )
+      if ( modeStartKeyToFollow == " followSignalSampledOppositeWay(frameRatio) " )
         {  
           revLfo=rev;// useless here // actualise counter revLfo from " normal mode"  from rev 
           for(int i = 0; i < networkSize; i++)
@@ -373,7 +372,7 @@ void teensyPos()
           int timeElapsedBackingPosition = 4000;
           int dataNoComputed=-4;
              send24DatasToTeensy6motorsToLittleMachine( 3, disableFirstDriver, dataNoComputed, -1, driverLast, timeElapsedBackingPosition); // 
-           //  send24DatasToTeensy10motorsToBigMachine(5, disableDriver, dataNoComputed, -1); // 
+             send24DatasToTeensy10motorsToBigMachine(5, disableFirstDriver, dataNoComputed, -1); // 
           }
        }
          
@@ -393,7 +392,7 @@ void teensyPos()
 
 
         rotate (-PI);
-        }
+      }
 
        rotate(-PI/2);   
  
