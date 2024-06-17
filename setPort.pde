@@ -10,8 +10,8 @@ void setPort()
     printArray(portsUSB);
     
     String[] matchPort1Nothing = match(portsUSB[1],"/dev/tty.Bluetooth-Incoming-Port");
-    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");
-    String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201"); // BIG MACHINE
+    String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem116574201");// BIG MACHINE
+    String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem116574201111"); //ABSTRACT MACHINE
 
     //String[] matchPort1B2 = match(portsUSB[2], "/dev/cu.usbmodem127280601");
     //String[] matchPort1B = match(portsUSB[1], "/dev/cu.usbmodem127280601"); // Little chez Jo
