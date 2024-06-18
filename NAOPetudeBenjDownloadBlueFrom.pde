@@ -74,17 +74,16 @@ void draw()
             //switch (key) : different mode of speed, shift, propagation ....
         }
     }
-    
+
     if (keyMode == " null ")
         {
         checkKeyModeToFollowIfALTisJustReleased(); // ->  To change Mode of speed, shift, propagation with internal or from Live datas is DISABLE inside this function....
     }  
 
-
      //--------------- START SAMPLING with  " controlDr " " samplingModeWithLive "
     samplingModeWithControlDr();
-    samplingModeWithDessine();
-    
+    samplingModeWithDessine(); // check trigEvent.pde to see where does record sampling begin from
+     
     //---------------  START SAMPLING with  " MADRUSH or PleasureKraft "'
     //samplingModeWithMadRushOrPlezasureKraft();
     if (measure ==32 && beatTrigged)
@@ -295,7 +294,7 @@ void draw()
     
     for (int i = 0; i < networkSize - 0; i++)
     {
-        Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 254));
+        Pos[i] = abs((float) map(dataMappedForMotorisedPosition[i] % numberOfStep, 0, numberOfStep, 0, 127));
         //  print ( " slider " + i + " " + slider[i] + " vel " + velocityBis[i]);
     }
     println(""); 

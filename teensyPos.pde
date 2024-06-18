@@ -54,8 +54,6 @@ void teensyPos()
 
    
 
-
-
       if ((keyMode == " trigEventWithAbletonSignal " || keyMode == " propagationBallRotationNOBisTest ") && formerKeyMetro =='$') {  // record is from  '*' last position is from k      
           for (int i = 0; i < networkSize; i++)
            {

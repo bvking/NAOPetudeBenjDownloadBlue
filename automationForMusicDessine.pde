@@ -14,6 +14,8 @@ void automationForMusicDessine()
     {  
         if (measure ==  1 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
         {  
+            keyMode = " trigEventWithAbletonSignal "; // 
+            modeStartKeyToFollow = " followSignal2 ";   
             speedDelta = 2;
             key = '0';
             phaseDirectFromSeq();   
@@ -78,33 +80,13 @@ void automationForMusicDessine()
             phaseDirectFromSeq();      
         }
         
-        if ((measure ==  10) && beatPrecised ==  16 && beatPrecisedTrigged ==  true) 
-        {  
-            speedDelta = 2; 
-            // key = '9'; //Alig
-            // keyReleased();
-        } 
-        
-        if (measure ==  11 && beatTrigged ==  true)       
-        {
-            keyCode = BACKSPACE;
-            followSignalSampledOppositeWay(frameRatio);
-             keyCode = LEFT;
-            followSignalSampledOppositeWay(frameRatio);
+    
 
-        //**    key = 'ç';
-        //**    phaseDirectFromSeq(); 
-            //phaseDirectToMotor();     
-        }
-
-            if (measure ==  14 && beatTrigged ==  true)       
+        if (measure ==  197 && beatTrigged ==  true)   // comeBack Normal choregraphy     
         {
                 keyMode = " trigEventWithAbletonSignal "; 
                 modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
 
-        //**    key = 'ç';
-        //**    phaseDirectFromSeq(); 
-            //phaseDirectToMotor();     
         }
         
         if (measure >=  11 && measure <=  11  && beatPrecised > 0 && beatPrecisedTrigged ==  true) 
@@ -112,7 +94,7 @@ void automationForMusicDessine()
             speedDelta = 2;
             key = 'd';        
             phaseDirectFromSeq();        
-             key = 'd';        
+            key = 'd';        
             phaseDirectFromSeq();    
         }  
         
@@ -383,6 +365,41 @@ void automationForMusicDessine()
         key = 'd';        
         phaseDirectFromSeq();          
     }
+  /*
+    if ((measure ==  38) && beatPrecised == 12 && beatPrecisedTrigged ==  true) 
+        {  
+            key = '0';
+            keyReleased();
+            speedDelta = 3; 
+        
+            keyMode = " trigEventWithAbletonSignal "; // 
+            modeStartKeyToFollow = " followSignalSampledOppositeWay(frameRatio) ";   
+          // 
+        } 
+        
+    if (measure ==  39 && beatTrigged ==  true)       
+        {  
+              for (int i = 0; i < networkSize; i++)
+        { 
+            countControlDr[i]= countControlDr[i];
+            rev[i]=  countControlDr[i]+1;
+        }  
+            keyCode = BACKSPACE;
+            followSignalSampledOppositeWay(frameRatio);
+             keyCode = LEFT;
+            followSignalSampledOppositeWay(frameRatio); 
+            keyCode = LEFT;
+            followSignalSampledOppositeWay(frameRatio); 
+        }
+
+
+   if (measure ==  (39+8) && beatTrigged ==  true)   // comeBack Normal choregraphy     
+        {
+                keyMode = " trigEventWithAbletonSignal "; 
+                modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
+        }
+    */
+    
     
     if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
         {
@@ -456,24 +473,31 @@ void automationForMusicDessine()
         specialPropagationKey  = key ;        
         phaseDirectFromSeq();               
     } 
+    
+    if (measure >=  48 &&  measure <=  48 && beatPrecised >= 15  && beatPrecisedTrigged ==  true)
+    {
+        key = '0'; // not ç
+        keyReleased();             
+    } 
      
     if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
         {    
         key = '0'; // not ç
-        specialPropagationKey  = key ; 
         keyReleased();
         key = '0'; // not ç
         phaseDirectFromSeq(); 
-        key = 's';
-        phaseDirectFromSeq(); 
-         key = 's';
-        phaseDirectFromSeq(); 
+       //key = 's';
+        //phaseDirectFromSeq(); 
+        // key = 's';
+        //phaseDirectFromSeq(); 
        
 
      
     }
     if (measure ==  49 && beatPrecised == 2 && beatPrecisedTrigged)   
-        { 
+        {
+        key = '0'; // not ç
+        keyReleased(); 
         formerKeyMetro = '$';   
         
         key = 's';
@@ -540,7 +564,7 @@ void automationForMusicDessine()
     if (measure >=  69 &&   measure <=  76 && (beatPrecised == 1) && beatPrecisedTrigged)   
      {    
       //  key = 'i'; // not ç
-      speedDelta=2;
+         speedDelta=2;
       //  specialPropagationKey  = key ;
          key = 'd';
         keyReleased();      
@@ -549,7 +573,7 @@ void automationForMusicDessine()
 
     if (measure >=  69 && (beatPrecised == 9) && beatPrecisedTrigged)   
     {    
-        key = 'd';
+        key = 'P';
         keyReleased();      
     } 
 
@@ -648,12 +672,12 @@ void automationForMusicDessine()
 
         if (measure ==  32) // STOP ROTATION FROM LFO
         {
-                enableRotation = false;
+             //   enableRotation = false;
         }
 
         if (measure == 35 && beatPrecised ==9)
         {
-            enableRotation = true;
+          //  enableRotation = true;
         }
 
         if (enableRotation && measure <  91  )
