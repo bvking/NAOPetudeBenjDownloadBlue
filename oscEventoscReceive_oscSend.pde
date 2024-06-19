@@ -909,6 +909,46 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage135, myRemoteLocation); 
 
 
+  // counter, rev
+
+  OscMessage myMessage140= new OscMessage("/countControlDr0"); // countControlDr
+  OscMessage myMessage141= new OscMessage("/countControlDr1"); // oscillator 
+  OscMessage myMessage142= new OscMessage("/countControlDr2"); // oscillator 
+  OscMessage myMessage143= new OscMessage("/countControlDr3"); // oscillator 
+  OscMessage myMessage144= new OscMessage("/countControlDr4"); // oscillator 
+  OscMessage myMessage145= new OscMessage("/countControlDr5"); // oscillato
+
+  OscMessage myMessage146= new OscMessage("/countControlDr6"); // countControlDr
+  OscMessage myMessage147= new OscMessage("/countControlDr7"); // oscillator 
+  OscMessage myMessage148= new OscMessage("/countControlDr8"); // oscillator 
+  OscMessage myMessage149= new OscMessage("/countControlDr9"); // oscillator 
+  OscMessage myMessage150= new OscMessage("/countControlDr10"); // oscillator 
+
+  myMessage140.add(countControlDr[0]);  //
+  myMessage141.add(countControlDr[1]);
+  myMessage142.add(countControlDr[2]);
+  myMessage143.add(countControlDr[3]);
+  myMessage144.add(countControlDr[4]);
+  myMessage145.add(countControlDr[5]);
+  myMessage146.add(countControlDr[6]);
+  myMessage147.add(countControlDr[7]);
+  myMessage148.add(countControlDr[8]);
+  myMessage149.add(countControlDr[9]);
+
+  oscP5.send(myMessage140, myRemoteLocation); 
+  oscP5.send(myMessage141, myRemoteLocation); 
+  oscP5.send(myMessage142, myRemoteLocation); 
+  oscP5.send(myMessage143, myRemoteLocation); 
+  oscP5.send(myMessage144, myRemoteLocation); 
+  oscP5.send(myMessage145, myRemoteLocation); 
+  oscP5.send(myMessage146, myRemoteLocation); 
+  oscP5.send(myMessage147, myRemoteLocation); 
+  oscP5.send(myMessage148, myRemoteLocation); 
+  oscP5.send(myMessage149, myRemoteLocation); 
+ 
+ 
+
+
   JoDebug  ="<" // BPM9   
    // + (dataMappedForMotorisedPosition[11])+","+dataMappedForMotorisedPosition[10]+","+(dataMappedForMotorisedPosition[9])+","+dataMappedForMotorisedPosition[8]+","+dataMappedForMotorisedPosition[7]+","
    // + dataMappedForMotorisedPosition[6]+","

@@ -538,8 +538,8 @@ void trigBeatWithMeasure()
         //   positionToMotor[i]=int(lastActualPosition[i]%numberOfStep);
        /// positionToMotor[i]=dataMappedForMotorisedPosition[i]%numberOfStep;
        text( "pFollOld " + oldPhasePatternFollow[networkSize-1-i] + " " +  phasePatternFollow[networkSize-1-i] + " " + positionToMotor[networkSize-1-i] + 
-             " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[networkSize-1-i] + " " + countControlDr[networkSize-1-i] +
-             " " + rev[networkSize-1-i] + " " + revLfo[networkSize-1-i]+ " VelMoto " + velocityMotor[networkSize-1-i] + " accMoto " + acceleraMotor[networkSize-1-i]
+             " " + oldPositionToMotor[networkSize-1-i]+ " "+ oldOldPositionToMotor[networkSize-1-i] + " cDr " + countControlDr[networkSize-1-i] +
+             "rev " + rev[networkSize-1-i] + " rLf " + revLfo[networkSize-1-i]+ " VelMoto " + velocityMotor[networkSize-1-i] + " accMoto " + acceleraMotor[networkSize-1-i]
             
               , -2200, -300 + (networkSize-1-i*100), -800); 
 
