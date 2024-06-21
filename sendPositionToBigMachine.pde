@@ -80,9 +80,9 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
      if ( networkSize == 9)
     {
     
-     dataFromMode =  "<"//1111
+     dataFromMode = 0. // 1111//"<"//1111
     
-      + 0 + "," + dataMappedForMotorisedBigMachine[8] + ","
+      + "" + 56 + "," + dataMappedForMotorisedBigMachine[8] + ","
       + dataMappedForMotorisedBigMachine[7] + "," + dataMappedForMotorisedBigMachine[6] + ","
       + dataMappedForMotorisedBigMachine[5] + "," + dataMappedForMotorisedBigMachine[4] + ","
       + dataMappedForMotorisedBigMachine[3] + "," + dataMappedForMotorisedBigMachine[2] + ","
@@ -94,7 +94,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
       + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
     
-      + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; //2222
+      + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; //(-20); //">"; //2222
     }
 
     
