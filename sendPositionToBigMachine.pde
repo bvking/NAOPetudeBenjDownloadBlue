@@ -80,7 +80,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
      if ( networkSize == 9)
     {
     
-     dataFromMode = "<"
+     dataFromMode =  "<"//1111
     
       + 0 + "," + dataMappedForMotorisedBigMachine[8] + ","
       + dataMappedForMotorisedBigMachine[7] + "," + dataMappedForMotorisedBigMachine[6] + ","
@@ -94,7 +94,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
     
       + TrigmodPos[5] + "," + TrigmodPos[4] + "," + TrigmodPos[3] + "," + TrigmodPos[2] + "," + TrigmodPos[1] + "," + TrigmodPos[0] + "," // to manage 6 note or effect
     
-      + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; 
+      + 0 + "," + 0 + "," + 0 + "," + 0 + ">"; //2222
     }
 
     
@@ -131,7 +131,7 @@ void send24DatasToTeensy10motorsToBigMachine(int accelerationRatio, int driver0_
             else {
             // samplingWithMouse=true;
               
-              println(" something Connected but only WIFI. That's mean nothing for the moment ");
+              println(" something Connected but only WIFI. That's mean nothing for the moment or Arduino Due Test");
                text(" USB PROCESSING port NOT connected but on port3 there is" + portsUSBfrom3 + " ", 0, 1000); 
               // teensy4port.write(dataFromMode);
 

@@ -908,7 +908,6 @@ oldEncodeur[0]= encodeur[0];
   oscP5.send(myMessage134, myRemoteLocation); 
   oscP5.send(myMessage135, myRemoteLocation); 
 
-
   // counter, rev
 
   OscMessage myMessage140= new OscMessage("/countControlDr0"); // countControlDr
@@ -917,7 +916,6 @@ oldEncodeur[0]= encodeur[0];
   OscMessage myMessage143= new OscMessage("/countControlDr3"); // oscillator 
   OscMessage myMessage144= new OscMessage("/countControlDr4"); // oscillator 
   OscMessage myMessage145= new OscMessage("/countControlDr5"); // oscillato
-
   OscMessage myMessage146= new OscMessage("/countControlDr6"); // countControlDr
   OscMessage myMessage147= new OscMessage("/countControlDr7"); // oscillator 
   OscMessage myMessage148= new OscMessage("/countControlDr8"); // oscillator 
@@ -933,7 +931,7 @@ oldEncodeur[0]= encodeur[0];
   myMessage146.add(countControlDr[6]);
   myMessage147.add(countControlDr[7]);
   myMessage148.add(countControlDr[8]);
-  myMessage149.add(countControlDr[9]);
+ // myMessage149.add(countControlDr[9]);
 
   oscP5.send(myMessage140, myRemoteLocation); 
   oscP5.send(myMessage141, myRemoteLocation); 

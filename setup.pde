@@ -177,13 +177,15 @@ float oldFaz;
 float faz = 3;
 int oscillatorMaster = 0;
         
-float getOldPositionOfActiveOscillator(float phaseOfOscillator0) { // return former value of actual oscillator
+float getOldPositionOfActiveOscillator(float phaseOfOscillator0)
+{ // return former value of actual oscillator
             // as many number of oscillator
-oscillatorMaster += 1;
-oscillatorMaster %=  networkSize;
+   oscillatorMaster += 1;
+   oscillatorMaster %=  networkSize;
             //textSize (250);
             
-if (oscillatorMaster > 0) { 
+  if (oscillatorMaster > 0)
+  { 
                 
                 for (int i = oscillatorMaster - 1; i <=  oscillatorMaster; i++) { 
                     println(" oscillatorFollowi " + (oscillatorMaster - i) + " " + oscillatorFollowing[oscillatorMaster - i] + " " + oscillatorMaster + " " +  oscillatorFollowing[oscillatorMaster] , -300, 250 * i);
@@ -195,7 +197,7 @@ if (oscillatorMaster > 0) {
                     //  phaseOfOscillator0 = oscillatorFollowing[oscillatorMaster];
                     
                 }
-            }
+    }
                 
                else if (oscillatorMaster ==  0) {   
                     
@@ -206,9 +208,10 @@ if (oscillatorMaster > 0) {
                 }
                 
                 return phaseOfOscillator0;  // 
-            }
+}
             
-            float log10(float x) {
+            float log10(float x)
+            {
                 return(log(x) / log(10));
             }
             
@@ -272,6 +275,7 @@ if (oscillatorMaster > 0) {
             Serial DueSerialNativeUSBport101; // The ArduinoDue serial port giving position :  finish with 101
             Serial teensyport;
             Serial teensy4port;
+            Serial arduinoPort;
             
             int[] formerFrameCountFromSerialEvent = new int[networkSize];
             

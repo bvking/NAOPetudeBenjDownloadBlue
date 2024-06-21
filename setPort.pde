@@ -93,6 +93,12 @@ void setPort()
      if (bigMachineConnectedToPort2_And_NATIVEpoortConnectedToPort1==false)
       { 
          println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
+        if (!portConnectedToBigMachineOnly) {
+              println(" Port 1 CONNECTED ArduinoDue_Serial "); //  + portsUSBfrom2 + " "
+              arduinoPort = new Serial(this, ports[2],115200); // si port connecté Monterey
+           }
+
+
         if (onlyLitteMachineWithSecondSerialPort) {
             
              println(" Port 1 CONNECTED to programming port of Teensy 3.5 "); //  + portsUSBfrom2 + " "
