@@ -374,14 +374,11 @@ void teensyPos()
           }
        }
          
-
-
-
         if (music_from_ableton_live == " Dessine "  ) 
         {     
           send24DatasToTeensy10motorsToBigMachine(4, 3, -3, -1);
         //  teensyport = new Serial(this, portsUSBfrom1,115200); // si port connecté Monterey
-         arduinoPort.write(dataFromMode);
+        // arduinoPort.write(dataFromMode);
         }
 
        // special to test chor with little machine
