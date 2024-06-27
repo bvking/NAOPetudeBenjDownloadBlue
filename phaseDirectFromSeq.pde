@@ -134,7 +134,7 @@ void phaseDirectFromSeq() // mixed Com
                         dataMappedForMotorisedPosition[8] + dataMappedForMotorisedPosition[9]) / (networkSize - 1);
                 }
 
-                if (networkSize ==  10)
+                if (networkSize ==  9)
                 {
                     realign[i] = (dataMappedForMotorisedPosition[0] + dataMappedForMotorisedPosition[1] + dataMappedForMotorisedPosition[2] + dataMappedForMotorisedPosition[3]+
                         dataMappedForMotorisedPosition[4] + dataMappedForMotorisedPosition[5] + dataMappedForMotorisedPosition[6] + dataMappedForMotorisedPosition[7]+
@@ -442,7 +442,8 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 0; i < networkSize; i++)
             {
             //positionFromMotorPhase[i] -= (int)  map((networkSize - 1 - oscillatorBlocked - i) * TWO_PI / networkSize * 1 / 16, 0, TWO_PI, 0, numberOfStep);  
-            positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.4 / 4 / ( -networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep); 
+          //  positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.4 / 4 / ( -networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep); 
+           positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.4 / 4 / ( -10 - 0) * i, 0, TWO_PI, 0, numberOfStep); 
         }
     }
     
@@ -453,7 +454,8 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 0; i < networkSize; i++)
         {
             //positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.1 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
-            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 4 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+          //  positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 4 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+           positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 4 / (10) * (10 - 1 - i), 0, TWO_PI, 0, numberOfStep);
         }
     }
     
@@ -465,7 +467,8 @@ void phaseDirectFromSeq() // mixed Com
         {
         for (int i = 0; i < networkSize; i++)
         {
-            positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.4 / 16 / ( -networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep);
+          //  positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.4 / 16 / ( -networkSize - 0) * i, 0, TWO_PI, 0, numberOfStep);
+           positionFromMotorPhase[i] -= (int)  map(TWO_PI * 0.4 / 16 / ( -10 - 0) * i, 0, TWO_PI, 0, numberOfStep);
         }
     }
     
@@ -474,7 +477,9 @@ void phaseDirectFromSeq() // mixed Com
         {
         for (int i = 0; i < networkSize; i++)
             {
-            positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 16 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+          //  positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 16 / (networkSize) * (networkSize - 1 - i), 0, TWO_PI, 0, numberOfStep);
+           positionFromMotorPhase[i] += (int)  map(TWO_PI * 0.4 / 16 / (10) * (10 - 1 - i), 0, TWO_PI, 0, numberOfStep);
+
         }
     }
 
@@ -529,6 +534,7 @@ void phaseDirectFromSeq() // mixed Com
         for (int i = 0; i < (networkSize - 0); i++)
             {  
             lastOldActualPosition[i] = oldPositionToMotor[i];
+          // lastOldActualPosition[i] = (int) phasePatternFollow[i];
         }
         
         for (int i = 1; i < (networkSize - 0); i++) 

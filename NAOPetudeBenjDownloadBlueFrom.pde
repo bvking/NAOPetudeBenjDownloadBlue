@@ -299,7 +299,7 @@ void draw()
     }
     println(""); 
     //  trigMiddlePositionFromEncodeur();    
-    if (millis()>timeTosendData + 20)
+    if (millis()>timeTosendData + 0)
     {
         oscSend();
         timeTosendData = millis();

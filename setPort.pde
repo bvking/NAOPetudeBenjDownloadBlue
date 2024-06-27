@@ -95,7 +95,7 @@ void setPort()
          println(" portConnectedToBigMachineOnly " + portConnectedToBigMachineOnly);
         if (!portConnectedToBigMachineOnly) {
               println(" Port 1 CONNECTED ArduinoDue_Serial "); //  + portsUSBfrom2 + " "
-              arduinoPort = new Serial(this, ports[2],115200); // si port connecté Monterey
+             // arduinoPort = new Serial(this, ports[2],115200); // si port connecté Monterey
            }
 
 
