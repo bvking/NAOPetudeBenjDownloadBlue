@@ -719,7 +719,7 @@ void oscSend(){
 
   //OscMessage myMessage2 = new OscMessage("/Velocity");
   OscMessage myMessage3 = new OscMessage("/cohesion");
-  OscMessage myMessage4 = new OscMessage("/upVelocity11");
+  OscMessage myMessage4 = new OscMessage("/speedDelta");
   OscMessage myMessage5 = new OscMessage("/upVelocity10");
   OscMessage myMessage6 = new OscMessage("/upVelocity9");
   OscMessage myMessage7 = new OscMessage("/upVelocity8");
@@ -746,6 +746,9 @@ void oscSend(){
   float data10= dataMappedForMotorisedPosition[networkSize-1]*1.0;   
   myMessage2.add(Velocity);
   myMessage3.add(LevelCohesionToSend);
+
+  myMessage4.add(speedDelta);
+  oscP5.send(myMessage4, myRemoteLocationII); //port 8001
 
   /*
   myMessage4.add(upVelocity[11]);
