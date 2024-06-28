@@ -14,6 +14,7 @@ void automationForMusicDessine()
     {  
         if (measure ==  1 && beatPrecised == 1 && beatPrecisedTrigged ==  true)
         {  
+             formerKeyMetro = '*';
             keyMode = " trigEventWithAbletonSignal "; // 
             modeStartKeyToFollow = " followSignal2 ";   
             speedDelta = 2;
