@@ -519,7 +519,7 @@ void phaseDirectFromSeq() // mixed Com
     
     
     if (key == 'i')
-        {  // memory == 0 is the ball "behind"  the screen
+    {  // memory == 0 is the ball "behind"  the screen
      
         
         oldMemoryi = memoryi;
@@ -530,22 +530,47 @@ void phaseDirectFromSeq() // mixed Com
             memoryi = networkSize - 1;
             oldMemoryi = 0;
         }
-        
-        for (int i = 0; i < (networkSize - 0); i++)
-            {  
-            lastOldActualPosition[i] = oldPositionToMotor[i];
-          // lastOldActualPosition[i] = (int) phasePatternFollow[i];
-        }
-        
+         
         for (int i = 1; i < (networkSize - 0); i++) 
-            {  
-            positionFromMotorPhase[i - 1] = lastOldActualPosition[i];
+        {  
+        
+          //   positionFromMotorPhase[i - 1] = oldPositionToMotor[i];
+            positionFromMotorPhase[i - 1] = positionToMotor[i];
+            
         }
         
-            positionFromMotorPhase[networkSize - 1] =  lastOldActualPosition[0];
-    }
+            //  positionFromMotorPhase[networkSize - 1] = oldPositionToMotor[0];
+                positionFromMotorPhase[networkSize - 1] = positionToMotor[0];
+     }
+
+
+    if (key == 'I')
+     {  // memory == 0 is the ball "behind"  the screen
+     
+        
+        oldMemoryi = memoryi;
+        memoryi = (memoryi - 1);
+        
+        if (memoryi == -1)
+            {
+            memoryi = networkSize - 1;
+            oldMemoryi = 0;
+        }
+         
+        for (int i = 1; i < (networkSize - 0); i++) 
+        {  
+        
+          //   positionFromMotorPhase[i - 1] = oldPositionToMotor[i];
+            positionFromMotorPhase[i - 1] = positionToMotor[i]+numberOfStep/4;  
+            
+        }
+        
+            //  positionFromMotorPhase[networkSize - 1] = oldPositionToMotor[0];
+                positionFromMotorPhase[networkSize - 1] = positionToMotor[0]+numberOfStep/4;
+     }
+
     
-    if (key == 'u')
+     if (key == 'u')
         {  // memory == 0 isthe ball "behind"  the screen   
         oldMemoryi = memoryi;
         memoryi = (memoryi + 1);
