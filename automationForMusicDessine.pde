@@ -744,7 +744,7 @@ void automationForMusicDessine()
 
                  if  (enableRotation==false)
                   {
-                      lastActualPosition[i] =  int(phasePatternFollow[i]); 
+                      lastActualPosition[i] =   (int(phaseSigna2Followed[i]) + int(phasePatternFollow[i])); 
                   } 
                   if ((specialPropagationKey == 'i') || (specialPropagationKey == 'U'))
                   {
