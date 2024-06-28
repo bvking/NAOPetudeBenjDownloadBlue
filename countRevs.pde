@@ -56,11 +56,11 @@ void countRevsPhaseMappedPositiveOnly() { // ===================================
             
            )
                 {
-            if ( specialPropagationKey != 'i' )
+            if ( specialPropagationKey != 'z' ) // i
             {
-             if ( specialPropagationKey != '0' )
+             if ( specialPropagationKey != 'z' ) //0
              {  
-              if ( specialPropagationKey != 'U' )
+              if ( specialPropagationKey != 'z' ) //U
               { 
                onOFF = 1;
                countControlDr[i]--;
