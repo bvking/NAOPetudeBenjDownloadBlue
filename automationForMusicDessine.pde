@@ -482,7 +482,7 @@ void automationForMusicDessine()
     {
         key = '0'; // not ç
         keyReleased();   
-        enableRotation;          
+        enableRotation=true;          
     } 
      
     if (measure ==  49 && beatPrecised == 1 && beatPrecisedTrigged)   
@@ -501,6 +501,7 @@ void automationForMusicDessine()
 
      
     }
+
     if (measure ==  49 && beatPrecised == 2 && beatPrecisedTrigged)   
         {
         key = '0'; // not ç
