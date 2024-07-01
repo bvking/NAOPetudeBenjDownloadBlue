@@ -920,9 +920,9 @@ void setup() {
                 // Osc midi potar
                 automation1 = automation2 = automation3 = automation4 = automation5 = automation6 = automation7 = 0.5;
                 o = new OscP5(this, 2346);//receive data from a port number - it has to be same as in your Max for Live device // careful to oveflow
-               // oII = new OscP5(this, 2350);//receive datapiano partitionII   
+                oII = new OscP5(this, 2350);//receive datapiano partitionII   
                 oscP5 = new OscP5(this, 7999);//receive data to himself
-                oII = new OscP5(this, 1000);//receive data to himself
+               // oII = new OscP5(this, 1000);//receive data to himself
 
                 // send DATA
                 // myRemoteLocation = new NetAddress("192.168.1.77", 8000); // send data to port 8000 

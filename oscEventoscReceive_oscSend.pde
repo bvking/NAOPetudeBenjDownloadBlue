@@ -748,7 +748,7 @@ void oscSend(){
   myMessage3.add(LevelCohesionToSend);
 
   myMessage4.add(speedDelta);
-  oscP5.send(myMessage4, myRemoteLocationII); //port 8001
+  //oscP5.send(myMessage4, myRemoteLocationII); //port 8001
 
   /*
   myMessage4.add(upVelocity[11]);
