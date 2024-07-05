@@ -407,6 +407,15 @@ void automationForMusicDessine()
                 modeStartKeyToFollow = " followSignal2 ";  // to test followSignal
         }
     */
+
+     if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 11 ==  0)
+        {
+       enableRotation=false;
+       key = 'D' ;
+       phaseDirectFromSeq();          
+       key = 'D' ;
+       phaseDirectFromSeq();                    
+    } 
     
     
     if (measure ==  38  && beatPrecisedTrigged ==  true && beatPrecised % 13 ==  0)
@@ -417,14 +426,14 @@ void automationForMusicDessine()
         phaseDirectFromSeq();                    
     } 
     
-    if (measure ==  39  && (beatPrecised!= 0)  && beatPrecisedTrigged ==  true)  //|| beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
+    if (measure ==  39  && (beatPrecised%2== 0)  && beatPrecisedTrigged ==  true)  //|| beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
         {
         key = 'U';  
         specialPropagationKey  = key ; 
         phaseDirectFromSeq();               
     }
 
-     
+    /* 
     if (measure ==  40  && (beatPrecised == 1) && beatPrecisedTrigged ==  true) 
         { 
         key = '0'; // not ç
@@ -432,7 +441,9 @@ void automationForMusicDessine()
         phaseDirectFromSeq();   
         enableRotation = true;    
     }
+    */
     
+    /*
     
     if (measure ==  40  && ((beatPrecised+1)%2 ==0) && beatPrecisedTrigged ==  true) 
         {
@@ -442,14 +453,15 @@ void automationForMusicDessine()
         phaseDirectFromSeq();       
         
     } 
-    
+   */ 
   //  if (measure > 40  && measure <=  43 && (beatPrecised == 1 || beatPrecised == 5 || beatPrecised == 9 || beatPrecised == 13) && beatPrecisedTrigged ==  true) 
-      if (measure > 40  && measure <=  43 && ((beatPrecised+1)%1 ==0) && beatPrecisedTrigged ==  true) 
+      if (measure >= 40  && measure <=  43 && (beatPrecised%2== 0) && beatPrecisedTrigged ==  true && beatPrecised < 15) 
         {
-        enableRotation = false;    
-          key = 'R';        
-        phaseDirectFromSeq();         
-    } 
+         key = 'U';  
+        specialPropagationKey  = key ; 
+        phaseDirectFromSeq();               
+        }
+    
     
     
     
@@ -472,7 +484,7 @@ void automationForMusicDessine()
         phaseDirectFromSeq();     
     }
 
-    if (measure ==  44 && (beatPrecised >= 10 ) && beatPrecisedTrigged ==  true) 
+    if (measure ==  44 && (beatPrecised >= 10 ) && beatPrecisedTrigged ==  true  && (beatPrecised%2== 0) ) 
         {  
         enableRotation=false;  
         key = 'U';
@@ -480,7 +492,7 @@ void automationForMusicDessine()
         phaseDirectFromSeq();       
     }
     
-    if (measure >=  45 &&  measure <=  48 && beatPrecisedTrigged ==  true) //4*2 == 8 event  //|| beatPrecised == 13
+    if (measure >=  45 &&  measure <=  48 && beatPrecisedTrigged ==  true && (beatPrecised%2== 0) )  //4*2 == 8 event  //|| beatPrecised == 13
         
         { //speedDelta = 3;
         key = 'U';        

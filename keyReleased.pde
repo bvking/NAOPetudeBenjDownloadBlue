@@ -28,6 +28,13 @@ void keyReleased()
               countControlDr[i]=countControlDr[0];
               }
              }
+            
+              if (key == '°'){
+              background(200);
+              for (int i = 0; i < networkSize; i++) {
+              countControlDr[i]=0;
+              }
+             }
           
            phaseDirectFromSeq();
            //phaseDirectToMotor(); // better s and d  
